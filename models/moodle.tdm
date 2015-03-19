@@ -17,6 +17,17 @@ ConceptualModel moodle
 			private apellidos : String;
 			private fecha_nacimiento : Date;
 		}
+		
+		operations
+		{
+			public new::New (p_dni : String, p_email : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Object->Usuario;
+			public modify::Modifier (p_oid : OID -> Usuario, p_dni : String, p_email : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
+			public destroy::Destroy (p_oid : OID -> Usuario) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Usuario>;
+			public readOID::ReadOID (p_oid : OID -> Usuario) : Object -> Usuario;
+			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_usuario : OID -> Usuario, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_usuario : OID -> Usuario, p_mensaje : List<OID -> Mensaje>) : Void;
+		}
 	};
 	
 	Class Administrador
@@ -32,6 +43,15 @@ ConceptualModel moodle
 			private unique nick : String;
 			private password : Password;
 		}
+		
+		operations
+		{
+			public new::New (p_nick : String, p_password : Password) : Object->Administrador;
+			public modify::Modifier (p_oid : OID -> Administrador, p_nick : String, p_password : Password) : Void;
+			public destroy::Destroy (p_oid : OID -> Administrador) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Administrador>;
+			public readOID::ReadOID (p_oid : OID -> Administrador) : Object -> Administrador;
+		}
 	};
 	
 	Class Profesor extends Usuario
@@ -44,6 +64,23 @@ ConceptualModel moodle
 		attributes
 		{
 			private unique cod_profesor : Integer;
+		}
+		
+		operations
+		{
+			public new::New (p_cod_profesor : Integer, p_dni : String, p_email : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Object->Profesor;
+			public modify::Modifier (p_oid : OID -> Profesor, p_cod_profesor : Integer, p_dni : String, p_email : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
+			public destroy::Destroy (p_oid : OID -> Profesor) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Profesor>;
+			public readOID::ReadOID (p_oid : OID -> Profesor) : Object -> Profesor;
+			public relationer_entregas_propuestas::Relationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
+			public relationer_materiales::Relationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
+			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
+			public relationer_tutorias::Relationer->tutoria_profesor.tutorias (p_profesor : OID -> Profesor, p_tutoria : List<OID -> Tutoria>) : Void;
+			public unrelationer_entregas_propuestas::Unrelationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
+			public unrelationer_materiales::Unrelationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
+			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_tutorias::Unrelationer->tutoria_profesor.tutorias (p_profesor : OID -> Profesor, p_tutoria : List<OID -> Tutoria>) : Void;
 		}
 	};
 	
@@ -58,6 +95,29 @@ ConceptualModel moodle
 		{
 			private unique cod_alumno : Integer;
 			private baneado : Boolean;
+		}
+		
+		operations
+		{
+			public new::New (p_cod_alumno : Integer, p_baneado : Boolean, p_dni : String, p_email : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Object->Alumno;
+			public modify::Modifier (p_oid : OID -> Alumno, p_cod_alumno : Integer, p_baneado : Boolean, p_dni : String, p_email : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
+			public destroy::Destroy (p_oid : OID -> Alumno) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Alumno>;
+			public readOID::ReadOID (p_oid : OID -> Alumno) : Object -> Alumno;
+			public relationer_controles::Relationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
+			public relationer_entregas::Relationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
+			public relationer_expediente::Relationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
+			public relationer_grupos_trabajo::Relationer->grupotrabajo_alumno.grupos_trabajo (p_alumno : OID -> Alumno, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
+			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
+			public relationer_sistemas_evaluacion::Relationer->alumno_evaluacionalumno.sistemas_evaluacion (p_alumno : OID -> Alumno, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
+			public relationer_tutorias::Relationer->tutoria_alumno.tutorias (p_alumno : OID -> Alumno, p_tutoria : List<OID -> Tutoria>) : Void;
+			public unrelationer_controles::Unrelationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
+			public unrelationer_entregas::Unrelationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
+			public unrelationer_expediente::Unrelationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
+			public unrelationer_grupos_trabajo::Unrelationer->grupotrabajo_alumno.grupos_trabajo (p_alumno : OID -> Alumno, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
+			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_sistemas_evaluacion::Unrelationer->alumno_evaluacionalumno.sistemas_evaluacion (p_alumno : OID -> Alumno, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
+			public unrelationer_tutorias::Unrelationer->tutoria_alumno.tutorias (p_alumno : OID -> Alumno, p_tutoria : List<OID -> Tutoria>) : Void;
 		}
 	};
 	
@@ -77,6 +137,24 @@ ConceptualModel moodle
 			private fecha_cierre : Date;
 			private por_responder : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_tema : String, p_abierta : Boolean, p_fecha_creacion : Date, p_fecha_cierre : Date, p_por_responder : Boolean, p_profesor : OID -> Profesor, p_alumno : OID -> Alumno, p_asignatura : OID -> AsignaturaAnyo) : Object->Tutoria;
+			public modify::Modifier (p_oid : OID -> Tutoria, p_tema : String, p_abierta : Boolean, p_fecha_creacion : Date, p_fecha_cierre : Date, p_por_responder : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> Tutoria) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Tutoria>;
+			public readOID::ReadOID (p_oid : OID -> Tutoria) : Object -> Tutoria;
+			public relationer_alumno::Relationer->tutoria_alumno.alumno (p_tutoria : OID -> Tutoria, p_alumno : OID -> Alumno) : Void;
+			public relationer_asignatura::Relationer->tutoria_asignaturaanyo.asignatura (p_tutoria : OID -> Tutoria, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public relationer_mensajes::Relationer->tutoria_mensaje.mensajes (p_tutoria : OID -> Tutoria, p_mensaje : List<OID -> Mensaje>) : Void;
+			public relationer_profesor::Relationer->tutoria_profesor.profesor (p_tutoria : OID -> Tutoria, p_profesor : OID -> Profesor) : Void;
+			public unrelationer_alumno::Unrelationer->tutoria_alumno.alumno (p_tutoria : OID -> Tutoria, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_asignatura::Unrelationer->tutoria_asignaturaanyo.asignatura (p_tutoria : OID -> Tutoria, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public unrelationer_mensajes::Unrelationer->tutoria_mensaje.mensajes (p_tutoria : OID -> Tutoria, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_profesor::Unrelationer->tutoria_profesor.profesor (p_tutoria : OID -> Tutoria, p_profesor : OID -> Profesor) : Void;
+			
+		}
 	};
 	
 	Class Mensaje
@@ -92,6 +170,19 @@ ConceptualModel moodle
 			private contenido : String;
 			private fecha : Date;
 			private respondido : Boolean;
+		}
+		
+		operations
+		{
+			public new::New (p_contenido : String, p_fecha : Date, p_respondido : Boolean, p_tutoria : OID -> Tutoria, p_usuario : OID -> Usuario) : Object->Mensaje;
+			public modify::Modifier (p_oid : OID -> Mensaje, p_contenido : String, p_fecha : Date, p_respondido : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> Mensaje) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Mensaje>;
+			public readOID::ReadOID (p_oid : OID -> Mensaje) : Object -> Mensaje;
+			public relationer_tutoria::Relationer->tutoria_mensaje.tutoria (p_mensaje : OID -> Mensaje, p_tutoria : OID -> Tutoria) : Void;
+			public relationer_usuario::Relationer->mensaje_usuario.usuario (p_mensaje : OID -> Mensaje, p_usuario : OID -> Usuario) : Void;
+			public unrelationer_tutoria::Unrelationer->tutoria_mensaje.tutoria (p_mensaje : OID -> Mensaje, p_tutoria : OID -> Tutoria) : Void;
+			public unrelationer_usuario::Unrelationer->mensaje_usuario.usuario (p_mensaje : OID -> Mensaje, p_usuario : OID -> Usuario) : Void;
 		}
 	};
 	
@@ -111,6 +202,23 @@ ConceptualModel moodle
 			private optativa : Boolean;
 			private vigente : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_cod_asignatura : Integer, p_nombre : String, p_descripcion : String, p_optativa : Boolean, p_vigente : Boolean) : Object->Asignatura;
+			public modify::Modifier (p_oid : OID -> Asignatura, p_cod_asignatura : Integer, p_nombre : String, p_descripcion : String, p_optativa : Boolean, p_vigente : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> Asignatura) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Asignatura>;
+			public readOID::ReadOID (p_oid : OID -> Asignatura) : Object -> Asignatura;
+			public relationer_asignaturas_anyo::Relationer->asignatura_asignaturaanyo.asignaturas_anyo (p_asignatura : OID -> Asignatura, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
+			public relationer_bolsas_preguntas::Relationer->asignatura_bolsapreguntas.bolsas_preguntas (p_asignatura : OID -> Asignatura, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
+			public relationer_curso::Relationer->asignatura_curso.curso (p_asignatura : OID -> Asignatura, p_curso : OID -> Curso) : Void;
+			public relationer_expedientes_asignatura::Relationer->asignatura_expedienteasignatura.expedientes_asignatura (p_asignatura : OID -> Asignatura, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
+			public unrelationer_asignaturas_anyo::Unrelationer->asignatura_asignaturaanyo.asignaturas_anyo (p_asignatura : OID -> Asignatura, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
+			public unrelationer_bolsas_preguntas::Unrelationer->asignatura_bolsapreguntas.bolsas_preguntas (p_asignatura : OID -> Asignatura, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
+			public unrelationer_curso::Unrelationer->asignatura_curso.curso (p_asignatura : OID -> Asignatura, p_curso : OID -> Curso) : Void;
+			public unrelationer_expedientes_asignatura::Unrelationer->asignatura_expedienteasignatura.expedientes_asignatura (p_asignatura : OID -> Asignatura, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
+		}
 	};
 	
 	Class Curso
@@ -125,6 +233,17 @@ ConceptualModel moodle
 			private oid id : Autogenerated;
 			private cod_curso : Integer;
 			private nombre : String;
+		}
+		
+		operations
+		{
+			public new::New (p_cod_curso : Integer, p_nombre : String) : Object->Curso;
+			public modify::Modifier (p_oid : OID -> Curso, p_cod_curso : Integer, p_nombre : String) : Void;
+			public destroy::Destroy (p_oid : OID -> Curso) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Curso>;
+			public readOID::ReadOID (p_oid : OID -> Curso) : Object -> Curso;
+			public relationer_asignaturas::Relationer->asignatura_curso.asignaturas (p_curso : OID -> Curso, p_asignatura : List<OID -> Asignatura>) : Void;
+			public unrelationer_asignaturas::Unrelationer->asignatura_curso.asignaturas (p_curso : OID -> Curso, p_asignatura : List<OID -> Asignatura>) : Void;
 		}
 	};
 	
@@ -142,6 +261,15 @@ ConceptualModel moodle
 			private abreviatura : String;
 			private ponderacion : Integer;
 		}
+		
+		operations
+		{
+			public new::New (p_nombre : String, p_abreviatura : String, p_ponderacion : Integer) : Object->Nota;
+			public modify::Modifier (p_oid : OID -> Nota, p_nombre : String, p_abreviatura : String, p_ponderacion : Integer) : Void;
+			public destroy::Destroy (p_oid : OID -> Nota) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Nota>;
+			public readOID::ReadOID (p_oid : OID -> Nota) : Object -> Nota;
+		}
 	};
 	
 	Class Expediente
@@ -158,6 +286,19 @@ ConceptualModel moodle
 			private nota_media : Float;
 			private abierto : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_cod_expediente : Integer, p_nota_media : Float, p_abierto : Boolean, p_alumno : OID -> Alumno) : Object->Expediente;
+			public modify::Modifier (p_oid : OID -> Expediente, p_cod_expediente : Integer, p_nota_media : Float, p_abierto : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> Expediente) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Expediente>;
+			public readOID::ReadOID (p_oid : OID -> Expediente) : Object -> Expediente;
+			public relationer_alumno::Relationer->alumno_expediente.alumno (p_expediente : OID -> Expediente, p_alumno : OID -> Alumno) : Void;
+			public relationer_expedientes_anyo::Relationer->expendiente_expedienteanyo.expedientes_anyo (p_expediente : OID -> Expediente, p_expedienteanyo : List<OID -> ExpedienteAnyo>) : Void;
+			public unrelationer_alumno::Unrelationer->alumno_expediente.alumno (p_expediente : OID -> Expediente, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_expedientes_anyo::Unrelationer->expendiente_expedienteanyo.expedientes_anyo (p_expediente : OID -> Expediente, p_expedienteanyo : List<OID -> ExpedienteAnyo>) : Void;
+		}
 	};
 	
 	Class ExpedienteAnyo
@@ -172,6 +313,22 @@ ConceptualModel moodle
 			private oid id : Autogenerated;
 			private nota_media : Float;
 			private abierto : Boolean;
+		}
+		
+		operations
+		{
+			public new::New (p_nota_media : Float, p_abierto : Boolean, p_expediente : OID -> Expediente, p_anyo : OID -> AnyoAcademico) : Object->ExpedienteAnyo;
+			public modify::Modifier (p_oid : OID -> ExpedienteAnyo, p_nota_media : Float, p_abierto : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> ExpedienteAnyo) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->ExpedienteAnyo>;
+			public readOID::ReadOID (p_oid : OID -> ExpedienteAnyo) : Object -> ExpedienteAnyo;
+			public relationer_anyo::Relationer->anyo_expedienteanyo.anyo (p_expedienteanyo : OID -> ExpedienteAnyo, p_anyoacademico : OID -> AnyoAcademico) : Void;
+			public relationer_expediente::Relationer->expendiente_expedienteanyo.expediente (p_expedienteanyo : OID -> ExpedienteAnyo, p_expediente : OID -> Expediente) : Void;
+			public relationer_expedientes_asignatura::Relationer->expedienteanyo_expedienteasignatura.expedientes_asignatura (p_expedienteanyo : OID -> ExpedienteAnyo, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
+			public unrelationer_anyo::Unrelationer->anyo_expedienteanyo.anyo (p_expedienteanyo : OID -> ExpedienteAnyo, p_anyoacademico : OID -> AnyoAcademico) : Void;
+			public unrelationer_expediente::Unrelationer->expendiente_expedienteanyo.expediente (p_expedienteanyo : OID -> ExpedienteAnyo, p_expediente : OID -> Expediente) : Void;
+			public unrelationer_expedientes_asignatura::Unrelationer->expedienteanyo_expedienteasignatura.expedientes_asignatura (p_expedienteanyo : OID -> ExpedienteAnyo, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
+			
 		}
 	};
 	
@@ -188,6 +345,23 @@ ConceptualModel moodle
 			private nota_media : Float;
 			private abierto : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_nota_media : Float, p_abierto : Boolean, p_expediente_anyo : OID -> ExpedienteAnyo, p_asignatura : OID -> Asignatura) : Object->ExpedienteAsignatura;
+			public modify::Modifier (p_oid : OID -> ExpedienteAsignatura, p_nota_media : Float, p_abierto : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> ExpedienteAsignatura) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->ExpedienteAsignatura>;
+			public readOID::ReadOID (p_oid : OID -> ExpedienteAsignatura) : Object -> ExpedienteAsignatura;
+			public relationer_asignatura::Relationer->asignatura_expedienteasignatura.asignatura (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_asignatura : OID -> Asignatura) : Void;
+			public relationer_expediente_anyo::Relationer->expedienteanyo_expedienteasignatura.expediente_anyo (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteanyo : OID -> ExpedienteAnyo) : Void;
+			public relationer_expedientes_evaluacion::Relationer->expedienteasignatura_expedienteevaluacion.expedientes_evaluacion (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
+			public relationer_nota::Relationer->expedienteasignatura_nota.nota (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_nota : OID -> Nota) : Void;
+			public unrelationer_asignatura::Unrelationer->asignatura_expedienteasignatura.asignatura (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_asignatura : OID -> Asignatura) : Void;
+			public unrelationer_expediente_anyo::Unrelationer->expedienteanyo_expedienteasignatura.expediente_anyo (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteanyo : OID -> ExpedienteAnyo) : Void;
+			public unrelationer_expedientes_evaluacion::Unrelationer->expedienteasignatura_expedienteevaluacion.expedientes_evaluacion (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
+			public unrelationer_nota::Unrelationer->expedienteasignatura_nota.nota (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_nota : OID -> Nota) : Void;
+		}
 	};
 	
 	Class ExpedienteEvaluacion
@@ -202,6 +376,19 @@ ConceptualModel moodle
 			private oid id : Autogenerated;
 			private nota_media : Float;
 			private abierto : Boolean;
+		}
+		
+		operations
+		{
+			public new::New (p_nota_media : Float, p_abierto : Boolean, p_expediente_asignatura : OID -> ExpedienteAsignatura, p_evaluacion : OID -> Evaluacion) : Object->ExpedienteEvaluacion;
+			public modify::Modifier (p_oid : OID -> ExpedienteEvaluacion, p_nota_media : Float, p_abierto : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> ExpedienteEvaluacion) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->ExpedienteEvaluacion>;
+			public readOID::ReadOID (p_oid : OID -> ExpedienteEvaluacion) : Object -> ExpedienteEvaluacion;
+			public relationer_evaluacion::Relationer->evaluacion_expedienteevaluacion.evaluacion (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_evaluacion : OID -> Evaluacion) : Void;
+			public relationer_expediente_asignatura::Relationer->expedienteasignatura_expedienteevaluacion.expediente_asignatura (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_expedienteasignatura : OID -> ExpedienteAsignatura) : Void;
+			public unrelationer_evaluacion::Unrelationer->evaluacion_expedienteevaluacion.evaluacion (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_evaluacion : OID -> Evaluacion) : Void;
+			public unrelationer_expediente_asignatura::Unrelationer->expedienteasignatura_expedienteevaluacion.expediente_asignatura (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_expedienteasignatura : OID -> ExpedienteAsignatura) : Void;
 		}
 	};
 	
@@ -220,6 +407,19 @@ ConceptualModel moodle
 			private descripcion : String;
 			private password : Password;
 			private capacidad : Integer;
+		}
+		
+		operations
+		{
+			public new::New (p_cod_grupo : Integer, p_nombre : String, p_descripcion : String, p_password : Password, p_capacidad : Integer, p_asignatura : OID -> AsignaturaAnyo) : Object->GrupoTrabajo;
+			public modify::Modifier (p_oid : OID -> GrupoTrabajo, p_cod_grupo : Integer, p_nombre : String, p_descripcion : String, p_password : Password, p_capacidad : Integer) : Void;
+			public destroy::Destroy (p_oid : OID -> GrupoTrabajo) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->GrupoTrabajo>;
+			public readOID::ReadOID (p_oid : OID -> GrupoTrabajo) : Object -> GrupoTrabajo;
+			public relationer_alumnos::Relationer->grupotrabajo_alumno.alumnos (p_grupotrabajo : OID -> GrupoTrabajo, p_alumno : List<OID -> Alumno>) : Void;
+			public relationer_asignatura::Relationer->grupotrabajo_asignaturaanyo.asignatura (p_grupotrabajo : OID -> GrupoTrabajo, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public unrelationer_alumnos::Unrelationer->grupotrabajo_alumno.alumnos (p_grupotrabajo : OID -> GrupoTrabajo, p_alumno : List<OID -> Alumno>) : Void;
+			public unrelationer_asignatura::Unrelationer->grupotrabajo_asignaturaanyo.asignatura (p_grupotrabajo : OID -> GrupoTrabajo, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
 		}
 	};
 	
@@ -240,6 +440,19 @@ ConceptualModel moodle
 			private fecha_subida : Date;
 			private visible : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_nombre : String, p_descripcion : String, p_ruta : String, p_tam : Float, p_fecha_subida : Date, p_visible : Boolean, p_profesor : OID -> Profesor, p_asignatura : OID -> AsignaturaAnyo) : Object->Material;
+			public modify::Modifier (p_oid : OID -> Material, p_nombre : String, p_descripcion : String, p_ruta : String, p_tam : Float, p_fecha_subida : Date, p_visible : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> Material) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Material>;
+			public readOID::ReadOID (p_oid : OID -> Material) : Object -> Material;
+			public relationer_asignatura::Relationer->material_asignaturaanyo.asignatura (p_material : OID -> Material, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public relationer_profesor::Relationer->material_profesor_uploader.profesor (p_material : OID -> Material, p_profesor : OID -> Profesor) : Void;
+			public unrelationer_asignatura::Unrelationer->material_asignaturaanyo.asignatura (p_material : OID -> Material, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public unrelationer_profesor::Unrelationer->material_profesor_uploader.profesor (p_material : OID -> Material, p_profesor : OID -> Profesor) : Void;
+		}
 	};
 	
 	Class AnyoAcademico
@@ -257,6 +470,21 @@ ConceptualModel moodle
 			private fecha_fin : Date;
 			private finalizado : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_anyo : Integer, p_fecha_inicio : Date, p_fecha_fin : Date, p_finalizado : Boolean) : Object->AnyoAcademico;
+			public modify::Modifier (p_oid : OID -> AnyoAcademico, p_anyo : Integer, p_fecha_inicio : Date, p_fecha_fin : Date, p_finalizado : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> AnyoAcademico) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->AnyoAcademico>;
+			public readOID::ReadOID (p_oid : OID -> AnyoAcademico) : Object -> AnyoAcademico;
+			public relationer_asignaturas::Relationer->anyo_asignaturaanyo.asignaturas (p_anyoacademico : OID -> AnyoAcademico, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
+			public relationer_evaluaciones::Relationer->anyoacademico_evaluacion.evaluaciones (p_anyoacademico : OID -> AnyoAcademico, p_evaluacion : List<OID -> Evaluacion>) : Void;
+			public relationer_expedientes_anyo::Relationer->anyo_expedienteanyo.expedientes_anyo (p_anyoacademico : OID -> AnyoAcademico, p_expedienteanyo : List<OID -> ExpedienteAnyo>) : Void;
+			public unrelationer_asignaturas::Unrelationer->anyo_asignaturaanyo.asignaturas (p_anyoacademico : OID -> AnyoAcademico, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
+			public unrelationer_evaluaciones::Unrelationer->anyoacademico_evaluacion.evaluaciones (p_anyoacademico : OID -> AnyoAcademico, p_evaluacion : List<OID -> Evaluacion>) : Void;
+			public unrelationer_expedientes_anyo::Unrelationer->anyo_expedienteanyo.expedientes_anyo (p_anyoacademico : OID -> AnyoAcademico, p_expedienteanyo : List<OID -> ExpedienteAnyo>) : Void;
+		}
 	};
 	
 	Class AsignaturaAnyo
@@ -269,6 +497,27 @@ ConceptualModel moodle
 		attributes
 		{
 			private oid id : Autogenerated;
+		}
+		
+		operations
+		{
+			public new::New (p_anyo : OID -> AnyoAcademico, p_asignatura : OID -> Asignatura) : Object->AsignaturaAnyo;
+			public modify::Modifier (p_oid : OID -> AsignaturaAnyo) : Void;
+			public destroy::Destroy (p_oid : OID -> AsignaturaAnyo) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->AsignaturaAnyo>;
+			public readOID::ReadOID (p_oid : OID -> AsignaturaAnyo) : Object -> AsignaturaAnyo;
+			public relationer_anyo::Relationer->anyo_asignaturaanyo.anyo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_anyoacademico : OID -> AnyoAcademico) : Void;
+			public relationer_asignatura::Relationer->asignatura_asignaturaanyo.asignatura (p_asignaturaanyo : OID -> AsignaturaAnyo, p_asignatura : OID -> Asignatura) : Void;
+			public relationer_grupos_trabajo::Relationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
+			public relationer_materiales::Relationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
+			public relationer_sistemas_evaluacion::Relationer->asignaturaanyo_sistemaevaluacion.sistemas_evaluacion (p_asignaturaanyo : OID -> AsignaturaAnyo, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
+			public relationer_tutorias::Relationer->tutoria_asignaturaanyo.tutorias (p_asignaturaanyo : OID -> AsignaturaAnyo, p_tutoria : List<OID -> Tutoria>) : Void;
+			public unrelationer_anyo::Unrelationer->anyo_asignaturaanyo.anyo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_anyoacademico : OID -> AnyoAcademico) : Void;
+			public unrelationer_asignatura::Unrelationer->asignatura_asignaturaanyo.asignatura (p_asignaturaanyo : OID -> AsignaturaAnyo, p_asignatura : OID -> Asignatura) : Void;
+			public unrelationer_grupos_trabajo::Unrelationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
+			public unrelationer_materiales::Unrelationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
+			public unrelationer_sistemas_evaluacion::Unrelationer->asignaturaanyo_sistemaevaluacion.sistemas_evaluacion (p_asignaturaanyo : OID -> AsignaturaAnyo, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
+			public unrelationer_tutorias::Unrelationer->tutoria_asignaturaanyo.tutorias (p_asignaturaanyo : OID -> AsignaturaAnyo, p_tutoria : List<OID -> Tutoria>) : Void;
 		}
 	};
 	
@@ -287,6 +536,21 @@ ConceptualModel moodle
 			private fecha_fin : Date;
 			private abierta : Boolean;
 		}
+		
+		operations
+		{
+			public new::New (p_nombre : String, p_fecha_inicio : Date, p_fecha_fin : Date, p_abierta : Boolean, p_anyo_academico : OID -> AnyoAcademico) : Object->Evaluacion;
+			public modify::Modifier (p_oid : OID -> Evaluacion, p_nombre : String, p_fecha_inicio : Date, p_fecha_fin : Date, p_abierta : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> Evaluacion) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Evaluacion>;
+			public readOID::ReadOID (p_oid : OID -> Evaluacion) : Object -> Evaluacion;
+			public relationer_anyo_academico::Relationer->anyoacademico_evaluacion.anyo_academico (p_evaluacion : OID -> Evaluacion, p_anyoacademico : OID -> AnyoAcademico) : Void;
+			public relationer_expedientes::Relationer->evaluacion_expedienteevaluacion.expedientes (p_evaluacion : OID -> Evaluacion, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
+			public relationer_sistemas_evaluacion::Relationer->evaluacion_sistemaevaluacion.sistemas_evaluacion (p_evaluacion : OID -> Evaluacion, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
+			public unrelationer_anyo_academico::Unrelationer->anyoacademico_evaluacion.anyo_academico (p_evaluacion : OID -> Evaluacion, p_anyoacademico : OID -> AnyoAcademico) : Void;
+			public unrelationer_expedientes::Unrelationer->evaluacion_expedienteevaluacion.expedientes (p_evaluacion : OID -> Evaluacion, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
+			public unrelationer_sistemas_evaluacion::Unrelationer->evaluacion_sistemaevaluacion.sistemas_evaluacion (p_evaluacion : OID -> Evaluacion, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
+		}
 	};
 	
 	Class Entrega
@@ -304,6 +568,21 @@ ConceptualModel moodle
 			private fecha_apertura : Date;
 			private fecha_cierre : Date;
 			private puntuacion_maxima : Float;
+		}
+		
+		operations
+		{
+			public new::New (p_nombre : String, p_descripcion : String, p_fecha_apertura : Date, p_fecha_cierre : Date, p_puntuacion_maxima : Float, p_profesor : OID -> Profesor, p_evaluacion : OID -> SistemaEvaluacion) : Object->Entrega;
+			public modify::Modifier (p_oid : OID -> Entrega, p_nombre : String, p_descripcion : String, p_fecha_apertura : Date, p_fecha_cierre : Date, p_puntuacion_maxima : Float) : Void;
+			public destroy::Destroy (p_oid : OID -> Entrega) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Entrega>;
+			public readOID::ReadOID (p_oid : OID -> Entrega) : Object -> Entrega;
+			public relationer_entregas_alumno::Relationer->entrega_entregaalumno.entregas_alumno (p_entrega : OID -> Entrega, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
+			public relationer_evaluacion::Relationer->entrega_sistemaevaluacion.evaluacion (p_entrega : OID -> Entrega, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
+			public relationer_profesor::Relationer->profesor_entrega.profesor (p_entrega : OID -> Entrega, p_profesor : OID -> Profesor) : Void;
+			public unrelationer_entregas_alumno::Unrelationer->entrega_entregaalumno.entregas_alumno (p_entrega : OID -> Entrega, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;public custom (p_oid : OID -> Entrega) : Void;
+			public unrelationer_evaluacion::Unrelationer->entrega_sistemaevaluacion.evaluacion (p_entrega : OID -> Entrega, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
+			public unrelationer_profesor::Unrelationer->profesor_entrega.profesor (p_entrega : OID -> Entrega, p_profesor : OID -> Profesor) : Void;
 		}
 	};
 	
@@ -327,6 +606,19 @@ ConceptualModel moodle
 			private comentario_alumno : String;
 			private comentario_profesor : String;
 		}
+		
+		operations
+		{
+			public new::New (p_nombre_fichero : String, p_extension : String, p_ruta : String, p_tam : Float, p_fecha_entrega : Date, p_nota : Float, p_corregido : Boolean, p_comentario_alumno : String, p_comentario_profesor : String, p_entrega : OID -> Entrega, p_alumno : OID -> Alumno) : Object->EntregaAlumno;
+			public modify::Modifier (p_oid : OID -> EntregaAlumno, p_nombre_fichero : String, p_extension : String, p_ruta : String, p_tam : Float, p_fecha_entrega : Date, p_nota : Float, p_corregido : Boolean, p_comentario_alumno : String, p_comentario_profesor : String) : Void;
+			public destroy::Destroy (p_oid : OID -> EntregaAlumno) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->EntregaAlumno>;
+			public readOID::ReadOID (p_oid : OID -> EntregaAlumno) : Object -> EntregaAlumno;
+			public relationer_alumno::Relationer->alumno_entregaalumno.alumno (p_entregaalumno : OID -> EntregaAlumno, p_alumno : OID -> Alumno) : Void;
+			public relationer_entrega::Relationer->entrega_entregaalumno.entrega (p_entregaalumno : OID -> EntregaAlumno, p_entrega : OID -> Entrega) : Void;
+			public unrelationer_alumno::Unrelationer->alumno_entregaalumno.alumno (p_entregaalumno : OID -> EntregaAlumno, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_entrega::Unrelationer->entrega_entregaalumno.entrega (p_entregaalumno : OID -> EntregaAlumno, p_entrega : OID -> Entrega) : Void;
+		}
 	};
 	
 	Class SistemaEvaluacion
@@ -341,6 +633,25 @@ ConceptualModel moodle
 			private oid id : Autogenerated;
 			private puntuacion_maxima : Float;
 		}
+		
+		operations
+		{
+			public new::New (p_puntuacion_maxima : Float, p_asignatura : OID -> AsignaturaAnyo, p_evaluacion : OID -> Evaluacion) : Object->SistemaEvaluacion;
+			public modify::Modifier (p_oid : OID -> SistemaEvaluacion, p_puntuacion_maxima : Float) : Void;
+			public destroy::Destroy (p_oid : OID -> SistemaEvaluacion) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->SistemaEvaluacion>;
+			public readOID::ReadOID (p_oid : OID -> SistemaEvaluacion) : Object -> SistemaEvaluacion;
+			public relationer_asignatura::Relationer->asignaturaanyo_sistemaevaluacion.asignatura (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public relationer_controles::Relationer->sistemaevaluacion_control.controles (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_control : List<OID -> Control>) : Void;
+			public relationer_entregas::Relationer->entrega_sistemaevaluacion.entregas (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_entrega : List<OID -> Entrega>) : Void;
+			public relationer_evaluacion::Relationer->evaluacion_sistemaevaluacion.evaluacion (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_evaluacion : OID -> Evaluacion) : Void;
+			public relationer_evaluaciones_alumno::Relationer->sistemaevaluacion_evaluacionalumno.evaluaciones_alumno (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
+			public unrelationer_asignatura::Unrelationer->asignaturaanyo_sistemaevaluacion.asignatura (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
+			public unrelationer_controles::Unrelationer->sistemaevaluacion_control.controles (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_control : List<OID -> Control>) : Void;
+			public unrelationer_entregas::Unrelationer->entrega_sistemaevaluacion.entregas (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_entrega : List<OID -> Entrega>) : Void;
+			public unrelationer_evaluacion::Unrelationer->evaluacion_sistemaevaluacion.evaluacion (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_evaluacion : OID -> Evaluacion) : Void;
+			public unrelationer_evaluaciones_alumno::Unrelationer->sistemaevaluacion_evaluacionalumno.evaluaciones_alumno (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
+		}
 	};
 	
 	Class EvaluacionAlumno
@@ -353,6 +664,19 @@ ConceptualModel moodle
 		attributes
 		{
 			private oid id : Autogenerated;
+		}
+		
+		operations
+		{
+			public new::New (p_sistema_evaluacion : OID -> SistemaEvaluacion, p_alumno : OID -> Alumno) : Object->EvaluacionAlumno;
+			public modify::Modifier (p_oid : OID -> EvaluacionAlumno) : Void;
+			public destroy::Destroy (p_oid : OID -> EvaluacionAlumno) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->EvaluacionAlumno>;
+			public readOID::ReadOID (p_oid : OID -> EvaluacionAlumno) : Object -> EvaluacionAlumno;
+			public relationer_alumno::Relationer->alumno_evaluacionalumno.alumno (p_evaluacionalumno : OID -> EvaluacionAlumno, p_alumno : OID -> Alumno) : Void;
+			public relationer_sistema_evaluacion::Relationer->sistemaevaluacion_evaluacionalumno.sistema_evaluacion (p_evaluacionalumno : OID -> EvaluacionAlumno, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
+			public unrelationer_alumno::Unrelationer->alumno_evaluacionalumno.alumno (p_evaluacionalumno : OID -> EvaluacionAlumno, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_sistema_evaluacion::Unrelationer->sistemaevaluacion_evaluacionalumno.sistema_evaluacion (p_evaluacionalumno : OID -> EvaluacionAlumno, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
 		}
 	};
 	
@@ -374,6 +698,21 @@ ConceptualModel moodle
 			private puntuacion_maxima : Float;
 			private penalizacion_fallo : Float;
 		}
+		
+		operations
+		{
+			public new::New (p_nombre : String, p_descripcion : String, p_fecha_apertura : Date, p_fecha_cierre : Date, p_duracion_minutos : Integer, p_puntuacion_maxima : Float, p_penalizacion_fallo : Float, p_sistema_evaluacion : OID -> SistemaEvaluacion) : Object->Control;
+			public modify::Modifier (p_oid : OID -> Control, p_nombre : String, p_descripcion : String, p_fecha_apertura : Date, p_fecha_cierre : Date, p_duracion_minutos : Integer, p_puntuacion_maxima : Float, p_penalizacion_fallo : Float) : Void;
+			public destroy::Destroy (p_oid : OID -> Control) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Control>;
+			public readOID::ReadOID (p_oid : OID -> Control) : Object -> Control;
+			public relationer_bolsas_preguntas::Relationer->control_bolsapreguntas.bolsas_preguntas (p_control : OID -> Control, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
+			public relationer_controles_alumno::Relationer->control_controlalumno.controles_alumno (p_control : OID -> Control, p_controlalumno : List<OID -> ControlAlumno>) : Void;
+			public relationer_sistema_evaluacion::Relationer->sistemaevaluacion_control.sistema_evaluacion (p_control : OID -> Control, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
+			public unrelationer_bolsas_preguntas::Unrelationer->control_bolsapreguntas.bolsas_preguntas (p_control : OID -> Control, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
+			public unrelationer_controles_alumno::Unrelationer->control_controlalumno.controles_alumno (p_control : OID -> Control, p_controlalumno : List<OID -> ControlAlumno>) : Void;
+			public unrelationer_sistema_evaluacion::Unrelationer->sistemaevaluacion_control.sistema_evaluacion (p_control : OID -> Control, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
+		}
 	};
 	
 	Class ControlAlumno
@@ -389,6 +728,21 @@ ConceptualModel moodle
 			private nota : Float;
 			private terminado : Boolean;
 			private corregido : Boolean;
+		}
+		
+		operations
+		{
+			public new::New (p_nota : Float, p_terminado : Boolean, p_corregido : Boolean, p_alumno : OID -> Alumno, p_control : OID -> Control) : Object->ControlAlumno;
+			public modify::Modifier (p_oid : OID -> ControlAlumno, p_nota : Float, p_terminado : Boolean, p_corregido : Boolean) : Void;
+			public destroy::Destroy (p_oid : OID -> ControlAlumno) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->ControlAlumno>;
+			public readOID::ReadOID (p_oid : OID -> ControlAlumno) : Object -> ControlAlumno;
+			public relationer_alumno::Relationer->alumno_controlalumno.alumno (p_controlalumno : OID -> ControlAlumno, p_alumno : OID -> Alumno) : Void;
+			public relationer_control::Relationer->control_controlalumno.control (p_controlalumno : OID -> ControlAlumno, p_control : OID -> Control) : Void;
+			public relationer_preguntas::Relationer->controlalumno_preguntacontrol.preguntas (p_controlalumno : OID -> ControlAlumno, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
+			public unrelationer_alumno::Unrelationer->alumno_controlalumno.alumno (p_controlalumno : OID -> ControlAlumno, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_control::Unrelationer->control_controlalumno.control (p_controlalumno : OID -> ControlAlumno, p_control : OID -> Control) : Void;
+			public unrelationer_preguntas::Unrelationer->controlalumno_preguntacontrol.preguntas (p_controlalumno : OID -> ControlAlumno, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
 		}
 	};
 	
@@ -407,6 +761,21 @@ ConceptualModel moodle
 			private fecha_creacion : Date;
 			private fecha_modificacion : Date;
 		}
+		
+		operations
+		{
+			public new::New (p_nombre : String, p_descripcion : String, p_fecha_creacion : Date, p_fecha_modificacion : Date, p_asignatura : OID -> Asignatura) : Object->BolsaPreguntas;
+			public modify::Modifier (p_oid : OID -> BolsaPreguntas, p_nombre : String, p_descripcion : String, p_fecha_creacion : Date, p_fecha_modificacion : Date) : Void;
+			public destroy::Destroy (p_oid : OID -> BolsaPreguntas) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->BolsaPreguntas>;
+			public readOID::ReadOID (p_oid : OID -> BolsaPreguntas) : Object -> BolsaPreguntas;
+			public relationer_asignatura::Relationer->asignatura_bolsapreguntas.asignatura (p_bolsapreguntas : OID -> BolsaPreguntas, p_asignatura : OID -> Asignatura) : Void;
+			public relationer_controles::Relationer->control_bolsapreguntas.controles (p_bolsapreguntas : OID -> BolsaPreguntas, p_control : List<OID -> Control>) : Void;
+			public relationer_preguntas::Relationer->bolsapreguntas_preguntas.preguntas (p_bolsapreguntas : OID -> BolsaPreguntas, p_pregunta : List<OID -> Pregunta>) : Void;
+			public unrelationer_asignatura::Unrelationer->asignatura_bolsapreguntas.asignatura (p_bolsapreguntas : OID -> BolsaPreguntas, p_asignatura : OID -> Asignatura) : Void;
+			public unrelationer_controles::Unrelationer->control_bolsapreguntas.controles (p_bolsapreguntas : OID -> BolsaPreguntas, p_control : List<OID -> Control>) : Void;
+			public unrelationer_preguntas::Unrelationer->bolsapreguntas_preguntas.preguntas (p_bolsapreguntas : OID -> BolsaPreguntas, p_pregunta : List<OID -> Pregunta>) : Void;
+		}
 	};
 	
 	Class Pregunta
@@ -422,6 +791,23 @@ ConceptualModel moodle
 			private contenido : String;
 			private explicacion : String;
 		}
+		
+		operations
+		{
+			public new::New (p_contenido : String, p_explicacion : String, p_bolsa : OID -> BolsaPreguntas) : Object->Pregunta;
+			public modify::Modifier (p_oid : OID -> Pregunta, p_contenido : String, p_explicacion : String) : Void;
+			public destroy::Destroy (p_oid : OID -> Pregunta) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Pregunta>;
+			public readOID::ReadOID (p_oid : OID -> Pregunta) : Object -> Pregunta;
+			public relationer_bolsa::Relationer->bolsapreguntas_preguntas.bolsa (p_pregunta : OID -> Pregunta, p_bolsapreguntas : OID -> BolsaPreguntas) : Void;
+			public relationer_preguntas_control::Relationer->pregunta_preguntacontrol.preguntas_control (p_pregunta : OID -> Pregunta, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
+			public relationer_respuesta_correcta::Relationer->pregunta_respuestacorrecta.respuesta_correcta (p_pregunta : OID -> Pregunta, p_respuesta : OID -> Respuesta) : Void;
+			public relationer_respuestas::Relationer->pregunta_respuesta.respuestas (p_pregunta : OID -> Pregunta, p_respuesta : List<OID -> Respuesta>) : Void;
+			public unrelationer_bolsa::Unrelationer->bolsapreguntas_preguntas.bolsa (p_pregunta : OID -> Pregunta, p_bolsapreguntas : OID -> BolsaPreguntas) : Void;
+			public unrelationer_preguntas_control::Unrelationer->pregunta_preguntacontrol.preguntas_control (p_pregunta : OID -> Pregunta, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
+			public unrelationer_respuesta_correcta::Unrelationer->pregunta_respuestacorrecta.respuesta_correcta (p_pregunta : OID -> Pregunta, p_respuesta : OID -> Respuesta) : Void;
+			public unrelationer_respuestas::Unrelationer->pregunta_respuesta.respuestas (p_pregunta : OID -> Pregunta, p_respuesta : List<OID -> Respuesta>) : Void;
+		}
 	};
 	
 	Class PreguntaControl
@@ -434,6 +820,21 @@ ConceptualModel moodle
 		attributes
 		{
 			private oid id : Autogenerated;
+		}
+		
+		operations
+		{
+			public new::New (p_control : OID -> ControlAlumno, p_pregunta : OID -> Pregunta) : Object->PreguntaControl;
+			public modify::Modifier (p_oid : OID -> PreguntaControl) : Void;
+			public destroy::Destroy (p_oid : OID -> PreguntaControl) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->PreguntaControl>;
+			public readOID::ReadOID (p_oid : OID -> PreguntaControl) : Object -> PreguntaControl;
+			public relationer_control::Relationer->controlalumno_preguntacontrol.control (p_preguntacontrol : OID -> PreguntaControl, p_controlalumno : OID -> ControlAlumno) : Void;
+			public relationer_pregunta::Relationer->pregunta_preguntacontrol.pregunta (p_preguntacontrol : OID -> PreguntaControl, p_pregunta : OID -> Pregunta) : Void;
+			public relationer_respuesta_elegida::Relationer->preguntacontrol_respuesta.respuesta_elegida (p_preguntacontrol : OID -> PreguntaControl, p_respuesta : OID -> Respuesta) : Void;
+			public unrelationer_control::Unrelationer->controlalumno_preguntacontrol.control (p_preguntacontrol : OID -> PreguntaControl, p_controlalumno : OID -> ControlAlumno) : Void;
+			public unrelationer_pregunta::Unrelationer->pregunta_preguntacontrol.pregunta (p_preguntacontrol : OID -> PreguntaControl, p_pregunta : OID -> Pregunta) : Void;
+			public unrelationer_respuesta_elegida::Unrelationer->preguntacontrol_respuesta.respuesta_elegida (p_preguntacontrol : OID -> PreguntaControl, p_respuesta : OID -> Respuesta) : Void;
 		}
 	};
 	
@@ -448,6 +849,21 @@ ConceptualModel moodle
 		{
 			private oid id : Autogenerated;
 			private contenido : String;
+		}
+		
+		operations
+		{
+			public new::New (p_contenido : String, p_pregunta : OID -> Pregunta, p_pregunta_relacionada : OID -> Pregunta) : Object->Respuesta;
+			public modify::Modifier (p_oid : OID -> Respuesta, p_contenido : String) : Void;
+			public destroy::Destroy (p_oid : OID -> Respuesta) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->Respuesta>;
+			public readOID::ReadOID (p_oid : OID -> Respuesta) : Object -> Respuesta;
+			public relationer_pregunta::Relationer->pregunta_respuesta.pregunta (p_respuesta : OID -> Respuesta, p_pregunta : OID -> Pregunta) : Void;
+			public relationer_pregunta_relacionada::Relationer->pregunta_respuestacorrecta.pregunta_relacionada (p_respuesta : OID -> Respuesta, p_pregunta : OID -> Pregunta) : Void;
+			public relationer_preguntas_control::Relationer->preguntacontrol_respuesta.preguntas_control (p_respuesta : OID -> Respuesta, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
+			public unrelationer_pregunta::Unrelationer->pregunta_respuesta.pregunta (p_respuesta : OID -> Respuesta, p_pregunta : OID -> Pregunta) : Void;
+			public unrelationer_pregunta_relacionada::Unrelationer->pregunta_respuestacorrecta.pregunta_relacionada (p_respuesta : OID -> Respuesta, p_pregunta : OID -> Pregunta) : Void;
+			public unrelationer_preguntas_control::Unrelationer->preguntacontrol_respuesta.preguntas_control (p_respuesta : OID -> Respuesta, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
 		}
 	};
 	
@@ -481,7 +897,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable profesor ("1","1");
-		<= tutorias ("0","*");
+		<= navigable tutorias ("0","*");
 	};
 	
 	Association tutoria_alumno (Tutoria - Alumno)
@@ -492,7 +908,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable alumno ("1","1");
-		<= tutorias ("0","*");
+		<= navigable tutorias ("0","*");
 	};
 	
 	Association tutoria_asignaturaanyo (Tutoria - AsignaturaAnyo)
@@ -514,7 +930,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable profesor ("1","1");
-		<= materiales ("0","*");
+		<= navigable materiales ("0","*");
 	};
 	
 	Association material_asignaturaanyo (Material - AsignaturaAnyo)
@@ -525,7 +941,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable asignatura ("1","1");
-		<= materiales:Composite ("0","*");
+		<= navigable materiales:Composite ("0","*");
 	};
 	
 	Association grupotrabajo_alumno (GrupoTrabajo - Alumno)
@@ -536,7 +952,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable alumnos ("0","*");
-		<= grupos_trabajo ("0","*");
+		<= navigable grupos_trabajo ("0","*");
 	};
 	
 	Association grupotrabajo_asignaturaanyo (GrupoTrabajo - AsignaturaAnyo)
@@ -778,7 +1194,7 @@ ConceptualModel moodle
 			"Relación entre un alumno y un control realizado por él"
 		}
 		
-		=> controles ("0","*");
+		=> navigable controles ("0","*");
 		<= navigable alumno ("1","1");
 	};
 	
@@ -879,6 +1295,17 @@ ConceptualModel moodle
 		
 		=> navigable bolsas_preguntas:Composite ("0","*");
 		<= navigable asignatura ("1","1");
+	};
+	
+	Association sistemaevaluacion_control (SistemaEvaluacion - Control)
+	{
+		description
+		{
+			"Relación entre un sistema de evaluación y los controles programados"
+		}
+		
+		=> navigable controles:Composite ("0","*");
+		<= navigable sistema_evaluacion ("1","1");
 	};
 	
 }
