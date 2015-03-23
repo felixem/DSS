@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="RespuestaEN" table="[Respuesta]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Contenido" type="string"> 
+						<column name="[contenido]"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="Pregunta" class="DSSGenNHibernate.EN.Moodle.PreguntaEN" >	
+								<column name="[FK_id_pregunta]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="RespuestaENReadAllHQL">from RespuestaEN</query>
+		</hibernate-mapping>
+	

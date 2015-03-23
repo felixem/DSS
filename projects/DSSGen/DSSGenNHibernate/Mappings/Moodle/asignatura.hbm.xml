@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="AsignaturaEN" table="[Asignatura]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Cod_asignatura" type="integer"> 
+						<column name="[cod_asignatura]"  not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="[descripcion]"  not-null="true"/>
+					</property>
+					<property name="Optativa" type="boolean"> 
+						<column name="[optativa]"  not-null="true"/>
+					</property>
+					<property name="Vigente" type="boolean"> 
+						<column name="[vigente]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Curso" class="DSSGenNHibernate.EN.Moodle.CursoEN" cascade="delete">	
+								<column name="[FK_id_curso]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Asignaturas_anyo" >
+							<key>
+								<column name="[FK_id_asignatura]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Expedientes_asignatura" >
+							<key>
+								<column name="[FK_id_asignatura]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Bolsas_preguntas" cascade="delete">
+							<key>
+								<column name="[FK_id_asignatura]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="AsignaturaENReadAllHQL">from AsignaturaEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="GrupoTrabajoEN" table="[GrupoTrabajo]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Cod_grupo" type="integer"> 
+						<column name="[cod_grupo]"  not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="[descripcion]"  not-null="true"/>
+					</property>
+					<property name="Password" type="string"> 
+						<column name="[password]"  not-null="true"/>
+					</property>
+					<property name="Capacidad" type="integer"> 
+						<column name="[capacidad]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Alumnos" table="[grupotrabajo_alumno]" inverse="true" >
+							<key>
+									<column name="[FK_id_grupos_trabajo]"/>
+							</key>
+      						<many-to-many class="DSSGenNHibernate.EN.Moodle.AlumnoEN">
+									<column name="[FK_id_alumnos]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN" >	
+								<column name="[FK_id_asignatura]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="GrupoTrabajoENReadAllHQL">from GrupoTrabajoEN</query>
+		</hibernate-mapping>
+	

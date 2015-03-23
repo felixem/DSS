@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="ExpedienteAsignaturaEN" table="[ExpedienteAsignatura]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nota_media" type="float"> 
+						<column name="[nota_media]"  not-null="true"/>
+					</property>
+					<property name="Abierto" type="boolean"> 
+						<column name="[abierto]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Expediente_anyo" class="DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN" >	
+								<column name="[FK_id_expediente_anyo]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaEN" >	
+								<column name="[FK_id_asignatura]"/>
+						</many-to-one>
+											 					
+			
+			
+		  			
+						<bag name="Expedientes_evaluacion" >
+							<key>
+								<column name="[FK_id_expediente_asignatura]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+						<many-to-one name="Nota" class="DSSGenNHibernate.EN.Moodle.NotaEN" >
+									<column name="[FK_id_nota]"/>
+						</many-to-one>
+					
+		
+		  </class>
+		  
+		  <query name="ExpedienteAsignaturaENReadAllHQL">from ExpedienteAsignaturaEN</query>
+		</hibernate-mapping>
+	

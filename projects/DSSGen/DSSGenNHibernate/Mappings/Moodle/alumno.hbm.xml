@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+				
+<joined-subclass name="AlumnoEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioEN" table="[Alumno]">
+	<key>
+    		<column name="[id]"/>
+   	</key>
+
+					<property name="Cod_alumno" type="integer"> 
+						<column name="[cod_alumno]"  unique="true" not-null="true"/>
+					</property>
+					<property name="Baneado" type="boolean"> 
+						<column name="[baneado]"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Tutorias" >
+							<key>
+								<column name="[FK_id_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.TutoriaEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Grupos_trabajo" table="[grupotrabajo_alumno]"  >
+							<key>
+									<column name="[FK_id_alumnos]"/>
+							</key>
+      						<many-to-many class="DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN">
+									<column name="[FK_id_grupos_trabajo]"/>
+      						</many-to-many>
+    					</bag>
+			
+		  			
+					
+							<many-to-one name="Expediente" class="DSSGenNHibernate.EN.Moodle.ExpedienteEN" cascade="delete">
+								<column name="[FK_id_expediente]"/>
+        					</many-to-one>
+					 
+						
+			
+		  			
+						<bag name="Entregas" >
+							<key>
+								<column name="[FK_id_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Sistemas_evaluacion" >
+							<key>
+								<column name="[FK_id_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Controles" >
+							<key>
+								<column name="[FK_id_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </joined-subclass>	
+		  
+		  <query name="AlumnoENReadAllHQL">from AlumnoEN</query>
+		</hibernate-mapping>
+	

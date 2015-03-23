@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="UsuarioEN" table="[Usuario]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Dni" type="string"> 
+						<column name="[dni]"  unique="true" not-null="true"/>
+					</property>
+					<property name="Email" type="string"> 
+						<column name="[email]"  unique="true" not-null="true"/>
+					</property>
+					<property name="Password" type="string"> 
+						<column name="[password]"  not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="[apellidos]"  not-null="true"/>
+					</property>
+					<property name="Fecha_nacimiento" type="date"> 
+						<column name="[fecha_nacimiento]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Mensajes" >
+							<key>
+								<column name="[FK_id_usuario]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.MensajeEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		</hibernate-mapping>
+	

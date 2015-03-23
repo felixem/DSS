@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="ExpedienteEN" table="[Expediente]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Cod_expediente" type="integer"> 
+						<column name="[cod_expediente]"  not-null="true"/>
+					</property>
+					<property name="Nota_media" type="float"> 
+						<column name="[nota_media]"  not-null="true"/>
+					</property>
+					<property name="Abierto" type="boolean"> 
+						<column name="[abierto]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+					
+							   <one-to-one name="Alumno" class="DSSGenNHibernate.EN.Moodle.AlumnoEN" property-ref="Expediente" />							
+					 
+						
+			
+		  			
+						<bag name="Expedientes_anyo" >
+							<key>
+								<column name="[FK_id_expediente]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="ExpedienteENReadAllHQL">from ExpedienteEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="TutoriaEN" table="[Tutoria]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Tema" type="string"> 
+						<column name="[tema]"  not-null="true"/>
+					</property>
+					<property name="Abierta" type="boolean"> 
+						<column name="[abierta]"  not-null="true"/>
+					</property>
+					<property name="Fecha_creacion" type="date"> 
+						<column name="[fecha_creacion]"  not-null="true"/>
+					</property>
+					<property name="Fecha_cierre" type="date"> 
+						<column name="[fecha_cierre]"  not-null="true"/>
+					</property>
+					<property name="Por_responder" type="boolean"> 
+						<column name="[por_responder]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Mensajes" cascade="delete">
+							<key>
+								<column name="[FK_id_tutoria]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.MensajeEN"/>
+					    </bag>
+					
+			
+		  			
+						<many-to-one name="Profesor" class="DSSGenNHibernate.EN.Moodle.ProfesorEN" >	
+								<column name="[FK_id_profesor]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Alumno" class="DSSGenNHibernate.EN.Moodle.AlumnoEN" >	
+								<column name="[FK_id_alumno]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN" >	
+								<column name="[FK_id_asignatura]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="TutoriaENReadAllHQL">from TutoriaEN</query>
+		</hibernate-mapping>
+	

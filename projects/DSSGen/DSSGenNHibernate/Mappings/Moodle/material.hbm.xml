@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="MaterialEN" table="[Material]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="[descripcion]"  not-null="true"/>
+					</property>
+					<property name="Ruta" type="string"> 
+						<column name="[ruta]"  unique="true" not-null="true"/>
+					</property>
+					<property name="Tam" type="float"> 
+						<column name="[tam]"  not-null="true"/>
+					</property>
+					<property name="Fecha_subida" type="date"> 
+						<column name="[fecha_subida]"  not-null="true"/>
+					</property>
+					<property name="Visible" type="boolean"> 
+						<column name="[visible]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Profesor" class="DSSGenNHibernate.EN.Moodle.ProfesorEN" >	
+								<column name="[FK_id_profesor]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN" >	
+								<column name="[FK_id_asignatura]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="MaterialENReadAllHQL">from MaterialEN</query>
+		</hibernate-mapping>
+	
