@@ -2,3 +2,7 @@ C:\Users\John\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\WebApplic
 C:\Users\John\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\WebApplication2.pdb
 C:\Users\John\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\John\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\WebApplication2.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\WebApplication2.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.pdb

@@ -95,12 +95,6 @@ public void Relationer_bolsa (int p_pregunta, int p_bolsapreguntas)
 
         _IPreguntaCAD.Relationer_bolsa (p_pregunta, p_bolsapreguntas);
 }
-public void Relationer_preguntas_control (int p_pregunta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        //Call to PreguntaCAD
-
-        _IPreguntaCAD.Relationer_preguntas_control (p_pregunta, p_preguntacontrol);
-}
 public void Relationer_respuesta_correcta (int p_pregunta, int p_respuesta)
 {
         //Call to PreguntaCAD
@@ -118,12 +112,6 @@ public void Unrelationer_bolsa (int p_pregunta, int p_bolsapreguntas)
         //Call to PreguntaCAD
 
         _IPreguntaCAD.Unrelationer_bolsa (p_pregunta, p_bolsapreguntas);
-}
-public void Unrelationer_preguntas_control (int p_pregunta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        //Call to PreguntaCAD
-
-        _IPreguntaCAD.Unrelationer_preguntas_control (p_pregunta, p_preguntacontrol);
 }
 public void Unrelationer_respuesta_correcta (int p_pregunta, int p_respuesta)
 {

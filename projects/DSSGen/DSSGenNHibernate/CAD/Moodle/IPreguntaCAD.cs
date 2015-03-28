@@ -24,15 +24,11 @@ PreguntaEN ReadOID (int id);
 
 void Relationer_bolsa (int p_pregunta, int p_bolsapreguntas);
 
-void Relationer_preguntas_control (int p_pregunta, System.Collections.Generic.IList<int> p_preguntacontrol);
-
 void Relationer_respuesta_correcta (int p_pregunta, int p_respuesta);
 
 void Relationer_respuestas (int p_pregunta, System.Collections.Generic.IList<int> p_respuesta);
 
 void Unrelationer_bolsa (int p_pregunta, int p_bolsapreguntas);
-
-void Unrelationer_preguntas_control (int p_pregunta, System.Collections.Generic.IList<int> p_preguntacontrol);
 
 void Unrelationer_respuesta_correcta (int p_pregunta, int p_respuesta);
 

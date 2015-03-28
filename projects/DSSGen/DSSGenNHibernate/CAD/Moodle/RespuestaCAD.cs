@@ -61,9 +61,6 @@ public int New_ (RespuestaEN respuesta)
 
                         respuesta.Pregunta.Respuestas.Add (respuesta);
                 }
-                if (respuesta.Pregunta_relacionada != null) {
-                        respuesta.Pregunta_relacionada = (DSSGenNHibernate.EN.Moodle.PreguntaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaEN), respuesta.Pregunta_relacionada.Id);
-                }
 
                 session.Save (respuesta);
                 SessionCommit ();
@@ -223,73 +220,6 @@ public void Relationer_pregunta (int p_respuesta, int p_pregunta)
         }
 }
 
-public void Relationer_pregunta_relacionada (int p_respuesta, int p_pregunta)
-{
-        DSSGenNHibernate.EN.Moodle.RespuestaEN respuestaEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                respuestaEN = (RespuestaEN)session.Load (typeof(RespuestaEN), p_respuesta);
-                respuestaEN.Pregunta_relacionada = (DSSGenNHibernate.EN.Moodle.PreguntaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaEN), p_pregunta);
-
-
-
-                session.Update (respuestaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in RespuestaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
-public void Relationer_preguntas_control (int p_respuesta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        DSSGenNHibernate.EN.Moodle.RespuestaEN respuestaEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                respuestaEN = (RespuestaEN)session.Load (typeof(RespuestaEN), p_respuesta);
-                DSSGenNHibernate.EN.Moodle.PreguntaControlEN preguntas_controlENAux = null;
-                if (respuestaEN.Preguntas_control == null) {
-                        respuestaEN.Preguntas_control = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.PreguntaControlEN>();
-                }
-
-                foreach (int item in p_preguntacontrol) {
-                        preguntas_controlENAux = new DSSGenNHibernate.EN.Moodle.PreguntaControlEN ();
-                        preguntas_controlENAux = (DSSGenNHibernate.EN.Moodle.PreguntaControlEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaControlEN), item);
-
-                        respuestaEN.Preguntas_control.Add (preguntas_controlENAux);
-                }
-
-
-                session.Update (respuestaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in RespuestaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
 public void Unrelationer_pregunta (int p_respuesta, int p_pregunta)
 {
         try
@@ -303,74 +233,6 @@ public void Unrelationer_pregunta (int p_respuesta, int p_pregunta)
                 }
                 else
                         throw new ModelException ("The identifier " + p_pregunta + " in p_pregunta you are trying to unrelationer, doesn't exist in RespuestaEN");
-
-                session.Update (respuestaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in RespuestaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-public void Unrelationer_pregunta_relacionada (int p_respuesta, int p_pregunta)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                DSSGenNHibernate.EN.Moodle.RespuestaEN respuestaEN = null;
-                respuestaEN = (RespuestaEN)session.Load (typeof(RespuestaEN), p_respuesta);
-
-                if (respuestaEN.Pregunta_relacionada.Id == p_pregunta) {
-                        respuestaEN.Pregunta_relacionada = null;
-                }
-                else
-                        throw new ModelException ("The identifier " + p_pregunta + " in p_pregunta you are trying to unrelationer, doesn't exist in RespuestaEN");
-
-                session.Update (respuestaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in RespuestaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-public void Unrelationer_preguntas_control (int p_respuesta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                DSSGenNHibernate.EN.Moodle.RespuestaEN respuestaEN = null;
-                respuestaEN = (RespuestaEN)session.Load (typeof(RespuestaEN), p_respuesta);
-
-                DSSGenNHibernate.EN.Moodle.PreguntaControlEN preguntas_controlENAux = null;
-                if (respuestaEN.Preguntas_control != null) {
-                        foreach (int item in p_preguntacontrol) {
-                                preguntas_controlENAux = (DSSGenNHibernate.EN.Moodle.PreguntaControlEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaControlEN), item);
-                                if (respuestaEN.Preguntas_control.Contains (preguntas_controlENAux) == true) {
-                                        respuestaEN.Preguntas_control.Remove (preguntas_controlENAux);
-                                }
-                                else
-                                        throw new ModelException ("The identifier " + item + " in p_preguntacontrol you are trying to unrelationer, doesn't exist in RespuestaEN");
-                        }
-                }
 
                 session.Update (respuestaEN);
                 SessionCommit ();

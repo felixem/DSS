@@ -85,18 +85,5 @@ public NotaEN ReadOID (int id)
         notaEN = _INotaCAD.ReadOID (id);
         return notaEN;
 }
-
-public void Relationer_expedientes (int p_nota, System.Collections.Generic.IList<int> p_expedienteasignatura)
-{
-        //Call to NotaCAD
-
-        _INotaCAD.Relationer_expedientes (p_nota, p_expedienteasignatura);
-}
-public void Unrelationer_expedientes (int p_nota, System.Collections.Generic.IList<int> p_expedienteasignatura)
-{
-        //Call to NotaCAD
-
-        _INotaCAD.Unrelationer_expedientes (p_nota, p_expedienteasignatura);
-}
 }
 }

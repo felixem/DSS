@@ -223,44 +223,6 @@ public void Relationer_bolsa (int p_pregunta, int p_bolsapreguntas)
         }
 }
 
-public void Relationer_preguntas_control (int p_pregunta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        DSSGenNHibernate.EN.Moodle.PreguntaEN preguntaEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                preguntaEN = (PreguntaEN)session.Load (typeof(PreguntaEN), p_pregunta);
-                DSSGenNHibernate.EN.Moodle.PreguntaControlEN preguntas_controlENAux = null;
-                if (preguntaEN.Preguntas_control == null) {
-                        preguntaEN.Preguntas_control = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.PreguntaControlEN>();
-                }
-
-                foreach (int item in p_preguntacontrol) {
-                        preguntas_controlENAux = new DSSGenNHibernate.EN.Moodle.PreguntaControlEN ();
-                        preguntas_controlENAux = (DSSGenNHibernate.EN.Moodle.PreguntaControlEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaControlEN), item);
-
-                        preguntaEN.Preguntas_control.Add (preguntas_controlENAux);
-                }
-
-
-                session.Update (preguntaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in PreguntaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
 public void Relationer_respuesta_correcta (int p_pregunta, int p_respuesta)
 {
         DSSGenNHibernate.EN.Moodle.PreguntaEN preguntaEN = null;
@@ -342,43 +304,6 @@ public void Unrelationer_bolsa (int p_pregunta, int p_bolsapreguntas)
                 }
                 else
                         throw new ModelException ("The identifier " + p_bolsapreguntas + " in p_bolsapreguntas you are trying to unrelationer, doesn't exist in PreguntaEN");
-
-                session.Update (preguntaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in PreguntaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-public void Unrelationer_preguntas_control (int p_pregunta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                DSSGenNHibernate.EN.Moodle.PreguntaEN preguntaEN = null;
-                preguntaEN = (PreguntaEN)session.Load (typeof(PreguntaEN), p_pregunta);
-
-                DSSGenNHibernate.EN.Moodle.PreguntaControlEN preguntas_controlENAux = null;
-                if (preguntaEN.Preguntas_control != null) {
-                        foreach (int item in p_preguntacontrol) {
-                                preguntas_controlENAux = (DSSGenNHibernate.EN.Moodle.PreguntaControlEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaControlEN), item);
-                                if (preguntaEN.Preguntas_control.Contains (preguntas_controlENAux) == true) {
-                                        preguntaEN.Preguntas_control.Remove (preguntas_controlENAux);
-                                }
-                                else
-                                        throw new ModelException ("The identifier " + item + " in p_preguntacontrol you are trying to unrelationer, doesn't exist in PreguntaEN");
-                        }
-                }
 
                 session.Update (preguntaEN);
                 SessionCommit ();

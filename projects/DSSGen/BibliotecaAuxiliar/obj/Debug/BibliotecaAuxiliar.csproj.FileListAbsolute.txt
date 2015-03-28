@@ -1,0 +1,4 @@
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\BibliotecaAuxiliar.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\BibliotecaAuxiliar.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\obj\Debug\BibliotecaAuxiliar.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\obj\Debug\BibliotecaAuxiliar.pdb

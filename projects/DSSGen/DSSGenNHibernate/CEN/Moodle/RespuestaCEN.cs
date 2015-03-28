@@ -32,7 +32,7 @@ public IRespuestaCAD get_IRespuestaCAD ()
         return this._IRespuestaCAD;
 }
 
-public int New_ (string p_contenido, int p_pregunta, int p_pregunta_relacionada)
+public int New_ (string p_contenido, int p_pregunta)
 {
         RespuestaEN respuestaEN = null;
         int oid;
@@ -45,12 +45,6 @@ public int New_ (string p_contenido, int p_pregunta, int p_pregunta_relacionada)
         if (p_pregunta != -1) {
                 respuestaEN.Pregunta = new DSSGenNHibernate.EN.Moodle.PreguntaEN ();
                 respuestaEN.Pregunta.Id = p_pregunta;
-        }
-
-
-        if (p_pregunta_relacionada != -1) {
-                respuestaEN.Pregunta_relacionada = new DSSGenNHibernate.EN.Moodle.PreguntaEN ();
-                respuestaEN.Pregunta_relacionada.Id = p_pregunta_relacionada;
         }
 
         //Call to RespuestaCAD
@@ -98,35 +92,11 @@ public void Relationer_pregunta (int p_respuesta, int p_pregunta)
 
         _IRespuestaCAD.Relationer_pregunta (p_respuesta, p_pregunta);
 }
-public void Relationer_pregunta_relacionada (int p_respuesta, int p_pregunta)
-{
-        //Call to RespuestaCAD
-
-        _IRespuestaCAD.Relationer_pregunta_relacionada (p_respuesta, p_pregunta);
-}
-public void Relationer_preguntas_control (int p_respuesta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        //Call to RespuestaCAD
-
-        _IRespuestaCAD.Relationer_preguntas_control (p_respuesta, p_preguntacontrol);
-}
 public void Unrelationer_pregunta (int p_respuesta, int p_pregunta)
 {
         //Call to RespuestaCAD
 
         _IRespuestaCAD.Unrelationer_pregunta (p_respuesta, p_pregunta);
-}
-public void Unrelationer_pregunta_relacionada (int p_respuesta, int p_pregunta)
-{
-        //Call to RespuestaCAD
-
-        _IRespuestaCAD.Unrelationer_pregunta_relacionada (p_respuesta, p_pregunta);
-}
-public void Unrelationer_preguntas_control (int p_respuesta, System.Collections.Generic.IList<int> p_preguntacontrol)
-{
-        //Call to RespuestaCAD
-
-        _IRespuestaCAD.Unrelationer_preguntas_control (p_respuesta, p_preguntacontrol);
 }
 }
 }
