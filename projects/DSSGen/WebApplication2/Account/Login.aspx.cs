@@ -34,8 +34,8 @@ namespace WebApplication2.Account
             //Comprobar si la contraseña es correcta
             try
             {
-                MySession sesion = MySession.login(LoginUser.UserName, LoginUser.Password);
-                Authenticated = sesion.isLoged();
+                MySession sesion = MySession.Current;
+                Authenticated = sesion.login(LoginUser.UserName, LoginUser.Password);
             }
             catch (Exception excep)
             {

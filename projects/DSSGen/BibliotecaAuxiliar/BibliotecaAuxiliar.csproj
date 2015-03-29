@@ -41,8 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="excepciones\ExcepcionLoginIncorrecto.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,6 +48,10 @@
     <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fachadas\Fachadas.csproj">
+      <Project>{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}</Project>
+      <Name>Fachadas</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

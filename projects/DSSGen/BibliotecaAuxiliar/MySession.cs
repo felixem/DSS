@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using DSSGenNHibernate.EN.Moodle;
-using DSSGenNHibernate.CEN.Moodle;
 
 namespace BibliotecaAuxiliar
 {
@@ -34,51 +33,28 @@ namespace BibliotecaAuxiliar
         }
 
         //Obtener una sesión haciendo login
-        public static MySession login(String user, String pass)
+        public bool login(String user, String pass)
         {
-            //Probar el login para un usuario normal
-            UsuarioCEN usCEN = new UsuarioCEN();
-            if (usCEN.Login(user, pass))
+            //Llamar a la fachada de login para intentar actualizar la sesión con el login
+            Object usuario = null;
+            try
             {
-                //Comprobar si es un alumno
-                AlumnoCEN aluCEN = new AlumnoCEN();
-                AlumnoEN alu = aluCEN.ReadOID(user);
-                if (alu != null)
-                {
-                    MySession session = new MySession();
-                    session.Usuario = alu;
-                    HttpContext.Current.Session["__MySession__"] = session;
-                    return session;
-                }
-
-                //Comprobar si es un profesor
-                ProfesorCEN profCEN = new ProfesorCEN();
-                ProfesorEN prof = profCEN.ReadOID(user);
-                if (prof != null)
-                {
-                    MySession session = new MySession();
-                    session.Usuario = prof;
-                    HttpContext.Current.Session["__MySession__"] = session;
-                    return session;
-                }
-
-                //Error al realizar login
-                throw new excepciones.ExcepcionLoginIncorrecto();
+                usuario = Fachadas.Moodle.FachadaLogin.login(user, pass);
+            }
+            //Relanzar excepciones producidas
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
-            //Probar el login para un administrador
-            AdministradorCEN adminCEN = new AdministradorCEN();
-            AdministradorEN admin = adminCEN.ReadOID(user);
-            if (admin != null)
-            {
-                MySession session = new MySession();
-                session.Usuario = admin;
-                HttpContext.Current.Session["__MySession__"] = session;
-                return session;
-            }
+            //Comprobar si se ha realizado correctamente el login
+            if (usuario == null)
+                return false;
 
-            //Error al realizar login
-            throw new excepciones.ExcepcionLoginIncorrecto();
+            //Login realizado correctamente
+            Usuario = usuario;
+            Fecha_login = DateTime.Now;
+            return true;
         }
 
         //Comprobar si está logueado

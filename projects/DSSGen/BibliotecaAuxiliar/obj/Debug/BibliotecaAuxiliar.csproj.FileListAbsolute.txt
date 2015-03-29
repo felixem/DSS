@@ -10,3 +10,5 @@ C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\Antlr3.Runtime.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\log4net.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\DSSGenNHibernate.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\Fachadas.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\Fachadas.pdb
