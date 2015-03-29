@@ -7,22 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace WebApplication2.Account
-{
-
-    public partial class Login
-    {
-
-        /// <summary>
-        /// RegisterHyperLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
-
+namespace WebApplication2.Account {
+    
+    
+    public partial class Login {
+        
         /// <summary>
         /// SumarioValidacion control.
         /// </summary>
@@ -31,7 +20,7 @@ namespace WebApplication2.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary SumarioValidacion;
-
+        
         /// <summary>
         /// panelLogin control.
         /// </summary>
@@ -40,7 +29,7 @@ namespace WebApplication2.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panelLogin;
-
+        
         /// <summary>
         /// LoginUser control.
         /// </summary>
@@ -49,7 +38,7 @@ namespace WebApplication2.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Login LoginUser;
-
+        
         /// <summary>
         /// Visor control.
         /// </summary>

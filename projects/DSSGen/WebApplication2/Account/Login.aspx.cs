@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BibliotecaAuxiliar;
 
 namespace WebApplication2.Account
 {
@@ -15,14 +16,13 @@ namespace WebApplication2.Account
             if (!Page.IsPostBack)
             {
                 //Devolver a la página principal si ya se está logueado
-                if (Session["usuario"] != null)
+                if (MySession.Current.isLoged())
                 {
                     Response.Redirect("~/inicio.aspx");
                     return;
                 }
 
                 Page.SetFocus(Visor);
-                RegisterHyperLink.NavigateUrl = "Register.aspx";
             }
         }
 
@@ -31,15 +31,11 @@ namespace WebApplication2.Account
         {
             bool Authenticated = false;
             
-            //Crear el usuario
-            ENUsuario usuario = new ENUsuario();
-            usuario.Nick = LoginUser.UserName;
-            usuario.Password = LoginUser.Password;
-
             //Comprobar si la contraseña es correcta
             try
             {
-                Authenticated = usuario.LogearUsuario();
+                MySession sesion = MySession.login(LoginUser.UserName, LoginUser.Password);
+                Authenticated = sesion.isLoged();
             }
             catch (Exception excep)
             {
@@ -52,12 +48,7 @@ namespace WebApplication2.Account
 
             //Se crea la sesión si se ha autentificado el usuario
             if (Authenticated)
-            {
-                usuario.RecibirDatos();
-                Session.Add("usuario", usuario);
-                Session.Add("inicio", "ON");
                 LoginUser_LoggedIn(sender, e);
-            }
 
             else
                 Response.Write("<script>window.alert('El usuario o la contraseña son incorrectos');</script>");

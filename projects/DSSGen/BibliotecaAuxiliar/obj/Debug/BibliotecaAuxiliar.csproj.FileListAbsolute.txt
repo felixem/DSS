@@ -2,3 +2,11 @@ C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\BibliotecaAuxiliar.pdb
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\obj\Debug\BibliotecaAuxiliar.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\obj\Debug\BibliotecaAuxiliar.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\obj\Debug\BibliotecaAuxiliar.csprojResolveAssemblyReference.cache
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\hibernate.cfg.xml
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\DSSGenNHibernate.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\NHibernate.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\Iesi.Collections.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\Antlr3.Runtime.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\log4net.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\BibliotecaAuxiliar\bin\Debug\DSSGenNHibernate.pdb

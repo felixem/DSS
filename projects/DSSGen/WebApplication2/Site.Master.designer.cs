@@ -7,7 +7,8 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebApplication2 {
+namespace WebApplication2
+{
     
     
     public partial class SiteMaster {

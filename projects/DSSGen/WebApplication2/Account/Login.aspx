@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Iniciar sesión" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" %>
+    CodeBehind="Login.aspx.cs" Inherits="WebApplication2.Account.Login" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Styles/submenu/login.css" rel="stylesheet" type="text/css" />
@@ -10,8 +10,6 @@
     </h1>
     <p>
         Especifique su nombre de usuario y contraseña.
-        <asp:HyperLink ID="RegisterHyperLink" runat="server" ForeColor="Black">Regístrese</asp:HyperLink>
-&nbsp;si no tiene una cuenta.
         </p>
     <asp:ValidationSummary ID="SumarioValidacion" runat="server" 
         CssClass="failureNotification" ValidationGroup="LoginUsuario"/>
