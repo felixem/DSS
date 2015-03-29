@@ -1,0 +1,12 @@
+﻿/*mensajes de error*/
+.failureNotification
+{
+    height:50px;
+    width:920px;
+}
+
+/*labels de nombre y paword*/
+.LabelLogin
+{
+    width:20p;
+}
