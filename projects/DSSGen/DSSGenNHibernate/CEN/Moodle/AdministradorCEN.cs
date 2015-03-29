@@ -88,5 +88,10 @@ public AdministradorEN ReadOID (int id)
         administradorEN = _IAdministradorCAD.ReadOID (id);
         return administradorEN;
 }
+
+public DSSGenNHibernate.EN.Moodle.AdministradorEN ReadNick (string nick)
+{
+        return _IAdministradorCAD.ReadNick (nick);
+}
 }
 }

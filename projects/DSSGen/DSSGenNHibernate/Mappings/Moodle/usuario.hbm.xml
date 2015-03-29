@@ -53,5 +53,7 @@
 		  </class>
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENreadEmailHQL"><![CDATA[FROM UsuarioEN us where us.Email = :email]]></query>
+		  <query name="UsuarioENreadDniHQL"><![CDATA[FROM UsuarioEN us where us.Dni = :dni]]></query>
 		</hibernate-mapping>
 	

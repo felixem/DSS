@@ -276,5 +276,67 @@ public void Unrelationer_mensajes (int p_usuario, System.Collections.Generic.ILi
                 SessionClose ();
         }
 }
+public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadEmail (string email)
+{
+        DSSGenNHibernate.EN.Moodle.UsuarioEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN us where us.Email = :email";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENreadEmailHQL");
+                query.SetParameter ("email", email);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.UsuarioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni)
+{
+        DSSGenNHibernate.EN.Moodle.UsuarioEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN us where us.Dni = :dni";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENreadDniHQL");
+                query.SetParameter ("dni", dni);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.UsuarioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

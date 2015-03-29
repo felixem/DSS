@@ -20,5 +20,9 @@ System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int size);
 
 
 AdministradorEN ReadOID (int id);
+
+
+
+DSSGenNHibernate.EN.Moodle.AdministradorEN ReadNick (string nick);
 }
 }

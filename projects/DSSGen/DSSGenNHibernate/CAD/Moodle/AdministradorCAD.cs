@@ -192,5 +192,37 @@ public AdministradorEN ReadOID (int id)
 
         return administradorEN;
 }
+
+public DSSGenNHibernate.EN.Moodle.AdministradorEN ReadNick (string nick)
+{
+        DSSGenNHibernate.EN.Moodle.AdministradorEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AdministradorEN self where FROM AdministradorEN us where us.Nick = :nick";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AdministradorENreadNickHQL");
+                query.SetParameter ("nick", nick);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AdministradorEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AdministradorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

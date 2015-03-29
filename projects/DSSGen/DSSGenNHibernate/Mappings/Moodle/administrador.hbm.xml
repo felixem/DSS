@@ -33,5 +33,6 @@
 		  </class>
 		  
 		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
+		  <query name="AdministradorENreadNickHQL"><![CDATA[FROM AdministradorEN us where us.Nick = :nick]]></query>
 		</hibernate-mapping>
 	

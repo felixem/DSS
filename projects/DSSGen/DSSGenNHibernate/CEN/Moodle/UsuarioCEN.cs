@@ -107,5 +107,13 @@ public void Unrelationer_mensajes (int p_usuario, System.Collections.Generic.ILi
 
         _IUsuarioCAD.Unrelationer_mensajes (p_usuario, p_mensaje);
 }
+public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadEmail (string email)
+{
+        return _IUsuarioCAD.ReadEmail (email);
+}
+public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni)
+{
+        return _IUsuarioCAD.ReadDni (dni);
+}
 }
 }

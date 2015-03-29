@@ -28,6 +28,8 @@ ConceptualModel moodle
 			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_usuario : OID -> Usuario, p_mensaje : List<OID -> Mensaje>) : Void;
 			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_usuario : OID -> Usuario, p_mensaje : List<OID -> Mensaje>) : Void;
 			public login (usuario : String, pass : String) : Boolean;
+			public readEmail::ReadFilter (email : String) : Object -> Usuario { filter = "FROM UsuarioEN us where us.Email = :email" };
+			public readDni::ReadFilter (dni : String) : Object -> Usuario { filter = "FROM UsuarioEN us where us.Dni = :dni" };
 		}
 	};
 	
@@ -54,7 +56,8 @@ ConceptualModel moodle
 			public destroy::Destroy (p_oid : OID -> Administrador) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Administrador>;
 			public readOID::ReadOID (p_oid : OID -> Administrador) : Object -> Administrador;
-			public login (usuario : String, pass : String) : Boolean;			
+			public login (usuario : String, pass : String) : Boolean;		
+			public readNick::ReadFilter (nick : String) : Object -> Administrador { filter = "FROM AdministradorEN us where us.Nick = :nick" };	
 		}
 	};
 	

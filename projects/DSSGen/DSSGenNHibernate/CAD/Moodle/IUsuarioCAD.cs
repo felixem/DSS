@@ -25,5 +25,11 @@ UsuarioEN ReadOID (int id);
 void Relationer_mensajes (int p_usuario, System.Collections.Generic.IList<int> p_mensaje);
 
 void Unrelationer_mensajes (int p_usuario, System.Collections.Generic.IList<int> p_mensaje);
+
+
+DSSGenNHibernate.EN.Moodle.UsuarioEN ReadEmail (string email);
+
+
+DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni);
 }
 }
