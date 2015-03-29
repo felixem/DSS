@@ -19,9 +19,11 @@ public bool Login (string usuario, string pass)
         /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Administrador_login) ENABLED START*/
 
         // Write here your custom code...
-
-        throw new NotImplementedException ("Method Login() not yet implemented.");
-
+    bool result = false;
+    AdministradorEN admin = _IAdministradorCAD.ReadOID(usuario);
+    if (admin.Password.Equals(pass))
+        result = true;
+    return result;
         /*PROTECTED REGION END*/
 }
 }

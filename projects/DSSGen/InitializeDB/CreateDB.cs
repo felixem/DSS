@@ -113,11 +113,24 @@ public static void InitializeData ()
                  * //Define Album
                  * //DSSGenNHibernate.CEN.Mediaplayer.AlbumCEN albumCEN = new DSSGenNHibernate.CEN.Mediaplayer.AlbumCEN();
                  * //albumCEN.New_("Album 1", "This is a Album 1", artists, musicTracks);*/
+            AlumnoEN usuario = new AlumnoEN();
+            usuario.Cod_alumno=1;
+            usuario.Baneado = false;
+            usuario.Email = "alumno";
+            usuario.Dni = "AAAA";
+            usuario.Apellidos = "Alumno";
+            usuario.Fecha_nacimiento = DateTime.Now;
+            usuario.Nombre = "Alumno";
+            usuario.Password = "pass";
+            AlumnoCEN aluCen = new AlumnoCEN();
+            aluCen.New_(usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
+                usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, new ExpedienteEN());
+
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)
         {
-                System.Console.WriteLine (ex.InnerException);
+                System.Console.WriteLine (ex.StackTrace);
                 throw ex;
         }
 }
