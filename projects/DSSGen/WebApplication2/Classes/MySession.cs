@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using DSSGenNHibernate.EN.Moodle;
 
-namespace BibliotecaAuxiliar
+namespace Classes
 {
     public class MySession
     {

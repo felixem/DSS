@@ -20,10 +20,17 @@ public bool Login (string usuario, string pass)
 
         // Write here your custom code...
     bool result = false;
-    UsuarioEN admin = _IUsuarioCAD.ReadOID(usuario);
-    if (admin.Password.Equals(pass))
+    UsuarioEN us = _IUsuarioCAD.ReadOID(usuario);
+
+    //Comprobar si existe el usuario
+    if (us == null)
+        return false;
+
+    //Comparar contraseñas
+    if (us.Password.Equals(pass))
         result = true;
     return result;
+
         /*PROTECTED REGION END*/
 }
 }

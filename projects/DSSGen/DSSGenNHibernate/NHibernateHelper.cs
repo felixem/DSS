@@ -32,7 +32,7 @@ private static ISessionFactory SessionFactory
 
 public static ISession OpenSession ()
 {
-        return SessionFactory.OpenSession ();
+        return SessionFactory.OpenSession();
 }
 }
 }

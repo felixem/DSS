@@ -108,6 +108,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\MySession.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,9 +143,13 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaAuxiliar\BibliotecaAuxiliar.csproj">
-      <Project>{37215A4C-E69F-4FBF-970B-5F2C632FAB05}</Project>
-      <Name>BibliotecaAuxiliar</Name>
+    <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
+      <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
+      <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fachadas\Fachadas.csproj">
+      <Project>{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}</Project>
+      <Name>Fachadas</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
