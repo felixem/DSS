@@ -7,13 +7,11 @@ C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\WebAppli
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.pdb
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
-C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\BibliotecaAuxiliar.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\DSSGenNHibernate.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\NHibernate.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\Iesi.Collections.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\Antlr3.Runtime.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\log4net.dll
-C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\BibliotecaAuxiliar.pdb
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\DSSGenNHibernate.pdb
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\Fachadas.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\WebApplication2\bin\Fachadas.pdb

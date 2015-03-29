@@ -7,7 +7,7 @@ namespace Auxiliar
 {
     class Encrypter
     {
-        static string GetMd5Hash(MD5 md5Hash, string input)
+        public static string GetMd5Hash(MD5 md5Hash, string input)
         {
 
             // Convert the input string to a byte array and compute the hash.
@@ -29,7 +29,7 @@ namespace Auxiliar
         }
 
         // Verify a hash against a string.
-        static bool Verificar(string input, string hash)
+        public static bool Verificar(string input, string hash)
         {
             MD5 md5Hash = MD5.Create();
 

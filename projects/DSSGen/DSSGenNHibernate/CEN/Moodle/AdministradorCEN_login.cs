@@ -10,6 +10,8 @@ using NHibernate.Exceptions;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CAD.Moodle;
 
+using Auxiliar;
+
 namespace DSSGenNHibernate.CEN.Moodle
 {
 public partial class AdministradorCEN
@@ -27,7 +29,7 @@ public bool Login (string usuario, string pass)
         return false;
 
     //Comparar contraseña
-    if (admin.Password.Equals(pass))
+    if (Encrypter.Verificar(pass, admin.Password))
         result = true;
     return result;
         /*PROTECTED REGION END*/
