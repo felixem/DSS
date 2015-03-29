@@ -23,14 +23,14 @@ public AlumnoCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public AlumnoEN ReadOIDDefault (int id)
+public AlumnoEN ReadOIDDefault (string email)
 {
         AlumnoEN alumnoEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                alumnoEN = (AlumnoEN)session.Get (typeof(AlumnoEN), id);
+                alumnoEN = (AlumnoEN)session.Get (typeof(AlumnoEN), email);
                 SessionCommit ();
         }
 
@@ -51,7 +51,7 @@ public AlumnoEN ReadOIDDefault (int id)
 }
 
 
-public int New_ (AlumnoEN alumno)
+public string New_ (AlumnoEN alumno)
 {
         try
         {
@@ -78,7 +78,7 @@ public int New_ (AlumnoEN alumno)
                 SessionClose ();
         }
 
-        return alumno.Id;
+        return alumno.Email;
 }
 
 public void Modify (AlumnoEN alumno)
@@ -86,7 +86,7 @@ public void Modify (AlumnoEN alumno)
         try
         {
                 SessionInitializeTransaction ();
-                AlumnoEN alumnoEN = (AlumnoEN)session.Load (typeof(AlumnoEN), alumno.Id);
+                AlumnoEN alumnoEN = (AlumnoEN)session.Load (typeof(AlumnoEN), alumno.Email);
 
                 alumnoEN.Cod_alumno = alumno.Cod_alumno;
 
@@ -95,9 +95,6 @@ public void Modify (AlumnoEN alumno)
 
 
                 alumnoEN.Dni = alumno.Dni;
-
-
-                alumnoEN.Email = alumno.Email;
 
 
                 alumnoEN.Password = alumno.Password;
@@ -128,12 +125,12 @@ public void Modify (AlumnoEN alumno)
                 SessionClose ();
         }
 }
-public void Destroy (int id)
+public void Destroy (string email)
 {
         try
         {
                 SessionInitializeTransaction ();
-                AlumnoEN alumnoEN = (AlumnoEN)session.Load (typeof(AlumnoEN), id);
+                AlumnoEN alumnoEN = (AlumnoEN)session.Load (typeof(AlumnoEN), email);
                 session.Delete (alumnoEN);
                 SessionCommit ();
         }
@@ -182,14 +179,14 @@ public System.Collections.Generic.IList<AlumnoEN> ReadAll (int first, int size)
         return result;
 }
 
-public AlumnoEN ReadOID (int id)
+public AlumnoEN ReadOID (string email)
 {
         AlumnoEN alumnoEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                alumnoEN = (AlumnoEN)session.Get (typeof(AlumnoEN), id);
+                alumnoEN = (AlumnoEN)session.Get (typeof(AlumnoEN), email);
                 SessionCommit ();
         }
 
@@ -209,7 +206,7 @@ public AlumnoEN ReadOID (int id)
         return alumnoEN;
 }
 
-public void Relationer_controles (int p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
+public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -248,7 +245,7 @@ public void Relationer_controles (int p_alumno, System.Collections.Generic.IList
         }
 }
 
-public void Relationer_entregas (int p_alumno, System.Collections.Generic.IList<int> p_entregaalumno)
+public void Relationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -287,7 +284,7 @@ public void Relationer_entregas (int p_alumno, System.Collections.Generic.IList<
         }
 }
 
-public void Relationer_expediente (int p_alumno, int p_expediente)
+public void Relationer_expediente (string p_alumno, int p_expediente)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -319,7 +316,7 @@ public void Relationer_expediente (int p_alumno, int p_expediente)
         }
 }
 
-public void Relationer_grupos_trabajo (int p_alumno, System.Collections.Generic.IList<int> p_grupotrabajo)
+public void Relationer_grupos_trabajo (string p_alumno, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -358,7 +355,7 @@ public void Relationer_grupos_trabajo (int p_alumno, System.Collections.Generic.
         }
 }
 
-public void Relationer_mensajes (int p_alumno, System.Collections.Generic.IList<int> p_mensaje)
+public void Relationer_mensajes (string p_alumno, System.Collections.Generic.IList<int> p_mensaje)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -397,7 +394,7 @@ public void Relationer_mensajes (int p_alumno, System.Collections.Generic.IList<
         }
 }
 
-public void Relationer_sistemas_evaluacion (int p_alumno, System.Collections.Generic.IList<int> p_evaluacionalumno)
+public void Relationer_sistemas_evaluacion (string p_alumno, System.Collections.Generic.IList<int> p_evaluacionalumno)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -436,7 +433,7 @@ public void Relationer_sistemas_evaluacion (int p_alumno, System.Collections.Gen
         }
 }
 
-public void Relationer_tutorias (int p_alumno, System.Collections.Generic.IList<int> p_tutoria)
+public void Relationer_tutorias (string p_alumno, System.Collections.Generic.IList<int> p_tutoria)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;
         try
@@ -475,7 +472,7 @@ public void Relationer_tutorias (int p_alumno, System.Collections.Generic.IList<
         }
 }
 
-public void Unrelationer_controles (int p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
+public void Unrelationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         try
         {
@@ -513,7 +510,7 @@ public void Unrelationer_controles (int p_alumno, System.Collections.Generic.ILi
                 SessionClose ();
         }
 }
-public void Unrelationer_entregas (int p_alumno, System.Collections.Generic.IList<int> p_entregaalumno)
+public void Unrelationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno)
 {
         try
         {
@@ -551,7 +548,7 @@ public void Unrelationer_entregas (int p_alumno, System.Collections.Generic.ILis
                 SessionClose ();
         }
 }
-public void Unrelationer_expediente (int p_alumno, int p_expediente)
+public void Unrelationer_expediente (string p_alumno, int p_expediente)
 {
         try
         {
@@ -584,7 +581,7 @@ public void Unrelationer_expediente (int p_alumno, int p_expediente)
                 SessionClose ();
         }
 }
-public void Unrelationer_grupos_trabajo (int p_alumno, System.Collections.Generic.IList<int> p_grupotrabajo)
+public void Unrelationer_grupos_trabajo (string p_alumno, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         try
         {
@@ -622,7 +619,7 @@ public void Unrelationer_grupos_trabajo (int p_alumno, System.Collections.Generi
                 SessionClose ();
         }
 }
-public void Unrelationer_mensajes (int p_alumno, System.Collections.Generic.IList<int> p_mensaje)
+public void Unrelationer_mensajes (string p_alumno, System.Collections.Generic.IList<int> p_mensaje)
 {
         try
         {
@@ -660,7 +657,7 @@ public void Unrelationer_mensajes (int p_alumno, System.Collections.Generic.ILis
                 SessionClose ();
         }
 }
-public void Unrelationer_sistemas_evaluacion (int p_alumno, System.Collections.Generic.IList<int> p_evaluacionalumno)
+public void Unrelationer_sistemas_evaluacion (string p_alumno, System.Collections.Generic.IList<int> p_evaluacionalumno)
 {
         try
         {
@@ -698,7 +695,7 @@ public void Unrelationer_sistemas_evaluacion (int p_alumno, System.Collections.G
                 SessionClose ();
         }
 }
-public void Unrelationer_tutorias (int p_alumno, System.Collections.Generic.IList<int> p_tutoria)
+public void Unrelationer_tutorias (string p_alumno, System.Collections.Generic.IList<int> p_tutoria)
 {
         try
         {

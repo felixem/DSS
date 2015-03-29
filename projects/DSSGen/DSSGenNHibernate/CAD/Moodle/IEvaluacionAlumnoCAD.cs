@@ -22,11 +22,11 @@ System.Collections.Generic.IList<EvaluacionAlumnoEN> ReadAll (int first, int siz
 EvaluacionAlumnoEN ReadOID (int id);
 
 
-void Relationer_alumno (int p_evaluacionalumno, int p_alumno);
+void Relationer_alumno (int p_evaluacionalumno, string p_alumno);
 
 void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion);
 
-void Unrelationer_alumno (int p_evaluacionalumno, int p_alumno);
+void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno);
 
 void Unrelationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion);
 }

@@ -5,7 +5,7 @@
 				
 <joined-subclass name="AlumnoEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioEN" table="[Alumno]">
 	<key>
-    		<column name="[id]"/>
+    		<column name="[email]"/>
    	</key>
 
 					<property name="Cod_alumno" type="integer"> 
@@ -20,7 +20,7 @@
 		  			
 						<bag name="Tutorias" >
 							<key>
-								<column name="[FK_id_alumno]"/>
+								<column name="[FK_email_alumno]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.TutoriaEN"/>
 					    </bag>
@@ -29,7 +29,7 @@
 		  			
 						<bag name="Grupos_trabajo" table="[grupotrabajo_alumno]"  >
 							<key>
-									<column name="[FK_id_alumnos]"/>
+									<column name="[FK_email_alumnos]"/>
 							</key>
       						<many-to-many class="DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN">
 									<column name="[FK_id_grupos_trabajo]"/>
@@ -47,7 +47,7 @@
 		  			
 						<bag name="Entregas" >
 							<key>
-								<column name="[FK_id_alumno]"/>
+								<column name="[FK_email_alumno]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN"/>
 					    </bag>
@@ -56,7 +56,7 @@
 		  			
 						<bag name="Sistemas_evaluacion" >
 							<key>
-								<column name="[FK_id_alumno]"/>
+								<column name="[FK_email_alumno]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN"/>
 					    </bag>
@@ -65,7 +65,7 @@
 		  			
 						<bag name="Controles" >
 							<key>
-								<column name="[FK_id_alumno]"/>
+								<column name="[FK_email_alumno]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN"/>
 					    </bag>

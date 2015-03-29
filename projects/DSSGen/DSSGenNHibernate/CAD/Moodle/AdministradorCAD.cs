@@ -23,14 +23,14 @@ public AdministradorCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public AdministradorEN ReadOIDDefault (int id)
+public AdministradorEN ReadOIDDefault (string nick)
 {
         AdministradorEN administradorEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), id);
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), nick);
                 SessionCommit ();
         }
 
@@ -51,7 +51,7 @@ public AdministradorEN ReadOIDDefault (int id)
 }
 
 
-public int New_ (AdministradorEN administrador)
+public string New_ (AdministradorEN administrador)
 {
         try
         {
@@ -74,7 +74,7 @@ public int New_ (AdministradorEN administrador)
                 SessionClose ();
         }
 
-        return administrador.Id;
+        return administrador.Nick;
 }
 
 public void Modify (AdministradorEN administrador)
@@ -82,10 +82,7 @@ public void Modify (AdministradorEN administrador)
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Id);
-
-                administradorEN.Nick = administrador.Nick;
-
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Nick);
 
                 administradorEN.Password = administrador.Password;
 
@@ -112,12 +109,12 @@ public void Modify (AdministradorEN administrador)
                 SessionClose ();
         }
 }
-public void Destroy (int id)
+public void Destroy (string nick)
 {
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), id);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), nick);
                 session.Delete (administradorEN);
                 SessionCommit ();
         }
@@ -166,14 +163,14 @@ public System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int
         return result;
 }
 
-public AdministradorEN ReadOID (int id)
+public AdministradorEN ReadOID (string nick)
 {
         AdministradorEN administradorEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), id);
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), nick);
                 SessionCommit ();
         }
 
@@ -191,38 +188,6 @@ public AdministradorEN ReadOID (int id)
         }
 
         return administradorEN;
-}
-
-public DSSGenNHibernate.EN.Moodle.AdministradorEN ReadNick (string nick)
-{
-        DSSGenNHibernate.EN.Moodle.AdministradorEN result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM AdministradorEN self where FROM AdministradorEN us where us.Nick = :nick";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("AdministradorENreadNickHQL");
-                query.SetParameter ("nick", nick);
-
-
-                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AdministradorEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AdministradorCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
 }
 }
 }

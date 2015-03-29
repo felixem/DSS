@@ -62,7 +62,7 @@ public int New_ (EvaluacionAlumnoEN evaluacionAlumno)
                         evaluacionAlumno.Sistema_evaluacion.Evaluaciones_alumno.Add (evaluacionAlumno);
                 }
                 if (evaluacionAlumno.Alumno != null) {
-                        evaluacionAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), evaluacionAlumno.Alumno.Id);
+                        evaluacionAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), evaluacionAlumno.Alumno.Email);
 
                         evaluacionAlumno.Alumno.Sistemas_evaluacion.Add (evaluacionAlumno);
                 }
@@ -191,7 +191,7 @@ public EvaluacionAlumnoEN ReadOID (int id)
         return evaluacionAlumnoEN;
 }
 
-public void Relationer_alumno (int p_evaluacionalumno, int p_alumno)
+public void Relationer_alumno (int p_evaluacionalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
         try
@@ -253,7 +253,7 @@ public void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistema
         }
 }
 
-public void Unrelationer_alumno (int p_evaluacionalumno, int p_alumno)
+public void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno)
 {
         try
         {
@@ -261,7 +261,7 @@ public void Unrelationer_alumno (int p_evaluacionalumno, int p_alumno)
                 DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
                 evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
 
-                if (evaluacionAlumnoEN.Alumno.Id == p_alumno) {
+                if (evaluacionAlumnoEN.Alumno.Email == p_alumno) {
                         evaluacionAlumnoEN.Alumno = null;
                 }
                 else

@@ -57,7 +57,7 @@ public int New_ (EntregaEN entrega)
         {
                 SessionInitializeTransaction ();
                 if (entrega.Profesor != null) {
-                        entrega.Profesor = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), entrega.Profesor.Id);
+                        entrega.Profesor = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), entrega.Profesor.Email);
 
                         entrega.Profesor.Entregas_propuestas.Add (entrega);
                 }
@@ -276,7 +276,7 @@ public void Relationer_evaluacion (int p_entrega, int p_sistemaevaluacion)
         }
 }
 
-public void Relationer_profesor (int p_entrega, int p_profesor)
+public void Relationer_profesor (int p_entrega, string p_profesor)
 {
         DSSGenNHibernate.EN.Moodle.EntregaEN entregaEN = null;
         try
@@ -376,7 +376,7 @@ public void Unrelationer_evaluacion (int p_entrega, int p_sistemaevaluacion)
                 SessionClose ();
         }
 }
-public void Unrelationer_profesor (int p_entrega, int p_profesor)
+public void Unrelationer_profesor (int p_entrega, string p_profesor)
 {
         try
         {
@@ -384,7 +384,7 @@ public void Unrelationer_profesor (int p_entrega, int p_profesor)
                 DSSGenNHibernate.EN.Moodle.EntregaEN entregaEN = null;
                 entregaEN = (EntregaEN)session.Load (typeof(EntregaEN), p_entrega);
 
-                if (entregaEN.Profesor.Id == p_profesor) {
+                if (entregaEN.Profesor.Email == p_profesor) {
                         entregaEN.Profesor = null;
                 }
                 else

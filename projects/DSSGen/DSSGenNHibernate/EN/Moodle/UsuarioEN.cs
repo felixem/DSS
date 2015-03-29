@@ -9,19 +9,13 @@ public partial class UsuarioEN
  *
  */
 
-private int id;
+private string email;
 
 /**
  *
  */
 
 private string dni;
-
-/**
- *
- */
-
-private string email;
 
 /**
  *
@@ -57,18 +51,13 @@ private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> m
 
 
 
-public virtual int Id {
-        get { return id; } set { id = value;  }
+public virtual string Email {
+        get { return email; } set { email = value;  }
 }
 
 
 public virtual string Dni {
         get { return dni; } set { dni = value;  }
-}
-
-
-public virtual string Email {
-        get { return email; } set { email = value;  }
 }
 
 
@@ -107,25 +96,23 @@ public UsuarioEN()
 
 
 
-public UsuarioEN(int id, string dni, string email, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
+public UsuarioEN(string email, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
 {
-        this.init (id, dni, email, password, nombre, apellidos, fecha_nacimiento, mensajes);
+        this.init (email, dni, password, nombre, apellidos, fecha_nacimiento, mensajes);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (usuario.Id, usuario.Dni, usuario.Email, usuario.Password, usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, usuario.Mensajes);
+        this.init (usuario.Email, usuario.Dni, usuario.Password, usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, usuario.Mensajes);
 }
 
-private void init (int id, string dni, string email, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
+private void init (string email, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
 {
-        this.Id = id;
+        this.Email = email;
 
 
         this.Dni = dni;
-
-        this.Email = email;
 
         this.Password = password;
 
@@ -145,7 +132,7 @@ public override bool Equals (object obj)
         UsuarioEN t = obj as UsuarioEN;
         if (t == null)
                 return false;
-        if (Id.Equals (t.Id))
+        if (Email.Equals (t.Email))
                 return true;
         else
                 return false;
@@ -155,7 +142,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Id.GetHashCode ();
+        hash += this.Email.GetHashCode ();
         return hash;
 }
 }

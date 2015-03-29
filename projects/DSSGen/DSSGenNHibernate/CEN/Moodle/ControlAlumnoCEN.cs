@@ -32,7 +32,7 @@ public IControlAlumnoCAD get_IControlAlumnoCAD ()
         return this._IControlAlumnoCAD;
 }
 
-public int New_ (float p_nota, bool p_terminado, bool p_corregido, int p_alumno, int p_control)
+public int New_ (float p_nota, bool p_terminado, bool p_corregido, string p_alumno, int p_control)
 {
         ControlAlumnoEN controlAlumnoEN = null;
         int oid;
@@ -46,9 +46,9 @@ public int New_ (float p_nota, bool p_terminado, bool p_corregido, int p_alumno,
         controlAlumnoEN.Corregido = p_corregido;
 
 
-        if (p_alumno != -1) {
+        if (p_alumno != null) {
                 controlAlumnoEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                controlAlumnoEN.Alumno.Id = p_alumno;
+                controlAlumnoEN.Alumno.Email = p_alumno;
         }
 
 
@@ -98,7 +98,7 @@ public ControlAlumnoEN ReadOID (int id)
         return controlAlumnoEN;
 }
 
-public void Relationer_alumno (int p_controlalumno, int p_alumno)
+public void Relationer_alumno (int p_controlalumno, string p_alumno)
 {
         //Call to ControlAlumnoCAD
 
@@ -116,7 +116,7 @@ public void Relationer_preguntas (int p_controlalumno, System.Collections.Generi
 
         _IControlAlumnoCAD.Relationer_preguntas (p_controlalumno, p_preguntacontrol);
 }
-public void Unrelationer_alumno (int p_controlalumno, int p_alumno)
+public void Unrelationer_alumno (int p_controlalumno, string p_alumno)
 {
         //Call to ControlAlumnoCAD
 

@@ -3,13 +3,7 @@
 		                   assembly="DSSGenNHibernate"
 		                   namespace="DSSGenNHibernate.EN.Moodle">
 			<class name="AdministradorEN" table="[Administrador]">
-				  	
-						<id name="Id" column="[id]" type="integer">
-							<generator class="identity"/>
-						</id>
-					<property name="Nick" type="string"> 
-						<column name="[nick]"  unique="true" not-null="true"/>
-					</property>
+						<id name="Nick" column="[nick]"/>
 					<property name="Password" type="string"> 
 						<column name="[password]"  not-null="true"/>
 					</property>
@@ -23,8 +17,6 @@
 			
 			
 			
-			
-					
 					
 					
 					
@@ -33,6 +25,5 @@
 		  </class>
 		  
 		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
-		  <query name="AdministradorENreadNickHQL"><![CDATA[FROM AdministradorEN us where us.Nick = :nick]]></query>
 		</hibernate-mapping>
 	

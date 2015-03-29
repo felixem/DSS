@@ -35,7 +35,7 @@
 									<column name="[FK_id_grupos_trabajo]"/>
 							</key>
       						<many-to-many class="DSSGenNHibernate.EN.Moodle.AlumnoEN">
-									<column name="[FK_id_alumnos]"/>
+									<column name="[FK_email_alumnos]"/>
       						</many-to-many>
     					</bag>
 			

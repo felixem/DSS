@@ -31,9 +31,23 @@ namespace BibliotecaAuxiliar
             }
         }
 
+        //Obtener una sesión haciendo login
+        public static MySession login(String user, String pass)
+        {
+            //Probar el login para un usuario normal
+            UsuarioCEN usCEN = new UsuarioCEN();
+            if (usCEN.Login(user, pass))
+            {
+                UsuarioEN us = usCEN.ReadEmail(user);
+                MySession session = new MySession();
+                session.Usuario = us;
+                HttpContext.Current.Session["__MySession__"] = session;
+                return session;
+            }
+        }
+
         // Propiedades de sesión
-        public Object usuario { get; set; }
-        public DateTime MyDate { get; set; }
-        public int LoginId { get; set; }
+        public Object Usuario { get; set; }
+        public DateTime Fecha_login { get; set; }
     }
 }

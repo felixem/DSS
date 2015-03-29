@@ -32,7 +32,7 @@ public ITutoriaCAD get_ITutoriaCAD ()
         return this._ITutoriaCAD;
 }
 
-public int New_ (string p_tema, bool p_abierta, Nullable<DateTime> p_fecha_creacion, Nullable<DateTime> p_fecha_cierre, bool p_por_responder, int p_profesor, int p_alumno, int p_asignatura)
+public int New_ (string p_tema, bool p_abierta, Nullable<DateTime> p_fecha_creacion, Nullable<DateTime> p_fecha_cierre, bool p_por_responder, string p_profesor, string p_alumno, int p_asignatura)
 {
         TutoriaEN tutoriaEN = null;
         int oid;
@@ -50,15 +50,15 @@ public int New_ (string p_tema, bool p_abierta, Nullable<DateTime> p_fecha_creac
         tutoriaEN.Por_responder = p_por_responder;
 
 
-        if (p_profesor != -1) {
+        if (p_profesor != null) {
                 tutoriaEN.Profesor = new DSSGenNHibernate.EN.Moodle.ProfesorEN ();
-                tutoriaEN.Profesor.Id = p_profesor;
+                tutoriaEN.Profesor.Email = p_profesor;
         }
 
 
-        if (p_alumno != -1) {
+        if (p_alumno != null) {
                 tutoriaEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                tutoriaEN.Alumno.Id = p_alumno;
+                tutoriaEN.Alumno.Email = p_alumno;
         }
 
 
@@ -110,7 +110,7 @@ public TutoriaEN ReadOID (int id)
         return tutoriaEN;
 }
 
-public void Relationer_alumno (int p_tutoria, int p_alumno)
+public void Relationer_alumno (int p_tutoria, string p_alumno)
 {
         //Call to TutoriaCAD
 
@@ -128,13 +128,13 @@ public void Relationer_mensajes (int p_tutoria, System.Collections.Generic.IList
 
         _ITutoriaCAD.Relationer_mensajes (p_tutoria, p_mensaje);
 }
-public void Relationer_profesor (int p_tutoria, int p_profesor)
+public void Relationer_profesor (int p_tutoria, string p_profesor)
 {
         //Call to TutoriaCAD
 
         _ITutoriaCAD.Relationer_profesor (p_tutoria, p_profesor);
 }
-public void Unrelationer_alumno (int p_tutoria, int p_alumno)
+public void Unrelationer_alumno (int p_tutoria, string p_alumno)
 {
         //Call to TutoriaCAD
 
@@ -152,7 +152,7 @@ public void Unrelationer_mensajes (int p_tutoria, System.Collections.Generic.ILi
 
         _ITutoriaCAD.Unrelationer_mensajes (p_tutoria, p_mensaje);
 }
-public void Unrelationer_profesor (int p_tutoria, int p_profesor)
+public void Unrelationer_profesor (int p_tutoria, string p_profesor)
 {
         //Call to TutoriaCAD
 

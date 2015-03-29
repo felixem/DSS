@@ -9,12 +9,6 @@ public partial class AdministradorEN
  *
  */
 
-private int id;
-
-/**
- *
- */
-
 private string nick;
 
 /**
@@ -37,11 +31,6 @@ private string descripcion;
 
 
 
-
-
-public virtual int Id {
-        get { return id; } set { id = value;  }
-}
 
 
 public virtual string Nick {
@@ -73,23 +62,21 @@ public AdministradorEN()
 
 
 
-public AdministradorEN(int id, string nick, String password, string nombre, string descripcion)
+public AdministradorEN(string nick, String password, string nombre, string descripcion)
 {
-        this.init (id, nick, password, nombre, descripcion);
+        this.init (nick, password, nombre, descripcion);
 }
 
 
 public AdministradorEN(AdministradorEN administrador)
 {
-        this.init (administrador.Id, administrador.Nick, administrador.Password, administrador.Nombre, administrador.Descripcion);
+        this.init (administrador.Nick, administrador.Password, administrador.Nombre, administrador.Descripcion);
 }
 
-private void init (int id, string nick, String password, string nombre, string descripcion)
+private void init (string nick, String password, string nombre, string descripcion)
 {
-        this.Id = id;
-
-
         this.Nick = nick;
+
 
         this.Password = password;
 
@@ -105,7 +92,7 @@ public override bool Equals (object obj)
         AdministradorEN t = obj as AdministradorEN;
         if (t == null)
                 return false;
-        if (Id.Equals (t.Id))
+        if (Nick.Equals (t.Nick))
                 return true;
         else
                 return false;
@@ -115,7 +102,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Id.GetHashCode ();
+        hash += this.Nick.GetHashCode ();
         return hash;
 }
 }

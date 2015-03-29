@@ -32,7 +32,7 @@ public IEvaluacionAlumnoCAD get_IEvaluacionAlumnoCAD ()
         return this._IEvaluacionAlumnoCAD;
 }
 
-public int New_ (int p_sistema_evaluacion, int p_alumno)
+public int New_ (int p_sistema_evaluacion, string p_alumno)
 {
         EvaluacionAlumnoEN evaluacionAlumnoEN = null;
         int oid;
@@ -46,9 +46,9 @@ public int New_ (int p_sistema_evaluacion, int p_alumno)
         }
 
 
-        if (p_alumno != -1) {
+        if (p_alumno != null) {
                 evaluacionAlumnoEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                evaluacionAlumnoEN.Alumno.Id = p_alumno;
+                evaluacionAlumnoEN.Alumno.Email = p_alumno;
         }
 
         //Call to EvaluacionAlumnoCAD
@@ -89,7 +89,7 @@ public EvaluacionAlumnoEN ReadOID (int id)
         return evaluacionAlumnoEN;
 }
 
-public void Relationer_alumno (int p_evaluacionalumno, int p_alumno)
+public void Relationer_alumno (int p_evaluacionalumno, string p_alumno)
 {
         //Call to EvaluacionAlumnoCAD
 
@@ -101,7 +101,7 @@ public void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistema
 
         _IEvaluacionAlumnoCAD.Relationer_sistema_evaluacion (p_evaluacionalumno, p_sistemaevaluacion);
 }
-public void Unrelationer_alumno (int p_evaluacionalumno, int p_alumno)
+public void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno)
 {
         //Call to EvaluacionAlumnoCAD
 

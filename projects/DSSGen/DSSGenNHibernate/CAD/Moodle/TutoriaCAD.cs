@@ -57,12 +57,12 @@ public int New_ (TutoriaEN tutoria)
         {
                 SessionInitializeTransaction ();
                 if (tutoria.Profesor != null) {
-                        tutoria.Profesor = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), tutoria.Profesor.Id);
+                        tutoria.Profesor = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), tutoria.Profesor.Email);
 
                         tutoria.Profesor.Tutorias.Add (tutoria);
                 }
                 if (tutoria.Alumno != null) {
-                        tutoria.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), tutoria.Alumno.Id);
+                        tutoria.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), tutoria.Alumno.Email);
 
                         tutoria.Alumno.Tutorias.Add (tutoria);
                 }
@@ -211,7 +211,7 @@ public TutoriaEN ReadOID (int id)
         return tutoriaEN;
 }
 
-public void Relationer_alumno (int p_tutoria, int p_alumno)
+public void Relationer_alumno (int p_tutoria, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.TutoriaEN tutoriaEN = null;
         try
@@ -312,7 +312,7 @@ public void Relationer_mensajes (int p_tutoria, System.Collections.Generic.IList
         }
 }
 
-public void Relationer_profesor (int p_tutoria, int p_profesor)
+public void Relationer_profesor (int p_tutoria, string p_profesor)
 {
         DSSGenNHibernate.EN.Moodle.TutoriaEN tutoriaEN = null;
         try
@@ -343,7 +343,7 @@ public void Relationer_profesor (int p_tutoria, int p_profesor)
         }
 }
 
-public void Unrelationer_alumno (int p_tutoria, int p_alumno)
+public void Unrelationer_alumno (int p_tutoria, string p_alumno)
 {
         try
         {
@@ -351,7 +351,7 @@ public void Unrelationer_alumno (int p_tutoria, int p_alumno)
                 DSSGenNHibernate.EN.Moodle.TutoriaEN tutoriaEN = null;
                 tutoriaEN = (TutoriaEN)session.Load (typeof(TutoriaEN), p_tutoria);
 
-                if (tutoriaEN.Alumno.Id == p_alumno) {
+                if (tutoriaEN.Alumno.Email == p_alumno) {
                         tutoriaEN.Alumno = null;
                 }
                 else
@@ -443,7 +443,7 @@ public void Unrelationer_mensajes (int p_tutoria, System.Collections.Generic.ILi
                 SessionClose ();
         }
 }
-public void Unrelationer_profesor (int p_tutoria, int p_profesor)
+public void Unrelationer_profesor (int p_tutoria, string p_profesor)
 {
         try
         {
@@ -451,7 +451,7 @@ public void Unrelationer_profesor (int p_tutoria, int p_profesor)
                 DSSGenNHibernate.EN.Moodle.TutoriaEN tutoriaEN = null;
                 tutoriaEN = (TutoriaEN)session.Load (typeof(TutoriaEN), p_tutoria);
 
-                if (tutoriaEN.Profesor.Id == p_profesor) {
+                if (tutoriaEN.Profesor.Email == p_profesor) {
                         tutoriaEN.Profesor = null;
                 }
                 else

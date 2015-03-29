@@ -24,10 +24,10 @@ MaterialEN ReadOID (int id);
 
 void Relationer_asignatura (int p_material, int p_asignaturaanyo);
 
-void Relationer_profesor (int p_material, int p_profesor);
+void Relationer_profesor (int p_material, string p_profesor);
 
 void Unrelationer_asignatura (int p_material, int p_asignaturaanyo);
 
-void Unrelationer_profesor (int p_material, int p_profesor);
+void Unrelationer_profesor (int p_material, string p_profesor);
 }
 }

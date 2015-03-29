@@ -23,14 +23,14 @@ public UsuarioCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public UsuarioEN ReadOIDDefault (int id)
+public UsuarioEN ReadOIDDefault (string email)
 {
         UsuarioEN usuarioEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), email);
                 SessionCommit ();
         }
 
@@ -51,7 +51,7 @@ public UsuarioEN ReadOIDDefault (int id)
 }
 
 
-public int New_ (UsuarioEN usuario)
+public string New_ (UsuarioEN usuario)
 {
         try
         {
@@ -74,7 +74,7 @@ public int New_ (UsuarioEN usuario)
                 SessionClose ();
         }
 
-        return usuario.Id;
+        return usuario.Email;
 }
 
 public void Modify (UsuarioEN usuario)
@@ -82,12 +82,9 @@ public void Modify (UsuarioEN usuario)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Email);
 
                 usuarioEN.Dni = usuario.Dni;
-
-
-                usuarioEN.Email = usuario.Email;
 
 
                 usuarioEN.Password = usuario.Password;
@@ -118,12 +115,12 @@ public void Modify (UsuarioEN usuario)
                 SessionClose ();
         }
 }
-public void Destroy (int id)
+public void Destroy (string email)
 {
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), id);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), email);
                 session.Delete (usuarioEN);
                 SessionCommit ();
         }
@@ -172,14 +169,14 @@ public System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size)
         return result;
 }
 
-public UsuarioEN ReadOID (int id)
+public UsuarioEN ReadOID (string email)
 {
         UsuarioEN usuarioEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), email);
                 SessionCommit ();
         }
 
@@ -199,7 +196,7 @@ public UsuarioEN ReadOID (int id)
         return usuarioEN;
 }
 
-public void Relationer_mensajes (int p_usuario, System.Collections.Generic.IList<int> p_mensaje)
+public void Relationer_mensajes (string p_usuario, System.Collections.Generic.IList<int> p_mensaje)
 {
         DSSGenNHibernate.EN.Moodle.UsuarioEN usuarioEN = null;
         try
@@ -238,7 +235,7 @@ public void Relationer_mensajes (int p_usuario, System.Collections.Generic.IList
         }
 }
 
-public void Unrelationer_mensajes (int p_usuario, System.Collections.Generic.IList<int> p_mensaje)
+public void Unrelationer_mensajes (string p_usuario, System.Collections.Generic.IList<int> p_mensaje)
 {
         try
         {
@@ -275,37 +272,6 @@ public void Unrelationer_mensajes (int p_usuario, System.Collections.Generic.ILi
         {
                 SessionClose ();
         }
-}
-public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadEmail (string email)
-{
-        DSSGenNHibernate.EN.Moodle.UsuarioEN result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN us where us.Email = :email";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENreadEmailHQL");
-                query.SetParameter ("email", email);
-
-
-                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.UsuarioEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
 }
 public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni)
 {

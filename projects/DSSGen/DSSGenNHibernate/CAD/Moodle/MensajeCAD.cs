@@ -62,7 +62,7 @@ public int New_ (MensajeEN mensaje)
                         mensaje.Tutoria.Mensajes.Add (mensaje);
                 }
                 if (mensaje.Usuario != null) {
-                        mensaje.Usuario = (DSSGenNHibernate.EN.Moodle.UsuarioEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.UsuarioEN), mensaje.Usuario.Id);
+                        mensaje.Usuario = (DSSGenNHibernate.EN.Moodle.UsuarioEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.UsuarioEN), mensaje.Usuario.Email);
 
                         mensaje.Usuario.Mensajes.Add (mensaje);
                 }
@@ -231,7 +231,7 @@ public void Relationer_tutoria (int p_mensaje, int p_tutoria)
         }
 }
 
-public void Relationer_usuario (int p_mensaje, int p_usuario)
+public void Relationer_usuario (int p_mensaje, string p_usuario)
 {
         DSSGenNHibernate.EN.Moodle.MensajeEN mensajeEN = null;
         try
@@ -293,7 +293,7 @@ public void Unrelationer_tutoria (int p_mensaje, int p_tutoria)
                 SessionClose ();
         }
 }
-public void Unrelationer_usuario (int p_mensaje, int p_usuario)
+public void Unrelationer_usuario (int p_mensaje, string p_usuario)
 {
         try
         {
@@ -301,7 +301,7 @@ public void Unrelationer_usuario (int p_mensaje, int p_usuario)
                 DSSGenNHibernate.EN.Moodle.MensajeEN mensajeEN = null;
                 mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), p_mensaje);
 
-                if (mensajeEN.Usuario.Id == p_usuario) {
+                if (mensajeEN.Usuario.Email == p_usuario) {
                         mensajeEN.Usuario = null;
                 }
                 else

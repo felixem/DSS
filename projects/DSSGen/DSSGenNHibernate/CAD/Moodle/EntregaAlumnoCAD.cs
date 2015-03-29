@@ -62,7 +62,7 @@ public int New_ (EntregaAlumnoEN entregaAlumno)
                         entregaAlumno.Entrega.Entregas_alumno.Add (entregaAlumno);
                 }
                 if (entregaAlumno.Alumno != null) {
-                        entregaAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), entregaAlumno.Alumno.Id);
+                        entregaAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), entregaAlumno.Alumno.Email);
 
                         entregaAlumno.Alumno.Entregas.Add (entregaAlumno);
                 }
@@ -218,7 +218,7 @@ public EntregaAlumnoEN ReadOID (int id)
         return entregaAlumnoEN;
 }
 
-public void Relationer_alumno (int p_entregaalumno, int p_alumno)
+public void Relationer_alumno (int p_entregaalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;
         try
@@ -280,7 +280,7 @@ public void Relationer_entrega (int p_entregaalumno, int p_entrega)
         }
 }
 
-public void Unrelationer_alumno (int p_entregaalumno, int p_alumno)
+public void Unrelationer_alumno (int p_entregaalumno, string p_alumno)
 {
         try
         {
@@ -288,7 +288,7 @@ public void Unrelationer_alumno (int p_entregaalumno, int p_alumno)
                 DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;
                 entregaAlumnoEN = (EntregaAlumnoEN)session.Load (typeof(EntregaAlumnoEN), p_entregaalumno);
 
-                if (entregaAlumnoEN.Alumno.Id == p_alumno) {
+                if (entregaAlumnoEN.Alumno.Email == p_alumno) {
                         entregaAlumnoEN.Alumno = null;
                 }
                 else

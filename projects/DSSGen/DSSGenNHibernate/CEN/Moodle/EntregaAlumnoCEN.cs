@@ -32,7 +32,7 @@ public IEntregaAlumnoCAD get_IEntregaAlumnoCAD ()
         return this._IEntregaAlumnoCAD;
 }
 
-public int New_ (string p_nombre_fichero, string p_extension, string p_ruta, float p_tam, Nullable<DateTime> p_fecha_entrega, float p_nota, bool p_corregido, string p_comentario_alumno, string p_comentario_profesor, int p_entrega, int p_alumno)
+public int New_ (string p_nombre_fichero, string p_extension, string p_ruta, float p_tam, Nullable<DateTime> p_fecha_entrega, float p_nota, bool p_corregido, string p_comentario_alumno, string p_comentario_profesor, int p_entrega, string p_alumno)
 {
         EntregaAlumnoEN entregaAlumnoEN = null;
         int oid;
@@ -64,9 +64,9 @@ public int New_ (string p_nombre_fichero, string p_extension, string p_ruta, flo
         }
 
 
-        if (p_alumno != -1) {
+        if (p_alumno != null) {
                 entregaAlumnoEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                entregaAlumnoEN.Alumno.Id = p_alumno;
+                entregaAlumnoEN.Alumno.Email = p_alumno;
         }
 
         //Call to EntregaAlumnoCAD
@@ -116,7 +116,7 @@ public EntregaAlumnoEN ReadOID (int id)
         return entregaAlumnoEN;
 }
 
-public void Relationer_alumno (int p_entregaalumno, int p_alumno)
+public void Relationer_alumno (int p_entregaalumno, string p_alumno)
 {
         //Call to EntregaAlumnoCAD
 
@@ -128,7 +128,7 @@ public void Relationer_entrega (int p_entregaalumno, int p_entrega)
 
         _IEntregaAlumnoCAD.Relationer_entrega (p_entregaalumno, p_entrega);
 }
-public void Unrelationer_alumno (int p_entregaalumno, int p_alumno)
+public void Unrelationer_alumno (int p_entregaalumno, string p_alumno)
 {
         //Call to EntregaAlumnoCAD
 

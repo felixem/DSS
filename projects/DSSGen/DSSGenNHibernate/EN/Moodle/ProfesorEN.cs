@@ -67,20 +67,20 @@ public ProfesorEN() : base ()
 
 
 
-public ProfesorEN(int id, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, string dni, string email, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
+public ProfesorEN(string email, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
 {
-        this.init (id, cod_profesor, tutorias, materiales, entregas_propuestas, dni, email, password, nombre, apellidos, fecha_nacimiento, mensajes);
+        this.init (email, cod_profesor, tutorias, materiales, entregas_propuestas, dni, password, nombre, apellidos, fecha_nacimiento, mensajes);
 }
 
 
 public ProfesorEN(ProfesorEN profesor)
 {
-        this.init (profesor.Id, profesor.Cod_profesor, profesor.Tutorias, profesor.Materiales, profesor.Entregas_propuestas, profesor.Dni, profesor.Email, profesor.Password, profesor.Nombre, profesor.Apellidos, profesor.Fecha_nacimiento, profesor.Mensajes);
+        this.init (profesor.Email, profesor.Cod_profesor, profesor.Tutorias, profesor.Materiales, profesor.Entregas_propuestas, profesor.Dni, profesor.Password, profesor.Nombre, profesor.Apellidos, profesor.Fecha_nacimiento, profesor.Mensajes);
 }
 
-private void init (int id, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, string dni, string email, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
+private void init (string email, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
 {
-        this.Id = id;
+        this.Email = email;
 
 
         this.Cod_profesor = cod_profesor;
@@ -92,8 +92,6 @@ private void init (int id, int cod_profesor, System.Collections.Generic.IList<DS
         this.Entregas_propuestas = entregas_propuestas;
 
         this.Dni = dni;
-
-        this.Email = email;
 
         this.Password = password;
 
@@ -113,7 +111,7 @@ public override bool Equals (object obj)
         ProfesorEN t = obj as ProfesorEN;
         if (t == null)
                 return false;
-        if (Id.Equals (t.Id))
+        if (Email.Equals (t.Email))
                 return true;
         else
                 return false;
@@ -123,7 +121,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Id.GetHashCode ();
+        hash += this.Email.GetHashCode ();
         return hash;
 }
 }

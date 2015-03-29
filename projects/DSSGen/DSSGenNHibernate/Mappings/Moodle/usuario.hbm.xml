@@ -3,15 +3,9 @@
 		                   assembly="DSSGenNHibernate"
 		                   namespace="DSSGenNHibernate.EN.Moodle">
 			<class name="UsuarioEN" table="[Usuario]">
-				  	
-						<id name="Id" column="[id]" type="integer">
-							<generator class="identity"/>
-						</id>
+						<id name="Email" column="[email]"/>
 					<property name="Dni" type="string"> 
 						<column name="[dni]"  unique="true" not-null="true"/>
-					</property>
-					<property name="Email" type="string"> 
-						<column name="[email]"  unique="true" not-null="true"/>
 					</property>
 					<property name="Password" type="string"> 
 						<column name="[password]"  not-null="true"/>
@@ -32,15 +26,13 @@
 			
 			
 			
-			
 		  			
 						<bag name="Mensajes" >
 							<key>
-								<column name="[FK_id_usuario]"/>
+								<column name="[FK_email_usuario]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.MensajeEN"/>
 					    </bag>
-					
 					
 					
 					
@@ -53,7 +45,6 @@
 		  </class>
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
-		  <query name="UsuarioENreadEmailHQL"><![CDATA[FROM UsuarioEN us where us.Email = :email]]></query>
 		  <query name="UsuarioENreadDniHQL"><![CDATA[FROM UsuarioEN us where us.Dni = :dni]]></query>
 		</hibernate-mapping>
 	

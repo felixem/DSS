@@ -23,14 +23,14 @@ public ProfesorCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public ProfesorEN ReadOIDDefault (int id)
+public ProfesorEN ReadOIDDefault (string email)
 {
         ProfesorEN profesorEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                profesorEN = (ProfesorEN)session.Get (typeof(ProfesorEN), id);
+                profesorEN = (ProfesorEN)session.Get (typeof(ProfesorEN), email);
                 SessionCommit ();
         }
 
@@ -51,7 +51,7 @@ public ProfesorEN ReadOIDDefault (int id)
 }
 
 
-public int New_ (ProfesorEN profesor)
+public string New_ (ProfesorEN profesor)
 {
         try
         {
@@ -74,7 +74,7 @@ public int New_ (ProfesorEN profesor)
                 SessionClose ();
         }
 
-        return profesor.Id;
+        return profesor.Email;
 }
 
 public void Modify (ProfesorEN profesor)
@@ -82,15 +82,12 @@ public void Modify (ProfesorEN profesor)
         try
         {
                 SessionInitializeTransaction ();
-                ProfesorEN profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), profesor.Id);
+                ProfesorEN profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), profesor.Email);
 
                 profesorEN.Cod_profesor = profesor.Cod_profesor;
 
 
                 profesorEN.Dni = profesor.Dni;
-
-
-                profesorEN.Email = profesor.Email;
 
 
                 profesorEN.Password = profesor.Password;
@@ -121,12 +118,12 @@ public void Modify (ProfesorEN profesor)
                 SessionClose ();
         }
 }
-public void Destroy (int id)
+public void Destroy (string email)
 {
         try
         {
                 SessionInitializeTransaction ();
-                ProfesorEN profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), id);
+                ProfesorEN profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), email);
                 session.Delete (profesorEN);
                 SessionCommit ();
         }
@@ -175,14 +172,14 @@ public System.Collections.Generic.IList<ProfesorEN> ReadAll (int first, int size
         return result;
 }
 
-public ProfesorEN ReadOID (int id)
+public ProfesorEN ReadOID (string email)
 {
         ProfesorEN profesorEN = null;
 
         try
         {
                 SessionInitializeTransaction ();
-                profesorEN = (ProfesorEN)session.Get (typeof(ProfesorEN), id);
+                profesorEN = (ProfesorEN)session.Get (typeof(ProfesorEN), email);
                 SessionCommit ();
         }
 
@@ -202,7 +199,7 @@ public ProfesorEN ReadOID (int id)
         return profesorEN;
 }
 
-public void Relationer_entregas_propuestas (int p_profesor, System.Collections.Generic.IList<int> p_entrega)
+public void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;
         try
@@ -241,7 +238,7 @@ public void Relationer_entregas_propuestas (int p_profesor, System.Collections.G
         }
 }
 
-public void Relationer_materiales (int p_profesor, System.Collections.Generic.IList<int> p_material)
+public void Relationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material)
 {
         DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;
         try
@@ -280,7 +277,7 @@ public void Relationer_materiales (int p_profesor, System.Collections.Generic.IL
         }
 }
 
-public void Relationer_mensajes (int p_profesor, System.Collections.Generic.IList<int> p_mensaje)
+public void Relationer_mensajes (string p_profesor, System.Collections.Generic.IList<int> p_mensaje)
 {
         DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;
         try
@@ -319,7 +316,7 @@ public void Relationer_mensajes (int p_profesor, System.Collections.Generic.ILis
         }
 }
 
-public void Relationer_tutorias (int p_profesor, System.Collections.Generic.IList<int> p_tutoria)
+public void Relationer_tutorias (string p_profesor, System.Collections.Generic.IList<int> p_tutoria)
 {
         DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;
         try
@@ -358,7 +355,7 @@ public void Relationer_tutorias (int p_profesor, System.Collections.Generic.ILis
         }
 }
 
-public void Unrelationer_entregas_propuestas (int p_profesor, System.Collections.Generic.IList<int> p_entrega)
+public void Unrelationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         try
         {
@@ -396,7 +393,7 @@ public void Unrelationer_entregas_propuestas (int p_profesor, System.Collections
                 SessionClose ();
         }
 }
-public void Unrelationer_materiales (int p_profesor, System.Collections.Generic.IList<int> p_material)
+public void Unrelationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material)
 {
         try
         {
@@ -434,7 +431,7 @@ public void Unrelationer_materiales (int p_profesor, System.Collections.Generic.
                 SessionClose ();
         }
 }
-public void Unrelationer_mensajes (int p_profesor, System.Collections.Generic.IList<int> p_mensaje)
+public void Unrelationer_mensajes (string p_profesor, System.Collections.Generic.IList<int> p_mensaje)
 {
         try
         {
@@ -472,7 +469,7 @@ public void Unrelationer_mensajes (int p_profesor, System.Collections.Generic.IL
                 SessionClose ();
         }
 }
-public void Unrelationer_tutorias (int p_profesor, System.Collections.Generic.IList<int> p_tutoria)
+public void Unrelationer_tutorias (string p_profesor, System.Collections.Generic.IList<int> p_tutoria)
 {
         try
         {

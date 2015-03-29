@@ -5,7 +5,7 @@
 				
 <joined-subclass name="ProfesorEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioEN" table="[Profesor]">
 	<key>
-    		<column name="[id]"/>
+    		<column name="[email]"/>
    	</key>
 
 					<property name="Cod_profesor" type="integer"> 
@@ -16,7 +16,7 @@
 		  			
 						<bag name="Tutorias" >
 							<key>
-								<column name="[FK_id_profesor]"/>
+								<column name="[FK_email_profesor]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.TutoriaEN"/>
 					    </bag>
@@ -25,7 +25,7 @@
 		  			
 						<bag name="Materiales" >
 							<key>
-								<column name="[FK_id_profesor]"/>
+								<column name="[FK_email_profesor]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.MaterialEN"/>
 					    </bag>
@@ -34,7 +34,7 @@
 		  			
 						<bag name="Entregas_propuestas" >
 							<key>
-								<column name="[FK_id_profesor]"/>
+								<column name="[FK_email_profesor]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaEN"/>
 					    </bag>

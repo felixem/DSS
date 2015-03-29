@@ -6,23 +6,19 @@ namespace DSSGenNHibernate.CAD.Moodle
 {
 public partial interface IAdministradorCAD
 {
-AdministradorEN ReadOIDDefault (int id);
+AdministradorEN ReadOIDDefault (string nick);
 
-int New_ (AdministradorEN administrador);
+string New_ (AdministradorEN administrador);
 
 void Modify (AdministradorEN administrador);
 
 
-void Destroy (int id);
+void Destroy (string nick);
 
 
 System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int size);
 
 
-AdministradorEN ReadOID (int id);
-
-
-
-DSSGenNHibernate.EN.Moodle.AdministradorEN ReadNick (string nick);
+AdministradorEN ReadOID (string nick);
 }
 }

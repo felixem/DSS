@@ -32,7 +32,7 @@ public IExpedienteCAD get_IExpedienteCAD ()
         return this._IExpedienteCAD;
 }
 
-public int New_ (int p_cod_expediente, float p_nota_media, bool p_abierto, int p_alumno)
+public int New_ (int p_cod_expediente, float p_nota_media, bool p_abierto, string p_alumno)
 {
         ExpedienteEN expedienteEN = null;
         int oid;
@@ -46,9 +46,9 @@ public int New_ (int p_cod_expediente, float p_nota_media, bool p_abierto, int p
         expedienteEN.Abierto = p_abierto;
 
 
-        if (p_alumno != -1) {
+        if (p_alumno != null) {
                 expedienteEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                expedienteEN.Alumno.Id = p_alumno;
+                expedienteEN.Alumno.Email = p_alumno;
         }
 
         //Call to ExpedienteCAD
@@ -92,7 +92,7 @@ public ExpedienteEN ReadOID (int id)
         return expedienteEN;
 }
 
-public void Relationer_alumno (int p_expediente, int p_alumno)
+public void Relationer_alumno (int p_expediente, string p_alumno)
 {
         //Call to ExpedienteCAD
 
@@ -104,7 +104,7 @@ public void Relationer_expedientes_anyo (int p_expediente, System.Collections.Ge
 
         _IExpedienteCAD.Relationer_expedientes_anyo (p_expediente, p_expedienteanyo);
 }
-public void Unrelationer_alumno (int p_expediente, int p_alumno)
+public void Unrelationer_alumno (int p_expediente, string p_alumno)
 {
         //Call to ExpedienteCAD
 

@@ -32,7 +32,7 @@ public IEntregaCAD get_IEntregaCAD ()
         return this._IEntregaCAD;
 }
 
-public int New_ (string p_nombre, string p_descripcion, Nullable<DateTime> p_fecha_apertura, Nullable<DateTime> p_fecha_cierre, float p_puntuacion_maxima, int p_profesor, int p_evaluacion)
+public int New_ (string p_nombre, string p_descripcion, Nullable<DateTime> p_fecha_apertura, Nullable<DateTime> p_fecha_cierre, float p_puntuacion_maxima, string p_profesor, int p_evaluacion)
 {
         EntregaEN entregaEN = null;
         int oid;
@@ -50,9 +50,9 @@ public int New_ (string p_nombre, string p_descripcion, Nullable<DateTime> p_fec
         entregaEN.Puntuacion_maxima = p_puntuacion_maxima;
 
 
-        if (p_profesor != -1) {
+        if (p_profesor != null) {
                 entregaEN.Profesor = new DSSGenNHibernate.EN.Moodle.ProfesorEN ();
-                entregaEN.Profesor.Id = p_profesor;
+                entregaEN.Profesor.Email = p_profesor;
         }
 
 
@@ -116,7 +116,7 @@ public void Relationer_evaluacion (int p_entrega, int p_sistemaevaluacion)
 
         _IEntregaCAD.Relationer_evaluacion (p_entrega, p_sistemaevaluacion);
 }
-public void Relationer_profesor (int p_entrega, int p_profesor)
+public void Relationer_profesor (int p_entrega, string p_profesor)
 {
         //Call to EntregaCAD
 
@@ -134,7 +134,7 @@ public void Unrelationer_evaluacion (int p_entrega, int p_sistemaevaluacion)
 
         _IEntregaCAD.Unrelationer_evaluacion (p_entrega, p_sistemaevaluacion);
 }
-public void Unrelationer_profesor (int p_entrega, int p_profesor)
+public void Unrelationer_profesor (int p_entrega, string p_profesor)
 {
         //Call to EntregaCAD
 

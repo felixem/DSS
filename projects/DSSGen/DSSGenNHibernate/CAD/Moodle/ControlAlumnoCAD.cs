@@ -57,7 +57,7 @@ public int New_ (ControlAlumnoEN controlAlumno)
         {
                 SessionInitializeTransaction ();
                 if (controlAlumno.Alumno != null) {
-                        controlAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), controlAlumno.Alumno.Id);
+                        controlAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), controlAlumno.Alumno.Email);
 
                         controlAlumno.Alumno.Controles.Add (controlAlumno);
                 }
@@ -200,7 +200,7 @@ public ControlAlumnoEN ReadOID (int id)
         return controlAlumnoEN;
 }
 
-public void Relationer_alumno (int p_controlalumno, int p_alumno)
+public void Relationer_alumno (int p_controlalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlAlumnoEN = null;
         try
@@ -301,7 +301,7 @@ public void Relationer_preguntas (int p_controlalumno, System.Collections.Generi
         }
 }
 
-public void Unrelationer_alumno (int p_controlalumno, int p_alumno)
+public void Unrelationer_alumno (int p_controlalumno, string p_alumno)
 {
         try
         {
@@ -309,7 +309,7 @@ public void Unrelationer_alumno (int p_controlalumno, int p_alumno)
                 DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlAlumnoEN = null;
                 controlAlumnoEN = (ControlAlumnoEN)session.Load (typeof(ControlAlumnoEN), p_controlalumno);
 
-                if (controlAlumnoEN.Alumno.Id == p_alumno) {
+                if (controlAlumnoEN.Alumno.Email == p_alumno) {
                         controlAlumnoEN.Alumno = null;
                 }
                 else

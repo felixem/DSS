@@ -6,36 +6,36 @@ namespace DSSGenNHibernate.CAD.Moodle
 {
 public partial interface IProfesorCAD
 {
-ProfesorEN ReadOIDDefault (int id);
+ProfesorEN ReadOIDDefault (string email);
 
-int New_ (ProfesorEN profesor);
+string New_ (ProfesorEN profesor);
 
 void Modify (ProfesorEN profesor);
 
 
-void Destroy (int id);
+void Destroy (string email);
 
 
 System.Collections.Generic.IList<ProfesorEN> ReadAll (int first, int size);
 
 
-ProfesorEN ReadOID (int id);
+ProfesorEN ReadOID (string email);
 
 
-void Relationer_entregas_propuestas (int p_profesor, System.Collections.Generic.IList<int> p_entrega);
+void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega);
 
-void Relationer_materiales (int p_profesor, System.Collections.Generic.IList<int> p_material);
+void Relationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material);
 
-void Relationer_mensajes (int p_profesor, System.Collections.Generic.IList<int> p_mensaje);
+void Relationer_mensajes (string p_profesor, System.Collections.Generic.IList<int> p_mensaje);
 
-void Relationer_tutorias (int p_profesor, System.Collections.Generic.IList<int> p_tutoria);
+void Relationer_tutorias (string p_profesor, System.Collections.Generic.IList<int> p_tutoria);
 
-void Unrelationer_entregas_propuestas (int p_profesor, System.Collections.Generic.IList<int> p_entrega);
+void Unrelationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega);
 
-void Unrelationer_materiales (int p_profesor, System.Collections.Generic.IList<int> p_material);
+void Unrelationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material);
 
-void Unrelationer_mensajes (int p_profesor, System.Collections.Generic.IList<int> p_mensaje);
+void Unrelationer_mensajes (string p_profesor, System.Collections.Generic.IList<int> p_mensaje);
 
-void Unrelationer_tutorias (int p_profesor, System.Collections.Generic.IList<int> p_tutoria);
+void Unrelationer_tutorias (string p_profesor, System.Collections.Generic.IList<int> p_tutoria);
 }
 }

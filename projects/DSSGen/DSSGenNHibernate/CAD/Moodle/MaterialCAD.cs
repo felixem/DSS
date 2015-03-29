@@ -57,7 +57,7 @@ public int New_ (MaterialEN material)
         {
                 SessionInitializeTransaction ();
                 if (material.Profesor != null) {
-                        material.Profesor = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), material.Profesor.Id);
+                        material.Profesor = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), material.Profesor.Email);
 
                         material.Profesor.Materiales.Add (material);
                 }
@@ -240,7 +240,7 @@ public void Relationer_asignatura (int p_material, int p_asignaturaanyo)
         }
 }
 
-public void Relationer_profesor (int p_material, int p_profesor)
+public void Relationer_profesor (int p_material, string p_profesor)
 {
         DSSGenNHibernate.EN.Moodle.MaterialEN materialEN = null;
         try
@@ -302,7 +302,7 @@ public void Unrelationer_asignatura (int p_material, int p_asignaturaanyo)
                 SessionClose ();
         }
 }
-public void Unrelationer_profesor (int p_material, int p_profesor)
+public void Unrelationer_profesor (int p_material, string p_profesor)
 {
         try
         {
@@ -310,7 +310,7 @@ public void Unrelationer_profesor (int p_material, int p_profesor)
                 DSSGenNHibernate.EN.Moodle.MaterialEN materialEN = null;
                 materialEN = (MaterialEN)session.Load (typeof(MaterialEN), p_material);
 
-                if (materialEN.Profesor.Id == p_profesor) {
+                if (materialEN.Profesor.Email == p_profesor) {
                         materialEN.Profesor = null;
                 }
                 else

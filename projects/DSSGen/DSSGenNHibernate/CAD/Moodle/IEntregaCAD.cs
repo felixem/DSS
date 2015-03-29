@@ -26,13 +26,13 @@ void Relationer_entregas_alumno (int p_entrega, System.Collections.Generic.IList
 
 void Relationer_evaluacion (int p_entrega, int p_sistemaevaluacion);
 
-void Relationer_profesor (int p_entrega, int p_profesor);
+void Relationer_profesor (int p_entrega, string p_profesor);
 
 void Unrelationer_entregas_alumno (int p_entrega, System.Collections.Generic.IList<int> p_entregaalumno);
 
 
 void Unrelationer_evaluacion (int p_entrega, int p_sistemaevaluacion);
 
-void Unrelationer_profesor (int p_entrega, int p_profesor);
+void Unrelationer_profesor (int p_entrega, string p_profesor);
 }
 }

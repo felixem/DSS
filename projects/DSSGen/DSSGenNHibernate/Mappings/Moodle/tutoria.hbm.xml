@@ -40,13 +40,13 @@
 			
 		  			
 						<many-to-one name="Profesor" class="DSSGenNHibernate.EN.Moodle.ProfesorEN" >	
-								<column name="[FK_id_profesor]"/>
+								<column name="[FK_email_profesor]"/>
 						</many-to-one>
 											 					
 			
 		  			
 						<many-to-one name="Alumno" class="DSSGenNHibernate.EN.Moodle.AlumnoEN" >	
-								<column name="[FK_id_alumno]"/>
+								<column name="[FK_email_alumno]"/>
 						</many-to-one>
 											 					
 			

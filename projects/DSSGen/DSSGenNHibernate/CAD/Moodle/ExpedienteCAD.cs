@@ -57,7 +57,7 @@ public int New_ (ExpedienteEN expediente)
         {
                 SessionInitializeTransaction ();
                 if (expediente.Alumno != null) {
-                        expediente.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), expediente.Alumno.Id);
+                        expediente.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), expediente.Alumno.Email);
 
                         expediente.Alumno.Expediente = expediente;
                 }
@@ -195,7 +195,7 @@ public ExpedienteEN ReadOID (int id)
         return expedienteEN;
 }
 
-public void Relationer_alumno (int p_expediente, int p_alumno)
+public void Relationer_alumno (int p_expediente, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteEN expedienteEN = null;
         try
@@ -266,7 +266,7 @@ public void Relationer_expedientes_anyo (int p_expediente, System.Collections.Ge
         }
 }
 
-public void Unrelationer_alumno (int p_expediente, int p_alumno)
+public void Unrelationer_alumno (int p_expediente, string p_alumno)
 {
         try
         {
@@ -274,7 +274,7 @@ public void Unrelationer_alumno (int p_expediente, int p_alumno)
                 DSSGenNHibernate.EN.Moodle.ExpedienteEN expedienteEN = null;
                 expedienteEN = (ExpedienteEN)session.Load (typeof(ExpedienteEN), p_expediente);
 
-                if (expedienteEN.Alumno.Id == p_alumno) {
+                if (expedienteEN.Alumno.Email == p_alumno) {
                         expedienteEN.Alumno = null;
                         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), p_alumno);
                         alumnoEN.Expediente = null;

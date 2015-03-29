@@ -22,11 +22,11 @@ System.Collections.Generic.IList<ExpedienteEN> ReadAll (int first, int size);
 ExpedienteEN ReadOID (int id);
 
 
-void Relationer_alumno (int p_expediente, int p_alumno);
+void Relationer_alumno (int p_expediente, string p_alumno);
 
 void Relationer_expedientes_anyo (int p_expediente, System.Collections.Generic.IList<int> p_expedienteanyo);
 
-void Unrelationer_alumno (int p_expediente, int p_alumno);
+void Unrelationer_alumno (int p_expediente, string p_alumno);
 
 void Unrelationer_expedientes_anyo (int p_expediente, System.Collections.Generic.IList<int> p_expedienteanyo);
 }

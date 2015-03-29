@@ -98,7 +98,7 @@ public GrupoTrabajoEN ReadOID (int id)
         return grupoTrabajoEN;
 }
 
-public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<int> p_alumno)
+public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         //Call to GrupoTrabajoCAD
 
@@ -110,7 +110,7 @@ public void Relationer_asignatura (int p_grupotrabajo, int p_asignaturaanyo)
 
         _IGrupoTrabajoCAD.Relationer_asignatura (p_grupotrabajo, p_asignaturaanyo);
 }
-public void Unrelationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<int> p_alumno)
+public void Unrelationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         //Call to GrupoTrabajoCAD
 

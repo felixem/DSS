@@ -32,7 +32,7 @@ public IMaterialCAD get_IMaterialCAD ()
         return this._IMaterialCAD;
 }
 
-public int New_ (string p_nombre, string p_descripcion, string p_ruta, float p_tam, Nullable<DateTime> p_fecha_subida, bool p_visible, int p_profesor, int p_asignatura)
+public int New_ (string p_nombre, string p_descripcion, string p_ruta, float p_tam, Nullable<DateTime> p_fecha_subida, bool p_visible, string p_profesor, int p_asignatura)
 {
         MaterialEN materialEN = null;
         int oid;
@@ -52,9 +52,9 @@ public int New_ (string p_nombre, string p_descripcion, string p_ruta, float p_t
         materialEN.Visible = p_visible;
 
 
-        if (p_profesor != -1) {
+        if (p_profesor != null) {
                 materialEN.Profesor = new DSSGenNHibernate.EN.Moodle.ProfesorEN ();
-                materialEN.Profesor.Id = p_profesor;
+                materialEN.Profesor.Email = p_profesor;
         }
 
 
@@ -113,7 +113,7 @@ public void Relationer_asignatura (int p_material, int p_asignaturaanyo)
 
         _IMaterialCAD.Relationer_asignatura (p_material, p_asignaturaanyo);
 }
-public void Relationer_profesor (int p_material, int p_profesor)
+public void Relationer_profesor (int p_material, string p_profesor)
 {
         //Call to MaterialCAD
 
@@ -125,7 +125,7 @@ public void Unrelationer_asignatura (int p_material, int p_asignaturaanyo)
 
         _IMaterialCAD.Unrelationer_asignatura (p_material, p_asignaturaanyo);
 }
-public void Unrelationer_profesor (int p_material, int p_profesor)
+public void Unrelationer_profesor (int p_material, string p_profesor)
 {
         //Call to MaterialCAD
 

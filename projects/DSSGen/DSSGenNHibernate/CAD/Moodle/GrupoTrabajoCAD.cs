@@ -201,7 +201,7 @@ public GrupoTrabajoEN ReadOID (int id)
         return grupoTrabajoEN;
 }
 
-public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<int> p_alumno)
+public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN grupoTrabajoEN = null;
         try
@@ -213,7 +213,7 @@ public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.I
                         grupoTrabajoEN.Alumnos = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.AlumnoEN>();
                 }
 
-                foreach (int item in p_alumno) {
+                foreach (string item in p_alumno) {
                         alumnosENAux = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
                         alumnosENAux = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), item);
                         alumnosENAux.Grupos_trabajo.Add (grupoTrabajoEN);
@@ -271,7 +271,7 @@ public void Relationer_asignatura (int p_grupotrabajo, int p_asignaturaanyo)
         }
 }
 
-public void Unrelationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<int> p_alumno)
+public void Unrelationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         try
         {
@@ -281,7 +281,7 @@ public void Unrelationer_alumnos (int p_grupotrabajo, System.Collections.Generic
 
                 DSSGenNHibernate.EN.Moodle.AlumnoEN alumnosENAux = null;
                 if (grupoTrabajoEN.Alumnos != null) {
-                        foreach (int item in p_alumno) {
+                        foreach (string item in p_alumno) {
                                 alumnosENAux = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), item);
                                 if (grupoTrabajoEN.Alumnos.Contains (alumnosENAux) == true) {
                                         grupoTrabajoEN.Alumnos.Remove (alumnosENAux);
