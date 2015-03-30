@@ -8,3 +8,4 @@ Fachadas/obj
 Fachadas/bin
 InitializeDB/obj
 InitializeDB/bin
+*.cache
