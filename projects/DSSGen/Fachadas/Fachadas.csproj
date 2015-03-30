@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ComponentesProceso\ComponentesProceso.csproj">
+      <Project>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</Project>
+      <Name>ComponentesProceso</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>DSSGenNHibernate</Name>

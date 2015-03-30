@@ -10,3 +10,5 @@ C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\DSSGenNHi
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\obj\Debug\Fachadas.csprojResolveAssemblyReference.cache
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\obj\Debug\Fachadas.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\obj\Debug\Fachadas.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\ComponentesProceso.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\ComponentesProceso.pdb

@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fachadas", "Fachadas\Fachadas.csproj", "{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentesProceso", "ComponentesProceso\ComponentesProceso.csproj", "{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,16 @@ Global
 		{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

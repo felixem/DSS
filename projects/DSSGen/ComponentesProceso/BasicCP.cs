@@ -5,7 +5,7 @@ using System.Text;
 using NHibernate;
 using DSSGenNHibernate.CAD.Moodle;
 
-namespace CP
+namespace ComponentesProceso
 {
     public class BasicCP
     {
