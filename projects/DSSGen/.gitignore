@@ -1,5 +1,5 @@
-WebApplication2/obj
-WebApplication2/bin
+WebApplication2/obj/*
+WebApplication2/bin/*
 BibliotecaAuxiliar/obj
 BibliotecaAuxiliar/bin
 DSSGenNHibernate/bin
