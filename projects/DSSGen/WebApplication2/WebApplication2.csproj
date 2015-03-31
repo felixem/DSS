@@ -56,6 +56,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Examen\bolsas_preguntas.aspx" />
     <Content Include="Examen\crear_bolsa.aspx" />
+    <Content Include="Examen\crear_pregunta.aspx" />
     <Content Include="Styles\default.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="Examen\crear_bolsa.aspx.designer.cs">
       <DependentUpon>crear_bolsa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\crear_pregunta.aspx.cs">
+      <DependentUpon>crear_pregunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\crear_pregunta.aspx.designer.cs">
+      <DependentUpon>crear_pregunta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

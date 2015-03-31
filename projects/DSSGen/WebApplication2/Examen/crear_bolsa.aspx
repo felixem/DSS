@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="Panel1" runat="server" Height="274px">
+    <asp:Panel ID="Panel1" runat="server" Height="301px">
         <asp:Label ID="Label_Nombre" runat="server" Text="Nombre"></asp:Label>
         <asp:TextBox ID="TextBox_Nombre" runat="server"></asp:TextBox>
         <br />
@@ -24,12 +24,14 @@
                 <asp:ListItem Text="50" Value="50" />
             </asp:DropDownList>
             <hr />
+            <asp:Button ID="ButtonAdd" runat="server" onclick="ButtonAdd_Click" 
+                Text="Añadir Pregunta" />
             <asp:GridView ID="GridViewPreguntas" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Contenido" DataField="Contenido" />
                     <asp:BoundField HeaderText="Explicacion" DataField="Explicacion" />
                     <asp:BoundField HeaderText="Respuesta_correcta" DataField="Respuesta_correcta.Contenido" />
-                    <asp:TemplateField HeaderText="Acción">
+                    <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
                         </ItemTemplate>

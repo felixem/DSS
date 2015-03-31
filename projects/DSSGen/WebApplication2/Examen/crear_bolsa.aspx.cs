@@ -21,12 +21,11 @@ namespace DSSGenNHibernate.Examen
             //Recuperar el estado de la bolsa
             bolsa = BolsaSession.Current;
 
-            //Inicializar los datos de los textbox
-            TextBox_Nombre.Text = bolsa.Nombre;
-            TextBox_Descripcion.Text = bolsa.Descripcion;
-
             if (!IsPostBack)
             {
+                //Inicializar los datos de los textbox
+                TextBox_Nombre.Text = bolsa.Nombre;
+                TextBox_Descripcion.Text = bolsa.Descripcion;
                 this.ObtenerPreguntasPaginadas(1);
             }
         }
@@ -82,6 +81,14 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             string contenido = grdrow.Cells[0].Text;
             Response.Write("<script>window.alert('" + contenido + " " + DateTime.Now + "');</script>");
+        }
+
+        //Añadir pregunta a la lista
+        protected void ButtonAdd_Click(object sender, EventArgs e)
+        {
+            bolsa.Nombre = TextBox_Nombre.Text;
+            bolsa.Descripcion = TextBox_Descripcion.Text;
+            Response.Redirect(Linker.CrearPregunta());
         }
     }
 }

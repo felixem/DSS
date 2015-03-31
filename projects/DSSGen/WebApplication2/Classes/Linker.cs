@@ -25,5 +25,11 @@ namespace Classes
         {
             return "~/Examen/bolsas_preguntas.aspx";
         }
+
+        //Cadena para la página de creación de una pregunta
+        public static string CrearPregunta()
+        {
+            return "~/Examen/crear_pregunta.aspx";
+        }
     }
 }
