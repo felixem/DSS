@@ -17,15 +17,15 @@
                 <asp:ListItem Text="50" Value="50" />
             </asp:DropDownList>
             <hr />
-            <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False" OnRowEditing="GridViewBolsas_RowEditing">
+            <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="Id" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                     <asp:BoundField HeaderText="Asignatura" DataField="Asignatura.Nombre" />
-                    <asp:TemplateField HeaderText="Edit">
+                    <asp:TemplateField HeaderText="Acción">
                         <ItemTemplate>
-                            <asp:LinkButton ID="lnkEdit" runat="server" CommandName="Edit" Text="Edit" />
+                            <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

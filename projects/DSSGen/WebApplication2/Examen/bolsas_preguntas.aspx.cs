@@ -66,12 +66,12 @@ namespace DSSGenNHibernate.Examen
             rptPager.DataBind();
         }
 
-        //Modificación de una fila
-        protected void GridViewBolsas_RowEditing(object sender, GridViewEditEventArgs e)
+        //Manejador del evento para modificar una bolsa de preguntas
+        protected void lnkEditar_Click(object sender, EventArgs e)
         {
-            int index = e.NewEditIndex;
-            String asig = GridViewBolsas.Rows[index].Cells[3].Text;
-            Response.Write("<script>window.alert('" + asig + "');</script>");
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            string bolsaId = grdrow.Cells[0].Text;
+            Response.Write("<script>window.alert('" + bolsaId + "');</script>");
         }
     }
 }
