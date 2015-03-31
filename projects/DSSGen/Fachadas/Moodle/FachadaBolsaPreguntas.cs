@@ -34,7 +34,7 @@ namespace Fachadas.Moodle
         }
 
         //Vincular a un grid view las bolsas de preguntas con paginación
-        public System.Collections.Generic.IList<BolsaPreguntasEN> VincularDameTodos(GridView grid, int first, int size, out long numBases)
+        public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
 
@@ -60,8 +60,6 @@ namespace Fachadas.Moodle
             {
                 SessionClose();
             }
-
-            return lista;
         }
 
         //Modificar una bolsa de preguntas

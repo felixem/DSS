@@ -16,7 +16,7 @@ namespace WebApplication2.Account
             if (!Page.IsPostBack)
             {
                 //Devolver a la página principal si ya se está logueado
-                if (MySession.Current.isLoged())
+                if (MySession.Current.IsLoged())
                 {
                     Response.Redirect(Linker.Default());
                     return;
@@ -35,7 +35,7 @@ namespace WebApplication2.Account
             try
             {
                 MySession sesion = MySession.Current;
-                Authenticated = sesion.login(LoginUser.UserName, LoginUser.Password);
+                Authenticated = sesion.Login(LoginUser.UserName, LoginUser.Password);
             }
             catch (Exception excep)
             {

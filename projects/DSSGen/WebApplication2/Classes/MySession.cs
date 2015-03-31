@@ -34,7 +34,7 @@ namespace Classes
         }
 
         //Obtener una sesión haciendo login
-        public bool login(String user, String pass)
+        public bool Login(String user, String pass)
         {
             //Llamar a la fachada de login para intentar actualizar la sesión con el login
             Object usuario = null;
@@ -60,25 +60,25 @@ namespace Classes
         }
 
         //Comprobar si está logueado
-        public bool isLoged()
+        public bool IsLoged()
         {
             return Usuario != null;
         }
 
         //Comprobar si es un alumno
-        public bool isAlumno()
+        public bool IsAlumno()
         {
             return Usuario.GetType() == typeof(AlumnoEN);
         }
 
         //Comprobar si es un profesor
-        public bool isProfesor()
+        public bool IsProfesor()
         {
             return Usuario.GetType() == typeof(ProfesorEN);
         }
 
         //Comprobar si es un admin
-        public bool isAdministrador()
+        public bool IsAdministrador()
         {
             return Usuario.GetType() == typeof(AdministradorEN);
         }
@@ -86,5 +86,6 @@ namespace Classes
         // Propiedades de sesión
         public Object Usuario { get; set; }
         public DateTime? Fecha_login { get; set; }
+
     }
 }

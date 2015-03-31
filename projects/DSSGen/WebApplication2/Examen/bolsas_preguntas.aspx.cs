@@ -71,7 +71,7 @@ namespace DSSGenNHibernate.Examen
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             string bolsaId = grdrow.Cells[0].Text;
-            Response.Write("<script>window.alert('" + bolsaId + "');</script>");
+            Response.Write("<script>window.alert('" + bolsaId + " " + DateTime.Now + "');</script>");
         }
     }
 }

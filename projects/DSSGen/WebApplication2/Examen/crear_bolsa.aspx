@@ -16,24 +16,32 @@
         </asp:DropDownList>
         <br />
         <br />
-        <asp:GridView ID="GridViewPreguntas" runat="server" AutoGenerateColumns="False">
-            <Columns>
-                <asp:BoundField HeaderText="Id" DataField="Id" />
-                <asp:BoundField HeaderText="Contenido" DataField="Contenido" />
-                <asp:BoundField HeaderText="Explicacion" DataField="Explicacion" />
-                <asp:BoundField HeaderText="Respuesta_correcta" DataField="Respuesta_correcta.Contenido" />
-                <asp:TemplateField HeaderText="Acción">
-                    <ItemTemplate>
-                        <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-        <asp:Repeater ID="rptPager" runat="server">
-            <ItemTemplate>
-                <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
-                    Enabled='<%# Eval("Enabled") %>' OnClick="Page_Changed"></asp:LinkButton>
-            </ItemTemplate>
-        </asp:Repeater>
+        <div>
+            PageSize:
+            <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
+                <asp:ListItem Text="10" Value="10" />
+                <asp:ListItem Text="25" Value="25" />
+                <asp:ListItem Text="50" Value="50" />
+            </asp:DropDownList>
+            <hr />
+            <asp:GridView ID="GridViewPreguntas" runat="server" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField HeaderText="Contenido" DataField="Contenido" />
+                    <asp:BoundField HeaderText="Explicacion" DataField="Explicacion" />
+                    <asp:BoundField HeaderText="Respuesta_correcta" DataField="Respuesta_correcta.Contenido" />
+                    <asp:TemplateField HeaderText="Acción">
+                        <ItemTemplate>
+                            <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <asp:Repeater ID="rptPager" runat="server">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
+                        Enabled='<%# Eval("Enabled") %>' OnClick="Page_Changed"></asp:LinkButton>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
     </asp:Panel>
 </asp:Content>
