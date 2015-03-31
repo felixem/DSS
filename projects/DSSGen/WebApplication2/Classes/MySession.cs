@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using DSSGenNHibernate.EN.Moodle;
+using Fachadas.Moodle;
 
 namespace Classes
 {
@@ -39,7 +40,8 @@ namespace Classes
             Object usuario = null;
             try
             {
-                usuario = Fachadas.Moodle.FachadaLogin.login(user, pass);
+                FachadaLogin fachada = new FachadaLogin();
+                usuario = fachada.Login(user, pass);
             }
             //Relanzar excepciones producidas
             catch (Exception ex)

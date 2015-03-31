@@ -5,14 +5,23 @@ using System.Text;
 
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using NHibernate;
+
+using System.Web.UI.WebControls;
 
 namespace Fachadas.Moodle
 {
     //Clase de fachada para la bolsa de preguntas
-    public class FachadaBolsaPreguntas
+    public class FachadaBolsaPreguntas : BasicFachada
     {
+        //Constructor
+        public FachadaBolsaPreguntas() : base() { }
+
+        //Constructor con sesión
+        public FachadaBolsaPreguntas(ISession sesion) : base(sesion) { }
+
         //Método para la creación de una bolsa de preguntas
-        public static int crearBolsa(String p_nombre, String p_descripcion, int asignatura_id)
+        public int CrearBolsa(String p_nombre, String p_descripcion, int asignatura_id)
         {
             BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
             BolsaPreguntasEN bolsaEn = new BolsaPreguntasEN();
@@ -24,19 +33,39 @@ namespace Fachadas.Moodle
             return id;
         }
 
-        //Obtener todas las bases paginadas
-        public static System.Collections.Generic.IList<BolsaPreguntasEN> dameTodos(int first, int size, out long numBases)
+        //Vincular a un grid view las bolsas de preguntas con paginación
+        public System.Collections.Generic.IList<BolsaPreguntasEN> VincularDameTodos(GridView grid, int first, int size, out long numBases)
         {
-            ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP();
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
 
-            lista = bolsaCP.dameTodosConTotal(first, size, out numBases);
+            try
+            {
+                SessionInitializeTransaction();
+                //Obtener bolsa de preguntas
+                ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP(session);
+                lista = bolsaCP.dameTodosConTotal(first, size, out numBases);
+                //Vincular con el grid view
+                grid.DataSource = lista;
+                grid.DataBind();
+
+                SessionCommit();
+            }
+
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                SessionClose();
+            }
 
             return lista;
         }
 
         //Modificar una bolsa de preguntas
-        public static void modificarBolsa(int p_oid, string p_nombre, string p_descripcion,
+        public void ModificarBolsa(int p_oid, string p_nombre, string p_descripcion,
             Nullable<DateTime> p_fecha_creacion)
         {
             BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN();
@@ -46,7 +75,7 @@ namespace Fachadas.Moodle
         }
 
         //Borrar una bolsa de preguntas
-        public static void borrarBolsa(int p_oid)
+        public void BorrarBolsa(int p_oid)
         {
             BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN();
             bolsa.Destroy(p_oid);

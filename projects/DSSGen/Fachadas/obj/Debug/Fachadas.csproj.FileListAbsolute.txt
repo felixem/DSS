@@ -12,3 +12,9 @@ C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\obj\Debug\Fachadas.
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\obj\Debug\Fachadas.pdb
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\ComponentesProceso.dll
 C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\ComponentesProceso.pdb
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\Castle.DynamicProxy2.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\LinFu.DynamicProxy.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\NHibernate.ByteCode.Castle.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\NHibernate.ByteCode.LinFu.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\nunit.core.dll
+C:\Users\Felix\Documents\GitHub\DSS\projects\DSSGen\Fachadas\bin\Debug\nunit.framework.dll

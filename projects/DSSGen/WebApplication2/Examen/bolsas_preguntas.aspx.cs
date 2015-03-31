@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using Fachadas.Moodle;
+
 namespace DSSGenNHibernate.Examen
 {
     public partial class bases : System.Web.UI.Page
@@ -30,9 +32,9 @@ namespace DSSGenNHibernate.Examen
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            GridView1.DataSource = Fachadas.Moodle.FachadaBolsaPreguntas.
-                dameTodos((pageIndex-1)*pageSize, pageSize,out numObjetos);
-            GridView1.DataBind();
+            //Vincular el grid con la lista de bolsas paginada
+            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -62,6 +64,14 @@ namespace DSSGenNHibernate.Examen
             }
             rptPager.DataSource = pages;
             rptPager.DataBind();
+        }
+
+        //Modificación de una fila
+        protected void GridViewBolsas_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            int index = e.NewEditIndex;
+            String asig = GridViewBolsas.Rows[index].Cells[3].Text;
+            Response.Write("<script>window.alert('" + asig + "');</script>");
         }
     }
 }
