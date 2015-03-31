@@ -23,6 +23,8 @@
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                     <asp:BoundField HeaderText="Asignatura" DataField="Asignatura.Nombre" />
+                    <asp:BoundField HeaderText="Fecha de Creación" DataField="Fecha_creacion" />
+                    <asp:BoundField HeaderText="Última Modificación" DataField="Fecha_modificacion" />
                     <asp:TemplateField HeaderText="Acción">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>

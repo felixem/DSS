@@ -21,7 +21,7 @@ namespace Classes
         }
 
         //Cadena para la página de bolsas de preguntas
-        public static string BolsasPreguntas()
+        public static string BolsaPreguntas()
         {
             return "~/Examen/bolsas_preguntas.aspx";
         }
