@@ -61,5 +61,6 @@
 		  </class>
 		  
 		  <query name="BolsaPreguntasENReadAllHQL">from BolsaPreguntasEN</query>
+		  <query name="BolsaPreguntasENreadCantidadHQL"><![CDATA[select count(*) FROM BolsaPreguntasEN]]></query>
 		</hibernate-mapping>
 	

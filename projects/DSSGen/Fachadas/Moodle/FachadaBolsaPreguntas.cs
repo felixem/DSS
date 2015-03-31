@@ -24,19 +24,13 @@ namespace Fachadas.Moodle
             return id;
         }
 
-        //Obtener el número de bolsas de preguntas
-        public int totalBolsas()
+        //Obtener todas las bases paginadas
+        public static System.Collections.Generic.IList<BolsaPreguntasEN> dameTodos(int first, int size, out long numBases)
         {
-
-        }
-
-        //Obtener todas las bases
-        public static System.Collections.Generic.IList<BolsaPreguntasEN> dameTodos(int first, int size)
-        {
+            ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP();
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
 
-            BolsaPreguntasCEN bolsaCEN = new BolsaPreguntasCEN();
-            lista = bolsaCEN.ReadAll(first, size);
+            lista = bolsaCP.dameTodosConTotal(first, size, out numBases);
 
             return lista;
         }

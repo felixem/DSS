@@ -772,6 +772,8 @@ ConceptualModel moodle
 			public destroy::Destroy (p_oid : OID -> BolsaPreguntas) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->BolsaPreguntas>;
 			public readOID::ReadOID (p_oid : OID -> BolsaPreguntas) : Object -> BolsaPreguntas;
+			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM BolsaPreguntasEN" };
+			
 			public relationer_asignatura::Relationer->asignatura_bolsapreguntas.asignatura (p_bolsapreguntas : OID -> BolsaPreguntas, p_asignatura : OID -> Asignatura) : Void;
 			public relationer_controles::Relationer->control_bolsapreguntas.controles (p_bolsapreguntas : OID -> BolsaPreguntas, p_control : List<OID -> Control>) : Void;
 			public relationer_preguntas::Relationer->bolsapreguntas_preguntas.preguntas (p_bolsapreguntas : OID -> BolsaPreguntas, p_pregunta : List<OID -> Pregunta>) : Void;

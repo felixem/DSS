@@ -95,6 +95,10 @@ public BolsaPreguntasEN ReadOID (int id)
         return bolsaPreguntasEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IBolsaPreguntasCAD.ReadCantidad ();
+}
 public void Relationer_asignatura (int p_bolsapreguntas, int p_asignatura)
 {
         //Call to BolsaPreguntasCAD

@@ -198,6 +198,37 @@ public BolsaPreguntasEN ReadOID (int id)
         return bolsaPreguntasEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM BolsaPreguntasEN self where select count(*) FROM BolsaPreguntasEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("BolsaPreguntasENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in BolsaPreguntasCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignatura (int p_bolsapreguntas, int p_asignatura)
 {
         DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN bolsaPreguntasEN = null;

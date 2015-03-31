@@ -77,42 +77,6 @@ public static void InitializeData ()
         /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
         try
         {
-                /*List<DSSGenNHibernate.EN.Mediaplayer.MusicTrackEN> musicTracks = new List<DSSGenNHibernate.EN.Mediaplayer.MusicTrackEN>();
-                 * DSSGenNHibernate.EN.Mediaplayer.UserEN userEN = new DSSGenNHibernate.EN.Mediaplayer.UserEN();
-                 * DSSGenNHibernate.EN.Mediaplayer.ArtistEN artistEN = new DSSGenNHibernate.EN.Mediaplayer.ArtistEN();
-                 * DSSGenNHibernate.EN.Mediaplayer.MusicTrackEN musicTrackEN = new DSSGenNHibernate.EN.Mediaplayer.MusicTrackEN();
-                 * DSSGenNHibernate.CEN.Mediaplayer.ArtistCEN artistCEN = new DSSGenNHibernate.CEN.Mediaplayer.ArtistCEN();
-                 * DSSGenNHibernate.CEN.Mediaplayer.UserCEN userCEN = new DSSGenNHibernate.CEN.Mediaplayer.UserCEN();
-                 * DSSGenNHibernate.CEN.Mediaplayer.MusicTrackCEN musicTrackCEN = new DSSGenNHibernate.CEN.Mediaplayer.MusicTrackCEN();
-                 * DSSGenNHibernate.CEN.Mediaplayer.PlayListCEN playListCEN = new DSSGenNHibernate.CEN.Mediaplayer.PlayListCEN();
-                 *
-                 *              //Add Users
-                 * userEN.Email = "user@user.com";
-                 * userEN.Name = "user";
-                 * userEN.Surname = "userSurname";
-                 * userEN.Password = "user";
-                 * userCEN.New_(userEN.Name, userEN.Surname, userEN.Email, userEN.Password);
-                 *
-                 * //Add Music Track1
-                 * musicTrackEN.Id = "http://www2.b3ta.com/mp3/Beer Beer Beer (YOB mix).mp3";
-                 * musicTrackEN.Format = "mp3";
-                 * musicTrackEN.Lyrics = "Beer Beer Beer Beer Beer Beer ..";
-                 * musicTrackEN.Name = "Beer Beer Beer";
-                 * musicTrackEN.Company = "Company";
-                 * musicTrackEN.Cover = "http://www.tomasabraham.com.ar/cajadig/2007/images/nro18-2/beer1.jpg";
-                 * musicTrackEN.Price = 20;
-                 * musicTrackEN.Rating = 5;
-                 * musicTrackEN.CommunityRating = 5;
-                 * musicTrackEN.Duration = 200;
-                 * musicTrackCEN.New_(musicTrackEN.Id, musicTrackEN.Format, musicTrackEN.Lyrics, musicTrackEN.Name,
-                 *  musicTrackEN.Company, musicTrackEN.Cover, musicTrackEN.CommunityRating, musicTrackEN.Rating,
-                 *  musicTrackEN.Price, musicTrackEN.Duration);
-                 * musicTracks.Add(musicTrackEN);
-                 * musicTrackCEN.AsignUser(musicTrackEN.Id,userEN.Email);
-                 *
-                 * //Define Album
-                 * //DSSGenNHibernate.CEN.Mediaplayer.AlbumCEN albumCEN = new DSSGenNHibernate.CEN.Mediaplayer.AlbumCEN();
-                 * //albumCEN.New_("Album 1", "This is a Album 1", artists, musicTracks);*/
             AlumnoEN usuario = new AlumnoEN();
             usuario.Cod_alumno=1;
             usuario.Baneado = false;
@@ -125,6 +89,23 @@ public static void InitializeData ()
             AlumnoCEN aluCen = new AlumnoCEN();
             aluCen.New_(usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
                 usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, new ExpedienteEN());
+
+            AsignaturaEN asignatura = new AsignaturaEN();
+            AsignaturaCEN asigCen = new AsignaturaCEN();
+            asignatura.Cod_asignatura = 1;
+            asignatura.Nombre = "Asignatura One";
+            asignatura.Descripcion = "Asignatura de prueba";
+            asignatura.Optativa = false;
+            asignatura.Vigente = true;
+            int asig = asigCen.New_(asignatura.Cod_asignatura,asignatura.Nombre,asignatura.Descripcion,asignatura.Optativa,asignatura.Vigente);
+
+            BolsaPreguntasEN bolsa = new BolsaPreguntasEN();
+            BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
+            bolsa.Nombre = "Bolsita";
+            bolsa.Descripcion = "Bolsa de prueba";
+            bolsa.Fecha_creacion = DateTime.Now;
+            bolsa.Fecha_modificacion = DateTime.Now;
+            bolsaCen.New_(bolsa.Nombre, bolsa.Descripcion, bolsa.Fecha_creacion, bolsa.Fecha_modificacion, asig);
 
                 /*PROTECTED REGION END*/
         }

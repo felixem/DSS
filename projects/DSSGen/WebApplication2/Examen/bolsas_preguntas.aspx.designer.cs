@@ -40,6 +40,15 @@ namespace DSSGenNHibernate.Examen {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
+        /// ddlPageSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -49,12 +58,12 @@ namespace DSSGenNHibernate.Examen {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// DataSourceBases control.
+        /// rptPager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource DataSourceBases;
+        protected global::System.Web.UI.WebControls.Repeater rptPager;
     }
 }
