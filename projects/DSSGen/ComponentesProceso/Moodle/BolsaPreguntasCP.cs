@@ -8,6 +8,7 @@ using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Excepciones;
 using System.Web.UI.WebControls;
+using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
 {
@@ -20,17 +21,15 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public BolsaPreguntasCP(ISession sesion) : base(sesion) { }
 
-        //Vincular un GridView al resultado de la consulta paginada de dameTodos
-        public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
+        //Vincular GridView al resultado de la consulta especificada
+        public void VincularDameTodos(IDameTodosBolsaPreguntas consulta, GridView grid, int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
             try
             {
                 SessionInitializeTransaction();
-                //Indicar que no se finalice la transacción al llamar a otro método del CP
-                sessionStarted = false;
-                lista = DameTodosConTotal(first, size, out numBases);
-                sessionStarted = true;
+                //Ejecutar la consulta recibida 
+                lista = consulta.Execute(session,first, size, out numBases);
 
                 SessionCommit();
             }
@@ -47,37 +46,6 @@ namespace ComponentesProceso.Moodle
                 //Cerrar sesión
                 SessionClose();
             }
-        }
-
-        //Devolver una consulta paginada de dameTodos junto con la cantidad total de bolsas contenidas
-        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosConTotal(int first, int size, out long total)
-        {
-            System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-
-                BolsaPreguntasCAD cad= new BolsaPreguntasCAD(session);
-                BolsaPreguntasCEN bolsa= new BolsaPreguntasCEN(cad);
-
-                lista = bolsa.ReadAll(first, size);
-                total = bolsa.ReadCantidad();
-
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                SessionClose();
-            }
-
-            //Devolver lista
-            return lista;
         }
     }
 }

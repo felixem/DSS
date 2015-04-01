@@ -73,6 +73,8 @@
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
     <Compile Include="Moodle\BolsaPreguntasCP.cs" />
+    <Compile Include="Moodle\Commands\DameTodosBolsaPreguntas.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\LoginCP.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

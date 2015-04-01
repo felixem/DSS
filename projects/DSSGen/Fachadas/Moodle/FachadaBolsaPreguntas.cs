@@ -5,6 +5,7 @@ using System.Text;
 
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using ComponentesProceso.Moodle.Commands;
 using NHibernate;
 
 using System.Web.UI.WebControls;
@@ -32,7 +33,8 @@ namespace Fachadas.Moodle
         {
             //Obtener bolsa de preguntas y enlazar sus datos con el gridview
             ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP();
-            bolsaCP.VincularDameTodos(grid,first, size, out numBases);
+            IDameTodosBolsaPreguntas consulta = new DameTodosBolsaPreguntas();
+            bolsaCP.VincularDameTodos(consulta,grid,first, size, out numBases);
         }
 
         //Modificar una bolsa de preguntas
