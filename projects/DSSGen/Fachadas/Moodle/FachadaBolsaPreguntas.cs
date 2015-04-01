@@ -12,14 +12,8 @@ using System.Web.UI.WebControls;
 namespace Fachadas.Moodle
 {
     //Clase de fachada para la bolsa de preguntas
-    public class FachadaBolsaPreguntas : BasicFachada
+    public class FachadaBolsaPreguntas
     {
-        //Constructor
-        public FachadaBolsaPreguntas() : base() { }
-
-        //Constructor con sesión
-        public FachadaBolsaPreguntas(ISession sesion) : base(sesion) { }
-
         //Método para la creación de una bolsa de preguntas
         public int CrearBolsa(String p_nombre, String p_descripcion, int asignatura_id)
         {
@@ -36,30 +30,9 @@ namespace Fachadas.Moodle
         //Vincular a un grid view las bolsas de preguntas con paginación
         public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
         {
-            System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                //Obtener bolsa de preguntas
-                ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP(session);
-                lista = bolsaCP.dameTodosConTotal(first, size, out numBases);
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
-
-                SessionCommit();
-            }
-
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                SessionClose();
-            }
+            //Obtener bolsa de preguntas y enlazar sus datos con el gridview
+            ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP();
+            bolsaCP.VincularDameTodos(grid,first, size, out numBases);
         }
 
         //Modificar una bolsa de preguntas

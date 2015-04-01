@@ -75,7 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicFachada.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
     <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />

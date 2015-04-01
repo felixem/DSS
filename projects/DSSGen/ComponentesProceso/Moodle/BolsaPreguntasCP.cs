@@ -7,6 +7,7 @@ using DSSGenNHibernate.CAD.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Excepciones;
+using System.Web.UI.WebControls;
 
 namespace ComponentesProceso.Moodle
 {
@@ -19,8 +20,37 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public BolsaPreguntasCP(ISession sesion) : base(sesion) { }
 
+        //Vincular un GridView al resultado de la consulta paginada de dameTodos
+        public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
+        {
+            System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Indicar que no se finalice la transacción al llamar a otro método del CP
+                sessionStarted = false;
+                lista = DameTodosConTotal(first, size, out numBases);
+                sessionStarted = true;
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Vincular con el grid view
+                grid.DataSource = lista;
+                grid.DataBind();
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
         //Devolver una consulta paginada de dameTodos junto con la cantidad total de bolsas contenidas
-        public System.Collections.Generic.IList<BolsaPreguntasEN> dameTodosConTotal(int first, int size, out long total)
+        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosConTotal(int first, int size, out long total)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
 
