@@ -81,6 +81,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BindingComponents\BindingComponents.csproj">
+      <Project>{D648E41C-8C30-4D8D-BC41-75626A941DC5}</Project>
+      <Name>BindingComponents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ComponentesProceso\ComponentesProceso.csproj">
       <Project>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</Project>
       <Name>ComponentesProceso</Name>

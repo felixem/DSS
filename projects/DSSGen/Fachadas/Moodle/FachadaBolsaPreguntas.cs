@@ -32,9 +32,9 @@ namespace Fachadas.Moodle
         public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
         {
             //Obtener bolsa de preguntas y enlazar sus datos con el gridview
-            ComponentesProceso.Moodle.BolsaPreguntasCP bolsaCP = new ComponentesProceso.Moodle.BolsaPreguntasCP();
+            BindingComponents.Moodle.BolsaPreguntasBinding bolsaBind = new BindingComponents.Moodle.BolsaPreguntasBinding();
             IDameTodosBolsaPreguntas consulta = new DameTodosBolsaPreguntas();
-            bolsaCP.VincularDameTodos(consulta,grid,first, size, out numBases);
+            bolsaBind.VincularDameTodos(consulta,grid,first, size, out numBases);
         }
 
         //Modificar una bolsa de preguntas

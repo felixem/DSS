@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fachadas", "Fachadas\Fachad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentesProceso", "ComponentesProceso\ComponentesProceso.csproj", "{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingComponents", "BindingComponents\BindingComponents.csproj", "{D648E41C-8C30-4D8D-BC41-75626A941DC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,16 @@ Global
 		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}.Release|x86.ActiveCfg = Release|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

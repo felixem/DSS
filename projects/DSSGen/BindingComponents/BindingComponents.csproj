@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</ProjectGuid>
+    <ProjectGuid>{D648E41C-8C30-4D8D-BC41-75626A941DC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ComponentesProceso</RootNamespace>
-    <AssemblyName>ComponentesProceso</AssemblyName>
+    <RootNamespace>BindingComponents</RootNamespace>
+    <AssemblyName>BindingComponents</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -63,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,23 +71,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicCP.cs" />
-    <Compile Include="Moodle\BolsaPreguntasCP.cs" />
-    <Compile Include="Moodle\Commands\DameTodosBolsaPreguntas.cs" />
-    <Compile Include="Moodle\Commands\DameTodosAsignatura.cs" />
-    <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
-    <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />
-    <Compile Include="Moodle\LoginCP.cs" />
-    <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
+    <Compile Include="BasicBinding.cs" />
+    <Compile Include="Moodle\BolsaPreguntasBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ComponentesProceso\ComponentesProceso.csproj">
+      <Project>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</Project>
+      <Name>ComponentesProceso</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>DSSGenNHibernate</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -14,7 +14,7 @@ namespace ComponentesProceso.Moodle.Commands
     public class DameTodosBolsaPreguntas : IDameTodosBolsaPreguntas
     {
         //Ejecutar el método
-        public System.Collections.Generic.IList<BolsaPreguntasEN> Execute(ISession session, int first, int size, out long total)
+        public System.Collections.Generic.IList<BolsaPreguntasEN> Execute(ISession session, int first, int size)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
 
@@ -23,10 +23,19 @@ namespace ComponentesProceso.Moodle.Commands
 
             //Programar las lecturas
             lista = bolsa.ReadAll(first, size);
-            total = bolsa.ReadCantidad();
 
             //Devolver lista
             return lista;
         }
+
+        //Devolver la cantidad de objetos que cumplen las condiciones de la consulta sin rangos
+        public long Total(ISession session)
+        {
+            BolsaPreguntasCAD cad = new BolsaPreguntasCAD(session);
+            BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN(cad);
+
+            return bolsa.ReadCantidad();
+        }
+
     }
 }

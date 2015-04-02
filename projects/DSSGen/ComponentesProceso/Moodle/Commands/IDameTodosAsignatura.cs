@@ -8,13 +8,13 @@ using NHibernate;
 
 namespace ComponentesProceso.Moodle.Commands
 {
-    //Interfaz utilizada para representar métodos que devuelven todas las bolsas de preguntas a partir
+    //Interfaz utilizada para representar métodos que devuelven todas las asignaturas a partir
     //de un índice, un tamaño y devuelve la cantidad de filas totales resultado de la consulta
-    public interface IDameTodosBolsaPreguntas
+    public interface IDameTodosAsignatura
     {
         //Ejecutar el método
-        System.Collections.Generic.IList<BolsaPreguntasEN> Execute(ISession session, int first, int size);
-        //Saber la cantidad de objetos existentes que cumplen las condiciones de la consulta sin rango
+        System.Collections.Generic.IList<AsignaturaEN> Execute(ISession session, int first, int size);
+        //Total de objectos que cumplen la condición de la consulta
         long Total(ISession session);
     }
 }

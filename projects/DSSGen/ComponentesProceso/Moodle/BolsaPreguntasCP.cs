@@ -7,7 +7,6 @@ using DSSGenNHibernate.CAD.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Excepciones;
-using System.Web.UI.WebControls;
 using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
@@ -21,15 +20,17 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public BolsaPreguntasCP(ISession sesion) : base(sesion) { }
 
-        //Vincular GridView al resultado de la consulta especificada
-        public void VincularDameTodos(IDameTodosBolsaPreguntas consulta, GridView grid, int first, int size, out long numBases)
+        //Deolver el resultado de la consulta especificada devolviendo la cantidad de bolsas que satisfacen la consulta
+        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosTotal(IDameTodosBolsaPreguntas consulta, 
+            int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
             try
             {
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
-                lista = consulta.Execute(session,first, size, out numBases);
+                lista = consulta.Execute(session,first, size);
+                numBases = consulta.Total(session);
 
                 SessionCommit();
             }
@@ -40,12 +41,11 @@ namespace ComponentesProceso.Moodle
             }
             finally
             {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
                 //Cerrar sesión
                 SessionClose();
             }
+
+            return lista;
         }
     }
 }
