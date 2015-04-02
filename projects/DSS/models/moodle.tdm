@@ -213,6 +213,7 @@ ConceptualModel moodle
 			public destroy::Destroy (p_oid : OID -> Asignatura) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Asignatura>;
 			public readOID::ReadOID (p_oid : OID -> Asignatura) : Object -> Asignatura;
+			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AsignaturaEN" };
 			public relationer_asignaturas_anyo::Relationer->asignatura_asignaturaanyo.asignaturas_anyo (p_asignatura : OID -> Asignatura, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
 			public relationer_bolsas_preguntas::Relationer->asignatura_bolsapreguntas.bolsas_preguntas (p_asignatura : OID -> Asignatura, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
 			public relationer_curso::Relationer->asignatura_curso.curso (p_asignatura : OID -> Asignatura, p_curso : OID -> Curso) : Void;

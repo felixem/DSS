@@ -78,6 +78,7 @@
     <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />
     <Compile Include="Moodle\LoginCP.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
+    <Compile Include="Moodle\AsignaturaCP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

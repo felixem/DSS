@@ -12,7 +12,8 @@
         <asp:TextBox ID="TextBox_Descripcion" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura"></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="DropDownList_Asignaturas" runat="server" 
+            onselectedindexchanged="DropDownList_Asignaturas_SelectedIndexChanged">
         </asp:DropDownList>
         <br />
         <br />

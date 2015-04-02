@@ -10,13 +10,13 @@ using ComponentesProceso.Moodle.Commands;
 namespace ComponentesProceso.Moodle
 {
     //Componente de proceso para la pregunta
-    public class PreguntaCP : BasicCP
+    public class AsignaturaCP : BasicCP
     {
         //Constructor
-        public PreguntaCP() : base() { }
+        public AsignaturaCP() : base() { }
 
         //Constructor con sesión
-        public PreguntaCP(ISession sesion) : base(sesion) { }
+        public AsignaturaCP(ISession sesion) : base(sesion) { }
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de bolsas que satisfacen la consulta
         public System.Collections.Generic.IList<AsignaturaEN> DameTodosTotal(IDameTodosAsignatura consulta,

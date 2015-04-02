@@ -31,7 +31,10 @@ namespace ComponentesProceso.Moodle.Commands
         //Total de objetos afectados por la consulta
         public long Total(ISession session)
         {
-            throw new Exception("Not yet implemented");
+            AsignaturaCAD cad = new AsignaturaCAD(session);
+            AsignaturaCEN asignatura = new AsignaturaCEN(cad);
+
+            return asignatura.ReadCantidad();
         }
     }
 }

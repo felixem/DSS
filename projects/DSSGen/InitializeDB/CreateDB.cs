@@ -99,6 +99,15 @@ public static void InitializeData ()
             asignatura.Vigente = true;
             int asig = asigCen.New_(asignatura.Cod_asignatura,asignatura.Nombre,asignatura.Descripcion,asignatura.Optativa,asignatura.Vigente);
 
+            asignatura = new AsignaturaEN();
+            asigCen = new AsignaturaCEN();
+            asignatura.Cod_asignatura = 1;
+            asignatura.Nombre = "Asignatura Dos";
+            asignatura.Descripcion = "Asignatura Dos de prueba";
+            asignatura.Optativa = false;
+            asignatura.Vigente = true;
+            asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
+
             BolsaPreguntasEN bolsa = new BolsaPreguntasEN();
             BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
             bolsa.Nombre = "Bolsita";

@@ -27,7 +27,27 @@ namespace DSSGenNHibernate.Examen
                 TextBox_Nombre.Text = bolsa.Nombre;
                 TextBox_Descripcion.Text = bolsa.Descripcion;
                 this.ObtenerPreguntasPaginadas(1);
+                this.ObtenerAsignaturas();
+                this.SeleccionarAsignatura();
             }
+        }
+
+        //Obtener las asignaturas
+        protected void ObtenerAsignaturas()
+        {
+            FachadaAsignatura fachada = new FachadaAsignatura();
+            fachada.VincularDameTodos(DropDownList_Asignaturas);
+        }
+
+        //Establecer asignatura elegida
+        protected void SeleccionarAsignatura()
+        {
+            //Seleccionar la asignatura de la bolsa
+            ListItem selectedListItem = DropDownList_Asignaturas.Items.FindByValue(bolsa.Asignatura.ToString());
+            if (selectedListItem != null)
+            {
+                selectedListItem.Selected = true;
+            };
         }
 
         //Manejador al cambiar el tamaño de página
@@ -75,20 +95,35 @@ namespace DSSGenNHibernate.Examen
             rptPager.DataBind();
         }
 
+        //Salvar el estado actual del menú de propiedades de la bolsa
+        private void SalvarMenu()
+        {
+            bolsa.Nombre = TextBox_Nombre.Text;
+            bolsa.Descripcion = TextBox_Descripcion.Text;
+            bolsa.Asignatura = Int32.Parse(DropDownList_Asignaturas.SelectedItem.Value);
+        }
+
         //Manejador del evento para modificar una pregunta
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
+
+            SalvarMenu();
             Response.Redirect(Linker.ModificarPregunta(id));
         }
 
-        //Añadir pregunta a la lista
+        //Manejador para añadir pregunta a la lista
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
-            bolsa.Nombre = TextBox_Nombre.Text;
-            bolsa.Descripcion = TextBox_Descripcion.Text;
+            SalvarMenu();
             Response.Redirect(Linker.CrearPregunta());
+        }
+
+        //Manejador cuando cambie la selección en el drop down list
+        protected void DropDownList_Asignaturas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

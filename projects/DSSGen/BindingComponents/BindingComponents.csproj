@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="BasicBinding.cs" />
     <Compile Include="Moodle\BolsaPreguntasBinding.cs" />
+    <Compile Include="Moodle\AsignaturaBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

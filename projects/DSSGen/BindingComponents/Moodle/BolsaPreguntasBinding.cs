@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ComponentesProceso.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
+using NHibernate;
 
 
 namespace BindingComponents.Moodle
@@ -14,6 +15,9 @@ namespace BindingComponents.Moodle
     //Clase utilizada para vincular datos a vistas sobre bolsas de preguntas
     public class BolsaPreguntasBinding : BasicBinding
     {
+        public BolsaPreguntasBinding() : base() { }
+        public BolsaPreguntasBinding(ISession sesion) : base(sesion) { }
+
         //Vincular GridView al resultado de la consulta especificada devolviendo la cantidad de bolsas existentes
         public void VincularDameTodos(IDameTodosBolsaPreguntas consulta, GridView grid, int first, int size, out long numBases)
         {
