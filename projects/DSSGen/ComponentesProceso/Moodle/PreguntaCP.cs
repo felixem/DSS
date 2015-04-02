@@ -2,34 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using NHibernate;
-using DSSGenNHibernate.CAD.Moodle;
-using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
-using ComponentesProceso.Excepciones;
 using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
 {
-    //Componente de proceso para la base de preguntas
-    public class BolsaPreguntasCP : BasicCP
+    //Componente de proceso para la pregunta
+    public class PreguntaCP : BasicCP
     {
         //Constructor
-        public BolsaPreguntasCP() : base() { }
+        public PreguntaCP() : base() { }
 
         //Constructor con sesión
-        public BolsaPreguntasCP(ISession sesion) : base(sesion) { }
+        public PreguntaCP(ISession sesion) : base(sesion) { }
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de bolsas que satisfacen la consulta
-        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosTotal(IDameTodosBolsaPreguntas consulta, 
+        public System.Collections.Generic.IList<AsignaturaEN> DameTodosTotal(IDameTodosAsignatura consulta,
             int first, int size, out long numBases)
         {
-            System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
+            System.Collections.Generic.IList<AsignaturaEN> lista = null;
             try
             {
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
-                lista = consulta.Execute(session,first, size);
+                lista = consulta.Execute(session, first, size);
                 numBases = consulta.Total(session);
 
                 SessionCommit();
