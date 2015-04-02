@@ -79,8 +79,8 @@ namespace DSSGenNHibernate.Examen
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            string contenido = grdrow.Cells[0].Text;
-            Response.Write("<script>window.alert('" + contenido + " " + DateTime.Now + "');</script>");
+            int id = Int32.Parse(grdrow.Cells[0].Text);
+            Response.Redirect(Linker.ModificarPregunta(id));
         }
 
         //Añadir pregunta a la lista
