@@ -69,8 +69,8 @@ namespace Classes
         public void AddPregunta(String enunciado, List<String> respuestas, int correcta, String explicacion)
         {
             //Construir la pregunta
-            PreguntaEN pregunta = ConstruirPregunta(enunciado,respuestas,correcta,explicacion);
-            pregunta.Id = bolsa.Preguntas.Count;
+            int id = bolsa.Preguntas.Count;
+            PreguntaEN pregunta = ConstruirPregunta(id, enunciado,respuestas,correcta,explicacion);
             //Añadirla a la bolsa
             bolsa.Preguntas.Add(pregunta);
         }
@@ -79,14 +79,15 @@ namespace Classes
         public void ModificarPregunta(int id, String enunciado, List<String> respuestas, int correcta, String explicacion)
         {
             //Modificar la pregunta
-            bolsa.Preguntas[id] = ConstruirPregunta(enunciado, respuestas, correcta, explicacion);
+            bolsa.Preguntas[id] = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
         }
 
         //Método privado para construir una pregunta
-        private PreguntaEN ConstruirPregunta(String enunciado, List<String> respuestas, int correcta, String explicacion)
+        private PreguntaEN ConstruirPregunta(int id, String enunciado, List<String> respuestas, int correcta, String explicacion)
         {
             //Construir la pregunta
             PreguntaEN pregunta = new PreguntaEN();
+            pregunta.Id = id;
             pregunta.Contenido = enunciado;
             pregunta.Explicacion = explicacion;
             pregunta.Respuestas = new List<RespuestaEN>();
@@ -146,16 +147,40 @@ namespace Classes
             return respuesta.Id;
         }
 
+        //Obtener un rango de preguntas
+        public System.Collections.Generic.IList<PreguntaEN> DamePreguntas(int first, int size, out long numPreguntas)
+        {
+            System.Collections.Generic.IList<PreguntaEN> lista = new List<PreguntaEN>();
+            numPreguntas = Preguntas.Count;
+
+            //Precondiciones
+            if(first < 0 || first >=bolsa.Preguntas.Count || size <=0)
+                return lista;
+
+            int x = 0;
+            int index = first;
+
+            //Construir la lista
+            while(index < bolsa.Preguntas.Count && x < size)
+            {
+                lista.Add(bolsa.Preguntas[index]);
+                x++;
+                index++;
+            }
+
+            return lista;
+        }
+
         //Inyectar dentro del GridView el contenido de las preguntas
         public void VincularDamePreguntas(GridView grid, int first, int size, out long numPreguntas)
         {
             System.Collections.Generic.IList<PreguntaEN> lista = null;
             //Obtener las preguntas
-            lista = Preguntas;
-            numPreguntas = lista.Count();
+            lista = DamePreguntas(first, size, out numPreguntas);
             //Vincular con el grid view
             grid.DataSource = lista;
             grid.DataBind();
         }
+        
     }
 }

@@ -58,7 +58,7 @@
             ErrorMessage="Error: Se requiere elegir como correcta una de las opciones" 
             ValidationGroup="ValidarSeleccion"></asp:RequiredFieldValidator>
         <br />
-        <asp:Button ID="Button_Crear" runat="server" OnClick="Button_Crear_Click" 
+        <asp:Button ID="Button_Crear" runat="server" OnClick="Button_Gestionar_Click" 
             Text="Crear Pregunta" ValidationGroup="ValidarSeleccion" />
         <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Cancelar" />
         <br />

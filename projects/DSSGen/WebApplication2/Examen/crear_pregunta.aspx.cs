@@ -15,27 +15,28 @@ namespace DSSGenNHibernate.Examen
         private BolsaSession bolsa;
         private int id;
         private Boolean modificar;
+        String param;
 
         //Comprobar si se plantea operación de modificación
         protected void Comprobar_Modo()
         {
-            String param = Request.QueryString["id"];
+            param = Request.QueryString["id"];
             //No hacer nada más si no se ha recibido un parámetro
             if (param == null)
                 modificar = false;
             else
+            {
+                id = Int32.Parse(param);
                 modificar = true;
+            }
         }
 
         //Comprobar parámetros
         protected void Procesar_Parametros()
         {
-            String param = Request.QueryString["id"];
             //No hacer nada más si no se ha recibido un parámetro
             if (param == null)
                 return;
-            //Obtener id de la pregunta
-            id = Int32.Parse(param);
             //Comprobar que la id es correcta y recuperar los datos
             if (id >= 0 && id < bolsa.Preguntas.Count)
                 Inicializar_Datos();
@@ -63,6 +64,7 @@ namespace DSSGenNHibernate.Examen
             bolsa = BolsaSession.Current;
             Comprobar_Modo();
 
+            //Actualizar los formularios sólo si no es postback
             if (!IsPostBack)
             {
                 Button_Crear.Text = "Crear Pregunta";
@@ -71,7 +73,7 @@ namespace DSSGenNHibernate.Examen
         }
 
         //Confirmar la creación o modificación de la pregunta
-        protected void Button_Crear_Click(object sender, EventArgs e)
+        protected void Button_Gestionar_Click(object sender, EventArgs e)
         {
             List<String> respuestas = new List<String>();
 
@@ -103,7 +105,7 @@ namespace DSSGenNHibernate.Examen
         //Cancelar la creación de la respuesta
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(Linker.CrearBolsa());
         }
     }
 }
