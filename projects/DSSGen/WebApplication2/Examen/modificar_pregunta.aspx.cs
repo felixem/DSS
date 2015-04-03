@@ -20,7 +20,7 @@ namespace DSSGenNHibernate.Examen
         //Comprobar si se plantea operación de modificación
         protected void Comprobar_Modo()
         {
-            param = Request.QueryString["id"];
+            param = Request.QueryString[PageParameters.MainParameter];
             //No hacer nada más si no se ha recibido un parámetro
             if (param == null)
                 modificar = false;
@@ -42,7 +42,7 @@ namespace DSSGenNHibernate.Examen
                 Inicializar_Datos();
             //Redireccionar a la propia página sin parámetros en caso de fallo
             else
-                Response.Redirect(Linker.CrearPregunta());
+                throw new Exception("Página no encontrada");
         }
 
         //Inicializar los datos de los textboxes
@@ -66,6 +66,10 @@ namespace DSSGenNHibernate.Examen
             //Actualizar los formularios sólo si no es postback
             if (!IsPostBack)
             {
+                //Capturar la página que realizó la petición
+                NavigationSession navegacion = NavigationSession.Current;
+                navegacion.SavePreviuosPage(Request);
+
                 if(modificar)
                     Procesar_Parametros();
             }
@@ -97,14 +101,17 @@ namespace DSSGenNHibernate.Examen
                 //Añadir a la bolsa de preguntas provisional
                 bolsa.AddPregunta(enunciado, respuestas, idCorrecta, explicacion);
 
-            //Redirigir a la página de creación de bolsa
-            Response.Redirect(Linker.CrearBolsa());
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.PreviousPage());
         }
 
         //Cancelar la creación de la respuesta
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Linker.CrearBolsa());
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.PreviousPage());
         }
     }
 }

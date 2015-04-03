@@ -83,6 +83,8 @@
     <Compile Include="WebUtilities\BolsaSession.cs" />
     <Compile Include="WebUtilities\Linker.cs" />
     <Compile Include="WebUtilities\MySession.cs" />
+    <Compile Include="WebUtilities\NavigationSession.cs" />
+    <Compile Include="WebUtilities\PageParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BindingComponents\BindingComponents.csproj">

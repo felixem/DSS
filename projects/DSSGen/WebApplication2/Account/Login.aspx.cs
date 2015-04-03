@@ -18,7 +18,8 @@ namespace WebApplication2.Account
                 //Devolver a la página principal si ya se está logueado
                 if (MySession.Current.IsLoged())
                 {
-                    Response.Redirect(Linker.Default());
+                    Linker link = new Linker(false);
+                    link.Redirect(Response,link.Default());
                     return;
                 }
 
@@ -57,7 +58,8 @@ namespace WebApplication2.Account
         //Una vez logueado, entrar en la página principal
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
         {
-            Response.Redirect(Linker.Default());
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.Default());
         }
     }
 }

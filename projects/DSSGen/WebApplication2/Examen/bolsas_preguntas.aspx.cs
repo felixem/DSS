@@ -70,7 +70,8 @@ namespace DSSGenNHibernate.Examen
         //Manejador para la creación de una nueva bolsa de preguntas
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Linker.CrearBolsa());
+            Linker link = new Linker(true);
+            link.Redirect(Response,link.CrearBolsa());
         }
 
         //Manejador del evento para modificar una bolsa de preguntas
@@ -78,7 +79,8 @@ namespace DSSGenNHibernate.Examen
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             string bolsaId = grdrow.Cells[0].Text;
-            Response.Redirect(Linker.ModificarBolsa(Int32.Parse(bolsaId)));
+            Linker link = new Linker(true);
+            link.Redirect(Response,link.ModificarBolsa(Int32.Parse(bolsaId)));
         }
 
         //Manejador del evento para modificar una bolsa de preguntas

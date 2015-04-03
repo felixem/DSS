@@ -22,7 +22,7 @@ namespace DSSGenNHibernate.Examen
         //Comprobar si se plantea operación de modificación
         protected void Comprobar_Modo()
         {
-            param = Request.QueryString["id"];
+            param = Request.QueryString[PageParameters.MainParameter];
             //No hacer nada más si no se ha recibido un parámetro
             if (param == null)
                 modificar = false;
@@ -48,12 +48,14 @@ namespace DSSGenNHibernate.Examen
             if (bolsita != null)
             {
                 //Actualizar sólo en caso de que no se estuviese modificando previamente
-                if(!(bolsa.Bolsa).Equals(bolsita))
+                if (!(bolsa.Bolsa).Equals(bolsita))
                     bolsa.Bolsa = bolsita;
             }
             //Redireccionar a la propia página sin parámetros en caso de fallo
             else
-                Response.Redirect(Linker.CrearBolsa());
+            {
+                throw new Exception("Page not found");
+            }
         }
 
         //Manejador al cargar la página
@@ -66,6 +68,10 @@ namespace DSSGenNHibernate.Examen
 
             if (!IsPostBack)
             {
+                //Capturar la página que realizó la petición
+                NavigationSession navegacion = NavigationSession.Current;
+                navegacion.SavePreviuosPage(Request);
+                //Procesar parámetros de modificación
                 Procesar_Parametros();
                 //Inicializar los datos de los textbox
                 TextBox_Nombre.Text = bolsa.Nombre;
@@ -153,7 +159,8 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
-            Response.Redirect(Linker.ModificarPregunta(id));
+            Linker link = new Linker(true);
+            link.Redirect(Response,link.ModificarPregunta(id));
         }
 
         //Manejador del evento para modificar una bolsa de preguntas
@@ -162,7 +169,6 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
-            Response.Redirect(Linker.ModificarPregunta(id));
             throw new Exception("Not yet implemented");
         }
 
@@ -170,14 +176,16 @@ namespace DSSGenNHibernate.Examen
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             SalvarMenu();
-            Response.Redirect(Linker.CrearPregunta());
+            Linker link = new Linker(true);
+            link.Redirect(Response,link.CrearPregunta());
         }
 
         //Manejador para cancelar la creación de una bolsa de preguntas
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
             bolsa.Clear();
-            Response.Redirect(Linker.ListadoBolsaPreguntas());
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.PreviousPage());
         }
 
         //Manejador para hacer persistente la creación de una bolsa de preguntas
@@ -187,7 +195,8 @@ namespace DSSGenNHibernate.Examen
             FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
             fachada.CrearBolsa(bolsa);
             bolsa.Clear();
-            Response.Redirect(Linker.ListadoBolsaPreguntas());
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.PreviousPage());
         }
 
         //Manejador cuando cambie la selección en el drop down list

@@ -24,6 +24,10 @@ namespace DSSGenNHibernate.Examen
 
             if (!IsPostBack)
             {
+                //Capturar la página que realizó la petición
+                NavigationSession navegacion = NavigationSession.Current;
+                navegacion.SavePreviuosPage(Request);
+
                 //Inicializar los datos de los textbox
                 TextBox_Nombre.Text = bolsa.Nombre;
                 TextBox_Descripcion.Text = bolsa.Descripcion;
@@ -110,7 +114,8 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
-            Response.Redirect(Linker.ModificarPregunta(id));
+            Linker link = new Linker(true);
+            link.Redirect(Response,link.ModificarPregunta(id));
         }
 
         //Manejador del evento para modificar una bolsa de preguntas
@@ -119,7 +124,6 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
-            Response.Redirect(Linker.ModificarPregunta(id));
             throw new Exception("Not yet implemented");
         }
 
@@ -127,14 +131,16 @@ namespace DSSGenNHibernate.Examen
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             SalvarMenu();
-            Response.Redirect(Linker.CrearPregunta());
+            Linker link = new Linker(true);
+            link.Redirect(Response,link.CrearPregunta());
         }
 
         //Manejador para cancelar la creación de una bolsa de preguntas
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
             bolsa.Clear();
-            Response.Redirect(Linker.ListadoBolsaPreguntas());
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.PreviousPage());
         }
 
         //Manejador para hacer persistente la creación de una bolsa de preguntas
@@ -144,7 +150,8 @@ namespace DSSGenNHibernate.Examen
             FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
             fachada.CrearBolsa(bolsa);
             bolsa.Clear();
-            Response.Redirect(Linker.ListadoBolsaPreguntas());
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.PreviousPage());
         }
 
         //Manejador cuando cambie la selección en el drop down list
