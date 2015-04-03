@@ -1,7 +1,12 @@
+projects/DSSGen/DSSGenNHibernate.suo
 projects/DSSGen/DSSGenNHibernate/bin
 projects/DSSGen/DSSGenNHibernate/obj
 projects/DSSGen/Fachadas/obj
+projects/DSSGen/Fachadas/bin
 projects/DSSGen/InitializeDB/obj
 projects/DSSGen/WebApplication2/obj
+projects/DSSGen/WebApplication2/bin
+projects/DSSGen/ComponentesProceso/bin
+projects/DSSGen/ComponentesProceso/obj
 */bin
 */obj

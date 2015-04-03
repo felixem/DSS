@@ -24,13 +24,13 @@
                 <asp:ListItem Text="50" Value="50" />
             </asp:DropDownList>
             <hr />
-            <asp:Button ID="ButtonAdd" runat="server" onclick="ButtonAdd_Click" 
-                Text="Añadir Pregunta" />
+            <asp:Button ID="ButtonAdd" runat="server" OnClick="ButtonAdd_Click" Text="Añadir Pregunta" />
             <asp:GridView ID="GridViewPreguntas" runat="server" AutoGenerateColumns="False">
                 <Columns>
+                    <asp:BoundField HeaderText="Id" DataField="Id" />
                     <asp:BoundField HeaderText="Contenido" DataField="Contenido" />
-                    <asp:BoundField HeaderText="Explicacion" DataField="Explicacion" />
-                    <asp:BoundField HeaderText="Respuesta_correcta" DataField="Respuesta_correcta.Contenido" />
+                    <asp:BoundField HeaderText="Respuesta correcta" DataField="Respuesta_correcta.Contenido" />
+                    <asp:BoundField HeaderText="Explicación" DataField="Explicacion" />
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>

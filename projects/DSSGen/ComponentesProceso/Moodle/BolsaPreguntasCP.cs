@@ -7,6 +7,7 @@ using DSSGenNHibernate.CAD.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Excepciones;
+using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
 {
@@ -19,20 +20,17 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public BolsaPreguntasCP(ISession sesion) : base(sesion) { }
 
-        //Devolver una consulta paginada de dameTodos junto con la cantidad total de bolsas contenidas
-        public System.Collections.Generic.IList<BolsaPreguntasEN> dameTodosConTotal(int first, int size, out long total)
+        //Deolver el resultado de la consulta especificada devolviendo la cantidad de bolsas que satisfacen la consulta
+        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosTotal(IDameTodosBolsaPreguntas consulta, 
+            int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
-
             try
             {
                 SessionInitializeTransaction();
-
-                BolsaPreguntasCAD cad= new BolsaPreguntasCAD(session);
-                BolsaPreguntasCEN bolsa= new BolsaPreguntasCEN(cad);
-
-                lista = bolsa.ReadAll(first, size);
-                total = bolsa.ReadCantidad();
+                //Ejecutar la consulta recibida 
+                lista = consulta.Execute(session,first, size);
+                numBases = consulta.Total(session);
 
                 SessionCommit();
             }
@@ -43,10 +41,10 @@ namespace ComponentesProceso.Moodle
             }
             finally
             {
+                //Cerrar sesión
                 SessionClose();
             }
 
-            //Devolver lista
             return lista;
         }
     }

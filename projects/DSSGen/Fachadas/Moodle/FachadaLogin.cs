@@ -10,14 +10,8 @@ using NHibernate;
 namespace Fachadas.Moodle
 {
     //Clase utilizada para abstraer el proceso de login sobre distintos roles
-    public class FachadaLogin : BasicFachada
+    public class FachadaLogin
     {
-        //Constructor
-        public FachadaLogin() : base() { }
-
-        //Constructor con sesión
-        public FachadaLogin(ISession sesion) : base(sesion) { }
-
         //Método login que devuelve una referencia a un objeto que contendrá un profesor, alumno o admin
         public Object Login(String user, String pass)
         {

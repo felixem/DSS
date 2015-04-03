@@ -33,6 +33,11 @@
 		<p><a href="http://www.freecsstemplates.org/">Design by Free CSS Templates</a></p>
 	</div>
 	<div id="menu">
+        <div class="user">
+            <asp:Image ID="user_image" CssClass="user_logged_image" runat="server"/>
+            <asp:Label runat="server" CssClass="user_logged_text" Text="UserDefault"/>
+            <asp:Button runat="server" CssClass="user_logged_button" Text="Desloguear"/>
+        </div>
 		<ul>
 			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">Blog</a></li>
@@ -44,7 +49,11 @@
 </div>
 <hr>
 <!-- end header -->
-<asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+<div id="wrapper">
+	<div id="page">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+    </div>
+</div>
 <!-- start footer -->
 <div id="wrapper2">
 	<div id="footer">
