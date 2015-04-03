@@ -6,7 +6,7 @@ using System.Web;
 using DSSGenNHibernate.EN.Moodle;
 using System.Web.UI.WebControls;
 
-namespace Classes
+namespace Fachadas.WebUtilities
 {
     //Clase utilizada para almacenar provisionalmente la construcción de una bolsa de preguntas
     public class BolsaSession
@@ -109,6 +109,12 @@ namespace Classes
         public void RemovePregunta(int index)
         {
             bolsa.Preguntas.RemoveAt(index);
+
+            //Actualizar el índice de las preguntas restantes
+            for (int i = index; i < bolsa.Preguntas.Count; i++)
+            {
+                bolsa.Preguntas[i].Id = i;
+            }
         }
 
         //Borrar la lista de preguntas

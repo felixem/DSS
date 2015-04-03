@@ -5,8 +5,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Panel ID="Panel1" runat="server" Height="301px">
+        <asp:ValidationSummary ID="ValidationSummaryBolsa" runat="server" 
+            ShowMessageBox="True" ShowSummary="False" ValidationGroup="GroupBolsa" />
         <asp:Label ID="Label_Nombre" runat="server" Text="Nombre"></asp:Label>
-        <asp:TextBox ID="TextBox_Nombre" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Nombre" runat="server" ValidationGroup="GroupBolsa"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator_Nombre" runat="server" 
+            ControlToValidate="TextBox_Nombre" ErrorMessage="Se requiere un nombre" 
+            ValidationGroup="GroupBolsa">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="Label_Descripcion" runat="server" Text="Descripcion"></asp:Label>
         <asp:TextBox ID="TextBox_Descripcion" runat="server"></asp:TextBox>
@@ -15,6 +20,9 @@
         <asp:DropDownList ID="DropDownList_Asignaturas" runat="server" 
             onselectedindexchanged="DropDownList_Asignaturas_SelectedIndexChanged">
         </asp:DropDownList>
+        <br />
+        <asp:Button ID="Button_Guardar" runat="server" Text="Guardar bolsa" 
+            ValidationGroup="GroupBolsa" OnClick = "Button_Guardar_Click" />
         <br />
         <br />
         <div>

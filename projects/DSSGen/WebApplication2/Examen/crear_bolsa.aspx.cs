@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Fachadas.Moodle;
-using Classes;
+using Fachadas.WebUtilities;
 
 namespace DSSGenNHibernate.Examen
 {
@@ -118,6 +118,12 @@ namespace DSSGenNHibernate.Examen
         {
             SalvarMenu();
             Response.Redirect(Linker.CrearPregunta());
+        }
+
+        //Manejador para hacer persistente la creación de una bolsa de preguntas
+        protected void Button_Guardar_Click(object sender, EventArgs e)
+        {
+
         }
 
         //Manejador cuando cambie la selección en el drop down list

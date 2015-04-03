@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Classes
+namespace Fachadas.WebUtilities
 {
     //Clase utilizada para generar cadenas de url para redirección
     public class Linker

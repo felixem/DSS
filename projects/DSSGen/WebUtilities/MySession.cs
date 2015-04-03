@@ -6,7 +6,7 @@ using System.Web;
 using DSSGenNHibernate.EN.Moodle;
 using Fachadas.Moodle;
 
-namespace Classes
+namespace WebUtilities
 {
     public class MySession
     {

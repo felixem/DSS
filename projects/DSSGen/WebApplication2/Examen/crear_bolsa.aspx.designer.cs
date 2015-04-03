@@ -22,6 +22,15 @@ namespace DSSGenNHibernate.Examen {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// ValidationSummaryBolsa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummaryBolsa;
+        
+        /// <summary>
         /// Label_Nombre control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace DSSGenNHibernate.Examen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Nombre;
+        
+        /// <summary>
+        /// RequiredFieldValidator_Nombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Nombre;
         
         /// <summary>
         /// Label_Descripcion control.
@@ -74,6 +92,15 @@ namespace DSSGenNHibernate.Examen {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_Asignaturas;
+        
+        /// <summary>
+        /// Button_Guardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Guardar;
         
         /// <summary>
         /// ddlPageSize control.

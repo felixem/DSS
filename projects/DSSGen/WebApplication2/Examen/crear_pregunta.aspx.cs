@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Classes;
+using Fachadas.WebUtilities;
 
 using DSSGenNHibernate.EN.Moodle;
 
@@ -48,7 +48,6 @@ namespace DSSGenNHibernate.Examen
         //Inicializar los datos de los textboxes
         protected void Inicializar_Datos()
         {
-            Button_Crear.Text = "Modificar pregunta";
             TextBox_Enunciado.Text = bolsa.EnunciadoPregunta(id);
             TextBox_Explicacion.Text = bolsa.ExplicacionPregunta(id);
             TextBox_Opcion1.Text = bolsa.ContenidoRespuesta(id, 0);
@@ -67,13 +66,12 @@ namespace DSSGenNHibernate.Examen
             //Actualizar los formularios sólo si no es postback
             if (!IsPostBack)
             {
-                Button_Crear.Text = "Crear Pregunta";
                 Procesar_Parametros();
             }
         }
 
         //Confirmar la creación o modificación de la pregunta
-        protected void Button_Gestionar_Click(object sender, EventArgs e)
+        protected void Button_Guardar_Click(object sender, EventArgs e)
         {
             List<String> respuestas = new List<String>();
 

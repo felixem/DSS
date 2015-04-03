@@ -80,6 +80,9 @@
     <Compile Include="Moodle\FachadaLogin.cs" />
     <Compile Include="Moodle\FachadaAsignatura.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebUtilities\BolsaSession.cs" />
+    <Compile Include="WebUtilities\Linker.cs" />
+    <Compile Include="WebUtilities\MySession.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BindingComponents\BindingComponents.csproj">

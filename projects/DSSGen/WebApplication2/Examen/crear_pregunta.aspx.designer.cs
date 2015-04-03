@@ -220,13 +220,13 @@ namespace DSSGenNHibernate.Examen {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorRadioButton;
         
         /// <summary>
-        /// Button_Crear control.
+        /// Button_Guardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Crear;
+        protected global::System.Web.UI.WebControls.Button Button_Guardar;
         
         /// <summary>
         /// Button_Cancelar control.

@@ -9,23 +9,17 @@ using ComponentesProceso.Moodle.Commands;
 using NHibernate;
 
 using System.Web.UI.WebControls;
+using Fachadas.WebUtilities;
 
 namespace Fachadas.Moodle
 {
     //Clase de fachada para la bolsa de preguntas
     public class FachadaBolsaPreguntas
     {
-        //Método para la creación de una bolsa de preguntas
-        public int CrearBolsa(String p_nombre, String p_descripcion, int asignatura_id)
+        //Método para la creación de una bolsa de preguntas a partir de una sesión de bolsa
+        public int CrearBolsa(BolsaSession bolsa)
         {
-            BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
-            BolsaPreguntasEN bolsaEn = new BolsaPreguntasEN();
-
-            //Llamar al método de creación
-            int id = bolsaCen.New_(p_nombre, p_descripcion,
-                DateTime.Now, DateTime.Now, asignatura_id);
-
-            return id;
+            return -1;
         }
 
         //Vincular a un grid view las bolsas de preguntas con paginación
