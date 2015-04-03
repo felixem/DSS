@@ -21,7 +21,7 @@ namespace Fachadas.WebUtilities
         }
 
         //Cadena para la página de bolsas de preguntas
-        public static string BolsaPreguntas()
+        public static string ListadoBolsaPreguntas()
         {
             return "~/Examen/bolsas_preguntas.aspx";
         }

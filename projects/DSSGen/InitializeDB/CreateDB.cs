@@ -108,14 +108,6 @@ public static void InitializeData ()
             asignatura.Vigente = true;
             asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
 
-            BolsaPreguntasEN bolsa = new BolsaPreguntasEN();
-            BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
-            bolsa.Nombre = "Bolsita";
-            bolsa.Descripcion = "Bolsa de prueba";
-            bolsa.Fecha_creacion = DateTime.Now;
-            bolsa.Fecha_modificacion = DateTime.Now;
-            bolsaCen.New_(bolsa.Nombre, bolsa.Descripcion, bolsa.Fecha_creacion, bolsa.Fecha_modificacion, asig);
-
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)

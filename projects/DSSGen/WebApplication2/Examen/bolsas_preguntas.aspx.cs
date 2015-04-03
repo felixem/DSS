@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Fachadas.Moodle;
+using Fachadas.WebUtilities;
 
 namespace DSSGenNHibernate.Examen
 {
@@ -66,12 +67,28 @@ namespace DSSGenNHibernate.Examen
             rptPager.DataBind();
         }
 
+        //Manejador para la creación de una nueva bolsa de preguntas
+        protected void Button_Crear_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Linker.CrearBolsa());
+        }
+
         //Manejador del evento para modificar una bolsa de preguntas
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             string bolsaId = grdrow.Cells[0].Text;
-            Response.Write("<script>window.alert('" + bolsaId + " " + DateTime.Now + "');</script>");
+            throw new Exception("Not yet implemented");
         }
+
+        //Manejador del evento para modificar una bolsa de preguntas
+        protected void lnkEliminar_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            string bolsaId = grdrow.Cells[0].Text;
+            throw new Exception("Not yet implemented");
+        }
+
+
     }
 }

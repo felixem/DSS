@@ -108,9 +108,18 @@ namespace DSSGenNHibernate.Examen
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
-
             SalvarMenu();
             Response.Redirect(Linker.ModificarPregunta(id));
+        }
+
+        //Manejador del evento para modificar una bolsa de preguntas
+        protected void lnkEliminar_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int id = Int32.Parse(grdrow.Cells[0].Text);
+            SalvarMenu();
+            Response.Redirect(Linker.ModificarPregunta(id));
+            throw new Exception("Not yet implemented");
         }
 
         //Manejador para añadir pregunta a la lista
@@ -123,7 +132,11 @@ namespace DSSGenNHibernate.Examen
         //Manejador para hacer persistente la creación de una bolsa de preguntas
         protected void Button_Guardar_Click(object sender, EventArgs e)
         {
-
+            SalvarMenu();
+            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            fachada.CrearBolsa(bolsa);
+            bolsa.Clear();
+            Response.Redirect(Linker.ListadoBolsaPreguntas());
         }
 
         //Manejador cuando cambie la selección en el drop down list

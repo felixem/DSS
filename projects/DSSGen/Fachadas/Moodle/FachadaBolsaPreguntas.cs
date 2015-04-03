@@ -10,6 +10,7 @@ using NHibernate;
 
 using System.Web.UI.WebControls;
 using Fachadas.WebUtilities;
+using ComponentesProceso.Moodle;
 
 namespace Fachadas.Moodle
 {
@@ -19,7 +20,13 @@ namespace Fachadas.Moodle
         //Método para la creación de una bolsa de preguntas a partir de una sesión de bolsa
         public int CrearBolsa(BolsaSession bolsa)
         {
-            return -1;
+            int asignatura = bolsa.Asignatura;
+            String descripcion = bolsa.Descripcion;
+            String nombre = bolsa.Nombre;
+            IList<PreguntaEN> preguntas = bolsa.Preguntas;
+
+            BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
+            return bolsaCP.CrearBolsa(nombre, descripcion, DateTime.Now, DateTime.Now, asignatura, preguntas);
         }
 
         //Vincular a un grid view las bolsas de preguntas con paginación

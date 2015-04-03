@@ -17,6 +17,7 @@
                 <asp:ListItem Text="50" Value="50" />
             </asp:DropDownList>
             <hr />
+            <asp:Button ID="Button_Crear" runat="server" Text="Crear bolsa" OnClick="Button_Crear_Click" />
             <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="Id" />
@@ -25,9 +26,10 @@
                     <asp:BoundField HeaderText="Asignatura" DataField="Asignatura.Nombre" />
                     <asp:BoundField HeaderText="Fecha de Creación" DataField="Fecha_creacion" />
                     <asp:BoundField HeaderText="Última Modificación" DataField="Fecha_modificacion" />
-                    <asp:TemplateField HeaderText="Acción">
+                    <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="lnkEliminar" OnClick="lnkEliminar_Click">Eliminar</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

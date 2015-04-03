@@ -22,6 +22,16 @@ namespace Fachadas.WebUtilities
             bolsa.Preguntas = new List<PreguntaEN>();
         }
 
+        //Limpiar bolsa
+        public void Clear()
+        {
+            bolsa.Asignatura = new AsignaturaEN();
+            bolsa.Asignatura.Id = -1;
+            bolsa.Preguntas.Clear();
+            bolsa.Nombre = "";
+            bolsa.Descripcion = "";
+        }
+
         //Obtener la bolsa de sesión actual
         public static BolsaSession Current
         {

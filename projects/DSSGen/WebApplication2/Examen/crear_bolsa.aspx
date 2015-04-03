@@ -23,6 +23,7 @@
         <br />
         <asp:Button ID="Button_Guardar" runat="server" Text="Guardar bolsa" 
             ValidationGroup="GroupBolsa" OnClick = "Button_Guardar_Click" />
+        <asp:Button ID="Button_Cancelar" runat="server" Text="Cancelar" />
         <br />
         <br />
         <div>
@@ -40,9 +41,10 @@
                     <asp:BoundField HeaderText="Contenido" DataField="Contenido" />
                     <asp:BoundField HeaderText="Respuesta correcta" DataField="Respuesta_correcta.Contenido" />
                     <asp:BoundField HeaderText="Explicación" DataField="Explicacion" />
-                    <asp:TemplateField>
+                    <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="lnkEliminar" OnClick="lnkEliminar_Click">Eliminar</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

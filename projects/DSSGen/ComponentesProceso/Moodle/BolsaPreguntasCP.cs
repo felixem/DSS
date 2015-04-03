@@ -47,5 +47,61 @@ namespace ComponentesProceso.Moodle
 
             return lista;
         }
+
+        //Crear bolsa de preguntas con el conjunto de preguntas y respuestas
+        public int CrearBolsa(String nombre, String descripcion, DateTime? fecha_creacion, 
+            DateTime? fecha_modificacion, int asignatura, IList<PreguntaEN> preguntas)
+        {
+            int idBolsa = -1; 
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Crear bolsa
+                BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
+                BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
+                idBolsa = bolsaCen.New_(nombre, descripcion, fecha_creacion, fecha_modificacion, asignatura);
+
+                //Crear preguntas
+                PreguntaCAD preguntaCad = new PreguntaCAD(session);
+                PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+                foreach (PreguntaEN preg in preguntas)
+                {
+                    //Crear pregunta
+                    int idPreg = preguntaCen.New_(preg.Contenido, preg.Explicacion, idBolsa);
+                    int idRespCorrecta=-1;
+
+                    //Crear respuestas
+                    foreach (RespuestaEN resp in preg.Respuestas)
+                    {
+                        RespuestaCAD resCad = new RespuestaCAD(session);
+                        RespuestaCEN resCen = new RespuestaCEN(resCad);
+                        int idRes = resCen.New_(resp.Contenido, idPreg);
+                        //Establecer el id de la respuesta correcta si lo fuese
+                        if(resp.Id.Equals(preg.Respuesta_correcta.Id))
+                            idRespCorrecta = idRes;
+                    }
+
+                    //Establecer una relación entre una pregunta y su respuesta correcta
+                    preguntaCen.Relationer_respuesta_correcta(idPreg, idRespCorrecta);
+
+                    //Realizar un update automático en la sesion
+                    session.Flush();
+                }
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                SessionClose();
+            }
+
+            return idBolsa;
+        }
     }
 }
