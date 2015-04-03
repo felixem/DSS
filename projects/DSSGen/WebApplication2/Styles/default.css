@@ -114,10 +114,48 @@ hr {
 	color: #182C33;
 }
 
+#menu .user
+{
+    margin-top: 40px;
+    float: left;
+    width: 200px;
+    height: 70px;
+}
+
+.user_logged_button
+{
+    margin-top: 10px;
+}
+
+.user_logged_image
+{
+    margin-right:10px;
+    float:left;
+    display: inline;
+    height: 70px;
+    width: 70px;
+}
+
+.user_logged_text
+{
+    margin-top:10px;
+    float:left;
+    color: Black;
+    font-weight:bolder;
+    font-style:oblique;
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #menu a:hover, .active a {
 }
 
 /* Page */
+
+.MainContent
+{
+    background: #EBEAD1;
+}
 
 #wrapper {
 	background: #EBEAD1 url(images/img02.jpg) repeat-x left bottom;
