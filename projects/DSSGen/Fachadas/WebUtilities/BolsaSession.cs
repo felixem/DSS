@@ -22,16 +22,6 @@ namespace Fachadas.WebUtilities
             bolsa.Preguntas = new List<PreguntaEN>();
         }
 
-        //Limpiar bolsa
-        public void Clear()
-        {
-            bolsa.Asignatura = new AsignaturaEN();
-            bolsa.Asignatura.Id = -1;
-            bolsa.Preguntas.Clear();
-            bolsa.Nombre = "";
-            bolsa.Descripcion = "";
-        }
-
         //Obtener la bolsa de sesión actual
         public static BolsaSession Current
         {
@@ -49,6 +39,12 @@ namespace Fachadas.WebUtilities
         }
 
         //Propiedades que interesan en la creación provisional de la bolsa de preguntas
+        public virtual BolsaPreguntasEN Bolsa
+        {
+            get { return bolsa; }
+            set { bolsa = value; }
+        }
+
         public virtual string Nombre
         {
             get { return bolsa.Nombre; }
@@ -73,6 +69,16 @@ namespace Fachadas.WebUtilities
         public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaEN> Preguntas
         {
             get { return bolsa.Preguntas; }
+        }
+
+        //Limpiar bolsa
+        public void Clear()
+        {
+            bolsa.Asignatura = new AsignaturaEN();
+            bolsa.Asignatura.Id = -1;
+            bolsa.Preguntas.Clear();
+            bolsa.Nombre = "";
+            bolsa.Descripcion = "";
         }
 
         //Añadir pregunta a la lista

@@ -11,19 +11,62 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Examen
 {
-    public partial class crear_bolsa : System.Web.UI.Page
+    public partial class modificar_bolsa : System.Web.UI.Page
     {
         //Objetos utilizables
         BolsaSession bolsa;
+        private int id;
+        private Boolean modificar;
+        String param;
+
+        //Comprobar si se plantea operación de modificación
+        protected void Comprobar_Modo()
+        {
+            param = Request.QueryString["id"];
+            //No hacer nada más si no se ha recibido un parámetro
+            if (param == null)
+                modificar = false;
+            else
+            {
+                id = Int32.Parse(param);
+                modificar = true;
+            }
+        }
+
+        //Comprobar parámetros
+        protected void Procesar_Parametros()
+        {
+            //No hacer nada más si no se ha recibido un parámetro
+            if (param == null)
+                return;
+
+            //Recuperar los datos de la bolsa original
+            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            BolsaPreguntasEN bolsita = fachada.DameBolsa(id);
+
+            //Comprobar si se ha encontrado la bolsa
+            if (bolsita != null)
+            {
+                //Actualizar sólo en caso de que no se estuviese modificando previamente
+                if(!(bolsa.Bolsa).Equals(bolsita))
+                    bolsa.Bolsa = bolsita;
+            }
+            //Redireccionar a la propia página sin parámetros en caso de fallo
+            else
+                Response.Redirect(Linker.CrearBolsa());
+        }
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
             //Recuperar el estado de la bolsa
             bolsa = BolsaSession.Current;
+            //Comprobar el modo de la página
+            Comprobar_Modo();
 
             if (!IsPostBack)
             {
+                Procesar_Parametros();
                 //Inicializar los datos de los textbox
                 TextBox_Nombre.Text = bolsa.Nombre;
                 TextBox_Descripcion.Text = bolsa.Descripcion;

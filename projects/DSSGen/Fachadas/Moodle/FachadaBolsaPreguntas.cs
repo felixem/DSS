@@ -38,6 +38,13 @@ namespace Fachadas.Moodle
             bolsaBind.VincularDameTodos(consulta,grid,first, size, out numBases);
         }
 
+        //Obtener una bolsa a partir de su id
+        public BolsaPreguntasEN DameBolsa(int id)
+        {
+            BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
+            return bolsaCen.ReadOID(id);
+        }
+
         //Modificar una bolsa de preguntas
         public void ModificarBolsa(int p_oid, string p_nombre, string p_descripcion,
             Nullable<DateTime> p_fecha_creacion)

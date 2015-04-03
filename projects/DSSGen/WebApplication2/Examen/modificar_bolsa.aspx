@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="crear_bolsa.aspx.cs" Inherits="DSSGenNHibernate.Examen.crear_bolsa" %>
+    CodeBehind="modificar_bolsa.aspx.cs" Inherits="DSSGenNHibernate.Examen.modificar_bolsa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

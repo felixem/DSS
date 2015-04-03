@@ -78,7 +78,7 @@ namespace DSSGenNHibernate.Examen
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             string bolsaId = grdrow.Cells[0].Text;
-            throw new Exception("Not yet implemented");
+            Response.Redirect(Linker.ModificarBolsa(Int32.Parse(bolsaId)));
         }
 
         //Manejador del evento para modificar una bolsa de preguntas
