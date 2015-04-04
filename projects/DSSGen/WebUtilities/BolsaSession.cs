@@ -12,6 +12,12 @@ namespace WebUtilities
     public class BolsaSession
     {
         private BolsaPreguntasEN bolsa;
+        //Par que relaciona ids de preguntas originales con ids provisionales dentro de la bolsa de sesión
+        private List<KeyValuePair<int,int>> preguntasOriginales;
+        //Par que relaciona ids de preguntas originales con una lista de respuestas originales
+        private List<KeyValuePair<int, List<RespuestaEN>>> respuestasOriginales;
+        //Variable para almacenar si la bolsa está siendo creada o ha sido cargada para ser modificada
+        private bool cargada;
 
         //Constructor por defecto
         private BolsaSession()
@@ -20,6 +26,9 @@ namespace WebUtilities
             bolsa.Asignatura = new AsignaturaEN();
             bolsa.Asignatura.Id = -1;
             bolsa.Preguntas = new List<PreguntaEN>();
+            preguntasOriginales = null;
+            respuestasOriginales = null;
+            cargada = false;
         }
 
         //Obtener la bolsa de sesión actual
@@ -37,6 +46,69 @@ namespace WebUtilities
                 return session;
             }
         }
+
+        //Propiedad para cargar una bolsa ya existente para su modificación
+        public void CargarBolsaExistente(int id)
+        {
+            //Recuperar los datos de la bolsa original
+            //FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            //BolsaPreguntasEN bolsita = fachada.DameBolsa(id);
+            BolsaPreguntasEN bolsita = null;
+
+            //Comprobar si se ha encontrado la bolsa
+            if (bolsita != null)
+            {
+                //Actualizar sólo en caso de que no se estuviese modificando previamente
+                if (!(bolsa).Equals(bolsita))
+                {
+                    //Limpiar
+                    this.Clear();
+                    //Inicializar las estructuras
+                    preguntasOriginales = new List<KeyValuePair<int, int>>();
+                    respuestasOriginales = new List<KeyValuePair<int, List<RespuestaEN>>>();
+                    cargada = true;
+
+                    //Inicializar
+                    bolsa.Asignatura.Id = bolsita.Asignatura.Id;
+                    bolsa.Descripcion = bolsita.Descripcion;
+                    bolsa.Fecha_creacion = bolsita.Fecha_creacion;
+                    bolsa.Id = bolsita.Id;
+                    bolsa.Nombre = bolsita.Nombre;
+
+                    //Copiar las preguntas originales en la lista de preguntas originales
+                    foreach (PreguntaEN original in bolsita.Preguntas)
+                    {
+                        //Añadir a las estructuras apropiadas las preguntas y sus respuestas
+                        int idPregunta = original.Id;
+                        preguntasOriginales.Add(new KeyValuePair<int,int>(idPregunta,bolsa.Preguntas.Count));
+                        List<RespuestaEN> respuestas = new List<RespuestaEN>();
+                        List<String> contenidoRespuestas = new List<String>();
+                        int idCorrecta = -1;
+
+                        //Obtener las respuestas de la pregunta original
+                        foreach(RespuestaEN resp in original.Respuestas)
+                        {
+                            respuestas.Add(resp);
+                            contenidoRespuestas.Add(resp.Contenido);
+                            if(resp.Id.Equals(original.Respuesta_correcta.Id))
+                                idCorrecta = contenidoRespuestas.Count-1;
+                        }
+
+                        //Almacenar en la estructura de respuestas originales
+                        respuestasOriginales.Add(new KeyValuePair<int,List<RespuestaEN>>(idPregunta,respuestas));
+                        
+                        //Añadir la pregunta provisional a la bolsa provisional
+                        this.AddPregunta(original.Contenido,contenidoRespuestas,idCorrecta,original.Explicacion);
+                    }
+                }
+            }
+            //Bolsa no encontrada
+            else
+            {
+                throw new Exception("Bolsa no encontrada");
+            }
+        }
+
 
         //Propiedades que interesan en la creación provisional de la bolsa de preguntas
         public virtual string Nombre
@@ -63,6 +135,25 @@ namespace WebUtilities
         public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaEN> Preguntas
         {
             get { return bolsa.Preguntas; }
+        }
+
+        //Saber si la bolsa ha sido cargada
+        private bool IsCargada()
+        {
+            return cargada;
+        }
+
+        //Limpiar bolsa
+        public void Clear()
+        {
+            bolsa.Asignatura = new AsignaturaEN();
+            bolsa.Asignatura.Id = -1;
+            bolsa.Preguntas.Clear();
+            bolsa.Nombre = "";
+            bolsa.Descripcion = "";
+            preguntasOriginales = null;
+            respuestasOriginales = null;
+            cargada = false;
         }
 
         //Añadir pregunta a la lista

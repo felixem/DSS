@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Fachadas.WebUtilities;
+using WebUtilities;
+using Fachadas.Moodle;
 
 namespace WebApplication2.Account
 {
@@ -35,8 +36,8 @@ namespace WebApplication2.Account
             //Comprobar si la contraseña es correcta
             try
             {
-                MySession sesion = MySession.Current;
-                Authenticated = sesion.Login(LoginUser.UserName, LoginUser.Password);
+                FachadaLogin fachada = new FachadaLogin();
+                Authenticated = fachada.Login(LoginUser.UserName, LoginUser.Password);
             }
             catch (Exception excep)
             {

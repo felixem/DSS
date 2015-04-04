@@ -45,5 +45,11 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+
+        //Vincular a una bolsa de sesión el contenido de una bolsa existente
+        public void VincularBolsaSession(int idBolsa)
+        {
+
+        }
     }
 }

@@ -6,7 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DSSGenNHibernate.EN.Moodle;
 
-using Fachadas.WebUtilities;
+using WebUtilities;
+using Fachadas.Moodle;
 
 namespace WebApplication2
 {
@@ -46,7 +47,8 @@ namespace WebApplication2
         //Manejador para efectuar el deslogueo
         protected void Button_Desloguear_Click(object sender, EventArgs args)
         {
-            sesion.Exit();
+            FachadaLogin fachada = new FachadaLogin();
+            fachada.Exit();
             Response.Write("<script>window.alert('Has cerrado sesión correctamente');</script>");
             VisibilidadControles();
         }

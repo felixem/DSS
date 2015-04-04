@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Web;
 
-namespace Fachadas.WebUtilities
+namespace WebUtilities
 {
     public class NavigationSession
     {

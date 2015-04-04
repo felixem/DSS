@@ -6,10 +6,9 @@ using System.Text;
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle.Commands;
-using NHibernate;
 
 using System.Web.UI.WebControls;
-using Fachadas.WebUtilities;
+using WebUtilities;
 using ComponentesProceso.Moodle;
 
 namespace Fachadas.Moodle

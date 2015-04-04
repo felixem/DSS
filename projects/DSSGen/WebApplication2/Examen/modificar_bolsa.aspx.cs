@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Fachadas.Moodle;
-using Fachadas.WebUtilities;
+using WebUtilities;
 using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Examen
@@ -38,24 +38,10 @@ namespace DSSGenNHibernate.Examen
         {
             //No hacer nada más si no se ha recibido un parámetro
             if (param == null)
-                return;
+                throw new Exception("No se especifica bolsa");
 
             //Recuperar los datos de la bolsa original
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            BolsaPreguntasEN bolsita = fachada.DameBolsa(id);
-
-            //Comprobar si se ha encontrado la bolsa
-            if (bolsita != null)
-            {
-                //Actualizar sólo en caso de que no se estuviese modificando previamente
-                if (!(bolsa.Bolsa).Equals(bolsita))
-                    bolsa.Bolsa = bolsita;
-            }
-            //Redireccionar a la propia página sin parámetros en caso de fallo
-            else
-            {
-                throw new Exception("Page not found");
-            }
+            bolsa.CargarBolsaExistente(id);
         }
 
         //Manejador al cargar la página

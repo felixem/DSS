@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentesProceso", "Compo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingComponents", "BindingComponents\BindingComponents.csproj", "{D648E41C-8C30-4D8D-BC41-75626A941DC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUtilities", "WebUtilities\WebUtilities.csproj", "{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,16 @@ Global
 		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D648E41C-8C30-4D8D-BC41-75626A941DC5}.Release|x86.ActiveCfg = Release|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -188,6 +188,10 @@
       <Project>{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}</Project>
       <Name>Fachadas</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

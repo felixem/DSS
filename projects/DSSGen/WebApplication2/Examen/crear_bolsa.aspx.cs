@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Fachadas.Moodle;
-using Fachadas.WebUtilities;
+using WebUtilities;
 using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Examen
