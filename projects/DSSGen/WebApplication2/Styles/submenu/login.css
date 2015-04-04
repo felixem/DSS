@@ -29,5 +29,17 @@
 /*labels de nombre y paword*/
 .LabelLogin
 {
-    width:20p;
+    width:20px;
+}
+
+.ContenedorInterno
+{
+    /* width:400px;    */
+    text-align:left;
+}
+
+.CentrarContenido
+{
+    width: 300px;
+    margin: 0 auto;
 }
