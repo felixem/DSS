@@ -1,0 +1,41 @@
+﻿.posicion_izquierda
+{
+    margin:3px;
+    float:left;
+}
+
+.posicion_derecha
+{
+    margin: 1px;
+    float: right;
+}
+
+.clean_float
+{
+    width: 300px;
+    margin: 5px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+.buttons
+{
+    margin: 10px;
+}
+
+/* Tabla con texbox en columnas*/
+.row_textbox
+{
+    width: 500px;
+    margin: 2px;
+    clear:both;
+    overflow:hidden
+}
+
+.position_textbox_right
+{
+    width: 80%;
+    margin: 1px;
+    float: right;
+}

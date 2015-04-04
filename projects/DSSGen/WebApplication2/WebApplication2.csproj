@@ -60,6 +60,9 @@
     <Content Include="Examen\crear_bolsa.aspx" />
     <Content Include="Examen\crear_pregunta.aspx" />
     <Content Include="Styles\default.css" />
+    <Content Include="Styles\examen\centrar_contenido.css" />
+    <Content Include="Styles\examen\tabla_dos_columnas.css" />
+    <Content Include="Styles\examen\maqueta_tabla.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />

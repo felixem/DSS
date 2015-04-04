@@ -161,10 +161,12 @@ hr {
 	background: #EBEAD1 url(images/img02.jpg) repeat-x left bottom;
 }
 
-#page {
+#page 
+{
+    font-family: Arial, Helvetica, sans-serif;
 	width: 940px;
 	margin: 0px auto;
-	padding: 0;
+	padding: 25px;
 }
 
 /* Content */

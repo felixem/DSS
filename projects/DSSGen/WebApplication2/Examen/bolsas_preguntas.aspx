@@ -2,14 +2,20 @@
     CodeBehind="bolsas_preguntas.aspx.cs" Inherits="DSSGenNHibernate.Examen.bases" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="../Styles/examen/maqueta_tabla.css" rel="stylesheet" 
+        type="text/css" />
+    <link href="../Styles/examen/centrar_contenido.css" rel="stylesheet" 
+        type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="Panel1" runat="server" Height="23px" Style="margin-bottom: 0px">
+<div class="CentrarContenido">
+    <div class="ConInternoSinDisplay">
+    <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
         <asp:Label ID="Label_Asignatura" runat="server" Text=" Bolsas de Preguntas"></asp:Label>
-        <br />
     </asp:Panel>
-    <asp:Panel ID="Panel2" runat="server" Style="margin-top: 0px">
-        <div>
+    </div>
+    <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
+        <div class="">
             PageSize:
             <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
                 <asp:ListItem Text="10" Value="10" />
@@ -43,4 +49,5 @@
             </asp:Repeater>
         </div>
     </asp:Panel>
+    </div>
 </asp:Content>

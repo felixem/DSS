@@ -1,0 +1,17 @@
+﻿.ContenedorInterno
+{
+    /* width:400px;    */
+    display:inline-block;
+    margin: 0px auto;
+}
+
+.CentrarContenido
+{
+    text-align: center;
+}
+
+.ConInternoSinDisplay
+{
+    clear: both;
+    margin: 7px auto;
+}
