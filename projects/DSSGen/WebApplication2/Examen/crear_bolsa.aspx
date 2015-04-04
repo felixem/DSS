@@ -2,30 +2,42 @@
     CodeBehind="crear_bolsa.aspx.cs" Inherits="DSSGenNHibernate.Examen.crear_bolsa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="../Styles/examen/centrar_contenido.css" rel="stylesheet" 
+        type="text/css" />
+    <link href="../Styles/examen/tabla_dos_columnas.css" rel="stylesheet" 
+        type="text/css" />
+    <link href="../Styles/examen/maqueta_tabla.css" rel="stylesheet" 
+        type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="Panel1" runat="server" Height="301px">
+    <div class="CentrarContenido">
+    <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
         <asp:ValidationSummary ID="ValidationSummaryBolsa" runat="server" 
             ShowMessageBox="True" ShowSummary="False" ValidationGroup="GroupBolsa" />
-        <asp:Label ID="Label_Nombre" runat="server" Text="Nombre"></asp:Label>
-        <asp:TextBox ID="TextBox_Nombre" runat="server" ValidationGroup="GroupBolsa"></asp:TextBox>
+        <div class="clean_float">
+        <asp:Label ID="Label_Nombre" runat="server" Text="Nombre" CssClass="posicion_izquierda"></asp:Label>
+        <asp:TextBox ID="TextBox_Nombre" runat="server" ValidationGroup="GroupBolsa" 
+            CssClass="posicion_derecha"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator_Nombre" runat="server" 
             ControlToValidate="TextBox_Nombre" ErrorMessage="Se requiere un nombre" 
             ValidationGroup="GroupBolsa">*</asp:RequiredFieldValidator>
-        <br />
-        <asp:Label ID="Label_Descripcion" runat="server" Text="Descripcion"></asp:Label>
-        <asp:TextBox ID="TextBox_Descripcion" runat="server"></asp:TextBox>
-        <br />
-        <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura"></asp:Label>
-        <asp:DropDownList ID="DropDownList_Asignaturas" runat="server" 
+        </div>
+        <div class="clean_float">
+        <asp:Label ID="Label_Descripcion" runat="server" Text="Descripcion" CssClass="posicion_izquierda"></asp:Label>
+        <asp:TextBox ID="TextBox_Descripcion" runat="server" 
+            CssClass="posicion_derecha"></asp:TextBox>
+        </div>
+        <div class="clean_float">
+        <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
+        <asp:DropDownList ID="DropDownList_Asignaturas" runat="server" CssClass="posicion_derecha"
             onselectedindexchanged="DropDownList_Asignaturas_SelectedIndexChanged">
         </asp:DropDownList>
-        <br />
+        </div>
+        <div class="buttons">
         <asp:Button ID="Button_Guardar" runat="server" Text="Guardar bolsa" 
             ValidationGroup="GroupBolsa" OnClick = "Button_Guardar_Click" />
         <asp:Button ID="Button_Cancelar" runat="server" Text="Cancelar" />
-        <br />
-        <br />
+        </div>
         <div>
             PageSize:
             <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
@@ -57,4 +69,5 @@
             </asp:Repeater>
         </div>
     </asp:Panel>
+    </div>
 </asp:Content>

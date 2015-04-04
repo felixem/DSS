@@ -1,0 +1,27 @@
+﻿/*Maquetación de las tablas usadas con diseño compartido*/
+table 
+{
+  margin: 10px auto;
+  margin-left: -25px;
+  font: .9em Arial, Helvetica, sans-serif;
+  border: 1px solid #333;
+  border-collapse: collapse;
+  text-align: center;
+}
+table th {
+  background: #F5F5F5;
+  padding: 0 .3em;
+}
+table th, table, td {
+  border: 1px solid #333;
+  line-height: 2em;
+}
+.fila {
+  text-align: left;
+}
+.par {
+  background-color:#FFFFCC;
+}
+table tr:hover {
+  background: #ffffbb !important;
+}
