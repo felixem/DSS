@@ -203,7 +203,7 @@ public long ReadCantidad ()
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AsignaturaEN self where select count(*) FROM Asignatura";
+                //String sql = @"FROM AsignaturaEN self where select count(*) FROM AsignaturaEN";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaENreadCantidadHQL");
 

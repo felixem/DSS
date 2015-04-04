@@ -39,7 +39,7 @@ private DSSGenNHibernate.EN.Moodle.TutoriaEN tutoria;
  *
  */
 
-private DSSGenNHibernate.EN.Moodle.UsuarioEN usuario;
+private DSSGenNHibernate.EN.Moodle.UsuarioComunEN usuario;
 
 
 
@@ -70,7 +70,7 @@ public virtual DSSGenNHibernate.EN.Moodle.TutoriaEN Tutoria {
 }
 
 
-public virtual DSSGenNHibernate.EN.Moodle.UsuarioEN Usuario {
+public virtual DSSGenNHibernate.EN.Moodle.UsuarioComunEN Usuario {
         get { return usuario; } set { usuario = value;  }
 }
 
@@ -84,7 +84,7 @@ public MensajeEN()
 
 
 
-public MensajeEN(int id, string contenido, Nullable<DateTime> fecha, bool respondido, DSSGenNHibernate.EN.Moodle.TutoriaEN tutoria, DSSGenNHibernate.EN.Moodle.UsuarioEN usuario)
+public MensajeEN(int id, string contenido, Nullable<DateTime> fecha, bool respondido, DSSGenNHibernate.EN.Moodle.TutoriaEN tutoria, DSSGenNHibernate.EN.Moodle.UsuarioComunEN usuario)
 {
         this.init (id, contenido, fecha, respondido, tutoria, usuario);
 }
@@ -95,7 +95,7 @@ public MensajeEN(MensajeEN mensaje)
         this.init (mensaje.Id, mensaje.Contenido, mensaje.Fecha, mensaje.Respondido, mensaje.Tutoria, mensaje.Usuario);
 }
 
-private void init (int id, string contenido, Nullable<DateTime> fecha, bool respondido, DSSGenNHibernate.EN.Moodle.TutoriaEN tutoria, DSSGenNHibernate.EN.Moodle.UsuarioEN usuario)
+private void init (int id, string contenido, Nullable<DateTime> fecha, bool respondido, DSSGenNHibernate.EN.Moodle.TutoriaEN tutoria, DSSGenNHibernate.EN.Moodle.UsuarioComunEN usuario)
 {
         this.Id = id;
 

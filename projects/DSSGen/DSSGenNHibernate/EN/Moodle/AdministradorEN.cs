@@ -3,86 +3,74 @@ using System;
 
 namespace DSSGenNHibernate.EN.Moodle
 {
-public partial class AdministradorEN
+public partial class AdministradorEN                    :                           DSSGenNHibernate.EN.Moodle.UsuarioEN
+
+
 {
 /**
  *
  */
 
-private string nick;
+private int cod_administrador;
 
 /**
  *
  */
 
-private String password;
-
-/**
- *
- */
-
-private string nombre;
-
-/**
- *
- */
-
-private string descripcion;
+private string ocupacion;
 
 
 
 
 
-public virtual string Nick {
-        get { return nick; } set { nick = value;  }
+public virtual int Cod_administrador {
+        get { return cod_administrador; } set { cod_administrador = value;  }
 }
 
 
-public virtual String Password {
-        get { return password; } set { password = value;  }
-}
-
-
-public virtual string Nombre {
-        get { return nombre; } set { nombre = value;  }
-}
-
-
-public virtual string Descripcion {
-        get { return descripcion; } set { descripcion = value;  }
+public virtual string Ocupacion {
+        get { return ocupacion; } set { ocupacion = value;  }
 }
 
 
 
 
 
-public AdministradorEN()
+public AdministradorEN() : base ()
 {
 }
 
 
 
-public AdministradorEN(string nick, String password, string nombre, string descripcion)
+public AdministradorEN(string email, int cod_administrador, string ocupacion, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
-        this.init (nick, password, nombre, descripcion);
+        this.init (email, cod_administrador, ocupacion, dni, password, nombre, apellidos, fecha_nacimiento);
 }
 
 
 public AdministradorEN(AdministradorEN administrador)
 {
-        this.init (administrador.Nick, administrador.Password, administrador.Nombre, administrador.Descripcion);
+        this.init (administrador.Email, administrador.Cod_administrador, administrador.Ocupacion, administrador.Dni, administrador.Password, administrador.Nombre, administrador.Apellidos, administrador.Fecha_nacimiento);
 }
 
-private void init (string nick, String password, string nombre, string descripcion)
+private void init (string email, int cod_administrador, string ocupacion, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
-        this.Nick = nick;
+        this.Email = email;
 
+
+        this.Cod_administrador = cod_administrador;
+
+        this.Ocupacion = ocupacion;
+
+        this.Dni = dni;
 
         this.Password = password;
 
         this.Nombre = nombre;
 
-        this.Descripcion = descripcion;
+        this.Apellidos = apellidos;
+
+        this.Fecha_nacimiento = fecha_nacimiento;
 }
 
 public override bool Equals (object obj)
@@ -92,7 +80,7 @@ public override bool Equals (object obj)
         AdministradorEN t = obj as AdministradorEN;
         if (t == null)
                 return false;
-        if (Nick.Equals (t.Nick))
+        if (Email.Equals (t.Email))
                 return true;
         else
                 return false;
@@ -102,7 +90,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Nick.GetHashCode ();
+        hash += this.Email.GetHashCode ();
         return hash;
 }
 }

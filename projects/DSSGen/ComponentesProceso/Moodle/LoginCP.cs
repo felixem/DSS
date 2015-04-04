@@ -20,11 +20,10 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public LoginCP(ISession sesion) : base(sesion) { }
 
-        //Devolver un objeto que contenga el usuario o administrador logueado
-        public Object login(string user, string pass)
+        //Devolver un objeto que contenga el usuario logueado
+        public UsuarioEN login(string user, string pass)
         {
-            Boolean logeado = false;
-            Object rol = null;
+            UsuarioEN rol = null;
 
             try
             {
@@ -32,16 +31,6 @@ namespace ComponentesProceso.Moodle
 
                 //Intentar loguear como usuario normal
                 rol = loginUsuario(user, pass);
-                if (rol != null)
-                    logeado = true; ;
-
-                //Probar el login para un administrador
-                if (!logeado)
-                {
-                    rol = loginAdministrador(user, pass);
-                    if (rol != null)
-                        logeado = true;
-                }
 
                 SessionCommit();
             }
@@ -60,7 +49,7 @@ namespace ComponentesProceso.Moodle
         }
 
         //Método para realizar login para un usuario normal
-        private Object loginUsuario(string user, string pass)
+        private UsuarioEN loginUsuario(string user, string pass)
         {
             //Probar el login para un usuario normal
             UsuarioCAD usCAD = new UsuarioCAD(session);
@@ -82,23 +71,9 @@ namespace ComponentesProceso.Moodle
                 if (prof != null)
                     return prof;
 
-                //Error al recibir los datos
-                throw new ExcepcionAccesoDatos();
-            }
-
-            //Devolver null si no es un usuario normal
-            return null;
-        }
-
-        //Método para realizar el login como administrador
-        private Object loginAdministrador(string user, string pass)
-        {
-            AdministradorCAD adminCAD = new AdministradorCAD(session);
-            AdministradorCEN adminCEN = new AdministradorCEN(adminCAD);
-
-            //Probar el login para un administrador
-            if (adminCEN.Login(user, pass))
-            {
+                //Comprobar si es un administrador
+                AdministradorCAD adminCAD = new AdministradorCAD(session);
+                AdministradorCEN adminCEN = new AdministradorCEN(adminCAD);
                 AdministradorEN admin = adminCEN.ReadOID(user);
                 if (admin != null)
                     return admin;
@@ -107,7 +82,7 @@ namespace ComponentesProceso.Moodle
                 throw new ExcepcionAccesoDatos();
             }
 
-            //Devolver null si no es un admin
+            //Devolver null si no es un usuario normal
             return null;
         }
     }

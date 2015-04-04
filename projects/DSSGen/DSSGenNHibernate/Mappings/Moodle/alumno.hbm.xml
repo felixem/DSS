@@ -3,7 +3,7 @@
 		                   assembly="DSSGenNHibernate"
 		                   namespace="DSSGenNHibernate.EN.Moodle">
 				
-<joined-subclass name="AlumnoEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioEN" table="[Alumno]">
+<joined-subclass name="AlumnoEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioComunEN" table="[Alumno]">
 	<key>
     		<column name="[email]"/>
    	</key>

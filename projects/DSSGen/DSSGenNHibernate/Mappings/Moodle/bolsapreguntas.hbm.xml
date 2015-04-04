@@ -13,10 +13,10 @@
 					<property name="Descripcion" type="string"> 
 						<column name="[descripcion]"  not-null="true"/>
 					</property>
-					<property name="Fecha_creacion" type="date"> 
+					<property name="Fecha_creacion" type="timestamp"> 
 						<column name="[fecha_creacion]"  not-null="true"/>
 					</property>
-					<property name="Fecha_modificacion" type="date"> 
+					<property name="Fecha_modificacion" type="timestamp"> 
 						<column name="[fecha_modificacion]"  not-null="true"/>
 					</property>
 			

@@ -24,14 +24,12 @@ ConceptualModel moodle
 			public destroy::Destroy (p_oid : OID -> Usuario) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Usuario>;
 			public readOID::ReadOID (p_oid : OID -> Usuario) : Object -> Usuario;
-			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_usuario : OID -> Usuario, p_mensaje : List<OID -> Mensaje>) : Void;
-			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_usuario : OID -> Usuario, p_mensaje : List<OID -> Mensaje>) : Void;
 			public login (usuario : String, pass : String) : Boolean;
 			public readDni::ReadFilter (dni : String) : Object -> Usuario { filter = "FROM UsuarioEN us where us.Dni = :dni" };
 		}
 	};
 	
-	Class Administrador
+	Class Administrador extends Usuario
 	{
 		description
 		{
@@ -40,24 +38,44 @@ ConceptualModel moodle
 		
 		attributes
 		{
-			private oid nick : String;
-			private password : Password;
-			private nombre : String;
-			private descripcion : String;
+			private unique cod_administrador : Integer;
+			private ocupacion : String;
 		}
 		
 		operations
 		{
-			public new::New (p_nick : String, p_password : Password, p_nombre : String, p_descripcion : String) : Object->Administrador;
-			public modify::Modifier (p_oid : OID -> Administrador, p_password : Password, p_nombre : String, p_descripcion : String) : Void;
+			public new::New (p_cod_administrador : Integer, p_ocupacion : String, p_email : String, p_dni : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Object->Administrador;
+			public modify::Modifier (p_oid : OID -> Administrador, p_cod_administrador : Integer, p_ocupacion : String, p_dni : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
 			public destroy::Destroy (p_oid : OID -> Administrador) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Administrador>;
 			public readOID::ReadOID (p_oid : OID -> Administrador) : Object -> Administrador;
-			public login (usuario : String, pass : String) : Boolean;		
 		}
 	};
 	
-	Class Profesor extends Usuario
+	Class UsuarioComun extends Usuario
+	{
+		description 
+		{
+			"Clase que representa a un usuario común"
+		}
+		
+		attributes
+		{
+			
+		}
+		
+		operations
+		{
+			public new::New (p_email : String, p_dni : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Object->UsuarioComun;
+			public modify::Modifier (p_oid : OID -> UsuarioComun, p_dni : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
+			public readAll::ReadAll (/* No arguments */) : List<Object->UsuarioComun>;
+			public readOID::ReadOID (p_oid : OID -> UsuarioComun) : Object -> UsuarioComun;
+			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_usuariocomun : OID -> UsuarioComun, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_mensajes::Unrelationer->mensaje_usuariocomun.mensajes (p_usuariocomun : OID -> UsuarioComun, p_mensaje : List<OID -> Mensaje>) : Void;
+		}
+	};
+	
+	Class Profesor extends UsuarioComun
 	{
 		description
 		{
@@ -78,16 +96,16 @@ ConceptualModel moodle
 			public readOID::ReadOID (p_oid : OID -> Profesor) : Object -> Profesor;
 			public relationer_entregas_propuestas::Relationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
 			public relationer_materiales::Relationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
-			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
+			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
 			public relationer_tutorias::Relationer->tutoria_profesor.tutorias (p_profesor : OID -> Profesor, p_tutoria : List<OID -> Tutoria>) : Void;
 			public unrelationer_entregas_propuestas::Unrelationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
 			public unrelationer_materiales::Unrelationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
-			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_mensajes::Unrelationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
 			public unrelationer_tutorias::Unrelationer->tutoria_profesor.tutorias (p_profesor : OID -> Profesor, p_tutoria : List<OID -> Tutoria>) : Void;
 		}
 	};
 	
-	Class Alumno extends Usuario
+	Class Alumno extends UsuarioComun
 	{
 		description
 		{
@@ -111,14 +129,14 @@ ConceptualModel moodle
 			public relationer_entregas::Relationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public relationer_expediente::Relationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
 			public relationer_grupos_trabajo::Relationer->grupotrabajo_alumno.grupos_trabajo (p_alumno : OID -> Alumno, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
-			public relationer_mensajes::Relationer->mensaje_usuario.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
+			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
 			public relationer_sistemas_evaluacion::Relationer->alumno_evaluacionalumno.sistemas_evaluacion (p_alumno : OID -> Alumno, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
 			public relationer_tutorias::Relationer->tutoria_alumno.tutorias (p_alumno : OID -> Alumno, p_tutoria : List<OID -> Tutoria>) : Void;
 			public unrelationer_controles::Unrelationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
 			public unrelationer_entregas::Unrelationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public unrelationer_expediente::Unrelationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
 			public unrelationer_grupos_trabajo::Unrelationer->grupotrabajo_alumno.grupos_trabajo (p_alumno : OID -> Alumno, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
-			public unrelationer_mensajes::Unrelationer->mensaje_usuario.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
+			public unrelationer_mensajes::Unrelationer->mensaje_usuariocomun.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
 			public unrelationer_sistemas_evaluacion::Unrelationer->alumno_evaluacionalumno.sistemas_evaluacion (p_alumno : OID -> Alumno, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
 			public unrelationer_tutorias::Unrelationer->tutoria_alumno.tutorias (p_alumno : OID -> Alumno, p_tutoria : List<OID -> Tutoria>) : Void;
 		}
@@ -177,15 +195,15 @@ ConceptualModel moodle
 		
 		operations
 		{
-			public new::New (p_contenido : String, p_fecha : Date, p_respondido : Boolean, p_tutoria : OID -> Tutoria, p_usuario : OID -> Usuario) : Object->Mensaje;
+			public new::New (p_contenido : String, p_fecha : Date, p_respondido : Boolean, p_tutoria : OID -> Tutoria, p_usuario : OID -> UsuarioComun) : Object->Mensaje;
 			public modify::Modifier (p_oid : OID -> Mensaje, p_contenido : String, p_fecha : Date, p_respondido : Boolean) : Void;
 			public destroy::Destroy (p_oid : OID -> Mensaje) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Mensaje>;
 			public readOID::ReadOID (p_oid : OID -> Mensaje) : Object -> Mensaje;
 			public relationer_tutoria::Relationer->tutoria_mensaje.tutoria (p_mensaje : OID -> Mensaje, p_tutoria : OID -> Tutoria) : Void;
-			public relationer_usuario::Relationer->mensaje_usuario.usuario (p_mensaje : OID -> Mensaje, p_usuario : OID -> Usuario) : Void;
+			public relationer_usuario::Relationer->mensaje_usuariocomun.usuario (p_mensaje : OID -> Mensaje, p_usuariocomun : OID -> UsuarioComun) : Void;
 			public unrelationer_tutoria::Unrelationer->tutoria_mensaje.tutoria (p_mensaje : OID -> Mensaje, p_tutoria : OID -> Tutoria) : Void;
-			public unrelationer_usuario::Unrelationer->mensaje_usuario.usuario (p_mensaje : OID -> Mensaje, p_usuario : OID -> Usuario) : Void;
+			public unrelationer_usuario::Unrelationer->mensaje_usuariocomun.usuario (p_mensaje : OID -> Mensaje, p_usuariocomun : OID -> UsuarioComun) : Void;
 		}
 	};
 	
@@ -878,7 +896,7 @@ ConceptualModel moodle
 		<= navigable tutoria ("1","1");
 	};
 	
-	Association mensaje_usuario (Mensaje - Usuario)
+	Association mensaje_usuariocomun (Mensaje - UsuarioComun)
 	{
 		description
 		{

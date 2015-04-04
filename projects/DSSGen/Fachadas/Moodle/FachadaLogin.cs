@@ -13,7 +13,7 @@ namespace Fachadas.Moodle
     public class FachadaLogin
     {
         //Método login que devuelve una referencia a un objeto que contendrá un profesor, alumno o admin
-        public Object Login(String user, String pass)
+        public UsuarioEN Login(String user, String pass)
         {
             LoginCP loginCP = new LoginCP();
             return loginCP.login(user, pass);

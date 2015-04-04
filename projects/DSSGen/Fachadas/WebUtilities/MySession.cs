@@ -37,7 +37,7 @@ namespace Fachadas.WebUtilities
         public bool Login(String user, String pass)
         {
             //Llamar a la fachada de login para intentar actualizar la sesión con el login
-            Object usuario = null;
+            UsuarioEN usuario = null;
             try
             {
                 FachadaLogin fachada = new FachadaLogin();
@@ -84,7 +84,7 @@ namespace Fachadas.WebUtilities
         }
 
         // Propiedades de sesión
-        public Object Usuario { get; set; }
+        public UsuarioEN Usuario { get; set; }
         public DateTime? Fecha_login { get; set; }
 
     }
