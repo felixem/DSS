@@ -40,13 +40,13 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.Label user_label;
         
         /// <summary>
-        /// button_desloguear control.
+        /// Button_Desloguear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_desloguear;
+        protected global::System.Web.UI.WebControls.Button Button_Desloguear;
         
         /// <summary>
         /// MainContent control.

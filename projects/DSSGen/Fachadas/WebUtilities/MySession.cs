@@ -59,6 +59,13 @@ namespace Fachadas.WebUtilities
             return true;
         }
 
+        //Desloguear el usuario
+        public void Exit()
+        {
+            Usuario = null;
+            Fecha_login = null;
+        }
+
         //Comprobar si está logueado
         public bool IsLoged()
         {
@@ -68,18 +75,24 @@ namespace Fachadas.WebUtilities
         //Comprobar si es un alumno
         public bool IsAlumno()
         {
+            if (!IsLoged())
+                return false;
             return Usuario.GetType() == typeof(AlumnoEN);
         }
 
         //Comprobar si es un profesor
         public bool IsProfesor()
         {
+            if (!IsLoged())
+                return false;
             return Usuario.GetType() == typeof(ProfesorEN);
         }
 
         //Comprobar si es un admin
         public bool IsAdministrador()
         {
+            if (!IsLoged())
+                return false;
             return Usuario.GetType() == typeof(AdministradorEN);
         }
 

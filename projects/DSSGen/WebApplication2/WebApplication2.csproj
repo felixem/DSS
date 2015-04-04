@@ -54,6 +54,9 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Resources\Fotos\alumno.png" />
+    <Content Include="Resources\Fotos\administrador.jpg" />
+    <Content Include="Resources\Fotos\profesor.png" />
     <Content Include="Examen\bolsas_preguntas.aspx" />
     <Content Include="Examen\modificar_pregunta.aspx" />
     <Content Include="Examen\modificar_bolsa.aspx" />
