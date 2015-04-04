@@ -5,6 +5,8 @@
     <link href="../Styles/submenu/login.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<div class="CentrarContenido">
+    <div class="ContenedorInterno">
     <h1>
         Iniciar sesión
     </h1>
@@ -12,14 +14,14 @@
         Especifique su nombre de usuario y contraseña.
         </p>
     <asp:ValidationSummary ID="SumarioValidacion" runat="server" ValidationGroup="LoginUsuario"/>
-
+    </div>
+</div>
 <asp:Panel ID="panelLogin" runat="server" DefaultButton="LoginUser$LoginButton">
     <asp:Login ID="LoginUser" CssClass="LoginContainer" runat="server" EnableViewState="false" 
         RenderOuterTable="true" onauthenticate="LoginUser_Authenticate">
         <LayoutTemplate>
             <div class="accountInfo">
                 <fieldset class="login">
-                    <legend>Información de cuenta</legend>
                     <p>
                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Nombre de usuario:</asp:Label>
                         <asp:TextBox ID="UserName" runat="server"
