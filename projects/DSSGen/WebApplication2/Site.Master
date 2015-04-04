@@ -35,8 +35,8 @@
 	<div id="menu">
         <div class="user">
             <asp:Image ID="user_image" CssClass="user_logged_image" runat="server"/>
-            <asp:Label runat="server" CssClass="user_logged_text" Text="UserDefault"/>
-            <asp:Button runat="server" CssClass="user_logged_button" Text="Desloguear"/>
+            <asp:Label ID="user_label" runat="server" CssClass="user_logged_text" Text="UserDefault"/>
+            <asp:Button ID="button_desloguear" runat="server" CssClass="user_logged_button" Text="Desloguear"/>
         </div>
 		<ul>
 			<li class="active"><a href="#">Home</a></li>
