@@ -81,6 +81,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="WebForm1.aspx" />
+    <Content Include="Create\CreateStudent.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -170,6 +171,13 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Create\CreateStudent.aspx.cs">
+      <DependentUpon>CreateStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Create\CreateStudent.aspx.designer.cs">
+      <DependentUpon>CreateStudent.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

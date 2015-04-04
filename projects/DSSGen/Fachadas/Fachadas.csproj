@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
+    <Compile Include="Moodle\FachadaAlumno.cs" />
     <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />
     <Compile Include="Moodle\FachadaAsignatura.cs" />

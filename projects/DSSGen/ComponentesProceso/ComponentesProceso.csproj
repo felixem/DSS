@@ -76,6 +76,7 @@
     <Compile Include="Moodle\Commands\DameTodosAsignatura.cs" />
     <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />
+    <Compile Include="Moodle\AlumnoCP.cs" />
     <Compile Include="Moodle\LoginCP.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
     <Compile Include="Moodle\AsignaturaCP.cs" />
