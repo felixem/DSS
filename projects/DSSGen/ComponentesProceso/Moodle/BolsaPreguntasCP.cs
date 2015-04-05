@@ -178,9 +178,6 @@ namespace ComponentesProceso.Moodle
                     //Modificar la respuesta
                     resCen.Modify(idRes,contenido);
                 }
-
-                //Realizar un update automático en la sesion
-                session.Flush();
             }
         }
 
@@ -195,6 +192,57 @@ namespace ComponentesProceso.Moodle
                 //Borrar pregunta
                 int idPreg = preg.Id;
                 preguntaCen.Destroy(preg.Id);
+
+                //Realizar un update automático en la sesion
+                session.Flush();
+            }
+        }
+
+        //Borrar bolsa de preguntas
+        public void BorrarBolsa(int id)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Crear bolsa
+                BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
+                BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
+                BolsaPreguntasEN bolsa = bolsaCen.ReadOID(id);
+
+                //Borrar las preguntas
+                PreguntaCAD preguntaCad = new PreguntaCAD(session);
+                PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+
+                IList<int> listaPreguntas = new List<int>();
+                //Anotar las ids para desvincular
+                foreach (PreguntaEN pregunta in bolsa.Preguntas)
+                    listaPreguntas.Add(pregunta.Id);
+
+                //Desvincular las preguntas de la bolsa
+                bolsaCen.Unrelationer_preguntas(id,listaPreguntas);
+                session.Flush();
+
+                //Borrar las preguntas
+                foreach (PreguntaEN pregunta in bolsa.Preguntas)
+                {
+                    preguntaCen.Destroy(pregunta.Id);
+                    session.Flush();
+                }
+
+                //Borrar la bolsa
+                bolsaCen.Destroy(id);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                SessionClose();
             }
         }
     }

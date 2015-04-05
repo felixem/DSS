@@ -78,17 +78,22 @@ namespace DSSGenNHibernate.Examen
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            string bolsaId = grdrow.Cells[0].Text;
+            int bolsaId = Int32.Parse(grdrow.Cells[0].Text);
             Linker link = new Linker(true);
-            link.Redirect(Response,link.ModificarBolsa(Int32.Parse(bolsaId)));
+            link.Redirect(Response,link.ModificarBolsa(bolsaId));
         }
 
         //Manejador del evento para modificar una bolsa de preguntas
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            string bolsaId = grdrow.Cells[0].Text;
-            throw new Exception("Not yet implemented");
+            int bolsaId = Int32.Parse(grdrow.Cells[0].Text);
+
+            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            fachada.BorrarBolsa(bolsaId);
+
+            //Obtener de nuevo la lista de bolsas
+            this.ObtenerBolsasPaginadas(1);
         }
 
 

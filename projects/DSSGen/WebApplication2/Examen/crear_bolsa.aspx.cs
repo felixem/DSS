@@ -124,7 +124,9 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
-            throw new Exception("Not yet implemented");
+            //Borrar la pregunta y actualizar la lista de preguntas
+            bolsa.RemovePregunta(id);
+            this.ObtenerPreguntasPaginadas(1);
         }
 
         //Manejador para añadir pregunta a la lista
