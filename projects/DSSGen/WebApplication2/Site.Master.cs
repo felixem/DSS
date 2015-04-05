@@ -6,8 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DSSGenNHibernate.EN.Moodle;
 
-using WebUtilities;
-using Fachadas.Moodle;
+using Fachadas.WebUtilities;
 
 namespace WebApplication2
 {
@@ -35,20 +34,28 @@ namespace WebApplication2
                 user_label.Visible = true;
                 user_label.Text = usuario.Nombre + " " + usuario.Apellidos;
                 Button_Desloguear.Visible = true;
+                //MultiView de la barra de herramientas
+                if(sesion.IsAlumno())
+                    mv_barra.ActiveViewIndex = 1;
+                else if(sesion.IsProfesor())
+                    mv_barra.ActiveViewIndex = 2;
+                else if (sesion.IsAdministrador())
+                    mv_barra.ActiveViewIndex = 3;
             }
             else
             {
                 user_image.Visible = false;
                 user_label.Visible = false;
                 Button_Desloguear.Visible = false;
+                mv_barra.ActiveViewIndex = 0;
             }
         }
 
         //Manejador para efectuar el deslogueo
         protected void Button_Desloguear_Click(object sender, EventArgs args)
         {
-            FachadaLogin fachada = new FachadaLogin();
-            fachada.Exit();
+            
+            sesion.Exit();
             Response.Write("<script>window.alert('Has cerrado sesión correctamente');</script>");
             VisibilidadControles();
         }
