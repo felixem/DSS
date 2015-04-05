@@ -68,10 +68,93 @@ namespace WebUtilities
             set { bolsa.Asignatura.Id = value; }
         }
 
+        //Id de la bolsa original
+        public virtual int Id
+        {
+            get
+            {
+                if (!IsCargada())
+                    throw new Exception("Esta bolsa no tiene id asignado");
+                else
+                    return sincronizacion.Id;
+            }
+        }
+
+        //Fecha de creación de la bolsa original
+        public virtual DateTime? Fecha_creacion
+        {
+            get
+            {
+                if (!IsCargada())
+                    return null;
+                else
+                    return sincronizacion.FechaCreacion;
+            }
+        }
+
+        //Asignatura de la bolsa original
+        public virtual int AsignaturaOriginal
+        {
+            get
+            {
+                if (!IsCargada())
+                    throw new Exception("Esta bolsa no tiene bolsa original asignada");
+                else
+                    return sincronizacion.Asignatura;
+            }
+        }
+
         //Devolver lista de preguntas
         public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaEN> Preguntas
         {
             get { return bolsa.Preguntas; }
+        }
+
+        //Devolver la lista de preguntas nuevas creadas
+        public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaEN> PreguntasCreadas
+        {
+            get
+            {
+                //Todas las preguntas son nuevas
+                if (!IsCargada() || sincronizacion.NumOriginales == 0)
+                    return Preguntas;
+                else
+                {
+                    List<PreguntaEN> creadas = new List<PreguntaEN>();
+                    IList<PreguntaEN> preguntas = Preguntas;
+                    int max = preguntas.Count;
+
+                    //Generar la sublista obviando los elementos que no deben ser creados de nuevo
+                    for (int i = sincronizacion.NumOriginales; i < max; i++)
+                        creadas.Add(preguntas[i]);
+
+                    return creadas;
+                }
+            }
+        }
+
+        //Devolver la lista de preguntas originales modificadas
+        public IList<PreguntaEN> PreguntasModificadas
+        {
+            get
+            {
+                if (!IsCargada())
+                    return new List<PreguntaEN>();
+                else
+                    return sincronizacion.PreguntasModificadas;
+            }
+        }
+
+        //Devolver la lista de preguntas originales borradas
+        public IList<PreguntaEN> PreguntasBorradas
+        {
+            get
+            {
+                if (!IsCargada())
+                    return new List<PreguntaEN>();
+                else
+                    return sincronizacion.PreguntasBorradas;
+            }
         }
 
         //Saber si la bolsa ha sido cargada
@@ -93,7 +176,7 @@ namespace WebUtilities
         public void ComenzarSincronizacion(BolsaPreguntasEN bolsita)
         {
             this.Clear();
-            sincronizacion = new BolsaSincronizacion(bolsita.Id);
+            sincronizacion = new BolsaSincronizacion(bolsita.Id,bolsita.Fecha_creacion,bolsita.Asignatura.Id);
             bolsa.Asignatura.Id = bolsita.Asignatura.Id;
             bolsa.Descripcion = bolsita.Descripcion;
             bolsa.Fecha_creacion = bolsita.Fecha_creacion;

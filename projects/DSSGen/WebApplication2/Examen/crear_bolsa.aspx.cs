@@ -118,7 +118,7 @@ namespace DSSGenNHibernate.Examen
             link.Redirect(Response,link.ModificarPregunta(id));
         }
 
-        //Manejador del evento para modificar una bolsa de preguntas
+        //Manejador del evento para eliminar una pregunta
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;

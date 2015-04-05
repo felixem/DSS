@@ -50,10 +50,8 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a una bolsa de sesión el contenido de una bolsa existente
-        public BolsaSession VincularBolsaSession(int idBolsa)
+        public BolsaSession VincularBolsaSession(BolsaSession bolsaSesion, int idBolsa)
         {
-            BolsaSession bolsaSesion = BolsaSession.Current;
-
             //Recuperar los datos de la bolsa original
             try
             {

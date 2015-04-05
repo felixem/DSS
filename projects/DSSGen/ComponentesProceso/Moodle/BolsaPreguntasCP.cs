@@ -80,7 +80,47 @@ namespace ComponentesProceso.Moodle
             return idBolsa;
         }
 
-        //Método utilizado para crear una pregunta
+        //Modificar bolsa de preguntas con el conjunto de preguntas y respuestas nuevas, modificadas y borradas
+        public int ModificarBolsa(int idBolsa, String nombre, String descripcion, DateTime? fecha_creacion,
+            DateTime? fecha_modificacion, int asignaturaOriginal, int asignaturaNueva, IList<PreguntaEN> preguntasNuevas,
+            IList<PreguntaEN> preguntasModificadas, IList<PreguntaEN> preguntasBorradas)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Modificar valores de bolsa
+                BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
+                BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
+                bolsaCen.Modify(idBolsa, nombre, descripcion, fecha_creacion, fecha_modificacion);
+
+                //Relacionar la bolsa con la nueva asignatura y desvincularla con la anterior
+                bolsaCen.Unrelationer_asignatura(idBolsa, asignaturaOriginal);
+                bolsaCen.Relationer_asignatura(idBolsa, asignaturaNueva);
+
+                //Crear las preguntas nuevas
+                this.CrearPreguntas(preguntasNuevas, idBolsa);
+                //Cargar los cambios de las preguntas modificadas
+                this.ModificarPreguntas(preguntasModificadas, idBolsa);
+                //Borrar las preguntas eliminadas
+                this.BorrarPreguntas(preguntasBorradas, idBolsa);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                SessionClose();
+            }
+
+            return idBolsa;
+        }
+
+        //Método utilizado para crear preguntas
         private void CrearPreguntas(IList<PreguntaEN> preguntas, int idBolsa)
         {
             //Crear preguntas
@@ -92,11 +132,12 @@ namespace ComponentesProceso.Moodle
                 int idPreg = preguntaCen.New_(preg.Contenido, preg.Explicacion, idBolsa);
                 int idRespCorrecta = -1;
 
+                RespuestaCAD resCad = new RespuestaCAD(session);
+                RespuestaCEN resCen = new RespuestaCEN(resCad);
+
                 //Crear respuestas
                 foreach (RespuestaEN resp in preg.Respuestas)
                 {
-                    RespuestaCAD resCad = new RespuestaCAD(session);
-                    RespuestaCEN resCen = new RespuestaCEN(resCad);
                     int idRes = resCen.New_(resp.Contenido, idPreg);
                     //Establecer el id de la respuesta correcta si lo fuese
                     if (resp.Id.Equals(preg.Respuesta_correcta.Id))
@@ -108,6 +149,52 @@ namespace ComponentesProceso.Moodle
 
                 //Realizar un update automático en la sesion
                 session.Flush();
+            }
+        }
+
+        //Método utilizado para modificar una lista de preguntas
+        private void ModificarPreguntas(IList<PreguntaEN> preguntas, int idBolsa)
+        {
+            //Crear preguntas
+            PreguntaCAD preguntaCad = new PreguntaCAD(session);
+            PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+            foreach (PreguntaEN preg in preguntas)
+            {
+                //Modificar pregunta
+                int idPreg = preg.Id;
+                preguntaCen.Modify(idPreg,preg.Contenido,preg.Explicacion);
+                int idRespCorrecta = preg.Respuesta_correcta.Id;
+                //Relacionar con el id de la respuesta correcta
+                preguntaCen.Relationer_respuesta_correcta(idPreg, idRespCorrecta);
+
+                RespuestaCAD resCad = new RespuestaCAD(session);
+                RespuestaCEN resCen = new RespuestaCEN(resCad);
+
+                //Modificar respuestas
+                foreach (RespuestaEN resp in preg.Respuestas)
+                {
+                    int idRes = resp.Id;
+                    String contenido = resp.Contenido;
+                    //Modificar la respuesta
+                    resCen.Modify(idRes,contenido);
+                }
+
+                //Realizar un update automático en la sesion
+                session.Flush();
+            }
+        }
+
+        //Método utilizado para borrar una lista de preguntas
+        private void BorrarPreguntas(IList<PreguntaEN> preguntas, int idBolsa)
+        {
+            //Borrar preguntas
+            PreguntaCAD preguntaCad = new PreguntaCAD(session);
+            PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+            foreach (PreguntaEN preg in preguntas)
+            {
+                //Borrar pregunta
+                int idPreg = preg.Id;
+                preguntaCen.Destroy(preg.Id);
             }
         }
     }

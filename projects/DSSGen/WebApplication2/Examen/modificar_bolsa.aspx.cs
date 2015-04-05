@@ -34,7 +34,7 @@ namespace DSSGenNHibernate.Examen
         {
             //Recuperar los datos de la bolsa original
             FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            fachada.DameBolsaSession(id);
+            bolsa = fachada.CargarBolsaSession(id);
         }
 
         //Manejador al cargar la página
@@ -142,7 +142,7 @@ namespace DSSGenNHibernate.Examen
             link.Redirect(Response,link.ModificarPregunta(id));
         }
 
-        //Manejador del evento para modificar una bolsa de preguntas
+        //Manejador del evento para eliminar una pregunta
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
@@ -159,7 +159,7 @@ namespace DSSGenNHibernate.Examen
             link.Redirect(Response,link.CrearPregunta());
         }
 
-        //Manejador para cancelar la creación de una bolsa de preguntas
+        //Manejador para cancelar la modificación de una bolsa de preguntas
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
             bolsa.Clear();
@@ -167,11 +167,15 @@ namespace DSSGenNHibernate.Examen
             link.Redirect(Response,link.PreviousPage());
         }
 
-        //Manejador para hacer persistente la creación de una bolsa de preguntas
+        //Manejador para hacer persistente la modificación de una bolsa de preguntas
         protected void Button_Guardar_Click(object sender, EventArgs e)
         {
             SalvarMenu();
-            throw new Exception("Not yet implemented");
+            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            fachada.ModificarBolsa(bolsa);
+            bolsa.Clear();
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
         }
 
         //Manejador cuando cambie la selección en el drop down list

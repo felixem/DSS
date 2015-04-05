@@ -22,20 +22,37 @@ namespace WebUtilities
 
             //Id de la bolsa original en la BD
             private int idBolsaOriginal;
+            //Fecha de creación de la bolsa original
+            private DateTime? fechaCreacion;
+            //Id de la asignatura original en la BD
+            private int idAsignatura;
 
             //Constructor
-            public BolsaSincronizacion(int idBolsa)
+            public BolsaSincronizacion(int idBolsa, DateTime? creacion, int asignatura)
             {
                 preguntasOriginales = new List<PreguntaEN>();
                 preguntasModificadas = new List<int>();
                 preguntasBorradas = new List<PreguntaEN>();
                 idBolsaOriginal = idBolsa;
+                fechaCreacion = creacion;
+                idAsignatura = asignatura;
             }
 
             //Propiedades
+            //Id de la bolsa original
             public int Id
             {
                 get { return idBolsaOriginal; }
+            }
+            //Fecha de creación de la bolsa original
+            public DateTime? FechaCreacion
+            {
+                get { return fechaCreacion; }
+            }
+            //Id de la asignatura original
+            public int Asignatura
+            {
+                get { return idAsignatura; }
             }
 
             //Obtener lista de preguntas modificadas
@@ -51,6 +68,12 @@ namespace WebUtilities
                     }
                     return modificadas; 
                 }
+            }
+
+            //Obtener la cantidad de preguntas originales que quedan sin borrar
+            public int NumOriginales
+            {
+                get { return preguntasOriginales.Count; }
             }
 
             //Obtener una lista de preguntas borradas
