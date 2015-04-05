@@ -60,5 +60,12 @@ namespace Fachadas.Moodle
             BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN();
             bolsa.Destroy(p_oid);
         }
+
+        //Obtener una BolsaSession de preguntas para modificar una bolsa existente en la BD
+        public BolsaSession DameBolsaSession(int idBolsa)
+        {
+            BindingComponents.Moodle.BolsaPreguntasBinding binding= new BindingComponents.Moodle.BolsaPreguntasBinding();
+            return binding.VincularBolsaSession(idBolsa);
+        }
     }
 }

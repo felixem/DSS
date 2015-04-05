@@ -21,7 +21,7 @@ namespace ComponentesProceso.Moodle
         public BolsaPreguntasCP(ISession sesion) : base(sesion) { }
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de bolsas que satisfacen la consulta
-        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosTotal(IDameTodosBolsaPreguntas consulta, 
+        public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosTotal(IDameTodosBolsaPreguntas consulta,
             int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
@@ -29,7 +29,7 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
-                lista = consulta.Execute(session,first, size);
+                lista = consulta.Execute(session, first, size);
                 numBases = consulta.Total(session);
 
                 SessionCommit();
@@ -49,10 +49,10 @@ namespace ComponentesProceso.Moodle
         }
 
         //Crear bolsa de preguntas con el conjunto de preguntas y respuestas
-        public int CrearBolsa(String nombre, String descripcion, DateTime? fecha_creacion, 
+        public int CrearBolsa(String nombre, String descripcion, DateTime? fecha_creacion,
             DateTime? fecha_modificacion, int asignatura, IList<PreguntaEN> preguntas)
         {
-            int idBolsa = -1; 
+            int idBolsa = -1;
             try
             {
                 SessionInitializeTransaction();
@@ -63,31 +63,7 @@ namespace ComponentesProceso.Moodle
                 idBolsa = bolsaCen.New_(nombre, descripcion, fecha_creacion, fecha_modificacion, asignatura);
 
                 //Crear preguntas
-                PreguntaCAD preguntaCad = new PreguntaCAD(session);
-                PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
-                foreach (PreguntaEN preg in preguntas)
-                {
-                    //Crear pregunta
-                    int idPreg = preguntaCen.New_(preg.Contenido, preg.Explicacion, idBolsa);
-                    int idRespCorrecta=-1;
-
-                    //Crear respuestas
-                    foreach (RespuestaEN resp in preg.Respuestas)
-                    {
-                        RespuestaCAD resCad = new RespuestaCAD(session);
-                        RespuestaCEN resCen = new RespuestaCEN(resCad);
-                        int idRes = resCen.New_(resp.Contenido, idPreg);
-                        //Establecer el id de la respuesta correcta si lo fuese
-                        if(resp.Id.Equals(preg.Respuesta_correcta.Id))
-                            idRespCorrecta = idRes;
-                    }
-
-                    //Establecer una relación entre una pregunta y su respuesta correcta
-                    preguntaCen.Relationer_respuesta_correcta(idPreg, idRespCorrecta);
-
-                    //Realizar un update automático en la sesion
-                    session.Flush();
-                }
+                this.CrearPreguntas(preguntas, idBolsa);
 
                 SessionCommit();
             }
@@ -102,6 +78,37 @@ namespace ComponentesProceso.Moodle
             }
 
             return idBolsa;
+        }
+
+        //Método utilizado para crear una pregunta
+        private void CrearPreguntas(IList<PreguntaEN> preguntas, int idBolsa)
+        {
+            //Crear preguntas
+            PreguntaCAD preguntaCad = new PreguntaCAD(session);
+            PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+            foreach (PreguntaEN preg in preguntas)
+            {
+                //Crear pregunta
+                int idPreg = preguntaCen.New_(preg.Contenido, preg.Explicacion, idBolsa);
+                int idRespCorrecta = -1;
+
+                //Crear respuestas
+                foreach (RespuestaEN resp in preg.Respuestas)
+                {
+                    RespuestaCAD resCad = new RespuestaCAD(session);
+                    RespuestaCEN resCen = new RespuestaCEN(resCad);
+                    int idRes = resCen.New_(resp.Contenido, idPreg);
+                    //Establecer el id de la respuesta correcta si lo fuese
+                    if (resp.Id.Equals(preg.Respuesta_correcta.Id))
+                        idRespCorrecta = idRes;
+                }
+
+                //Establecer una relación entre una pregunta y su respuesta correcta
+                preguntaCen.Relationer_respuesta_correcta(idPreg, idRespCorrecta);
+
+                //Realizar un update automático en la sesion
+                session.Flush();
+            }
         }
     }
 }

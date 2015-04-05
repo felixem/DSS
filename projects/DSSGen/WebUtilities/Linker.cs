@@ -106,7 +106,7 @@ namespace WebUtilities
         //Cadena para la página de modificación de una pregunta
         public string ModificarPregunta(int id)
         {
-            return "~/Examen/modificar_pregunta.aspx?"
+            return "~/Examen/modificar_pregunta.aspx"
             + Parameter(PageParameters.MainParameter, id.ToString());
         }
     }

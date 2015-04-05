@@ -85,6 +85,10 @@
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>DSSGenNHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

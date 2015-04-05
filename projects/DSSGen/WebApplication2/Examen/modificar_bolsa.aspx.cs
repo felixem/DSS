@@ -16,32 +16,25 @@ namespace DSSGenNHibernate.Examen
         //Objetos utilizables
         BolsaSession bolsa;
         private int id;
-        private Boolean modificar;
         String param;
 
         //Comprobar si se plantea operación de modificación
-        protected void Comprobar_Modo()
+        protected void Obtener_Parametros()
         {
             param = Request.QueryString[PageParameters.MainParameter];
-            //No hacer nada más si no se ha recibido un parámetro
+            //Lanzar excepción no se ha recibido un parámetro
             if (param == null)
-                modificar = false;
+                throw new Exception("No se especifica bolsa");
             else
-            {
                 id = Int32.Parse(param);
-                modificar = true;
-            }
         }
 
         //Comprobar parámetros
         protected void Procesar_Parametros()
         {
-            //No hacer nada más si no se ha recibido un parámetro
-            if (param == null)
-                throw new Exception("No se especifica bolsa");
-
             //Recuperar los datos de la bolsa original
-            bolsa.CargarBolsaExistente(id);
+            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            fachada.DameBolsaSession(id);
         }
 
         //Manejador al cargar la página
@@ -50,7 +43,7 @@ namespace DSSGenNHibernate.Examen
             //Recuperar el estado de la bolsa
             bolsa = BolsaSession.Current;
             //Comprobar el modo de la página
-            Comprobar_Modo();
+            Obtener_Parametros();
 
             if (!IsPostBack)
             {
@@ -178,11 +171,7 @@ namespace DSSGenNHibernate.Examen
         protected void Button_Guardar_Click(object sender, EventArgs e)
         {
             SalvarMenu();
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            fachada.CrearBolsa(bolsa);
-            bolsa.Clear();
-            Linker link = new Linker(false);
-            link.Redirect(Response,link.PreviousPage());
+            throw new Exception("Not yet implemented");
         }
 
         //Manejador cuando cambie la selección en el drop down list
