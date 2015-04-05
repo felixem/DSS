@@ -59,8 +59,8 @@ namespace Fachadas.Moodle
         //Borrar una bolsa de preguntas
         public void BorrarBolsa(int p_oid)
         {
-            BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN();
-            bolsa.Destroy(p_oid);
+            BolsaPreguntasCP bolsa = new BolsaPreguntasCP();
+            bolsa.BorrarBolsa(p_oid);
         }
 
         //Obtener una BolsaSession de preguntas para modificar una bolsa existente en la BD

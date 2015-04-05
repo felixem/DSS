@@ -176,7 +176,7 @@ namespace WebUtilities
         public void ComenzarSincronizacion(BolsaPreguntasEN bolsita)
         {
             this.Clear();
-            sincronizacion = new BolsaSincronizacion(bolsita.Id,bolsita.Fecha_creacion,bolsita.Asignatura.Id);
+            sincronizacion = new BolsaSincronizacion(bolsita.Id, bolsita.Fecha_creacion, bolsita.Asignatura.Id);
             bolsa.Asignatura.Id = bolsita.Asignatura.Id;
             bolsa.Descripcion = bolsita.Descripcion;
             bolsa.Fecha_creacion = bolsita.Fecha_creacion;
@@ -261,8 +261,9 @@ namespace WebUtilities
         //Borrar pregunta de la lista según el índice
         public void RemovePregunta(int index)
         {
-            //Actualizar la estructura de sincronización si es necesario
-            sincronizacion.DeletePregunta(index);
+            //Actualizar cambios en la estructura de sincronización si es necesario
+            if (IsCargada())
+                sincronizacion.DeletePregunta(index);
 
             bolsa.Preguntas.RemoveAt(index);
             //Actualizar el índice de las preguntas restantes

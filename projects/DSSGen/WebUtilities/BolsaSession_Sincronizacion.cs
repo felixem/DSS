@@ -100,7 +100,16 @@ namespace WebUtilities
                 //Actualizar las estructuras
                 preguntasOriginales.RemoveAt(index);
                 preguntasBorradas.Add(pregunta);
+
+                //Limpiar el índice de la pregunta modificada
                 preguntasModificadas.Remove(index);
+                //Actualizar los índices superiores a index decrementándolos en una unidad
+                for (int i = 0; i < preguntasModificadas.Count; i++)
+                {
+                    int val = preguntasModificadas[i];
+                    if (val > index)
+                        preguntasModificadas[i] = val - 1;
+                }
 
                 return true;
             }
