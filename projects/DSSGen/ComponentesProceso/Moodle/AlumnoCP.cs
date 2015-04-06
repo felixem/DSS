@@ -34,5 +34,33 @@ namespace ComponentesProceso.Moodle
             }
             return resultado;
         }
+
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de alumnos que satisfacen la consulta
+        public System.Collections.Generic.IList<AlumnoEN> DameTodosTotal(IDameTodosAlumno consulta,
+            int first, int size, out long numBases)
+        {
+            System.Collections.Generic.IList<AlumnoEN> lista = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                lista = consulta.Execute(session, first, size);
+                numBases = consulta.Total(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return lista;
+        }
     }
 }

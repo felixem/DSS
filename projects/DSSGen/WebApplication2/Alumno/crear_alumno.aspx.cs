@@ -12,8 +12,15 @@ namespace DSSGenNHibernate.Create
 {
     public partial class CreateStudent : System.Web.UI.Page
     {
+        //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //Capturar la página que realizó la petición
+                NavigationSession navegacion = NavigationSession.Current;
+                navegacion.SavePreviuosPage(Request);
+            }
         }
 
         //Método que llama el botón registrar
@@ -69,6 +76,14 @@ namespace DSSGenNHibernate.Create
             {
                 e.IsValid = false;
             }
+        }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
         }
     }
 }

@@ -22,8 +22,8 @@ namespace WebUtilities
         //Manipular el valor de cacheabilidad
         public bool Cacheable
         {
-            get;
-            set;
+            get {return cacheable;}
+            set {cacheable = value;}
         }
 
         //Crear un parámetro para añadir a una url
@@ -108,6 +108,12 @@ namespace WebUtilities
         {
             return "~/Examen/modificar_pregunta.aspx"
             + Parameter(PageParameters.MainParameter, id.ToString());
+        }
+
+        //Cadena para la página de creación de alumno
+        public string CrearAlumno()
+        {
+            return "~/Alumno/crear_alumno.aspx";
         }
     }
 }

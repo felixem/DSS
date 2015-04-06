@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateStudent.aspx.cs" Inherits="DSSGenNHibernate.Create.CreateStudent" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="crear_alumno.aspx.cs" Inherits="DSSGenNHibernate.Create.CreateStudent" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Styles/submenu/login.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -122,6 +122,8 @@
     <br />
     <asp:Button ID="Button_RegAlu" runat="server" onclick="Button_RegAlu_Click" 
         Text="Registrar" ValidationGroup="Registro" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button_Cancelar" runat="server" 
+        onclick="Button_Cancelar_Click" Text="Cancelar" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Button ID="Button_LimpCampos" runat="server" onclick="Button_Clean_Click" Text="Limpiar Campos" />
 </asp:Content>

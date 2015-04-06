@@ -82,5 +82,6 @@
 		  </joined-subclass>	
 		  
 		  <query name="AlumnoENReadAllHQL">from AlumnoEN</query>
+		  <query name="AlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM AlumnoEN]]></query>
 		</hibernate-mapping>
 	

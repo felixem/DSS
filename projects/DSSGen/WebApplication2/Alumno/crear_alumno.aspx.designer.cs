@@ -301,6 +301,15 @@ namespace DSSGenNHibernate.Create {
         protected global::System.Web.UI.WebControls.Button Button_RegAlu;
         
         /// <summary>
+        /// Button_Cancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Cancelar;
+        
+        /// <summary>
         /// Button_LimpCampos control.
         /// </summary>
         /// <remarks>
