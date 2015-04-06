@@ -10,7 +10,7 @@
 namespace DSSGenNHibernate.Alumno {
     
     
-    public partial class CreateStudent {
+    public partial class crear_alumno {
         
         /// <summary>
         /// LabelCod_Alu control.
