@@ -7,63 +7,106 @@ using System.Web.UI.WebControls;
 
 using Fachadas.Moodle;
 using WebUtilities;
+using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Alumno
 {
     public partial class modificar_alumno : System.Web.UI.Page
     {
+        FachadaAlumno fachada;
+        private int id;
+        String param;
+        AlumnoEN alumno;
+
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
+            fachada = new FachadaAlumno();
+            Obtener_Parametros();
+
             if (!IsPostBack)
             {
+                //Procesar parámetros
+                this.Procesar_Parametros();
+                //Cargar datos
+                this.CargarDatos();
+
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
             }
         }
 
-        //Método que llama el botón registrar
-        protected void Button_RegAlu_Click(Object sender, EventArgs e)
+        //Comprobar si se plantea operación de modificación
+        private void Obtener_Parametros()
         {
-            //Creo la fachada
-            FachadaAlumno alumno = new FachadaAlumno();
+            param = Request.QueryString[PageParameters.MainParameter];
+            //Lanzar excepción no se ha recibido un parámetro
+            if (param == null)
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
+            else
+                id = Int32.Parse(param);
+        }
 
-            //Recogo los datos
+        //Comprobar parámetros
+        private void Procesar_Parametros()
+        {
+            //Recuperar los datos del alumno
+            try
+            {
+                alumno = fachada.DameAlumno(id);
+            }
+            catch (Exception)
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
+        }
+
+
+        //Cargar los datos del alumno original
+        private void CargarDatos()
+        {
+            //Cargar todos los datos del alumno
+            UsuarioEN usuario = alumno as UsuarioEN;
+            TextBox_NomAlu.Text = usuario.Nombre;
+            TextBox_ApellAlu.Text = usuario.Apellidos;
+            TextBox_NaciAlu.Text = usuario.Fecha_nacimiento.ToString();
+            TextBox_DNIAlu.Text = usuario.Dni;
+            TextBox_EmailAlu.Text = usuario.Email;
+            TextBox_CodAlu.Text = alumno.Cod_alumno.ToString();
+            CheckBox_Baneado.Checked = alumno.Baneado;
+        }
+
+        //Método que llama al botón modificar
+        protected void Button_Modificar_Click(Object sender, EventArgs e)
+        {
+            //Recojo los datos
             string nombre = TextBox_NomAlu.Text;
             string apellidos = TextBox_ApellAlu.Text;
-            string pass = TextBox_ContAlu.Text;
-            string fecha = TextBox_NaciAlu.Text;
+            DateTime? fecha = DateTime.Parse(TextBox_NaciAlu.Text);
             string dni = TextBox_DNIAlu.Text;
             string email = TextBox_EmailAlu.Text;
-            string cod = TextBox_CodAlu.Text;
+            int cod = Int32.Parse(TextBox_CodAlu.Text);
+            bool baneado = CheckBox_Baneado.Checked;
 
-            //Llamo al metodo que registra al alumno
-            string verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
-
-            if (verificado != "Invalido")
+            if (fachada.ModificarAlumno(email, cod, baneado, dni, nombre, apellidos, fecha))
             {
-                Response.Write("<script>window.alert('El usuario: " + verificado + " se ha creado correctamente');</script>");
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
             }
-            else 
+            else
             {
-                Response.Write("<script>window.alert('El usuario no se ha creado');</script>");
+                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
             }
         }
-    
-        //Método que llama el botón limpiar campos
-        protected void Button_Clean_Click(Object sender, EventArgs e)
-        {
-            TextBox_NomAlu.Text = "";
-            TextBox_ApellAlu.Text = "";
-            TextBox_ContAlu.Text = "";
-            TextBox_VContAlu.Text = "";
-            TextBox_NaciAlu.Text = "";
-            TextBox_DNIAlu.Text = "";
-            TextBox_EmailAlu.Text = "";
-            TextBox_CodAlu.Text = "";
-        }
-    
+     
         //Metodo que comprueba la fecha(Control de validacion)
         protected void ComprobarFecha(object sender,ServerValidateEventArgs e)
         {

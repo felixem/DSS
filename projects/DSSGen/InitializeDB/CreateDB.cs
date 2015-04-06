@@ -81,12 +81,12 @@ namespace InitializeDB
                 AlumnoEN usuario = new AlumnoEN();
                 usuario.Cod_alumno = 1;
                 usuario.Baneado = false;
-                usuario.Email = "alumno";
-                usuario.Dni = "AAAA";
-                usuario.Apellidos = "Alumno";
-                usuario.Fecha_nacimiento = DateTime.Now;
-                usuario.Nombre = "Alumno";
-                usuario.Password = "pass";
+                usuario.Email = "felix@felix.es";
+                usuario.Dni = "48627745H";
+                usuario.Apellidos = "Escalona";
+                usuario.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                usuario.Nombre = "Félix";
+                usuario.Password = "1234";
                 AlumnoCEN aluCen = new AlumnoCEN();
                 aluCen.New_(usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
                     usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, new ExpedienteEN());

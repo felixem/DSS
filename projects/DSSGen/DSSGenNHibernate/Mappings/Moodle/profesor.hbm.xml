@@ -47,5 +47,7 @@
 		  </joined-subclass>	
 		  
 		  <query name="ProfesorENReadAllHQL">from ProfesorEN</query>
+		  <query name="ProfesorENreadCantidadHQL"><![CDATA[select count(*) FROM ProfesorEN]]></query>
+		  <query name="ProfesorENreadCodHQL"><![CDATA[FROM ProfesorEN prof where prof.Cod_profesor = :cod]]></query>
 		</hibernate-mapping>
 	

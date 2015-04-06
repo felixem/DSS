@@ -7,6 +7,7 @@ using ComponentesProceso.Moodle;
 using System.Web.UI.WebControls;
 using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
+using DSSGenNHibernate.EN.Moodle;
 
 namespace Fachadas.Moodle
 {
@@ -19,6 +20,39 @@ namespace Fachadas.Moodle
             return alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
         }
 
+        //Método para modificar un alumno en la BD
+        public bool ModificarAlumno(string email, int codAlumno, bool baneado, string dni,
+            string nombre, string apellidos, DateTime? fechaNacimiento)
+        {
+            try
+            {
+                AlumnoCP cp = new AlumnoCP();
+                cp.ModificarAlumno(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //Método para eliminar un alumno en la BD
+        public bool BorrarAlumno(int codAlumno)
+        {
+            try
+            {
+                AlumnoCP cp = new AlumnoCP();
+                cp.BorrarAlumno(codAlumno);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         //Vincular a un grid view los alumnos con paginación
         public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
         {
@@ -26,6 +60,21 @@ namespace Fachadas.Moodle
             AlumnoBinding alumnoBind = new AlumnoBinding();
             IDameTodosAlumno consulta = new DameTodosAlumno();
             alumnoBind.VincularDameTodos(consulta, grid, first, size, out numBases);
+        }
+
+        //Devolver un alumno a partir de un id de alumno
+        public AlumnoEN DameAlumno(int id)
+        {
+            AlumnoEN alumno = null;
+            AlumnoCP cp = new AlumnoCP();
+            DameAlumnoPorId consulta = new DameAlumnoPorId(id);
+
+            alumno = cp.DameAlumno(consulta);
+
+            if (alumno == null)
+                throw new Exception("Alumno no encontrado");
+
+            return alumno;
         }
     }
 }

@@ -83,9 +83,8 @@ namespace DSSGenNHibernate.Alumno
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
-            throw new Exception("Not implemented yet");
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarBolsa(alumnoId));
+            link.Redirect(Response, link.ModificarAlumno(alumnoId));
         }
 
         //Manejador del evento para modificar un alumno
@@ -94,7 +93,9 @@ namespace DSSGenNHibernate.Alumno
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
-            throw new Exception("Not implemented yet");
+            //Eliminar alumno
+            if (!fachada.BorrarAlumno(alumnoId))
+                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAlumnosPaginados(1);

@@ -115,5 +115,12 @@ namespace WebUtilities
         {
             return "~/Alumno/crear_alumno.aspx";
         }
+
+        //Cadena para la página de modificación de alumno
+        public String ModificarAlumno(int cod)
+        {
+            return "~/Alumno/modificar_alumno.aspx" + 
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
 }

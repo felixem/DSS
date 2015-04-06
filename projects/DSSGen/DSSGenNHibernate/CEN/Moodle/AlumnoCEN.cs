@@ -106,6 +106,10 @@ public long ReadCantidad ()
 {
         return _IAlumnoCAD.ReadCantidad ();
 }
+public DSSGenNHibernate.EN.Moodle.AlumnoEN ReadCod (int cod)
+{
+        return _IAlumnoCAD.ReadCod (cod);
+}
 public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         //Call to AlumnoCAD

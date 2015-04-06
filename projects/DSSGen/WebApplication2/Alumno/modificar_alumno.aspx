@@ -10,12 +10,11 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1 class="style2">
-        Alta de Alumno
-    </h1>
+        Modificar Alumno</h1>
     <p class="style2">
         Rellene los siguientes campos</p>
     <asp:Label ID="LabelCod_Alu" runat="server" Text="Código Alumno:"></asp:Label>
-    <asp:TextBox ID="TextBox_CodAlu" runat="server"></asp:TextBox>
+    <asp:TextBox ID="TextBox_CodAlu" runat="server" ReadOnly="True"></asp:TextBox>
     &nbsp;&nbsp;&nbsp;
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
         ControlToValidate="TextBox_CodAlu" Display="Dynamic" 
@@ -62,7 +61,7 @@
     <br />
         <asp:Label ID="Label_EmailAlu" runat="server" Text="Correo:" 
         CssClass="style2"></asp:Label>
-        <asp:TextBox ID="TextBox_EmailAlu" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_EmailAlu" runat="server" ReadOnly="True"></asp:TextBox>
 
     &nbsp;&nbsp;&nbsp;
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
@@ -76,28 +75,6 @@
     <br />
     <br />
 
-    <asp:Label ID="Label_ContAlu" runat="server" Text="Contraseña:" 
-        CssClass="style2"></asp:Label>
-    <asp:TextBox ID="TextBox_ContAlu" runat="server"></asp:TextBox>
-    &nbsp;&nbsp;&nbsp;
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-        ControlToValidate="TextBox_ContAlu" Display="Dynamic" 
-        ErrorMessage="Introduce Contraseña" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-    <br />
-    <br />
-    <asp:Label ID="Label_VContAlu" runat="server" Text="Repita Contraseña:" 
-        CssClass="style2"></asp:Label>
-    <asp:TextBox ID="TextBox_VContAlu" runat="server"></asp:TextBox>
-    &nbsp;&nbsp;&nbsp;
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
-        ControlToValidate="TextBox_VContAlu" Display="Dynamic" 
-        ErrorMessage="Introduce Contraseña" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-    <asp:CompareValidator ID="CompareValidator1" runat="server" 
-        ControlToCompare="TextBox_ContAlu" ControlToValidate="TextBox_VContAlu" 
-        Display="Dynamic" ErrorMessage="Contraseñas Diferentes" ForeColor="Red" 
-        ValidationGroup="Registro"></asp:CompareValidator>
-    <br />
-    <br />
     <asp:Label ID="Label_NaciAlu" runat="server" 
         Text="Fecha Nacimiento (MM/DD/AAAA):" CssClass="style2"></asp:Label>
     <asp:TextBox ID="TextBox_NaciAlu" runat="server"></asp:TextBox>
@@ -118,12 +95,12 @@
         ValidationGroup="Registro"></asp:CustomValidator>
 
     <br />
+    <asp:Label ID="Label_Baneado" runat="server" Text="Baneado"></asp:Label>
+&nbsp;<asp:CheckBox ID="CheckBox_Baneado" runat="server" />
     <br />
     <br />
-    <asp:Button ID="Button_RegAlu" runat="server" onclick="Button_RegAlu_Click" 
-        Text="Registrar" ValidationGroup="Registro" />
+    <asp:Button ID="Button_Modificar" runat="server" onclick="Button_Modificar_Click" 
+        Text="Actualizar cambios" ValidationGroup="Registro" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button_Cancelar" runat="server" 
         onclick="Button_Cancelar_Click" Text="Cancelar" />
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="Button_LimpCampos" runat="server" onclick="Button_Clean_Click" Text="Limpiar Campos" />
 </asp:Content>

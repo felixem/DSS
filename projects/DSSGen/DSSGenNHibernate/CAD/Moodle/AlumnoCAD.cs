@@ -237,6 +237,37 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.AlumnoEN ReadCod (int cod)
+{
+        DSSGenNHibernate.EN.Moodle.AlumnoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AlumnoEN self where FROM AlumnoEN alu where alu.Cod_alumno = :cod";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCodHQL");
+                query.SetParameter ("cod", cod);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AlumnoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;

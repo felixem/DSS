@@ -62,5 +62,86 @@ namespace ComponentesProceso.Moodle
 
             return lista;
         }
+
+        //Devolver el resultado de una consulta individual sobre un alumno
+        public AlumnoEN DameAlumno(IDameAlumno consulta)
+        {
+            AlumnoEN alu = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                alu = consulta.Execute(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return alu;
+        }
+
+        //Modificar alumno sin modificar su contraseña
+        public void ModificarAlumno(string email,int codAlumno, bool baneado, string dni,
+            string nombre, string apellidos, DateTime? fechaNacimiento)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                AlumnoCEN cen = new AlumnoCEN();
+                //Recuperar datos del alumno
+                AlumnoEN alu = cen.ReadCod(codAlumno);
+                //Ejecutar la modificación
+                cen.Modify(email,codAlumno,baneado,dni,alu.Password,nombre,apellidos, fechaNacimiento);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
+        //Borrar alumno a partir de su código de alumno
+        public void BorrarAlumno(int codAlumno)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                AlumnoCEN cen = new AlumnoCEN();
+                //Recuperar datos del alumno
+                AlumnoEN alu = cen.ReadCod(codAlumno);
+                //Ejecutar la modificación
+                cen.Destroy(alu.Email);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

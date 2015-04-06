@@ -72,9 +72,11 @@
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
     <Compile Include="Moodle\BolsaPreguntasCP.cs" />
+    <Compile Include="Moodle\Commands\DameAlumnoPorId.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumno.cs" />
     <Compile Include="Moodle\Commands\DameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignatura.cs" />
+    <Compile Include="Moodle\Commands\IDameAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameTodosAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />

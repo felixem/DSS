@@ -55,6 +55,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Alumno\alumnos.aspx" />
+    <Content Include="Alumno\modificar_alumno.aspx" />
     <Content Include="Resources\Fotos\alumno.png" />
     <Content Include="Resources\Fotos\administrador.jpg" />
     <Content Include="Resources\Fotos\profesor.png" />
@@ -119,6 +120,13 @@
     </Compile>
     <Compile Include="Alumno\alumnos.aspx.designer.cs">
       <DependentUpon>alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

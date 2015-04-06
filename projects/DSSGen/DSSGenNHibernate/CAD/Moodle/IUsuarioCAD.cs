@@ -22,6 +22,9 @@ System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size);
 UsuarioEN ReadOID (string email);
 
 
+long ReadCantidad ();
+
+
 
 DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni);
 }
