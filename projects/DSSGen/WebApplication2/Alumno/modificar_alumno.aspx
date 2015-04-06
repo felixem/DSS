@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="crear_alumno.aspx.cs" Inherits="DSSGenNHibernate.Alumno.crear_alumno" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="modificar_alumno.aspx.cs" Inherits="DSSGenNHibernate.Alumno.modificar_alumno" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Styles/submenu/login.css" rel="stylesheet" type="text/css" />
     <style type="text/css">

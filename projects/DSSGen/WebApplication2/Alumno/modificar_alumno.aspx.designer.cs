@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.Alumno {
+namespace DSSGenNHibernate.Create {
     
     
-    public partial class CreateStudent {
+    public partial class modificar_alumno {
         
         /// <summary>
         /// LabelCod_Alu control.

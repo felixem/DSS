@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.Alumno
 {
-    public partial class crear_alumno : System.Web.UI.Page
+    public partial class modificar_alumno : System.Web.UI.Page
     {
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
