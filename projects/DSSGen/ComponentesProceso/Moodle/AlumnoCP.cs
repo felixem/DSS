@@ -37,7 +37,7 @@ namespace ComponentesProceso.Moodle
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de alumnos que satisfacen la consulta
         public System.Collections.Generic.IList<AlumnoEN> DameTodosTotal(IDameTodosAlumno consulta,
-            int first, int size, out long numBases)
+            int first, int size, out long numElementos)
         {
             System.Collections.Generic.IList<AlumnoEN> lista = null;
             try
@@ -45,7 +45,7 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
                 lista = consulta.Execute(session, first, size);
-                numBases = consulta.Total(session);
+                numElementos = consulta.Total(session);
 
                 SessionCommit();
             }
