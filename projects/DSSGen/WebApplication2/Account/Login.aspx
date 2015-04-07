@@ -13,7 +13,7 @@
     <p>
         Especifique su nombre de usuario y contraseña.
         </p>
-    <asp:ValidationSummary ID="SumarioValidacion" runat="server" ValidationGroup="LoginUsuario"/>
+    <asp:ValidationSummary ID="SumarioValidacion" runat="server" ValidationGroup="LoginUsuario" ForeColor="Red" />
     </div>
 </div>
 <asp:Panel ID="panelLogin" runat="server" DefaultButton="LoginUser$LoginButton">
