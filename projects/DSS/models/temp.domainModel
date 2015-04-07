@@ -399,7 +399,7 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM AsignaturaEN"/>
-      <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.7" filter="FROM AsignaturaEN asig where asig.Cod_Asignatura=:cod">
+      <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.7" filter="FROM AsignaturaEN asig where asig.Cod_asignatura=:cod">
         <arguments name="cod" isOrdered="true"/>
       </operations>
       <operations name="relationer_asignaturas_anyo" operationType="Relationer" type="Void" relatedRol="/0/@elements.7/@attributes.7">
