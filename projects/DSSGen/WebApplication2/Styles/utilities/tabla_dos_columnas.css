@@ -29,6 +29,16 @@
     overflow:hidden;
 }
 
+/* Filas tabla modificar alumno */
+.row_modificar_alumno
+{
+    width: 350px;
+    margin: 5px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
 .row_crear_alumno_buttons
 {
     width: 400px;

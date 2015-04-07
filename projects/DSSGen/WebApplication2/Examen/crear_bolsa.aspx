@@ -12,14 +12,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="CentrarContenido">
     <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
-        <asp:ValidationSummary ID="ValidationSummaryBolsa" runat="server" 
+        <asp:ValidationSummary ID="ValidationSummaryBolsa" runat="server" ForeColor="Red" 
             ShowMessageBox="True" ShowSummary="False" ValidationGroup="GroupBolsa" />
         <div class="clean_float">
         <asp:Label ID="Label_Nombre" runat="server" Text="Nombre" CssClass="posicion_izquierda"></asp:Label>
         <asp:TextBox ID="TextBox_Nombre" runat="server" ValidationGroup="GroupBolsa" 
             CssClass="posicion_derecha"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator_Nombre" runat="server" 
-            ControlToValidate="TextBox_Nombre" ErrorMessage="Se requiere un nombre" 
+            ControlToValidate="TextBox_Nombre" ErrorMessage="Se requiere un nombre" ForeColor="Red" 
             ValidationGroup="GroupBolsa">*</asp:RequiredFieldValidator>
         </div>
         <div class="clean_float">

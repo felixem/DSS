@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="CentrarContenido">
     <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
-        <asp:ValidationSummary ID="ValidationSummary" runat="server" 
+        <asp:ValidationSummary ID="ValidationSummary" runat="server" ForeColor="Red" 
             HeaderText="Se produjeron los siguientes errores:" ShowMessageBox="True" 
             ShowSummary="False" ValidationGroup="ValidarSeleccion" />
         <div class="row_textbox">
@@ -17,7 +17,7 @@
         <asp:TextBox ID="TextBox_Enunciado" runat="server"
             Rows="3" TextMode="MultiLine" CssClass="position_textbox_right"></asp:TextBox>
         </div>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEnunciado" runat="server" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEnunciado" runat="server" ForeColor="Red" 
             ControlToValidate="TextBox_Enunciado" ErrorMessage="El enunciado es requerido" 
             ValidationGroup="ValidarSeleccion">*</asp:RequiredFieldValidator>
         <asp:Label ID="Label_CabeceraRespuestas" runat="server" 
@@ -27,7 +27,7 @@
         <asp:TextBox ID="TextBox_Opcion1" CssClass="position_textbox_right" runat="server" 
                 Rows="2" TextMode="MultiLine"></asp:TextBox>
         </div>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion1" runat="server" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion1" runat="server" ForeColor="Red" 
             ControlToValidate="TextBox_Opcion1" ErrorMessage="La opción 1 es requerida" 
             ValidationGroup="ValidarSeleccion">*</asp:RequiredFieldValidator>
         <div class="row_textbox">
@@ -35,7 +35,7 @@
         <asp:TextBox ID="TextBox_Opcion2" runat="server" CssClass="position_textbox_right" 
                 Rows="2" TextMode="MultiLine"></asp:TextBox>
         </div>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion2" runat="server" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion2" runat="server" ForeColor="Red" 
             ControlToValidate="TextBox_Opcion2" ErrorMessage="La opción 2 es requerida" 
             ValidationGroup="ValidarSeleccion">*</asp:RequiredFieldValidator>
         <div class="row_textbox">
@@ -43,7 +43,7 @@
         <asp:TextBox ID="TextBox_Opcion3" runat="server" CssClass="position_textbox_right" 
                 Rows="2" TextMode="MultiLine"></asp:TextBox>
         </div>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion3" runat="server" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion3" runat="server" ForeColor="Red" 
             ControlToValidate="TextBox_Opcion3" ErrorMessage="La opción 3 es requerida" 
             ValidationGroup="ValidarSeleccion">*</asp:RequiredFieldValidator>
         <div class="row_textbox">
@@ -51,7 +51,7 @@
         <asp:TextBox ID="TextBox_Opcion4" runat="server" CssClass="position_textbox_right" 
                 Rows="2" TextMode="MultiLine"></asp:TextBox>
         </div>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion4" runat="server" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorOpcion4" runat="server" ForeColor="Red" 
             ControlToValidate="TextBox_Opcion4" ErrorMessage="La opción 4 es requerida" 
             ValidationGroup="ValidarSeleccion">*</asp:RequiredFieldValidator>
         <div class="row_textbox">
@@ -67,7 +67,7 @@
             <asp:ListItem Value="3">Opción 3</asp:ListItem>
             <asp:ListItem Value="4">Opción 4</asp:ListItem>
         </asp:RadioButtonList>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidatorRadioButton" 
+        <asp:RequiredFieldValidator ID="RequiredFieldValidatorRadioButton" ForeColor="Red" 
             runat="server" ControlToValidate="RadioButtonListOpciones" Display="None" 
             ErrorMessage="Error: Se requiere elegir como correcta una de las opciones" 
             ValidationGroup="ValidarSeleccion"></asp:RequiredFieldValidator>
