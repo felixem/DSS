@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+*.cache
+=======
 projects/DSSGen/DSSGenNHibernate.suo
 projects/DSSGen/BindingComponents/obj
 projects/DSSGen/BindingComponents/bin
@@ -15,3 +18,4 @@ projects/DSSGen/WebUtilities/obj
 projects/DSSGen/WebUtilities/bin
 */bin
 */obj
+>>>>>>> origin/user-iterface

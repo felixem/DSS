@@ -60,5 +60,17 @@ namespace WebApplication2
             Response.Write("<script>window.alert('Has cerrado sesión correctamente');</script>");
             VisibilidadControles();
         }
+
+        protected void btn_inicio_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.Default());
+        }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.Login());
+        }
     }
 }

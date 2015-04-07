@@ -2,8 +2,8 @@
     CodeBehind="modificar_pregunta.aspx.cs" Inherits="DSSGenNHibernate.Examen.modificar_pregunta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href="../Styles/examen/centrar_contenido.css" rel="stylesheet" type="text/css" />
-    <link href="../Styles/examen/tabla_dos_columnas.css" rel="stylesheet" 
+    <link href="../Styles/utilities/centrar_contenido.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/utilities/tabla_dos_columnas.css" rel="stylesheet" 
         type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
