@@ -8,33 +8,36 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.Examen
+namespace DSSGenNHibernate.Alumno
 {
-    public partial class bases : System.Web.UI.Page
+    public partial class alumnos : System.Web.UI.Page
     {
+        //Fachada utilizada en la página
+        FachadaAlumno fachada;
+
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
+            fachada = new FachadaAlumno();
             if (!IsPostBack)
             {
-                this.ObtenerBolsasPaginadas(1);
+                this.ObtenerAlumnosPaginados(1);
             }
         }
 
         //Manejador al cambiar el tamaño de página
         protected void PageSize_Changed(object sender, EventArgs e)
         {
-            this.ObtenerBolsasPaginadas(1);
+            this.ObtenerAlumnosPaginados(1);
         }
 
-        //Manejador para obtener la bolsa de preguntas con el índice requerido
-        private void ObtenerBolsasPaginadas(int pageIndex)
+        //Manejador para obtener los alumnos paginados
+        private void ObtenerAlumnosPaginados(int pageIndex)
         {
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            //Vincular el grid con la lista de bolsas paginada
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
+            //Vincular el grid con la lista de alumnos paginada
             fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
@@ -45,7 +48,7 @@ namespace DSSGenNHibernate.Examen
         protected void Page_Changed(object sender, EventArgs e)
         {
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
-            this.ObtenerBolsasPaginadas(pageIndex);
+            this.ObtenerAlumnosPaginados(pageIndex);
         }
 
         //Listar las páginas para navegar sobre ellas
@@ -67,35 +70,35 @@ namespace DSSGenNHibernate.Examen
             rptPager.DataBind();
         }
 
-        //Manejador para la creación de una nueva bolsa de preguntas
+        //Manejador para la creación de un nuevo alumno
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(true);
-            link.Redirect(Response,link.CrearBolsa());
+            link.Redirect(Response, link.CrearAlumno());
         }
 
         //Manejador del evento para modificar una bolsa de preguntas
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int bolsaId = Int32.Parse(grdrow.Cells[0].Text);
+            int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
+
             Linker link = new Linker(true);
-            link.Redirect(Response,link.ModificarBolsa(bolsaId));
+            link.Redirect(Response, link.ModificarAlumno(alumnoId));
         }
 
-        //Manejador del evento para modificar una bolsa de preguntas
+        //Manejador del evento para modificar un alumno
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int bolsaId = Int32.Parse(grdrow.Cells[0].Text);
+            int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            fachada.BorrarBolsa(bolsaId);
+            //Eliminar alumno
+            if (!fachada.BorrarAlumno(alumnoId))
+                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
 
             //Obtener de nuevo la lista de bolsas
-            this.ObtenerBolsasPaginadas(1);
+            this.ObtenerAlumnosPaginados(1);
         }
-
-
     }
 }

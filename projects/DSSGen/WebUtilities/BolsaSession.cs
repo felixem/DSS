@@ -9,26 +9,26 @@ using System.Web.UI.WebControls;
 namespace WebUtilities
 {
     //Clase utilizada para almacenar provisionalmente la construcción de una bolsa de preguntas
-    public class BolsaSession
+    public partial class BolsaSession
     {
         private BolsaPreguntasEN bolsa;
-        //Par que relaciona ids de preguntas originales con ids provisionales dentro de la bolsa de sesión
-        private List<KeyValuePair<int,int>> preguntasOriginales;
-        //Par que relaciona ids de preguntas originales con una lista de respuestas originales
-        private List<KeyValuePair<int, List<RespuestaEN>>> respuestasOriginales;
-        //Variable para almacenar si la bolsa está siendo creada o ha sido cargada para ser modificada
-        private bool cargada;
+        private BolsaSincronizacion sincronizacion;
 
         //Constructor por defecto
         private BolsaSession()
         {
+            InicializarValores();
+        }
+
+        //Inicializar valores
+        private void InicializarValores()
+        {
             bolsa = new BolsaPreguntasEN();
+            bolsa.Id = -1;
             bolsa.Asignatura = new AsignaturaEN();
             bolsa.Asignatura.Id = -1;
             bolsa.Preguntas = new List<PreguntaEN>();
-            preguntasOriginales = null;
-            respuestasOriginales = null;
-            cargada = false;
+            sincronizacion = null;
         }
 
         //Obtener la bolsa de sesión actual
@@ -37,78 +37,15 @@ namespace WebUtilities
             get
             {
                 BolsaSession session =
-                  (BolsaSession)HttpContext.Current.Session["__BolsaSession__"];
+                  (BolsaSession)HttpContext.Current.Session["__BolsaSessionCreacion__"];
                 if (session == null)
                 {
                     session = new BolsaSession();
-                    HttpContext.Current.Session["__BolsaSession__"] = session;
+                    HttpContext.Current.Session["__BolsaSessionCreacion__"] = session;
                 }
                 return session;
             }
         }
-
-        //Propiedad para cargar una bolsa ya existente para su modificación
-        public void CargarBolsaExistente(int id)
-        {
-            //Recuperar los datos de la bolsa original
-            //FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            //BolsaPreguntasEN bolsita = fachada.DameBolsa(id);
-            BolsaPreguntasEN bolsita = null;
-
-            //Comprobar si se ha encontrado la bolsa
-            if (bolsita != null)
-            {
-                //Actualizar sólo en caso de que no se estuviese modificando previamente
-                if (!(bolsa).Equals(bolsita))
-                {
-                    //Limpiar
-                    this.Clear();
-                    //Inicializar las estructuras
-                    preguntasOriginales = new List<KeyValuePair<int, int>>();
-                    respuestasOriginales = new List<KeyValuePair<int, List<RespuestaEN>>>();
-                    cargada = true;
-
-                    //Inicializar
-                    bolsa.Asignatura.Id = bolsita.Asignatura.Id;
-                    bolsa.Descripcion = bolsita.Descripcion;
-                    bolsa.Fecha_creacion = bolsita.Fecha_creacion;
-                    bolsa.Id = bolsita.Id;
-                    bolsa.Nombre = bolsita.Nombre;
-
-                    //Copiar las preguntas originales en la lista de preguntas originales
-                    foreach (PreguntaEN original in bolsita.Preguntas)
-                    {
-                        //Añadir a las estructuras apropiadas las preguntas y sus respuestas
-                        int idPregunta = original.Id;
-                        preguntasOriginales.Add(new KeyValuePair<int,int>(idPregunta,bolsa.Preguntas.Count));
-                        List<RespuestaEN> respuestas = new List<RespuestaEN>();
-                        List<String> contenidoRespuestas = new List<String>();
-                        int idCorrecta = -1;
-
-                        //Obtener las respuestas de la pregunta original
-                        foreach(RespuestaEN resp in original.Respuestas)
-                        {
-                            respuestas.Add(resp);
-                            contenidoRespuestas.Add(resp.Contenido);
-                            if(resp.Id.Equals(original.Respuesta_correcta.Id))
-                                idCorrecta = contenidoRespuestas.Count-1;
-                        }
-
-                        //Almacenar en la estructura de respuestas originales
-                        respuestasOriginales.Add(new KeyValuePair<int,List<RespuestaEN>>(idPregunta,respuestas));
-                        
-                        //Añadir la pregunta provisional a la bolsa provisional
-                        this.AddPregunta(original.Contenido,contenidoRespuestas,idCorrecta,original.Explicacion);
-                    }
-                }
-            }
-            //Bolsa no encontrada
-            else
-            {
-                throw new Exception("Bolsa no encontrada");
-            }
-        }
-
 
         //Propiedades que interesan en la creación provisional de la bolsa de preguntas
         public virtual string Nombre
@@ -131,29 +68,150 @@ namespace WebUtilities
             set { bolsa.Asignatura.Id = value; }
         }
 
+        //Id de la bolsa original
+        public virtual int Id
+        {
+            get
+            {
+                if (!IsCargada())
+                    throw new Exception("Esta bolsa no tiene id asignado");
+                else
+                    return sincronizacion.Id;
+            }
+        }
+
+        //Fecha de creación de la bolsa original
+        public virtual DateTime? Fecha_creacion
+        {
+            get
+            {
+                if (!IsCargada())
+                    return null;
+                else
+                    return sincronizacion.FechaCreacion;
+            }
+        }
+
+        //Asignatura de la bolsa original
+        public virtual int AsignaturaOriginal
+        {
+            get
+            {
+                if (!IsCargada())
+                    throw new Exception("Esta bolsa no tiene bolsa original asignada");
+                else
+                    return sincronizacion.Asignatura;
+            }
+        }
+
         //Devolver lista de preguntas
         public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaEN> Preguntas
         {
             get { return bolsa.Preguntas; }
         }
 
+        //Devolver la lista de preguntas nuevas creadas
+        public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaEN> PreguntasCreadas
+        {
+            get
+            {
+                //Todas las preguntas son nuevas
+                if (!IsCargada() || sincronizacion.NumOriginales == 0)
+                    return Preguntas;
+                else
+                {
+                    List<PreguntaEN> creadas = new List<PreguntaEN>();
+                    IList<PreguntaEN> preguntas = Preguntas;
+                    int max = preguntas.Count;
+
+                    //Generar la sublista obviando los elementos que no deben ser creados de nuevo
+                    for (int i = sincronizacion.NumOriginales; i < max; i++)
+                        creadas.Add(preguntas[i]);
+
+                    return creadas;
+                }
+            }
+        }
+
+        //Devolver la lista de preguntas originales modificadas
+        public IList<PreguntaEN> PreguntasModificadas
+        {
+            get
+            {
+                if (!IsCargada())
+                    return new List<PreguntaEN>();
+                else
+                    return sincronizacion.PreguntasModificadas;
+            }
+        }
+
+        //Devolver la lista de preguntas originales borradas
+        public IList<PreguntaEN> PreguntasBorradas
+        {
+            get
+            {
+                if (!IsCargada())
+                    return new List<PreguntaEN>();
+                else
+                    return sincronizacion.PreguntasBorradas;
+            }
+        }
+
         //Saber si la bolsa ha sido cargada
         private bool IsCargada()
         {
-            return cargada;
+            return sincronizacion != null;
+        }
+
+        //Comprobar si la bolsa de sesión está ya vinculada a una bolsa determinada
+        public bool ComprobarVinculo(int idBolsa)
+        {
+            if (sincronizacion == null)
+                return false;
+            else
+                return sincronizacion.Id.Equals(idBolsa);
+        }
+
+        //Comenzar la sincronización con una bolsa de la BD
+        public void ComenzarSincronizacion(BolsaPreguntasEN bolsita)
+        {
+            this.Clear();
+            sincronizacion = new BolsaSincronizacion(bolsita.Id, bolsita.Fecha_creacion, bolsita.Asignatura.Id);
+            bolsa.Asignatura.Id = bolsita.Asignatura.Id;
+            bolsa.Descripcion = bolsita.Descripcion;
+            bolsa.Fecha_creacion = bolsita.Fecha_creacion;
+            bolsa.Id = bolsita.Id;
+            bolsa.Nombre = bolsita.Nombre;
+        }
+
+        //Añadir pregunta original durante la sincronización
+        public void AddPreguntaOriginal(PreguntaEN pregunta)
+        {
+            if (!IsCargada())
+                throw new Exception("Error. No está en modo sincronización");
+
+            //Añadir a la estructura de sincronización
+            sincronizacion.AddPregunta(pregunta);
+
+            //Crear la pregunta en la bolsa temporal
+            List<String> respuestas = new List<String>();
+            int correcta = -1;
+            //Obtener el contenido de las respuestas
+            for (int i = 0; i < pregunta.Respuestas.Count; i++)
+            {
+                RespuestaEN resp = pregunta.Respuestas[i];
+                respuestas.Add(resp.Contenido);
+                if (pregunta.Respuesta_correcta.Equals(resp))
+                    correcta = i;
+            }
+
+            this.AddPregunta(pregunta.Contenido, respuestas, correcta, pregunta.Explicacion);
         }
 
         //Limpiar bolsa
         public void Clear()
         {
-            bolsa.Asignatura = new AsignaturaEN();
-            bolsa.Asignatura.Id = -1;
-            bolsa.Preguntas.Clear();
-            bolsa.Nombre = "";
-            bolsa.Descripcion = "";
-            preguntasOriginales = null;
-            respuestasOriginales = null;
-            cargada = false;
+            InicializarValores();
         }
 
         //Añadir pregunta a la lista
@@ -161,7 +219,7 @@ namespace WebUtilities
         {
             //Construir la pregunta
             int id = bolsa.Preguntas.Count;
-            PreguntaEN pregunta = ConstruirPregunta(id, enunciado,respuestas,correcta,explicacion);
+            PreguntaEN pregunta = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
             //Añadirla a la bolsa
             bolsa.Preguntas.Add(pregunta);
         }
@@ -169,6 +227,10 @@ namespace WebUtilities
         //Modificar pregunta de la lista
         public void ModificarPregunta(int id, String enunciado, List<String> respuestas, int correcta, String explicacion)
         {
+            //Actualizar cambios en la estructura de sincronización
+            if (IsCargada())
+                sincronizacion.ModificarPregunta(id, enunciado, respuestas, correcta, explicacion);
+
             //Modificar la pregunta
             bolsa.Preguntas[id] = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
         }
@@ -199,8 +261,11 @@ namespace WebUtilities
         //Borrar pregunta de la lista según el índice
         public void RemovePregunta(int index)
         {
-            bolsa.Preguntas.RemoveAt(index);
+            //Actualizar cambios en la estructura de sincronización si es necesario
+            if (IsCargada())
+                sincronizacion.DeletePregunta(index);
 
+            bolsa.Preguntas.RemoveAt(index);
             //Actualizar el índice de las preguntas restantes
             for (int i = index; i < bolsa.Preguntas.Count; i++)
             {
@@ -211,6 +276,10 @@ namespace WebUtilities
         //Borrar la lista de preguntas
         public void ClearPreguntas()
         {
+            //Actualizar la estructura de sincronización si es necesario
+            if (IsCargada())
+                sincronizacion.DeleteAll();
+
             bolsa.Preguntas.Clear();
         }
 
@@ -251,14 +320,14 @@ namespace WebUtilities
             numPreguntas = Preguntas.Count;
 
             //Precondiciones
-            if(first < 0 || first >=bolsa.Preguntas.Count || size <=0)
+            if (first < 0 || first >= bolsa.Preguntas.Count || size <= 0)
                 return lista;
 
             int x = 0;
             int index = first;
 
             //Construir la lista
-            while(index < bolsa.Preguntas.Count && x < size)
+            while (index < bolsa.Preguntas.Count && x < size)
             {
                 lista.Add(bolsa.Preguntas[index]);
                 x++;
@@ -278,6 +347,5 @@ namespace WebUtilities
             grid.DataSource = lista;
             grid.DataBind();
         }
-        
     }
 }

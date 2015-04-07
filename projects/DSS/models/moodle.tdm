@@ -125,6 +125,7 @@ ConceptualModel moodle
 			public destroy::Destroy (p_oid : OID -> Alumno) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Alumno>;
 			public readOID::ReadOID (p_oid : OID -> Alumno) : Object -> Alumno;
+			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AlumnoEN" };
 			public relationer_controles::Relationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
 			public relationer_entregas::Relationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public relationer_expediente::Relationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;

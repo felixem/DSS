@@ -193,6 +193,7 @@
       <operations name="readOID" operationType="ReadOID" type="Object" typeObject="/0/@elements.4">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
       </operations>
+      <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM AlumnoEN"/>
       <operations name="relationer_controles" operationType="Relationer" type="Void" relatedRol="/0/@elements.4/@attributes.7">
         <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
         <arguments name="p_controlalumno" type="OID" collectionType="List" typeObject="/0/@elements.24" isOrdered="true"/>

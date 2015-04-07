@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using ComponentesProceso.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
+using DSSGenNHibernate.CEN.Moodle;
+using DSSGenNHibernate.CAD.Moodle;
+using WebUtilities;
 using NHibernate;
 
 
@@ -47,9 +50,67 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a una bolsa de sesión el contenido de una bolsa existente
-        public void VincularBolsaSession(int idBolsa)
+        public BolsaSession VincularBolsaSession(BolsaSession bolsaSesion, int idBolsa)
         {
+            //Recuperar los datos de la bolsa original
+            try
+            {
+                SessionInitializeTransaction();
 
+                BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
+                BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
+                BolsaPreguntasEN bolsita = bolsaCen.ReadOID(idBolsa);
+
+                //Comprobar si se ha encontrado la bolsa
+                if (bolsita != null)
+                {
+                    //Actualizar sólo en caso de que no se estuviese modificando previamente la misma bolsa
+                    if (!bolsaSesion.ComprobarVinculo(idBolsa))
+                    {
+                        //Copiar los valores básicos de la bolsa
+                        bolsaSesion.ComenzarSincronizacion(bolsita);
+
+                        //Copiar las preguntas originales en la lista de preguntas originales
+                        foreach (PreguntaEN pregunta in bolsita.Preguntas)
+                        {
+                            //Añadir a las estructuras apropiadas las preguntas y sus respuestas
+                            IList<RespuestaEN> respuestas = pregunta.Respuestas;
+
+                            //Obtener las respuestas de la pregunta original
+                            foreach (RespuestaEN resp in respuestas)
+                            {
+                                //Obtener la respuesta correcta
+                                if (resp.Id.Equals(pregunta.Respuesta_correcta.Id))
+                                    pregunta.Respuesta_correcta = resp;
+                            }
+
+                            //Almacenar en la estructura de respuestas originales
+                            pregunta.Respuestas = respuestas;
+
+                            //Añadir la pregunta provisional a la bolsa provisional
+                            bolsaSesion.AddPreguntaOriginal(pregunta);
+                        }
+                    }
+                    SessionCommit();
+                }
+                //Bolsa no encontrada
+                else
+                {
+                    throw new Exception("Bolsa no encontrada");
+                }
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return bolsaSesion;
         }
     }
 }

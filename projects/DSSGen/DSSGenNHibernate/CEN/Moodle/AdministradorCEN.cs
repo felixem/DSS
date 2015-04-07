@@ -99,5 +99,14 @@ public AdministradorEN ReadOID (string email)
         administradorEN = _IAdministradorCAD.ReadOID (email);
         return administradorEN;
 }
+
+public long ReadCantidad ()
+{
+        return _IAdministradorCAD.ReadCantidad ();
+}
+public DSSGenNHibernate.EN.Moodle.AdministradorEN ReadCod (int cod)
+{
+        return _IAdministradorCAD.ReadCod (cod);
+}
 }
 }

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.Create {
+namespace DSSGenNHibernate.Alumno {
     
     
-    public partial class CreateStudent {
+    public partial class crear_alumno {
         
         /// <summary>
         /// LabelCod_Alu control.
@@ -299,6 +299,15 @@ namespace DSSGenNHibernate.Create {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_RegAlu;
+        
+        /// <summary>
+        /// Button_Cancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Cancelar;
         
         /// <summary>
         /// Button_LimpCampos control.

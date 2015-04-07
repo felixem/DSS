@@ -22,5 +22,6 @@
 		  </joined-subclass>	
 		  
 		  <query name="UsuarioComunENReadAllHQL">from UsuarioComunEN</query>
+		  <query name="UsuarioComunENreadCantidadHQL"><![CDATA[select count(*) FROM UsuarioComunEN]]></query>
 		</hibernate-mapping>
 	

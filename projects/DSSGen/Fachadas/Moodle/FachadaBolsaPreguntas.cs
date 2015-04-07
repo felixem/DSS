@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle.Commands;
 
@@ -28,6 +27,25 @@ namespace Fachadas.Moodle
             return bolsaCP.CrearBolsa(nombre, descripcion, DateTime.Now, DateTime.Now, asignatura, preguntas);
         }
 
+        //Método para la modificación de una bolsa de preguntas a partir de una sesión de bolsa
+        public int ModificarBolsa(BolsaSession bolsa)
+        {
+            int idBolsa = bolsa.Id;
+            int asignaturaOriginal = bolsa.AsignaturaOriginal;
+            int asignaturaNueva = bolsa.Asignatura;
+            String descripcion = bolsa.Descripcion;
+            String nombre = bolsa.Nombre;
+            DateTime? fecha_creacion = bolsa.Fecha_creacion;
+            DateTime? fecha_modificacion = DateTime.Now;
+            IList<PreguntaEN> preguntasCreadas = bolsa.PreguntasCreadas;
+            IList<PreguntaEN> preguntasModificadas = bolsa.PreguntasModificadas;
+            IList<PreguntaEN> preguntasBorradas = bolsa.PreguntasBorradas;
+
+            BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
+            return bolsaCP.ModificarBolsa(idBolsa,nombre,descripcion,fecha_creacion,fecha_modificacion,
+                asignaturaOriginal,asignaturaNueva,preguntasCreadas,preguntasModificadas,preguntasBorradas);
+        }
+
         //Vincular a un grid view las bolsas de preguntas con paginación
         public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
         {
@@ -37,28 +55,19 @@ namespace Fachadas.Moodle
             bolsaBind.VincularDameTodos(consulta,grid,first, size, out numBases);
         }
 
-        //Obtener una bolsa a partir de su id
-        public BolsaPreguntasEN DameBolsa(int id)
-        {
-            BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN();
-            return bolsaCen.ReadOID(id);
-        }
-
-        //Modificar una bolsa de preguntas
-        public void ModificarBolsa(int p_oid, string p_nombre, string p_descripcion,
-            Nullable<DateTime> p_fecha_creacion)
-        {
-            BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN();
-
-            //Modificar la bolsa
-            bolsa.Modify(p_oid, p_nombre, p_descripcion, p_fecha_creacion, DateTime.Now);
-        }
-
         //Borrar una bolsa de preguntas
         public void BorrarBolsa(int p_oid)
         {
-            BolsaPreguntasCEN bolsa = new BolsaPreguntasCEN();
-            bolsa.Destroy(p_oid);
+            BolsaPreguntasCP bolsa = new BolsaPreguntasCP();
+            bolsa.BorrarBolsa(p_oid);
+        }
+
+        //Obtener una BolsaSession de preguntas para modificar una bolsa existente en la BD
+        public BolsaSession CargarBolsaSession(int idBolsa)
+        {
+            BolsaSession bolsa = BolsaSession.Current;
+            BindingComponents.Moodle.BolsaPreguntasBinding binding= new BindingComponents.Moodle.BolsaPreguntasBinding();
+            return binding.VincularBolsaSession(bolsa, idBolsa);
         }
     }
 }

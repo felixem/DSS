@@ -54,6 +54,8 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Alumno\alumnos.aspx" />
+    <Content Include="Alumno\modificar_alumno.aspx" />
     <Content Include="Resources\Fotos\alumno.png" />
     <Content Include="Resources\Fotos\administrador.jpg" />
     <Content Include="Resources\Fotos\profesor.png" />
@@ -81,7 +83,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="WebForm1.aspx" />
-    <Content Include="Create\CreateStudent.aspx" />
+    <Content Include="Alumno\crear_alumno.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -111,6 +113,20 @@
     </Compile>
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\alumnos.aspx.cs">
+      <DependentUpon>alumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\alumnos.aspx.designer.cs">
+      <DependentUpon>alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -172,12 +188,12 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Create\CreateStudent.aspx.cs">
-      <DependentUpon>CreateStudent.aspx</DependentUpon>
+    <Compile Include="Alumno\crear_alumno.aspx.cs">
+      <DependentUpon>crear_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Create\CreateStudent.aspx.designer.cs">
-      <DependentUpon>CreateStudent.aspx</DependentUpon>
+    <Compile Include="Alumno\crear_alumno.aspx.designer.cs">
+      <DependentUpon>crear_alumno.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

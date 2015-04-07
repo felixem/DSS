@@ -22,6 +22,12 @@ System.Collections.Generic.IList<AlumnoEN> ReadAll (int first, int size);
 AlumnoEN ReadOID (string email);
 
 
+long ReadCantidad ();
+
+
+DSSGenNHibernate.EN.Moodle.AlumnoEN ReadCod (int cod);
+
+
 void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno);
 
 void Relationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno);
