@@ -80,24 +80,22 @@ namespace DSSGenNHibernate.Asignatura
         //Manejador del evento para modificar una asignatura
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not yet implemented");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
+            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarAlumno(alumnoId));
+            link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
         }
 
         //Manejador del evento para eliminar una asignatura
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not yet implemented");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
+            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar alumno
-            /*if (!fachada.BorrarAlumno(alumnoId))
-                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");*/
+            if (!fachada.BorrarAsignatura(asignaturaId))
+                Response.Write("<script>window.alert('La asignatura no ha podido ser borrada');</script>");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAsignaturasPaginadas(1);

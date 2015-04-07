@@ -63,7 +63,7 @@ namespace Fachadas.Moodle
         }
 
         //Devolver un alumno a partir de un id de alumno
-        public AlumnoEN DameAlumno(int id)
+        public AlumnoEN DameAlumnoPorId(int id)
         {
             AlumnoEN alumno = null;
             AlumnoCP cp = new AlumnoCP();

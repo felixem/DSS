@@ -57,6 +57,7 @@
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
     <Content Include="Asignatura\asignaturas.aspx" />
+    <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
     <Content Include="Resources\Fotos\alumno.png" />
     <Content Include="Resources\Fotos\administrador.jpg" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="Asignatura\asignaturas.aspx.designer.cs">
       <DependentUpon>asignaturas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asignatura\modificar_asignatura.aspx.cs">
+      <DependentUpon>modificar_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asignatura\modificar_asignatura.aspx.designer.cs">
+      <DependentUpon>modificar_asignatura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asignatura\crear_asignatura.aspx.cs">
       <DependentUpon>crear_asignatura.aspx</DependentUpon>

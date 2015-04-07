@@ -9,14 +9,14 @@ using Fachadas.Moodle;
 using WebUtilities;
 using DSSGenNHibernate.EN.Moodle;
 
-namespace DSSGenNHibernate.Alumno
+namespace DSSGenNHibernate.Asignatura
 {
-    public partial class modificar_alumno : System.Web.UI.Page
+    public partial class modificar_asignatura : System.Web.UI.Page
     {
-        FachadaAlumno fachada;
+        FachadaAsignatura fachada;
         private int id;
         String param;
-        AlumnoEN alumno;
+        AsignaturaEN asignatura;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace DSSGenNHibernate.Alumno
                 navegacion.SavePreviuosPage(Request);
             }
 
-            fachada = new FachadaAlumno();
+            fachada = new FachadaAsignatura();
             Obtener_Parametros();
 
             if (!IsPostBack)
@@ -58,10 +58,10 @@ namespace DSSGenNHibernate.Alumno
         //Comprobar parámetros
         private void Procesar_Parametros()
         {
-            //Recuperar los datos del alumno
+            //Recuperar los datos de la asignatura
             try
             {
-                alumno = fachada.DameAlumnoPorId(id);
+                asignatura = fachada.DameAsignaturaPorId(id);
             }
             catch (Exception)
             {
@@ -75,30 +75,27 @@ namespace DSSGenNHibernate.Alumno
         //Cargar los datos del alumno original
         private void CargarDatos()
         {
-            //Cargar todos los datos del alumno
-            UsuarioEN usuario = alumno as UsuarioEN;
-            TextBox_NomAlu.Text = usuario.Nombre;
-            TextBox_ApellAlu.Text = usuario.Apellidos;
-            TextBox_NaciAlu.Text = usuario.Fecha_nacimiento.ToString();
-            TextBox_DNIAlu.Text = usuario.Dni;
-            TextBox_EmailAlu.Text = usuario.Email;
-            TextBox_CodAlu.Text = alumno.Cod_alumno.ToString();
-            CheckBox_Baneado.Checked = alumno.Baneado;
+            //Recojo los datos
+            TextBox_IdAsig.Text = asignatura.Id.ToString();
+            TextBox_CodAsig.Text = asignatura.Cod_asignatura;
+            TextBox_NomAsig.Text = asignatura.Nombre;
+            TextBox_DescAsig.Text = asignatura.Descripcion;
+            CheckBox_OptativaAsig.Checked = asignatura.Optativa;
+            CheckBox_VigenteAsig.Checked = asignatura.Vigente;
         }
 
-        //Método que llama al botón modificar
-        protected void Button_Modificar_Click(Object sender, EventArgs e)
+        //Método que llama el botón para crear una asignatura
+        protected void Button_ModificarAsig_Click(Object sender, EventArgs e)
         {
             //Recojo los datos
-            string nombre = TextBox_NomAlu.Text;
-            string apellidos = TextBox_ApellAlu.Text;
-            DateTime? fecha = DateTime.Parse(TextBox_NaciAlu.Text);
-            string dni = TextBox_DNIAlu.Text;
-            string email = TextBox_EmailAlu.Text;
-            int cod = Int32.Parse(TextBox_CodAlu.Text);
-            bool baneado = CheckBox_Baneado.Checked;
+            string codigo = TextBox_CodAsig.Text;
+            string nombre = TextBox_NomAsig.Text;
+            string descripcion = TextBox_DescAsig.Text;
+            bool optativo = CheckBox_OptativaAsig.Checked;
+            bool vigente = CheckBox_VigenteAsig.Checked;
 
-            if (fachada.ModificarAlumnoNoPassword(email, cod, baneado, dni, nombre, apellidos, fecha))
+            //Crear la asignatura
+            if (fachada.ModificarAsignatura(id,codigo,nombre,descripcion,optativo,vigente))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
@@ -106,24 +103,10 @@ namespace DSSGenNHibernate.Alumno
             }
             else
             {
-                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
+                Response.Write("<script>window.alert('La asignatura no ha podido ser modificada');</script>");
             }
         }
-     
-        //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender,ServerValidateEventArgs e)
-        {
-            try
-            {
-                Convert.ToDateTime(e.Value);
-                e.IsValid = true;
-            }
-            catch (Exception)
-            {
-                e.IsValid = false;
-            }
-        }
-
+       
         //Botón utilizado para cancelar la creación y volver atrás
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {

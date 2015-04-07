@@ -74,5 +74,82 @@ namespace ComponentesProceso.Moodle
 
             return id;
         }
+
+        //Devolver el resultado de una consulta individual sobre una asignatura
+        public AsignaturaEN DameAsignatura(IDameAsignatura consulta)
+        {
+            AsignaturaEN asig = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                asig = consulta.Execute(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return asig;
+        }
+
+        //Modificar asignatura
+        public void ModificarAsignatura(int oid, string codAsignatura, string nombre,
+            string descripcion, bool optativa, bool vigente)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                AsignaturaCEN cen = new AsignaturaCEN();
+                //Ejecutar la modificación
+                cen.Modify(oid,codAsignatura,nombre,descripcion,optativa,vigente);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
+        //Borrar asignatura a partir de su id
+        public void BorrarAsignatura(int id)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                AsignaturaCEN cen = new AsignaturaCEN();
+                //Ejecutar la modificación
+                cen.Destroy(id);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

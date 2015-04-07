@@ -95,7 +95,7 @@ namespace DSSGenNHibernate.Alumno
 
             //Eliminar alumno
             if (!fachada.BorrarAlumno(alumnoId))
-                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
+                Response.Write("<script>window.alert('El usuario no ha podido ser borrado');</script>");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAlumnosPaginados(1);
