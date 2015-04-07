@@ -121,6 +121,7 @@
     <Compile Include="CEN\Moodle\AlumnoCEN.cs" />
     <Compile Include="CAD\Moodle\IAlumnoCAD.cs" />
     <Compile Include="CAD\Moodle\AlumnoCAD.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs" />
     <Compile Include="EN\Moodle\TutoriaEN.cs" />
     <Compile Include="CEN\Moodle\TutoriaCEN.cs" />
     <Compile Include="CAD\Moodle\ITutoriaCAD.cs" />
@@ -233,9 +234,7 @@
     <EmbeddedResource Include="Mappings\Moodle\alumno.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\tutoria.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\mensaje.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Moodle\asignatura.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Moodle\asignatura.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\curso.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\nota.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\expediente.hbm.xml" />

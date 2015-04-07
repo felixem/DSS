@@ -110,6 +110,7 @@
 	<Compile Include="CEN\Moodle\AlumnoCEN.cs" />
 	<Compile Include="CAD\Moodle\IAlumnoCAD.cs" />
 	<Compile Include="CAD\Moodle\AlumnoCAD.cs" />
+			<Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs" />
 	<Compile Include="EN\Moodle\TutoriaEN.cs" />
 	<Compile Include="CEN\Moodle\TutoriaCEN.cs" />
 	<Compile Include="CAD\Moodle\ITutoriaCAD.cs" />

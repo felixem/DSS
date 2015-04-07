@@ -13,6 +13,9 @@ string New_ (AlumnoEN alumno);
 void Modify (AlumnoEN alumno);
 
 
+void ModifyNoPassword (AlumnoEN alumno);
+
+
 void Destroy (string email);
 
 

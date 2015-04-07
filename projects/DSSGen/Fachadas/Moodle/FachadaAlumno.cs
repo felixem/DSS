@@ -20,14 +20,14 @@ namespace Fachadas.Moodle
             return alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
         }
 
-        //Método para modificar un alumno en la BD
-        public bool ModificarAlumno(string email, int codAlumno, bool baneado, string dni,
+        //Método para modificar un alumno en la BD sin modificar su password
+        public bool ModificarAlumnoNoPassword(string email, int codAlumno, bool baneado, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
             try
             {
                 AlumnoCP cp = new AlumnoCP();
-                cp.ModificarAlumno(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                cp.ModificarAlumnoNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
             }
             catch (Exception)
             {
@@ -54,12 +54,12 @@ namespace Fachadas.Moodle
         }
 
         //Vincular a un grid view los alumnos con paginación
-        public void VincularDameTodos(GridView grid, int first, int size, out long numBases)
+        public void VincularDameTodos(GridView grid, int first, int size, out long numAlumnos)
         {
             //Obtener alumnos y enlazar sus datos con el gridview
             AlumnoBinding alumnoBind = new AlumnoBinding();
             IDameTodosAlumno consulta = new DameTodosAlumno();
-            alumnoBind.VincularDameTodos(consulta, grid, first, size, out numBases);
+            alumnoBind.VincularDameTodos(consulta, grid, first, size, out numAlumnos);
         }
 
         //Devolver un alumno a partir de un id de alumno

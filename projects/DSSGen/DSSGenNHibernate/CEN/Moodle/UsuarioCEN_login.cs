@@ -10,8 +10,6 @@ using NHibernate.Exceptions;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CAD.Moodle;
 
-using Auxiliar;
-
 namespace DSSGenNHibernate.CEN.Moodle
 {
 public partial class UsuarioCEN
@@ -29,7 +27,7 @@ public bool Login (string usuario, string pass)
                 return false;
 
         //Comparar contrase�as
-        if (Encrypter.Verificar (pass, us.Password))
+        if (Auxiliar.Encrypter.Verificar (pass, us.Password))
                 result = true;
         return result;
 

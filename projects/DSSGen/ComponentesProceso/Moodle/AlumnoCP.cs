@@ -37,7 +37,7 @@ namespace ComponentesProceso.Moodle
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de alumnos que satisfacen la consulta
         public System.Collections.Generic.IList<AlumnoEN> DameTodosTotal(IDameTodosAlumno consulta,
-            int first, int size, out long numBases)
+            int first, int size, out long numElementos)
         {
             System.Collections.Generic.IList<AlumnoEN> lista = null;
             try
@@ -45,7 +45,7 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
                 lista = consulta.Execute(session, first, size);
-                numBases = consulta.Total(session);
+                numElementos = consulta.Total(session);
 
                 SessionCommit();
             }
@@ -90,7 +90,7 @@ namespace ComponentesProceso.Moodle
         }
 
         //Modificar alumno sin modificar su contraseña
-        public void ModificarAlumno(string email,int codAlumno, bool baneado, string dni,
+        public void ModificarAlumnoNoPassword(string email,int codAlumno, bool baneado, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
             try
@@ -98,10 +98,8 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
 
                 AlumnoCEN cen = new AlumnoCEN();
-                //Recuperar datos del alumno
-                AlumnoEN alu = cen.ReadCod(codAlumno);
                 //Ejecutar la modificación
-                cen.Modify(email,codAlumno,baneado,dni,alu.Password,nombre,apellidos, fechaNacimiento);
+                cen.ModifyNoPassword(email,codAlumno,baneado,dni,nombre,apellidos, fechaNacimiento);
 
                 SessionCommit();
             }

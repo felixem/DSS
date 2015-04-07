@@ -8,31 +8,31 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.Alumno
+namespace DSSGenNHibernate.Asignatura
 {
-    public partial class alumnos : System.Web.UI.Page
+    public partial class asignaturas : System.Web.UI.Page
     {
         //Fachada utilizada en la página
-        FachadaAlumno fachada;
+        FachadaAsignatura fachada;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaAlumno();
+            fachada = new FachadaAsignatura();
             if (!IsPostBack)
             {
-                this.ObtenerAlumnosPaginados(1);
+                this.ObtenerAsignaturasPaginadas(1);
             }
         }
 
         //Manejador al cambiar el tamaño de página
         protected void PageSize_Changed(object sender, EventArgs e)
         {
-            this.ObtenerAlumnosPaginados(1);
+            this.ObtenerAsignaturasPaginadas(1);
         }
 
-        //Manejador para obtener los alumnos paginados
-        private void ObtenerAlumnosPaginados(int pageIndex)
+        //Manejador para obtener las asignaturas paginadas
+        private void ObtenerAsignaturasPaginadas(int pageIndex)
         {
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
@@ -48,7 +48,7 @@ namespace DSSGenNHibernate.Alumno
         protected void Page_Changed(object sender, EventArgs e)
         {
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
-            this.ObtenerAlumnosPaginados(pageIndex);
+            this.ObtenerAsignaturasPaginadas(pageIndex);
         }
 
         //Listar las páginas para navegar sobre ellas
@@ -70,16 +70,18 @@ namespace DSSGenNHibernate.Alumno
             rptPager.DataBind();
         }
 
-        //Manejador para la creación de un nuevo alumno
+        //Manejador para la creación de una nueva asignatura
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
+            throw new Exception("Not yet implemented");
             Linker link = new Linker(true);
             link.Redirect(Response, link.CrearAlumno());
         }
 
-        //Manejador del evento para modificar un alumno
+        //Manejador del evento para modificar una asignatura
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
+            throw new Exception("Not yet implemented");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
@@ -87,18 +89,19 @@ namespace DSSGenNHibernate.Alumno
             link.Redirect(Response, link.ModificarAlumno(alumnoId));
         }
 
-        //Manejador del evento para eliminar un alumno
+        //Manejador del evento para eliminar una asignatura
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
+            throw new Exception("Not yet implemented");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar alumno
-            if (!fachada.BorrarAlumno(alumnoId))
-                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
+            /*if (!fachada.BorrarAlumno(alumnoId))
+                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");*/
 
             //Obtener de nuevo la lista de bolsas
-            this.ObtenerAlumnosPaginados(1);
+            this.ObtenerAsignaturasPaginadas(1);
         }
     }
 }

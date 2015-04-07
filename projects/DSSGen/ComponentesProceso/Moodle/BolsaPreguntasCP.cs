@@ -22,7 +22,7 @@ namespace ComponentesProceso.Moodle
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de bolsas que satisfacen la consulta
         public System.Collections.Generic.IList<BolsaPreguntasEN> DameTodosTotal(IDameTodosBolsaPreguntas consulta,
-            int first, int size, out long numBases)
+            int first, int size, out long numElementos)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
             try
@@ -30,7 +30,7 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
                 lista = consulta.Execute(session, first, size);
-                numBases = consulta.Total(session);
+                numElementos = consulta.Total(session);
 
                 SessionCommit();
             }

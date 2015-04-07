@@ -95,7 +95,7 @@ namespace DSSGenNHibernate.Alumno
             int cod = Int32.Parse(TextBox_CodAlu.Text);
             bool baneado = CheckBox_Baneado.Checked;
 
-            if (fachada.ModificarAlumno(email, cod, baneado, dni, nombre, apellidos, fecha))
+            if (fachada.ModificarAlumnoNoPassword(email, cod, baneado, dni, nombre, apellidos, fecha))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

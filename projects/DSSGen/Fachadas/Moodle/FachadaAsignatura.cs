@@ -16,7 +16,16 @@ namespace Fachadas.Moodle
         {
             AsignaturaBinding asig = new AsignaturaBinding();
             DameTodosAsignatura consulta = new DameTodosAsignatura();
-            asig.VincularDameTodos(consulta, drop);
+            long total;
+            asig.VincularDameTodos(consulta, drop, 0, -1, out total);
+        }
+
+        //Vincular a un GridView todas las preguntas
+        public void VincularDameTodos(GridView grid, int first, int size, out long numElements)
+        {
+            AsignaturaBinding asig = new AsignaturaBinding();
+            DameTodosAsignatura consulta = new DameTodosAsignatura();
+            asig.VincularDameTodos(consulta, grid, first, size, out numElements);
         }
     }
 }
