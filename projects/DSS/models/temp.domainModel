@@ -186,6 +186,15 @@
         <arguments name="p_apellidos" isOrdered="true"/>
         <arguments name="p_fecha_nacimiento" type="Date" isOrdered="true"/>
       </operations>
+      <operations name="modifyNoPassword" operationType="Modifier" type="Void" customized="true">
+        <arguments name="p_oid" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+        <arguments name="p_cod_alumno" type="Integer" isOrdered="true"/>
+        <arguments name="p_baneado" type="Boolean" isOrdered="true"/>
+        <arguments name="p_dni" isOrdered="true"/>
+        <arguments name="p_nombre" isOrdered="true"/>
+        <arguments name="p_apellidos" isOrdered="true"/>
+        <arguments name="p_fecha_nacimiento" type="Date" isOrdered="true"/>
+      </operations>
       <operations name="destroy" operationType="Destroy" type="Void">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
       </operations>

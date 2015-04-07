@@ -123,6 +123,7 @@ ConceptualModel moodle
 		{
 			public new::New (p_cod_alumno : Integer, p_baneado : Boolean, p_email : String, p_dni : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date, p_expediente : Object -> Expediente) : Object->Alumno;
 			public modify::Modifier (p_oid : OID -> Alumno, p_cod_alumno : Integer, p_baneado : Boolean, p_dni : String, p_password : Password, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
+			public modifyNoPassword::Modifier customized (p_oid : OID -> Alumno, p_cod_alumno : Integer, p_baneado : Boolean, p_dni : String, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date) : Void;
 			public destroy::Destroy (p_oid : OID -> Alumno) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Alumno>;
 			public readOID::ReadOID (p_oid : OID -> Alumno) : Object -> Alumno;

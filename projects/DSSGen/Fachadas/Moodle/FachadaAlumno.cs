@@ -20,14 +20,14 @@ namespace Fachadas.Moodle
             return alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
         }
 
-        //Método para modificar un alumno en la BD
-        public bool ModificarAlumno(string email, int codAlumno, bool baneado, string dni,
+        //Método para modificar un alumno en la BD sin modificar su password
+        public bool ModificarAlumnoNoPassword(string email, int codAlumno, bool baneado, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
             try
             {
                 AlumnoCP cp = new AlumnoCP();
-                cp.ModificarAlumno(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                cp.ModificarAlumnoNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
             }
             catch (Exception)
             {

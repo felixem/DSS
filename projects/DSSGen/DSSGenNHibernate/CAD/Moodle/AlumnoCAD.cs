@@ -125,6 +125,47 @@ public void Modify (AlumnoEN alumno)
                 SessionClose ();
         }
 }
+public void ModifyNoPassword (AlumnoEN alumno)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                AlumnoEN alumnoEN = (AlumnoEN)session.Load (typeof(AlumnoEN), alumno.Email);
+
+                alumnoEN.Cod_alumno = alumno.Cod_alumno;
+
+
+                alumnoEN.Baneado = alumno.Baneado;
+
+
+                alumnoEN.Dni = alumno.Dni;
+
+
+                alumnoEN.Nombre = alumno.Nombre;
+
+
+                alumnoEN.Apellidos = alumno.Apellidos;
+
+
+                alumnoEN.Fecha_nacimiento = alumno.Fecha_nacimiento;
+
+                session.Update (alumnoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 public void Destroy (string email)
 {
         try
