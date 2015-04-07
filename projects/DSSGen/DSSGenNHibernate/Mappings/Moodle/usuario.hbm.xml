@@ -35,7 +35,6 @@
 		  </class>
 		  
 		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
-		  <query name="UsuarioENreadCantidadHQL"><![CDATA[select count(*) FROM UsuarioEN]]></query>
 		  <query name="UsuarioENreadDniHQL"><![CDATA[FROM UsuarioEN us where us.Dni = :dni]]></query>
 		</hibernate-mapping>
 	

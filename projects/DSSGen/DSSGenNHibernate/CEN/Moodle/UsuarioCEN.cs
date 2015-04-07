@@ -94,10 +94,6 @@ public UsuarioEN ReadOID (string email)
         return usuarioEN;
 }
 
-public long ReadCantidad ()
-{
-        return _IUsuarioCAD.ReadCantidad ();
-}
 public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni)
 {
         return _IUsuarioCAD.ReadDni (dni);

@@ -22,12 +22,6 @@ System.Collections.Generic.IList<ProfesorEN> ReadAll (int first, int size);
 ProfesorEN ReadOID (string email);
 
 
-long ReadCantidad ();
-
-
-DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod);
-
-
 void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega);
 
 void Relationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material);

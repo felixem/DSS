@@ -199,68 +199,6 @@ public ProfesorEN ReadOID (string email)
         return profesorEN;
 }
 
-public long ReadCantidad ()
-{
-        long result;
-
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM ProfesorEN self where select count(*) FROM ProfesorEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCantidadHQL");
-
-
-                result = query.UniqueResult<long>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
-public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
-{
-        DSSGenNHibernate.EN.Moodle.ProfesorEN result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM ProfesorEN self where FROM ProfesorEN prof where prof.Cod_profesor = :cod";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCodHQL");
-                query.SetParameter ("cod", cod);
-
-
-                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ProfesorEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 public void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;

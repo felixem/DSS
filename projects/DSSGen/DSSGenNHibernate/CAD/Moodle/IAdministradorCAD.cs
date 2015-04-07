@@ -20,11 +20,5 @@ System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int size);
 
 
 AdministradorEN ReadOID (string email);
-
-
-long ReadCantidad ();
-
-
-DSSGenNHibernate.EN.Moodle.AdministradorEN ReadCod (int cod);
 }
 }

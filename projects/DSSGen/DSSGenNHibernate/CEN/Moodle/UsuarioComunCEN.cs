@@ -89,10 +89,6 @@ public UsuarioComunEN ReadOID (string email)
         return usuarioComunEN;
 }
 
-public long ReadCantidad ()
-{
-        return _IUsuarioComunCAD.ReadCantidad ();
-}
 public void Relationer_mensajes (string p_usuariocomun, System.Collections.Generic.IList<int> p_mensaje)
 {
         //Call to UsuarioComunCAD

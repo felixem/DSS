@@ -94,6 +94,7 @@ ConceptualModel moodle
 			public destroy::Destroy (p_oid : OID -> Profesor) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->Profesor>;
 			public readOID::ReadOID (p_oid : OID -> Profesor) : Object -> Profesor;
+			
 			public relationer_entregas_propuestas::Relationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
 			public relationer_materiales::Relationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
 			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
@@ -126,6 +127,8 @@ ConceptualModel moodle
 			public readAll::ReadAll (/* No arguments */) : List<Object->Alumno>;
 			public readOID::ReadOID (p_oid : OID -> Alumno) : Object -> Alumno;
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AlumnoEN" };
+			public readCod::ReadFilter (cod : Integer) : Object -> Alumno { filter = "FROM AlumnoEN alu where alu.Cod_alumno =:cod "};
+			
 			public relationer_controles::Relationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
 			public relationer_entregas::Relationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public relationer_expediente::Relationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
