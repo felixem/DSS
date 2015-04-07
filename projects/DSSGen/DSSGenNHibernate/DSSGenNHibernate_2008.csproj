@@ -98,7 +98,10 @@
 	<Compile Include="CEN\Moodle\AdministradorCEN.cs" />
 	<Compile Include="CAD\Moodle\IAdministradorCAD.cs" />
 	<Compile Include="CAD\Moodle\AdministradorCAD.cs" />
-			<Compile Include="CEN\Moodle\AdministradorCEN_Login.cs" />
+	<Compile Include="EN\Moodle\UsuarioComunEN.cs" />
+	<Compile Include="CEN\Moodle\UsuarioComunCEN.cs" />
+	<Compile Include="CAD\Moodle\IUsuarioComunCAD.cs" />
+	<Compile Include="CAD\Moodle\UsuarioComunCAD.cs" />
 	<Compile Include="EN\Moodle\ProfesorEN.cs" />
 	<Compile Include="CEN\Moodle\ProfesorCEN.cs" />
 	<Compile Include="CAD\Moodle\IProfesorCAD.cs" />
@@ -221,6 +224,7 @@
 		  
 	<EmbeddedResource Include="Mappings\Moodle\usuario.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Moodle\administrador.hbm.xml" />
+	<EmbeddedResource Include="Mappings\Moodle\usuariocomun.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Moodle\profesor.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Moodle\alumno.hbm.xml" />
 	<EmbeddedResource Include="Mappings\Moodle\tutoria.hbm.xml" />

@@ -18,6 +18,7 @@ h1, h2, h3 {
 	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: -1px;
 	color: #514F42;
+	text-align: center;
 }
 
 p, ol, ul {
@@ -85,6 +86,42 @@ hr {
 
 /* Menu */
 
+#menub {
+	float: right;
+}
+
+#menub ul {
+	margin: 0px;
+	padding: 176px 0px 0px 0px;
+	list-style: none;
+}
+
+#menub li {
+	display: inline;
+}
+
+.estilob
+{
+	margin-left: 5px;
+	padding: 5px 20px;
+	background: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	border-top: 2px solid #EBEAD1;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-weight: bold;
+	font-size: 11px;
+	color: #182C33;
+}
+
+#menub .user
+{
+    margin-top: 40px;
+    float: left;
+    width: 200px;
+    height: 70px;
+}
+
 #menu {
 	float: right;
 }
@@ -114,19 +151,59 @@ hr {
 	color: #182C33;
 }
 
+#menu .user
+{
+    margin-top: 40px;
+    float: left;
+    width: 200px;
+    height: 70px;
+}
+
+.user_logged_button
+{
+    margin-top: 10px;
+}
+
+.user_logged_image
+{
+    margin-right:10px;
+    float:left;
+    display: inline;
+    height: 70px;
+    width: 70px;
+}
+
+.user_logged_text
+{
+    margin-top:10px;
+    float:left;
+    color: Black;
+    font-weight:bolder;
+    font-style:oblique;
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #menu a:hover, .active a {
 }
 
 /* Page */
 
+.MainContent
+{
+    background: #EBEAD1;
+}
+
 #wrapper {
 	background: #EBEAD1 url(images/img02.jpg) repeat-x left bottom;
 }
 
-#page {
+#page 
+{
+    font-family: Arial, Helvetica, sans-serif;
 	width: 940px;
 	margin: 0px auto;
-	padding: 0;
+	padding: 25px;
 }
 
 /* Content */

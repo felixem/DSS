@@ -25,16 +25,6 @@
 			
 			
 			
-			
-		  			
-						<bag name="Mensajes" >
-							<key>
-								<column name="[FK_email_usuario]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.MensajeEN"/>
-					    </bag>
-					
-					
 					
 					
 					

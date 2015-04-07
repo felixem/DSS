@@ -21,17 +21,17 @@ public bool Login (string usuario, string pass)
         /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Usuario_login) ENABLED START*/
 
         // Write here your custom code...
-    bool result = false;
-    UsuarioEN us = _IUsuarioCAD.ReadOID(usuario);
+        bool result = false;
+        UsuarioEN us = _IUsuarioCAD.ReadOID (usuario);
 
-    //Comprobar si existe el usuario
-    if (us == null)
-        return false;
+        //Comprobar si existe el usuario
+        if (us == null)
+                return false;
 
-    //Comparar contraseñas
-    if (Encrypter.Verificar(pass,us.Password))
-        result = true;
-    return result;
+        //Comparar contraseï¿½as
+        if (Encrypter.Verificar (pass, us.Password))
+                result = true;
+        return result;
 
         /*PROTECTED REGION END*/
 }

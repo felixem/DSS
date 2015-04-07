@@ -92,6 +92,10 @@ public AsignaturaEN ReadOID (int id)
         return asignaturaEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IAsignaturaCAD.ReadCantidad ();
+}
 public void Relationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         //Call to AsignaturaCAD

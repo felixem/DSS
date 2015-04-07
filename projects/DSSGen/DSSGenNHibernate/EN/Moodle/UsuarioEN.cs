@@ -41,12 +41,6 @@ private string apellidos;
 
 private Nullable<DateTime> fecha_nacimiento;
 
-/**
- *
- */
-
-private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes;
-
 
 
 
@@ -81,33 +75,27 @@ public virtual Nullable<DateTime> Fecha_nacimiento {
 }
 
 
-public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> Mensajes {
-        get { return mensajes; } set { mensajes = value;  }
-}
-
-
 
 
 
 public UsuarioEN()
 {
-        mensajes = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.MensajeEN>();
 }
 
 
 
-public UsuarioEN(string email, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
+public UsuarioEN(string email, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
-        this.init (email, dni, password, nombre, apellidos, fecha_nacimiento, mensajes);
+        this.init (email, dni, password, nombre, apellidos, fecha_nacimiento);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (usuario.Email, usuario.Dni, usuario.Password, usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, usuario.Mensajes);
+        this.init (usuario.Email, usuario.Dni, usuario.Password, usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento);
 }
 
-private void init (string email, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes)
+private void init (string email, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
         this.Email = email;
 
@@ -121,8 +109,6 @@ private void init (string email, string dni, String password, string nombre, str
         this.Apellidos = apellidos;
 
         this.Fecha_nacimiento = fecha_nacimiento;
-
-        this.Mensajes = mensajes;
 }
 
 public override bool Equals (object obj)

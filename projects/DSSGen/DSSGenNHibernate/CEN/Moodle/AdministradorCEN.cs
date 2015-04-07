@@ -32,20 +32,28 @@ public IAdministradorCAD get_IAdministradorCAD ()
         return this._IAdministradorCAD;
 }
 
-public string New_ (string p_nick, String p_password, string p_nombre, string p_descripcion)
+public string New_ (int p_cod_administrador, string p_ocupacion, string p_email, string p_dni, String p_password, string p_nombre, string p_apellidos, Nullable<DateTime> p_fecha_nacimiento)
 {
         AdministradorEN administradorEN = null;
         string oid;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
-        administradorEN.Nick = p_nick;
+        administradorEN.Cod_administrador = p_cod_administrador;
+
+        administradorEN.Ocupacion = p_ocupacion;
+
+        administradorEN.Email = p_email;
+
+        administradorEN.Dni = p_dni;
 
         administradorEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
         administradorEN.Nombre = p_nombre;
 
-        administradorEN.Descripcion = p_descripcion;
+        administradorEN.Apellidos = p_apellidos;
+
+        administradorEN.Fecha_nacimiento = p_fecha_nacimiento;
 
         //Call to AdministradorCAD
 
@@ -53,24 +61,28 @@ public string New_ (string p_nick, String p_password, string p_nombre, string p_
         return oid;
 }
 
-public void Modify (string p_oid, String p_password, string p_nombre, string p_descripcion)
+public void Modify (string p_oid, int p_cod_administrador, string p_ocupacion, string p_dni, String p_password, string p_nombre, string p_apellidos, Nullable<DateTime> p_fecha_nacimiento)
 {
         AdministradorEN administradorEN = null;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
-        administradorEN.Nick = p_oid;
+        administradorEN.Email = p_oid;
+        administradorEN.Cod_administrador = p_cod_administrador;
+        administradorEN.Ocupacion = p_ocupacion;
+        administradorEN.Dni = p_dni;
         administradorEN.Password = Utils.Util.GetEncondeMD5 (p_password);
         administradorEN.Nombre = p_nombre;
-        administradorEN.Descripcion = p_descripcion;
+        administradorEN.Apellidos = p_apellidos;
+        administradorEN.Fecha_nacimiento = p_fecha_nacimiento;
         //Call to AdministradorCAD
 
         _IAdministradorCAD.Modify (administradorEN);
 }
 
-public void Destroy (string nick)
+public void Destroy (string email)
 {
-        _IAdministradorCAD.Destroy (nick);
+        _IAdministradorCAD.Destroy (email);
 }
 
 public System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int size)
@@ -80,11 +92,11 @@ public System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int
         list = _IAdministradorCAD.ReadAll (first, size);
         return list;
 }
-public AdministradorEN ReadOID (string nick)
+public AdministradorEN ReadOID (string email)
 {
         AdministradorEN administradorEN = null;
 
-        administradorEN = _IAdministradorCAD.ReadOID (nick);
+        administradorEN = _IAdministradorCAD.ReadOID (email);
         return administradorEN;
 }
 }

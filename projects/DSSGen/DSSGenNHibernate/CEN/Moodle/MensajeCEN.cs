@@ -53,7 +53,7 @@ public int New_ (string p_contenido, Nullable<DateTime> p_fecha, bool p_respondi
 
 
         if (p_usuario != null) {
-                mensajeEN.Usuario = new DSSGenNHibernate.EN.Moodle.UsuarioEN ();
+                mensajeEN.Usuario = new DSSGenNHibernate.EN.Moodle.UsuarioComunEN ();
                 mensajeEN.Usuario.Email = p_usuario;
         }
 
@@ -104,11 +104,11 @@ public void Relationer_tutoria (int p_mensaje, int p_tutoria)
 
         _IMensajeCAD.Relationer_tutoria (p_mensaje, p_tutoria);
 }
-public void Relationer_usuario (int p_mensaje, string p_usuario)
+public void Relationer_usuario (int p_mensaje, string p_usuariocomun)
 {
         //Call to MensajeCAD
 
-        _IMensajeCAD.Relationer_usuario (p_mensaje, p_usuario);
+        _IMensajeCAD.Relationer_usuario (p_mensaje, p_usuariocomun);
 }
 public void Unrelationer_tutoria (int p_mensaje, int p_tutoria)
 {
@@ -116,11 +116,11 @@ public void Unrelationer_tutoria (int p_mensaje, int p_tutoria)
 
         _IMensajeCAD.Unrelationer_tutoria (p_mensaje, p_tutoria);
 }
-public void Unrelationer_usuario (int p_mensaje, string p_usuario)
+public void Unrelationer_usuario (int p_mensaje, string p_usuariocomun)
 {
         //Call to MensajeCAD
 
-        _IMensajeCAD.Unrelationer_usuario (p_mensaje, p_usuario);
+        _IMensajeCAD.Unrelationer_usuario (p_mensaje, p_usuariocomun);
 }
 }
 }

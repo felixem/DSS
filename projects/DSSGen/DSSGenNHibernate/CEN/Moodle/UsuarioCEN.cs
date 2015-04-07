@@ -94,18 +94,6 @@ public UsuarioEN ReadOID (string email)
         return usuarioEN;
 }
 
-public void Relationer_mensajes (string p_usuario, System.Collections.Generic.IList<int> p_mensaje)
-{
-        //Call to UsuarioCAD
-
-        _IUsuarioCAD.Relationer_mensajes (p_usuario, p_mensaje);
-}
-public void Unrelationer_mensajes (string p_usuario, System.Collections.Generic.IList<int> p_mensaje)
-{
-        //Call to UsuarioCAD
-
-        _IUsuarioCAD.Unrelationer_mensajes (p_usuario, p_mensaje);
-}
 public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni)
 {
         return _IUsuarioCAD.ReadDni (dni);

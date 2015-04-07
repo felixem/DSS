@@ -1,4 +1,25 @@
-﻿/*mensajes de error*/
+﻿/*Maquetación de posición del fieldset del login*/
+.login
+{
+    width:200px;
+    margin-left: 100px;
+}
+
+/*Maquetación del asp:Login*/
+.LoginContainer
+{
+    
+    width: 400px;
+    margin: 0 auto;
+}
+
+/*Margen de la base*/
+.accountInfo
+{
+    margin-bottom: 25px;
+}
+
+/*mensajes de error*/
 .failureNotification
 {
     height:50px;
@@ -8,5 +29,17 @@
 /*labels de nombre y paword*/
 .LabelLogin
 {
-    width:20p;
+    width:20px;
+}
+
+.ContenedorInterno
+{
+    /* width:400px;    */
+    text-align:left;
+}
+
+.CentrarContenido
+{
+    width: 300px;
+    margin: 0 auto;
 }

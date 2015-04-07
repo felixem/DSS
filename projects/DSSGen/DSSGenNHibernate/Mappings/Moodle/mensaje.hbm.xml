@@ -28,7 +28,7 @@
 											 					
 			
 		  			
-						<many-to-one name="Usuario" class="DSSGenNHibernate.EN.Moodle.UsuarioEN" >	
+						<many-to-one name="Usuario" class="DSSGenNHibernate.EN.Moodle.UsuarioComunEN" >	
 								<column name="[FK_email_usuario]"/>
 						</many-to-one>
 											 					

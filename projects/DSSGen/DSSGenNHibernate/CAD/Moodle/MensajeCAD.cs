@@ -62,7 +62,7 @@ public int New_ (MensajeEN mensaje)
                         mensaje.Tutoria.Mensajes.Add (mensaje);
                 }
                 if (mensaje.Usuario != null) {
-                        mensaje.Usuario = (DSSGenNHibernate.EN.Moodle.UsuarioEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.UsuarioEN), mensaje.Usuario.Email);
+                        mensaje.Usuario = (DSSGenNHibernate.EN.Moodle.UsuarioComunEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.UsuarioComunEN), mensaje.Usuario.Email);
 
                         mensaje.Usuario.Mensajes.Add (mensaje);
                 }
@@ -231,14 +231,14 @@ public void Relationer_tutoria (int p_mensaje, int p_tutoria)
         }
 }
 
-public void Relationer_usuario (int p_mensaje, string p_usuario)
+public void Relationer_usuario (int p_mensaje, string p_usuariocomun)
 {
         DSSGenNHibernate.EN.Moodle.MensajeEN mensajeEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), p_mensaje);
-                mensajeEN.Usuario = (DSSGenNHibernate.EN.Moodle.UsuarioEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.UsuarioEN), p_usuario);
+                mensajeEN.Usuario = (DSSGenNHibernate.EN.Moodle.UsuarioComunEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.UsuarioComunEN), p_usuariocomun);
 
                 mensajeEN.Usuario.Mensajes.Add (mensajeEN);
 
@@ -293,7 +293,7 @@ public void Unrelationer_tutoria (int p_mensaje, int p_tutoria)
                 SessionClose ();
         }
 }
-public void Unrelationer_usuario (int p_mensaje, string p_usuario)
+public void Unrelationer_usuario (int p_mensaje, string p_usuariocomun)
 {
         try
         {
@@ -301,11 +301,11 @@ public void Unrelationer_usuario (int p_mensaje, string p_usuario)
                 DSSGenNHibernate.EN.Moodle.MensajeEN mensajeEN = null;
                 mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), p_mensaje);
 
-                if (mensajeEN.Usuario.Email == p_usuario) {
+                if (mensajeEN.Usuario.Email == p_usuariocomun) {
                         mensajeEN.Usuario = null;
                 }
                 else
-                        throw new ModelException ("The identifier " + p_usuario + " in p_usuario you are trying to unrelationer, doesn't exist in MensajeEN");
+                        throw new ModelException ("The identifier " + p_usuariocomun + " in p_usuariocomun you are trying to unrelationer, doesn't exist in MensajeEN");
 
                 session.Update (mensajeEN);
                 SessionCommit ();

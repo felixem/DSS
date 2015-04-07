@@ -3,7 +3,7 @@
 		                   assembly="DSSGenNHibernate"
 		                   namespace="DSSGenNHibernate.EN.Moodle">
 				
-<joined-subclass name="AlumnoEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioEN" table="[Alumno]">
+<joined-subclass name="AlumnoEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioComunEN" table="[Alumno]">
 	<key>
     		<column name="[email]"/>
    	</key>
@@ -82,5 +82,7 @@
 		  </joined-subclass>	
 		  
 		  <query name="AlumnoENReadAllHQL">from AlumnoEN</query>
+		  <query name="AlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM AlumnoEN]]></query>
+		  <query name="AlumnoENreadCodHQL"><![CDATA[FROM AlumnoEN alu where alu.Cod_alumno =:cod ]]></query>
 		</hibernate-mapping>
 	

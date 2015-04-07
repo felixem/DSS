@@ -54,7 +54,20 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Alumno\alumnos.aspx" />
+    <Content Include="Alumno\modificar_alumno.aspx" />
+    <Content Include="Resources\Fotos\alumno.png" />
+    <Content Include="Resources\Fotos\administrador.jpg" />
+    <Content Include="Resources\Fotos\profesor.png" />
+    <Content Include="Examen\bolsas_preguntas.aspx" />
+    <Content Include="Examen\modificar_pregunta.aspx" />
+    <Content Include="Examen\modificar_bolsa.aspx" />
+    <Content Include="Examen\crear_bolsa.aspx" />
+    <Content Include="Examen\crear_pregunta.aspx" />
     <Content Include="Styles\default.css" />
+    <Content Include="Styles\utilities\centrar_contenido.css" />
+    <Content Include="Styles\utilities\tabla_dos_columnas.css" />
+    <Content Include="Styles\utilities\maqueta_tabla.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -70,6 +83,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="WebForm1.aspx" />
+    <Content Include="Alumno\crear_alumno.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -100,13 +114,61 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Classes\MySession.cs" />
+    <Compile Include="Alumno\alumnos.aspx.cs">
+      <DependentUpon>alumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\alumnos.aspx.designer.cs">
+      <DependentUpon>alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\bolsas_preguntas.aspx.cs">
+      <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\bolsas_preguntas.aspx.designer.cs">
+      <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\modificar_pregunta.aspx.cs">
+      <DependentUpon>modificar_pregunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\modificar_pregunta.aspx.designer.cs">
+      <DependentUpon>modificar_pregunta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\modificar_bolsa.aspx.cs">
+      <DependentUpon>modificar_bolsa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\modificar_bolsa.aspx.designer.cs">
+      <DependentUpon>modificar_bolsa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\crear_bolsa.aspx.cs">
+      <DependentUpon>crear_bolsa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\crear_bolsa.aspx.designer.cs">
+      <DependentUpon>crear_bolsa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\crear_pregunta.aspx.cs">
+      <DependentUpon>crear_pregunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\crear_pregunta.aspx.designer.cs">
+      <DependentUpon>crear_pregunta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -126,6 +188,13 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Alumno\crear_alumno.aspx.cs">
+      <DependentUpon>crear_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\crear_alumno.aspx.designer.cs">
+      <DependentUpon>crear_alumno.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -142,6 +211,10 @@
     <ProjectReference Include="..\Fachadas\Fachadas.csproj">
       <Project>{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}</Project>
       <Name>Fachadas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

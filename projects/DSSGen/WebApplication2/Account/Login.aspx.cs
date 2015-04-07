@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Classes;
+using WebUtilities;
+using Fachadas.Moodle;
 
 namespace WebApplication2.Account
 {
@@ -16,9 +17,10 @@ namespace WebApplication2.Account
             if (!Page.IsPostBack)
             {
                 //Devolver a la página principal si ya se está logueado
-                if (MySession.Current.isLoged())
+                if (MySession.Current.IsLoged())
                 {
-                    Response.Redirect("~/Default.aspx");
+                    Linker link = new Linker(false);
+                    link.Redirect(Response,link.Default());
                     return;
                 }
 
@@ -34,8 +36,8 @@ namespace WebApplication2.Account
             //Comprobar si la contraseña es correcta
             try
             {
-                MySession sesion = MySession.Current;
-                Authenticated = sesion.login(LoginUser.UserName, LoginUser.Password);
+                FachadaLogin fachada = new FachadaLogin();
+                Authenticated = fachada.Login(LoginUser.UserName, LoginUser.Password);
             }
             catch (Exception excep)
             {
@@ -57,7 +59,8 @@ namespace WebApplication2.Account
         //Una vez logueado, entrar en la página principal
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx");
+            Linker link = new Linker(false);
+            link.Redirect(Response,link.Default());
         }
     }
 }

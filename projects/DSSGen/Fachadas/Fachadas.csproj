@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,13 +42,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
+    <Compile Include="Moodle\FachadaAlumno.cs" />
+    <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />
+    <Compile Include="Moodle\FachadaAsignatura.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BindingComponents\BindingComponents.csproj">
+      <Project>{D648E41C-8C30-4D8D-BC41-75626A941DC5}</Project>
+      <Name>BindingComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComponentesProceso\ComponentesProceso.csproj">
+      <Project>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</Project>
+      <Name>ComponentesProceso</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
