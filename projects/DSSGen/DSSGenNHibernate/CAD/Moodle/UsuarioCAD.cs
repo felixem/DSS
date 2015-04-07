@@ -196,37 +196,6 @@ public UsuarioEN ReadOID (string email)
         return usuarioEN;
 }
 
-public long ReadCantidad ()
-{
-        long result;
-
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioEN self where select count(*) FROM UsuarioEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENreadCantidadHQL");
-
-
-                result = query.UniqueResult<long>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 public DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni)
 {
         DSSGenNHibernate.EN.Moodle.UsuarioEN result;

@@ -243,7 +243,7 @@ public DSSGenNHibernate.EN.Moodle.AlumnoEN ReadCod (int cod)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AlumnoEN self where FROM AlumnoEN alu where alu.Cod_alumno = :cod";
+                //String sql = @"FROM AlumnoEN self where FROM AlumnoEN alu where alu.Cod_alumno =:cod ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCodHQL");
                 query.SetParameter ("cod", cod);

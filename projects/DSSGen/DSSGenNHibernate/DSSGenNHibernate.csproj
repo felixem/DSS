@@ -233,7 +233,9 @@
     <EmbeddedResource Include="Mappings\Moodle\alumno.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\tutoria.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\mensaje.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Moodle\asignatura.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\asignatura.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Moodle\curso.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\nota.hbm.xml" />
     <EmbeddedResource Include="Mappings\Moodle\expediente.hbm.xml" />

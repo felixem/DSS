@@ -9,6 +9,7 @@ using NHibernate.Exceptions;
 
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CAD.Moodle;
+
 using Auxiliar;
 
 namespace DSSGenNHibernate.CEN.Moodle

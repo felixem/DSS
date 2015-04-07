@@ -172,37 +172,6 @@ public UsuarioComunEN ReadOID (string email)
         return usuarioComunEN;
 }
 
-public long ReadCantidad ()
-{
-        long result;
-
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM UsuarioComunEN self where select count(*) FROM UsuarioComunEN";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioComunENreadCantidadHQL");
-
-
-                result = query.UniqueResult<long>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioComunCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 public void Relationer_mensajes (string p_usuariocomun, System.Collections.Generic.IList<int> p_mensaje)
 {
         DSSGenNHibernate.EN.Moodle.UsuarioComunEN usuarioComunEN = null;
