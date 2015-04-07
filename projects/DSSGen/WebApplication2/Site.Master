@@ -36,7 +36,7 @@
         <div class="user">
             <asp:Image ID="user_image" CssClass="user_logged_image" runat="server"/>
             <asp:Label ID="user_label" runat="server" CssClass="user_logged_text" Text="UserDefault"/>
-            <asp:Button ID="Button_Desloguear" runat="server" CssClass="user_logged_button" Text="Desloguear" OnClick="Button_Desloguear_Click" />
+            <asp:Button ID="Button_Desloguear" runat="server" CssClass="user_logged_button" Text="Desloguear" OnClick="Button_Desloguear_Click" OnClientClick = "return confirm('¿Estás seguro de querer cerrar sesión?');" />
         </div>
         <asp:MultiView ID="mv_barra" runat="server" ActiveViewIndex="0">
         <asp:View runat="server" ID="ViewGeneral">

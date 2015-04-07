@@ -57,8 +57,9 @@ namespace WebApplication2
 
             Fachadas.Moodle.FachadaLogin fachada= new Fachadas.Moodle.FachadaLogin();
             fachada.Exit();
-            Response.Write("<script>window.alert('Has cerrado sesión correctamente');</script>");
-            VisibilidadControles();
+
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.Default());
         }
 
         protected void btn_inicio_Click(object sender, EventArgs e)
