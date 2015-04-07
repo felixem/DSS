@@ -15,7 +15,7 @@ private int id;
  *
  */
 
-private int cod_asignatura;
+private string cod_asignatura;
 
 /**
  *
@@ -74,7 +74,7 @@ public virtual int Id {
 }
 
 
-public virtual int Cod_asignatura {
+public virtual string Cod_asignatura {
         get { return cod_asignatura; } set { cod_asignatura = value;  }
 }
 
@@ -131,7 +131,7 @@ public AsignaturaEN()
 
 
 
-public AsignaturaEN(int id, int cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
+public AsignaturaEN(int id, string cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
 {
         this.init (id, cod_asignatura, nombre, descripcion, optativa, vigente, curso, asignaturas_anyo, expedientes_asignatura, bolsas_preguntas);
 }
@@ -142,7 +142,7 @@ public AsignaturaEN(AsignaturaEN asignatura)
         this.init (asignatura.Id, asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente, asignatura.Curso, asignatura.Asignaturas_anyo, asignatura.Expedientes_asignatura, asignatura.Bolsas_preguntas);
 }
 
-private void init (int id, int cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
+private void init (int id, string cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
 {
         this.Id = id;
 

@@ -227,6 +227,37 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
+{
+        DSSGenNHibernate.EN.Moodle.AsignaturaEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AsignaturaEN self where FROM AsignaturaEN asig where asig.Cod_Asignatura=:cod";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaENreadCodHQL");
+                query.SetParameter ("cod", cod);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AsignaturaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.AsignaturaEN asignaturaEN = null;

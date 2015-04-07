@@ -7,8 +7,8 @@
 						<id name="Id" column="[id]" type="integer">
 							<generator class="identity"/>
 						</id>
-					<property name="Cod_asignatura" type="integer"> 
-						<column name="[cod_asignatura]"  not-null="true"/>
+					<property name="Cod_asignatura" type="string"> 
+						<column name="[cod_asignatura]"  unique="true" not-null="true"/>
 					</property>
 					<property name="Nombre" type="string"> 
 						<column name="[nombre]"  not-null="true"/>
@@ -76,5 +76,6 @@
 		  
 		  <query name="AsignaturaENReadAllHQL">from AsignaturaEN</query>
 		  <query name="AsignaturaENreadCantidadHQL"><![CDATA[select count(*) FROM AsignaturaEN]]></query>
+		  <query name="AsignaturaENreadCodHQL"><![CDATA[FROM AsignaturaEN asig where asig.Cod_Asignatura=:cod]]></query>
 		</hibernate-mapping>
 	

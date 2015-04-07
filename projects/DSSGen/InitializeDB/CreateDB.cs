@@ -12,110 +12,109 @@ using DSSGenNHibernate.CAD.Moodle;
 /*PROTECTED REGION END*/
 namespace InitializeDB
 {
-    public class CreateDB
-    {
-        public static void Create(string databaseArg, string userArg, string passArg)
-        {
-            String database = databaseArg;
-            String user = userArg;
-            String pass = passArg;
+public class CreateDB
+{
+public static void Create (string databaseArg, string userArg, string passArg)
+{
+        String database = databaseArg;
+        String user = userArg;
+        String pass = passArg;
 
-            // Conex DB
-            SqlConnection cnn = new SqlConnection(@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
+        // Conex DB
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\SQLEXPRESS; database=master; integrated security=yes");
 
-            // Order T-SQL create user
-            String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
+        // Order T-SQL create user
+        String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
-                CREATE LOGIN [" + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-            END";
+                CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+            END"                                                                                                                                                                                                                                                                                    ;
 
-            //Order delete user if exist
-            String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
-            //Order create databas
-            string createBD = "CREATE DATABASE " + database;
-            //Order associate user with database
-            String associatedUser = @"USE [" + database + "];CREATE USER [" + user + "] FOR LOGIN [" + user + "];USE [" + database + "];EXEC sp_addrolemember N'db_owner', N'" + user + "'";
-            SqlCommand cmd = null;
+        //Order delete user if exist
+        String deleteDataBase = @"if exists(select * from sys.databases where name = '" + database + "') DROP DATABASE [" + database + "]";
+        //Order create databas
+        string createBD = "CREATE DATABASE " + database;
+        //Order associate user with database
+        String associatedUser = @"USE [" + database + "];CREATE USER [" + user + "] FOR LOGIN [" + user + "];USE [" + database + "];EXEC sp_addrolemember N'db_owner', N'" + user + "'";
+        SqlCommand cmd = null;
 
-            try
-            {
+        try
+        {
                 // Open conex
-                cnn.Open();
+                cnn.Open ();
 
                 //Create user in SQLSERVER
-                cmd = new SqlCommand(createUser, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (createUser, cnn);
+                cmd.ExecuteNonQuery ();
 
                 //DELETE database if exist
-                cmd = new SqlCommand(deleteDataBase, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (deleteDataBase, cnn);
+                cmd.ExecuteNonQuery ();
 
                 //CREATE DB
-                cmd = new SqlCommand(createBD, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (createBD, cnn);
+                cmd.ExecuteNonQuery ();
 
                 //Associate user with db
-                cmd = new SqlCommand(associatedUser, cnn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand (associatedUser, cnn);
+                cmd.ExecuteNonQuery ();
 
-                System.Console.WriteLine("DataBase create sucessfully..");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (cnn.State == ConnectionState.Open)
-                {
-                    cnn.Close();
-                }
-            }
+                System.Console.WriteLine ("DataBase create sucessfully..");
         }
-
-        public static void InitializeData()
+        catch (Exception ex)
         {
-            /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
-            try
-            {
-                AlumnoEN usuario = new AlumnoEN();
+                throw ex;
+        }
+        finally
+        {
+                if (cnn.State == ConnectionState.Open) {
+                        cnn.Close ();
+                }
+        }
+}
+
+public static void InitializeData ()
+{
+        /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
+        try
+        {
+                AlumnoEN usuario = new AlumnoEN ();
                 usuario.Cod_alumno = 1;
                 usuario.Baneado = false;
                 usuario.Email = "felix@felix.es";
                 usuario.Dni = "48627745H";
                 usuario.Apellidos = "Escalona";
-                usuario.Fecha_nacimiento = DateTime.Parse("28/01/1994");
-                usuario.Nombre = "Félix";
+                usuario.Fecha_nacimiento = DateTime.Parse ("28/01/1994");
+                usuario.Nombre = "Fï¿½lix";
                 usuario.Password = "1234";
-                AlumnoCEN aluCen = new AlumnoCEN();
-                aluCen.New_(usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
-                    usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, new ExpedienteEN());
+                AlumnoCEN aluCen = new AlumnoCEN ();
+                aluCen.New_ (usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
+                        usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, new ExpedienteEN ());
 
-                AsignaturaEN asignatura = new AsignaturaEN();
-                AsignaturaCEN asigCen = new AsignaturaCEN();
-                asignatura.Cod_asignatura = 1;
+                AsignaturaEN asignatura = new AsignaturaEN ();
+                AsignaturaCEN asigCen = new AsignaturaCEN ();
+                asignatura.Cod_asignatura = "AS1";
                 asignatura.Nombre = "Asignatura One";
                 asignatura.Descripcion = "Asignatura de prueba";
                 asignatura.Optativa = false;
                 asignatura.Vigente = true;
-                int asig = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
+                int asig = asigCen.New_ (asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
 
-                asignatura = new AsignaturaEN();
-                asigCen = new AsignaturaCEN();
-                asignatura.Cod_asignatura = 1;
+                asignatura = new AsignaturaEN ();
+                asigCen = new AsignaturaCEN ();
+                asignatura.Cod_asignatura = "AS2";
                 asignatura.Nombre = "Asignatura Dos";
                 asignatura.Descripcion = "Asignatura Dos de prueba";
                 asignatura.Optativa = false;
                 asignatura.Vigente = true;
-                asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
+                asigCen.New_ (asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
 
                 /*PROTECTED REGION END*/
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.InnerException);
-                throw ex;
-            }
         }
-    }
+        catch (Exception ex)
+        {
+                System.Console.WriteLine (ex.InnerException);
+                throw ex;
+        }
+}
+}
 }

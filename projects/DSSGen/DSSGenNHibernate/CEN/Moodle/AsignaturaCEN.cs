@@ -32,7 +32,7 @@ public IAsignaturaCAD get_IAsignaturaCAD ()
         return this._IAsignaturaCAD;
 }
 
-public int New_ (int p_cod_asignatura, string p_nombre, string p_descripcion, bool p_optativa, bool p_vigente)
+public int New_ (string p_cod_asignatura, string p_nombre, string p_descripcion, bool p_optativa, bool p_vigente)
 {
         AsignaturaEN asignaturaEN = null;
         int oid;
@@ -55,7 +55,7 @@ public int New_ (int p_cod_asignatura, string p_nombre, string p_descripcion, bo
         return oid;
 }
 
-public void Modify (int p_oid, int p_cod_asignatura, string p_nombre, string p_descripcion, bool p_optativa, bool p_vigente)
+public void Modify (int p_oid, string p_cod_asignatura, string p_nombre, string p_descripcion, bool p_optativa, bool p_vigente)
 {
         AsignaturaEN asignaturaEN = null;
 
@@ -95,6 +95,10 @@ public AsignaturaEN ReadOID (int id)
 public long ReadCantidad ()
 {
         return _IAsignaturaCAD.ReadCantidad ();
+}
+public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
+{
+        return _IAsignaturaCAD.ReadCod (cod);
 }
 public void Relationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
