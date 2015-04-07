@@ -73,9 +73,8 @@ namespace DSSGenNHibernate.Asignatura
         //Manejador para la creación de una nueva asignatura
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not yet implemented");
             Linker link = new Linker(true);
-            link.Redirect(Response, link.CrearAlumno());
+            link.Redirect(Response, link.CrearAsignatura());
         }
 
         //Manejador del evento para modificar una asignatura

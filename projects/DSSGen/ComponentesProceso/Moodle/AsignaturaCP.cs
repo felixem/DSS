@@ -6,6 +6,7 @@ using System.Text;
 using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle.Commands;
+using DSSGenNHibernate.CEN.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
@@ -44,6 +45,34 @@ namespace ComponentesProceso.Moodle
             }
 
             return lista;
+        }
+
+        //Crear una asignatura y devolver su id de creación
+        public int CrearAsignatura(string codigo, string nombre, string descripcion,
+            bool optativa, bool vigente)
+        {
+            int id = -1;
+            try
+            {
+                SessionInitializeTransaction();
+                //Crear la asignatura
+                AsignaturaCEN asig = new AsignaturaCEN();
+                id = asig.New_(codigo, nombre, descripcion, optativa, vigente);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return id;
         }
     }
 }

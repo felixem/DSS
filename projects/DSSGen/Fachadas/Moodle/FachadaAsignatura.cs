@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.UI.WebControls;
 using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
+using ComponentesProceso.Moodle;
 
 namespace Fachadas.Moodle
 {
@@ -26,6 +27,23 @@ namespace Fachadas.Moodle
             AsignaturaBinding asig = new AsignaturaBinding();
             DameTodosAsignatura consulta = new DameTodosAsignatura();
             asig.VincularDameTodos(consulta, grid, first, size, out numElements);
+        }
+
+        //Método para crear una asignatura en la BD
+        public bool CrearAsignatura(string codigo, string nombre, string descripcion,
+            bool optativa, bool vigente)
+        {
+            try
+            {
+                AsignaturaCP cp = new AsignaturaCP();
+                cp.CrearAsignatura(codigo,nombre,descripcion,optativa,vigente);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

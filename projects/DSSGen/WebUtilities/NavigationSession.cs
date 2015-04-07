@@ -73,8 +73,7 @@ namespace WebUtilities
         //Añadir la página desde la que se accedió a la actual a la sesión si es necesario
         public void SavePreviuosPage(HttpRequest peticion)
         {
-            Linker link = new Linker(false);
-            if (link.OriginMustBeCatched())
+            if (this.Cacheable)
                 this.AddUrl(peticion.UrlReferrer.ToString());
         }
 

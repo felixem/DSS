@@ -48,12 +48,6 @@ namespace WebUtilities
             response.Redirect(url);
         }
 
-        //Método para saber si se debe cachear la página origen
-        public bool OriginMustBeCatched()
-        {
-            return (navegacion.Cacheable);
-        }
-
         //Cadena para la página anterior a la actual
         public string PreviousPage()
         {
@@ -121,6 +115,12 @@ namespace WebUtilities
         {
             return "~/Alumno/modificar_alumno.aspx" + 
                 Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página de creación de asignatura
+        public String CrearAsignatura()
+        {
+            return "~/Asignatura/crear_asignatura.aspx";
         }
     }
 }
