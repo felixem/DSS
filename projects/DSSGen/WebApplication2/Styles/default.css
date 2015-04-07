@@ -18,6 +18,7 @@ h1, h2, h3 {
 	font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: -1px;
 	color: #514F42;
+	text-align: center;
 }
 
 p, ol, ul {

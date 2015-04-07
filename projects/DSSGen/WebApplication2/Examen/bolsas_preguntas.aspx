@@ -2,9 +2,9 @@
     CodeBehind="bolsas_preguntas.aspx.cs" Inherits="DSSGenNHibernate.Examen.bases" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href="../Styles/examen/maqueta_tabla.css" rel="stylesheet" 
+    <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" 
         type="text/css" />
-    <link href="../Styles/examen/centrar_contenido.css" rel="stylesheet" 
+    <link href="../Styles/utilities/centrar_contenido.css" rel="stylesheet" 
         type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

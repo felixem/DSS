@@ -2,11 +2,11 @@
     CodeBehind="crear_bolsa.aspx.cs" Inherits="DSSGenNHibernate.Examen.crear_bolsa" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href="../Styles/examen/centrar_contenido.css" rel="stylesheet" 
+    <link href="../Styles/utilities/centrar_contenido.css" rel="stylesheet" 
         type="text/css" />
-    <link href="../Styles/examen/tabla_dos_columnas.css" rel="stylesheet" 
+    <link href="../Styles/utilities/tabla_dos_columnas.css" rel="stylesheet" 
         type="text/css" />
-    <link href="../Styles/examen/maqueta_tabla.css" rel="stylesheet" 
+    <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" 
         type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

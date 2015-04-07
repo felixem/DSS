@@ -19,6 +19,34 @@
     overflow:hidden;
 }
 
+/* Filas de la tabla crear alumno */
+.row_crear_alumno
+{
+    width: 400px;
+    margin: 5px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+.row_crear_alumno_buttons
+{
+    width: 400px;
+    margin: 5px;
+    margin-top: 25px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+.posicion_central
+{
+    margin: 3px;
+    float: left;
+    margin-left: 55px;
+    text-align:center;
+}
+
 .buttons
 {
     margin: 10px;

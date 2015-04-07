@@ -5,6 +5,14 @@
     margin: 0px auto;
 }
 
+.ContenedorInternoNoPanel
+{
+    display:inline-block;
+    margin: 0px auto;
+    margin-left:-150px;
+}
+
+
 .CentrarContenido
 {
     text-align: center;
