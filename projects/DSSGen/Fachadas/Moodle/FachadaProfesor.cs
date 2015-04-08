@@ -29,14 +29,14 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        /*//Método para modificar un alumno en la BD sin modificar su password
-        public bool ModificarAlumnoNoPassword(string email, int codAlumno, bool baneado, string dni,
+        //Método para modificar un profesor en la BD sin modificar su password
+        public bool ModificarProfesorNoPassword(string email, int codProfesor, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
             try
             {
-                AlumnoCP cp = new AlumnoCP();
-                cp.ModificarAlumnoNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                ProfesorCP cp = new ProfesorCP();
+                cp.ModificarProfesorNoPassword(email, codProfesor, dni, nombre, apellidos, fechaNacimiento);
             }
             catch (Exception)
             {
@@ -46,13 +46,13 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Método para eliminar un alumno en la BD
-        public bool BorrarAlumno(int codAlumno)
+        //Método para eliminar un profesor en la BD
+        public bool BorrarProfesor(int codProfesor)
         {
             try
             {
-                AlumnoCP cp = new AlumnoCP();
-                cp.BorrarAlumno(codAlumno);
+                ProfesorCP cp = new ProfesorCP();
+                cp.BorrarProfesor(codProfesor);
             }
             catch (Exception)
             {
@@ -62,28 +62,28 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Vincular a un grid view los alumnos con paginación
-        public void VincularDameTodos(GridView grid, int first, int size, out long numAlumnos)
+        //Vincular a un grid view los profesores con paginación
+        public void VincularDameTodos(GridView grid, int first, int size, out long numProfesores)
         {
-            //Obtener alumnos y enlazar sus datos con el gridview
-            AlumnoBinding alumnoBind = new AlumnoBinding();
-            IDameTodosAlumno consulta = new DameTodosAlumno();
-            alumnoBind.VincularDameTodos(consulta, grid, first, size, out numAlumnos);
+            //Obtener profesores y enlazar sus datos con el gridview
+            ProfesorBinding profesorBind = new ProfesorBinding();
+            IDameTodosProfesor consulta = new DameTodosProfesor();
+            profesorBind.VincularDameTodos(consulta, grid, first, size, out numProfesores);
         }
 
-        //Devolver un alumno a partir de un id de alumno
-        public AlumnoEN DameAlumnoPorId(int id)
+        //Devolver un profesor a partir de un id de profesor
+        public ProfesorEN DameProfesorPorId(int id)
         {
-            AlumnoEN alumno = null;
-            AlumnoCP cp = new AlumnoCP();
-            DameAlumnoPorId consulta = new DameAlumnoPorId(id);
+            ProfesorEN profesor = null;
+            ProfesorCP cp = new ProfesorCP();
+            DameProfesorPorId consulta = new DameProfesorPorId(id);
 
-            alumno = cp.DameAlumno(consulta);
+            profesor = cp.DameProfesor(consulta);
 
-            if (alumno == null)
-                throw new Exception("Alumno no encontrado");
+            if (profesor == null)
+                throw new Exception("Profesor no encontrado");
 
-            return alumno;
-        }*/
+            return profesor;
+        }
     }
 }

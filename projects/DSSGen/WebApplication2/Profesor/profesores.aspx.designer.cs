@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.Alumno {
+namespace DSSGenNHibernate.Profesor {
     
     
-    public partial class alumnos {
+    public partial class profesores {
         
         /// <summary>
         /// Panel1 control.

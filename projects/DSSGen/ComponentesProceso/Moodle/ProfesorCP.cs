@@ -18,7 +18,7 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public ProfesorCP(ISession sesion) : base(sesion) { }
 
-        //Registra el alumno en la BD y de
+        //Registra el profesor en la BD y de
         public string CrearProfesor(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
         {
             string resultado;
@@ -26,9 +26,9 @@ namespace ComponentesProceso.Moodle
             try
             {
                 SessionInitializeTransaction();
-                //Creo el alumno    
-                ProfesorCEN aluCen = new ProfesorCEN();
-                resultado = aluCen.New_(cod, email, dni, pass, nombre, apellidos, fecha);
+                //Creo el profesor    
+                ProfesorCEN profCen = new ProfesorCEN();
+                resultado = profCen.New_(cod, email, dni, pass, nombre, apellidos, fecha);
 
                 SessionCommit();
             }
@@ -45,11 +45,11 @@ namespace ComponentesProceso.Moodle
             return resultado;
         }
 
-        /*//Devolver el resultado de la consulta especificada devolviendo la cantidad de alumnos que satisfacen la consulta
-        public System.Collections.Generic.IList<AlumnoEN> DameTodosTotal(IDameTodosAlumno consulta,
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de profesores que satisfacen la consulta
+        public System.Collections.Generic.IList<ProfesorEN> DameTodosTotal(IDameTodosProfesor consulta,
             int first, int size, out long numElementos)
         {
-            System.Collections.Generic.IList<AlumnoEN> lista = null;
+            System.Collections.Generic.IList<ProfesorEN> lista = null;
             try
             {
                 SessionInitializeTransaction();
@@ -73,15 +73,15 @@ namespace ComponentesProceso.Moodle
             return lista;
         }
 
-        //Devolver el resultado de una consulta individual sobre un alumno
-        public AlumnoEN DameAlumno(IDameAlumno consulta)
+        //Devolver el resultado de una consulta individual sobre un profesor
+        public ProfesorEN DameProfesor(IDameProfesor consulta)
         {
-            AlumnoEN alu = null;
+            ProfesorEN prof = null;
             try
             {
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
-                alu = consulta.Execute(session);
+                prof = consulta.Execute(session);
 
                 SessionCommit();
             }
@@ -96,20 +96,20 @@ namespace ComponentesProceso.Moodle
                 SessionClose();
             }
 
-            return alu;
+            return prof;
         }
 
-        //Modificar alumno sin modificar su contraseña
-        public void ModificarAlumnoNoPassword(string email, int codAlumno, bool baneado, string dni,
+        //Modificar profesor sin modificar su contraseña
+        public void ModificarProfesorNoPassword(string email, int codProfesor, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
             try
             {
                 SessionInitializeTransaction();
 
-                AlumnoCEN cen = new AlumnoCEN();
+                ProfesorCEN cen = new ProfesorCEN();
                 //Ejecutar la modificación
-                cen.ModifyNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                cen.ModifyNoPassword(email, dni, nombre, apellidos, fechaNacimiento, codProfesor);
 
                 SessionCommit();
             }
@@ -125,18 +125,18 @@ namespace ComponentesProceso.Moodle
             }
         }
 
-        //Borrar alumno a partir de su código de alumno
-        public void BorrarAlumno(int codAlumno)
+        //Borrar profesor a partir de su código de profesor
+        public void BorrarProfesor(int codProfesor)
         {
             try
             {
                 SessionInitializeTransaction();
 
-                AlumnoCEN cen = new AlumnoCEN();
-                //Recuperar datos del alumno
-                AlumnoEN alu = cen.ReadCod(codAlumno);
+                ProfesorCEN cen = new ProfesorCEN();
+                //Recuperar datos del profesor
+                ProfesorEN prof = cen.ReadCod(codProfesor);
                 //Ejecutar la modificación
-                cen.Destroy(alu.Email);
+                cen.Destroy(prof.Email);
 
                 SessionCommit();
             }
@@ -150,6 +150,6 @@ namespace ComponentesProceso.Moodle
                 //Cerrar sesión
                 SessionClose();
             }
-        }*/
+        }
     }
 }

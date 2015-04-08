@@ -59,6 +59,8 @@
     <Content Include="Asignatura\asignaturas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="Profesor\profesores.aspx" />
+    <Content Include="Profesor\modificar_profesor.aspx" />
     <Content Include="Resources\Fotos\alumno.png" />
     <Content Include="Resources\Fotos\administrador.jpg" />
     <Content Include="Resources\Fotos\profesor.png" />
@@ -197,6 +199,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\profesores.aspx.cs">
+      <DependentUpon>profesores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\profesores.aspx.designer.cs">
+      <DependentUpon>profesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\modificar_profesor.aspx.cs">
+      <DependentUpon>modificar_profesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\modificar_profesor.aspx.designer.cs">
+      <DependentUpon>modificar_profesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

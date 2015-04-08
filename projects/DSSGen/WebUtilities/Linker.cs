@@ -117,6 +117,19 @@ namespace WebUtilities
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
+        //Cadena para la página de creación de profesor
+        public string CrearProfesor()
+        {
+            return "~/Profesor/crear_profesor.aspx";
+        }
+
+        //Cadena para la página de modificación de profesor
+        public String ModificarProfesor(int cod)
+        {
+            return "~/Profesor/modificar_profesor.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
         //Cadena para la página de creación de asignatura
         public String CrearAsignatura()
         {
