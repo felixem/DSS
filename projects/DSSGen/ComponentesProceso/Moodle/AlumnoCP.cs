@@ -18,19 +18,29 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public AlumnoCP(ISession sesion) : base(sesion) { }
 
-        //Registra el alumno en la BD
+        //Registra el alumno en la BD y de
         public string CrearAlumno(string nombre, string apellidos, string pass, string fecha, string dni, string email, string cod)
         {
-            AlumnoCEN aluCen = new AlumnoCEN();
             string resultado;
 
             try
             {
+                SessionInitializeTransaction();
+                //Creo el alumno    
+                AlumnoCEN aluCen = new AlumnoCEN();            
                 resultado = aluCen.New_(Convert.ToInt32(cod), false, email, dni, pass, nombre, apellidos, Convert.ToDateTime(fecha), new ExpedienteEN());
+
+                SessionCommit();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resultado = "Invalido";
+                SessionRollBack();
+                throw e;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
             }
             return resultado;
         }

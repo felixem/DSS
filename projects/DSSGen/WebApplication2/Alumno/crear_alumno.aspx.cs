@@ -39,15 +39,17 @@ namespace DSSGenNHibernate.Alumno
             string cod = TextBox_CodAlu.Text;
 
             //Llamo al metodo que registra al alumno
-            string verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
+            bool verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
 
-            if (verificado != "Invalido")
+            if (verificado)
             {
-                Response.Write("<script>window.alert('El usuario: " + verificado + " se ha creado correctamente');</script>");
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
             }
             else 
             {
-                Response.Write("<script>window.alert('El usuario no se ha creado');</script>");
+                Response.Write("<script>window.alert('El alumno no ha podido ser creado');</script>");
             }
         }
     

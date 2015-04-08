@@ -14,10 +14,19 @@ namespace Fachadas.Moodle
     public class FachadaAlumno
     {
         //Metodo que registra al alumno en BD
-        public string RegistrarAlumno(string nombre, string apellidos, string pass, string fecha, string dni, string email, string cod)
+        public bool RegistrarAlumno(string nombre, string apellidos, string pass, string fecha, string dni, string email, string cod)
         {
-            AlumnoCP alumno = new AlumnoCP();
-            return alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
+            try
+            {
+                AlumnoCP alumno = new AlumnoCP();
+                alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Método para modificar un alumno en la BD sin modificar su password

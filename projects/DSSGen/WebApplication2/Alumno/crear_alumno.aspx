@@ -76,7 +76,8 @@
     <div class="row_crear_alumno">
     <asp:Label ID="Label_ContAlu" runat="server" Text="Contraseña:" 
         CssClass="posicion_izquierda"></asp:Label>
-    <asp:TextBox ID="TextBox_ContAlu" runat="server" CssClass="posicion_derecha"></asp:TextBox>
+    <asp:TextBox ID="TextBox_ContAlu" runat="server" CssClass="posicion_derecha" 
+            TextMode="Password"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
         ControlToValidate="TextBox_ContAlu" Display="Dynamic" 
@@ -84,7 +85,8 @@
     <div class="row_crear_alumno">
     <asp:Label ID="Label_VContAlu" runat="server" Text="Repita Contraseña:" 
         CssClass="posicion_izquierda"></asp:Label>
-    <asp:TextBox ID="TextBox_VContAlu" runat="server" CssClass="posicion_derecha"></asp:TextBox>
+    <asp:TextBox ID="TextBox_VContAlu" runat="server" CssClass="posicion_derecha" 
+            TextMode="Password"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
         ControlToValidate="TextBox_VContAlu" Display="Dynamic" 
