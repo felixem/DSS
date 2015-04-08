@@ -8,17 +8,17 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.Alumno
+namespace DSSGenNHibernate.Profesor
 {
-    public partial class crear_alumno : System.Web.UI.Page
+    public partial class crear_profesor : System.Web.UI.Page
     {
         //Creo la fachada
-        FachadaAlumno alumno;
+        FachadaProfesor profesor;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            alumno = new FachadaAlumno();
+            profesor = new FachadaProfesor();
 
             if (!IsPostBack)
             {
@@ -29,19 +29,19 @@ namespace DSSGenNHibernate.Alumno
         }
 
         //Método que llama el botón registrar
-        protected void Button_RegAlu_Click(Object sender, EventArgs e)
+        protected void Button_RegProf_Click(Object sender, EventArgs e)
         {
             //Recogo los datos
-            string nombre = TextBox_NomAlu.Text;
-            string apellidos = TextBox_ApellAlu.Text;
-            string pass = TextBox_ContAlu.Text;
-            string fecha = TextBox_NaciAlu.Text;
-            string dni = TextBox_DNIAlu.Text;
-            string email = TextBox_EmailAlu.Text;
-            string cod = TextBox_CodAlu.Text;
+            string nombre = TextBox_NomProf.Text;
+            string apellidos = TextBox_ApellProf.Text;
+            string pass = TextBox_ContProf.Text;
+            string fecha = TextBox_NaciProf.Text;
+            string dni = TextBox_DNIProf.Text;
+            string email = TextBox_EmailProf.Text;
+            string cod = TextBox_CodProf.Text;
 
             //Llamo al metodo que registra al alumno
-            bool verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email,Convert.ToInt32(cod));
+            bool verificado = profesor.RegistrarProfesor(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
 
             if (verificado)
             {
@@ -49,27 +49,27 @@ namespace DSSGenNHibernate.Alumno
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
             }
-            else 
+            else
             {
-                Response.Write("<script>window.alert('El alumno no ha podido ser creado');</script>");
+                Response.Write("<script>window.alert('El profesor no ha podido ser creado');</script>");
             }
         }
-    
+
         //Método que llama el botón limpiar campos
         protected void Button_Clean_Click(Object sender, EventArgs e)
         {
-            TextBox_NomAlu.Text = "";
-            TextBox_ApellAlu.Text = "";
-            TextBox_ContAlu.Text = "";
-            TextBox_VContAlu.Text = "";
-            TextBox_NaciAlu.Text = "";
-            TextBox_DNIAlu.Text = "";
-            TextBox_EmailAlu.Text = "";
-            TextBox_CodAlu.Text = "";
+            TextBox_NomProf.Text = "";
+            TextBox_ApellProf.Text = "";
+            TextBox_ContProf.Text = "";
+            TextBox_VContProf.Text = "";
+            TextBox_NaciProf.Text = "";
+            TextBox_DNIProf.Text = "";
+            TextBox_EmailProf.Text = "";
+            TextBox_CodProf.Text = "";
         }
-    
+
         //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender,ServerValidateEventArgs e)
+        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
         {
             try
             {

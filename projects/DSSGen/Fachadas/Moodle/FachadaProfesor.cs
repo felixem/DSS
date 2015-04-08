@@ -11,15 +11,15 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace Fachadas.Moodle
 {
-    public class FachadaAlumno
+    public class FachadaProfesor
     {
-        //Metodo que registra al alumno en BD
-        public bool RegistrarAlumno(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
+        //Metodo que registra al profesor en BD
+        public bool RegistrarProfesor(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
         {
             try
             {
-                AlumnoCP alumno = new AlumnoCP();
-                alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
+                ProfesorCP profesor = new ProfesorCP();
+                profesor.CrearProfesor(nombre, apellidos, pass, fecha, dni, email, cod);
             }
             catch (Exception)
             {
@@ -29,7 +29,7 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Método para modificar un alumno en la BD sin modificar su password
+        /*//Método para modificar un alumno en la BD sin modificar su password
         public bool ModificarAlumnoNoPassword(string email, int codAlumno, bool baneado, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
@@ -84,6 +84,6 @@ namespace Fachadas.Moodle
                 throw new Exception("Alumno no encontrado");
 
             return alumno;
-        }
+        }*/
     }
 }

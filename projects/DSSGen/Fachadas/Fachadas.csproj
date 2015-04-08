@@ -46,6 +46,7 @@
     <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />
     <Compile Include="Moodle\FachadaAsignatura.cs" />
+    <Compile Include="Moodle\FachadaProfesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

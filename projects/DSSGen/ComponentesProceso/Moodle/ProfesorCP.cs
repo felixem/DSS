@@ -10,16 +10,16 @@ using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
 {
-    public class AlumnoCP : BasicCP
+    public class ProfesorCP : BasicCP
     {
-         //Constructor
-        public AlumnoCP() : base() { }
+        //Constructor
+        public ProfesorCP() : base() { }
 
         //Constructor con sesión
-        public AlumnoCP(ISession sesion) : base(sesion) { }
+        public ProfesorCP(ISession sesion) : base(sesion) { }
 
         //Registra el alumno en la BD y de
-        public string CrearAlumno(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
+        public string CrearProfesor(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
         {
             string resultado;
 
@@ -27,8 +27,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
                 //Creo el alumno    
-                AlumnoCEN aluCen = new AlumnoCEN();            
-                resultado = aluCen.New_(cod, false, email, dni, pass, nombre, apellidos, fecha, new ExpedienteEN());
+                ProfesorCEN aluCen = new ProfesorCEN();
+                resultado = aluCen.New_(cod, email, dni, pass, nombre, apellidos, fecha);
 
                 SessionCommit();
             }
@@ -45,7 +45,7 @@ namespace ComponentesProceso.Moodle
             return resultado;
         }
 
-        //Devolver el resultado de la consulta especificada devolviendo la cantidad de alumnos que satisfacen la consulta
+        /*//Devolver el resultado de la consulta especificada devolviendo la cantidad de alumnos que satisfacen la consulta
         public System.Collections.Generic.IList<AlumnoEN> DameTodosTotal(IDameTodosAlumno consulta,
             int first, int size, out long numElementos)
         {
@@ -100,7 +100,7 @@ namespace ComponentesProceso.Moodle
         }
 
         //Modificar alumno sin modificar su contraseña
-        public void ModificarAlumnoNoPassword(string email,int codAlumno, bool baneado, string dni,
+        public void ModificarAlumnoNoPassword(string email, int codAlumno, bool baneado, string dni,
             string nombre, string apellidos, DateTime? fechaNacimiento)
         {
             try
@@ -109,7 +109,7 @@ namespace ComponentesProceso.Moodle
 
                 AlumnoCEN cen = new AlumnoCEN();
                 //Ejecutar la modificación
-                cen.ModifyNoPassword(email,codAlumno,baneado,dni,nombre,apellidos, fechaNacimiento);
+                cen.ModifyNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
 
                 SessionCommit();
             }
@@ -150,6 +150,6 @@ namespace ComponentesProceso.Moodle
                 //Cerrar sesión
                 SessionClose();
             }
-        }
+        }*/
     }
 }

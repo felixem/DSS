@@ -87,6 +87,7 @@
     </Content>
     <Content Include="WebForm1.aspx" />
     <Content Include="Alumno\crear_alumno.aspx" />
+    <Content Include="Profesor\crear_profesor.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -218,6 +219,13 @@
     </Compile>
     <Compile Include="Alumno\crear_alumno.aspx.designer.cs">
       <DependentUpon>crear_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\crear_profesor.aspx.cs">
+      <DependentUpon>crear_profesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\crear_profesor.aspx.designer.cs">
+      <DependentUpon>crear_profesor.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
