@@ -37,5 +37,13 @@ void Unrelationer_materiales (string p_profesor, System.Collections.Generic.ILis
 void Unrelationer_mensajes (string p_profesor, System.Collections.Generic.IList<int> p_mensaje);
 
 void Unrelationer_tutorias (string p_profesor, System.Collections.Generic.IList<int> p_tutoria);
+
+void ModifyNoPassword (ProfesorEN profesor);
+
+
+DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod);
+
+
+long ReadCantidad ();
 }
 }

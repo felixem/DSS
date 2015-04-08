@@ -117,6 +117,7 @@
     <Compile Include="CEN\Moodle\ProfesorCEN.cs" />
     <Compile Include="CAD\Moodle\IProfesorCAD.cs" />
     <Compile Include="CAD\Moodle\ProfesorCAD.cs" />
+    <Compile Include="CEN\Moodle\ProfesorCEN_ModifyNoPassword.cs" />
     <Compile Include="EN\Moodle\AlumnoEN.cs" />
     <Compile Include="CEN\Moodle\AlumnoCEN.cs" />
     <Compile Include="CAD\Moodle\IAlumnoCAD.cs" />

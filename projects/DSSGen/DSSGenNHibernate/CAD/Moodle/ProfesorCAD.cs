@@ -507,5 +507,105 @@ public void Unrelationer_tutorias (string p_profesor, System.Collections.Generic
                 SessionClose ();
         }
 }
+public void ModifyNoPassword (ProfesorEN profesor)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                ProfesorEN profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), profesor.Email);
+
+                profesorEN.Dni = profesor.Dni;
+
+
+                profesorEN.Nombre = profesor.Nombre;
+
+
+                profesorEN.Apellidos = profesor.Apellidos;
+
+
+                profesorEN.Fecha_nacimiento = profesor.Fecha_nacimiento;
+
+
+                profesorEN.Cod_profesor = profesor.Cod_profesor;
+
+                session.Update (profesorEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
+{
+        DSSGenNHibernate.EN.Moodle.ProfesorEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProfesorEN self where FROM ProfesorEN prof where prof.Cod_profesor =:cod ";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCodHQL");
+                query.SetParameter ("cod", cod);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ProfesorEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProfesorEN self where select count(*) FROM ProfesorEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

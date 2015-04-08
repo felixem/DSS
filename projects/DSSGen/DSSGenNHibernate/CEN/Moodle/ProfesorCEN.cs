@@ -145,5 +145,13 @@ public void Unrelationer_tutorias (string p_profesor, System.Collections.Generic
 
         _IProfesorCAD.Unrelationer_tutorias (p_profesor, p_tutoria);
 }
+public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
+{
+        return _IProfesorCAD.ReadCod (cod);
+}
+public long ReadCantidad ()
+{
+        return _IProfesorCAD.ReadCantidad ();
+}
 }
 }
