@@ -15,7 +15,7 @@ private int id;
  *
  */
 
-private int cod_grupo;
+private string cod_grupo;
 
 /**
  *
@@ -62,7 +62,7 @@ public virtual int Id {
 }
 
 
-public virtual int Cod_grupo {
+public virtual string Cod_grupo {
         get { return cod_grupo; } set { cod_grupo = value;  }
 }
 
@@ -107,7 +107,7 @@ public GrupoTrabajoEN()
 
 
 
-public GrupoTrabajoEN(int id, int cod_grupo, string nombre, string descripcion, String password, int capacidad, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> alumnos, DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura)
+public GrupoTrabajoEN(int id, string cod_grupo, string nombre, string descripcion, String password, int capacidad, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> alumnos, DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura)
 {
         this.init (id, cod_grupo, nombre, descripcion, password, capacidad, alumnos, asignatura);
 }
@@ -118,7 +118,7 @@ public GrupoTrabajoEN(GrupoTrabajoEN grupoTrabajo)
         this.init (grupoTrabajo.Id, grupoTrabajo.Cod_grupo, grupoTrabajo.Nombre, grupoTrabajo.Descripcion, grupoTrabajo.Password, grupoTrabajo.Capacidad, grupoTrabajo.Alumnos, grupoTrabajo.Asignatura);
 }
 
-private void init (int id, int cod_grupo, string nombre, string descripcion, String password, int capacidad, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> alumnos, DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura)
+private void init (int id, string cod_grupo, string nombre, string descripcion, String password, int capacidad, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> alumnos, DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura)
 {
         this.Id = id;
 

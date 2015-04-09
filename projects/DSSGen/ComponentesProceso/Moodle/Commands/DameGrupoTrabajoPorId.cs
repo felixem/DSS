@@ -10,14 +10,14 @@ using NHibernate;
 
 namespace ComponentesProceso.Moodle.Commands
 {
-    //Clase que representa una operación para obtener una asignatura por id
-    public class DameAsignaturaPorId :IDameAsignatura
+    //Clase que representa una operación para obtener un grupo de trabajo por id
+    public class DameGrupoTrabajoPorId : IDameGrupoTrabajo
     {
-        //Código de asignatura
+        //Código de grupo
         private int id;
 
-        //Constructor a partir del id de asignatura
-        public DameAsignaturaPorId(int id)
+        //Constructor a partir del id del grupo de trabajo
+        public DameGrupoTrabajoPorId(int id)
         {
             this.id = id;
         }
@@ -30,10 +30,10 @@ namespace ComponentesProceso.Moodle.Commands
         }
 
         //Método de consulta
-        public AsignaturaEN Execute(ISession sesion)
+        public GrupoTrabajoEN Execute(ISession sesion)
         {
-            AsignaturaCAD cad = new AsignaturaCAD(sesion);
-            AsignaturaCEN cen = new AsignaturaCEN(cad);
+            GrupoTrabajoCAD cad = new GrupoTrabajoCAD(sesion);
+            GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
 
             return cen.ReadOID(id);
         }

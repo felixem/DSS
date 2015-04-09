@@ -22,13 +22,13 @@ namespace DSSGenNHibernate.GrupoTrabajo {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// Label_Asignatura control.
+        /// Label_Listado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Asignatura;
+        protected global::System.Web.UI.WebControls.Label Label_Listado;
         
         /// <summary>
         /// Panel2 control.

@@ -201,6 +201,68 @@ public GrupoTrabajoEN ReadOID (int id)
         return grupoTrabajoEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM GrupoTrabajoEN self where select count(*) FROM GrupoTrabajoEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("GrupoTrabajoENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in GrupoTrabajoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
+{
+        DSSGenNHibernate.EN.Moodle.AsignaturaEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM GrupoTrabajoEN self where FROM GrupoTrabajoEN grupo where grupo.Cod_grupo=:cod";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("GrupoTrabajoENreadCodHQL");
+                query.SetParameter ("cod", cod);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AsignaturaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in GrupoTrabajoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN grupoTrabajoEN = null;

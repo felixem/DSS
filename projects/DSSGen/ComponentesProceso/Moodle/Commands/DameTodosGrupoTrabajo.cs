@@ -37,5 +37,4 @@ namespace ComponentesProceso.Moodle.Commands
             return grupo.ReadCantidad();
         }
     }
-    }
 }

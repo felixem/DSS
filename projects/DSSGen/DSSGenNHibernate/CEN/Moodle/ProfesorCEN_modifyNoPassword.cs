@@ -14,7 +14,7 @@ namespace DSSGenNHibernate.CEN.Moodle
 {
 public partial class ProfesorCEN
 {
-public void ModifyNoPassword (string p_Profesor_OID, string p_dni, string p_nombre, string p_apellidos, Nullable<DateTime> p_fecha_nacimiento, int p_cod_profesor)
+public void ModifyNoPassword (string p_oid, string p_dni, string p_nombre, string p_apellidos, Nullable<DateTime> p_fecha_nacimiento, int p_cod_profesor)
 {
         /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Profesor_modifyNoPassword_customized) START*/
 
@@ -22,7 +22,7 @@ public void ModifyNoPassword (string p_Profesor_OID, string p_dni, string p_nomb
 
         //Initialized ProfesorEN
         profesorEN = new ProfesorEN ();
-        profesorEN.Email = p_Profesor_OID;
+        profesorEN.Email = p_oid;
         profesorEN.Dni = p_dni;
         profesorEN.Nombre = p_nombre;
         profesorEN.Apellidos = p_apellidos;

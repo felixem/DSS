@@ -73,7 +73,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador para la creación de un nuevo grupo de trabajo
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not implemented yet");
             Linker link = new Linker(true);
             link.Redirect(Response, link.CrearGrupoTrabajo());
         }
@@ -92,7 +91,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador del evento para eliminar un grupo de trabajo
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 

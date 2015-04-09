@@ -22,6 +22,15 @@ System.Collections.Generic.IList<ProfesorEN> ReadAll (int first, int size);
 ProfesorEN ReadOID (string email);
 
 
+void ModifyNoPassword (ProfesorEN profesor);
+
+
+long ReadCantidad ();
+
+
+DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod);
+
+
 void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega);
 
 void Relationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material);
@@ -37,13 +46,5 @@ void Unrelationer_materiales (string p_profesor, System.Collections.Generic.ILis
 void Unrelationer_mensajes (string p_profesor, System.Collections.Generic.IList<int> p_mensaje);
 
 void Unrelationer_tutorias (string p_profesor, System.Collections.Generic.IList<int> p_tutoria);
-
-void ModifyNoPassword (ProfesorEN profesor);
-
-
-DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod);
-
-
-long ReadCantidad ();
 }
 }

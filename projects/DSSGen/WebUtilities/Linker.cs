@@ -142,5 +142,18 @@ namespace WebUtilities
             return "~/Asignatura/modificar_asignatura.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
+
+        //Cadena para la página de creación de grupo de trabajo
+        public String CrearGrupoTrabajo()
+        {
+            return "~/GrupoTrabajo/crear_grupotrabajo.aspx";
+        }
+
+        //Cadena para la página de modificación de grupo de trabajo
+        public String ModificarGrupoTrabajo(int cod)
+        {
+            return "~/GrupoTrabajo/modificar_grupotrabajo.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
 }

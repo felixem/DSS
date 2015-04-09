@@ -97,6 +97,14 @@ public ProfesorEN ReadOID (string email)
         return profesorEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IProfesorCAD.ReadCantidad ();
+}
+public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
+{
+        return _IProfesorCAD.ReadCod (cod);
+}
 public void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         //Call to ProfesorCAD
@@ -144,14 +152,6 @@ public void Unrelationer_tutorias (string p_profesor, System.Collections.Generic
         //Call to ProfesorCAD
 
         _IProfesorCAD.Unrelationer_tutorias (p_profesor, p_tutoria);
-}
-public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
-{
-        return _IProfesorCAD.ReadCod (cod);
-}
-public long ReadCantidad ()
-{
-        return _IProfesorCAD.ReadCantidad ();
 }
 }
 }

@@ -57,7 +57,7 @@ namespace Fachadas.Moodle
             asignatura = cp.DameAsignatura(consulta);
 
             if (asignatura == null)
-                throw new Exception("Alumno no encontrado");
+                throw new Exception("Asignatura no encontrada");
 
             return asignatura;
         }

@@ -32,7 +32,7 @@ public IGrupoTrabajoCAD get_IGrupoTrabajoCAD ()
         return this._IGrupoTrabajoCAD;
 }
 
-public int New_ (int p_cod_grupo, string p_nombre, string p_descripcion, String p_password, int p_capacidad, int p_asignatura)
+public int New_ (string p_cod_grupo, string p_nombre, string p_descripcion, String p_password, int p_capacidad, int p_asignatura)
 {
         GrupoTrabajoEN grupoTrabajoEN = null;
         int oid;
@@ -61,7 +61,7 @@ public int New_ (int p_cod_grupo, string p_nombre, string p_descripcion, String 
         return oid;
 }
 
-public void Modify (int p_oid, int p_cod_grupo, string p_nombre, string p_descripcion, String p_password, int p_capacidad)
+public void Modify (int p_oid, string p_cod_grupo, string p_nombre, string p_descripcion, String p_password, int p_capacidad)
 {
         GrupoTrabajoEN grupoTrabajoEN = null;
 
@@ -98,6 +98,14 @@ public GrupoTrabajoEN ReadOID (int id)
         return grupoTrabajoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IGrupoTrabajoCAD.ReadCantidad ();
+}
+public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
+{
+        return _IGrupoTrabajoCAD.ReadCod (cod);
+}
 public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         //Call to GrupoTrabajoCAD

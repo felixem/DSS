@@ -10,7 +10,7 @@
 <div class="CentrarContenido">
     <div class="ConInternoSinDisplay">
     <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
-        <asp:Label ID="Label_Asignatura" runat="server" Text="Listado de Asignaturas"></asp:Label>
+        <asp:Label ID="Label_Listado" runat="server" Text="Listado de Grupos de Trabajo"></asp:Label>
     </asp:Panel>
     </div>
     <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
@@ -22,15 +22,16 @@
                 <asp:ListItem Text="50" Value="50" />
             </asp:DropDownList>
             <hr />
-            <asp:Button ID="Button_Crear" runat="server" Text="Crear asignatura" OnClick="Button_Crear_Click" />
+            <asp:Button ID="Button_Crear" runat="server" Text="Crear Grupo de Trabajo" OnClick="Button_Crear_Click" />
             <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="Id" />
-                    <asp:BoundField HeaderText="Código de Asignatura" DataField="Cod_asignatura" />
+                    <asp:BoundField HeaderText="Código de Grupo" DataField="Cod_grupo" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
-                    <asp:BoundField HeaderText="Optativa" DataField="Optativa" />
-                    <asp:BoundField HeaderText="Vigente" DataField="Vigente" />
+                    <asp:BoundField HeaderText="Capacidad" DataField="Capacidad" />
+                    <asp:BoundField HeaderText="Asignatura" DataField="Asignatura.Asignatura.Nombre" />
+                    <asp:BoundField HeaderText="Año académico" DataField="Asignatura.Anyo.Anyo" />
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
