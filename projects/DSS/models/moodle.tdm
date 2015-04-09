@@ -95,6 +95,10 @@ ConceptualModel moodle
 			public readAll::ReadAll (/* No arguments */) : List<Object->Profesor>;
 			public readOID::ReadOID (p_oid : OID -> Profesor) : Object -> Profesor;
 			
+			public modifyNoPassword::Modifier customized (p_oid : OID -> Profesor, p_dni : String, p_nombre : String, p_apellidos : String, p_fecha_nacimiento : Date, p_cod_profesor : Integer) : Void;
+			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ProfesorEN" };
+			public readCod::ReadFilter (cod : Integer) : Object -> Profesor { filter = "FROM ProfesorEN prof where prof.Cod_profesor =:cod "};
+			
 			public relationer_entregas_propuestas::Relationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
 			public relationer_materiales::Relationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
 			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
