@@ -26,8 +26,8 @@
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-                <asp:DropDownList ID="DropDownList_Asignaturas" runat="server" CssClass="posicion_derecha"
-                    OnSelectedIndexChanged="DropDownList_Asignaturas_SelectedIndexChanged">
+                <asp:DropDownList ID="DropDownList_AsignaturasAnyo" runat="server" CssClass="posicion_derecha"
+                    OnSelectedIndexChanged="DropDownList_AsignaturasAnyo_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div class="row_crear_alumno">

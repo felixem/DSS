@@ -23,6 +23,7 @@ UsuarioEN ReadOID (string email);
 
 
 
+
 DSSGenNHibernate.EN.Moodle.UsuarioEN ReadDni (string dni);
 }
 }

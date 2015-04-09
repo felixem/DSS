@@ -40,13 +40,13 @@ namespace DSSGenNHibernate.GrupoTrabajo {
         protected global::System.Web.UI.WebControls.Label Label_Asignatura;
         
         /// <summary>
-        /// DropDownList_Asignaturas control.
+        /// DropDownList_AsignaturasAnyo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Asignaturas;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_AsignaturasAnyo;
         
         /// <summary>
         /// LabelCod_Grupo control.

@@ -12,16 +12,25 @@ namespace DSSGenNHibernate.GrupoTrabajo
 {
     public partial class crear_grupotrabajo : System.Web.UI.Page
     {
-        FachadaGrupoTrabajo fachada;
+        FachadaGrupoTrabajo fachadaGrupo;
+        FachadaAsignaturaAnyo fachadaAsignaturaAnyo;
+        FachadaAnyoAcademico fachadaAnyo;
+
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaGrupoTrabajo();
+            fachadaGrupo = new FachadaGrupoTrabajo();
+            fachadaAsignaturaAnyo = new FachadaAsignaturaAnyo();
+            fachadaAnyo = new FachadaAnyoAcademico();
+
             if (!IsPostBack)
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
+
+                this.ObtenerAnyosAcademicos();
+                this.ObtenerAsignaturasAnyo();
             }
         }
 
@@ -36,7 +45,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string capacidad = TextBox_Capacidad.Text;
 
             //Crear la asignatura
-            if (fachada.CrearGrupoTrabajo(codigo,nombre,descripcion,password,Int32.Parse(capacidad),0))
+            if (fachadaGrupo.CrearGrupoTrabajo(codigo,nombre,descripcion,password,Int32.Parse(capacidad),0))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
@@ -67,7 +76,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
         }
 
         //Manejador cuando cambie la selección en el drop down list
-        protected void DropDownList_Asignaturas_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownList_AsignaturasAnyo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -77,5 +86,19 @@ namespace DSSGenNHibernate.GrupoTrabajo
         {
 
         }
+
+        //Obtener las asignaturas-anyo
+        protected void ObtenerAsignaturasAnyo()
+        {
+            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+            fachadaAsignaturaAnyo.VincularDameTodosPorAnyo(DropDownList_AsignaturasAnyo,idAnyo);
+        }
+
+        //Obtener los años académicos
+        protected void ObtenerAnyosAcademicos()
+        {
+            fachadaAnyo.VincularDameTodos(DropDownList_Anyos);
+        }
+
     }
 }

@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliar\Encrypter.cs" />
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAnyo.cs" />
+    <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD_Extension.cs" />
     <Compile Include="Utils\Util.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Exceptions\ModelException.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="CAD\Moodle\IUsuarioCAD.cs" />
     <Compile Include="CAD\Moodle\UsuarioCAD.cs" />
     <Compile Include="CEN\Moodle\UsuarioCEN_Login.cs" />
+    <Compile Include="CEN\Moodle\UsuarioCEN_ChangePassword.cs" />
     <Compile Include="EN\Moodle\AdministradorEN.cs" />
     <Compile Include="CEN\Moodle\AdministradorCEN.cs" />
     <Compile Include="CAD\Moodle\IAdministradorCAD.cs" />
@@ -175,6 +178,7 @@
     <Compile Include="CEN\Moodle\AsignaturaAnyoCEN.cs" />
     <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD.cs" />
     <Compile Include="CAD\Moodle\AsignaturaAnyoCAD.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyo.cs" />
     <Compile Include="EN\Moodle\EvaluacionEN.cs" />
     <Compile Include="CEN\Moodle\EvaluacionCEN.cs" />
     <Compile Include="CAD\Moodle\IEvaluacionCAD.cs" />

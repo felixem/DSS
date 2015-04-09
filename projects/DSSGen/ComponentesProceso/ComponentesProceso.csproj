@@ -74,6 +74,7 @@
     <Compile Include="Moodle\AnyoAcademicoCP.cs" />
     <Compile Include="Moodle\AsignaturaAnyoCP.cs" />
     <Compile Include="Moodle\BolsaPreguntasCP.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAnyo.cs" />
     <Compile Include="Moodle\Commands\DameAnyoAcademicoPorId.cs" />
     <Compile Include="Moodle\Commands\DameAsignaturaAnyoPorId.cs" />
     <Compile Include="Moodle\Commands\DameAsignaturaPorId.cs" />
