@@ -13,7 +13,7 @@ namespace Fachadas.Moodle
     //Fachada para la clase pregunta
     public class FachadaAsignatura
     {
-        //Vincular a un DropDownList todas las preguntas
+        //Vincular a un DropDownList todas las asignaturas
         public void VincularDameTodos(DropDownList drop)
         {
             AsignaturaBinding asig = new AsignaturaBinding();
@@ -22,7 +22,7 @@ namespace Fachadas.Moodle
             asig.VincularDameTodos(consulta, drop, 0, -1, out total);
         }
 
-        //Vincular a un GridView todas las preguntas
+        //Vincular a un GridView todas las asignaturas
         public void VincularDameTodos(GridView grid, int first, int size, out long numElements)
         {
             AsignaturaBinding asig = new AsignaturaBinding();

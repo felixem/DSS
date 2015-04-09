@@ -59,6 +59,7 @@
     <Content Include="Asignatura\asignaturas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="GrupoTrabajo\grupos_trabajo.aspx" />
     <Content Include="Profesor\profesores.aspx" />
     <Content Include="Profesor\modificar_profesor.aspx" />
     <Content Include="Resources\Fotos\alumno.png" />
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo.aspx.cs">
+      <DependentUpon>grupos_trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo.aspx.designer.cs">
+      <DependentUpon>grupos_trabajo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesor\profesores.aspx.cs">
       <DependentUpon>profesores.aspx</DependentUpon>

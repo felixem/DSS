@@ -78,6 +78,7 @@
     <Compile Include="Moodle\Commands\DameTodosAlumno.cs" />
     <Compile Include="Moodle\Commands\DameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignatura.cs" />
+    <Compile Include="Moodle\Commands\DameTodosGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\DameTodosProfesor.cs" />
     <Compile Include="Moodle\Commands\IDameAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameAsignatura.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />
     <Compile Include="Moodle\AlumnoCP.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IDameTodosProfesor.cs" />
     <Compile Include="Moodle\LoginCP.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />

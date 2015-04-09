@@ -3,27 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
+using NHibernate;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.CEN.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
-    //Componente de proceso para la asignaturas
-    public class AsignaturaCP : BasicCP
+    //Componente de proceso para los grupos de trabajo
+    public class GrupoTrabajoCP : BasicCP
     {
-        //Constructor
-        public AsignaturaCP() : base() { }
-
-        //Constructor con sesión
-        public AsignaturaCP(ISession sesion) : base(sesion) { }
-
-        //Devolver el resultado de la consulta especificada devolviendo la cantidad de asignatura que satisfacen la consulta
-        public System.Collections.Generic.IList<AsignaturaEN> DameTodosTotal(IDameTodosAsignatura consulta,
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de grupos de trabajo que satisfacen la consulta
+        public System.Collections.Generic.IList<GrupoTrabajoEN> DameTodosTotal(IDameTodosGrupoTrabajo consulta,
             int first, int size, out long numElementos)
         {
-            System.Collections.Generic.IList<AsignaturaEN> lista = null;
+            System.Collections.Generic.IList<GrupoTrabajoEN> lista = null;
             try
             {
                 SessionInitializeTransaction();
@@ -47,17 +41,16 @@ namespace ComponentesProceso.Moodle
             return lista;
         }
 
-        //Crear una asignatura y devolver su id de creación
-        public int CrearAsignatura(string codigo, string nombre, string descripcion,
-            bool optativa, bool vigente)
+        //Crear un grupo de trabajo y devolver su id de creación
+        public int CrearGrupoTrabajo()
         {
             int id = -1;
             try
             {
                 SessionInitializeTransaction();
                 //Crear la asignatura
-                AsignaturaCEN asig = new AsignaturaCEN();
-                id = asig.New_(codigo, nombre, descripcion, optativa, vigente);
+                GrupoTrabajoCEN grupo = new GrupoTrabajoCEN();
+                id = grupo.New_(p_cod_grupo,p_nombre,p_descripcion,p_password,p_capacidad,p_asignatura);
 
                 SessionCommit();
             }
@@ -111,7 +104,7 @@ namespace ComponentesProceso.Moodle
 
                 AsignaturaCEN cen = new AsignaturaCEN();
                 //Ejecutar la modificación
-                cen.Modify(oid,codAsignatura,nombre,descripcion,optativa,vigente);
+                cen.Modify(oid, codAsignatura, nombre, descripcion, optativa, vigente);
 
                 SessionCommit();
             }

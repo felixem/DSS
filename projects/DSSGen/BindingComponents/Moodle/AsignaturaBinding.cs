@@ -11,7 +11,7 @@ using ComponentesProceso.Moodle;
 
 namespace BindingComponents.Moodle
 {
-    //Clase para vincular datos sobre preguntas a alguna estructura de vista
+    //Clase para vincular datos sobre asignaturas a alguna estructura de vista
     public class AsignaturaBinding : BasicBinding
     {
         public AsignaturaBinding() : base() { }

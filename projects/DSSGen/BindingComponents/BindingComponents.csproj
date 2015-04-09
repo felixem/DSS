@@ -75,6 +75,7 @@
     <Compile Include="Moodle\AlumnoBinding.cs" />
     <Compile Include="Moodle\BolsaPreguntasBinding.cs" />
     <Compile Include="Moodle\AsignaturaBinding.cs" />
+    <Compile Include="Moodle\GrupoTrabajoBinding.cs" />
     <Compile Include="Moodle\ProfesorBiding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
