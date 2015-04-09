@@ -43,9 +43,11 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string descripcion = TextBox_DescGrupo.Text;
             string password = TextBox_Pass.Text;
             string capacidad = TextBox_Capacidad.Text;
+            string idAsignaturaAnyo = DropDownList_AsignaturasAnyo.SelectedValue;
 
             //Crear la asignatura
-            if (fachadaGrupo.CrearGrupoTrabajo(codigo,nombre,descripcion,password,Int32.Parse(capacidad),0))
+            if (fachadaGrupo.CrearGrupoTrabajo(codigo,nombre,descripcion,password,
+                Int32.Parse(capacidad),Int32.Parse(idAsignaturaAnyo)))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
