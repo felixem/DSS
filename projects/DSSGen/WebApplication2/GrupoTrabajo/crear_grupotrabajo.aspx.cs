@@ -86,7 +86,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador cuando cambie la selección en el drop down list
         protected void DropDownList_Anyos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DropDownList_AsignaturasAnyo.Items.Clear();
+            ObtenerAsignaturasAnyo();
         }
 
         //Obtener las asignaturas-anyo

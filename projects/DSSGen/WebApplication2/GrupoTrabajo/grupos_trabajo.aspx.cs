@@ -80,7 +80,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador del evento para modificar un grupo de trabajo
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 

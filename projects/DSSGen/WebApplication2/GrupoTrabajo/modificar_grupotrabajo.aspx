@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="crear_grupotrabajo.aspx.cs" Inherits="DSSGenNHibernate.GrupoTrabajo.crear_grupotrabajo" %>
+    CodeBehind="modificar_grupotrabajo.aspx.cs" Inherits="DSSGenNHibernate.GrupoTrabajo.modificar_grupotrabajo" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Styles/submenu/login.css" rel="stylesheet" type="text/css" />
@@ -13,22 +13,20 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1 class="style2">
-        Crear Grupo de Trabajo</h1>
+        Modificar Grupo de Trabajo</h1>
     <div class="CentrarContenido">
         <div class="ContenedorInternoNoPanel">
             <p class="style2">
                 Rellene los siguientes campos</p>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Anyo" runat="server" Text="Año académico" CssClass="posicion_izquierda"></asp:Label>
-                <asp:DropDownList ID="DropDownList_Anyos" runat="server" CssClass="posicion_derecha"
-                    OnSelectedIndexChanged="DropDownList_Anyos_SelectedIndexChanged" AutoPostBack="True">
-                </asp:DropDownList>
+                <asp:TextBox ID="TextBox_Anyo" runat="server" CssClass="posicion_derecha" 
+                    ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-                <asp:DropDownList ID="DropDownList_AsignaturasAnyo" runat="server" CssClass="posicion_derecha"
-                    OnSelectedIndexChanged="DropDownList_AsignaturasAnyo_SelectedIndexChanged">
-                </asp:DropDownList>
+                <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" 
+                    ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="LabelCod_Grupo" runat="server" Text="Código de Grupo:" CssClass="posicion_izquierda"></asp:Label>
@@ -73,12 +71,10 @@
             Display="Dynamic" ErrorMessage="Se esperaba valor numérico" ForeColor="Red" ValidationExpression="^\d+$"
             ValidationGroup="Registro"></asp:RegularExpressionValidator>
         <div class="row_crear_alumno_buttons">
-            <asp:Button ID="Button_CrearGrupo" runat="server" OnClick="Button_CrearGrupo_Click"
-                Text="Crear" ValidationGroup="Registro" CssClass="posicion_izquierda" />
+            <asp:Button ID="Button_ModificarGrupo" runat="server" OnClick="Button_ModificarGrupo_Click"
+                Text="Modificar" ValidationGroup="Registro" CssClass="posicion_izquierda" />
             <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Cancelar"
                 CssClass="posicion_central" />
-            <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos"
-                CssClass="posicion_derecha" />
         </div>
     </div>
 </asp:Content>
