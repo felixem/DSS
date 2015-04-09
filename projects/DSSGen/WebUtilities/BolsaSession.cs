@@ -215,24 +215,42 @@ namespace WebUtilities
         }
 
         //Añadir pregunta a la lista
-        public void AddPregunta(String enunciado, List<String> respuestas, int correcta, String explicacion)
+        public bool AddPregunta(String enunciado, List<String> respuestas, int correcta, String explicacion)
         {
-            //Construir la pregunta
-            int id = bolsa.Preguntas.Count;
-            PreguntaEN pregunta = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
-            //Añadirla a la bolsa
-            bolsa.Preguntas.Add(pregunta);
+            try
+            {
+                //Construir la pregunta
+                int id = bolsa.Preguntas.Count;
+                PreguntaEN pregunta = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
+                //Añadirla a la bolsa
+                bolsa.Preguntas.Add(pregunta);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Modificar pregunta de la lista
-        public void ModificarPregunta(int id, String enunciado, List<String> respuestas, int correcta, String explicacion)
+        public bool ModificarPregunta(int id, String enunciado, List<String> respuestas, int correcta, String explicacion)
         {
-            //Actualizar cambios en la estructura de sincronización
-            if (IsCargada())
-                sincronizacion.ModificarPregunta(id, enunciado, respuestas, correcta, explicacion);
+            try
+            {
+                //Actualizar cambios en la estructura de sincronización
+                if (IsCargada())
+                    sincronizacion.ModificarPregunta(id, enunciado, respuestas, correcta, explicacion);
 
-            //Modificar la pregunta
-            bolsa.Preguntas[id] = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
+                //Modificar la pregunta
+                bolsa.Preguntas[id] = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Método privado para construir una pregunta
@@ -259,18 +277,27 @@ namespace WebUtilities
         }
 
         //Borrar pregunta de la lista según el índice
-        public void RemovePregunta(int index)
+        public bool RemovePregunta(int index)
         {
-            //Actualizar cambios en la estructura de sincronización si es necesario
-            if (IsCargada())
-                sincronizacion.DeletePregunta(index);
-
-            bolsa.Preguntas.RemoveAt(index);
-            //Actualizar el índice de las preguntas restantes
-            for (int i = index; i < bolsa.Preguntas.Count; i++)
+            try
             {
-                bolsa.Preguntas[i].Id = i;
+                //Actualizar cambios en la estructura de sincronización si es necesario
+                if (IsCargada())
+                    sincronizacion.DeletePregunta(index);
+
+                bolsa.Preguntas.RemoveAt(index);
+                //Actualizar el índice de las preguntas restantes
+                for (int i = index; i < bolsa.Preguntas.Count; i++)
+                {
+                    bolsa.Preguntas[i].Id = i;
+                }
             }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Borrar la lista de preguntas

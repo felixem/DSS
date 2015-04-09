@@ -102,7 +102,7 @@ public long ReadCantidad ()
 {
         return _IGrupoTrabajoCAD.ReadCantidad ();
 }
-public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
+public DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN ReadCod (string cod)
 {
         return _IGrupoTrabajoCAD.ReadCod (cod);
 }

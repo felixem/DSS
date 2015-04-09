@@ -16,19 +16,28 @@ namespace Fachadas.Moodle
     public class FachadaBolsaPreguntas
     {
         //Método para la creación de una bolsa de preguntas a partir de una sesión de bolsa
-        public int CrearBolsa(BolsaSession bolsa)
+        public bool CrearBolsa(BolsaSession bolsa)
         {
             int asignatura = bolsa.Asignatura;
             String descripcion = bolsa.Descripcion;
             String nombre = bolsa.Nombre;
             IList<PreguntaEN> preguntas = bolsa.Preguntas;
 
-            BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
-            return bolsaCP.CrearBolsa(nombre, descripcion, DateTime.Now, DateTime.Now, asignatura, preguntas);
+            try
+            {
+                BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
+                bolsaCP.CrearBolsa(nombre, descripcion, DateTime.Now, DateTime.Now, asignatura, preguntas);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Método para la modificación de una bolsa de preguntas a partir de una sesión de bolsa
-        public int ModificarBolsa(BolsaSession bolsa)
+        public bool ModificarBolsa(BolsaSession bolsa)
         {
             int idBolsa = bolsa.Id;
             int asignaturaOriginal = bolsa.AsignaturaOriginal;
@@ -41,9 +50,18 @@ namespace Fachadas.Moodle
             IList<PreguntaEN> preguntasModificadas = bolsa.PreguntasModificadas;
             IList<PreguntaEN> preguntasBorradas = bolsa.PreguntasBorradas;
 
-            BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
-            return bolsaCP.ModificarBolsa(idBolsa,nombre,descripcion,fecha_creacion,fecha_modificacion,
-                asignaturaOriginal,asignaturaNueva,preguntasCreadas,preguntasModificadas,preguntasBorradas);
+            try
+            {
+                BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
+                bolsaCP.ModificarBolsa(idBolsa, nombre, descripcion, fecha_creacion, fecha_modificacion,
+                    asignaturaOriginal, asignaturaNueva, preguntasCreadas, preguntasModificadas, preguntasBorradas);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Vincular a un grid view las bolsas de preguntas con paginación
@@ -56,18 +74,34 @@ namespace Fachadas.Moodle
         }
 
         //Borrar una bolsa de preguntas
-        public void BorrarBolsa(int p_oid)
+        public bool BorrarBolsa(int p_oid)
         {
-            BolsaPreguntasCP bolsa = new BolsaPreguntasCP();
-            bolsa.BorrarBolsa(p_oid);
+            try
+            {
+                BolsaPreguntasCP bolsa = new BolsaPreguntasCP();
+                bolsa.BorrarBolsa(p_oid);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //Obtener una BolsaSession de preguntas para modificar una bolsa existente en la BD
         public BolsaSession CargarBolsaSession(int idBolsa)
         {
-            BolsaSession bolsa = BolsaSession.Current;
-            BindingComponents.Moodle.BolsaPreguntasBinding binding= new BindingComponents.Moodle.BolsaPreguntasBinding();
-            return binding.VincularBolsaSession(bolsa, idBolsa);
+            try
+            {
+                BolsaSession bolsa = BolsaSession.Current;
+                BindingComponents.Moodle.BolsaPreguntasBinding binding = new BindingComponents.Moodle.BolsaPreguntasBinding();
+                return binding.VincularBolsaSession(bolsa, idBolsa);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

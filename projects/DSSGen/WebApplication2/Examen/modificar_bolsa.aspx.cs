@@ -17,14 +17,20 @@ namespace DSSGenNHibernate.Examen
         BolsaSession bolsa;
         private int id;
         String param;
+        FachadaBolsaPreguntas fachadaBolsa;
+        FachadaAsignatura fachadaAsignatura;
 
         //Comprobar si se plantea operación de modificación
         protected void Obtener_Parametros()
         {
             param = Request.QueryString[PageParameters.MainParameter];
-            //Lanzar excepción no se ha recibido un parámetro
+            //Comprobar si no se ha recibido un parámetro
             if (param == null)
-                throw new Exception("No se especifica bolsa");
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
             else
                 id = Int32.Parse(param);
         }
@@ -32,24 +38,40 @@ namespace DSSGenNHibernate.Examen
         //Comprobar parámetros
         protected void Procesar_Parametros()
         {
-            //Recuperar los datos de la bolsa original
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            bolsa = fachada.CargarBolsaSession(id);
+            try
+            {
+                //Recuperar los datos de la bolsa original
+                bolsa = fachadaBolsa.CargarBolsaSession(id);
+            }
+            catch (Exception)
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
         }
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Recuperar el estado de la bolsa
-            bolsa = BolsaSession.Current;
-            //Comprobar el modo de la página
-            Obtener_Parametros();
-
             if (!IsPostBack)
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
+            }
+
+            //Recuperar el estado de la bolsa
+            bolsa = BolsaSession.Current;
+            //Crear fachadas
+            fachadaBolsa = new FachadaBolsaPreguntas();
+            fachadaAsignatura = new FachadaAsignatura();
+
+            //Comprobar el modo de la página
+            Obtener_Parametros();
+
+            if (!IsPostBack)
+            {
                 //Procesar parámetros de modificación
                 Procesar_Parametros();
                 //Inicializar los datos de los textbox
@@ -64,8 +86,7 @@ namespace DSSGenNHibernate.Examen
         //Obtener las asignaturas
         protected void ObtenerAsignaturas()
         {
-            FachadaAsignatura fachada = new FachadaAsignatura();
-            fachada.VincularDameTodos(DropDownList_Asignaturas);
+            fachadaAsignatura.VincularDameTodos(DropDownList_Asignaturas);
         }
 
         //Establecer asignatura elegida
@@ -148,8 +169,12 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
-            //Borrar la pregunta y actualizar la lista de preguntas
-            bolsa.RemovePregunta(id);
+
+            //Eliminar la pregunta
+            if (!bolsa.RemovePregunta(id))
+                Response.Write("<script>window.alert('La pregunta no ha podido ser borrada');</script>");
+
+            //Actualizar la lista de preguntas
             this.ObtenerPreguntasPaginadas(1);
         }
 
@@ -173,11 +198,19 @@ namespace DSSGenNHibernate.Examen
         protected void Button_Guardar_Click(object sender, EventArgs e)
         {
             SalvarMenu();
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            fachada.ModificarBolsa(bolsa);
-            bolsa.Clear();
-            Linker link = new Linker(false);
-            link.Redirect(Response, link.PreviousPage());
+
+            //Modificar la bolsa
+            if (fachadaBolsa.ModificarBolsa(bolsa))
+            {
+                bolsa.Clear();
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
+            else
+            {
+                Response.Write("<script>window.alert('La bolsa no ha podido ser modificada');</script>");
+            }
         }
 
         //Manejador cuando cambie la selección en el drop down list

@@ -11,24 +11,24 @@ using ComponentesProceso.Moodle;
 
 namespace BindingComponents.Moodle
 {
-    //Clase para vincular datos sobre asignaturas a alguna estructura de vista
-    public class AsignaturaBinding : BasicBinding
+    //Clase para vincular datos sobre asignaturas-anyo a alguna estructura de vista
+    public class AsignaturaAnyoBinding : BasicBinding
     {
-        public AsignaturaBinding() : base() { }
-        public AsignaturaBinding(ISession sesion) : base(sesion) { }
+        public AsignaturaAnyoBinding() : base() { }
+        public AsignaturaAnyoBinding(ISession sesion) : base(sesion) { }
 
         //Vincular a un DropDownList el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAsignatura consulta, DropDownList drop,
+        public void VincularDameTodos(IDameTodosAsignaturaAnyo consulta, DropDownList drop,
             int first, int size, out long total)
         {
-            System.Collections.Generic.IList<AsignaturaEN> lista = null;
+            System.Collections.Generic.IList<AsignaturaAnyoEN> lista = null;
 
             try
             {
                 SessionInitializeTransaction();
-                AsignaturaCP asig = new AsignaturaCP(session);
+                AsignaturaAnyoCP anyo = new AsignaturaAnyoCP(session);
                 //Ejecutar la consulta recibida
-                lista = asig.DameTodosTotal(consulta, first, size, out total);
+                lista = anyo.DameTodosTotal(consulta, first, size, out total);
                 SessionCommit();
             }
             catch (Exception ex)
@@ -39,9 +39,10 @@ namespace BindingComponents.Moodle
             finally
             {
                 //Vincular con el dropdownlist
-                foreach (AsignaturaEN x in lista)
+                foreach (AsignaturaAnyoEN x in lista)
                 {
-                    drop.Items.Add(new ListItem(x.Nombre+"("+x.Id+")", x.Id.ToString()));
+                    drop.Items.Add(new ListItem(x.Asignatura.Nombre.ToString()+"("+x.Anyo.Anyo.ToString()+")",
+                    x.Id.ToString()));
                 }
 
                 //Cerrar sesión
@@ -50,17 +51,17 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a un GridView el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAsignatura consulta, GridView grid,
+        public void VincularDameTodos(IDameTodosAsignaturaAnyo consulta, GridView grid,
             int first, int size, out long total)
         {
-            System.Collections.Generic.IList<AsignaturaEN> lista = null;
+            System.Collections.Generic.IList<AsignaturaAnyoEN> lista = null;
 
             try
             {
                 SessionInitializeTransaction();
-                AsignaturaCP asig = new AsignaturaCP(session);
+                AsignaturaAnyoCP anyo = new AsignaturaAnyoCP(session);
                 //Ejecutar la consulta recibida sin paginar
-                lista = asig.DameTodosTotal(consulta, first, size, out total);
+                lista = anyo.DameTodosTotal(consulta, first, size, out total);
                 SessionCommit();
             }
             catch (Exception ex)

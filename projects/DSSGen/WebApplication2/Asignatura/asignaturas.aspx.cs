@@ -93,7 +93,7 @@ namespace DSSGenNHibernate.Asignatura
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
-            //Eliminar alumno
+            //Eliminar asignatura
             if (!fachada.BorrarAsignatura(asignaturaId))
                 Response.Write("<script>window.alert('La asignatura no ha podido ser borrada');</script>");
 

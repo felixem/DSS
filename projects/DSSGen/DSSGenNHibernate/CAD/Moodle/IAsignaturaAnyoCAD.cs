@@ -22,9 +22,11 @@ System.Collections.Generic.IList<AsignaturaAnyoEN> ReadAll (int first, int size)
 AsignaturaAnyoEN ReadOID (int id);
 
 
-void Relationer_anyo (int p_asignaturaanyo, int p_anyoacademico);
+long ReadCantidad ();
 
-void Relationer_asignatura (int p_asignaturaanyo, int p_asignatura);
+
+DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo);
+
 
 void Relationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo);
 
@@ -33,10 +35,6 @@ void Relationer_materiales (int p_asignaturaanyo, System.Collections.Generic.ILi
 void Relationer_sistemas_evaluacion (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_sistemaevaluacion);
 
 void Relationer_tutorias (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_tutoria);
-
-void Unrelationer_anyo (int p_asignaturaanyo, int p_anyoacademico);
-
-void Unrelationer_asignatura (int p_asignaturaanyo, int p_asignatura);
 
 void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo);
 

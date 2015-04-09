@@ -14,35 +14,36 @@ namespace DSSGenNHibernate.Examen
     {
         private BolsaSession bolsa;
         private int id;
-        private Boolean modificar;
         String param;
 
         //Comprobar si se plantea operación de modificación
         protected void Comprobar_Modo()
         {
             param = Request.QueryString[PageParameters.MainParameter];
-            //No hacer nada más si no se ha recibido un parámetro
+            //Comprobar si no se ha recibido un parámetro
             if (param == null)
-                modificar = false;
-            else
             {
-                id = Int32.Parse(param);
-                modificar = true;
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
             }
+            else
+                id = Int32.Parse(param);
         }
 
         //Comprobar parámetros
         protected void Procesar_Parametros()
         {
-            //No hacer nada más si no se ha recibido un parámetro
-            if (!modificar)
-                return;
             //Comprobar que la id es correcta y recuperar los datos
             if (id >= 0 && id < bolsa.Preguntas.Count)
                 Inicializar_Datos();
             //Redireccionar a la propia página sin parámetros en caso de fallo
             else
-                throw new Exception("Página no encontrada");
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
         }
 
         //Inicializar los datos de los textboxes
@@ -60,18 +61,20 @@ namespace DSSGenNHibernate.Examen
         //Carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //Capturar la página que realizó la petición
+                NavigationSession navegacion = NavigationSession.Current;
+                navegacion.SavePreviuosPage(Request);
+            }
+
             bolsa = BolsaSession.Current;
             Comprobar_Modo();
 
             //Actualizar los formularios sólo si no es postback
             if (!IsPostBack)
             {
-                //Capturar la página que realizó la petición
-                NavigationSession navegacion = NavigationSession.Current;
-                navegacion.SavePreviuosPage(Request);
-
-                if(modificar)
-                    Procesar_Parametros();
+                Procesar_Parametros();
             }
         }
 
@@ -91,19 +94,17 @@ namespace DSSGenNHibernate.Examen
             String enunciado = TextBox_Enunciado.Text;
             String explicacion = TextBox_Explicacion.Text;
 
-            //Recuperar la bolsa
-            BolsaSession bolsa = BolsaSession.Current;
-
-            if (modificar)
-                //Modificar la pregunta de la bolsa
-                bolsa.ModificarPregunta(id, enunciado, respuestas, idCorrecta, explicacion);
+            //Modificar la pregunta de la bolsa
+            if (bolsa.ModificarPregunta(id, enunciado, respuestas, idCorrecta, explicacion))
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
             else
-                //Añadir a la bolsa de preguntas provisional
-                bolsa.AddPregunta(enunciado, respuestas, idCorrecta, explicacion);
-
-            //Redirigir a la página que le llamó
-            Linker link = new Linker(false);
-            link.Redirect(Response,link.PreviousPage());
+            {
+                Response.Write("<script>window.alert('La pregunta no ha podido ser modificada');</script>");
+            }
         }
 
         //Cancelar la creación de la respuesta
@@ -111,7 +112,7 @@ namespace DSSGenNHibernate.Examen
         {
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
-            link.Redirect(Response,link.PreviousPage());
+            link.Redirect(Response, link.PreviousPage());
         }
     }
 }

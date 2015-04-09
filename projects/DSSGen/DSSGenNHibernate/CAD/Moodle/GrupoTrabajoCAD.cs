@@ -232,9 +232,9 @@ public long ReadCantidad ()
 
         return result;
 }
-public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
+public DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN ReadCod (string cod)
 {
-        DSSGenNHibernate.EN.Moodle.AsignaturaEN result;
+        DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN result;
         try
         {
                 SessionInitializeTransaction ();
@@ -244,7 +244,7 @@ public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
                 query.SetParameter ("cod", cod);
 
 
-                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AsignaturaEN>();
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN>();
                 SessionCommit ();
         }
 

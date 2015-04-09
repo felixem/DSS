@@ -73,6 +73,8 @@
   <ItemGroup>
     <Compile Include="BasicBinding.cs" />
     <Compile Include="Moodle\AlumnoBinding.cs" />
+    <Compile Include="Moodle\AnyoAcademicoBinding.cs" />
+    <Compile Include="Moodle\AsignaturaAnyoBinding.cs" />
     <Compile Include="Moodle\BolsaPreguntasBinding.cs" />
     <Compile Include="Moodle\AsignaturaBinding.cs" />
     <Compile Include="Moodle\GrupoTrabajoBinding.cs" />

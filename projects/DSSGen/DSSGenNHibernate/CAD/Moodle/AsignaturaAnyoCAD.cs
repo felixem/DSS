@@ -191,20 +191,19 @@ public AsignaturaAnyoEN ReadOID (int id)
         return asignaturaAnyoEN;
 }
 
-public void Relationer_anyo (int p_asignaturaanyo, int p_anyoacademico)
+public long ReadCantidad ()
 {
-        DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
+        long result;
+
         try
         {
                 SessionInitializeTransaction ();
-                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
-                asignaturaAnyoEN.Anyo = (DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN), p_anyoacademico);
-
-                asignaturaAnyoEN.Anyo.Asignaturas.Add (asignaturaAnyoEN);
-
+                //String sql = @"FROM AsignaturaAnyoEN self where select count(*) FROM AsignaturaAnyoEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadCantidadHQL");
 
 
-                session.Update (asignaturaAnyoEN);
+                result = query.UniqueResult<long>();
                 SessionCommit ();
         }
 
@@ -220,22 +219,23 @@ public void Relationer_anyo (int p_asignaturaanyo, int p_anyoacademico)
         {
                 SessionClose ();
         }
-}
 
-public void Relationer_asignatura (int p_asignaturaanyo, int p_asignatura)
+        return result;
+}
+public DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo)
 {
-        DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
+        DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN result;
         try
         {
                 SessionInitializeTransaction ();
-                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
-                asignaturaAnyoEN.Asignatura = (DSSGenNHibernate.EN.Moodle.AsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaEN), p_asignatura);
+                //String sql = @"FROM AsignaturaAnyoEN self where FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadRelationHQL");
+                query.SetParameter ("p_asignatura", p_asignatura);
+                query.SetParameter ("p_anyo", p_anyo);
 
-                asignaturaAnyoEN.Asignatura.Asignaturas_anyo.Add (asignaturaAnyoEN);
 
-
-
-                session.Update (asignaturaAnyoEN);
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN>();
                 SessionCommit ();
         }
 
@@ -251,8 +251,9 @@ public void Relationer_asignatura (int p_asignaturaanyo, int p_asignatura)
         {
                 SessionClose ();
         }
-}
 
+        return result;
+}
 public void Relationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
@@ -409,68 +410,6 @@ public void Relationer_tutorias (int p_asignaturaanyo, System.Collections.Generi
         }
 }
 
-public void Unrelationer_anyo (int p_asignaturaanyo, int p_anyoacademico)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
-                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
-
-                if (asignaturaAnyoEN.Anyo.Id == p_anyoacademico) {
-                        asignaturaAnyoEN.Anyo = null;
-                }
-                else
-                        throw new ModelException ("The identifier " + p_anyoacademico + " in p_anyoacademico you are trying to unrelationer, doesn't exist in AsignaturaAnyoEN");
-
-                session.Update (asignaturaAnyoEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-public void Unrelationer_asignatura (int p_asignaturaanyo, int p_asignatura)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
-                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
-
-                if (asignaturaAnyoEN.Asignatura.Id == p_asignatura) {
-                        asignaturaAnyoEN.Asignatura = null;
-                }
-                else
-                        throw new ModelException ("The identifier " + p_asignatura + " in p_asignatura you are trying to unrelationer, doesn't exist in AsignaturaAnyoEN");
-
-                session.Update (asignaturaAnyoEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
 public void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         try

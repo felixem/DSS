@@ -71,21 +71,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
+    <Compile Include="Moodle\AnyoAcademicoCP.cs" />
+    <Compile Include="Moodle\AsignaturaAnyoCP.cs" />
     <Compile Include="Moodle\BolsaPreguntasCP.cs" />
+    <Compile Include="Moodle\Commands\DameAnyoAcademicoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameAsignaturaAnyoPorId.cs" />
     <Compile Include="Moodle\Commands\DameAsignaturaPorId.cs" />
     <Compile Include="Moodle\Commands\DameAlumnoPorId.cs" />
     <Compile Include="Moodle\Commands\DameGrupoTrabajoPorId.cs" />
     <Compile Include="Moodle\Commands\DameProfesorPorId.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumno.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAnyoAcademico.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignatura.cs" />
     <Compile Include="Moodle\Commands\DameTodosGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\DameTodosProfesor.cs" />
     <Compile Include="Moodle\Commands\IDameAlumno.cs" />
+    <Compile Include="Moodle\Commands\IDameAnyoAcademico.cs" />
     <Compile Include="Moodle\Commands\IDameAsignatura.cs" />
+    <Compile Include="Moodle\Commands\IDameAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\IDameGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IDameProfesor.cs" />
     <Compile Include="Moodle\Commands\IDameTodosAlumno.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosAnyoAcademico.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />
     <Compile Include="Moodle\AlumnoCP.cs" />

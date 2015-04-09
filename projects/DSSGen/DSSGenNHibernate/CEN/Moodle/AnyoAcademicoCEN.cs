@@ -89,6 +89,14 @@ public AnyoAcademicoEN ReadOID (int id)
         return anyoAcademicoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IAnyoAcademicoCAD.ReadCantidad ();
+}
+public DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN ReadCod (int anyo)
+{
+        return _IAnyoAcademicoCAD.ReadCod (anyo);
+}
 public void Relationer_asignaturas (int p_anyoacademico, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         //Call to AnyoAcademicoCAD

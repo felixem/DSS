@@ -193,6 +193,68 @@ public AnyoAcademicoEN ReadOID (int id)
         return anyoAcademicoEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnyoAcademicoEN self where select count(*) FROM AnyoAcademicoEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnyoAcademicoENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AnyoAcademicoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN ReadCod (int anyo)
+{
+        DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnyoAcademicoEN self where FROM AnyoAcademicoEN anyo where anyo.Anyo=:anyo";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnyoAcademicoENreadCodHQL");
+                query.SetParameter ("anyo", anyo);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AnyoAcademicoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignaturas (int p_anyoacademico, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyoAcademicoEN = null;

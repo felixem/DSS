@@ -44,7 +44,7 @@ namespace DSSGenNHibernate.Asignatura
         private void Obtener_Parametros()
         {
             param = Request.QueryString[PageParameters.MainParameter];
-            //Lanzar excepción no se ha recibido un parámetro
+            //Comprobar si no se ha recibido un parámetro
             if (param == null)
             {
                 //Redirigir a la página que le llamó
@@ -94,7 +94,7 @@ namespace DSSGenNHibernate.Asignatura
             bool optativo = CheckBox_OptativaAsig.Checked;
             bool vigente = CheckBox_VigenteAsig.Checked;
 
-            //Crear la asignatura
+            //Modificar la asignatura
             if (fachada.ModificarAsignatura(id,codigo,nombre,descripcion,optativo,vigente))
             {
                 //Redirigir a la página que le llamó

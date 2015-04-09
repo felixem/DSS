@@ -25,7 +25,7 @@ GrupoTrabajoEN ReadOID (int id);
 long ReadCantidad ();
 
 
-DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod);
+DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN ReadCod (string cod);
 
 
 void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno);

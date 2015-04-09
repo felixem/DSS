@@ -43,11 +43,16 @@ namespace DSSGenNHibernate.Examen
             BolsaSession bolsa = BolsaSession.Current;
 
             //Añadir a la bolsa de preguntas provisional
-            bolsa.AddPregunta(enunciado, respuestas, idCorrecta, explicacion);
-
-            //Redirigir a la página que le llamó
-            Linker link = new Linker(false);
-            link.Redirect(Response,link.PreviousPage());
+            if (bolsa.AddPregunta(enunciado, respuestas, idCorrecta, explicacion))
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
+            else
+            {
+                Response.Write("<script>window.alert('La pregunta no ha podido ser creada');</script>");
+            }
         }
 
         //Cancelar la creación de la respuesta
@@ -55,7 +60,7 @@ namespace DSSGenNHibernate.Examen
         {
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
-            link.Redirect(Response,link.PreviousPage());
+            link.Redirect(Response, link.PreviousPage());
         }
     }
 }

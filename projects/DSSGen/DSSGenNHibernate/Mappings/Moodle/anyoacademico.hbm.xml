@@ -8,7 +8,7 @@
 							<generator class="identity"/>
 						</id>
 					<property name="Anyo" type="integer"> 
-						<column name="[anyo]"  not-null="true"/>
+						<column name="[anyo]"  unique="true" not-null="true"/>
 					</property>
 					<property name="Fecha_inicio" type="date"> 
 						<column name="[fecha_inicio]"  not-null="true"/>
@@ -63,5 +63,7 @@
 		  </class>
 		  
 		  <query name="AnyoAcademicoENReadAllHQL">from AnyoAcademicoEN</query>
+		  <query name="AnyoAcademicoENreadCantidadHQL"><![CDATA[select count(*) FROM AnyoAcademicoEN]]></query>
+		  <query name="AnyoAcademicoENreadCodHQL"><![CDATA[FROM AnyoAcademicoEN anyo where anyo.Anyo=:anyo]]></query>
 		</hibernate-mapping>
 	

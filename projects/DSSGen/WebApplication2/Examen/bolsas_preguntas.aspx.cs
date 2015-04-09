@@ -12,9 +12,12 @@ namespace DSSGenNHibernate.Examen
 {
     public partial class bases : System.Web.UI.Page
     {
+        FachadaBolsaPreguntas fachada;
+
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
+            fachada = new FachadaBolsaPreguntas();
             if (!IsPostBack)
             {
                 this.ObtenerBolsasPaginadas(1);
@@ -34,7 +37,6 @@ namespace DSSGenNHibernate.Examen
             long numObjetos = 0;
 
             //Vincular el grid con la lista de bolsas paginada
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
             fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
@@ -89,8 +91,9 @@ namespace DSSGenNHibernate.Examen
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int bolsaId = Int32.Parse(grdrow.Cells[0].Text);
 
-            FachadaBolsaPreguntas fachada = new FachadaBolsaPreguntas();
-            fachada.BorrarBolsa(bolsaId);
+            //Eliminar bolsa de preguntas
+            if (!fachada.BorrarBolsa(bolsaId))
+                Response.Write("<script>window.alert('La bolsa no ha podido ser borrada');</script>");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerBolsasPaginadas(1);
