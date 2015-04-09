@@ -25,6 +25,7 @@ ConceptualModel moodle
 			public readAll::ReadAll (/* No arguments */) : List<Object->Usuario>;
 			public readOID::ReadOID (p_oid : OID -> Usuario) : Object -> Usuario;
 			public login (usuario : String, pass : String) : Boolean;
+			public changePassword (usuario:String, pass :String):Boolean;
 			public readDni::ReadFilter (dni : String) : Object -> Usuario { filter = "FROM UsuarioEN us where us.Dni = :dni" };
 		}
 	};
