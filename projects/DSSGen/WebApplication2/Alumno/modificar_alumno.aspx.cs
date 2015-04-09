@@ -92,13 +92,25 @@ namespace DSSGenNHibernate.Alumno
             //Recojo los datos
             string nombre = TextBox_NomAlu.Text;
             string apellidos = TextBox_ApellAlu.Text;
-            DateTime? fecha = DateTime.Parse(TextBox_NaciAlu.Text);
+            string fecha = TextBox_NaciAlu.Text;
             string dni = TextBox_DNIAlu.Text;
             string email = TextBox_EmailAlu.Text;
-            int cod = Int32.Parse(TextBox_CodAlu.Text);
+            string cod = TextBox_CodAlu.Text;
             bool baneado = CheckBox_Baneado.Checked;
 
-            if (fachada.ModificarAlumnoNoPassword(email, cod, baneado, dni, nombre, apellidos, fecha))
+            bool verificado;
+            //Pruebo a registrar el alumno
+            try
+            {
+                verificado = fachada.ModificarAlumnoNoPassword(email, Convert.ToInt32(cod), baneado, dni, nombre, apellidos, Convert.ToDateTime(fecha));
+            }
+            catch (Exception)
+            {
+                verificado = false;
+            }
+
+            //Compruebo si se ha modificado
+            if (verificado)
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

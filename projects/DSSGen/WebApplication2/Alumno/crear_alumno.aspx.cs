@@ -41,8 +41,18 @@ namespace DSSGenNHibernate.Alumno
             string cod = TextBox_CodAlu.Text;
 
             //Llamo al metodo que registra al alumno
-            bool verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email,Convert.ToInt32(cod));
+            bool verificado;
 
+            try
+            {
+                verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
+            }
+            catch (Exception)
+            {
+                verificado = false;
+            }
+
+            //Verifico si se creo el alumno
             if (verificado)
             {
                 //Redirigir a la página que le llamó

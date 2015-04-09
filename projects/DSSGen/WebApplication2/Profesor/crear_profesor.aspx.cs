@@ -40,9 +40,19 @@ namespace DSSGenNHibernate.Profesor
             string email = TextBox_EmailProf.Text;
             string cod = TextBox_CodProf.Text;
 
-            //Llamo al metodo que registra al alumno
-            bool verificado = profesor.RegistrarProfesor(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
+            //Llamo al metodo que registra al profesor
+            bool verificado;
 
+            try
+            {
+                verificado = profesor.RegistrarProfesor(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
+            }
+            catch (Exception)
+            {
+                verificado = false;
+            }
+
+            //Comprobamos si se creo el usuario
             if (verificado)
             {
                 //Redirigir a la página que le llamó

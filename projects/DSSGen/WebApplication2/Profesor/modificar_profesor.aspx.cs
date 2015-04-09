@@ -91,12 +91,24 @@ namespace DSSGenNHibernate.Profesor
             //Recojo los datos
             string nombre = TextBox_NomProf.Text;
             string apellidos = TextBox_ApellProf.Text;
-            DateTime? fecha = DateTime.Parse(TextBox_NaciProf.Text);
+            string fecha = TextBox_NaciProf.Text;
             string dni = TextBox_DNIProf.Text;
             string email = TextBox_EmailProf.Text;
-            int cod = Int32.Parse(TextBox_CodProf.Text);
+            string cod = TextBox_CodProf.Text;
 
-            if (fachada.ModificarProfesorNoPassword(email, cod, dni, nombre, apellidos, fecha))
+            bool verificado;
+            //Pruebo a registrar el profesor
+            try
+            {
+                verificado = fachada.ModificarProfesorNoPassword(email, Convert.ToInt32(cod), dni, nombre, apellidos, Convert.ToDateTime(fecha));
+            }
+            catch (Exception)
+            {
+                verificado = false;
+            }
+
+            //Compruebo si se han almacenado los cambios
+            if (verificado)
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
