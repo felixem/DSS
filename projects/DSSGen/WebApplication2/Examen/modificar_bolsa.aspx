@@ -36,7 +36,7 @@
         <div class="buttons">
         <asp:Button ID="Button_Guardar" runat="server" Text="Guardar bolsa" 
             ValidationGroup="GroupBolsa" OnClick = "Button_Guardar_Click" />
-        <asp:Button ID="Button_Cancelar" runat="server" Text="Cancelar" OnClick="Button_Cancelar_Click"/>
+        <asp:Button ID="Button_Cancelar" runat="server" Text="Volver" OnClick="Button_Cancelar_Click"/>
         </div>
         <div>
             PageSize:

@@ -172,7 +172,7 @@ namespace DSSGenNHibernate.Examen
 
             //Eliminar la pregunta
             if (!bolsa.RemovePregunta(id))
-                Response.Write("<script>window.alert('La pregunta no ha podido ser borrada');</script>");
+                Notification.Notify(Response, "La pregunta no ha podido ser borrada");
 
             //Actualizar la lista de preguntas
             this.ObtenerPreguntasPaginadas(1);
@@ -201,16 +201,9 @@ namespace DSSGenNHibernate.Examen
 
             //Modificar la bolsa
             if (fachadaBolsa.ModificarBolsa(bolsa))
-            {
-                bolsa.Clear();
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
-            }
+                Notification.Notify(Response, "La bolsa ha sido modificada");
             else
-            {
-                Response.Write("<script>window.alert('La bolsa no ha podido ser modificada');</script>");
-            }
+                Notification.Notify(Response, "La bolsa no ha podido ser modificada");
         }
 
         //Manejador cuando cambie la selección en el drop down list
