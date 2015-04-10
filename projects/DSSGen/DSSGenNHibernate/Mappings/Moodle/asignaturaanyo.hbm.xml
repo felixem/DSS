@@ -68,6 +68,7 @@
 		  
 		  <query name="AsignaturaAnyoENReadAllHQL">from AsignaturaAnyoEN</query>
 		  <query name="AsignaturaAnyoENreadCantidadHQL"><![CDATA[select count(*) FROM AsignaturaAnyoEN]]></query>
+		  <query name="AsignaturaAnyoENreadCantidadPorAnyoHQL"><![CDATA[select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ]]></query>
 		  <query name="AsignaturaAnyoENreadRelationHQL"><![CDATA[FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo]]></query>
 		</hibernate-mapping>
 	

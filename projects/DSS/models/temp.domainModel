@@ -32,7 +32,6 @@
       <operations name="changePassword" type="Boolean">
         <arguments name="usuario" isOrdered="true"/>
         <arguments name="pass" isOrdered="true"/>
-        <arguments name="newpass" isOrdered="true"/>
       </operations>
       <operations name="readDni" operationType="ReadFilter" type="Object" typeObject="/0/@elements.0" filter="FROM UsuarioEN us where us.Dni = :dni">
         <arguments name="dni" isOrdered="true"/>
@@ -899,9 +898,17 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM AsignaturaAnyoEN"/>
+      <operations name="readCantidadPorAnyo" operationType="ReadFilter" type="Long" filter="select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ">
+        <arguments name="id" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+      </operations>
       <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.17" filter="FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo">
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+      </operations>
+      <operations name="readAllPorAnyo" type="Object" collectionType="List" typeObject="/0/@elements.17">
+        <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
       </operations>
       <operations name="relationer_grupos_trabajo" operationType="Relationer" type="Void" relatedRol="/0/@elements.17/@attributes.3">
         <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
