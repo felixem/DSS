@@ -25,7 +25,7 @@ ConceptualModel moodle
 			public readAll::ReadAll (/* No arguments */) : List<Object->Usuario>;
 			public readOID::ReadOID (p_oid : OID -> Usuario) : Object -> Usuario;
 			public login (usuario : String, pass : String) : Boolean;
-			public changePassword (usuario:String, pass :String):Boolean;
+			public changePassword (usuario:String, pass :String, newpass: String):Boolean;
 			public readDni::ReadFilter (dni : String) : Object -> Usuario { filter = "FROM UsuarioEN us where us.Dni = :dni" };
 		}
 	};
@@ -547,11 +547,8 @@ ConceptualModel moodle
 			public readAll::ReadAll (/* No arguments */) : List<Object->AsignaturaAnyo>;
 			public readOID::ReadOID (p_oid : OID -> AsignaturaAnyo) : Object -> AsignaturaAnyo;
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AsignaturaAnyoEN" };
-			public readCantidadPorAnyo::ReadFilter (id : OID -> AnyoAcademico) : Long 
-			{ filter = "select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id " };
 			public readRelation::ReadFilter (p_asignatura : OID -> Asignatura, p_anyo : OID -> AnyoAcademico ) : Object -> AsignaturaAnyo 
 			{ filter = "FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo"};
-			public readAllPorAnyo::Custom (p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
 			
 			public relationer_grupos_trabajo::Relationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public relationer_materiales::Relationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
