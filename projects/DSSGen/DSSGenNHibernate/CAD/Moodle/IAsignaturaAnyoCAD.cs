@@ -25,11 +25,7 @@ AsignaturaAnyoEN ReadOID (int id);
 long ReadCantidad ();
 
 
-long ReadCantidadPorAnyo (int id);
-
-
 DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo);
-
 
 
 void Relationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo);
