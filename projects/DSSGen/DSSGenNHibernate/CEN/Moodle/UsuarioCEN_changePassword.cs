@@ -14,7 +14,7 @@ namespace DSSGenNHibernate.CEN.Moodle
 {
 public partial class UsuarioCEN
 {
-public bool ChangePassword (string usuario, string pass, string newpass)
+public bool ChangePassword (string usuario, string pass)
 {
         /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Usuario_changePassword) ENABLED START*/
 

@@ -1,0 +1,25 @@
+﻿Revert "Revert "Revert "Nueva solución"""
+
+This reverts commit 202fa46a78e488c468683024fbbb69f6b574319a.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch user-iterface
+# Your branch is up-to-date with 'origin/user-iterface'.
+#
+# Changes to be committed:
+#	modified:   projects/DSS/generator.log
+#	modified:   projects/DSS/models/moodle.tdm
+#	modified:   projects/DSS/models/temp.domainModel
+#	modified:   projects/DSSGen/DSSGenNHibernate.sln
+#	modified:   projects/DSSGen/DSSGenNHibernate/CAD/Moodle/AsignaturaAnyoCAD.cs
+#	modified:   projects/DSSGen/DSSGenNHibernate/CAD/Moodle/IAsignaturaAnyoCAD.cs
+#	modified:   projects/DSSGen/DSSGenNHibernate/CEN/Moodle/AsignaturaAnyoCEN.cs
+#	modified:   projects/DSSGen/DSSGenNHibernate/CEN/Moodle/UsuarioCEN_changePassword.cs
+#	modified:   projects/DSSGen/DSSGenNHibernate/DSSGenNHibernate.csproj
+#	modified:   projects/DSSGen/DSSGenNHibernate/DSSGenNHibernate.csproj.user
+#	modified:   projects/DSSGen/DSSGenNHibernate/DSSGenNHibernate_2008.csproj
+#	modified:   projects/DSSGen/DSSGenNHibernate/Mappings/Moodle/asignaturaanyo.hbm.xml
+#	modified:   projects/DSSGen/InitializeDB/CreateDB.cs
+#
+
