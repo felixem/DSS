@@ -97,7 +97,7 @@
     <asp:Button ID="Button_Modificar" runat="server" onclick="Button_Modificar_Click" CssClass="posicion_izquierda"
         Text="Actualizar cambios" ValidationGroup="Registro" />
     <asp:Button ID="Button_Cancelar" runat="server" 
-        onclick="Button_Cancelar_Click" Text="Cancelar" CssClass="posicion_derecha"/>
+        onclick="Button_Cancelar_Click" Text="Volver" CssClass="posicion_derecha"/>
     </div>
     </div>
 </asp:Content>

@@ -110,13 +110,11 @@ namespace DSSGenNHibernate.Profesor
             //Compruebo si se han almacenado los cambios
             if (verificado)
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "El profesor ha sido modificado");
             }
             else
             {
-                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
+                Notification.Notify(Response,"El profesor no ha podido ser modificado");
             }
         }
      

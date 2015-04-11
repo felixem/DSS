@@ -92,8 +92,10 @@ namespace DSSGenNHibernate.Examen
             int bolsaId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar bolsa de preguntas
-            if (!fachada.BorrarBolsa(bolsaId))
-                Response.Write("<script>window.alert('La bolsa no ha podido ser borrada');</script>");
+            if (fachada.BorrarBolsa(bolsaId))
+                Notification.Notify(Response,"La bolsa ha sido borrada");
+            else
+                Notification.Notify(Response, "La bolsa no ha podido ser borrada");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerBolsasPaginadas(1);

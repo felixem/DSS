@@ -96,15 +96,9 @@ namespace DSSGenNHibernate.Examen
 
             //Modificar la pregunta de la bolsa
             if (bolsa.ModificarPregunta(id, enunciado, respuestas, idCorrecta, explicacion))
-            {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
-            }
+                Notification.Notify(Response, "La pregunta ha sido modificada");
             else
-            {
-                Response.Write("<script>window.alert('La pregunta no ha podido ser modificada');</script>");
-            }
+                Notification.Notify(Response, "La pregunta no ha podido ser modificada");
         }
 
         //Cancelar la creación de la respuesta

@@ -87,16 +87,14 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string capacidad = TextBox_Capacidad.Text;
 
             //Crear la asignatura
-            if (fachadaGrupo.ModificarGrupoTrabajo(id,codigo,nombre,descripcion,password,
+            if (fachadaGrupo.ModificarGrupoTrabajo(id, codigo, nombre, descripcion, password,
                 Int32.Parse(capacidad)))
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "El grupo de trabajo ha sido modificado");
             }
             else
             {
-                Response.Write("<script>window.alert('El grupo de trabajo no ha podido ser modificado');</script>");
+                Notification.Notify(Response,"El grupo de trabajo no ha podido ser modificado");
             }
         }
 

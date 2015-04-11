@@ -38,24 +38,29 @@ namespace DSSGenNHibernate.Asignatura
             //Crear la asignatura
             if (fachada.CrearAsignatura(codigo,nombre,descripcion,optativo,vigente))
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "La asignatura ha sido creada");
+                this.Clean();
             }
             else
             {
-                Response.Write("<script>window.alert('La asignatura no ha podido ser creada');</script>");
+                Notification.Notify(Response,"La asignatura no ha podido ser creada");
             }
         }
-    
-        //Método que llama el botón limpiar campos
-        protected void Button_Clean_Click(Object sender, EventArgs e)
+
+        //Método para limpiar
+        private void Clean()
         {
             TextBox_CodAsig.Text = "";
             TextBox_NomAsig.Text = "";
             TextBox_DescAsig.Text = "";
             CheckBox_OptativaAsig.Checked = false;
             CheckBox_VigenteAsig.Checked = true;
+        }
+    
+        //Método que llama el botón limpiar campos
+        protected void Button_Clean_Click(Object sender, EventArgs e)
+        {
+            this.Clean();
         }
     
         //Botón utilizado para cancelar la creación y volver atrás

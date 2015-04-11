@@ -97,13 +97,11 @@ namespace DSSGenNHibernate.Asignatura
             //Modificar la asignatura
             if (fachada.ModificarAsignatura(id,codigo,nombre,descripcion,optativo,vigente))
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "La asignatura ha sido modificada");
             }
             else
             {
-                Response.Write("<script>window.alert('La asignatura no ha podido ser modificada');</script>");
+                Notification.Notify(Response,"La asignatura no ha podido ser modificada");
             }
         }
        

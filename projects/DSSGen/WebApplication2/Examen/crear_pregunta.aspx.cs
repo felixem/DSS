@@ -45,14 +45,36 @@ namespace DSSGenNHibernate.Examen
             //Añadir a la bolsa de preguntas provisional
             if (bolsa.AddPregunta(enunciado, respuestas, idCorrecta, explicacion))
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                this.Clear();
+                Notification.Notify(Response, "La pregunta ha sido creada");
             }
+
             else
+                Notification.Notify(Response, "La pregunta no ha podido ser creada");
+        }
+
+        //Limpiar contenido
+        private void Clear()
+        {
+            //Limpiar textboxes
+            for (int i = 1; i <= 4; i++)
             {
-                Response.Write("<script>window.alert('La pregunta no ha podido ser creada');</script>");
+                TextBox box = Panel1.FindControl("TextBox_Opcion" + i) as TextBox;
+                box.Text = "";
             }
+
+            //Limpiar opciones
+            RadioButtonListOpciones.ClearSelection();
+            //Limpiar campos restantes
+            TextBox_Enunciado.Text = "";
+            TextBox_Explicacion.Text = "";
+        }
+
+
+        //Limpiar campos
+        protected void Button_Limpiar_Click(object sender, EventArgs e)
+        {
+            this.Clear();
         }
 
         //Cancelar la creación de la respuesta

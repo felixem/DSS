@@ -94,8 +94,10 @@ namespace DSSGenNHibernate.GrupoTrabajo
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar grupo de trabajo
-            if (!fachada.BorrarGrupoTrabajo(grupoId))
-                Response.Write("<script>window.alert('El grupo de trabajo no ha podido ser borrado');</script>");
+            if (fachada.BorrarGrupoTrabajo(grupoId))
+                Notification.Notify(Response,"El grupo de trabajo ha sido borrado");
+            else
+                Notification.Notify(Response, "El grupo de trabajo no ha podido ser borrado");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerGruposTrabajoPaginados(1);

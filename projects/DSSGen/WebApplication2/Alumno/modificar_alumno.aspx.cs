@@ -112,13 +112,11 @@ namespace DSSGenNHibernate.Alumno
             //Compruebo si se ha modificado
             if (verificado)
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "El alumno ha sido modificado");
             }
             else
             {
-                Response.Write("<script>window.alert('El usuario no ha podido ser modificado');</script>");
+                Notification.Notify(Response, "El alumno no ha podido ser modificado");
             }
         }
      

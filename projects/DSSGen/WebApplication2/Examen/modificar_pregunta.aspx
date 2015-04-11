@@ -74,7 +74,7 @@
         <div class="row_textbox">
         <asp:Button ID="Button_Guardar" runat="server" OnClick="Button_Guardar_Click" 
             Text="Guardar Pregunta" ValidationGroup="ValidarSeleccion" />
-        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Cancelar" />
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
         </div>
         </asp:Panel>
     </div>

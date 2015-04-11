@@ -119,7 +119,7 @@
     <asp:Button ID="Button_RegProf" runat="server" onclick="Button_RegProf_Click" 
         Text="Registrar" ValidationGroup="Registro" CssClass="posicion_izquierda"/>
     <asp:Button ID="Button_Cancelar" runat="server" 
-        onclick="Button_Cancelar_Click" Text="Cancelar" CssClass="posicion_central"/>
+        onclick="Button_Cancelar_Click" Text="Volver" CssClass="posicion_central"/>
     <asp:Button ID="Button_LimpCampos" runat="server" onclick="Button_Clean_Click" Text="Limpiar Campos" CssClass="posicion_derecha"/>
     </div>
     </div>

@@ -54,7 +54,7 @@
         <div class="row_crear_alumno_buttons">
             <asp:Button ID="Button_ModificarAsig" runat="server" OnClick="Button_ModificarAsig_Click"
                 Text="Modificar" ValidationGroup="Registro" CssClass="posicion_izquierda" />
-            <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Cancelar"
+            <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
                 CssClass="posicion_central" />
         </div>
     </div>

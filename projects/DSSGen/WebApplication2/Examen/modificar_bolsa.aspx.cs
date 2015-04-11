@@ -171,7 +171,9 @@ namespace DSSGenNHibernate.Examen
             SalvarMenu();
 
             //Eliminar la pregunta
-            if (!bolsa.RemovePregunta(id))
+            if (bolsa.RemovePregunta(id))
+                Notification.Notify(Response, "La pregunta ha sido borrada");
+            else
                 Notification.Notify(Response, "La pregunta no ha podido ser borrada");
 
             //Actualizar la lista de preguntas

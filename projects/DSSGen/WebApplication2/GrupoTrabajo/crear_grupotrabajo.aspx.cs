@@ -49,24 +49,27 @@ namespace DSSGenNHibernate.GrupoTrabajo
             if (fachadaGrupo.CrearGrupoTrabajo(codigo,nombre,descripcion,password,
                 Int32.Parse(capacidad),Int32.Parse(idAsignaturaAnyo)))
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "El grupo de trabajo ha sido creado");
+                this.Clean();
             }
             else
-            {
-                Response.Write("<script>window.alert('El grupo de trabajo no ha podido ser creado');</script>");
-            }
+                Notification.Notify(Response,"El grupo de trabajo no ha podido ser creado");
         }
     
-        //Método que llama el botón limpiar campos
-        protected void Button_Clean_Click(Object sender, EventArgs e)
+        //Método para limpiar
+        private void Clean()
         {
             TextBox_CodGrupo.Text = "";
             TextBox_NomGrupo.Text = "";
             TextBox_DescGrupo.Text = "";
             TextBox_Pass.Text = "";
             TextBox_Capacidad.Text = "";
+        }
+
+        //Método que llama el botón limpiar campos
+        protected void Button_Clean_Click(Object sender, EventArgs e)
+        {
+            this.Clean();
         }
     
         //Botón utilizado para cancelar la creación y volver atrás

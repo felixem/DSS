@@ -55,18 +55,17 @@ namespace DSSGenNHibernate.Profesor
             //Comprobamos si se creo el usuario
             if (verificado)
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "El profesor ha sido creado");
+                this.Clean();
             }
             else
             {
-                Response.Write("<script>window.alert('El profesor no ha podido ser creado');</script>");
+                Notification.Notify(Response,"El profesor no ha podido ser creado");
             }
         }
 
-        //Método que llama el botón limpiar campos
-        protected void Button_Clean_Click(Object sender, EventArgs e)
+        //Método para borrar
+        private void Clean()
         {
             TextBox_NomProf.Text = "";
             TextBox_ApellProf.Text = "";
@@ -76,6 +75,12 @@ namespace DSSGenNHibernate.Profesor
             TextBox_DNIProf.Text = "";
             TextBox_EmailProf.Text = "";
             TextBox_CodProf.Text = "";
+        }
+
+        //Método que llama el botón limpiar campos
+        protected void Button_Clean_Click(Object sender, EventArgs e)
+        {
+            this.Clean();
         }
 
         //Metodo que comprueba la fecha(Control de validacion)

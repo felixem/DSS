@@ -55,18 +55,17 @@ namespace DSSGenNHibernate.Alumno
             //Verifico si se creo el alumno
             if (verificado)
             {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "El alumno ha sido creado");
+                this.Clean();
             }
-            else 
+            else
             {
-                Response.Write("<script>window.alert('El alumno no ha podido ser creado');</script>");
+                Notification.Notify(Response,"El alumno no ha podido ser creado");
             }
         }
-    
-        //Método que llama el botón limpiar campos
-        protected void Button_Clean_Click(Object sender, EventArgs e)
+
+        //Método para limpiar los campos
+        private void Clean()
         {
             TextBox_NomAlu.Text = "";
             TextBox_ApellAlu.Text = "";
@@ -77,9 +76,15 @@ namespace DSSGenNHibernate.Alumno
             TextBox_EmailAlu.Text = "";
             TextBox_CodAlu.Text = "";
         }
-    
+
+        //Método que llama el botón limpiar campos
+        protected void Button_Clean_Click(Object sender, EventArgs e)
+        {
+            this.Clean();
+        }
+
         //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender,ServerValidateEventArgs e)
+        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
         {
             try
             {

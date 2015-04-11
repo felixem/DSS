@@ -33,13 +33,19 @@ namespace DSSGenNHibernate.Examen
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
 
-                //Inicializar los datos de los textbox
-                TextBox_Nombre.Text = bolsa.Nombre;
-                TextBox_Descripcion.Text = bolsa.Descripcion;
-                this.ObtenerPreguntasPaginadas(1);
-                this.ObtenerAsignaturas();
-                this.SeleccionarAsignatura();
+                this.Inicializacion();
             }
+        }
+
+        //Inicialización
+        private void Inicializacion()
+        {
+            //Inicializar los datos de los textbox
+            TextBox_Nombre.Text = bolsa.Nombre;
+            TextBox_Descripcion.Text = bolsa.Descripcion;
+            this.ObtenerPreguntasPaginadas(1);
+            this.ObtenerAsignaturas();
+            this.SeleccionarAsignatura();
         }
 
         //Obtener las asignaturas
@@ -130,8 +136,10 @@ namespace DSSGenNHibernate.Examen
             SalvarMenu();
 
             //Eliminar la pregunta
-            if (!bolsa.RemovePregunta(id))
-                Response.Write("<script>window.alert('La pregunta no ha podido ser borrada');</script>");
+            if (bolsa.RemovePregunta(id))
+                Notification.Notify(Response,"La pregunta ha sido borrada");
+            else
+                Notification.Notify(Response, "La pregunta no ha podido ser borrada");
 
             //Actualizar la lista de preguntas
             this.ObtenerPreguntasPaginadas(1);
@@ -143,6 +151,13 @@ namespace DSSGenNHibernate.Examen
             SalvarMenu();
             Linker link = new Linker(true);
             link.Redirect(Response,link.CrearPregunta());
+        }
+
+        //Manejador para limpiar una bolsa de preguntas
+        protected void Button_Limpiar_Click(object sender, EventArgs e)
+        {
+            bolsa.Clear();
+            this.Inicializacion();
         }
 
         //Manejador para cancelar la creación de una bolsa de preguntas
@@ -162,14 +177,11 @@ namespace DSSGenNHibernate.Examen
             if (fachadaBolsa.CrearBolsa(bolsa))
             {
                 bolsa.Clear();
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Notify(Response, "La bolsa ha sido creada");
+                this.Inicializacion();
             }
             else
-            {
-                Response.Write("<script>window.alert('La bolsa no ha podido ser creada');</script>");
-            }
+                Notification.Notify(Response, "La bolsa no ha podido ser creada");
         }
 
         //Manejador cuando cambie la selección en el drop down list
