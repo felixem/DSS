@@ -55,21 +55,6 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Método para obtener una asignatura-anyo por su id
-        public AsignaturaAnyoEN DameAsignaturaAnyoPorId(int id)
-        {
-            AsignaturaAnyoEN asignaturaAnyo = null;
-            AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
-            DameAsignaturaAnyoPorId consulta = new DameAsignaturaAnyoPorId(id);
-
-            asignaturaAnyo = cp.DameAsignaturaAnyo(consulta);
-
-            if (asignaturaAnyo == null)
-                throw new Exception("AsignaturaAnyo no encontrada");
-
-            return asignaturaAnyo;
-        }
-
         //Método para modificar una asignatura-anyo en la BD
         public bool ModificarAsignaturaAnyo(int oid)
         {

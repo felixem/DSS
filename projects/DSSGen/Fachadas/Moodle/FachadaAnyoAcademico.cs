@@ -47,21 +47,6 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Método para obtener un año académico a partir de su id
-        public AnyoAcademicoEN DameAnyoAcademicoPorId(int id)
-        {
-            AnyoAcademicoEN anyo = null;
-            AnyoAcademicoCP cp = new AnyoAcademicoCP();
-            DameAnyoAcademicoPorId consulta = new DameAnyoAcademicoPorId(id);
-
-            anyo = cp.DameAnyoAcademico(consulta);
-
-            if (anyo == null)
-                throw new Exception("Año académico no encontrado");
-
-            return anyo;
-        }
-
         //Método para modificar un año académico en la BD
         public bool ModificarAnyoAcademico(int oid, int anyo, DateTime? fecha_inicio,
             DateTime? fecha_fin, bool finalizado)
