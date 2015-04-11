@@ -22,6 +22,9 @@ System.Collections.Generic.IList<ControlAlumnoEN> ReadAll (int first, int size);
 ControlAlumnoEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_alumno (int p_controlalumno, string p_alumno);
 
 void Relationer_control (int p_controlalumno, int p_control);

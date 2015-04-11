@@ -22,6 +22,9 @@ System.Collections.Generic.IList<TutoriaEN> ReadAll (int first, int size);
 TutoriaEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_alumno (int p_tutoria, string p_alumno);
 
 void Relationer_asignatura (int p_tutoria, int p_asignaturaanyo);

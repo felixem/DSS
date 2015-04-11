@@ -13,6 +13,8 @@ namespace DSSGenNHibernate.Asignatura
     public partial class crear_asignatura : System.Web.UI.Page
     {
         FachadaAsignatura fachada;
+        FachadaCurso fachadaCurso = new FachadaCurso();
+
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,6 +24,9 @@ namespace DSSGenNHibernate.Asignatura
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
+
+                //Obtener los cursos
+                this.ObtenerCursos();
             }
         }
 
@@ -34,9 +39,10 @@ namespace DSSGenNHibernate.Asignatura
             string descripcion = TextBox_DescAsig.Text;
             bool optativo = CheckBox_OptativaAsig.Checked;
             bool vigente = CheckBox_VigenteAsig.Checked;
+            int curso = Int32.Parse(DropDownList_Cursos.SelectedValue);
 
             //Crear la asignatura
-            if (fachada.CrearAsignatura(codigo,nombre,descripcion,optativo,vigente))
+            if (fachada.CrearAsignatura(codigo,nombre,descripcion,optativo,vigente,curso))
             {
                 Notification.Notify(Response, "La asignatura ha sido creada");
                 this.Clean();
@@ -69,6 +75,12 @@ namespace DSSGenNHibernate.Asignatura
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
+        }
+
+        //Obtener los cursos
+        protected void ObtenerCursos()
+        {
+            fachadaCurso.VincularDameTodos(DropDownList_Cursos);
         }
     }
 }

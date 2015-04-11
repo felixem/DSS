@@ -56,6 +56,11 @@ public int New_ (AsignaturaEN asignatura)
         try
         {
                 SessionInitializeTransaction ();
+                if (asignatura.Curso != null) {
+                        asignatura.Curso = (DSSGenNHibernate.EN.Moodle.CursoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.CursoEN), asignatura.Curso.Id);
+
+                        asignatura.Curso.Asignaturas.Add (asignatura);
+                }
 
                 session.Save (asignatura);
                 SessionCommit ();

@@ -22,6 +22,9 @@ System.Collections.Generic.IList<EvaluacionAlumnoEN> ReadAll (int first, int siz
 EvaluacionAlumnoEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_alumno (int p_evaluacionalumno, string p_alumno);
 
 void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion);

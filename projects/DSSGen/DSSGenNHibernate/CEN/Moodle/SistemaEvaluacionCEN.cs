@@ -92,6 +92,10 @@ public SistemaEvaluacionEN ReadOID (int id)
         return sistemaEvaluacionEN;
 }
 
+public long ReadCantidad ()
+{
+        return _ISistemaEvaluacionCAD.ReadCantidad ();
+}
 public void Relationer_asignatura (int p_sistemaevaluacion, int p_asignaturaanyo)
 {
         //Call to SistemaEvaluacionCAD

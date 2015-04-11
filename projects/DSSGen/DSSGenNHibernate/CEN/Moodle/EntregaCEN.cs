@@ -104,6 +104,10 @@ public EntregaEN ReadOID (int id)
         return entregaEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IEntregaCAD.ReadCantidad ();
+}
 public void Relationer_entregas_alumno (int p_entrega, System.Collections.Generic.IList<int> p_entregaalumno)
 {
         //Call to EntregaCAD

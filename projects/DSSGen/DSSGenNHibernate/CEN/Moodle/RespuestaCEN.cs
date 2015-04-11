@@ -86,6 +86,10 @@ public RespuestaEN ReadOID (int id)
         return respuestaEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IRespuestaCAD.ReadCantidad ();
+}
 public void Relationer_pregunta (int p_respuesta, int p_pregunta)
 {
         //Call to RespuestaCAD

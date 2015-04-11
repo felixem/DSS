@@ -13,6 +13,24 @@ namespace DSSGenNHibernate.Asignatura {
     public partial class crear_asignatura {
         
         /// <summary>
+        /// Label_Curso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Curso;
+        
+        /// <summary>
+        /// DropDownList_Cursos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Cursos;
+        
+        /// <summary>
         /// LabelCod_Asig control.
         /// </summary>
         /// <remarks>

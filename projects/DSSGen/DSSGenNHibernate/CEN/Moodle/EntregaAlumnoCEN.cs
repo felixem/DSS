@@ -116,6 +116,10 @@ public EntregaAlumnoEN ReadOID (int id)
         return entregaAlumnoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IEntregaAlumnoCAD.ReadCantidad ();
+}
 public void Relationer_alumno (int p_entregaalumno, string p_alumno)
 {
         //Call to EntregaAlumnoCAD

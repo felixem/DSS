@@ -15,7 +15,7 @@ private int id;
  *
  */
 
-private int cod_expediente;
+private string cod_expediente;
 
 /**
  *
@@ -50,7 +50,7 @@ public virtual int Id {
 }
 
 
-public virtual int Cod_expediente {
+public virtual string Cod_expediente {
         get { return cod_expediente; } set { cod_expediente = value;  }
 }
 
@@ -85,7 +85,7 @@ public ExpedienteEN()
 
 
 
-public ExpedienteEN(int id, int cod_expediente, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo)
+public ExpedienteEN(int id, string cod_expediente, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo)
 {
         this.init (id, cod_expediente, nota_media, abierto, alumno, expedientes_anyo);
 }
@@ -96,7 +96,7 @@ public ExpedienteEN(ExpedienteEN expediente)
         this.init (expediente.Id, expediente.Cod_expediente, expediente.Nota_media, expediente.Abierto, expediente.Alumno, expediente.Expedientes_anyo);
 }
 
-private void init (int id, int cod_expediente, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo)
+private void init (int id, string cod_expediente, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo)
 {
         this.Id = id;
 

@@ -22,6 +22,9 @@ System.Collections.Generic.IList<ExpedienteAnyoEN> ReadAll (int first, int size)
 ExpedienteAnyoEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_anyo (int p_expedienteanyo, int p_anyoacademico);
 
 void Relationer_expediente (int p_expedienteanyo, int p_expediente);

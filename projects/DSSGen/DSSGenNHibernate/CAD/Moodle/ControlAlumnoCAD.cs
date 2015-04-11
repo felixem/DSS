@@ -200,6 +200,37 @@ public ControlAlumnoEN ReadOID (int id)
         return controlAlumnoEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ControlAlumnoEN self where select count(*) FROM ControlAlumnoEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ControlAlumnoENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ControlAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumno (int p_controlalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlAlumnoEN = null;

@@ -98,6 +98,10 @@ public MensajeEN ReadOID (int id)
         return mensajeEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IMensajeCAD.ReadCantidad ();
+}
 public void Relationer_tutoria (int p_mensaje, int p_tutoria)
 {
         //Call to MensajeCAD

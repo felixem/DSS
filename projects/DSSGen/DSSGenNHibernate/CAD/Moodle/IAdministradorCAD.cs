@@ -20,5 +20,8 @@ System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int size);
 
 
 AdministradorEN ReadOID (string email);
+
+
+long ReadCantidad ();
 }
 }

@@ -22,6 +22,9 @@ System.Collections.Generic.IList<ExpedienteEN> ReadAll (int first, int size);
 ExpedienteEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_alumno (int p_expediente, string p_alumno);
 
 void Relationer_expedientes_anyo (int p_expediente, System.Collections.Generic.IList<int> p_expedienteanyo);

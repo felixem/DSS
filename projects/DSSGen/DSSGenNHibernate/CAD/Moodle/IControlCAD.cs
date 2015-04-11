@@ -22,6 +22,9 @@ System.Collections.Generic.IList<ControlEN> ReadAll (int first, int size);
 ControlEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_bolsas_preguntas (int p_control, System.Collections.Generic.IList<int> p_bolsapreguntas);
 
 void Relationer_controles_alumno (int p_control, System.Collections.Generic.IList<int> p_controlalumno);

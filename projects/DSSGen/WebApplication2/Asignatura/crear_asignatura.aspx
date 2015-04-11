@@ -20,6 +20,11 @@
             <p class="style2">
                 Rellene los siguientes campos</p>
             <div class="row_crear_alumno">
+                <asp:Label ID="Label_Curso" runat="server" Text="Curso" CssClass="posicion_izquierda"></asp:Label>
+                <asp:DropDownList ID="DropDownList_Cursos" runat="server" CssClass="posicion_derecha" AutoPostBack="False">
+                </asp:DropDownList>
+            </div>
+            <div class="row_crear_alumno">
                 <asp:Label ID="LabelCod_Asig" runat="server" Text="Código de Asignatura:" CssClass="posicion_izquierda"></asp:Label>
                 <asp:TextBox ID="TextBox_CodAsig" runat="server" CssClass="posicion_derecha"></asp:TextBox>
             </div>
@@ -43,13 +48,13 @@
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_VigenteAsig" runat="server" Text="Vigente:" CssClass="posicion_izquierda"></asp:Label>
-                <asp:CheckBox ID="CheckBox_VigenteAsig" runat="server" 
-                    CssClass="posicion_derecha" Checked="True"></asp:CheckBox>
+                <asp:CheckBox ID="CheckBox_VigenteAsig" runat="server" CssClass="posicion_derecha"
+                    Checked="True"></asp:CheckBox>
             </div>
         </div>
         <div class="row_crear_alumno_buttons">
-            <asp:Button ID="Button_CrearAsig" runat="server" OnClick="Button_CrearAsig_Click" Text="Crear"
-                ValidationGroup="Registro" CssClass="posicion_izquierda" />
+            <asp:Button ID="Button_CrearAsig" runat="server" OnClick="Button_CrearAsig_Click"
+                Text="Crear" ValidationGroup="Registro" CssClass="posicion_izquierda" />
             <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
                 CssClass="posicion_central" />
             <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos"

@@ -15,7 +15,7 @@ private int id;
  *
  */
 
-private int cod_curso;
+private string cod_curso;
 
 /**
  *
@@ -38,7 +38,7 @@ public virtual int Id {
 }
 
 
-public virtual int Cod_curso {
+public virtual string Cod_curso {
         get { return cod_curso; } set { cod_curso = value;  }
 }
 
@@ -63,7 +63,7 @@ public CursoEN()
 
 
 
-public CursoEN(int id, int cod_curso, string nombre, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaEN> asignaturas)
+public CursoEN(int id, string cod_curso, string nombre, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaEN> asignaturas)
 {
         this.init (id, cod_curso, nombre, asignaturas);
 }
@@ -74,7 +74,7 @@ public CursoEN(CursoEN curso)
         this.init (curso.Id, curso.Cod_curso, curso.Nombre, curso.Asignaturas);
 }
 
-private void init (int id, int cod_curso, string nombre, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaEN> asignaturas)
+private void init (int id, string cod_curso, string nombre, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaEN> asignaturas)
 {
         this.Id = id;
 

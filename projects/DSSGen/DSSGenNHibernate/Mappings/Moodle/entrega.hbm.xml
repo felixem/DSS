@@ -62,5 +62,6 @@
 		  </class>
 		  
 		  <query name="EntregaENReadAllHQL">from EntregaEN</query>
+		  <query name="EntregaENreadCantidadHQL"><![CDATA[select count(*) FROM EntregaEN]]></query>
 		</hibernate-mapping>
 	

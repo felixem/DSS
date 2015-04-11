@@ -71,6 +71,10 @@ public void Destroy (int id)
         _INotaCAD.Destroy (id);
 }
 
+public long ReadCantidad ()
+{
+        return _INotaCAD.ReadCantidad ();
+}
 public System.Collections.Generic.IList<NotaEN> ReadAll (int first, int size)
 {
         System.Collections.Generic.IList<NotaEN> list = null;

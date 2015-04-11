@@ -218,6 +218,37 @@ public EntregaAlumnoEN ReadOID (int id)
         return entregaAlumnoEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM EntregaAlumnoEN self where select count(*) FROM EntregaAlumnoEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("EntregaAlumnoENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EntregaAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumno (int p_entregaalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;

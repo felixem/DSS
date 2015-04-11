@@ -32,7 +32,7 @@ public IExpedienteCAD get_IExpedienteCAD ()
         return this._IExpedienteCAD;
 }
 
-public int New_ (int p_cod_expediente, float p_nota_media, bool p_abierto, string p_alumno)
+public int New_ (string p_cod_expediente, float p_nota_media, bool p_abierto, string p_alumno)
 {
         ExpedienteEN expedienteEN = null;
         int oid;
@@ -57,7 +57,7 @@ public int New_ (int p_cod_expediente, float p_nota_media, bool p_abierto, strin
         return oid;
 }
 
-public void Modify (int p_oid, int p_cod_expediente, float p_nota_media, bool p_abierto)
+public void Modify (int p_oid, string p_cod_expediente, float p_nota_media, bool p_abierto)
 {
         ExpedienteEN expedienteEN = null;
 
@@ -92,6 +92,10 @@ public ExpedienteEN ReadOID (int id)
         return expedienteEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IExpedienteCAD.ReadCantidad ();
+}
 public void Relationer_alumno (int p_expediente, string p_alumno)
 {
         //Call to ExpedienteCAD

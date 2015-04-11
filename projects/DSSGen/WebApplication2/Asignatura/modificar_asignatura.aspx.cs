@@ -56,7 +56,7 @@ namespace DSSGenNHibernate.Asignatura
         private void CargarDatos()
         {
             //Recuperar los datos de la asignatura
-            if(!fachada.VincularAsignaturaPorId(id,TextBox_IdAsig,
+            if(!fachada.VincularAsignaturaPorId(id,TextBox_Curso, TextBox_IdAsig,
                     TextBox_CodAsig, TextBox_NomAsig, TextBox_DescAsig,
                     CheckBox_OptativaAsig, CheckBox_VigenteAsig))
             {

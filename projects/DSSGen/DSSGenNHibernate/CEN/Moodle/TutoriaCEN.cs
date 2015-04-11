@@ -110,6 +110,10 @@ public TutoriaEN ReadOID (int id)
         return tutoriaEN;
 }
 
+public long ReadCantidad ()
+{
+        return _ITutoriaCAD.ReadCantidad ();
+}
 public void Relationer_alumno (int p_tutoria, string p_alumno)
 {
         //Call to TutoriaCAD

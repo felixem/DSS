@@ -78,6 +78,12 @@ namespace InitializeDB
             /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
             try
             {
+                ExpedienteEN expediente = new ExpedienteEN();
+                ExpedienteCEN expCen = new ExpedienteCEN();
+                expediente.Cod_expediente = "EX1";
+                expediente.Nota_media = 0;
+                expediente.Abierto = true;
+
                 AlumnoEN usuario = new AlumnoEN();
                 usuario.Cod_alumno = 1;
                 usuario.Baneado = false;
@@ -85,11 +91,22 @@ namespace InitializeDB
                 usuario.Dni = "48627745H";
                 usuario.Apellidos = "Escalona";
                 usuario.Fecha_nacimiento = DateTime.Parse("28/01/1994");
-                usuario.Nombre = "F�lix";
+                usuario.Nombre = "Felix";
                 usuario.Password = "1234";
                 AlumnoCEN aluCen = new AlumnoCEN();
                 aluCen.New_(usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
-                        usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, new ExpedienteEN());
+                        usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, expediente);
+
+                CursoEN curso = new CursoEN();
+                CursoCEN cursoCen = new CursoCEN();
+                curso.Nombre = "Primer Curso";
+                curso.Cod_curso = "CS1";
+                int curso1 = cursoCen.New_(curso.Cod_curso, curso.Nombre);
+
+                curso.Nombre = "Segundo Curso";
+                curso.Cod_curso = "CS2";
+                int curso2 = cursoCen.New_(curso.Cod_curso, curso.Nombre);
+
 
                 AsignaturaEN asignatura = new AsignaturaEN();
                 AsignaturaCEN asigCen = new AsignaturaCEN();
@@ -98,31 +115,31 @@ namespace InitializeDB
                 asignatura.Descripcion = "Asignatura de prueba";
                 asignatura.Optativa = false;
                 asignatura.Vigente = true;
-                int asig1 = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
+                int asig1 = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente, curso1);
 
                 asignatura.Cod_asignatura = "AS2";
                 asignatura.Nombre = "Asignatura Dos";
                 asignatura.Descripcion = "Asignatura Dos de prueba";
                 asignatura.Optativa = false;
                 asignatura.Vigente = true;
-                int asig2 = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
+                int asig2 = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente, curso1);
 
                 asignatura.Cod_asignatura = "AS3";
                 asignatura.Nombre = "Asignatura Tres";
                 asignatura.Descripcion = "Asignatura Tres de prueba";
                 asignatura.Optativa = true;
                 asignatura.Vigente = true;
-                int asig3 = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente);
+                int asig3 = asigCen.New_(asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente, curso2);
 
                 AnyoAcademicoEN anyo = new AnyoAcademicoEN();
                 AnyoAcademicoCEN anyoCen = new AnyoAcademicoCEN();
-                anyo.Anyo = 2015;
+                anyo.Anyo = "2015/2016";
                 anyo.Fecha_inicio = DateTime.Now;
                 anyo.Fecha_fin = DateTime.Now;
                 anyo.Finalizado = false;
                 int idAnyo = anyoCen.New_(anyo.Anyo, anyo.Fecha_inicio, anyo.Fecha_fin, anyo.Finalizado);
 
-                anyo.Anyo = 2016;
+                anyo.Anyo = "2016/2017";
                 anyo.Fecha_inicio = DateTime.Now;
                 anyo.Fecha_fin = DateTime.Now;
                 anyo.Finalizado = false;

@@ -15,7 +15,7 @@ private int id;
  *
  */
 
-private int anyo;
+private string anyo;
 
 /**
  *
@@ -62,7 +62,7 @@ public virtual int Id {
 }
 
 
-public virtual int Anyo {
+public virtual string Anyo {
         get { return anyo; } set { anyo = value;  }
 }
 
@@ -109,7 +109,7 @@ public AnyoAcademicoEN()
 
 
 
-public AnyoAcademicoEN(int id, int anyo, Nullable<DateTime> fecha_inicio, Nullable<DateTime> fecha_fin, bool finalizado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionEN> evaluaciones, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas)
+public AnyoAcademicoEN(int id, string anyo, Nullable<DateTime> fecha_inicio, Nullable<DateTime> fecha_fin, bool finalizado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionEN> evaluaciones, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas)
 {
         this.init (id, anyo, fecha_inicio, fecha_fin, finalizado, evaluaciones, expedientes_anyo, asignaturas);
 }
@@ -120,7 +120,7 @@ public AnyoAcademicoEN(AnyoAcademicoEN anyoAcademico)
         this.init (anyoAcademico.Id, anyoAcademico.Anyo, anyoAcademico.Fecha_inicio, anyoAcademico.Fecha_fin, anyoAcademico.Finalizado, anyoAcademico.Evaluaciones, anyoAcademico.Expedientes_anyo, anyoAcademico.Asignaturas);
 }
 
-private void init (int id, int anyo, Nullable<DateTime> fecha_inicio, Nullable<DateTime> fecha_fin, bool finalizado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionEN> evaluaciones, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas)
+private void init (int id, string anyo, Nullable<DateTime> fecha_inicio, Nullable<DateTime> fecha_fin, bool finalizado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionEN> evaluaciones, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN> expedientes_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas)
 {
         this.Id = id;
 

@@ -10,20 +10,20 @@ using DSSGenNHibernate.CEN.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
-    //Componente de proceso para el año académico
-    public class AnyoAcademicoCP : BasicCP
+    //Componente de proceso de curso
+    public class CursoCP : BasicCP
     {
         //Constructor
-        public AnyoAcademicoCP() : base() { }
+        public CursoCP() : base() { }
 
         //Constructor con sesión
-        public AnyoAcademicoCP(ISession sesion) : base(sesion) { }
+        public CursoCP(ISession sesion) : base(sesion) { }
 
-        //Devolver el resultado de la consulta especificada devolviendo la cantidad de años académicos que satisfacen la consulta
-        public System.Collections.Generic.IList<AnyoAcademicoEN> DameTodosTotal(IDameTodosAnyoAcademico consulta,
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de cursos que satisfacen la consulta
+        public System.Collections.Generic.IList<CursoEN> DameTodosTotal(IDameTodosCurso consulta,
             int first, int size, out long numElementos)
         {
-            System.Collections.Generic.IList<AnyoAcademicoEN> lista = null;
+            System.Collections.Generic.IList<CursoEN> lista = null;
             try
             {
                 SessionInitializeTransaction();
@@ -47,17 +47,16 @@ namespace ComponentesProceso.Moodle
             return lista;
         }
 
-        //Crear un año académico y devolver su id de creación
-        public int CrearAnyoAcademico(string anyo, DateTime? fecha_inicio,
-            DateTime? fecha_fin, bool finalizado)
+        //Crear un curso y devolver su id de creación
+        public int CrearCurso(string p_cod_curso, string p_nombre)
         {
             int id = -1;
             try
             {
                 SessionInitializeTransaction();
-                //Crear el año académico
-                AnyoAcademicoCEN cen = new AnyoAcademicoCEN();
-                id = cen.New_(anyo, fecha_inicio, fecha_fin, finalizado);
+                //Crear el curso
+                CursoCEN asig = new CursoCEN();
+                id = asig.New_(p_cod_curso,p_nombre);
 
                 SessionCommit();
             }
@@ -75,15 +74,15 @@ namespace ComponentesProceso.Moodle
             return id;
         }
 
-        //Devolver el resultado de una consulta individual sobre un año académico
-        public AnyoAcademicoEN DameAnyoAcademico(IDameAnyoAcademico consulta)
+        //Devolver el resultado de una consulta individual sobre un curso
+        public CursoEN DameCurso(IDameCurso consulta)
         {
-            AnyoAcademicoEN anyo = null;
+            CursoEN curso = null;
             try
             {
                 SessionInitializeTransaction();
                 //Ejecutar la consulta recibida 
-                anyo = consulta.Execute(session);
+                curso = consulta.Execute(session);
 
                 SessionCommit();
             }
@@ -98,20 +97,19 @@ namespace ComponentesProceso.Moodle
                 SessionClose();
             }
 
-            return anyo;
+            return curso;
         }
 
-        //Modificar año académico
-        public void ModificarAnyoAcademico(int oid, string anyo, DateTime? fecha_inicio,
-            DateTime? fecha_fin, bool finalizado)
+        //Modificar curso
+        public void ModificarCurso(int p_oid, string p_cod_curso, string p_nombre)
         {
             try
             {
                 SessionInitializeTransaction();
 
-                AnyoAcademicoCEN cen = new AnyoAcademicoCEN();
+                CursoCEN cen = new CursoCEN();
                 //Ejecutar la modificación
-                cen.Modify(oid,anyo,fecha_inicio,fecha_fin,finalizado);
+                cen.Modify(p_oid,p_cod_curso,p_nombre);
 
                 SessionCommit();
             }
@@ -127,14 +125,14 @@ namespace ComponentesProceso.Moodle
             }
         }
 
-        //Borrar año académico a partir de su id
-        public void BorrarAnyoAcademico(int id)
+        //Borrar curso a partir de su id
+        public void BorrarCurso(int id)
         {
             try
             {
                 SessionInitializeTransaction();
 
-                AnyoAcademicoCEN cen = new AnyoAcademicoCEN();
+                CursoCEN cen = new CursoCEN();
                 //Ejecutar la modificación
                 cen.Destroy(id);
 

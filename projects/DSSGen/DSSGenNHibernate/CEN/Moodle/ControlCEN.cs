@@ -104,6 +104,10 @@ public ControlEN ReadOID (int id)
         return controlEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IControlCAD.ReadCantidad ();
+}
 public void Relationer_bolsas_preguntas (int p_control, System.Collections.Generic.IList<int> p_bolsapreguntas)
 {
         //Call to ControlCAD

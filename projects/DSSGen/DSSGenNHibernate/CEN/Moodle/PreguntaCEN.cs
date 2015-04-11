@@ -89,6 +89,10 @@ public PreguntaEN ReadOID (int id)
         return preguntaEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IPreguntaCAD.ReadCantidad ();
+}
 public void Relationer_bolsa (int p_pregunta, int p_bolsapreguntas)
 {
         //Call to PreguntaCAD

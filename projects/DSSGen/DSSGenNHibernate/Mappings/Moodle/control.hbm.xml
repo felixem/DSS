@@ -76,5 +76,6 @@
 		  </class>
 		  
 		  <query name="ControlENReadAllHQL">from ControlEN</query>
+		  <query name="ControlENreadCantidadHQL"><![CDATA[select count(*) FROM ControlEN]]></query>
 		</hibernate-mapping>
 	

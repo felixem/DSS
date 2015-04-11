@@ -98,6 +98,10 @@ public ControlAlumnoEN ReadOID (int id)
         return controlAlumnoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IControlAlumnoCAD.ReadCantidad ();
+}
 public void Relationer_alumno (int p_controlalumno, string p_alumno)
 {
         //Call to ControlAlumnoCAD

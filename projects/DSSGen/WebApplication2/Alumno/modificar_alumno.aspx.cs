@@ -58,7 +58,7 @@ namespace DSSGenNHibernate.Alumno
             //Recuperar los datos del alumno
             if (!fachada.VincularAlumnoPorId(id, TextBox_NomAlu,
                 TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
-                TextBox_CodAlu, CheckBox_Baneado))
+                TextBox_CodAlu, CheckBox_Baneado, TextBox_CodExpediente))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

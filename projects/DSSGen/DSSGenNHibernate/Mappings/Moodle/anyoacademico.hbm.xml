@@ -7,7 +7,7 @@
 						<id name="Id" column="[id]" type="integer">
 							<generator class="identity"/>
 						</id>
-					<property name="Anyo" type="integer"> 
+					<property name="Anyo" type="string"> 
 						<column name="[anyo]"  unique="true" not-null="true"/>
 					</property>
 					<property name="Fecha_inicio" type="date"> 

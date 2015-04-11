@@ -22,6 +22,9 @@ System.Collections.Generic.IList<SistemaEvaluacionEN> ReadAll (int first, int si
 SistemaEvaluacionEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_asignatura (int p_sistemaevaluacion, int p_asignaturaanyo);
 
 void Relationer_controles (int p_sistemaevaluacion, System.Collections.Generic.IList<int> p_control);
