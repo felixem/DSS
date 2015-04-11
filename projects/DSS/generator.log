@@ -537,3 +537,170 @@ enc:utf-8
 ../DSSGen\DSSGenNHibernate\AppLib\nunit.core.dll
 ../DSSGen\DSSGenNHibernate\AppLib\nunit.framework.dll
 15282 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 13960ms!
+0    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - --------------------------------------------------------------------------------------
+7    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - EMF Modeling Workflow Engine 1.2.1, Build v201206110920
+7    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - (c) 2005-2009 openarchitectureware.org and contributors
+7    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - --------------------------------------------------------------------------------------
+7    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - running workflow: C:/Users/Gio/Desktop/DSS/DSS/projects/DSS/templates/workflow/generatorXtext.mwe
+7    [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - 
+1030 [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Registering platform uri 'C:\Users\Gio\Desktop\DSS\DSS\projects'
+1726 [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.ConceptualViewPackage'
+1934 [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'org.eclipse.gmf.runtime.notation.NotationPackage'
+1990 [main] INFO  lipse.emf.mwe.utils.StandaloneSetup  - Adding generated EPackage 'es.ua.dlsi.ooh.conceptualView.xtext.conceptualText.ConceptualTextPackage'
+4573 [main] INFO  e.core.container.CompositeComponent  - Workflow: executing workflow es::ua::dlsi::ooh::conceptualview::generator::xtext::m2m::generatorXtext.mwe in C:/Users/Gio/Desktop/DSS/DSS/projects/DSS/templates/workflow/generatorXtext.mwe:10
+4573 [main] INFO  e.core.container.CompositeComponent  - UriBasedReader
+6997 [main] INFO  e.core.container.CompositeComponent  - Text2VisualGenerator
+7406 [main] INFO  e.core.container.CompositeComponent  - Generator(nhibernate.generator): generating 'workflow::nhibernate::workflow::main FOR true' => [../DSSGen, CONFIGURATION:../DSSGen(overwrite=false,append=false,fileEncoding=utf-8)]
+configuroConf:C:\Users\Gio\AppData\Local\Temp\OOH4RIA2286145582663758712.cfg
+enc:utf-8
+9986 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan started ...
+12670 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Source scan finished in 2.683s
+12670 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Files scanned: 365
+12670 [main] INFO  and2.pr.ProtectedRegionResolverImpl  - Regions found: 7
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+enc:utf-8
+42717 [main] INFO         org.eclipse.xpand2.Generator  - Written 7 files to outlet [default](../DSSGen)
+42717 [main] INFO         org.eclipse.xpand2.Generator  - Skipped writing of 164 files to outlet [default](../DSSGen)
+42717 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CreateSolution
+42742 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.UpdateSolution
+42769 [main] INFO  e.core.container.CompositeComponent  - es.ua.dlsi.ooh.persistence.nhibernate.generator.workflowComponents.CopyDLLs
+../DSSGen\DSSGenNHibernate\AppLib\Antlr3.Runtime.dll
+../DSSGen\DSSGenNHibernate\AppLib\Castle.DynamicProxy2.dll
+../DSSGen\DSSGenNHibernate\AppLib\Iesi.Collections.dll
+../DSSGen\DSSGenNHibernate\AppLib\LinFu.DynamicProxy.dll
+../DSSGen\DSSGenNHibernate\AppLib\log4net.dll
+../DSSGen\DSSGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll
+../DSSGen\DSSGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll
+../DSSGen\DSSGenNHibernate\AppLib\NHibernate.dll
+../DSSGen\DSSGenNHibernate\AppLib\nunit.core.dll
+../DSSGen\DSSGenNHibernate\AppLib\nunit.framework.dll
+42788 [main] INFO  eclipse.emf.mwe.core.WorkflowEngine  - workflow completed in 38217ms!

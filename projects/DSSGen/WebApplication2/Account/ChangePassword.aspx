@@ -3,58 +3,76 @@
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>
         Cambiar contraseña
-    </h2>
+    </h1>
     <p>
         Use el formulario siguiente para cambiar la contraseña.
     </p>
     <p>
         Las contraseñas nuevas deben tener una longitud mínima de <%= Membership.MinRequiredPasswordLength %> caracteres.
     </p>
-    <asp:ChangePassword ID="ChangeUserPassword" runat="server" CancelDestinationPageUrl="~/" EnableViewState="false" RenderOuterTable="false" 
-         SuccessPageUrl="ChangePasswordSuccess.aspx">
-        <ChangePasswordTemplate>
-            <span class="failureNotification">
-                <asp:Literal ID="FailureText" runat="server"></asp:Literal>
-            </span>
-            <asp:ValidationSummary ID="ChangeUserPasswordValidationSummary" runat="server" CssClass="failureNotification" 
-                 ValidationGroup="ChangeUserPasswordValidationGroup"/>
-            <div class="accountInfo">
-                <fieldset class="changePassword">
-                    <legend>Información de cuenta</legend>
-                    <p>
-                        <asp:Label ID="CurrentPasswordLabel" runat="server" AssociatedControlID="CurrentPassword">Contraseña anterior:</asp:Label>
-                        <asp:TextBox ID="CurrentPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="CurrentPasswordRequired" runat="server" ControlToValidate="CurrentPassword" 
-                             CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña anterior es obligatoria." 
-                             ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
-                    </p>
-                    <p>
-                        <asp:Label ID="NewPasswordLabel" runat="server" AssociatedControlID="NewPassword">Nueva contraseña:</asp:Label>
-                        <asp:TextBox ID="NewPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" ControlToValidate="NewPassword" 
-                             CssClass="failureNotification" ErrorMessage="La nueva contraseña es obligatoria." ToolTip="La nueva contraseña es obligatoria." 
-                             ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
-                    </p>
-                    <p>
-                        <asp:Label ID="ConfirmNewPasswordLabel" runat="server" AssociatedControlID="ConfirmNewPassword">Confirmar la nueva contraseña:</asp:Label>
-                        <asp:TextBox ID="ConfirmNewPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ConfirmNewPasswordRequired" runat="server" ControlToValidate="ConfirmNewPassword" 
-                             CssClass="failureNotification" Display="Dynamic" ErrorMessage="Confirmar la nueva contraseña es obligatorio."
-                             ToolTip="Confirmar la nueva contraseña es obligatorio." ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="NewPasswordCompare" runat="server" ControlToCompare="NewPassword" ControlToValidate="ConfirmNewPassword" 
-                             CssClass="failureNotification" Display="Dynamic" ErrorMessage="Confirmar la nueva contraseña debe coincidir con la entrada Nueva contraseña."
-                             ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:CompareValidator>
-                    </p>
-                </fieldset>
-                <p class="submitButton">
-                    <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"/>
-                    <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword" Text="Cambiar contraseña" 
-                         ValidationGroup="ChangeUserPasswordValidationGroup"/>
-                </p>
-            </div>
-        </ChangePasswordTemplate>
-    </asp:ChangePassword>
-</asp:Content>
+            <asp:ValidationSummary ID="ChangeUserPasswordValidationSummary" 
+        runat="server" CssClass="failureNotification" 
+                 ValidationGroup="RegisterUserValidationGroup"/>
+            <asp:Label ID="r" runat="server" Text="Contraseña anterior"></asp:Label>
+    <br />
+    <asp:TextBox ID="T_Anterior" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="PasswordRequired" 
+        runat="server" ControlToValidate="T_Anterior" 
+                                     CssClass="failureNotification" 
+                                    ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." 
+                                     ValidationGroup="RegisterUserValidationGroup" 
+        Display="Dynamic">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="PasswordFormat" runat="server" 
+                                    ErrorMessage="La contraseña debe tener un tamaño de entre 6 y 15 caracteres e incluir, como mínimo, una mayúscula, una minúscula y un número." 
+                                    ControlToValidate="T_Anterior" CssClass="failureNotification" 
+                                    ToolTip="La contraseña no tiene el formato apropiado" 
+                                    ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$" 
+                                    ValidationGroup="RegisterUserValidationGroup" 
+        Display="Dynamic">*</asp:RegularExpressionValidator>
+                    <br />
+    <br />
+    <asp:Label ID="L_Nueva" runat="server" Text="Nueva contraseña"></asp:Label>
+    <br />
+    <asp:TextBox ID="T_nueva" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
+        runat="server" ControlToValidate="T_nueva" 
+                                     CssClass="failureNotification" 
+                                    ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." 
+                                     ValidationGroup="RegisterUserValidationGroup" 
+        Display="Dynamic">*</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                    ErrorMessage="La contraseña debe tener un tamaño de entre 6 y 15 caracteres e incluir, como mínimo, una mayúscula, una minúscula y un número." 
+                                    ControlToValidate="T_nueva" CssClass="failureNotification" 
+                                    ToolTip="La contraseña no tiene el formato apropiado" 
+                                    ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$" 
+                                    ValidationGroup="RegisterUserValidationGroup" 
+        Display="Dynamic">*</asp:RegularExpressionValidator>
+
+                    <br />
+    <br />
+    <asp:Label ID="L_Repetir" runat="server" Text="Repetir contraseña"></asp:Label>
+    <br />
+    <asp:TextBox ID="T_Repetir" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ControlToValidate="T_nueva" 
+                            CssClass="failureNotification" Display="Dynamic" 
+                                     ErrorMessage="Confirmar contraseña es obligatorio." 
+                            ID="ConfirmPasswordRequired" runat="server" 
+                                     ToolTip="Confirmar contraseña es obligatorio." 
+                            ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                       <asp:CompareValidator ID="PasswordCompare" runat="server" 
+                            ControlToCompare="T_nueva" ControlToValidate="T_Repetir" 
+                                     CssClass="failureNotification" 
+        Display="Dynamic" ErrorMessage="Contraseña y Confirmar contraseña deben coincidir."
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
+                    <br />
+    <br />
+                    <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" 
+                        OnClick="Cancelar"  Text="Cancelar"/>
+                    &nbsp;
+                    <asp:Button ID="ChangePasswordPushButton" runat="server" 
+                        Text="Cambiar contraseña" OnClick="Button_Change_Click"
+                         ValidationGroup="RegisterUserValidationGroup"/>
+                </asp:Content>
