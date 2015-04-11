@@ -51,8 +51,6 @@
 		<ul>
 			<asp:Button ID="btn_inicio_va" runat="server" Text="Inicio" CssClass="estilob" 
                 onclick="btn_inicio_Click" />
-			<asp:Button ID="Button3" runat="server" Text="VistaAlumno" CssClass="estilob" 
-                onclick="btn_inicio_Click" />
 		</ul>
         </asp:View>
         <asp:View runat="server" ID="ViewProfesor">
@@ -67,14 +65,16 @@
 		<ul>
 			<asp:Button ID="btn_inicio_vadm" runat="server" Text="Inicio" CssClass="estilob" 
                 onclick="btn_inicio_Click" />
-			<asp:Button ID="Button1" runat="server" Text="VistaAdministrador" CssClass="estilob" 
+			<asp:Button ID="Button" runat="server" Text="VistaAdministrador" CssClass="estilob" 
                 onclick="btn_inicio_Click" />
+            <asp:Button ID="btn_alumnos_vadm" runat="server" Text="Alumnos" CssClass="estilob" 
+                onclick="btn_alumnos_Click" />
 		</ul>
         </asp:View>
         </asp:MultiView>
 	</div>
 </div>
-<hr>
+<hr/>
 <!-- end header -->
 <div id="wrapper">
 	<div id="page">

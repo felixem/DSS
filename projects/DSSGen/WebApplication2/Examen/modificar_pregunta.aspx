@@ -61,7 +61,7 @@
         </div>
         <asp:Label ID="Label_SeleccionarOpcion" runat="server" 
             Text="Seleccionar opción correcta"></asp:Label>
-        <asp:RadioButtonList Style="" ID="RadioButtonListOpciones" runat="server">
+        <asp:RadioButtonList ID="RadioButtonListOpciones" runat="server">
             <asp:ListItem Value="1">Opción 1</asp:ListItem>
             <asp:ListItem Value="2">Opción 2</asp:ListItem>
             <asp:ListItem Value="3">Opción 3</asp:ListItem>

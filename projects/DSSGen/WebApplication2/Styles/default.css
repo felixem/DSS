@@ -403,9 +403,11 @@ hr {
 #footer li li {
 	display: list-item;
 	float: none;
-	margin: 0;
 	padding: 2px 0;
 	border-bottom: 1px solid #573D30;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
 }
 
 #footer li li a {

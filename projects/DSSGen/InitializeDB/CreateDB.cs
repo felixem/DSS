@@ -78,6 +78,18 @@ namespace InitializeDB
             /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
             try
             {
+                AdministradorEN admin = new AdministradorEN();
+                admin.Cod_administrador=0;
+                admin.Ocupacion="Administrador";
+                admin.Email = "jacv050@jacv050.com";
+                admin.Dni = "48627746H";
+                admin.Apellidos = "Castro";
+                admin.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                admin.Nombre = "jacv050";
+                admin.Password = "1234";
+                AdministradorCEN adminCen = new AdministradorCEN();
+                adminCen.New_(admin.Cod_administrador,admin.Ocupacion,admin.Email,admin.Dni, admin.Password,admin.Nombre,admin.Apellidos,admin.Fecha_nacimiento);
+
                 AlumnoEN usuario = new AlumnoEN();
                 usuario.Cod_alumno = 1;
                 usuario.Baneado = false;
