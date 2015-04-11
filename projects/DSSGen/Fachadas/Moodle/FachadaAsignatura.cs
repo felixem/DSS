@@ -37,7 +37,7 @@ namespace Fachadas.Moodle
             try
             {
                 AsignaturaCP cp = new AsignaturaCP();
-                cp.CrearAsignatura(codigo,nombre,descripcion,optativa,vigente);
+                cp.CrearAsignatura(codigo, nombre, descripcion, optativa, vigente);
             }
             catch (Exception)
             {
@@ -47,19 +47,25 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Método para obtener una asignatura a partir de su id
-        public AsignaturaEN DameAsignaturaPorId(int id)
+        //Método para vincular una asignatura a partir de su id a textboxes
+        public bool VincularAsignaturaPorId(int id, TextBox TextBox_IdAsig,
+            TextBox TextBox_CodAsig, TextBox TextBox_NomAsig, TextBox TextBox_DescAsig,
+            CheckBox CheckBox_OptativaAsig, CheckBox CheckBox_VigenteAsig)
         {
-            AsignaturaEN asignatura = null;
-            AsignaturaCP cp = new AsignaturaCP();
-            DameAsignaturaPorId consulta = new DameAsignaturaPorId(id);
+            try
+            {
+                AsignaturaBinding binding = new AsignaturaBinding();
+                DameAsignaturaPorId consulta = new DameAsignaturaPorId(id);
 
-            asignatura = cp.DameAsignatura(consulta);
-
-            if (asignatura == null)
-                throw new Exception("Asignatura no encontrada");
-
-            return asignatura;
+                binding.VincularDameAsignatura(consulta, TextBox_IdAsig,
+                    TextBox_CodAsig, TextBox_NomAsig, TextBox_DescAsig,
+                    CheckBox_OptativaAsig, CheckBox_VigenteAsig);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         //Método para modificar una asignatura en la BD
@@ -69,7 +75,7 @@ namespace Fachadas.Moodle
             try
             {
                 AsignaturaCP cp = new AsignaturaCP();
-                cp.ModificarAsignatura(oid,codAsignatura,nombre,descripcion,optativa,vigente);
+                cp.ModificarAsignatura(oid, codAsignatura, nombre, descripcion, optativa, vigente);
             }
             catch (Exception)
             {

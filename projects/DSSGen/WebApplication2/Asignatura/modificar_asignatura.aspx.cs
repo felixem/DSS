@@ -16,7 +16,6 @@ namespace DSSGenNHibernate.Asignatura
         FachadaAsignatura fachada;
         private int id;
         String param;
-        AsignaturaEN asignatura;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
@@ -33,8 +32,6 @@ namespace DSSGenNHibernate.Asignatura
 
             if (!IsPostBack)
             {
-                //Procesar parámetros
-                this.Procesar_Parametros();
                 //Cargar datos
                 this.CargarDatos();
             }
@@ -55,33 +52,18 @@ namespace DSSGenNHibernate.Asignatura
                 id = Int32.Parse(param);
         }
 
-        //Comprobar parámetros
-        private void Procesar_Parametros()
+        //Comprobar parámetros y cargar datos
+        private void CargarDatos()
         {
             //Recuperar los datos de la asignatura
-            try
-            {
-                asignatura = fachada.DameAsignaturaPorId(id);
-            }
-            catch (Exception)
+            if(!fachada.VincularAsignaturaPorId(id,TextBox_IdAsig,
+                    TextBox_CodAsig, TextBox_NomAsig, TextBox_DescAsig,
+                    CheckBox_OptativaAsig, CheckBox_VigenteAsig))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
             }
-        }
-
-
-        //Cargar los datos del alumno original
-        private void CargarDatos()
-        {
-            //Recojo los datos
-            TextBox_IdAsig.Text = asignatura.Id.ToString();
-            TextBox_CodAsig.Text = asignatura.Cod_asignatura;
-            TextBox_NomAsig.Text = asignatura.Nombre;
-            TextBox_DescAsig.Text = asignatura.Descripcion;
-            CheckBox_OptativaAsig.Checked = asignatura.Optativa;
-            CheckBox_VigenteAsig.Checked = asignatura.Vigente;
         }
 
         //Método que llama el botón para crear una asignatura

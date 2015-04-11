@@ -42,5 +42,46 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+
+        //Vincular a TextBoxes el contenido de una consulta individual sobre un grupo de trabajo
+        public void VincularDameGrupoTrabajo(IDameGrupoTrabajo consulta, TextBox TextBox_CodGrupo,
+            TextBox TextBox_NomGrupo, TextBox TextBox_DescGrupo, TextBox TextBox_Capacidad,
+            TextBox TextBox_Anyo, TextBox TextBox_Asignatura)
+        {
+            GrupoTrabajoEN grupo = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                GrupoTrabajoCP cp = new GrupoTrabajoCP(session);
+                //Ejecutar la consulta recibida
+                grupo = cp.DameGrupoTrabajo(consulta);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Comprobar que se ha encontrado grupo de trabajo
+                if (grupo == null)
+                    throw new Exception("Grupo de trabajo no encontrado");
+
+                //Vincular con los textboxes
+                TextBox_CodGrupo.Text = grupo.Cod_grupo;
+                TextBox_NomGrupo.Text = grupo.Nombre;
+                TextBox_DescGrupo.Text = grupo.Descripcion;
+                TextBox_Capacidad.Text = grupo.Capacidad.ToString();
+                TextBox_Anyo.Text = grupo.Asignatura.Anyo.Anyo.ToString();
+                TextBox_Asignatura.Text = grupo.Asignatura.Asignatura.Nombre.ToString() + "(" + TextBox_Anyo.Text + ")";
+
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

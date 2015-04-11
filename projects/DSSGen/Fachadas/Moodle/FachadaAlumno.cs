@@ -71,19 +71,25 @@ namespace Fachadas.Moodle
             alumnoBind.VincularDameTodos(consulta, grid, first, size, out numAlumnos);
         }
 
-        //Devolver un alumno a partir de un id de alumno
-        public AlumnoEN DameAlumnoPorId(int id)
+        //Método para vincular un alumno a partir de su id a textboxes
+        public bool VincularAlumnoPorId(int id, TextBox TextBox_NomAlu,
+            TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
+            TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado)
         {
-            AlumnoEN alumno = null;
-            AlumnoCP cp = new AlumnoCP();
-            DameAlumnoPorId consulta = new DameAlumnoPorId(id);
+            try
+            {
+                AlumnoBinding binding = new AlumnoBinding();
+                DameAlumnoPorId consulta = new DameAlumnoPorId(id);
 
-            alumno = cp.DameAlumno(consulta);
-
-            if (alumno == null)
-                throw new Exception("Alumno no encontrado");
-
-            return alumno;
+                binding.VincularDameAlumno(consulta, TextBox_NomAlu,
+                TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
+                TextBox_CodAlu, CheckBox_Baneado);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

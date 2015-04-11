@@ -90,18 +90,20 @@ namespace Fachadas.Moodle
         }
 
         //Obtener una BolsaSession de preguntas para modificar una bolsa existente en la BD
-        public BolsaSession CargarBolsaSession(int idBolsa)
+        public bool CargarBolsaSession(int idBolsa, BolsaSession bolsa)
         {
             try
             {
-                BolsaSession bolsa = BolsaSession.Current;
+                bolsa = BolsaSession.Current;
                 BindingComponents.Moodle.BolsaPreguntasBinding binding = new BindingComponents.Moodle.BolsaPreguntasBinding();
-                return binding.VincularBolsaSession(bolsa, idBolsa);
+                binding.VincularBolsaSession(bolsa, idBolsa);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return false;
             }
+
+            return true;
         }
     }
 }

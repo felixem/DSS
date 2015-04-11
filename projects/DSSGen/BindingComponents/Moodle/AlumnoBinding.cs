@@ -42,5 +42,47 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+
+        //Vincular a TextBoxes el contenido de una consulta individual sobre un alumno
+        public void VincularDameAlumno(IDameAlumno consulta, TextBox TextBox_NomAlu,
+            TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
+            TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado)
+        {
+            AlumnoEN alumno = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                AlumnoCP cp = new AlumnoCP(session);
+                //Ejecutar la consulta recibida
+                alumno = cp.DameAlumno(consulta);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Comprobar que se ha encontrado el alumno
+                if (alumno == null)
+                    throw new Exception("Alumno no encontrado");
+
+                //Vincular con los textboxes
+                TextBox_NomAlu.Text = alumno.Nombre;
+                TextBox_ApellAlu.Text = alumno.Apellidos;
+                TextBox_NaciAlu.Text = alumno.Fecha_nacimiento.ToString();
+                TextBox_DNIAlu.Text = alumno.Dni;
+                TextBox_EmailAlu.Text = alumno.Email;
+                TextBox_CodAlu.Text = alumno.Cod_alumno.ToString();
+                CheckBox_Baneado.Checked = alumno.Baneado;
+
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

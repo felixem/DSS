@@ -41,7 +41,7 @@ namespace BindingComponents.Moodle
                 //Vincular con el dropdownlist
                 foreach (AsignaturaEN x in lista)
                 {
-                    drop.Items.Add(new ListItem(x.Nombre+"("+x.Id+")", x.Id.ToString()));
+                    drop.Items.Add(new ListItem(x.Nombre, x.Id.ToString()));
                 }
 
                 //Cerrar sesión
@@ -73,6 +73,47 @@ namespace BindingComponents.Moodle
                 //Vincular con el grid view
                 grid.DataSource = lista;
                 grid.DataBind();
+
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
+        //Vincular a TextBoxes el contenido de una consulta individual sobre una asignatura
+        public void VincularDameAsignatura(IDameAsignatura consulta, TextBox TextBox_IdAsig,
+            TextBox TextBox_CodAsig, TextBox TextBox_NomAsig, TextBox TextBox_DescAsig,
+            CheckBox CheckBox_OptativaAsig, CheckBox CheckBox_VigenteAsig)
+        {
+            AsignaturaEN asignatura = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                AsignaturaCP cp = new AsignaturaCP(session);
+                //Ejecutar la consulta recibida
+                asignatura = cp.DameAsignatura(consulta);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Comprobar que se ha encontrado la asignatura
+                if (asignatura == null)
+                    throw new Exception("Asignatura no encontrada");
+
+                //Vincular con los textboxes
+                TextBox_IdAsig.Text = asignatura.Id.ToString();
+                TextBox_CodAsig.Text = asignatura.Cod_asignatura;
+                TextBox_NomAsig.Text = asignatura.Nombre;
+                TextBox_DescAsig.Text = asignatura.Descripcion;
+                CheckBox_OptativaAsig.Checked = asignatura.Optativa;
+                CheckBox_VigenteAsig.Checked = asignatura.Vigente;
 
                 //Cerrar sesión
                 SessionClose();

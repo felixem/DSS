@@ -16,7 +16,6 @@ namespace DSSGenNHibernate.Profesor
         FachadaProfesor fachada;
         private int id;
         String param;
-        ProfesorEN profesor;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
@@ -33,8 +32,6 @@ namespace DSSGenNHibernate.Profesor
 
             if (!IsPostBack)
             {
-                //Procesar parámetros
-                this.Procesar_Parametros();
                 //Cargar datos
                 this.CargarDatos();
             }
@@ -55,34 +52,18 @@ namespace DSSGenNHibernate.Profesor
                 id = Int32.Parse(param);
         }
 
-        //Comprobar parámetros
-        private void Procesar_Parametros()
+        //Comprobar parámetros y cargar datos
+        private void CargarDatos()
         {
             //Recuperar los datos del profesor
-            try
-            {
-                profesor = fachada.DameProfesorPorId(id);
-            }
-            catch (Exception)
+            if (!fachada.VincularProfesorPorId(id, TextBox_NomProf,
+                    TextBox_ApellProf, TextBox_NaciProf, TextBox_DNIProf,
+                    TextBox_EmailProf, TextBox_CodProf))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
             }
-        }
-
-
-        //Cargar los datos del profesor original
-        private void CargarDatos()
-        {
-            //Cargar todos los datos del profesor
-            UsuarioEN usuario = profesor as UsuarioEN;
-            TextBox_NomProf.Text = usuario.Nombre;
-            TextBox_ApellProf.Text = usuario.Apellidos;
-            TextBox_NaciProf.Text = usuario.Fecha_nacimiento.ToString();
-            TextBox_DNIProf.Text = usuario.Dni;
-            TextBox_EmailProf.Text = usuario.Email;
-            TextBox_CodProf.Text = profesor.Cod_profesor.ToString();
         }
 
         //Método que llama al botón modificar
@@ -114,12 +95,12 @@ namespace DSSGenNHibernate.Profesor
             }
             else
             {
-                Notification.Notify(Response,"El profesor no ha podido ser modificado");
+                Notification.Notify(Response, "El profesor no ha podido ser modificado");
             }
         }
-     
+
         //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender,ServerValidateEventArgs e)
+        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
         {
             try
             {

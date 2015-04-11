@@ -71,19 +71,25 @@ namespace Fachadas.Moodle
             profesorBind.VincularDameTodos(consulta, grid, first, size, out numProfesores);
         }
 
-        //Devolver un profesor a partir de un id de profesor
-        public ProfesorEN DameProfesorPorId(int id)
+        //Método para vincular un profesor a partir de su id a textboxes
+        public bool VincularProfesorPorId(int id, TextBox TextBox_NomProf,
+            TextBox TextBox_ApellProf, TextBox TextBox_NaciProf, TextBox TextBox_DNIProf,
+            TextBox TextBox_EmailProf, TextBox TextBox_CodProf)
         {
-            ProfesorEN profesor = null;
-            ProfesorCP cp = new ProfesorCP();
-            DameProfesorPorId consulta = new DameProfesorPorId(id);
+            try
+            {
+                ProfesorBinding binding = new ProfesorBinding();
+                DameProfesorPorId consulta = new DameProfesorPorId(id);
 
-            profesor = cp.DameProfesor(consulta);
-
-            if (profesor == null)
-                throw new Exception("Profesor no encontrado");
-
-            return profesor;
+                binding.VincularDameProfesor(consulta, TextBox_NomProf,
+                    TextBox_ApellProf, TextBox_NaciProf, TextBox_DNIProf,
+                    TextBox_EmailProf, TextBox_CodProf);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

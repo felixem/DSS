@@ -18,7 +18,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
         FachadaAnyoAcademico fachadaAnyo;
         private int id;
         String param;
-        GrupoTrabajoEN grupo;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
@@ -38,8 +37,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
 
             if (!IsPostBack)
             {
-                //Procesar parámetros
-                this.Procesar_Parametros();
                 //Cargar datos
                 this.CargarDatos();
             }
@@ -61,16 +58,14 @@ namespace DSSGenNHibernate.GrupoTrabajo
         }
 
         //Comprobar parámetros
-        private void Procesar_Parametros()
+        private void CargarDatos()
         {
-            //Recuperar los datos de la asignatura
-            try
+            //Recuperar los datos del grupo de trabajo
+            if (!fachadaGrupo.VincularGrupoTrabajoPorId(id, TextBox_CodGrupo,
+                    TextBox_NomGrupo, TextBox_DescGrupo, TextBox_Capacidad,
+                    TextBox_Anyo, TextBox_Asignatura))
             {
-                grupo = fachadaGrupo.DameGrupoTrabajoPorId(id);
-            }
-            catch (Exception)
-            {
-                //Redirigir a la página que le llamó
+                //Redirigir a la página que le llamó en caso de error
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
             }
@@ -96,18 +91,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
             {
                 Notification.Notify(Response,"El grupo de trabajo no ha podido ser modificado");
             }
-        }
-
-        //Cargar los datos del alumno original
-        private void CargarDatos()
-        {
-            //Recojo los datos
-            TextBox_CodGrupo.Text = grupo.Cod_grupo;
-            TextBox_NomGrupo.Text = grupo.Nombre;
-            TextBox_DescGrupo.Text = grupo.Descripcion;
-            TextBox_Capacidad.Text = grupo.Capacidad.ToString();
-            TextBox_Anyo.Text = grupo.Asignatura.Anyo.Anyo.ToString();
-            TextBox_Asignatura.Text = grupo.Asignatura.Asignatura.Nombre.ToString() + "(" + TextBox_Anyo.Text + ")";
         }
        
         //Botón utilizado para cancelar la creación y volver atrás

@@ -38,12 +38,8 @@ namespace DSSGenNHibernate.Examen
         //Comprobar parámetros
         protected void Procesar_Parametros()
         {
-            try
-            {
-                //Recuperar los datos de la bolsa original
-                bolsa = fachadaBolsa.CargarBolsaSession(id);
-            }
-            catch (Exception)
+            //Recuperar los datos de la bolsa original
+            if (!fachadaBolsa.CargarBolsaSession(id, bolsa))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
@@ -160,7 +156,7 @@ namespace DSSGenNHibernate.Examen
             int id = Int32.Parse(grdrow.Cells[0].Text);
             SalvarMenu();
             Linker link = new Linker(true);
-            link.Redirect(Response,link.ModificarPregunta(id));
+            link.Redirect(Response, link.ModificarPregunta(id));
         }
 
         //Manejador del evento para eliminar una pregunta
@@ -185,7 +181,7 @@ namespace DSSGenNHibernate.Examen
         {
             SalvarMenu();
             Linker link = new Linker(true);
-            link.Redirect(Response,link.CrearPregunta());
+            link.Redirect(Response, link.CrearPregunta());
         }
 
         //Manejador para cancelar la modificación de una bolsa de preguntas
@@ -193,7 +189,7 @@ namespace DSSGenNHibernate.Examen
         {
             bolsa.Clear();
             Linker link = new Linker(false);
-            link.Redirect(Response,link.PreviousPage());
+            link.Redirect(Response, link.PreviousPage());
         }
 
         //Manejador para hacer persistente la modificación de una bolsa de preguntas

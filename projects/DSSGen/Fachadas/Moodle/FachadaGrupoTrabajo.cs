@@ -28,7 +28,7 @@ namespace Fachadas.Moodle
             try
             {
                 GrupoTrabajoCP cp = new GrupoTrabajoCP();
-                cp.CrearGrupoTrabajo(codigo,nombre,descripcion,password,capacidad,asignatura_anyo);
+                cp.CrearGrupoTrabajo(codigo, nombre, descripcion, password, capacidad, asignatura_anyo);
             }
             catch (Exception)
             {
@@ -38,19 +38,25 @@ namespace Fachadas.Moodle
             return true;
         }
 
-        //Método para obtener un grupo de trabajo a partir de su id
-        public GrupoTrabajoEN DameGrupoTrabajoPorId(int id)
+        //Método para vincular un grupo de trabajo a partir de su id a textboxes
+        public bool VincularGrupoTrabajoPorId(int id, TextBox TextBox_CodGrupo,
+            TextBox TextBox_NomGrupo, TextBox TextBox_DescGrupo, TextBox TextBox_Capacidad,
+            TextBox TextBox_Anyo, TextBox TextBox_Asignatura)
         {
-            GrupoTrabajoEN grupo = null;
-            GrupoTrabajoCP cp = new GrupoTrabajoCP();
-            DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
+            try
+            {
+                GrupoTrabajoBinding binding = new GrupoTrabajoBinding();
+                DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
 
-            grupo = cp.DameGrupoTrabajo(consulta);
-
-            if (grupo == null)
-                throw new Exception("Grupo de trabajo no encontrado");
-
-            return grupo;
+                binding.VincularDameGrupoTrabajo(consulta, TextBox_CodGrupo,
+                    TextBox_NomGrupo, TextBox_DescGrupo, TextBox_Capacidad,
+                    TextBox_Anyo, TextBox_Asignatura);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         //Método para modificar un grupo de trabajo en la BD
@@ -60,7 +66,7 @@ namespace Fachadas.Moodle
             try
             {
                 GrupoTrabajoCP cp = new GrupoTrabajoCP();
-                cp.ModificarGrupoTrabajo(oid,cod,nombre,descripcion,password,capacidad);
+                cp.ModificarGrupoTrabajo(oid, cod, nombre, descripcion, password, capacidad);
             }
             catch (Exception)
             {

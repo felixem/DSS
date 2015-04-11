@@ -36,15 +36,6 @@ namespace ComponentesProceso.Moodle.Commands
             GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
             GrupoTrabajoEN grupo = cen.ReadOID(id);
 
-            //Deshacer el lazy load de la asignatura, asignaturaanyo y el añoacadémico
-            AsignaturaAnyoEN asiganyo = grupo.Asignatura;
-            AnyoAcademicoEN anyo = asiganyo.Anyo;
-            AsignaturaEN asig = asiganyo.Asignatura;
-
-            asiganyo.Anyo = new AnyoAcademicoEN(anyo);
-            asiganyo.Asignatura = new AsignaturaEN(asig);
-            grupo.Asignatura = new AsignaturaAnyoEN(asiganyo);
-
             return grupo;
         }
     }

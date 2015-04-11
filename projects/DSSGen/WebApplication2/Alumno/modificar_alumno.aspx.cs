@@ -16,7 +16,6 @@ namespace DSSGenNHibernate.Alumno
         FachadaAlumno fachada;
         private int id;
         String param;
-        AlumnoEN alumno;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
@@ -33,9 +32,7 @@ namespace DSSGenNHibernate.Alumno
 
             if (!IsPostBack)
             {
-                //Procesar parámetros
-                this.Procesar_Parametros();
-                //Cargar datos
+                //Procesar parámetros y cargar datos
                 this.CargarDatos();
             }
         }
@@ -55,35 +52,18 @@ namespace DSSGenNHibernate.Alumno
                 id = Int32.Parse(param);
         }
 
-        //Comprobar parámetros
-        private void Procesar_Parametros()
+        //Comprobar parámetros y cargar datos
+        private void CargarDatos()
         {
             //Recuperar los datos del alumno
-            try
-            {
-                alumno = fachada.DameAlumnoPorId(id);
-            }
-            catch (Exception)
+            if (!fachada.VincularAlumnoPorId(id, TextBox_NomAlu,
+                TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
+                TextBox_CodAlu, CheckBox_Baneado))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
             }
-        }
-
-
-        //Cargar los datos del alumno original
-        private void CargarDatos()
-        {
-            //Cargar todos los datos del alumno
-            UsuarioEN usuario = alumno as UsuarioEN;
-            TextBox_NomAlu.Text = usuario.Nombre;
-            TextBox_ApellAlu.Text = usuario.Apellidos;
-            TextBox_NaciAlu.Text = usuario.Fecha_nacimiento.ToString();
-            TextBox_DNIAlu.Text = usuario.Dni;
-            TextBox_EmailAlu.Text = usuario.Email;
-            TextBox_CodAlu.Text = alumno.Cod_alumno.ToString();
-            CheckBox_Baneado.Checked = alumno.Baneado;
         }
 
         //Método que llama al botón modificar
