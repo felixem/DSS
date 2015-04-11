@@ -107,7 +107,6 @@ namespace InitializeDB
                 curso.Cod_curso = "CS2";
                 int curso2 = cursoCen.New_(curso.Cod_curso, curso.Nombre);
 
-
                 AsignaturaEN asignatura = new AsignaturaEN();
                 AsignaturaCEN asigCen = new AsignaturaCEN();
                 asignatura.Cod_asignatura = "AS1";

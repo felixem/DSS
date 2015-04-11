@@ -33,6 +33,7 @@
       <operations name="changePassword" type="Boolean">
         <arguments name="usuario" isOrdered="true"/>
         <arguments name="pass" isOrdered="true"/>
+        <arguments name="newpass" isOrdered="true"/>
       </operations>
       <operations name="readDni" operationType="ReadFilter" type="Object" typeObject="/0/@elements.0" filter="FROM UsuarioEN us where us.Dni = :dni">
         <arguments name="dni" isOrdered="true"/>

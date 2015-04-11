@@ -50,6 +50,7 @@
     <Compile Include="Moodle\FachadaGrupoTrabajo.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />
     <Compile Include="Moodle\FachadaAsignatura.cs" />
+    <Compile Include="Moodle\FachadaPassword.cs" />
     <Compile Include="Moodle\FachadaProfesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

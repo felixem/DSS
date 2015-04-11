@@ -27,7 +27,7 @@ ConceptualModel moodle
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM UsuarioEN" };
 			public login (usuario : String, pass : String) : Boolean;
-			public changePassword (usuario:String, pass :String):Boolean;
+			public changePassword (usuario:String, pass :String, newpass :String):Boolean;
 			public readDni::ReadFilter (dni : String) : Object -> Usuario { filter = "FROM UsuarioEN us where us.Dni = :dni" };
 		}
 	};
