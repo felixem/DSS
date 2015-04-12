@@ -89,6 +89,7 @@
     <Compile Include="Moodle\Commands\BinderListaCursoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaGrupoTrabajoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorGrid.cs" />
+    <Compile Include="Moodle\Commands\BinderListaSistemaEvaluacionDropDownList.cs" />
     <Compile Include="Moodle\Commands\IBinderListaBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAnyoAcademico.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAsignatura.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Moodle\Commands\BinderProfesorCompleto.cs" />
     <Compile Include="Moodle\Commands\BinderAlumnoCompleto.cs" />
     <Compile Include="Moodle\Commands\BinderAsignaturaCompleto.cs" />
+    <Compile Include="Moodle\Commands\IBinderListaSistemaEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IBinderProfesor.cs" />
     <Compile Include="Moodle\Commands\IBinderCurso.cs" />
     <Compile Include="Moodle\Commands\IBinderAsignatura.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Moodle\CursoBinding.cs" />
     <Compile Include="Moodle\GrupoTrabajoBinding.cs" />
     <Compile Include="Moodle\ProfesorBinding.cs" />
+    <Compile Include="Moodle\SistemaEvaluacionBiding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

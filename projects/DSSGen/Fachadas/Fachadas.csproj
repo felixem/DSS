@@ -53,6 +53,7 @@
     <Compile Include="Moodle\FachadaAsignatura.cs" />
     <Compile Include="Moodle\FachadaPassword.cs" />
     <Compile Include="Moodle\FachadaProfesor.cs" />
+    <Compile Include="Moodle\FachadaSistemaEvaluacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

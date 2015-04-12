@@ -35,7 +35,9 @@
         Penalizacion (float)<asp:TextBox ID="TextBox_PenaControl" runat="server"></asp:TextBox>
     </p>
     <p class="style2">
-        Sistema Evaluacion (int)<asp:TextBox ID="TextBox_SistemEvaControl" runat="server"></asp:TextBox>
+        Sistema Evaluacion
+        <asp:DropDownList ID="DropDownList_SistemaEvaluacion" runat="server">
+        </asp:DropDownList>
     </p>
     <p class="style2">
         <asp:Button ID="Button_RegControl" runat="server" OnClick="Button_RegControl_Click" Text="Crear"
