@@ -151,5 +151,30 @@ namespace ComponentesProceso.Moodle
                 SessionClose();
             }
         }
+
+        //Desvincular alumnos de un grupo de trabajo
+        public void DesvincularAlumnos(int id, IList<string> emails)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
+                //Ejecutar el borrado
+                cen.Unrelationer_alumnos(id, emails);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

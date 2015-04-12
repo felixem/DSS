@@ -84,5 +84,6 @@
 		  <query name="AlumnoENReadAllHQL">from AlumnoEN</query>
 		  <query name="AlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM AlumnoEN]]></query>
 		  <query name="AlumnoENreadCodHQL"><![CDATA[FROM AlumnoEN alu where alu.Cod_alumno =:cod ]]></query>
+		  <query name="AlumnoENreadCantidadPorGrupoHQL"><![CDATA[select count(*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id ]]></query>
 		</hibernate-mapping>
 	

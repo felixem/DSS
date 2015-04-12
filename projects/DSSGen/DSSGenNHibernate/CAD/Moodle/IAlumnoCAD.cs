@@ -31,6 +31,10 @@ long ReadCantidad ();
 DSSGenNHibernate.EN.Moodle.AlumnoEN ReadCod (int cod);
 
 
+long ReadCantidadPorGrupo (int id);
+
+
+
 void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno);
 
 void Relationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno);

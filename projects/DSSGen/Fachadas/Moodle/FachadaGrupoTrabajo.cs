@@ -115,5 +115,24 @@ namespace Fachadas.Moodle
 
             return true;
         }
+
+        //Método para desvincular un alumno de un grupo de trabajo
+        public bool DesvincularAlumno(int idGrupo, string email)
+        {
+            try
+            {
+                GrupoTrabajoCP cp = new GrupoTrabajoCP();
+                List<string> emails = new List<string>();
+
+                emails.Add(email);
+                cp.DesvincularAlumnos(idGrupo,emails);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

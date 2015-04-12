@@ -79,12 +79,11 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador para obtener los alumnos paginados
         private void ObtenerAlumnosPaginados(int pageIndex)
         {
-            throw new Exception ("Not implemented yet");
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            /*//Vincular el grid con la lista de alumnos paginada
-            fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);*/
+            //Vincular el grid con la lista de alumnos paginada
+            fachadaAlumno.VincularDameTodosPorGrupo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -127,15 +126,14 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador del evento para expulsar a un alumno de un grupo de trabajo
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
+            string emailAlumno = grdrow.Cells[0].Text;
 
-            /*//Eliminar grupo de trabajo
-            if (fachada.BorrarGrupoTrabajo(grupoId))
-                Notification.Notify(Response,"El grupo de trabajo ha sido borrado");
+            //Desvincular un alumno de un grupo de trabajo
+            if (fachadaGrupo.DesvincularAlumno(id,emailAlumno))
+                Notification.Notify(Response,"El alumno ha sido desvinculado del grupo");
             else
-                Notification.Notify(Response, "El grupo de trabajo no ha podido ser borrado");*/
+                Notification.Notify(Response, "El alumno no ha podido ser desvinculado del grupo");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAlumnosPaginados(1);
