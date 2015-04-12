@@ -141,6 +141,9 @@ ConceptualModel moodle
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AlumnoEN" };
 			public readCod::ReadFilter (cod : Integer) : Object -> Alumno { filter = "FROM AlumnoEN alu where alu.Cod_alumno =:cod "};
+			public readAllPorGrupo::Custom (p_grupo : OID -> GrupoTrabajo, first : Integer, size : Integer) : List<Object -> Alumno>;
+			public readCantidadPorGrupo::ReadFilter (id : OID -> GrupoTrabajo) : Long 
+			{ filter = "select alu FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id" };
 			
 			public relationer_controles::Relationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
 			public relationer_entregas::Relationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
@@ -733,6 +736,9 @@ ConceptualModel moodle
 			public readOID::ReadOID (p_oid : OID -> SistemaEvaluacion) : Object -> SistemaEvaluacion;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM SistemaEvaluacionEN" };
+			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
+			{ filter = "select count(*) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id " };
+			public readAllPorAsignaturaAnyo::Custom (id : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->SistemaEvaluacion>;
 			
 			public relationer_asignatura::Relationer->asignaturaanyo_sistemaevaluacion.asignatura (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
 			public relationer_controles::Relationer->sistemaevaluacion_control.controles (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_control : List<OID -> Control>) : Void;

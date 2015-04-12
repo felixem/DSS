@@ -316,7 +316,7 @@ public long ReadCantidadPorGrupo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AlumnoEN self where select count(*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id ";
+                //String sql = @"FROM AlumnoEN self where select alu FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCantidadPorGrupoHQL");
                 query.SetParameter ("id", id);

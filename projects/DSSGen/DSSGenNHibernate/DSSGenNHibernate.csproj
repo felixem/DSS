@@ -95,138 +95,333 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliar\Encrypter.cs" />
+    <Compile Include="CAD\BasicCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AdministradorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CAD\Moodle\AlumnoCAD_ReadAllPorGrupo.cs" />
+    <Compile Include="CAD\Moodle\AnyoAcademicoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAnyo.cs" />
+    <Compile Include="CAD\Moodle\AsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\BolsaPreguntasCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ControlAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\CursoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EntregaAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EntregaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EvaluacionAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteAsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAdministradorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CAD\Moodle\IAlumnoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IAnyoAcademicoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IAsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IBolsaPreguntasCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IControlAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ICursoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEntregaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEvaluacionAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteAsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IMaterialCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IMensajeCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\INotaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IPreguntaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IPreguntaControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IProfesorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IRespuestaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ISistemaEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ISistemaEvaluacionCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\ITutoriaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IUsuarioCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IUsuarioComunCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\MaterialCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\MensajeCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\NotaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\PreguntaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\PreguntaControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ProfesorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\RespuestaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\SistemaEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\SistemaEvaluacionCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\TutoriaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\UsuarioCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\UsuarioComunCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AdministradorCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AlumnoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorGrupo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AnyoAcademicoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\AsignaturaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\BolsaPreguntasCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ControlAlumnoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ControlCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\CursoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\EntregaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\EntregaCEN_Custom.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\EvaluacionAlumnoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\EvaluacionCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ExpedienteAnyoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ExpedienteAsignaturaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ExpedienteCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ExpedienteEvaluacionCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\GrupoTrabajoCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\MaterialCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\MensajeCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\NotaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\PreguntaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\PreguntaControlCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ProfesorCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\ProfesorCEN_ModifyNoPassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\RespuestaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\SistemaEvaluacionCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\SistemaEvaluacionCEN_ReadAllPorAsignaturaAnyo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\TutoriaCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\UsuarioCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\UsuarioCEN_ChangePassword.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\UsuarioCEN_Login.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CEN\Moodle\UsuarioComunCEN.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Utils\Util.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Exceptions\ModelException.cs" />
     <Compile Include="Exceptions\DataLayerException.cs" />
-    <Compile Include="CAD\BasicCAD.cs" />
     <Compile Include="EN\Moodle\UsuarioEN.cs" />
-    <Compile Include="CEN\Moodle\UsuarioCEN.cs" />
-    <Compile Include="CAD\Moodle\IUsuarioCAD.cs" />
-    <Compile Include="CAD\Moodle\UsuarioCAD.cs" />
-    <Compile Include="CEN\Moodle\UsuarioCEN_Login.cs" />
-    <Compile Include="CEN\Moodle\UsuarioCEN_ChangePassword.cs" />
     <Compile Include="EN\Moodle\AdministradorEN.cs" />
-    <Compile Include="CEN\Moodle\AdministradorCEN.cs" />
-    <Compile Include="CAD\Moodle\IAdministradorCAD.cs" />
-    <Compile Include="CAD\Moodle\AdministradorCAD.cs" />
     <Compile Include="EN\Moodle\UsuarioComunEN.cs" />
-    <Compile Include="CEN\Moodle\UsuarioComunCEN.cs" />
-    <Compile Include="CAD\Moodle\IUsuarioComunCAD.cs" />
-    <Compile Include="CAD\Moodle\UsuarioComunCAD.cs" />
     <Compile Include="EN\Moodle\ProfesorEN.cs" />
-    <Compile Include="CEN\Moodle\ProfesorCEN.cs" />
-    <Compile Include="CAD\Moodle\IProfesorCAD.cs" />
-    <Compile Include="CAD\Moodle\ProfesorCAD.cs" />
-    <Compile Include="CEN\Moodle\ProfesorCEN_ModifyNoPassword.cs" />
     <Compile Include="EN\Moodle\AlumnoEN.cs" />
-    <Compile Include="CEN\Moodle\AlumnoCEN.cs" />
-    <Compile Include="CAD\Moodle\IAlumnoCAD.cs" />
-    <Compile Include="CAD\Moodle\AlumnoCAD.cs" />
-    <Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs" />
-    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorGrupo.cs" />
     <Compile Include="EN\Moodle\TutoriaEN.cs" />
-    <Compile Include="CEN\Moodle\TutoriaCEN.cs" />
-    <Compile Include="CAD\Moodle\ITutoriaCAD.cs" />
-    <Compile Include="CAD\Moodle\TutoriaCAD.cs" />
     <Compile Include="EN\Moodle\MensajeEN.cs" />
-    <Compile Include="CEN\Moodle\MensajeCEN.cs" />
-    <Compile Include="CAD\Moodle\IMensajeCAD.cs" />
-    <Compile Include="CAD\Moodle\MensajeCAD.cs" />
     <Compile Include="EN\Moodle\AsignaturaEN.cs" />
-    <Compile Include="CEN\Moodle\AsignaturaCEN.cs" />
-    <Compile Include="CAD\Moodle\IAsignaturaCAD.cs" />
-    <Compile Include="CAD\Moodle\AsignaturaCAD.cs" />
     <Compile Include="EN\Moodle\CursoEN.cs" />
-    <Compile Include="CEN\Moodle\CursoCEN.cs" />
-    <Compile Include="CAD\Moodle\ICursoCAD.cs" />
-    <Compile Include="CAD\Moodle\CursoCAD.cs" />
     <Compile Include="EN\Moodle\NotaEN.cs" />
-    <Compile Include="CEN\Moodle\NotaCEN.cs" />
-    <Compile Include="CAD\Moodle\INotaCAD.cs" />
-    <Compile Include="CAD\Moodle\NotaCAD.cs" />
     <Compile Include="EN\Moodle\ExpedienteEN.cs" />
-    <Compile Include="CEN\Moodle\ExpedienteCEN.cs" />
-    <Compile Include="CAD\Moodle\IExpedienteCAD.cs" />
-    <Compile Include="CAD\Moodle\ExpedienteCAD.cs" />
     <Compile Include="EN\Moodle\ExpedienteAnyoEN.cs" />
-    <Compile Include="CEN\Moodle\ExpedienteAnyoCEN.cs" />
-    <Compile Include="CAD\Moodle\IExpedienteAnyoCAD.cs" />
-    <Compile Include="CAD\Moodle\ExpedienteAnyoCAD.cs" />
     <Compile Include="EN\Moodle\ExpedienteAsignaturaEN.cs" />
-    <Compile Include="CEN\Moodle\ExpedienteAsignaturaCEN.cs" />
-    <Compile Include="CAD\Moodle\IExpedienteAsignaturaCAD.cs" />
-    <Compile Include="CAD\Moodle\ExpedienteAsignaturaCAD.cs" />
     <Compile Include="EN\Moodle\ExpedienteEvaluacionEN.cs" />
-    <Compile Include="CEN\Moodle\ExpedienteEvaluacionCEN.cs" />
-    <Compile Include="CAD\Moodle\IExpedienteEvaluacionCAD.cs" />
-    <Compile Include="CAD\Moodle\ExpedienteEvaluacionCAD.cs" />
     <Compile Include="EN\Moodle\GrupoTrabajoEN.cs" />
-    <Compile Include="CEN\Moodle\GrupoTrabajoCEN.cs" />
-    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD.cs" />
-    <Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs" />
     <Compile Include="EN\Moodle\MaterialEN.cs" />
-    <Compile Include="CEN\Moodle\MaterialCEN.cs" />
-    <Compile Include="CAD\Moodle\IMaterialCAD.cs" />
-    <Compile Include="CAD\Moodle\MaterialCAD.cs" />
     <Compile Include="EN\Moodle\AnyoAcademicoEN.cs" />
-    <Compile Include="CEN\Moodle\AnyoAcademicoCEN.cs" />
-    <Compile Include="CAD\Moodle\IAnyoAcademicoCAD.cs" />
-    <Compile Include="CAD\Moodle\AnyoAcademicoCAD.cs" />
     <Compile Include="EN\Moodle\AsignaturaAnyoEN.cs" />
-    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN.cs" />
-    <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD.cs" />
-    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD.cs" />
-    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyo.cs" />
     <Compile Include="EN\Moodle\EvaluacionEN.cs" />
-    <Compile Include="CEN\Moodle\EvaluacionCEN.cs" />
-    <Compile Include="CAD\Moodle\IEvaluacionCAD.cs" />
-    <Compile Include="CAD\Moodle\EvaluacionCAD.cs" />
     <Compile Include="EN\Moodle\EntregaEN.cs" />
-    <Compile Include="CEN\Moodle\EntregaCEN.cs" />
-    <Compile Include="CAD\Moodle\IEntregaCAD.cs" />
-    <Compile Include="CAD\Moodle\EntregaCAD.cs" />
-    <Compile Include="CEN\Moodle\EntregaCEN_Custom.cs" />
     <Compile Include="EN\Moodle\EntregaAlumnoEN.cs" />
-    <Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
-    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD.cs" />
-    <Compile Include="CAD\Moodle\EntregaAlumnoCAD.cs" />
     <Compile Include="EN\Moodle\SistemaEvaluacionEN.cs" />
-    <Compile Include="CEN\Moodle\SistemaEvaluacionCEN.cs" />
-    <Compile Include="CAD\Moodle\ISistemaEvaluacionCAD.cs" />
-    <Compile Include="CAD\Moodle\SistemaEvaluacionCAD.cs" />
     <Compile Include="EN\Moodle\EvaluacionAlumnoEN.cs" />
-    <Compile Include="CEN\Moodle\EvaluacionAlumnoCEN.cs" />
-    <Compile Include="CAD\Moodle\IEvaluacionAlumnoCAD.cs" />
-    <Compile Include="CAD\Moodle\EvaluacionAlumnoCAD.cs" />
     <Compile Include="EN\Moodle\ControlEN.cs" />
-    <Compile Include="CEN\Moodle\ControlCEN.cs" />
-    <Compile Include="CAD\Moodle\IControlCAD.cs" />
-    <Compile Include="CAD\Moodle\ControlCAD.cs" />
     <Compile Include="EN\Moodle\ControlAlumnoEN.cs" />
-    <Compile Include="CEN\Moodle\ControlAlumnoCEN.cs" />
-    <Compile Include="CAD\Moodle\IControlAlumnoCAD.cs" />
-    <Compile Include="CAD\Moodle\ControlAlumnoCAD.cs" />
     <Compile Include="EN\Moodle\BolsaPreguntasEN.cs" />
-    <Compile Include="CEN\Moodle\BolsaPreguntasCEN.cs" />
-    <Compile Include="CAD\Moodle\IBolsaPreguntasCAD.cs" />
-    <Compile Include="CAD\Moodle\BolsaPreguntasCAD.cs" />
     <Compile Include="EN\Moodle\PreguntaEN.cs" />
-    <Compile Include="CEN\Moodle\PreguntaCEN.cs" />
-    <Compile Include="CAD\Moodle\IPreguntaCAD.cs" />
-    <Compile Include="CAD\Moodle\PreguntaCAD.cs" />
     <Compile Include="EN\Moodle\PreguntaControlEN.cs" />
-    <Compile Include="CEN\Moodle\PreguntaControlCEN.cs" />
-    <Compile Include="CAD\Moodle\IPreguntaControlCAD.cs" />
-    <Compile Include="CAD\Moodle\PreguntaControlCAD.cs" />
     <Compile Include="EN\Moodle\RespuestaEN.cs" />
-    <Compile Include="CEN\Moodle\RespuestaCEN.cs" />
-    <Compile Include="CAD\Moodle\IRespuestaCAD.cs" />
-    <Compile Include="CAD\Moodle\RespuestaCAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
