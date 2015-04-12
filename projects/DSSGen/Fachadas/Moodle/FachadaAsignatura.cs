@@ -7,6 +7,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace Fachadas.Moodle
 {
@@ -56,10 +57,12 @@ namespace Fachadas.Moodle
             {
                 AsignaturaBinding binding = new AsignaturaBinding();
                 DameAsignaturaPorId consulta = new DameAsignaturaPorId(id);
-
-                binding.VincularDameAsignatura(consulta, TextBox_Curso, TextBox_IdAsig,
+                VinculadorAsignaturaCompleto vinculador =
+                    new VinculadorAsignaturaCompleto(TextBox_Curso, TextBox_IdAsig,
                     TextBox_CodAsig, TextBox_NomAsig, TextBox_DescAsig,
                     CheckBox_OptativaAsig, CheckBox_VigenteAsig);
+
+                binding.VincularDameAsignatura(consulta, vinculador);
             }
             catch (Exception)
             {

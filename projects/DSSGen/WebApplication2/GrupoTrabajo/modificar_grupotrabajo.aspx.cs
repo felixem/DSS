@@ -61,7 +61,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
         private void CargarDatos()
         {
             //Recuperar los datos del grupo de trabajo
-            if (!fachadaGrupo.VincularGrupoTrabajoPorId(id, TextBox_CodGrupo,
+            if (!fachadaGrupo.VincularGrupoTrabajoPorIdCompleto(id, TextBox_CodGrupo,
                     TextBox_NomGrupo, TextBox_DescGrupo, TextBox_Capacidad,
                     TextBox_Anyo, TextBox_Asignatura))
             {

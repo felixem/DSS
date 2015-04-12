@@ -8,6 +8,7 @@ using ComponentesProceso.Moodle.Commands;
 using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace BindingComponents.Moodle
 {
@@ -80,9 +81,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre una asignatura
-        public void VincularDameAsignatura(IDameAsignatura consulta, TextBox TextBox_Curso, TextBox TextBox_IdAsig,
-            TextBox TextBox_CodAsig, TextBox TextBox_NomAsig, TextBox TextBox_DescAsig,
-            CheckBox CheckBox_OptativaAsig, CheckBox CheckBox_VigenteAsig)
+        public void VincularDameAsignatura(IDameAsignatura consulta, IVinculadorAsignatura linker)
         {
             AsignaturaEN asignatura = null;
 
@@ -108,13 +107,7 @@ namespace BindingComponents.Moodle
                     throw new Exception("Asignatura no encontrada");
 
                 //Vincular con los textboxes
-                TextBox_Curso.Text = asignatura.Curso.Nombre;
-                TextBox_IdAsig.Text = asignatura.Id.ToString();
-                TextBox_CodAsig.Text = asignatura.Cod_asignatura;
-                TextBox_NomAsig.Text = asignatura.Nombre;
-                TextBox_DescAsig.Text = asignatura.Descripcion;
-                CheckBox_OptativaAsig.Checked = asignatura.Optativa;
-                CheckBox_VigenteAsig.Checked = asignatura.Vigente;
+                linker.Vincular(asignatura);
 
                 //Cerrar sesión
                 SessionClose();

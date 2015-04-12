@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace Fachadas.Moodle
 {
@@ -80,10 +81,11 @@ namespace Fachadas.Moodle
             {
                 ProfesorBinding binding = new ProfesorBinding();
                 DameProfesorPorId consulta = new DameProfesorPorId(id);
-
-                binding.VincularDameProfesor(consulta, TextBox_NomProf,
+                VinculadorProfesorCompleto linker = new VinculadorProfesorCompleto(TextBox_NomProf,
                     TextBox_ApellProf, TextBox_NaciProf, TextBox_DNIProf,
                     TextBox_EmailProf, TextBox_CodProf);
+
+                binding.VincularDameProfesor(consulta, linker);
             }
             catch (Exception)
             {

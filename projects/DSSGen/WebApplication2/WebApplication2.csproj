@@ -59,6 +59,7 @@
     <Content Include="Asignatura\asignaturas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\modificar_grupotrabajo.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo.aspx" />
@@ -202,6 +203,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx.cs">
+      <DependentUpon>alumnos_grupo_trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx.designer.cs">
+      <DependentUpon>alumnos_grupo_trabajo.aspx</DependentUpon>
     </Compile>
     <Compile Include="GrupoTrabajo\modificar_grupotrabajo.aspx.cs">
       <DependentUpon>modificar_grupotrabajo.aspx</DependentUpon>

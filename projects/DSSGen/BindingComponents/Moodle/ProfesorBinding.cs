@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ComponentesProceso.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace BindingComponents.Moodle
 {
@@ -44,9 +45,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre un profesor
-        public void VincularDameProfesor(IDameProfesor consulta, TextBox TextBox_NomProf,
-            TextBox TextBox_ApellProf, TextBox TextBox_NaciProf, TextBox TextBox_DNIProf,
-            TextBox TextBox_EmailProf, TextBox TextBox_CodProf)
+        public void VincularDameProfesor(IDameProfesor consulta, IVinculadorProfesor linker)
         {
             ProfesorEN profesor = null;
 
@@ -72,12 +71,7 @@ namespace BindingComponents.Moodle
                     throw new Exception("Profesor no encontrado");
 
                 //Vincular con los textboxes
-                TextBox_NomProf.Text = profesor.Nombre;
-                TextBox_ApellProf.Text = profesor.Apellidos;
-                TextBox_NaciProf.Text = profesor.Fecha_nacimiento.ToString();
-                TextBox_DNIProf.Text = profesor.Dni;
-                TextBox_EmailProf.Text = profesor.Email;
-                TextBox_CodProf.Text = profesor.Cod_profesor.ToString();
+                linker.Vincular(profesor);
 
                 //Cerrar sesión
                 SessionClose();

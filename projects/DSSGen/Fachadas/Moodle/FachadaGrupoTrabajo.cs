@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Web.UI.WebControls;
 using BindingComponents.Moodle;
+using BindingComponents.Moodle.Commands;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
@@ -39,7 +40,7 @@ namespace Fachadas.Moodle
         }
 
         //Método para vincular un grupo de trabajo a partir de su id a textboxes
-        public bool VincularGrupoTrabajoPorId(int id, TextBox TextBox_CodGrupo,
+        public bool VincularGrupoTrabajoPorIdCompleto(int id, TextBox TextBox_CodGrupo,
             TextBox TextBox_NomGrupo, TextBox TextBox_DescGrupo, TextBox TextBox_Capacidad,
             TextBox TextBox_Anyo, TextBox TextBox_Asignatura)
         {
@@ -47,10 +48,31 @@ namespace Fachadas.Moodle
             {
                 GrupoTrabajoBinding binding = new GrupoTrabajoBinding();
                 DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
-
-                binding.VincularDameGrupoTrabajo(consulta, TextBox_CodGrupo,
+                IVinculadorGrupoTrabajo vinculador = new VinculadorGrupoTrabajoCompleto(TextBox_CodGrupo,
                     TextBox_NomGrupo, TextBox_DescGrupo, TextBox_Capacidad,
                     TextBox_Anyo, TextBox_Asignatura);
+
+                binding.VincularDameGrupoTrabajo(consulta, vinculador);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Método para vincular un grupo de trabajo a partir de su id a textboxes
+        public bool VincularGrupoTrabajoPorIdLigero(int id, TextBox TextBox_CodGrupo,
+            TextBox TextBox_NomGrupo, TextBox TextBox_Asignatura)
+        {
+            try
+            {
+                GrupoTrabajoBinding binding = new GrupoTrabajoBinding();
+                DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
+                IVinculadorGrupoTrabajo vinculador = new VinculadorGrupoTrabajoParcial(TextBox_CodGrupo,
+                    TextBox_NomGrupo, TextBox_Asignatura);
+
+                binding.VincularDameGrupoTrabajo(consulta, vinculador);
             }
             catch (Exception)
             {

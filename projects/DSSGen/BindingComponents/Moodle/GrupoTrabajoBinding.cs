@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace BindingComponents.Moodle
 {
@@ -44,9 +45,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre un grupo de trabajo
-        public void VincularDameGrupoTrabajo(IDameGrupoTrabajo consulta, TextBox TextBox_CodGrupo,
-            TextBox TextBox_NomGrupo, TextBox TextBox_DescGrupo, TextBox TextBox_Capacidad,
-            TextBox TextBox_Anyo, TextBox TextBox_Asignatura)
+        public void VincularDameGrupoTrabajo(IDameGrupoTrabajo consulta, IVinculadorGrupoTrabajo linker)
         {
             GrupoTrabajoEN grupo = null;
 
@@ -71,13 +70,8 @@ namespace BindingComponents.Moodle
                 if (grupo == null)
                     throw new Exception("Grupo de trabajo no encontrado");
 
-                //Vincular con los textboxes
-                TextBox_CodGrupo.Text = grupo.Cod_grupo;
-                TextBox_NomGrupo.Text = grupo.Nombre;
-                TextBox_DescGrupo.Text = grupo.Descripcion;
-                TextBox_Capacidad.Text = grupo.Capacidad.ToString();
-                TextBox_Anyo.Text = grupo.Asignatura.Anyo.Anyo.ToString();
-                TextBox_Asignatura.Text = grupo.Asignatura.Asignatura.Nombre.ToString() + "(" + TextBox_Anyo.Text + ")";
+                //Vincular con la vista
+                linker.Vincular(grupo);
 
                 //Cerrar sesión
                 SessionClose();
