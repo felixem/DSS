@@ -19,7 +19,9 @@ namespace Fachadas.Moodle
         {
             GrupoTrabajoBinding grupo = new GrupoTrabajoBinding();
             DameTodosGrupoTrabajo consulta = new DameTodosGrupoTrabajo();
-            grupo.VincularDameTodos(consulta, grid, first, size, out numElements);
+            BinderListaGrupoTrabajoGrid binder = new BinderListaGrupoTrabajoGrid(grid);
+
+            grupo.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
         //Método para crear un grupo de trabajo en la BD

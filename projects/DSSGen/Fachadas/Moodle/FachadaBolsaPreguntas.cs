@@ -9,6 +9,7 @@ using ComponentesProceso.Moodle.Commands;
 using System.Web.UI.WebControls;
 using WebUtilities;
 using ComponentesProceso.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace Fachadas.Moodle
 {
@@ -70,7 +71,9 @@ namespace Fachadas.Moodle
             //Obtener bolsa de preguntas y enlazar sus datos con el gridview
             BindingComponents.Moodle.BolsaPreguntasBinding bolsaBind = new BindingComponents.Moodle.BolsaPreguntasBinding();
             IDameTodosBolsaPreguntas consulta = new DameTodosBolsaPreguntas();
-            bolsaBind.VincularDameTodos(consulta,grid,first, size, out numBases);
+            BinderListaBolsaPreguntasGrid binder = new BinderListaBolsaPreguntasGrid(grid);
+
+            bolsaBind.VincularDameTodos(consulta,binder,first, size, out numBases);
         }
 
         //Borrar una bolsa de preguntas

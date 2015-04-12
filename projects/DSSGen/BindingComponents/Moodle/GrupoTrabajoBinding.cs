@@ -15,7 +15,7 @@ namespace BindingComponents.Moodle
     public class GrupoTrabajoBinding : BasicBinding
     {
         //Vincular a un GridView el resultado de la consulta
-        public void VincularDameTodos(IDameTodosGrupoTrabajo consulta, GridView grid,
+        public void VincularDameTodos(IDameTodosGrupoTrabajo consulta, IBinderListaGrupoTrabajo binder,
             int first, int size, out long total)
         {
             System.Collections.Generic.IList<GrupoTrabajoEN> lista = null;
@@ -27,6 +27,9 @@ namespace BindingComponents.Moodle
                 //Ejecutar la consulta recibida sin paginar
                 lista = grupo.DameTodosTotal(consulta, first, size, out total);
                 SessionCommit();
+
+                //Vincular
+                binder.Vincular(lista);
             }
             catch (Exception ex)
             {
@@ -35,10 +38,6 @@ namespace BindingComponents.Moodle
             }
             finally
             {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
-
                 //Cerrar sesión
                 SessionClose();
             }

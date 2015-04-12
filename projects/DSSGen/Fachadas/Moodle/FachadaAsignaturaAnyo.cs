@@ -7,6 +7,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace Fachadas.Moodle
 {
@@ -18,8 +19,9 @@ namespace Fachadas.Moodle
         {
             AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
             DameTodosAsignaturaAnyo consulta = new DameTodosAsignaturaAnyo();
+            BinderListaAsignaturaAnyoDropDownList binder = new BinderListaAsignaturaAnyoDropDownList(drop);
             long total;
-            binding.VincularDameTodos(consulta, drop, 0, -1, out total);
+            binding.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
         //Vincular a un DropDownList todas las asignaturas-anyo que se corresponden con un año determinado
@@ -27,8 +29,9 @@ namespace Fachadas.Moodle
         {
             AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
             DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
+            BinderListaAsignaturaAnyoDropDownList binder = new BinderListaAsignaturaAnyoDropDownList(drop);
             long total;
-            binding.VincularDameTodos(consulta, drop, 0, -1, out total);
+            binding.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
         //Vincular a un GridView todas las asignaturas-anyo
@@ -36,7 +39,8 @@ namespace Fachadas.Moodle
         {
             AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
             DameTodosAsignaturaAnyo consulta = new DameTodosAsignaturaAnyo();
-            binding.VincularDameTodos(consulta, grid, first, size, out numElements);
+            BinderListaAsignaturaAnyoGrid binder = new BinderListaAsignaturaAnyoGrid(grid);
+            binding.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
         //Método para crear una asignatura-anyo en la BD

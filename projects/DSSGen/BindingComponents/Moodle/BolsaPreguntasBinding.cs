@@ -11,6 +11,7 @@ using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.CAD.Moodle;
 using WebUtilities;
 using NHibernate;
+using BindingComponents.Moodle.Commands;
 
 
 namespace BindingComponents.Moodle
@@ -22,7 +23,8 @@ namespace BindingComponents.Moodle
         public BolsaPreguntasBinding(ISession sesion) : base(sesion) { }
 
         //Vincular GridView al resultado de la consulta especificada devolviendo la cantidad de bolsas existentes
-        public void VincularDameTodos(IDameTodosBolsaPreguntas consulta, GridView grid, int first, int size, out long numBases)
+        public void VincularDameTodos(IDameTodosBolsaPreguntas consulta, IBinderListaBolsaPreguntas binder , 
+            int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<BolsaPreguntasEN> lista = null;
 
@@ -33,6 +35,9 @@ namespace BindingComponents.Moodle
                 //Ejecutar la consulta recibida 
                 lista = bolsa.DameTodosTotal(consulta, first, size, out numBases);
                 SessionCommit();
+
+                //Vincular
+                binder.Vincular(lista);
             }
             catch (Exception ex)
             {
@@ -41,9 +46,6 @@ namespace BindingComponents.Moodle
             }
             finally
             {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
                 //Cerrar sesión
                 SessionClose();
             }

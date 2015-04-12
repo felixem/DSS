@@ -19,7 +19,7 @@ namespace BindingComponents.Moodle
         public AsignaturaBinding(ISession sesion) : base(sesion) { }
 
         //Vincular a un DropDownList el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAsignatura consulta, DropDownList drop,
+        public void VincularDameTodos(IDameTodosAsignatura consulta, IBinderListaAsignatura binder,
             int first, int size, out long total)
         {
             System.Collections.Generic.IList<AsignaturaEN> lista = null;
@@ -31,6 +31,9 @@ namespace BindingComponents.Moodle
                 //Ejecutar la consulta recibida
                 lista = asig.DameTodosTotal(consulta, first, size, out total);
                 SessionCommit();
+
+                //Vincular
+                binder.Vincular(lista);
             }
             catch (Exception ex)
             {
@@ -39,42 +42,6 @@ namespace BindingComponents.Moodle
             }
             finally
             {
-                //Vincular con el dropdownlist
-                foreach (AsignaturaEN x in lista)
-                {
-                    drop.Items.Add(new ListItem(x.Nombre, x.Id.ToString()));
-                }
-
-                //Cerrar sesión
-                SessionClose();
-            }
-        }
-
-        //Vincular a un GridView el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAsignatura consulta, GridView grid,
-            int first, int size, out long total)
-        {
-            System.Collections.Generic.IList<AsignaturaEN> lista = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                AsignaturaCP asig = new AsignaturaCP(session);
-                //Ejecutar la consulta recibida sin paginar
-                lista = asig.DameTodosTotal(consulta, first, size, out total);
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
-
                 //Cerrar sesión
                 SessionClose();
             }

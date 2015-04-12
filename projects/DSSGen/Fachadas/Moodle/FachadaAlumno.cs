@@ -70,7 +70,9 @@ namespace Fachadas.Moodle
             //Obtener alumnos y enlazar sus datos con el gridview
             AlumnoBinding alumnoBind = new AlumnoBinding();
             IDameTodosAlumno consulta = new DameTodosAlumno();
-            alumnoBind.VincularDameTodos(consulta, grid, first, size, out numAlumnos);
+            BinderListaAlumnoGrid binder = new BinderListaAlumnoGrid(grid);
+
+            alumnoBind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
         }
 
         //Método para vincular un alumno a partir de su id a textboxes

@@ -69,7 +69,8 @@ namespace Fachadas.Moodle
             //Obtener profesores y enlazar sus datos con el gridview
             ProfesorBinding profesorBind = new ProfesorBinding();
             IDameTodosProfesor consulta = new DameTodosProfesor();
-            profesorBind.VincularDameTodos(consulta, grid, first, size, out numProfesores);
+            BinderListaProfesorGrid binder = new BinderListaProfesorGrid(grid);
+            profesorBind.VincularDameTodos(consulta, binder, first, size, out numProfesores);
         }
 
         //Método para vincular un profesor a partir de su id a textboxes

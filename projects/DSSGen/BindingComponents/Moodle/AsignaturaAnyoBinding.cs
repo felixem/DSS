@@ -8,6 +8,7 @@ using ComponentesProceso.Moodle.Commands;
 using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace BindingComponents.Moodle
 {
@@ -17,8 +18,8 @@ namespace BindingComponents.Moodle
         public AsignaturaAnyoBinding() : base() { }
         public AsignaturaAnyoBinding(ISession sesion) : base(sesion) { }
 
-        //Vincular a un DropDownList el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAsignaturaAnyo consulta, DropDownList drop,
+        //Vincular a una estructura de vista múltiple el resultado de la consulta
+        public void VincularDameTodos(IDameTodosAsignaturaAnyo consulta, IBinderListaAsignaturaAnyo binder,
             int first, int size, out long total)
         {
             System.Collections.Generic.IList<AsignaturaAnyoEN> lista = null;
@@ -30,6 +31,10 @@ namespace BindingComponents.Moodle
                 //Ejecutar la consulta recibida
                 lista = anyo.DameTodosTotal(consulta, first, size, out total);
                 SessionCommit();
+                
+                //Vincular
+                binder.Vincular(lista);
+
             }
             catch (Exception ex)
             {
@@ -38,43 +43,6 @@ namespace BindingComponents.Moodle
             }
             finally
             {
-                //Vincular con el dropdownlist
-                foreach (AsignaturaAnyoEN x in lista)
-                {
-                    drop.Items.Add(new ListItem(x.Asignatura.Nombre.ToString()+"("+x.Anyo.Anyo.ToString()+")",
-                    x.Id.ToString()));
-                }
-
-                //Cerrar sesión
-                SessionClose();
-            }
-        }
-
-        //Vincular a un GridView el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAsignaturaAnyo consulta, GridView grid,
-            int first, int size, out long total)
-        {
-            System.Collections.Generic.IList<AsignaturaAnyoEN> lista = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                AsignaturaAnyoCP anyo = new AsignaturaAnyoCP(session);
-                //Ejecutar la consulta recibida sin paginar
-                lista = anyo.DameTodosTotal(consulta, first, size, out total);
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
-
                 //Cerrar sesión
                 SessionClose();
             }

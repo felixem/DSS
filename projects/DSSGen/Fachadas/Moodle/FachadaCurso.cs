@@ -8,6 +8,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace Fachadas.Moodle
 {
@@ -19,8 +20,9 @@ namespace Fachadas.Moodle
         {
             CursoBinding curso = new CursoBinding();
             DameTodosCurso consulta = new DameTodosCurso();
+            BinderListaCursoDropDownList binder = new BinderListaCursoDropDownList(drop);
             long total;
-            curso.VincularDameTodos(consulta, drop, 0, -1, out total);
+            curso.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
         //Vincular a un GridView todas los cursos
@@ -28,7 +30,8 @@ namespace Fachadas.Moodle
         {
             CursoBinding curso = new CursoBinding();
             DameTodosCurso consulta = new DameTodosCurso();
-            curso.VincularDameTodos(consulta, grid, first, size, out numElements);
+            BinderListaCursoGrid binder = new BinderListaCursoGrid(grid);
+            curso.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
         //Método para crear un curso en la BD

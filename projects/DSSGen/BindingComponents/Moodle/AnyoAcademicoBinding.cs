@@ -8,6 +8,7 @@ using ComponentesProceso.Moodle.Commands;
 using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace BindingComponents.Moodle
 {
@@ -17,9 +18,8 @@ namespace BindingComponents.Moodle
         public AnyoAcademicoBinding() : base() { }
         public AnyoAcademicoBinding(ISession sesion) : base(sesion) { }
 
-
-        //Vincular a un DropDownList el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAnyoAcademico consulta, DropDownList drop,
+        //Vincular a una vista de conjunto el contenido de la consulta
+        public void VincularDameTodos(IDameTodosAnyoAcademico consulta, IBinderListaAnyoAcademico binder,
             int first, int size, out long total)
         {
             System.Collections.Generic.IList<AnyoAcademicoEN> lista = null;
@@ -31,6 +31,9 @@ namespace BindingComponents.Moodle
                 //Ejecutar la consulta recibida
                 lista = anyo.DameTodosTotal(consulta, first, size, out total);
                 SessionCommit();
+
+                //Vincular
+                binder.Vincular(lista);
             }
             catch (Exception ex)
             {
@@ -39,42 +42,6 @@ namespace BindingComponents.Moodle
             }
             finally
             {
-                //Vincular con el dropdownlist
-                foreach (AnyoAcademicoEN x in lista)
-                {
-                    drop.Items.Add(new ListItem(x.Anyo.ToString(), x.Id.ToString()));
-                }
-
-                //Cerrar sesión
-                SessionClose();
-            }
-        }
-
-        //Vincular a un GridView el resultado de la consulta
-        public void VincularDameTodos(IDameTodosAnyoAcademico consulta, GridView grid,
-            int first, int size, out long total)
-        {
-            System.Collections.Generic.IList<AnyoAcademicoEN> lista = null;
-
-            try
-            {
-                SessionInitializeTransaction();
-                AnyoAcademicoCP anyo = new AnyoAcademicoCP(session);
-                //Ejecutar la consulta recibida sin paginar
-                lista = anyo.DameTodosTotal(consulta, first, size, out total);
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
-
                 //Cerrar sesión
                 SessionClose();
             }

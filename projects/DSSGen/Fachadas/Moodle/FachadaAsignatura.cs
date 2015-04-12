@@ -19,8 +19,9 @@ namespace Fachadas.Moodle
         {
             AsignaturaBinding asig = new AsignaturaBinding();
             DameTodosAsignatura consulta = new DameTodosAsignatura();
+            BinderListaAsignaturaDropDownList binder = new BinderListaAsignaturaDropDownList(drop);
             long total;
-            asig.VincularDameTodos(consulta, drop, 0, -1, out total);
+            asig.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
         //Vincular a un GridView todas las asignaturas
@@ -28,7 +29,8 @@ namespace Fachadas.Moodle
         {
             AsignaturaBinding asig = new AsignaturaBinding();
             DameTodosAsignatura consulta = new DameTodosAsignatura();
-            asig.VincularDameTodos(consulta, grid, first, size, out numElements);
+            BinderListaAsignaturaGrid binder = new BinderListaAsignaturaGrid(grid);
+            asig.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
         //Método para crear una asignatura en la BD

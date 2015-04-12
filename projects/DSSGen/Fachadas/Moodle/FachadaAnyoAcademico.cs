@@ -8,6 +8,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using BindingComponents.Moodle.Commands;
 
 namespace Fachadas.Moodle
 {
@@ -19,8 +20,9 @@ namespace Fachadas.Moodle
         {
             AnyoAcademicoBinding anyo = new AnyoAcademicoBinding();
             DameTodosAnyoAcademico consulta = new DameTodosAnyoAcademico();
+            BinderListaAnyoAcademicoDropDownList binder = new BinderListaAnyoAcademicoDropDownList(drop);
             long total;
-            anyo.VincularDameTodos(consulta, drop, 0, -1, out total);
+            anyo.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
         //Vincular a un GridView todos los años académicos
@@ -28,7 +30,8 @@ namespace Fachadas.Moodle
         {
             AnyoAcademicoBinding anyo = new AnyoAcademicoBinding();
             DameTodosAnyoAcademico consulta = new DameTodosAnyoAcademico();
-            anyo.VincularDameTodos(consulta, grid, first, size, out numElements);
+            BinderListaAnyoAcademicoGrid binder = new BinderListaAnyoAcademicoGrid(grid);
+            anyo.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
         //Método para crear un año académico en la BD

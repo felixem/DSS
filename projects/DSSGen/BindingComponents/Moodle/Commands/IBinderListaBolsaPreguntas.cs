@@ -7,10 +7,10 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace BindingComponents.Moodle.Commands
 {
-    //Interfaz para vincular controles con el contenido de una lista de cursos
-    public interface IBinderListaCurso
+    //Interfaz para vincular controles con el contenido de una lista de bolsas de preguntas
+    public interface IBinderListaBolsaPreguntas
     {
         //Realizar vinculación
-        void Vincular(IList<CursoEN> curso);
+        void Vincular(IList<BolsaPreguntasEN> bolsa);
     }
 }

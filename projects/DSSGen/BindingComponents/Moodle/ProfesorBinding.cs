@@ -17,7 +17,8 @@ namespace BindingComponents.Moodle
         public ProfesorBinding(ISession sesion) : base(sesion) { }
 
         //Vincular GridView al resultado de la consulta especificada devolviendo los profesores existentes
-        public void VincularDameTodos(IDameTodosProfesor consulta, GridView grid, int first, int size, out long numBases)
+        public void VincularDameTodos(IDameTodosProfesor consulta, IBinderListaProfesor binder, 
+            int first, int size, out long numBases)
         {
             System.Collections.Generic.IList<ProfesorEN> lista = null;
 
@@ -28,6 +29,10 @@ namespace BindingComponents.Moodle
                 //Ejecutar la consulta recibida 
                 lista = Profesor.DameTodosTotal(consulta, first, size, out numBases);
                 SessionCommit();
+
+                //Vincular
+                binder.Vincular(lista);
+
             }
             catch (Exception ex)
             {
@@ -36,9 +41,6 @@ namespace BindingComponents.Moodle
             }
             finally
             {
-                //Vincular con el grid view
-                grid.DataSource = lista;
-                grid.DataBind();
                 //Cerrar sesión
                 SessionClose();
             }
