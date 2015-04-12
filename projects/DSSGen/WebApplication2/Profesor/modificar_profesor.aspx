@@ -18,7 +18,7 @@
         Rellene los siguientes campos</p>
     <div class="row_modificar_alumno">
     <asp:Label ID="LabelCod_Prof" runat="server" Text="Código Profesor:" CssClass="posicion_izquierda"></asp:Label>
-    <asp:TextBox ID="TextBox_CodProf" runat="server" ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+    <asp:TextBox ID="TextBox_CodProf" runat="server" ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
         ControlToValidate="TextBox_CodProf" Display="Dynamic" 
@@ -60,7 +60,7 @@
     <div class="row_modificar_alumno">
         <asp:Label ID="Label_EmailProf" runat="server" Text="Correo:" 
         CssClass="posicion_izquierda"></asp:Label>
-        <asp:TextBox ID="TextBox_EmailProf" runat="server" ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+        <asp:TextBox ID="TextBox_EmailProf" runat="server" ReadOnly="True" CssClass="posicion_derecha_locked"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
         ControlToValidate="TextBox_EmailProf" Display="Dynamic" 
