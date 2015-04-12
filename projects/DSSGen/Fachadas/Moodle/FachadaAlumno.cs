@@ -83,7 +83,7 @@ namespace Fachadas.Moodle
             {
                 AlumnoBinding binding = new AlumnoBinding();
                 DameAlumnoPorId consulta = new DameAlumnoPorId(id);
-                VinculadorAlumnoCompleto linker = new VinculadorAlumnoCompleto(TextBox_NomAlu,
+                BinderAlumnoCompleto linker = new BinderAlumnoCompleto(TextBox_NomAlu,
                 TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
                 TextBox_CodAlu, CheckBox_Baneado, TextBox_CodExpediente);
 

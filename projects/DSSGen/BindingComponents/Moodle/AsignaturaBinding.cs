@@ -81,7 +81,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre una asignatura
-        public void VincularDameAsignatura(IDameAsignatura consulta, IVinculadorAsignatura linker)
+        public void VincularDameAsignatura(IDameAsignatura consulta, IBinderAsignatura linker)
         {
             AsignaturaEN asignatura = null;
 

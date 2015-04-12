@@ -7,10 +7,10 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace BindingComponents.Moodle.Commands
 {
-    //Interfaz para vincular controles con el contenido de un grupo de trabajo
-    public interface IVinculadorGrupoTrabajo
+    //Interfaz para vincular controles con el contenido de un año académico
+    public interface IBinderAnyoAcademico
     {
         //Realizar vinculación
-        void Vincular(GrupoTrabajoEN grupo);
+        void Vincular(AnyoAcademicoEN anyo);
     }
 }

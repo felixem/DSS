@@ -81,7 +81,7 @@ namespace Fachadas.Moodle
             {
                 ProfesorBinding binding = new ProfesorBinding();
                 DameProfesorPorId consulta = new DameProfesorPorId(id);
-                VinculadorProfesorCompleto linker = new VinculadorProfesorCompleto(TextBox_NomProf,
+                BinderProfesorCompleto linker = new BinderProfesorCompleto(TextBox_NomProf,
                     TextBox_ApellProf, TextBox_NaciProf, TextBox_DNIProf,
                     TextBox_EmailProf, TextBox_CodProf);
 

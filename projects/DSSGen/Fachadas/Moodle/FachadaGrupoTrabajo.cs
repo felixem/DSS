@@ -48,7 +48,7 @@ namespace Fachadas.Moodle
             {
                 GrupoTrabajoBinding binding = new GrupoTrabajoBinding();
                 DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
-                IVinculadorGrupoTrabajo vinculador = new VinculadorGrupoTrabajoCompleto(TextBox_CodGrupo,
+                IBinderGrupoTrabajo vinculador = new BinderGrupoTrabajoCompleto(TextBox_CodGrupo,
                     TextBox_NomGrupo, TextBox_DescGrupo, TextBox_Capacidad,
                     TextBox_Anyo, TextBox_Asignatura);
 
@@ -69,7 +69,7 @@ namespace Fachadas.Moodle
             {
                 GrupoTrabajoBinding binding = new GrupoTrabajoBinding();
                 DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
-                IVinculadorGrupoTrabajo vinculador = new VinculadorGrupoTrabajoParcial(TextBox_CodGrupo,
+                IBinderGrupoTrabajo vinculador = new BinderGrupoTrabajoParcial(TextBox_CodGrupo,
                     TextBox_NomGrupo, TextBox_Asignatura);
 
                 binding.VincularDameGrupoTrabajo(consulta, vinculador);

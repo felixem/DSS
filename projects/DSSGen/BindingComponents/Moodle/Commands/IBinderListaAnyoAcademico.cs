@@ -7,10 +7,10 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace BindingComponents.Moodle.Commands
 {
-    //Interfaz para vincular controles con el contenido de una asignatura anyo
-    public interface IVinculadorAsignaturaAnyo
+    //Interfaz para vincular controles con el contenido de una lista de años académicos
+    public interface IBinderListaAnyoAcademico
     {
         //Realizar vinculación
-        void Vincular(AsignaturaAnyoEN asignaturaanyo);
+        void Vincular(IList<AnyoAcademicoEN> anyo);
     }
 }

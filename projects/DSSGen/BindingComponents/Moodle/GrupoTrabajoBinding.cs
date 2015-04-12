@@ -45,7 +45,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre un grupo de trabajo
-        public void VincularDameGrupoTrabajo(IDameGrupoTrabajo consulta, IVinculadorGrupoTrabajo linker)
+        public void VincularDameGrupoTrabajo(IDameGrupoTrabajo consulta, IBinderGrupoTrabajo linker)
         {
             GrupoTrabajoEN grupo = null;
 

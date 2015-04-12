@@ -45,7 +45,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre un profesor
-        public void VincularDameProfesor(IDameProfesor consulta, IVinculadorProfesor linker)
+        public void VincularDameProfesor(IDameProfesor consulta, IBinderProfesor linker)
         {
             ProfesorEN profesor = null;
 

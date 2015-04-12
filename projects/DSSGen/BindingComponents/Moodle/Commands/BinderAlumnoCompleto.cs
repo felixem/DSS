@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 namespace BindingComponents.Moodle.Commands
 {
     //Clase utilizada para vincular textboxes para las vistas
-    public class VinculadorAlumnoCompleto : IVinculadorAlumno
+    public class BinderAlumnoCompleto : IBinderAlumno
     {
         //Variables privadas
         private TextBox TextBox_NomAlu;
@@ -22,7 +22,7 @@ namespace BindingComponents.Moodle.Commands
         private TextBox TextBox_CodExpediente;
 
         //Crear el vinculador a partir de sus textboxes
-        public VinculadorAlumnoCompleto(TextBox TextBox_NomAlu,
+        public BinderAlumnoCompleto(TextBox TextBox_NomAlu,
             TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
             TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado,
             TextBox TextBox_CodExpediente)

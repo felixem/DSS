@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 namespace BindingComponents.Moodle.Commands
 {
     //Clase utilizada para vincular textboxes para las vistas
-    public class VinculadorAsignaturaCompleto : IVinculadorAsignatura
+    public class BinderAsignaturaCompleto : IBinderAsignatura
     {
         //Variables privadas
         private TextBox TextBox_Curso;
@@ -21,7 +21,7 @@ namespace BindingComponents.Moodle.Commands
         private CheckBox CheckBox_VigenteAsig;
 
         //Crear el vinculador a partir de sus textboxes
-        public VinculadorAsignaturaCompleto(TextBox TextBox_Curso, TextBox TextBox_IdAsig,
+        public BinderAsignaturaCompleto(TextBox TextBox_Curso, TextBox TextBox_IdAsig,
             TextBox TextBox_CodAsig, TextBox TextBox_NomAsig, TextBox TextBox_DescAsig,
             CheckBox CheckBox_OptativaAsig, CheckBox CheckBox_VigenteAsig)
         {

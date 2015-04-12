@@ -57,8 +57,8 @@ namespace Fachadas.Moodle
             {
                 AsignaturaBinding binding = new AsignaturaBinding();
                 DameAsignaturaPorId consulta = new DameAsignaturaPorId(id);
-                VinculadorAsignaturaCompleto vinculador =
-                    new VinculadorAsignaturaCompleto(TextBox_Curso, TextBox_IdAsig,
+                BinderAsignaturaCompleto vinculador =
+                    new BinderAsignaturaCompleto(TextBox_Curso, TextBox_IdAsig,
                     TextBox_CodAsig, TextBox_NomAsig, TextBox_DescAsig,
                     CheckBox_OptativaAsig, CheckBox_VigenteAsig);
 
