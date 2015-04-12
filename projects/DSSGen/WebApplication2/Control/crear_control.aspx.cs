@@ -14,6 +14,7 @@ namespace DSSGenNHibernate.Control
     {
         //Creo la fachada del control
         FachadaControl fachada;
+        FachadaSistemaEvaluacion fachadastmeval = new FachadaSistemaEvaluacion();
 
         //Manejador para la carga de la pagina
         protected void Page_Load(object sender, EventArgs e)
@@ -25,6 +26,9 @@ namespace DSSGenNHibernate.Control
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
+
+                //Obtener los sistemas evaluacion
+                this.ObtenerSistemasEvaluacion();
             }
         }
 
@@ -32,21 +36,21 @@ namespace DSSGenNHibernate.Control
         protected void Button_RegControl_Click(Object sender, EventArgs e)
         {
             //Recogo los datos
-            string nombre = TextBox_NomControl.Text;
+            /*string nombre = TextBox_NomControl.Text;
             string descripcion = TextBox_DescControl.Text;
             DateTime apertura = Convert.ToDateTime(TextBox_ApertuControl.Text);
             DateTime cierre = Convert.ToDateTime(TextBox_CierreControl.Text);
             int duracionMin = Convert.ToInt32(TextBox_DuraciControl.Text);
-            float puntMax = Convert.ToSingle(TextBox_PuntControl.Text);
-            float penalizacion = Convert.ToSingle(TextBox_PenaControl.Text);
-            int sistemaEvaluacion = Convert.ToInt32(TextBox_SistemEvaControl.Text);
-
+            //float puntMax = float.Parse(TextBox_PuntControl.Text);
+            //float penalizacion = float.Parse(TextBox_PenaControl.Text);*/
+            int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
+             
             //Llamo al metodo que registra al alumno
             bool verificado;
 
             try
             {
-                verificado = fachada.RegistrarControl(nombre, descripcion, apertura, cierre, duracionMin, puntMax, penalizacion, sistemaEvaluacion);
+                verificado = fachada.RegistrarControl("Prueba", "Prueba", DateTime.Now, DateTime.Now, 3, 9, 9, sistemaEvaluacion);
             }
             catch (Exception)
             {
@@ -62,6 +66,12 @@ namespace DSSGenNHibernate.Control
             {
                 Notification.Notify(Response, "El control no ha podido ser creado");
             }
+        }
+
+        //Obtener los sistemas evaluacion
+        protected void ObtenerSistemasEvaluacion()
+        {
+            fachadastmeval.VincularDameTodos(DropDownList_SistemaEvaluacion);
         }
     }
 }

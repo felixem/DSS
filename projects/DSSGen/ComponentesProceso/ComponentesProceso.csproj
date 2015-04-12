@@ -91,6 +91,7 @@
     <Compile Include="Moodle\Commands\DameTodosCurso.cs" />
     <Compile Include="Moodle\Commands\DameTodosGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\DameTodosProfesor.cs" />
+    <Compile Include="Moodle\Commands\DameTodosSistemaEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IDameAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameAnyoAcademico.cs" />
     <Compile Include="Moodle\Commands\IDameAsignatura.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Moodle\Commands\IDameTodosCurso.cs" />
     <Compile Include="Moodle\Commands\IDameTodosGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IDameTodosProfesor.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosSistemaEvaluacion.cs" />
     <Compile Include="Moodle\ControlCP.cs" />
     <Compile Include="Moodle\CursoCP.cs" />
     <Compile Include="Moodle\GrupoTrabajoCP.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
     <Compile Include="Moodle\AsignaturaCP.cs" />
     <Compile Include="Moodle\ProfesorCP.cs" />
+    <Compile Include="Moodle\SistemaEvaluacionCP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
