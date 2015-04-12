@@ -104,10 +104,22 @@ namespace WebUtilities
             + Parameter(PageParameters.MainParameter, id.ToString());
         }
 
+        //Cadena para la página de gestión de alumnos
+        public string Alumnos()
+        {
+            return "~/Alumno/alumnos.aspx";
+        }
+
         //Cadena para la página de creación de alumno
         public string CrearAlumno()
         {
             return "~/Alumno/crear_alumno.aspx";
+        }
+
+        //Cadena para la página de gestión de profesores
+        public string Profesores()
+        {
+            return "~/Profesor/profesores.aspx";
         }
 
         //Cadena para la página de modificación de alumno
@@ -130,6 +142,13 @@ namespace WebUtilities
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
+        //Cadena para la página de gestión de asignaturas
+        public String Asignaturas()
+        {
+            return "~/Asignatura/asignaturas.aspx";
+        }
+
+
         //Cadena para la página de creación de asignatura
         public String CrearAsignatura()
         {
@@ -141,6 +160,12 @@ namespace WebUtilities
         {
             return "~/Asignatura/modificar_asignatura.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página de creación de grupo de trabajo
+        public String GruposTrabajo()
+        {
+            return "~/GrupoTrabajo/grupos_trabajo.aspx";
         }
 
         //Cadena para la página de creación de grupo de trabajo

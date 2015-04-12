@@ -78,6 +78,29 @@ namespace InitializeDB
             /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
             try
             {
+                AdministradorEN admin = new AdministradorEN();
+                admin.Cod_administrador = 0;
+                admin.Ocupacion = "Administrador";
+                admin.Email = "admin@admin.com";
+                admin.Dni = "48627742H";
+                admin.Apellidos = "admin";
+                admin.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                admin.Nombre = "admin";
+                admin.Password = "1234";
+                AdministradorCEN adminCen = new AdministradorCEN();
+                adminCen.New_(admin.Cod_administrador, admin.Ocupacion, admin.Email, admin.Dni, admin.Password, admin.Nombre, admin.Apellidos, admin.Fecha_nacimiento);
+
+                ProfesorEN prof = new ProfesorEN();
+                prof.Cod_profesor = 3;
+                prof.Email = "jacv050@jacv050.com";
+                prof.Dni = "48627746H";
+                prof.Apellidos = "jacv050";
+                prof.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                prof.Nombre = "jacv050";
+                prof.Password = "1234";
+                ProfesorCEN profCen = new ProfesorCEN();
+                profCen.New_(prof.Cod_profesor,prof.Email,prof.Dni,prof.Password,prof.Nombre,prof.Apellidos,prof.Fecha_nacimiento);
+
                 ExpedienteEN expediente = new ExpedienteEN();
                 ExpedienteCEN expCen = new ExpedienteCEN();
                 expediente.Cod_expediente = "EX1";

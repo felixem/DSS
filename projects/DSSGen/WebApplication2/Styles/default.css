@@ -114,6 +114,20 @@ hr {
 	color: #182C33;
 }
 
+.estilobadm
+{
+	margin-left: 5px;
+	padding: 5px 6px;
+	background: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	border-top: 2px solid #EBEAD1;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-weight: bold;
+	font-size: 11px;
+	color: #182C33;
+}
+
 #menub .user
 {
     margin-top: 40px;
@@ -403,9 +417,11 @@ hr {
 #footer li li {
 	display: list-item;
 	float: none;
-	margin: 0;
 	padding: 2px 0;
 	border-bottom: 1px solid #573D30;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
 }
 
 #footer li li a {

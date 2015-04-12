@@ -10,6 +10,13 @@
     float: right;
 }
 
+.position_derecha_locked
+{
+    margin: 1px;
+    float: right;
+    background: #C4C4C4;
+}
+
 .clean_float
 {
     width: 300px;
@@ -24,6 +31,7 @@
 {
     width: 400px;
     margin: 5px;
+    margin-left: -45px;
     background-color: #E0E0E0;
     clear:both;
     overflow:hidden;
@@ -43,6 +51,7 @@
 {
     width: 400px;
     margin: 5px;
+    margin-left: -45px;
     margin-top: 25px;
     background-color: #E0E0E0;
     clear:both;

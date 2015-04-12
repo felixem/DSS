@@ -15,20 +15,21 @@
     <h1 class="style2">
         Modificar Alumno</h1>
     <div class="CentrarContenido">
+
         <p class="style2">
             Rellene los siguientes campos</p>
         <div class="row_modificar_alumno">
             <asp:Label ID="LabelCod_Alu" runat="server" Text="Código Alumno:" CssClass="posicion_izquierda"></asp:Label>
-            <asp:TextBox ID="TextBox_CodAlu" runat="server" ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+            <asp:TextBox ID="TextBox_CodAlu" runat="server" ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
         </div>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_CodAlu"
             Display="Dynamic" ErrorMessage="Introduce Código" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox_CodAlu"
             Display="Dynamic" ErrorMessage="Introduce código válido (Numérico)" ForeColor="Red"
             ValidationExpression="\d+" ValidationGroup="Registro"></asp:RegularExpressionValidator>
-        <div class="row_crear_alumno">
+        <div class="row_modificar_alumno">
             <asp:Label ID="Label_CodExpediente" runat="server" Text="Expediente:" CssClass="posicion_izquierda"></asp:Label>
-            <asp:TextBox ID="TextBox_CodExpediente" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="TextBox_CodExpediente" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
         </div>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextBox_CodExpediente"
             Display="Dynamic" ErrorMessage="Introduce Código de Expediente" ForeColor="Red"
@@ -60,7 +61,7 @@
             Display="Dynamic" ErrorMessage="Introduce DNI" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
         <div class="row_modificar_alumno">
             <asp:Label ID="Label_EmailAlu" runat="server" Text="Correo:" CssClass="posicion_izquierda"></asp:Label>
-            <asp:TextBox ID="TextBox_EmailAlu" runat="server" ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+            <asp:TextBox ID="TextBox_EmailAlu" runat="server" ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
         </div>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox_EmailAlu"
             Display="Dynamic" ErrorMessage="Introduce Correo" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
