@@ -209,6 +209,37 @@ public MaterialEN ReadOID (int id)
         return materialEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM MaterialEN self where select count(*) FROM MaterialEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("MaterialENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in MaterialCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignatura (int p_material, int p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.MaterialEN materialEN = null;

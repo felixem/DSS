@@ -48,7 +48,7 @@ namespace ComponentesProceso.Moodle
         }
 
         //Crear un año académico y devolver su id de creación
-        public int CrearAnyoAcademico(int anyo, DateTime? fecha_inicio,
+        public int CrearAnyoAcademico(string anyo, DateTime? fecha_inicio,
             DateTime? fecha_fin, bool finalizado)
         {
             int id = -1;
@@ -102,7 +102,7 @@ namespace ComponentesProceso.Moodle
         }
 
         //Modificar año académico
-        public void ModificarAnyoAcademico(int oid, int anyo, DateTime? fecha_inicio,
+        public void ModificarAnyoAcademico(int oid, string anyo, DateTime? fecha_inicio,
             DateTime? fecha_fin, bool finalizado)
         {
             try

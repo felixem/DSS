@@ -22,6 +22,9 @@ System.Collections.Generic.IList<CursoEN> ReadAll (int first, int size);
 CursoEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura);
 
 void Unrelationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura);

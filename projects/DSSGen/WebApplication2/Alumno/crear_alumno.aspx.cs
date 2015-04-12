@@ -35,17 +35,19 @@ namespace DSSGenNHibernate.Alumno
             string nombre = TextBox_NomAlu.Text;
             string apellidos = TextBox_ApellAlu.Text;
             string pass = TextBox_ContAlu.Text;
-            string fecha = TextBox_NaciAlu.Text;
+            DateTime fecha = Convert.ToDateTime(TextBox_NaciAlu.Text);
             string dni = TextBox_DNIAlu.Text;
             string email = TextBox_EmailAlu.Text;
-            string cod = TextBox_CodAlu.Text;
+            int cod = Convert.ToInt32(TextBox_CodAlu.Text);
+            string codExpediente = TextBox_CodExpediente.Text;
+            bool expedienteAbierto = CheckBox_ExpedienteAbierto.Checked;
 
             //Llamo al metodo que registra al alumno
             bool verificado;
 
             try
             {
-                verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
+                verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, fecha, dni, email, cod, codExpediente, expedienteAbierto);
             }
             catch (Exception)
             {
@@ -75,6 +77,8 @@ namespace DSSGenNHibernate.Alumno
             TextBox_DNIAlu.Text = "";
             TextBox_EmailAlu.Text = "";
             TextBox_CodAlu.Text = "";
+            TextBox_CodExpediente.Text = "";
+            CheckBox_ExpedienteAbierto.Checked = false;
         }
 
         //Método que llama el botón limpiar campos

@@ -10,7 +10,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace Fachadas.Moodle
 {
-    //Fachada para la clase pregunta
+    //Fachada para la clase asignatura
     public class FachadaAsignatura
     {
         //Vincular a un DropDownList todas las asignaturas
@@ -32,12 +32,12 @@ namespace Fachadas.Moodle
 
         //Método para crear una asignatura en la BD
         public bool CrearAsignatura(string codigo, string nombre, string descripcion,
-            bool optativa, bool vigente)
+            bool optativa, bool vigente, int p_curso)
         {
             try
             {
                 AsignaturaCP cp = new AsignaturaCP();
-                cp.CrearAsignatura(codigo, nombre, descripcion, optativa, vigente);
+                cp.CrearAsignatura(codigo, nombre, descripcion, optativa, vigente, p_curso);
             }
             catch (Exception)
             {
@@ -48,7 +48,7 @@ namespace Fachadas.Moodle
         }
 
         //Método para vincular una asignatura a partir de su id a textboxes
-        public bool VincularAsignaturaPorId(int id, TextBox TextBox_IdAsig,
+        public bool VincularAsignaturaPorId(int id, TextBox TextBox_Curso, TextBox TextBox_IdAsig,
             TextBox TextBox_CodAsig, TextBox TextBox_NomAsig, TextBox TextBox_DescAsig,
             CheckBox CheckBox_OptativaAsig, CheckBox CheckBox_VigenteAsig)
         {
@@ -57,7 +57,7 @@ namespace Fachadas.Moodle
                 AsignaturaBinding binding = new AsignaturaBinding();
                 DameAsignaturaPorId consulta = new DameAsignaturaPorId(id);
 
-                binding.VincularDameAsignatura(consulta, TextBox_IdAsig,
+                binding.VincularDameAsignatura(consulta, TextBox_Curso, TextBox_IdAsig,
                     TextBox_CodAsig, TextBox_NomAsig, TextBox_DescAsig,
                     CheckBox_OptativaAsig, CheckBox_VigenteAsig);
             }

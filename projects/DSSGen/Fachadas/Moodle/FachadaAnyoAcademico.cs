@@ -32,7 +32,7 @@ namespace Fachadas.Moodle
         }
 
         //Método para crear un año académico en la BD
-        public bool CrearAnyoAcademico(int anyo, DateTime? fecha_inicio, DateTime? fecha_fin, bool finalizado)
+        public bool CrearAnyoAcademico(string anyo, DateTime? fecha_inicio, DateTime? fecha_fin, bool finalizado)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Fachadas.Moodle
         }
 
         //Método para modificar un año académico en la BD
-        public bool ModificarAnyoAcademico(int oid, int anyo, DateTime? fecha_inicio,
+        public bool ModificarAnyoAcademico(int oid, string anyo, DateTime? fecha_inicio,
             DateTime? fecha_fin, bool finalizado)
         {
             try

@@ -30,7 +30,7 @@
 			
 			
 		  			
-						<many-to-one name="Curso" class="DSSGenNHibernate.EN.Moodle.CursoEN" cascade="delete">	
+						<many-to-one name="Curso" class="DSSGenNHibernate.EN.Moodle.CursoEN" >	
 								<column name="[FK_id_curso]"/>
 						</many-to-one>
 											 					

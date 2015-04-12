@@ -16,6 +16,9 @@ void Modify (NotaEN nota);
 void Destroy (int id);
 
 
+long ReadCantidad ();
+
+
 System.Collections.Generic.IList<NotaEN> ReadAll (int first, int size);
 
 

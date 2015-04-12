@@ -32,7 +32,7 @@ public IAnyoAcademicoCAD get_IAnyoAcademicoCAD ()
         return this._IAnyoAcademicoCAD;
 }
 
-public int New_ (int p_anyo, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_finalizado)
+public int New_ (string p_anyo, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_finalizado)
 {
         AnyoAcademicoEN anyoAcademicoEN = null;
         int oid;
@@ -53,7 +53,7 @@ public int New_ (int p_anyo, Nullable<DateTime> p_fecha_inicio, Nullable<DateTim
         return oid;
 }
 
-public void Modify (int p_oid, int p_anyo, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_finalizado)
+public void Modify (int p_oid, string p_anyo, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_finalizado)
 {
         AnyoAcademicoEN anyoAcademicoEN = null;
 
@@ -93,7 +93,7 @@ public long ReadCantidad ()
 {
         return _IAnyoAcademicoCAD.ReadCantidad ();
 }
-public DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN ReadCod (int anyo)
+public DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN ReadCod (string anyo)
 {
         return _IAnyoAcademicoCAD.ReadCod (anyo);
 }

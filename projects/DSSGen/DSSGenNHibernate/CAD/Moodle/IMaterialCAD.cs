@@ -22,6 +22,9 @@ System.Collections.Generic.IList<MaterialEN> ReadAll (int first, int size);
 MaterialEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_asignatura (int p_material, int p_asignaturaanyo);
 
 void Relationer_profesor (int p_material, string p_profesor);

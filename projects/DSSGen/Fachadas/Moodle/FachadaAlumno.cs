@@ -14,12 +14,13 @@ namespace Fachadas.Moodle
     public class FachadaAlumno
     {
         //Metodo que registra al alumno en BD
-        public bool RegistrarAlumno(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
+        public bool RegistrarAlumno(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod,
+            string codExpediente, bool expedienteAbierto)
         {
             try
             {
                 AlumnoCP alumno = new AlumnoCP();
-                alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod);
+                alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod, codExpediente, expedienteAbierto);
             }
             catch (Exception)
             {
@@ -74,7 +75,8 @@ namespace Fachadas.Moodle
         //Método para vincular un alumno a partir de su id a textboxes
         public bool VincularAlumnoPorId(int id, TextBox TextBox_NomAlu,
             TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
-            TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado)
+            TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado,
+            TextBox TextBox_CodExpediente)
         {
             try
             {
@@ -83,7 +85,7 @@ namespace Fachadas.Moodle
 
                 binding.VincularDameAlumno(consulta, TextBox_NomAlu,
                 TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
-                TextBox_CodAlu, CheckBox_Baneado);
+                TextBox_CodAlu, CheckBox_Baneado, TextBox_CodExpediente);
             }
             catch (Exception)
             {

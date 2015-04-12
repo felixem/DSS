@@ -22,5 +22,6 @@
 		  </joined-subclass>	
 		  
 		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
+		  <query name="AdministradorENreadCantidadHQL"><![CDATA[select count(*) FROM AdministradorEN]]></query>
 		</hibernate-mapping>
 	

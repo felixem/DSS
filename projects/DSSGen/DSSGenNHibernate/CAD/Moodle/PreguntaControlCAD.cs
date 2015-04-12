@@ -189,6 +189,37 @@ public PreguntaControlEN ReadOID (int id)
         return preguntaControlEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM PreguntaControlEN self where select count(*) FROM PreguntaControlEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("PreguntaControlENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in PreguntaControlCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_control (int p_preguntacontrol, int p_controlalumno)
 {
         DSSGenNHibernate.EN.Moodle.PreguntaControlEN preguntaControlEN = null;

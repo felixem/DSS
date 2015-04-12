@@ -32,7 +32,7 @@ public ICursoCAD get_ICursoCAD ()
         return this._ICursoCAD;
 }
 
-public int New_ (int p_cod_curso, string p_nombre)
+public int New_ (string p_cod_curso, string p_nombre)
 {
         CursoEN cursoEN = null;
         int oid;
@@ -49,7 +49,7 @@ public int New_ (int p_cod_curso, string p_nombre)
         return oid;
 }
 
-public void Modify (int p_oid, int p_cod_curso, string p_nombre)
+public void Modify (int p_oid, string p_cod_curso, string p_nombre)
 {
         CursoEN cursoEN = null;
 
@@ -83,6 +83,10 @@ public CursoEN ReadOID (int id)
         return cursoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _ICursoCAD.ReadCantidad ();
+}
 public void Relationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura)
 {
         //Call to CursoCAD

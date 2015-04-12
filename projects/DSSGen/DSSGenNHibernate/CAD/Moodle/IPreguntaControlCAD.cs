@@ -22,6 +22,9 @@ System.Collections.Generic.IList<PreguntaControlEN> ReadAll (int first, int size
 PreguntaControlEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_control (int p_preguntacontrol, int p_controlalumno);
 
 void Relationer_pregunta (int p_preguntacontrol, int p_pregunta);

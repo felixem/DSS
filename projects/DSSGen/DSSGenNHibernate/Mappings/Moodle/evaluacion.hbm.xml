@@ -60,5 +60,6 @@
 		  </class>
 		  
 		  <query name="EvaluacionENReadAllHQL">from EvaluacionEN</query>
+		  <query name="EvaluacionENreadCantidadHQL"><![CDATA[select count(*) FROM EvaluacionEN]]></query>
 		</hibernate-mapping>
 	

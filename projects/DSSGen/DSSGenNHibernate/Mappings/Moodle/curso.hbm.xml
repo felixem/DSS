@@ -7,8 +7,8 @@
 						<id name="Id" column="[id]" type="integer">
 							<generator class="identity"/>
 						</id>
-					<property name="Cod_curso" type="integer"> 
-						<column name="[cod_curso]"  not-null="true"/>
+					<property name="Cod_curso" type="string"> 
+						<column name="[cod_curso]"  unique="true" not-null="true"/>
 					</property>
 					<property name="Nombre" type="string"> 
 						<column name="[nombre]"  not-null="true"/>
@@ -18,7 +18,7 @@
 			
 			
 		  			
-						<bag name="Asignaturas" >
+						<bag name="Asignaturas" cascade="delete">
 							<key>
 								<column name="[FK_id_curso]"/>
 					      	</key>
@@ -33,5 +33,6 @@
 		  </class>
 		  
 		  <query name="CursoENReadAllHQL">from CursoEN</query>
+		  <query name="CursoENreadCantidadHQL"><![CDATA[select count(*) FROM CursoEN]]></query>
 		</hibernate-mapping>
 	

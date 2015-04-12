@@ -11,7 +11,7 @@
 						<column name="[nombre]"  not-null="true"/>
 					</property>
 					<property name="Abreviatura" type="string"> 
-						<column name="[abreviatura]"  not-null="true"/>
+						<column name="[abreviatura]"  unique="true" not-null="true"/>
 					</property>
 					<property name="Ponderacion" type="integer"> 
 						<column name="[ponderacion]"  not-null="true"/>
@@ -28,5 +28,6 @@
 		  </class>
 		  
 		  <query name="NotaENReadAllHQL">from NotaEN</query>
+		  <query name="NotaENreadCantidadHQL"><![CDATA[select count(*) FROM NotaEN]]></query>
 		</hibernate-mapping>
 	

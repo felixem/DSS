@@ -224,7 +224,7 @@ public long ReadCantidad ()
 
         return result;
 }
-public DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN ReadCod (int anyo)
+public DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN ReadCod (string anyo)
 {
         DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN result;
         try

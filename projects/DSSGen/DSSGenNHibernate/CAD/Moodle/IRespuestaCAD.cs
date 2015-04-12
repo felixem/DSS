@@ -22,6 +22,9 @@ System.Collections.Generic.IList<RespuestaEN> ReadAll (int first, int size);
 RespuestaEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_pregunta (int p_respuesta, int p_pregunta);
 
 void Unrelationer_pregunta (int p_respuesta, int p_pregunta);

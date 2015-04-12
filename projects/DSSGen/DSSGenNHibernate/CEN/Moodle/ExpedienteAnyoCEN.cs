@@ -95,6 +95,10 @@ public ExpedienteAnyoEN ReadOID (int id)
         return expedienteAnyoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IExpedienteAnyoCAD.ReadCantidad ();
+}
 public void Relationer_anyo (int p_expedienteanyo, int p_anyoacademico)
 {
         //Call to ExpedienteAnyoCAD

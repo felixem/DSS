@@ -107,6 +107,10 @@ public MaterialEN ReadOID (int id)
         return materialEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IMaterialCAD.ReadCantidad ();
+}
 public void Relationer_asignatura (int p_material, int p_asignaturaanyo)
 {
         //Call to MaterialCAD

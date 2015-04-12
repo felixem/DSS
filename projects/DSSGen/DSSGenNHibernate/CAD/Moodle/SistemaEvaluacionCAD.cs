@@ -194,6 +194,37 @@ public SistemaEvaluacionEN ReadOID (int id)
         return sistemaEvaluacionEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM SistemaEvaluacionEN self where select count(*) FROM SistemaEvaluacionEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("SistemaEvaluacionENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in SistemaEvaluacionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignatura (int p_sistemaevaluacion, int p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN sistemaEvaluacionEN = null;

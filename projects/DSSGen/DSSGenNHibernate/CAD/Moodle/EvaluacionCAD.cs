@@ -198,6 +198,37 @@ public EvaluacionEN ReadOID (int id)
         return evaluacionEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM EvaluacionEN self where select count(*) FROM EvaluacionEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("EvaluacionENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EvaluacionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_anyo_academico (int p_evaluacion, int p_anyoacademico)
 {
         DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacionEN = null;

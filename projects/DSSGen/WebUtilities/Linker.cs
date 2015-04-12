@@ -105,6 +105,12 @@ namespace WebUtilities
         }
 
         //Cadena para la página de creación de alumno
+        public string Alumnos()
+        {
+            return "~/Alumno/alumnos.aspx";
+        }
+
+        //Cadena para la página de creación de alumno
         public string CrearAlumno()
         {
             return "~/Alumno/crear_alumno.aspx";

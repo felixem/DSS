@@ -47,5 +47,6 @@
 		  </class>
 		  
 		  <query name="PreguntaENReadAllHQL">from PreguntaEN</query>
+		  <query name="PreguntaENreadCantidadHQL"><![CDATA[select count(*) FROM PreguntaEN]]></query>
 		</hibernate-mapping>
 	

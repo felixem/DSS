@@ -22,6 +22,9 @@ System.Collections.Generic.IList<EntregaAlumnoEN> ReadAll (int first, int size);
 EntregaAlumnoEN ReadOID (int id);
 
 
+long ReadCantidad ();
+
+
 void Relationer_alumno (int p_entregaalumno, string p_alumno);
 
 void Relationer_entrega (int p_entregaalumno, int p_entrega);

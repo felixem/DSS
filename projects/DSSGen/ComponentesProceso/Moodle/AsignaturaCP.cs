@@ -49,7 +49,7 @@ namespace ComponentesProceso.Moodle
 
         //Crear una asignatura y devolver su id de creación
         public int CrearAsignatura(string codigo, string nombre, string descripcion,
-            bool optativa, bool vigente)
+            bool optativa, bool vigente, int p_curso)
         {
             int id = -1;
             try
@@ -57,7 +57,7 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
                 //Crear la asignatura
                 AsignaturaCEN asig = new AsignaturaCEN();
-                id = asig.New_(codigo, nombre, descripcion, optativa, vigente);
+                id = asig.New_(codigo, nombre, descripcion, optativa, vigente, p_curso);
 
                 SessionCommit();
             }

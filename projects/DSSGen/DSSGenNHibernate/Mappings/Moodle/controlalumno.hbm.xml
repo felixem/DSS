@@ -52,5 +52,6 @@
 		  </class>
 		  
 		  <query name="ControlAlumnoENReadAllHQL">from ControlAlumnoEN</query>
+		  <query name="ControlAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM ControlAlumnoEN]]></query>
 		</hibernate-mapping>
 	

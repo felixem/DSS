@@ -19,16 +19,23 @@ namespace ComponentesProceso.Moodle
         public AlumnoCP(ISession sesion) : base(sesion) { }
 
         //Registra el alumno en la BD y de
-        public string CrearAlumno(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
+        public string CrearAlumno(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod,
+            string codExpediente, bool expedienteAbierto)
         {
             string resultado;
 
             try
             {
                 SessionInitializeTransaction();
+
+                //Crear el expediente vacío a partir del código
+                ExpedienteEN expediente = new ExpedienteEN();
+                expediente.Cod_expediente = codExpediente;
+                expediente.Abierto = expedienteAbierto;
+
                 //Creo el alumno    
                 AlumnoCEN aluCen = new AlumnoCEN();            
-                resultado = aluCen.New_(cod, false, email, dni, pass, nombre, apellidos, fecha, new ExpedienteEN());
+                resultado = aluCen.New_(cod, false, email, dni, pass, nombre, apellidos, fecha, expediente);
 
                 SessionCommit();
             }

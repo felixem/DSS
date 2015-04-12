@@ -89,6 +89,10 @@ public PreguntaControlEN ReadOID (int id)
         return preguntaControlEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IPreguntaControlCAD.ReadCantidad ();
+}
 public void Relationer_control (int p_preguntacontrol, int p_controlalumno)
 {
         //Call to PreguntaControlCAD

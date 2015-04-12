@@ -197,6 +197,37 @@ public ExpedienteAsignaturaEN ReadOID (int id)
         return expedienteAsignaturaEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ExpedienteAsignaturaEN self where select count(*) FROM ExpedienteAsignaturaEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ExpedienteAsignaturaENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteAsignaturaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignatura (int p_expedienteasignatura, int p_asignatura)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedienteAsignaturaEN = null;

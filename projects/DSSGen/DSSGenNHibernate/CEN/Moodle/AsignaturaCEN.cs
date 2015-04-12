@@ -32,7 +32,7 @@ public IAsignaturaCAD get_IAsignaturaCAD ()
         return this._IAsignaturaCAD;
 }
 
-public int New_ (string p_cod_asignatura, string p_nombre, string p_descripcion, bool p_optativa, bool p_vigente)
+public int New_ (string p_cod_asignatura, string p_nombre, string p_descripcion, bool p_optativa, bool p_vigente, int p_curso)
 {
         AsignaturaEN asignaturaEN = null;
         int oid;
@@ -48,6 +48,12 @@ public int New_ (string p_cod_asignatura, string p_nombre, string p_descripcion,
         asignaturaEN.Optativa = p_optativa;
 
         asignaturaEN.Vigente = p_vigente;
+
+
+        if (p_curso != -1) {
+                asignaturaEN.Curso = new DSSGenNHibernate.EN.Moodle.CursoEN ();
+                asignaturaEN.Curso.Id = p_curso;
+        }
 
         //Call to AsignaturaCAD
 

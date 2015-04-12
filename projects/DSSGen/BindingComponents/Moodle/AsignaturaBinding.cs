@@ -80,7 +80,7 @@ namespace BindingComponents.Moodle
         }
 
         //Vincular a TextBoxes el contenido de una consulta individual sobre una asignatura
-        public void VincularDameAsignatura(IDameAsignatura consulta, TextBox TextBox_IdAsig,
+        public void VincularDameAsignatura(IDameAsignatura consulta, TextBox TextBox_Curso, TextBox TextBox_IdAsig,
             TextBox TextBox_CodAsig, TextBox TextBox_NomAsig, TextBox TextBox_DescAsig,
             CheckBox CheckBox_OptativaAsig, CheckBox CheckBox_VigenteAsig)
         {
@@ -108,6 +108,7 @@ namespace BindingComponents.Moodle
                     throw new Exception("Asignatura no encontrada");
 
                 //Vincular con los textboxes
+                TextBox_Curso.Text = asignatura.Curso.Nombre;
                 TextBox_IdAsig.Text = asignatura.Id.ToString();
                 TextBox_CodAsig.Text = asignatura.Cod_asignatura;
                 TextBox_NomAsig.Text = asignatura.Nombre;

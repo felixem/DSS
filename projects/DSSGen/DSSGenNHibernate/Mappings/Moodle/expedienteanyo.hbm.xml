@@ -47,5 +47,6 @@
 		  </class>
 		  
 		  <query name="ExpedienteAnyoENReadAllHQL">from ExpedienteAnyoEN</query>
+		  <query name="ExpedienteAnyoENreadCantidadHQL"><![CDATA[select count(*) FROM ExpedienteAnyoEN]]></query>
 		</hibernate-mapping>
 	

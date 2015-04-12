@@ -197,6 +197,37 @@ public ExpedienteAnyoEN ReadOID (int id)
         return expedienteAnyoEN;
 }
 
+public long ReadCantidad ()
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ExpedienteAnyoEN self where select count(*) FROM ExpedienteAnyoEN";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ExpedienteAnyoENreadCantidadHQL");
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_anyo (int p_expedienteanyo, int p_anyoacademico)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expedienteAnyoEN = null;

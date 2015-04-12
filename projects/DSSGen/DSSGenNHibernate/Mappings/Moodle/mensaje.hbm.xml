@@ -42,5 +42,6 @@
 		  </class>
 		  
 		  <query name="MensajeENReadAllHQL">from MensajeEN</query>
+		  <query name="MensajeENreadCantidadHQL"><![CDATA[select count(*) FROM MensajeEN]]></query>
 		</hibernate-mapping>
 	

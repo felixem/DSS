@@ -95,6 +95,10 @@ public ExpedienteEvaluacionEN ReadOID (int id)
         return expedienteEvaluacionEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IExpedienteEvaluacionCAD.ReadCantidad ();
+}
 public void Relationer_evaluacion (int p_expedienteevaluacion, int p_evaluacion)
 {
         //Call to ExpedienteEvaluacionCAD

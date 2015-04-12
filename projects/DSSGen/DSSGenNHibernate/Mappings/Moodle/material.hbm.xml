@@ -57,5 +57,6 @@
 		  </class>
 		  
 		  <query name="MaterialENReadAllHQL">from MaterialEN</query>
+		  <query name="MaterialENreadCantidadHQL"><![CDATA[select count(*) FROM MaterialEN]]></query>
 		</hibernate-mapping>
 	

@@ -89,6 +89,10 @@ public EvaluacionAlumnoEN ReadOID (int id)
         return evaluacionAlumnoEN;
 }
 
+public long ReadCantidad ()
+{
+        return _IEvaluacionAlumnoCAD.ReadCantidad ();
+}
 public void Relationer_alumno (int p_evaluacionalumno, string p_alumno)
 {
         //Call to EvaluacionAlumnoCAD

@@ -77,7 +77,7 @@ namespace WebApplication2
         protected void btn_alumnos_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
-            link.Redirect(Response, link.Login());
+            link.Redirect(Response, link.Alumnos());
         }
     }
 }

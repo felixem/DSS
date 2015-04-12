@@ -46,7 +46,8 @@ namespace BindingComponents.Moodle
         //Vincular a TextBoxes el contenido de una consulta individual sobre un alumno
         public void VincularDameAlumno(IDameAlumno consulta, TextBox TextBox_NomAlu,
             TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
-            TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado)
+            TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado,
+            TextBox TextBox_CodExpediente)
         {
             AlumnoEN alumno = null;
 
@@ -79,6 +80,7 @@ namespace BindingComponents.Moodle
                 TextBox_EmailAlu.Text = alumno.Email;
                 TextBox_CodAlu.Text = alumno.Cod_alumno.ToString();
                 CheckBox_Baneado.Checked = alumno.Baneado;
+                TextBox_CodExpediente.Text = alumno.Expediente.Cod_expediente;
 
                 //Cerrar sesión
                 SessionClose();
