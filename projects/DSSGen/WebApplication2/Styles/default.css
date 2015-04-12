@@ -114,6 +114,20 @@ hr {
 	color: #182C33;
 }
 
+.estilobadm
+{
+	margin-left: 5px;
+	padding: 5px 6px;
+	background: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	border-top: 2px solid #EBEAD1;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-weight: bold;
+	font-size: 11px;
+	color: #182C33;
+}
+
 #menub .user
 {
     margin-top: 40px;

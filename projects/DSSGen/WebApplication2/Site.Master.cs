@@ -62,22 +62,53 @@ namespace WebApplication2
             link.Redirect(Response, link.Default());
         }
 
+        //Evento para ir a la pagina de inicio
         protected void btn_inicio_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Default());
         }
 
+        //Evento que redireciona a la pagina del login
         protected void btn_login_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Login());
         }
 
+        //Evento que redirecciona a la página de gestión de alumnos
         protected void btn_alumnos_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Alumnos());
+        }
+
+        //Evento que redirecciona a la página de gestión de profesores
+        protected void btn_profesores_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.Profesores());
+        }
+
+        //Evento que redirecciona a la página de gestión de asignaturas
+        protected void btn_asignaturas_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.Asignaturas());
+        }
+
+        //Evento que redirecciona a la página de gestión de examenes
+        protected void btn_examenes_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListadoBolsaPreguntas());
+        }
+
+        //Evento que redirecciona a la página de gestión de examenes
+        protected void btn_grupos_trabajo_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.GruposTrabajo());
         }
     }
 }

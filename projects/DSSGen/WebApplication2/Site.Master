@@ -63,12 +63,18 @@
         </asp:View>
         <asp:View runat="server" ID="ViewAdministrador">
 		<ul>
-			<asp:Button ID="btn_inicio_vadm" runat="server" Text="Inicio" CssClass="estilob" 
+			<asp:Button ID="btn_inicio_vadm" runat="server" Text="Inicio" CssClass="estilobadm" 
                 onclick="btn_inicio_Click" />
-			<asp:Button ID="Button" runat="server" Text="VistaAdministrador" CssClass="estilob" 
-                onclick="btn_inicio_Click" />
-            <asp:Button ID="btn_alumnos_vadm" runat="server" Text="Alumnos" CssClass="estilob" 
+			<asp:Button ID="btn_profesores_vadm" runat="server" Text="Profesores" CssClass="estilobadm" 
+                onclick="btn_profesores_Click" />
+            <asp:Button ID="btn_alumnos_vadm" runat="server" Text="Alumnos" CssClass="estilobadm" 
                 onclick="btn_alumnos_Click" />
+            <asp:Button ID="btn_asignaturas_vadm" runat="server" Text="Asignaturas" CssClass="estilobadm" 
+                onclick="btn_asignaturas_Click" />
+            <asp:Button ID="btn_examenes_vadm" runat="server" Text="Examenes" CssClass="estilobadm" 
+                onclick="btn_examenes_Click" />
+            <asp:Button ID="btn_grupos_trabajo" runat="server" Text="Grupos Trabajo" CssClass="estilobadm" 
+                onclick="btn_grupos_trabajo_Click" />
 		</ul>
         </asp:View>
         </asp:MultiView>

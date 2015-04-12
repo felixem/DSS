@@ -148,13 +148,13 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.Button btn_inicio_vadm;
         
         /// <summary>
-        /// Control Button.
+        /// Control btn_profesores_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button;
+        protected global::System.Web.UI.WebControls.Button btn_profesores_vadm;
         
         /// <summary>
         /// Control btn_alumnos_vadm.
@@ -164,6 +164,33 @@ namespace WebApplication2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_alumnos_vadm;
+        
+        /// <summary>
+        /// Control btn_asignaturas_vadm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_asignaturas_vadm;
+        
+        /// <summary>
+        /// Control btn_examenes_vadm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_examenes_vadm;
+        
+        /// <summary>
+        /// Control btn_grupos_trabajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_grupos_trabajo;
         
         /// <summary>
         /// Control MainContent.
