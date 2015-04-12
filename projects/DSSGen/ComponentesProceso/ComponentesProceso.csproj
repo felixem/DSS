@@ -107,6 +107,7 @@
     <Compile Include="Moodle\Commands\IDameTodosCurso.cs" />
     <Compile Include="Moodle\Commands\IDameTodosGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IDameTodosProfesor.cs" />
+    <Compile Include="Moodle\ControlCP.cs" />
     <Compile Include="Moodle\CursoCP.cs" />
     <Compile Include="Moodle\GrupoTrabajoCP.cs" />
     <Compile Include="Moodle\LoginCP.cs" />
