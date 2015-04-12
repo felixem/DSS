@@ -84,7 +84,7 @@ namespace InitializeDB
                 admin.Email = "admin@admin.com";
                 admin.Dni = "48627742H";
                 admin.Apellidos = "admin";
-                admin.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                admin.Fecha_nacimiento = DateTime.Parse("08/13/1994");
                 admin.Nombre = "admin";
                 admin.Password = "1234";
                 AdministradorCEN adminCen = new AdministradorCEN();
@@ -95,7 +95,7 @@ namespace InitializeDB
                 prof.Email = "jacv050@jacv050.com";
                 prof.Dni = "48627746H";
                 prof.Apellidos = "jacv050";
-                prof.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                prof.Fecha_nacimiento = DateTime.Parse("08/31/1994");
                 prof.Nombre = "jacv050";
                 prof.Password = "1234";
                 ProfesorCEN profCen = new ProfesorCEN();
@@ -113,7 +113,7 @@ namespace InitializeDB
                 usuario.Email = "felix@felix.es";
                 usuario.Dni = "48627745H";
                 usuario.Apellidos = "Escalona";
-                usuario.Fecha_nacimiento = DateTime.Parse("28/01/1994");
+                usuario.Fecha_nacimiento = DateTime.Parse("08/31/1994");
                 usuario.Nombre = "Felix";
                 usuario.Password = "1234";
                 AlumnoCEN aluCen = new AlumnoCEN();

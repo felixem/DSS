@@ -46,6 +46,7 @@
     <Compile Include="Moodle\FachadaAnyoAcademico.cs" />
     <Compile Include="Moodle\FachadaAsignaturaAnyo.cs" />
     <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
+    <Compile Include="Moodle\FachadaControl.cs" />
     <Compile Include="Moodle\FachadaCurso.cs" />
     <Compile Include="Moodle\FachadaGrupoTrabajo.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />

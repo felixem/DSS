@@ -94,6 +94,9 @@
     <Content Include="WebForm1.aspx" />
     <Content Include="Alumno\crear_alumno.aspx" />
     <Content Include="Profesor\crear_profesor.aspx" />
+    <Content Include="Control\controles.aspx" />
+    <Content Include="Control\crear_control.aspx" />
+    <Content Include="Control\modificar_control.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -274,6 +277,27 @@
     </Compile>
     <Compile Include="Profesor\crear_profesor.aspx.designer.cs">
       <DependentUpon>crear_profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\controles.aspx.cs">
+      <DependentUpon>controles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\controles.aspx.designer.cs">
+      <DependentUpon>controles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crear_control.aspx.cs">
+      <DependentUpon>crear_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\crear_control.aspx.designer.cs">
+      <DependentUpon>crear_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\modificar_control.aspx.cs">
+      <DependentUpon>modificar_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\modificar_control.aspx.designer.cs">
+      <DependentUpon>modificar_control.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
