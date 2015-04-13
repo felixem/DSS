@@ -14,12 +14,17 @@ namespace DSSGenNHibernate.Control
     {
         //Creo la fachada del control
         FachadaControl fachada;
-        FachadaSistemaEvaluacion fachadastmeval = new FachadaSistemaEvaluacion();
+        FachadaAsignaturaAnyo fachadaAsignaturaAnyo;
+        FachadaAnyoAcademico fachadaAnyo;
+        FachadaSistemaEvaluacion fachadastmeval;
 
         //Manejador para la carga de la pagina
         protected void Page_Load(object sender, EventArgs e)
         {
             fachada = new FachadaControl();
+            fachadaAsignaturaAnyo = new FachadaAsignaturaAnyo();
+            fachadaAnyo = new FachadaAnyoAcademico();
+            fachadastmeval = new FachadaSistemaEvaluacion();
 
             if (!IsPostBack)
             {
@@ -28,6 +33,8 @@ namespace DSSGenNHibernate.Control
                 navegacion.SavePreviuosPage(Request);
 
                 //Obtener los sistemas evaluacion
+                this.ObtenerAnyosAcademicos();
+                this.ObtenerAsignaturasAnyo();
                 this.ObtenerSistemasEvaluacion();
             }
         }
@@ -36,13 +43,13 @@ namespace DSSGenNHibernate.Control
         protected void Button_RegControl_Click(Object sender, EventArgs e)
         {
             //Recogo los datos
-            /*string nombre = TextBox_NomControl.Text;
+            string nombre = TextBox_NomControl.Text;
             string descripcion = TextBox_DescControl.Text;
-            DateTime apertura = Convert.ToDateTime(TextBox_ApertuControl.Text);
-            DateTime cierre = Convert.ToDateTime(TextBox_CierreControl.Text);
-            int duracionMin = Convert.ToInt32(TextBox_DuraciControl.Text);
+            //DateTime apertura = Convert.ToDateTime(TextBox_ApertuControl.Text);
+            //DateTime cierre = Convert.ToDateTime(TextBox_CierreControl.Text);
+            //int duracionMin = Convert.ToInt32(TextBox_DuraciControl.Text);
             //float puntMax = float.Parse(TextBox_PuntControl.Text);
-            //float penalizacion = float.Parse(TextBox_PenaControl.Text);*/
+            //float penalizacion = float.Parse(TextBox_PenaControl.Text);
             int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
              
             //Llamo al metodo que registra al alumno
@@ -50,7 +57,7 @@ namespace DSSGenNHibernate.Control
 
             try
             {
-                verificado = fachada.RegistrarControl("Prueba", "Prueba", DateTime.Now, DateTime.Now, 3, 9, 9, sistemaEvaluacion);
+                verificado = fachada.RegistrarControl(nombre, descripcion, DateTime.Now, DateTime.Now, 12, 9, 9, sistemaEvaluacion);
             }
             catch (Exception)
             {
@@ -68,10 +75,42 @@ namespace DSSGenNHibernate.Control
             }
         }
 
-        //Obtener los sistemas evaluacion
+        //Manejador cuando cambie la selección en el drop down list
+        protected void DropDownList_AsignaturasAnyo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Limpia DropDownList de evaluacion
+            DropDownList_SistemaEvaluacion.Items.Clear();
+            ObtenerSistemasEvaluacion();
+        }
+
+        //Manejador cuando cambie la selección en el drop down list
+        protected void DropDownList_Anyos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Limpia DropDownList de evaluacion y asignatura
+            DropDownList_AsignaturasAnyo.Items.Clear();
+            DropDownList_SistemaEvaluacion.Items.Clear();
+            ObtenerAsignaturasAnyo();
+            ObtenerSistemasEvaluacion();
+        }
+
+        //Obtener las asignaturas-anyo
+        protected void ObtenerAsignaturasAnyo()
+        {
+            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+            fachadaAsignaturaAnyo.VincularDameTodosPorAnyo(DropDownList_AsignaturasAnyo, idAnyo);
+        }
+
+        //Obtener los años académicos
+        protected void ObtenerAnyosAcademicos()
+        {
+            fachadaAnyo.VincularDameTodos(DropDownList_Anyos);
+        }
+
+        //Obtener los sistemas evaluacion por AsignaturaAnyo
         protected void ObtenerSistemasEvaluacion()
         {
-            fachadastmeval.VincularDameTodos(DropDownList_SistemaEvaluacion);
+            int idAsigAnyo = Int32.Parse(DropDownList_AsignaturasAnyo.SelectedValue);
+            fachadastmeval.VincularDameTodosPorAsignaturaAnyo(DropDownList_SistemaEvaluacion,idAsigAnyo);
         }
     }
 }

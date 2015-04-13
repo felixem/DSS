@@ -35,7 +35,19 @@
         Penalizacion (float)<asp:TextBox ID="TextBox_PenaControl" runat="server"></asp:TextBox>
     </p>
     <p class="style2">
-        Sistema Evaluacion
+        Año academico
+        <asp:DropDownList ID="DropDownList_Anyos" runat="server" 
+                    OnSelectedIndexChanged="DropDownList_Anyos_SelectedIndexChanged" AutoPostBack="True">
+                </asp:DropDownList>
+    </p>
+    <p class="style2">
+        Asignatura
+        <asp:DropDownList ID="DropDownList_AsignaturasAnyo" runat="server" 
+                    OnSelectedIndexChanged="DropDownList_AsignaturasAnyo_SelectedIndexChanged">
+                </asp:DropDownList>
+    </p>
+    <p class="style2">
+        Evaluacion
         <asp:DropDownList ID="DropDownList_SistemaEvaluacion" runat="server">
         </asp:DropDownList>
     </p>

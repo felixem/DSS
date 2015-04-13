@@ -24,5 +24,15 @@ namespace Fachadas.Moodle
             long total;
             stmeval.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
+
+        //Vincular a un DropDownList todos los sistemas de evaluacion de ese AsignaturaAnyo
+        public void VincularDameTodosPorAsignaturaAnyo(DropDownList drop, int idAsignaturaAnyo)
+        {
+            SistemaEvaluacionBinding stmeval = new SistemaEvaluacionBinding();
+            DameTodosSistemaEvaluacionPorAsignaturaAnyo consulta = new DameTodosSistemaEvaluacionPorAsignaturaAnyo(idAsignaturaAnyo);
+            BinderListaSistemaEvaluacionDropDownList binder = new BinderListaSistemaEvaluacionDropDownList(drop);
+            long total;
+            stmeval.VincularDameTodos(consulta, binder, 0, -1, out total);
+        }
     }
 }

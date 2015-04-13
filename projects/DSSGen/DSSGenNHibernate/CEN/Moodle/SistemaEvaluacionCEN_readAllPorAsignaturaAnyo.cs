@@ -20,7 +20,7 @@ public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvalua
 
         // Write here your custom code...
 
-        throw new NotImplementedException ("Method ReadAllPorAsignaturaAnyo() not yet implemented.");
+        return this._ISistemaEvaluacionCAD.ReadAllPorAsignaturaAnyo(id, first, size);
 
         /*PROTECTED REGION END*/
 }
