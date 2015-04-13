@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class alumnos_grupo_trabajo : System.Web.UI.Page
+    public partial class anyadiralumnos_grupo_trabajo : System.Web.UI.Page
     {
         FachadaGrupoTrabajo fachadaGrupo;
         FachadaAlumno fachadaAlumno;
@@ -83,7 +83,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             long numObjetos = 0;
 
             //Vincular el grid con la lista de alumnos paginada
-            fachadaAlumno.VincularDameTodosPorGrupo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaAlumno.VincularDameTodosIngresablesEnGrupo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -115,24 +115,17 @@ namespace DSSGenNHibernate.GrupoTrabajo
             rptPager.DataBind();
         }
 
-        //Manejador para añadir alumnos a un grupo de trabajo
-        protected void Button_Crear_Click(object sender, EventArgs e)
-        {
-            Linker link = new Linker(true);
-            link.Redirect(Response, link.AnyadirAlumnosGrupoTrabajo(id));
-        }
-
-        //Manejador del evento para expulsar a un alumno de un grupo de trabajo
-        protected void lnkEliminar_Click(object sender, EventArgs e)
+        //Manejador del evento para añadir a un alumno al grupo de trabajo
+        protected void lnkAnyadir_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             string emailAlumno = grdrow.Cells[0].Text;
 
-            //Desvincular un alumno de un grupo de trabajo
-            if (fachadaGrupo.DesvincularAlumno(id,emailAlumno))
-                Notification.Notify(Response,"El alumno ha sido desvinculado del grupo");
+            //Vincular un alumno a un grupo de trabajo
+            if (fachadaGrupo.VincularAlumno(id,emailAlumno))
+                Notification.Notify(Response,"El alumno ha sido añadido del grupo");
             else
-                Notification.Notify(Response, "El alumno no ha podido ser desvinculado del grupo");
+                Notification.Notify(Response, "El alumno no ha podido ser añadido del grupo");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAlumnosPaginados(1);

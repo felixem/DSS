@@ -160,8 +160,33 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
 
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
-                //Ejecutar el borrado
+                //Ejecutar la desvinculación
                 cen.Unrelationer_alumnos(id, emails);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
+        //Vincular alumnos a un grupo de trabajo
+        public void VincularAlumnos(int id, IList<string> emails)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
+                //Ejecutar la relación
+                cen.Relationer_alumnos(id, emails);
 
                 SessionCommit();
             }

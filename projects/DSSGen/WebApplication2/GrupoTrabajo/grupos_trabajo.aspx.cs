@@ -87,6 +87,16 @@ namespace DSSGenNHibernate.GrupoTrabajo
             link.Redirect(Response, link.ModificarGrupoTrabajo(grupoId));
         }
 
+        //Manejador del evento para listar los alumnos de un grupo de trabajo
+        protected void lnkAlumnos_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
+
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ListarAlumnosGrupoTrabajo(grupoId));
+        }
+
         //Manejador del evento para eliminar un grupo de trabajo
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {

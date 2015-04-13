@@ -10,7 +10,7 @@
 namespace DSSGenNHibernate.GrupoTrabajo {
     
     
-    public partial class alumnos_grupo_trabajo {
+    public partial class anyadiralumnos_grupo_trabajo {
         
         /// <summary>
         /// Panel1 control.
@@ -110,15 +110,6 @@ namespace DSSGenNHibernate.GrupoTrabajo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
-        
-        /// <summary>
-        /// Button_Crear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Crear;
         
         /// <summary>
         /// GridViewBolsas control.

@@ -180,5 +180,19 @@ namespace WebUtilities
             return "~/GrupoTrabajo/modificar_grupotrabajo.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
+
+        //Cadena para la página para listar alumnos de un grupo de trabajo
+        public String ListarAlumnosGrupoTrabajo(int cod)
+        {
+            return "~/GrupoTrabajo/alumnos_grupo_trabajo.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página para añadir a un alumno a un grupo de trabajo
+        public String AnyadirAlumnosGrupoTrabajo(int cod)
+        {
+            return "~/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
 }

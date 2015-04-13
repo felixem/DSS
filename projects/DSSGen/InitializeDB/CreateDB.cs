@@ -83,22 +83,22 @@ public static void InitializeData ()
                 admin.Email = "admin@admin.com";
                 admin.Dni = "48627742H";
                 admin.Apellidos = "admin";
-                admin.Fecha_nacimiento = DateTime.Parse ("08/13/1994");
+                admin.Fecha_nacimiento = DateTime.Parse ("08/08/1994");
                 admin.Nombre = "admin";
                 admin.Password = "1234";
                 AdministradorCEN adminCen = new AdministradorCEN ();
-                adminCen.New_ (admin.Cod_administrador, admin.Ocupacion, admin.Email, admin.Dni, admin.Password, admin.Nombre, admin.Apellidos, admin.Fecha_nacimiento);
+                string admin1 = adminCen.New_ (admin.Cod_administrador, admin.Ocupacion, admin.Email, admin.Dni, admin.Password, admin.Nombre, admin.Apellidos, admin.Fecha_nacimiento);
 
                 ProfesorEN prof = new ProfesorEN ();
                 prof.Cod_profesor = 3;
                 prof.Email = "jacv050@jacv050.com";
                 prof.Dni = "48627746H";
                 prof.Apellidos = "jacv050";
-                prof.Fecha_nacimiento = DateTime.Parse ("08/31/1994");
+                prof.Fecha_nacimiento = DateTime.Parse ("08/01/1994");
                 prof.Nombre = "jacv050";
                 prof.Password = "1234";
                 ProfesorCEN profCen = new ProfesorCEN ();
-                profCen.New_ (prof.Cod_profesor, prof.Email, prof.Dni, prof.Password, prof.Nombre, prof.Apellidos, prof.Fecha_nacimiento);
+                string profesor1 = profCen.New_ (prof.Cod_profesor, prof.Email, prof.Dni, prof.Password, prof.Nombre, prof.Apellidos, prof.Fecha_nacimiento);
 
                 ExpedienteEN expediente = new ExpedienteEN ();
                 ExpedienteCEN expCen = new ExpedienteCEN ();
@@ -112,11 +112,11 @@ public static void InitializeData ()
                 usuario.Email = "felix@felix.es";
                 usuario.Dni = "48627745H";
                 usuario.Apellidos = "Escalona";
-                usuario.Fecha_nacimiento = DateTime.Parse ("08/31/1994");
+                usuario.Fecha_nacimiento = DateTime.Parse ("08/11/1994");
                 usuario.Nombre = "Felix";
                 usuario.Password = "1234";
                 AlumnoCEN aluCen = new AlumnoCEN ();
-                aluCen.New_ (usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
+                string alumno1 = aluCen.New_ (usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
                         usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, expediente);
 
                 CursoEN curso = new CursoEN ();
@@ -168,9 +168,34 @@ public static void InitializeData ()
 
                 AsignaturaAnyoEN asignaturaAnyo = new AsignaturaAnyoEN ();
                 AsignaturaAnyoCEN asignaturaAnyoCen = new AsignaturaAnyoCEN ();
-                asignaturaAnyoCen.New_ (idAnyo, asig1);
-                asignaturaAnyoCen.New_ (idAnyo, asig2);
-                asignaturaAnyoCen.New_ (idAnyo2, asig3);
+                int as_anyo1 = asignaturaAnyoCen.New_ (idAnyo, asig1);
+                int as_anyo2 = asignaturaAnyoCen.New_ (idAnyo, asig2);
+                int as_anyo3 = asignaturaAnyoCen.New_ (idAnyo2, asig3);
+
+                GrupoTrabajoEN grupo = new GrupoTrabajoEN ();
+                GrupoTrabajoCEN grupoCen = new GrupoTrabajoCEN ();
+                grupo.Cod_grupo = "G1";
+                grupo.Nombre = "Grupako";
+                grupo.Descripcion = "Gran grupo";
+                grupo.Password = "pass";
+                grupo.Capacidad = 2;
+                int grupo1 = grupoCen.New_ (grupo.Cod_grupo, grupo.Nombre, grupo.Descripcion, grupo.Password, grupo.Capacidad, as_anyo1);
+
+                EvaluacionEN eval = new EvaluacionEN ();
+                EvaluacionCEN evalCen = new EvaluacionCEN ();
+                eval.Nombre = "Primera Evaluacion";
+                eval.Fecha_inicio = DateTime.Now;
+                eval.Fecha_fin = DateTime.Now;
+                eval.Abierta = true;
+                int eval1 = evalCen.New_ (eval.Nombre, eval.Fecha_inicio, eval.Fecha_fin, eval.Abierta, idAnyo);
+
+                SistemaEvaluacionEN sistemaEval = new SistemaEvaluacionEN ();
+                SistemaEvaluacionCEN sistemaCen = new SistemaEvaluacionCEN ();
+                int sistema_eval1 = sistemaCen.New_ (10f, as_anyo1, eval1);
+
+                EvaluacionAlumnoEN evalAlumno = new EvaluacionAlumnoEN ();
+                EvaluacionAlumnoCEN evalAlumnoCen = new EvaluacionAlumnoCEN ();
+                evalAlumnoCen.New_ (sistema_eval1, alumno1);
 
 
                 /*PROTECTED REGION END*/

@@ -134,5 +134,24 @@ namespace Fachadas.Moodle
 
             return true;
         }
+
+        //Método para vincular un alumno a grupo de trabajo
+        public bool VincularAlumno(int idGrupo, string email)
+        {
+            try
+            {
+                GrupoTrabajoCP cp = new GrupoTrabajoCP();
+                List<string> emails = new List<string>();
+
+                emails.Add(email);
+                cp.VincularAlumnos(idGrupo, emails);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
