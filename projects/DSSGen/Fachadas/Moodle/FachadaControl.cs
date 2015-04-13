@@ -70,5 +70,31 @@ namespace Fachadas.Moodle
             }
             return true;
         }
+
+        //Vincular a un grid view los controles con paginación
+        public void VincularDameTodos(GridView grid, int first, int size, out long numControles)
+        {
+            //Obtener controles y enlazar sus datos con el gridview
+            ControlBinding controlBind = new ControlBinding();
+            IDameTodosControl consulta = new DameTodosControl();
+            BinderListaControlGrid binder = new BinderListaControlGrid(grid);
+            controlBind.VincularDameTodos(consulta, binder, first, size, out numControles);
+        }
+
+        //Método para eliminar un control en la BD
+        public bool BorrarControl(int cod)
+        {
+            try
+            {
+                ControlCP cp = new ControlCP();
+                cp.BorrarControl(cod);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
