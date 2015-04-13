@@ -1,4 +1,9 @@
-﻿.posicion_izquierda
+﻿.radioButtonPostBack
+{
+    font-size:13px;
+}
+
+.posicion_izquierda
 {
     margin:3px;
     float:left;

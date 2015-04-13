@@ -104,7 +104,7 @@ namespace WebApplication2
             link.Redirect(Response, link.ListadoBolsaPreguntas());
         }
 
-        //Evento que redirecciona a la página de gestión de examenes
+        //Evento que redirecciona a la página de gestión de grupos de trabajo
         protected void btn_grupos_trabajo_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
