@@ -76,6 +76,24 @@ namespace DSSGenNHibernate.Control {
         protected global::System.Web.UI.WebControls.TextBox TextBox_PenaControl;
         
         /// <summary>
+        /// DropDownList_Anyos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Anyos;
+        
+        /// <summary>
+        /// DropDownList_AsignaturasAnyo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_AsignaturasAnyo;
+        
+        /// <summary>
         /// DropDownList_SistemaEvaluacion control.
         /// </summary>
         /// <remarks>

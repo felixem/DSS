@@ -198,6 +198,7 @@ public static void InitializeData ()
                 evalAlumnoCen.New_ (sistema_eval1, alumno1);
 
 
+
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)
