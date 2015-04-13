@@ -198,7 +198,7 @@ namespace WebUtilities
         //Cadena para la página para vincular una asignatura con un año
         public String CrearAsignaturaAnyo()
         {
-            return "~/AsignaturaAnyo/asignaturas_impartidas.aspx";
+            return "~/AsignaturaAnyo/crear_asignaturaanyo.aspx";
         }
     }
 }

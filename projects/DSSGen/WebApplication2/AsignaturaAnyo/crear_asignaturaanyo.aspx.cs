@@ -30,47 +30,24 @@ namespace DSSGenNHibernate.AsignaturaAnyo
                 navegacion.SavePreviuosPage(Request);
 
                 this.ObtenerAnyosAcademicos();
-                this.ObtenerAsignaturasAnyo();
+                this.ObtenerAsignaturas();
             }
         }
 
         //Método que llama el botón para crear una asignatura-anyo
         protected void Button_Crear_Click(Object sender, EventArgs e)
         {
-            throw new Exception("Not implemented yet");
             //Recojo los datos
-            string codigo = TextBox_CodGrupo.Text;
-            string nombre = TextBox_NomGrupo.Text;
-            string descripcion = TextBox_DescGrupo.Text;
-            string password = TextBox_Pass.Text;
-            string capacidad = TextBox_Capacidad.Text;
-            string idAsignaturaAnyo = DropDownList_AsignaturasAnyo.SelectedValue;
+            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+            int idAsignatura = Int32.Parse(DropDownList_Asignaturas.SelectedValue);
 
             //Crear la asignatura
-            /*if (fachadaGrupo.CrearGrupoTrabajo(codigo,nombre,descripcion,password,
-                Int32.Parse(capacidad),Int32.Parse(idAsignaturaAnyo)))
+            if (fachadaAsignaturaAnyo.CrearAsignaturaAnyo(idAnyo,idAsignatura))
             {
-                Notification.Notify(Response, "El grupo de trabajo ha sido creado");
-                this.Clean();
+                Notification.Notify(Response, "La asignatura ha sido vinculada con el año académico");
             }
             else
-                Notification.Notify(Response,"El grupo de trabajo no ha podido ser creado");*/
-        }
-    
-        //Método para limpiar
-        private void Clean()
-        {
-            TextBox_CodGrupo.Text = "";
-            TextBox_NomGrupo.Text = "";
-            TextBox_DescGrupo.Text = "";
-            TextBox_Pass.Text = "";
-            TextBox_Capacidad.Text = "";
-        }
-
-        //Método que llama el botón limpiar campos
-        protected void Button_Clean_Click(Object sender, EventArgs e)
-        {
-            this.Clean();
+                Notification.Notify(Response,"La asignatura no ha podido ser vinculada con el año académico");
         }
     
         //Botón utilizado para cancelar la creación y volver atrás
@@ -81,24 +58,10 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             link.Redirect(Response, link.PreviousPage());
         }
 
-        //Manejador cuando cambie la selección en el drop down list
-        protected void DropDownList_AsignaturasAnyo_SelectedIndexChanged(object sender, EventArgs e)
+        //Obtener las asignaturas
+        protected void ObtenerAsignaturas()
         {
-
-        }
-
-        //Manejador cuando cambie la selección en el drop down list
-        protected void DropDownList_Anyos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DropDownList_AsignaturasAnyo.Items.Clear();
-            ObtenerAsignaturasAnyo();
-        }
-
-        //Obtener las asignaturas-anyo
-        protected void ObtenerAsignaturasAnyo()
-        {
-            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
-            fachadaAsignaturaAnyo.VincularDameTodosPorAnyo(DropDownList_AsignaturasAnyo,idAnyo);
+            fachadaAsignatura.VincularDameTodos(DropDownList_Asignaturas);
         }
 
         //Obtener los años académicos

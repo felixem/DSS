@@ -8,36 +8,36 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.AsignaturaAnyo
+namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class asignaturas_impartidas : System.Web.UI.Page
+    public partial class grupos_trabajo_asignatura : System.Web.UI.Page
     {
         //Fachada utilizada en la página
-        FachadaAsignaturaAnyo fachada;
+        FachadaGrupoTrabajo fachada;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaAsignaturaAnyo();
+            fachada = new FachadaGrupoTrabajo();
             if (!IsPostBack)
             {
-                this.ObtenerAsignaturasPaginadas(1);
+                this.ObtenerGruposTrabajoPaginados(1);
             }
         }
 
         //Manejador al cambiar el tamaño de página
         protected void PageSize_Changed(object sender, EventArgs e)
         {
-            this.ObtenerAsignaturasPaginadas(1);
+            this.ObtenerGruposTrabajoPaginados(1);
         }
 
-        //Manejador para obtener las asignaturas paginadas
-        private void ObtenerAsignaturasPaginadas(int pageIndex)
+        //Manejador para obtener los grupos de trabajo paginados
+        private void ObtenerGruposTrabajoPaginados(int pageIndex)
         {
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            //Vincular el grid con la lista de asignaturas impartidas paginada
+            //Vincular el grid con la lista de grupos de trabajo paginados
             fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
@@ -48,7 +48,7 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         protected void Page_Changed(object sender, EventArgs e)
         {
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
-            this.ObtenerAsignaturasPaginadas(pageIndex);
+            this.ObtenerGruposTrabajoPaginados(pageIndex);
         }
 
         //Listar las páginas para navegar sobre ellas
@@ -70,49 +70,47 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             rptPager.DataBind();
         }
 
-        //Manejador para la creación de una nueva asignatura-anyo
+        //Manejador para la creación de un nuevo grupo de trabajo
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(true);
-            link.Redirect(Response, link.CrearAsignaturaAnyo());
+            link.Redirect(Response, link.CrearGrupoTrabajo());
         }
 
-        //Manejador del evento para listar los alumnos de una asignatura-anyo
+        //Manejador del evento para modificar un grupo de trabajo
+        protected void lnkEditar_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
+
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ModificarGrupoTrabajo(grupoId));
+        }
+
+        //Manejador del evento para listar los alumnos de un grupo de trabajo
         protected void lnkAlumnos_Click(object sender, EventArgs e)
         {
-            throw new Exception("not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
+            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
+            link.Redirect(Response, link.ListarAlumnosGrupoTrabajo(grupoId));
         }
 
-        //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo
-        protected void lnkGrupos_Click(object sender, EventArgs e)
-        {
-            throw new Exception("not implemented yet");
-            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
-
-            Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
-        }
-
-        //Manejador del evento para eliminar una asignatura-anyo
+        //Manejador del evento para eliminar un grupo de trabajo
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int asignaturaAnyoId = Int32.Parse(grdrow.Cells[0].Text);
+            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
-            //Eliminar asignatura
-            if (fachada.BorrarAsignaturaAnyo(asignaturaAnyoId))
-                Notification.Notify(Response, "La asignatura ha sido desvinculada del curso académico");
+            //Eliminar grupo de trabajo
+            if (fachada.BorrarGrupoTrabajo(grupoId))
+                Notification.Notify(Response,"El grupo de trabajo ha sido borrado");
             else
-                Notification.Notify(Response, "La asignatura no ha podido ser desvinculada del curso académico");
+                Notification.Notify(Response, "El grupo de trabajo no ha podido ser borrado");
 
             //Obtener de nuevo la lista de bolsas
-            this.ObtenerAsignaturasPaginadas(1);
+            this.ObtenerGruposTrabajoPaginados(1);
         }
     }
 }

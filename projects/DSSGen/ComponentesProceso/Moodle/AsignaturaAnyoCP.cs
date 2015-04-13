@@ -55,9 +55,16 @@ namespace ComponentesProceso.Moodle
             try
             {
                 SessionInitializeTransaction();
-                //Crear el año académico
+
                 AsignaturaAnyoCAD cad = new AsignaturaAnyoCAD(session);
                 AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
+
+                //Comprobar si existe previamente una relación entre la asignatura y el año
+                AsignaturaAnyoEN asig = cen.ReadRelation(idAsignatura, idAnyo);
+                if (asig != null)
+                    throw new Exception("Relación ya existente");
+
+                //Crear la asignatura-anyo
                 id = cen.New_(idAnyo,idAsignatura);
 
                 SessionCommit();
