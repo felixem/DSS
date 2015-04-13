@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="mis_asignaturas_impartidas.aspx.cs" Inherits="DSSGenNHibernate.Asignatura.mis_asignaturas_impartidas" %>
+    CodeBehind="asignaturas_impartidas.aspx.cs" Inherits="DSSGenNHibernate.AsignaturaAnyo.asignaturas_impartidas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" type="text/css" />
@@ -21,20 +21,20 @@
                     <asp:ListItem Text="50" Value="50" />
                 </asp:DropDownList>
                 <hr />
-                <asp:Button ID="Button_Crear" runat="server" Text="Crear asignatura" OnClick="Button_Crear_Click" />
+                <asp:Button ID="Button_Crear" runat="server" Text="Registrar Asignatura en Año" OnClick="Button_Crear_Click" />
                 <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField HeaderText="Id" DataField="Id" />
-                        <asp:BoundField HeaderText="Curso" DataField="Curso.Nombre" />
-                        <asp:BoundField HeaderText="Código" DataField="Cod_asignatura" />
-                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                        <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
-                        <asp:BoundField HeaderText="Optativa" DataField="Optativa" />
-                        <asp:BoundField HeaderText="Vigente" DataField="Vigente" />
+                        <asp:BoundField HeaderText="Año Académico" DataField="Anyo.Anyo" />
+                        <asp:BoundField HeaderText="Curso" DataField="Asignatura.Curso.Nombre" />
+                        <asp:BoundField HeaderText="Código" DataField="Asignatura.Cod_asignatura" />
+                        <asp:BoundField HeaderText="Nombre" DataField="Asignatura.Nombre" />
+                        <asp:BoundField HeaderText="Descripción" DataField="Asignatura.Descripcion" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="lnkEliminar" OnClick="lnkEliminar_Click">Eliminar</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="linkAlumnos" OnClick="lnkAlumnos_Click">Matriculados</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="linkGrupos" OnClick="lnkGrupos_Click">Grupos</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="lnkEliminar" OnClick="lnkEliminar_Click">Desvincular</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

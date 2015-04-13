@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.Asignatura {
+namespace DSSGenNHibernate.AsignaturaAnyo {
     
     
-    public partial class mis_asignaturas_impartidas {
+    public partial class asignaturas_impartidas {
         
         /// <summary>
         /// Panel1 control.

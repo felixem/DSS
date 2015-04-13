@@ -8,17 +8,17 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.Asignatura
+namespace DSSGenNHibernate.AsignaturaAnyo
 {
-    public partial class mis_asignaturas_impartidas : System.Web.UI.Page
+    public partial class asignaturas_impartidas : System.Web.UI.Page
     {
         //Fachada utilizada en la página
-        FachadaAsignatura fachada;
+        FachadaAsignaturaAnyo fachada;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaAsignatura();
+            fachada = new FachadaAsignaturaAnyo();
             if (!IsPostBack)
             {
                 this.ObtenerAsignaturasPaginadas(1);
@@ -37,7 +37,7 @@ namespace DSSGenNHibernate.Asignatura
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            //Vincular el grid con la lista de alumnos paginada
+            //Vincular el grid con la lista de asignaturas impartidas paginada
             fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
@@ -70,16 +70,18 @@ namespace DSSGenNHibernate.Asignatura
             rptPager.DataBind();
         }
 
-        //Manejador para la creación de una nueva asignatura
+        //Manejador para la creación de una nueva asignatura-anyo
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
+            throw new Exception("not implemented yet");
             Linker link = new Linker(true);
-            link.Redirect(Response, link.CrearAsignatura());
+            link.Redirect(Response, link.CrearAsignaturaAnyo());
         }
 
-        //Manejador del evento para modificar una asignatura
-        protected void lnkEditar_Click(object sender, EventArgs e)
+        //Manejador del evento para listar los alumnos de una asignatura-anyo
+        protected void lnkAlumnos_Click(object sender, EventArgs e)
         {
+            throw new Exception("not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
@@ -87,17 +89,28 @@ namespace DSSGenNHibernate.Asignatura
             link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
         }
 
-        //Manejador del evento para eliminar una asignatura
-        protected void lnkEliminar_Click(object sender, EventArgs e)
+        //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo
+        protected void lnkGrupos_Click(object sender, EventArgs e)
         {
+            throw new Exception("not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
+        }
+
+        //Manejador del evento para eliminar una asignatura-anyo
+        protected void lnkEliminar_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int asignaturaAnyoId = Int32.Parse(grdrow.Cells[0].Text);
+
             //Eliminar asignatura
-            if (fachada.BorrarAsignatura(asignaturaId))
-                Notification.Notify(Response, "La asignatura ha sido borrada");
+            if (fachada.BorrarAsignaturaAnyo(asignaturaAnyoId))
+                Notification.Notify(Response, "La asignatura ha sido desvinculada del curso académico");
             else
-                Notification.Notify(Response, "La asignatura no ha podido ser borrada");
+                Notification.Notify(Response, "La asignatura no ha podido ser desvinculada del curso académico");
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAsignaturasPaginadas(1);

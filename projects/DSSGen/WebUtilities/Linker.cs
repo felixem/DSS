@@ -194,5 +194,11 @@ namespace WebUtilities
             return "~/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
+
+        //Cadena para la página para vincular una asignatura con un año
+        public String CrearAsignaturaAnyo()
+        {
+            return "~/AsignaturaAnyo/asignaturas_impartidas.aspx";
+        }
     }
 }
