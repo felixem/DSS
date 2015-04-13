@@ -65,5 +65,47 @@ namespace DSSGenNHibernate.Control
                 link.Redirect(Response, link.PreviousPage());
             }
         }
+
+        //Método que llama al botón modificar
+        protected void Button_Modificar_Click(Object sender, EventArgs e)
+        {
+            //Recojo los datos
+            string nombre = TextBox_Nom.Text;
+            string descripcion = TextBox_Desc.Text;
+            string apertura = TextBox_Apertura.Text;
+            string cierre = TextBox_Cierre.Text;
+            string duracion = TextBox_Duracion.Text;
+            string puntmaxima = TextBox_PuntMax.Text;
+            string penalizacion = TextBox_Penalizacion.Text;
+
+            bool verificado;
+            //Pruebo a registrar el control
+            try
+            {
+                verificado = fachada.ModificarControl(id,nombre,descripcion,DateTime.Parse(apertura),DateTime.Parse(cierre),Int32.Parse(duracion),float.Parse(puntmaxima), float.Parse(penalizacion));
+            }
+            catch (Exception)
+            {
+                verificado = false;
+            }
+
+            //Compruebo si se han almacenado los cambios
+            if (verificado)
+            {
+                Notification.Notify(Response, "El control ha sido modificado");
+            }
+            else
+            {
+                Notification.Notify(Response, "El control no ha podido ser modificado");
+            }
+        }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
+        }
     }
 }

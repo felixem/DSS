@@ -33,4 +33,10 @@
     <p class="style2">
         Penalizacion (float)<asp:TextBox ID="TextBox_Penalizacion" runat="server"></asp:TextBox>
     </p>
+    <p class="style2">
+        <asp:Button ID="Button_ModificarControl" runat="server" OnClick="Button_Modificar_Click"
+                Text="Modificar" ValidationGroup="Registro"  />
+                &nbsp;
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
+                 /></p>
 </asp:Content>
