@@ -16,6 +16,13 @@ namespace WebApplication2.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            fachadapass = new FachadaPassword();
+            if (!MySession.Current.IsLoged())
+            {
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.Default());
+                return;
+            }
             if (!IsPostBack)
             {
 

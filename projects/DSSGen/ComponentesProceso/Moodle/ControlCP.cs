@@ -47,5 +47,113 @@ namespace ComponentesProceso.Moodle
             }
             return resultado;
         }
+    
+        //Modifica el control en la BD
+        public void ModificarControl(int p_oid, string p_nombre, string p_descripcion, Nullable<DateTime> p_fecha_apertura,
+            Nullable<DateTime> p_fecha_cierre, int p_duracion_minutos, float p_puntuacion_maxima,
+            float p_penalizacion_fallo)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                ControlCAD cad = new ControlCAD(session);
+                ControlCEN cen = new ControlCEN(cad);
+                //Ejecutar la modificación
+                cen.Modify(p_oid, p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_duracion_minutos, p_puntuacion_maxima, p_penalizacion_fallo);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de Controles que satisfacen la consulta
+        public System.Collections.Generic.IList<ControlEN> DameTodosTotal(IDameTodosControl consulta,
+            int first, int size, out long numElementos)
+        {
+            System.Collections.Generic.IList<ControlEN> lista = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                lista = consulta.Execute(session, first, size);
+                numElementos = consulta.Total(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return lista;
+        }
+
+        //Devolver el resultado de una consulta individual sobre un Control
+        public ControlEN DameControl(IDameControl consulta)
+        {
+            ControlEN en = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                en = consulta.Execute(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return en;
+        }
+
+        //Borrar Control a partir de su código de Control
+        public void BorrarControl(int cod)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                ControlCAD cad = new ControlCAD(session);
+                ControlCEN cen = new ControlCEN(cad);
+                //Ejecutar la modificación
+                cen.Destroy(cod);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }
