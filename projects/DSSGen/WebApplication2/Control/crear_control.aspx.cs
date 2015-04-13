@@ -45,11 +45,11 @@ namespace DSSGenNHibernate.Control
             //Recogo los datos
             string nombre = TextBox_NomControl.Text;
             string descripcion = TextBox_DescControl.Text;
-            //DateTime apertura = Convert.ToDateTime(TextBox_ApertuControl.Text);
-            //DateTime cierre = Convert.ToDateTime(TextBox_CierreControl.Text);
-            //int duracionMin = Convert.ToInt32(TextBox_DuraciControl.Text);
-            //float puntMax = float.Parse(TextBox_PuntControl.Text);
-            //float penalizacion = float.Parse(TextBox_PenaControl.Text);
+            DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
+            DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
+            int duracionMin = Int32.Parse(TextBox_DuraciControl.Text);
+            float puntMax = float.Parse(TextBox_PuntControl.Text);
+            float penalizacion = float.Parse(TextBox_PenaControl.Text);
             int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
              
             //Llamo al metodo que registra al alumno
@@ -57,7 +57,7 @@ namespace DSSGenNHibernate.Control
 
             try
             {
-                verificado = fachada.RegistrarControl(nombre, descripcion, DateTime.Now, DateTime.Now, 12, 9, 9, sistemaEvaluacion);
+                verificado = fachada.RegistrarControl(nombre, descripcion, apertura, cierre, duracionMin, puntMax, penalizacion, sistemaEvaluacion);
             }
             catch (Exception)
             {
