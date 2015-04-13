@@ -74,7 +74,11 @@
     <Compile Include="Moodle\AnyoAcademicoCP.cs" />
     <Compile Include="Moodle\AsignaturaAnyoCP.cs" />
     <Compile Include="Moodle\BolsaPreguntasCP.cs" />
+    <Compile Include="Moodle\Commands\DameControlPorId.cs" />
+    <Compile Include="Moodle\Commands\DameTodosControl.cs" />
     <Compile Include="Moodle\Commands\DameTodosSistemaEvaluacionPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\IDameControl.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosControl.cs" />
     <Compile Include="Moodle\UsuarioCP.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoIngresablesEnGrupo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorGrupo.cs" />
