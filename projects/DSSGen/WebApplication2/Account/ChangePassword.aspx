@@ -25,13 +25,6 @@
                                     ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." 
                                      ValidationGroup="RegisterUserValidationGroup" 
         Display="Dynamic">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="PasswordFormat" runat="server" 
-                                    ErrorMessage="La contraseña debe tener un tamaño de entre 6 y 15 caracteres e incluir, como mínimo, una mayúscula, una minúscula y un número." 
-                                    ControlToValidate="T_Anterior" CssClass="failureNotification" 
-                                    ToolTip="La contraseña no tiene el formato apropiado" 
-                                    ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$" 
-                                    ValidationGroup="RegisterUserValidationGroup" 
-        Display="Dynamic">*</asp:RegularExpressionValidator>
                     <br />
     <br />
     <asp:Label ID="L_Nueva" runat="server" Text="Nueva contraseña"></asp:Label>
@@ -43,13 +36,7 @@
                                     ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." 
                                      ValidationGroup="RegisterUserValidationGroup" 
         Display="Dynamic">*</asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                                    ErrorMessage="La contraseña debe tener un tamaño de entre 6 y 15 caracteres e incluir, como mínimo, una mayúscula, una minúscula y un número." 
-                                    ControlToValidate="T_nueva" CssClass="failureNotification" 
-                                    ToolTip="La contraseña no tiene el formato apropiado" 
-                                    ValidationExpression="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$" 
-                                    ValidationGroup="RegisterUserValidationGroup" 
-        Display="Dynamic">*</asp:RegularExpressionValidator>
+                        
 
                     <br />
     <br />
