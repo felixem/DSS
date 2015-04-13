@@ -83,7 +83,11 @@ namespace WebUtilities
         {
             return "~/Examen/crear_bolsa.aspx";
         }
-
+        //Cadena para la pagina de contraseña cambiada
+        public string PassChanged()
+        {
+            return "~/Account/ChangePasswordSuccess.aspx";
+        }
         //Cadena para la página de creación de un control
         public string CrearControl()
         {
