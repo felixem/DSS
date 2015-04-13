@@ -43,7 +43,7 @@
     <p class="style2">
         Asignatura
         <asp:DropDownList ID="DropDownList_AsignaturasAnyo" runat="server" 
-                    OnSelectedIndexChanged="DropDownList_AsignaturasAnyo_SelectedIndexChanged">
+                    OnSelectedIndexChanged="DropDownList_AsignaturasAnyo_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
     </p>
     <p class="style2">

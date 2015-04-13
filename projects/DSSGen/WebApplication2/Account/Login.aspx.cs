@@ -41,7 +41,7 @@ namespace WebApplication2.Account
             }
             catch (Exception excep)
             {
-                Response.Write("<script>window.alert('"+excep.Message+"');</script>");
+                Notification.Notify(Response,excep.Message);
                 return;
             }
 
@@ -53,7 +53,7 @@ namespace WebApplication2.Account
                 LoginUser_LoggedIn(sender, e);
 
             else
-                Response.Write("<script>window.alert('El usuario o la contraseña son incorrectos');</script>");
+                Notification.Notify(Response,"El usuario o la contraseña son incorrectos");
         }
 
         //Una vez logueado, entrar en la página principal
