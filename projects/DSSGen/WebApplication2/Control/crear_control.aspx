@@ -54,5 +54,9 @@
     <p class="style2">
         <asp:Button ID="Button_RegControl" runat="server" OnClick="Button_RegControl_Click" Text="Crear"
                 ValidationGroup="Registro" CssClass="posicion_izquierda" />
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
+                 />
+        <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos"
+                 />
     </p>
 </asp:Content>
