@@ -112,5 +112,31 @@ namespace DSSGenNHibernate.Control
             int idAsigAnyo = Int32.Parse(DropDownList_AsignaturasAnyo.SelectedValue);
             fachadastmeval.VincularDameTodosPorAsignaturaAnyo(DropDownList_SistemaEvaluacion,idAsigAnyo);
         }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
+        }
+
+        //Método que llama el botón limpiar campos
+        protected void Button_Clean_Click(Object sender, EventArgs e)
+        {
+            this.Clean();
+        }
+
+        //Método para limpiar
+        private void Clean()
+        {
+            TextBox_NomControl.Text = "";
+            TextBox_DescControl.Text = "";
+            TextBox_ApertuControl.Text = "";
+            TextBox_CierreControl.Text = "";
+            TextBox_DuraciControl.Text = "";
+            TextBox_PuntControl.Text = "";
+            TextBox_PenaControl.Text = "";
+        }
     }
 }
