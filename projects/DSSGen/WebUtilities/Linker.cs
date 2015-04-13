@@ -84,10 +84,23 @@ namespace WebUtilities
             return "~/Examen/crear_bolsa.aspx";
         }
 
+        //Cadena para la página de creación de un control
+        public string CrearControl()
+        {
+            return "~/Control/crear_control.aspx";
+        }
+
         //Cadena para la página de modificación de una bolsa de preguntas
         public string ModificarBolsa(int id)
         {
             return "~/Examen/modificar_bolsa.aspx" +
+                Parameter(PageParameters.MainParameter, id.ToString());
+        }
+
+        //Cadena para la página de modificación de un control
+        public string ModificarControl(int id)
+        {
+            return "~/Control/modificar_control.aspx" +
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
