@@ -86,6 +86,5 @@
 		  <query name="AlumnoENreadCodHQL"><![CDATA[FROM AlumnoEN alu where alu.Cod_alumno =:cod ]]></query>
 		  <query name="AlumnoENreadCantidadPorGrupoHQL"><![CDATA[select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id]]></query>
 		  <query name="AlumnoENreadCantidadIngresablesEnGrupoHQL"><![CDATA[select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Sistemas_evaluacion as eval INNER JOIN eval.Sistema_evaluacion as sist INNER JOIN sist.Asignatura as asig INNER JOIN asig.Grupos_trabajo as grupo where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos ]]></query>
-		  <query name="AlumnoENreadAllIngresablesEnGrupoHQL"><![CDATA[select distinct alu FROM AlumnoEN as alu INNER JOIN alu.Sistemas_evaluacion as eval INNER JOIN eval.Sistema_evaluacion as sist INNER JOIN sist.Asignatura as asig INNER JOIN asig.Grupos_trabajo	as grupo where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos]]></query>
 		</hibernate-mapping>
 	

@@ -118,10 +118,6 @@ public long ReadCantidadIngresablesEnGrupo (int id)
 {
         return _IAlumnoCAD.ReadCantidadIngresablesEnGrupo (id);
 }
-public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllIngresablesEnGrupo (int id, int first, int size)
-{
-        return _IAlumnoCAD.ReadAllIngresablesEnGrupo (id, first, size);
-}
 public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         //Call to AlumnoCAD

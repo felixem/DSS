@@ -12,28 +12,23 @@ namespace BindingComponents.Moodle.Commands
     public class BinderGrupoTrabajoParcial : IBinderGrupoTrabajo
     {
         //Variables privadas
-        private TextBox TextBox_CodGrupo;
         private TextBox TextBox_NomGrupo;
-        private TextBox TextBox_Asignatura;
+        private TextBox TextBox_Capacidad;
 
         
         //Crear el vinculador a partir de sus textboxes
-        public BinderGrupoTrabajoParcial(TextBox TextBox_CodGrupo,
-            TextBox TextBox_NomGrupo, TextBox TextBox_Asignatura)
+        public BinderGrupoTrabajoParcial(TextBox TextBox_NomGrupo, TextBox TextBox_Capacidad)
         {
-            this.TextBox_CodGrupo = TextBox_CodGrupo;
             this.TextBox_NomGrupo = TextBox_NomGrupo;
-            this.TextBox_Asignatura = TextBox_Asignatura;
+            this.TextBox_Capacidad = TextBox_Capacidad;
         }
 
         //Vincular el grupo de trabajo
         public void Vincular(GrupoTrabajoEN grupo)
         {
             //Vincular con los textboxes
-            TextBox_CodGrupo.Text = grupo.Cod_grupo;
-            TextBox_NomGrupo.Text = grupo.Nombre;
-            string anyo = grupo.Asignatura.Anyo.Anyo;
-            TextBox_Asignatura.Text = grupo.Asignatura.Asignatura.Nombre.ToString() + "(" + anyo + ")";
+            TextBox_NomGrupo.Text = grupo.Nombre + "(" + grupo.Cod_grupo + ")";
+            TextBox_Capacidad.Text = "" + grupo.Alumnos.Count + "/" + grupo.Capacidad;
         }
     }
 }

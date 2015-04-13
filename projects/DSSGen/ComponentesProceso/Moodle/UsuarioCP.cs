@@ -11,13 +11,14 @@ using ComponentesProceso.Excepciones;
 
 namespace ComponentesProceso.Moodle
 {
-    public class ChangePasswordCP : BasicCP
+    //Componente de proceso para la clase Usuario
+    public class UsuarioCP : BasicCP
     {
-        public ChangePasswordCP() : base(){  }
+        public UsuarioCP() : base(){  }
 
-        public ChangePasswordCP(ISession sesion) : base(sesion){  }
+        public UsuarioCP(ISession sesion) : base(sesion){  }
 
-        public bool change(string user, string pass, string newpass){
+        public bool CambiarPassword(string user, string pass, string newpass){
             bool result = false;
             UsuarioCAD usCAD = new UsuarioCAD(session);
             UsuarioCEN usCEN = new UsuarioCEN(usCAD);

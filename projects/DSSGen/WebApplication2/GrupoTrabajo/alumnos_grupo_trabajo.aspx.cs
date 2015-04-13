@@ -61,8 +61,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
         private void CargarDatos()
         {
             //Recuperar los datos del grupo de trabajo
-            if (!fachadaGrupo.VincularGrupoTrabajoPorIdLigero(id, TextBox_CodGrupo,
-                TextBox_NomGrupo, TextBox_Asignatura))
+            if (!fachadaGrupo.VincularGrupoTrabajoPorIdLigero(id, TextBox_NomGrupo,
+                    TextBox_Capacidad))
             {
                 //Redirigir a la página que le llamó en caso de error
                 Linker link = new Linker(false);
@@ -83,7 +83,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             long numObjetos = 0;
 
             //Vincular el grid con la lista de alumnos paginada
-            fachadaAlumno.VincularDameTodosPorGrupo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaAlumno.VincularDameTodosPorGrupo(id, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -129,12 +129,13 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string emailAlumno = grdrow.Cells[0].Text;
 
             //Desvincular un alumno de un grupo de trabajo
-            if (fachadaGrupo.DesvincularAlumno(id,emailAlumno))
-                Notification.Notify(Response,"El alumno ha sido desvinculado del grupo");
+            if (fachadaGrupo.DesvincularAlumno(id, emailAlumno))
+                Notification.Notify(Response, "El alumno ha sido desvinculado del grupo");
             else
                 Notification.Notify(Response, "El alumno no ha podido ser desvinculado del grupo");
 
-            //Obtener de nuevo la lista de bolsas
+            //Obtener los datos
+            this.CargarDatos();
             this.ObtenerAlumnosPaginados(1);
         }
 

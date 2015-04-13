@@ -7,6 +7,7 @@ using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using ComponentesProceso.Moodle.Commands;
+using DSSGenNHibernate.CAD.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
@@ -27,8 +28,9 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
                 //Creo el profesor    
-                ProfesorCEN profCen = new ProfesorCEN();
-                resultado = profCen.New_(cod, email, dni, pass, nombre, apellidos, fecha);
+                ProfesorCAD cad = new ProfesorCAD(session);
+                ProfesorCEN cen = new ProfesorCEN(cad);
+                resultado = cen.New_(cod, email, dni, pass, nombre, apellidos, fecha);
 
                 SessionCommit();
             }
@@ -107,7 +109,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                ProfesorCEN cen = new ProfesorCEN();
+                ProfesorCAD cad = new ProfesorCAD(session);
+                ProfesorCEN cen = new ProfesorCEN(cad);
                 //Ejecutar la modificación
                 cen.ModifyNoPassword(email, dni, nombre, apellidos, fechaNacimiento, codProfesor);
 
@@ -132,7 +135,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                ProfesorCEN cen = new ProfesorCEN();
+                ProfesorCAD cad = new ProfesorCAD(session);
+                ProfesorCEN cen = new ProfesorCEN(cad);
                 //Recuperar datos del profesor
                 ProfesorEN prof = cen.ReadCod(codProfesor);
                 //Ejecutar la modificación

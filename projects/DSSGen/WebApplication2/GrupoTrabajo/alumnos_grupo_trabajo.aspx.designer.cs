@@ -40,42 +40,6 @@ namespace DSSGenNHibernate.GrupoTrabajo {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// Label_Asignatura control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Asignatura;
-        
-        /// <summary>
-        /// TextBox_Asignatura control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Asignatura;
-        
-        /// <summary>
-        /// LabelCod_Grupo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelCod_Grupo;
-        
-        /// <summary>
-        /// TextBox_CodGrupo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_CodGrupo;
-        
-        /// <summary>
         /// Label_NombreGrupo control.
         /// </summary>
         /// <remarks>
@@ -94,13 +58,22 @@ namespace DSSGenNHibernate.GrupoTrabajo {
         protected global::System.Web.UI.WebControls.TextBox TextBox_NomGrupo;
         
         /// <summary>
-        /// Button_Cancelar control.
+        /// Label_Capacidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Cancelar;
+        protected global::System.Web.UI.WebControls.Label Label_Capacidad;
+        
+        /// <summary>
+        /// TextBox_Capacidad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Capacidad;
         
         /// <summary>
         /// ddlPageSize control.
@@ -110,6 +83,15 @@ namespace DSSGenNHibernate.GrupoTrabajo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
+        
+        /// <summary>
+        /// Button_Cancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Cancelar;
         
         /// <summary>
         /// Button_Crear control.

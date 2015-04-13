@@ -64,15 +64,15 @@ namespace Fachadas.Moodle
         }
 
         //Método para vincular un grupo de trabajo a partir de su id a textboxes
-        public bool VincularGrupoTrabajoPorIdLigero(int id, TextBox TextBox_CodGrupo,
-            TextBox TextBox_NomGrupo, TextBox TextBox_Asignatura)
+        public bool VincularGrupoTrabajoPorIdLigero(int id, TextBox TextBox_NomGrupo, 
+            TextBox TextBox_Capacidad)
         {
             try
             {
                 GrupoTrabajoBinding binding = new GrupoTrabajoBinding();
                 DameGrupoTrabajoPorId consulta = new DameGrupoTrabajoPorId(id);
-                IBinderGrupoTrabajo vinculador = new BinderGrupoTrabajoParcial(TextBox_CodGrupo,
-                    TextBox_NomGrupo, TextBox_Asignatura);
+                IBinderGrupoTrabajo vinculador = new BinderGrupoTrabajoParcial(TextBox_NomGrupo, 
+                    TextBox_Capacidad);
 
                 binding.VincularDameGrupoTrabajo(consulta, vinculador);
             }

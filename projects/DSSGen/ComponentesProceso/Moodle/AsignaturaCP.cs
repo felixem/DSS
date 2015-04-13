@@ -7,6 +7,7 @@ using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.CEN.Moodle;
+using DSSGenNHibernate.CAD.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
@@ -56,8 +57,9 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
                 //Crear la asignatura
-                AsignaturaCEN asig = new AsignaturaCEN();
-                id = asig.New_(codigo, nombre, descripcion, optativa, vigente, p_curso);
+                AsignaturaCAD cad = new AsignaturaCAD(session);
+                AsignaturaCEN cen = new AsignaturaCEN(cad);
+                id = cen.New_(codigo, nombre, descripcion, optativa, vigente, p_curso);
 
                 SessionCommit();
             }
@@ -109,7 +111,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                AsignaturaCEN cen = new AsignaturaCEN();
+                AsignaturaCAD cad = new AsignaturaCAD(session);
+                AsignaturaCEN cen = new AsignaturaCEN(cad);
                 //Ejecutar la modificación
                 cen.Modify(oid,codAsignatura,nombre,descripcion,optativa,vigente);
 
@@ -134,7 +137,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                AsignaturaCEN cen = new AsignaturaCEN();
+                AsignaturaCAD cad = new AsignaturaCAD(session);
+                AsignaturaCEN cen = new AsignaturaCEN(cad);
                 //Ejecutar la modificación
                 cen.Destroy(id);
 

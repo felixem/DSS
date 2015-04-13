@@ -7,6 +7,7 @@ using DSSGenNHibernate.EN.Moodle;
 using NHibernate;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.CEN.Moodle;
+using DSSGenNHibernate.CAD.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
@@ -56,8 +57,9 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
                 //Crear la asignatura
-                GrupoTrabajoCEN grupo = new GrupoTrabajoCEN();
-                id = grupo.New_(cod,nombre,descripcion,password,capacidad,asignatura_anyo);
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                id = cen.New_(cod,nombre,descripcion,password,capacidad,asignatura_anyo);
 
                 SessionCommit();
             }
@@ -109,7 +111,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
                 //Ejecutar la modificación
                 cen.Modify(id,cod,nombre,descripcion,password,capacidad);
 
@@ -134,7 +137,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
                 //Ejecutar el borrado
                 cen.Destroy(id);
 
@@ -159,7 +163,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
                 //Ejecutar la desvinculación
                 cen.Unrelationer_alumnos(id, emails);
 
@@ -184,7 +189,14 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                GrupoTrabajoCEN cen = new GrupoTrabajoCEN();
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                GrupoTrabajoEN en = cen.ReadOID(id);
+
+                //Comprobar tamaño
+                if ((en.Alumnos.Count + emails.Count) > en.Capacidad)
+                    throw new Exception("El tamaño del grupo es insuficiente");
+
                 //Ejecutar la relación
                 cen.Relationer_alumnos(id, emails);
 

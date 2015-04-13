@@ -6,6 +6,7 @@ using System.Text;
 using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
+using DSSGenNHibernate.CAD.Moodle;
 using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
@@ -33,9 +34,10 @@ namespace ComponentesProceso.Moodle
                 expediente.Cod_expediente = codExpediente;
                 expediente.Abierto = expedienteAbierto;
 
-                //Creo el alumno    
-                AlumnoCEN aluCen = new AlumnoCEN();            
-                resultado = aluCen.New_(cod, false, email, dni, pass, nombre, apellidos, fecha, expediente);
+                //Creo el alumno
+                AlumnoCAD cad = new AlumnoCAD(session);
+                AlumnoCEN cen = new AlumnoCEN(cad);            
+                resultado = cen.New_(cod, false, email, dni, pass, nombre, apellidos, fecha, expediente);
 
                 SessionCommit();
             }
@@ -114,7 +116,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                AlumnoCEN cen = new AlumnoCEN();
+                AlumnoCAD cad = new AlumnoCAD(session);
+                AlumnoCEN cen = new AlumnoCEN(cad);    
                 //Ejecutar la modificación
                 cen.ModifyNoPassword(email,codAlumno,baneado,dni,nombre,apellidos, fechaNacimiento);
 
@@ -139,7 +142,8 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                AlumnoCEN cen = new AlumnoCEN();
+                AlumnoCAD cad = new AlumnoCAD(session);
+                AlumnoCEN cen = new AlumnoCEN(cad);    
                 //Recuperar datos del alumno
                 AlumnoEN alu = cen.ReadCod(codAlumno);
                 //Ejecutar la modificación

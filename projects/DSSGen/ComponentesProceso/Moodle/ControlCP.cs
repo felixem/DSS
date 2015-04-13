@@ -7,6 +7,7 @@ using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using ComponentesProceso.Moodle.Commands;
+using DSSGenNHibernate.CAD.Moodle;
 
 namespace ComponentesProceso.Moodle
 {
@@ -27,9 +28,10 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                //Creo el alumno    
-                ControlCEN controlCen = new ControlCEN();
-                resultado = controlCen.New_(p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_duracion_minutos, p_puntuacion_maxima, p_penalizacion_fallo, p_sistema_evaluacion);
+                //Creo el control
+                ControlCAD cad = new ControlCAD(session);
+                ControlCEN cen = new ControlCEN(cad);
+                resultado = cen.New_(p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_duracion_minutos, p_puntuacion_maxima, p_penalizacion_fallo, p_sistema_evaluacion);
 
                 SessionCommit();
             }

@@ -34,7 +34,7 @@
                         <asp:BoundField HeaderText="Capacidad" DataField="Capacidad" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="lnkAlumnos" OnClick="lnkAlumnos_Click">Gestionar Alumnos</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="lnkAlumnos" OnClick="lnkAlumnos_Click">Alumnos</asp:LinkButton>
                                 <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>
                                 <asp:LinkButton runat="server" ID="lnkEliminar" OnClick="lnkEliminar_Click">Eliminar</asp:LinkButton>
                             </ItemTemplate>

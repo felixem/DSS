@@ -14,20 +14,14 @@
         </div>
         <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
             <div class="row_crear_alumno">
-                <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
-            </div>
-            <div class="row_crear_alumno">
-                <asp:Label ID="LabelCod_Grupo" runat="server" Text="Código de Grupo:" CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_CodGrupo" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
-            </div>
-            <div class="row_crear_alumno">
-                <asp:Label ID="Label_NombreGrupo" runat="server" Text="Nombre:" Style="color: #000000"
+                <asp:Label ID="Label_NombreGrupo" runat="server" Text="Grupo:" Style="color: #000000"
                     CssClass="posicion_izquierda"></asp:Label>
                 <asp:TextBox ID="TextBox_NomGrupo" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
-                <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
+                <asp:Label ID="Label_Capacidad" runat="server" Text="Inscritos:" Style="color: #000000"
+                    CssClass="posicion_izquierda"></asp:Label>
+                <asp:TextBox ID="TextBox_Capacidad" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
             </div>
             <div class="">
                 PageSize:
@@ -37,6 +31,7 @@
                     <asp:ListItem Text="50" Value="50" />
                 </asp:DropDownList>
                 <hr />
+                <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
                 <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField HeaderText="Email" DataField="Email" />

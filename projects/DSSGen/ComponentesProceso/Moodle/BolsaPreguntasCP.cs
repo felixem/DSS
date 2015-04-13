@@ -58,9 +58,9 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
 
                 //Crear bolsa
-                BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
-                BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
-                idBolsa = bolsaCen.New_(nombre, descripcion, fecha_creacion, fecha_modificacion, asignatura);
+                BolsaPreguntasCAD cad = new BolsaPreguntasCAD(session);
+                BolsaPreguntasCEN cen = new BolsaPreguntasCEN(cad);
+                idBolsa = cen.New_(nombre, descripcion, fecha_creacion, fecha_modificacion, asignatura);
 
                 //Crear preguntas
                 this.CrearPreguntas(preguntas, idBolsa);
@@ -90,13 +90,13 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
 
                 //Modificar valores de bolsa
-                BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
-                BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
-                bolsaCen.Modify(idBolsa, nombre, descripcion, fecha_creacion, fecha_modificacion);
+                BolsaPreguntasCAD cad = new BolsaPreguntasCAD(session);
+                BolsaPreguntasCEN cen = new BolsaPreguntasCEN(cad);
+                cen.Modify(idBolsa, nombre, descripcion, fecha_creacion, fecha_modificacion);
 
                 //Relacionar la bolsa con la nueva asignatura y desvincularla con la anterior
-                bolsaCen.Unrelationer_asignatura(idBolsa, asignaturaOriginal);
-                bolsaCen.Relationer_asignatura(idBolsa, asignaturaNueva);
+                cen.Unrelationer_asignatura(idBolsa, asignaturaOriginal);
+                cen.Relationer_asignatura(idBolsa, asignaturaNueva);
 
                 //Crear las preguntas nuevas
                 this.CrearPreguntas(preguntasNuevas, idBolsa);
@@ -126,14 +126,14 @@ namespace ComponentesProceso.Moodle
             //Crear preguntas
             PreguntaCAD preguntaCad = new PreguntaCAD(session);
             PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+            RespuestaCAD resCad = new RespuestaCAD(session);
+            RespuestaCEN resCen = new RespuestaCEN(resCad);
+
             foreach (PreguntaEN preg in preguntas)
             {
                 //Crear pregunta
                 int idPreg = preguntaCen.New_(preg.Contenido, preg.Explicacion, idBolsa);
                 int idRespCorrecta = -1;
-
-                RespuestaCAD resCad = new RespuestaCAD(session);
-                RespuestaCEN resCen = new RespuestaCEN(resCad);
 
                 //Crear respuestas
                 foreach (RespuestaEN resp in preg.Respuestas)
@@ -158,6 +158,9 @@ namespace ComponentesProceso.Moodle
             //Crear preguntas
             PreguntaCAD preguntaCad = new PreguntaCAD(session);
             PreguntaCEN preguntaCen = new PreguntaCEN(preguntaCad);
+            RespuestaCAD resCad = new RespuestaCAD(session);
+            RespuestaCEN resCen = new RespuestaCEN(resCad);
+
             foreach (PreguntaEN preg in preguntas)
             {
                 //Modificar pregunta
@@ -166,9 +169,6 @@ namespace ComponentesProceso.Moodle
                 int idRespCorrecta = preg.Respuesta_correcta.Id;
                 //Relacionar con el id de la respuesta correcta
                 preguntaCen.Relationer_respuesta_correcta(idPreg, idRespCorrecta);
-
-                RespuestaCAD resCad = new RespuestaCAD(session);
-                RespuestaCEN resCen = new RespuestaCEN(resCad);
 
                 //Modificar respuestas
                 foreach (RespuestaEN resp in preg.Respuestas)

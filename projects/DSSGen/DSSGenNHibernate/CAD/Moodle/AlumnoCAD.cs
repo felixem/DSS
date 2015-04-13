@@ -373,36 +373,6 @@ public long ReadCantidadIngresablesEnGrupo (int id)
 
         return result;
 }
-public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllIngresablesEnGrupo (int id, int first, int size)
-{
-        System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM AlumnoEN self where select distinct alu FROM AlumnoEN as alu INNER JOIN alu.Sistemas_evaluacion as eval INNER JOIN eval.Sistema_evaluacion as sist INNER JOIN sist.Asignatura as asig INNER JOIN asig.Grupos_trabajo	as grupo where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadAllIngresablesEnGrupoHQL");
-                query.SetParameter ("id", id);
-
-                result = query.List<DSSGenNHibernate.EN.Moodle.AlumnoEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AlumnoCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         DSSGenNHibernate.EN.Moodle.AlumnoEN alumnoEN = null;

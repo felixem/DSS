@@ -15,8 +15,8 @@ namespace Fachadas.Moodle
             bool result = false;
             try
             {
-                ChangePasswordCP passCP = new ChangePasswordCP();
-                result=passCP.change(user, pass, npass);
+                UsuarioCP passCP = new UsuarioCP();
+                result=passCP.CambiarPassword(user, pass, npass);
             }
             catch (Exception ex) {
                 throw ex;

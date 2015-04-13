@@ -38,8 +38,6 @@ long ReadCantidadPorGrupo (int id);
 long ReadCantidadIngresablesEnGrupo (int id);
 
 
-System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllIngresablesEnGrupo (int id, int first, int size);
-
 
 void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno);
 

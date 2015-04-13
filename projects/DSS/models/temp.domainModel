@@ -231,8 +231,16 @@
         <arguments name="first" type="Integer" isOrdered="true"/>
         <arguments name="size" type="Integer" isOrdered="true"/>
       </operations>
-      <operations name="readCantidadPorGrupo" operationType="ReadFilter" type="Long" filter="select alu FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id">
+      <operations name="readCantidadPorGrupo" operationType="ReadFilter" type="Long" filter="select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id">
         <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
+      </operations>
+      <operations name="readCantidadIngresablesEnGrupo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Sistemas_evaluacion as eval INNER JOIN eval.Sistema_evaluacion as sist INNER JOIN sist.Asignatura as asig INNER JOIN asig.Grupos_trabajo as grupo where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos ">
+        <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
+      </operations>
+      <operations name="readAllIngresablesEnGrupo" type="Object" collectionType="List" typeObject="/0/@elements.4">
+        <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
       </operations>
       <operations name="relationer_controles" operationType="Relationer" type="Void" relatedRol="/0/@elements.4/@attributes.7">
         <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
