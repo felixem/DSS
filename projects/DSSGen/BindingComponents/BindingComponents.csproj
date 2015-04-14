@@ -92,6 +92,7 @@
     <Compile Include="Moodle\Commands\BinderListaGrupoTrabajoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaSistemaEvaluacionDropDownList.cs" />
+    <Compile Include="Moodle\Commands\BinderAsignaturaAnyoLigero.cs" />
     <Compile Include="Moodle\Commands\IBinderControl.cs" />
     <Compile Include="Moodle\Commands\IBinderListaBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAnyoAcademico.cs" />

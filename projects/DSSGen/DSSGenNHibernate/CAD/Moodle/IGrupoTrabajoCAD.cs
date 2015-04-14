@@ -28,6 +28,10 @@ long ReadCantidad ();
 DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN ReadCod (string cod);
 
 
+long ReadCantidadPorAsignaturaAnyo (int id);
+
+
+
 void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno);
 
 void Relationer_asignatura (int p_grupotrabajo, int p_asignaturaanyo);

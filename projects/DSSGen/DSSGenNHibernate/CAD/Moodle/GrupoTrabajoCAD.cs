@@ -263,6 +263,38 @@ public DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN ReadCod (string cod)
 
         return result;
 }
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM GrupoTrabajoEN self where select count(*) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("GrupoTrabajoENreadCantidadPorAsignaturaAnyoHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in GrupoTrabajoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN grupoTrabajoEN = null;

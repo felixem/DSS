@@ -43,6 +43,25 @@ namespace Fachadas.Moodle
             binding.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
+        //Método para vincular una asignatura a partir de su id a textboxes
+        public bool VincularAsignaturaAnyoPorIdLigero(int id, TextBox TextBox_Asignatura)
+        {
+            try
+            {
+                AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
+                DameAsignaturaAnyoPorId consulta = new DameAsignaturaAnyoPorId(id);
+                BinderAsignaturaAnyoLigero vinculador =
+                    new BinderAsignaturaAnyoLigero(TextBox_Asignatura);
+
+                binding.VincularDameAsignaturaAnyo(consulta, vinculador);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
         //Método para crear una asignatura-anyo en la BD
         public bool CrearAsignaturaAnyo(int idAnyo, int idAsignatura)
         {

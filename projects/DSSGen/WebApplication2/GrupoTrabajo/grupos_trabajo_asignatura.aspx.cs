@@ -13,15 +13,57 @@ namespace DSSGenNHibernate.GrupoTrabajo
     public partial class grupos_trabajo_asignatura : System.Web.UI.Page
     {
         //Fachada utilizada en la página
-        FachadaGrupoTrabajo fachada;
+        FachadaGrupoTrabajo fachadaGrupo;
+        FachadaAsignaturaAnyo fachadaAsignatura;
+        private int id;
+        String param;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaGrupoTrabajo();
             if (!IsPostBack)
             {
+                //Capturar la página que realizó la petición
+                NavigationSession navegacion = NavigationSession.Current;
+                navegacion.SavePreviuosPage(Request);
+            }
+
+            fachadaGrupo = new FachadaGrupoTrabajo();
+            fachadaAsignatura = new FachadaAsignaturaAnyo();
+            Obtener_Parametros();
+
+            if (!IsPostBack)
+            {
+                //Cargar datos
+                this.CargarDatos();
                 this.ObtenerGruposTrabajoPaginados(1);
+            }
+        }
+
+        //Comprobar si se plantea operación de modificación
+        private void Obtener_Parametros()
+        {
+            param = Request.QueryString[PageParameters.MainParameter];
+            //Lanzar excepción no se ha recibido un parámetro
+            if (param == null)
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
+            else
+                id = Int32.Parse(param);
+        }
+
+        //Comprobar parámetros y cargar datos
+        private void CargarDatos()
+        {
+            //Recuperar los datos de la asignatura-anyo
+            if (!fachadaAsignatura.VincularAsignaturaAnyoPorIdLigero(id, TextBox_Asignatura))
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
             }
         }
 
@@ -38,7 +80,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             long numObjetos = 0;
 
             //Vincular el grid con la lista de grupos de trabajo paginados
-            fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaGrupo.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -73,6 +115,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador para la creación de un nuevo grupo de trabajo
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
+            throw new Exception("Not implemented yet");
             Linker link = new Linker(true);
             link.Redirect(Response, link.CrearGrupoTrabajo());
         }
@@ -104,7 +147,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar grupo de trabajo
-            if (fachada.BorrarGrupoTrabajo(grupoId))
+            if (fachadaGrupo.BorrarGrupoTrabajo(grupoId))
                 Notification.Notify(Response,"El grupo de trabajo ha sido borrado");
             else
                 Notification.Notify(Response, "El grupo de trabajo no ha podido ser borrado");

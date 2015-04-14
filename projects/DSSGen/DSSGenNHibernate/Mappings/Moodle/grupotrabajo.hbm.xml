@@ -58,5 +58,6 @@
 		  <query name="GrupoTrabajoENReadAllHQL">from GrupoTrabajoEN</query>
 		  <query name="GrupoTrabajoENreadCantidadHQL"><![CDATA[select count(*) FROM GrupoTrabajoEN]]></query>
 		  <query name="GrupoTrabajoENreadCodHQL"><![CDATA[FROM GrupoTrabajoEN grupo where grupo.Cod_grupo=:cod]]></query>
+		  <query name="GrupoTrabajoENreadCantidadPorAsignaturaAnyoHQL"><![CDATA[select count(*) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id]]></query>
 		</hibernate-mapping>
 	

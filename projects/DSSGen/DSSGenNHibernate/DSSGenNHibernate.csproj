@@ -125,6 +125,7 @@
     <Compile Include="CAD\Moodle\ControlCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD_Extension.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -153,6 +154,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\GrupoTrabajo_ReadAllPorAsignaturaAnyo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CAD\Moodle\IAdministradorCAD.cs">
@@ -319,6 +323,7 @@
     <Compile Include="CEN\Moodle\ExpedienteEvaluacionCEN.cs" />
     <Compile Include="EN\Moodle\GrupoTrabajoEN.cs" />
     <Compile Include="CEN\Moodle\GrupoTrabajoCEN.cs" />
+    <Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="EN\Moodle\MaterialEN.cs" />
     <Compile Include="CEN\Moodle\MaterialCEN.cs" />
     <Compile Include="EN\Moodle\AnyoAcademicoEN.cs" />

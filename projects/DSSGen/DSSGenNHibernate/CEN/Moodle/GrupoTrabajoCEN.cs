@@ -106,6 +106,10 @@ public DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN ReadCod (string cod)
 {
         return _IGrupoTrabajoCAD.ReadCod (cod);
 }
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        return _IGrupoTrabajoCAD.ReadCantidadPorAsignaturaAnyo (id);
+}
 public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         //Call to GrupoTrabajoCAD

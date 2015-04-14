@@ -775,6 +775,14 @@
       <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.14" filter="FROM GrupoTrabajoEN grupo where grupo.Cod_grupo=:cod">
         <arguments name="cod" isOrdered="true"/>
       </operations>
+      <operations name="readCantidadPorAsignaturaAnyo" operationType="ReadFilter" type="Long" filter="select count(*) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id">
+        <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+      </operations>
+      <operations name="readAllPorAsignaturaAnyo" type="Object" collectionType="List" typeObject="/0/@elements.14">
+        <arguments name="p_as_anyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
       <operations name="relationer_alumnos" operationType="Relationer" type="Void" relatedRol="/0/@elements.14/@attributes.6">
         <arguments name="p_grupotrabajo" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
         <arguments name="p_alumno" type="OID" collectionType="List" typeObject="/0/@elements.4" isOrdered="true"/>

@@ -47,5 +47,39 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+
+        //Vincular a TextBoxes el contenido de una consulta individual sobre una asignatura-anyo
+        public void VincularDameAsignaturaAnyo(IDameAsignaturaAnyo consulta, IBinderAsignaturaAnyo linker)
+        {
+            AsignaturaAnyoEN asignatura = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                AsignaturaAnyoCP cp = new AsignaturaAnyoCP(session);
+                //Ejecutar la consulta recibida
+                asignatura = cp.DameAsignaturaAnyo(consulta);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Comprobar que se ha encontrado la asignatura
+                if (asignatura == null)
+                    throw new Exception("Asignatura no encontrada");
+
+                //Vincular con los textboxes
+                linker.Vincular(asignatura);
+
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

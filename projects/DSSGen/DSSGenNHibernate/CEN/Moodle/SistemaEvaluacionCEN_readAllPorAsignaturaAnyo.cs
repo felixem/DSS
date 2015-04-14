@@ -20,7 +20,7 @@ public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvalua
 
         // Write here your custom code...
 
-        return this._ISistemaEvaluacionCAD.ReadAllPorAsignaturaAnyo(id, first, size);
+        return this._ISistemaEvaluacionCAD.ReadAllPorAsignaturaAnyo (id, first, size);
 
         /*PROTECTED REGION END*/
 }

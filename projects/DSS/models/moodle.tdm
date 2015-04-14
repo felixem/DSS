@@ -491,6 +491,9 @@ ConceptualModel moodle
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM GrupoTrabajoEN" };
 			public readCod::ReadFilter (cod : String) : Object -> GrupoTrabajo { filter = "FROM GrupoTrabajoEN grupo where grupo.Cod_grupo=:cod"};
+			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
+			{ filter = "select count(*) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id" };
+			public readAllPorAsignaturaAnyo::Custom (p_as_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->GrupoTrabajo>;
 			
 			public relationer_alumnos::Relationer->grupotrabajo_alumno.alumnos (p_grupotrabajo : OID -> GrupoTrabajo, p_alumno : List<OID -> Alumno>) : Void;
 			public relationer_asignatura::Relationer->grupotrabajo_asignaturaanyo.asignatura (p_grupotrabajo : OID -> GrupoTrabajo, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;

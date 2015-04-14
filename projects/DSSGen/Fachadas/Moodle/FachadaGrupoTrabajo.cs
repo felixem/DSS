@@ -24,6 +24,18 @@ namespace Fachadas.Moodle
             grupo.VincularDameTodos(consulta, binder, first, size, out numElements);
         }
 
+        //Vincular a un gridview los grupos de trabajo pertenecientes a una asignatura-anyo con paginación
+        public void VincularDameTodosPorAsignaturaAnyo(int idAsignaturaAnyo, GridView grid, 
+            int first, int size, out long numAlumnos)
+        {
+            //Obtener alumnos y enlazar sus datos con el gridview
+            GrupoTrabajoBinding grupoBind = new GrupoTrabajoBinding();
+            IDameTodosGrupoTrabajo consulta = new DameTodosGrupoTrabajoPorAsignaturaAnyo(idAsignaturaAnyo);
+            BinderListaGrupoTrabajoGrid binder = new BinderListaGrupoTrabajoGrid(grid);
+
+            grupoBind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
+        }
+
         //Método para crear un grupo de trabajo en la BD
         public bool CrearGrupoTrabajo(string codigo, string nombre, string descripcion,
             string password, int capacidad, int asignatura_anyo)
