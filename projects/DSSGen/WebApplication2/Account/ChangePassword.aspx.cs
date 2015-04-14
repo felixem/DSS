@@ -50,14 +50,14 @@ namespace WebApplication2.Account
             //Compruebo si se han almacenado los cambios
             if (verificado)
             {
-                Response.Write("<script>window.alert('La contraseña se ha modificado correctamente');</script>");
-                //Redirigir a la página que le llamó
+                
+                //Redirigir a la página password cambiado
                 Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
+                link.Redirect(Response, link.PassChanged());
             }
             else
             {
-                Response.Write("<script>window.alert('La contraseña no ha podido ser modificada');</script>");
+                Notification.Notify(Response,"La contraseña no ha podido ser modificada");
             }
         }
 
