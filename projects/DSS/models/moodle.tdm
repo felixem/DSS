@@ -106,7 +106,7 @@ ConceptualModel moodle
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ProfesorEN" };
 			public readCod::ReadFilter (cod : Integer) : Object -> Profesor { filter = "FROM ProfesorEN prof where prof.Cod_profesor =:cod "};
 			
-			public readCantidadPorAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
+			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
 			{ filter = "select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id " };
 			public readAllPorAsignaturaAnyo::Custom (p_asig_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->Profesor>;
 			

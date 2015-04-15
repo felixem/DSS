@@ -147,7 +147,7 @@
       <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.3" filter="FROM ProfesorEN prof where prof.Cod_profesor =:cod ">
         <arguments name="cod" type="Integer" isOrdered="true"/>
       </operations>
-      <operations name="readCantidadPorAnyo" operationType="ReadFilter" type="Long" filter="select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ">
+      <operations name="readCantidadPorAsignaturaAnyo" operationType="ReadFilter" type="Long" filter="select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ">
         <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
       <operations name="readAllPorAsignaturaAnyo" type="Object" collectionType="List" typeObject="/0/@elements.3">

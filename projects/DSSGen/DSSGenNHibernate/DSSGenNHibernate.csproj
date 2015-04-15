@@ -125,8 +125,6 @@
     <Compile Include="CAD\Moodle\ControlCAD.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CAD\Moodle\IProfesorCAD_Extension.cs" />
-    <Compile Include="CAD\Moodle\ProfesorCAD_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -233,6 +231,7 @@
     <Compile Include="CAD\Moodle\IProfesorCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\IProfesorCAD_Extension.cs" />
     <Compile Include="CAD\Moodle\IRespuestaCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -267,6 +266,7 @@
     <Compile Include="CAD\Moodle\ProfesorCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\ProfesorCAD_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="CAD\Moodle\RespuestaCAD.cs">
       <SubType>Code</SubType>
     </Compile>

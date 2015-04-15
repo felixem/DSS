@@ -60,6 +60,6 @@
 		  <query name="ProfesorENReadAllHQL">from ProfesorEN</query>
 		  <query name="ProfesorENreadCantidadHQL"><![CDATA[select count(*) FROM ProfesorEN]]></query>
 		  <query name="ProfesorENreadCodHQL"><![CDATA[FROM ProfesorEN prof where prof.Cod_profesor =:cod ]]></query>
-		  <query name="ProfesorENreadCantidadPorAnyoHQL"><![CDATA[select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ]]></query>
+		  <query name="ProfesorENreadCantidadPorAsignaturaAnyoHQL"><![CDATA[select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ]]></query>
 		</hibernate-mapping>
 	

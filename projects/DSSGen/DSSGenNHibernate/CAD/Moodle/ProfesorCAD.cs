@@ -299,7 +299,7 @@ public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
 
         return result;
 }
-public long ReadCantidadPorAnyo (int id)
+public long ReadCantidadPorAsignaturaAnyo (int id)
 {
         long result;
 
@@ -308,7 +308,7 @@ public long ReadCantidadPorAnyo (int id)
                 SessionInitializeTransaction ();
                 //String sql = @"FROM ProfesorEN self where select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ";
                 //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCantidadPorAnyoHQL");
+                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCantidadPorAsignaturaAnyoHQL");
                 query.SetParameter ("id", id);
 
 

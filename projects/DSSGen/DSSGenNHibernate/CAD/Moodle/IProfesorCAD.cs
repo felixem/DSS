@@ -31,7 +31,7 @@ long ReadCantidad ();
 DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod);
 
 
-long ReadCantidadPorAnyo (int id);
+long ReadCantidadPorAsignaturaAnyo (int id);
 
 
 
