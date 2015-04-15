@@ -90,6 +90,7 @@
     <Compile Include="Moodle\Commands\BinderListaCursoDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaCursoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaGrupoTrabajoGrid.cs" />
+    <Compile Include="Moodle\Commands\BinderListaProfesorDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaSistemaEvaluacionDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderAsignaturaAnyoLigero.cs" />

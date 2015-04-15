@@ -73,6 +73,16 @@ namespace Fachadas.Moodle
             profesorBind.VincularDameTodos(consulta, binder, first, size, out numProfesores);
         }
 
+        //Vincular a un DropDownList todos los profesores de ese AsignaturaAnyo
+        public void VincularDameTodosPorAsignaturaAnyo(DropDownList drop, int idAsignaturaAnyo)
+        {
+            ProfesorBinding stmeval = new ProfesorBinding();
+            DameTodosProfesorPorAsignaturaAnyo consulta = new DameTodosProfesorPorAsignaturaAnyo(idAsignaturaAnyo);
+            BinderListaProfesorDropDownList binder = new BinderListaProfesorDropDownList(drop);
+            long total;
+            stmeval.VincularDameTodos(consulta, binder, 0, -1, out total);
+        }
+
         //Método para vincular un profesor a partir de su id a textboxes
         public bool VincularProfesorPorId(int id, TextBox TextBox_NomProf,
             TextBox TextBox_ApellProf, TextBox TextBox_NaciProf, TextBox TextBox_DNIProf,
