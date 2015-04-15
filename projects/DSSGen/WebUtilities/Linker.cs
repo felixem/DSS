@@ -224,5 +224,12 @@ namespace WebUtilities
             return "~/GrupoTrabajo/grupos_trabajo_asignatura.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
+
+        //Cadena para la página para crear un grupo de trabajo para una asignatura-anyo
+        public String CrearGrupoTrabajoAsignaturaAnyo(int cod)
+        {
+            return "~/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
 }

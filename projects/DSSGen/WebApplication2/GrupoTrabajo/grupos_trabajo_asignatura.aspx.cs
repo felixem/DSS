@@ -115,9 +115,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador para la creación de un nuevo grupo de trabajo
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
-            throw new Exception("Not implemented yet");
             Linker link = new Linker(true);
-            link.Redirect(Response, link.CrearGrupoTrabajo());
+            link.Redirect(Response, link.CrearGrupoTrabajoAsignaturaAnyo(id));
         }
 
         //Manejador del evento para modificar un grupo de trabajo
