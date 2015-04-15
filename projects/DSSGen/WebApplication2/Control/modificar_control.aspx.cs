@@ -107,5 +107,19 @@ namespace DSSGenNHibernate.Control
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
         }
+
+        //Metodo que comprueba la fecha(Control de validacion)
+        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
+        {
+            try
+            {
+                Convert.ToDateTime(e.Value);
+                e.IsValid = true;
+            }
+            catch (Exception)
+            {
+                e.IsValid = false;
+            }
+        }
     }
 }

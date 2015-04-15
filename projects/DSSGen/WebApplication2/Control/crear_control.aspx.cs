@@ -42,21 +42,20 @@ namespace DSSGenNHibernate.Control
         //Método que llama el botón crear
         protected void Button_RegControl_Click(Object sender, EventArgs e)
         {
-            //Recogo los datos
-            string nombre = TextBox_NomControl.Text;
-            string descripcion = TextBox_DescControl.Text;
-            DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
-            DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
-            int duracionMin = Int32.Parse(TextBox_DuraciControl.Text);
-            float puntMax = float.Parse(TextBox_PuntControl.Text);
-            float penalizacion = float.Parse(TextBox_PenaControl.Text);
-            int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
-             
             //Llamo al metodo que registra al alumno
             bool verificado;
 
             try
             {
+                //Recogo los datos
+                string nombre = TextBox_NomControl.Text;
+                string descripcion = TextBox_DescControl.Text;
+                DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
+                DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
+                int duracionMin = Int32.Parse(TextBox_DuraciControl.Text);
+                float puntMax = float.Parse(TextBox_PuntControl.Text);
+                float penalizacion = float.Parse(TextBox_PenaControl.Text);
+                int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);          
                 verificado = fachada.RegistrarControl(nombre, descripcion, apertura, cierre, duracionMin, puntMax, penalizacion, sistemaEvaluacion);
             }
             catch (Exception)
@@ -68,6 +67,8 @@ namespace DSSGenNHibernate.Control
             if (verificado)
             {
                 Notification.Notify(Response, "El control ha sido creado");
+                Linker link = new Linker(true);
+                link.Redirect(Response, link.PreviousPage());
             }
             else
             {
@@ -137,6 +138,20 @@ namespace DSSGenNHibernate.Control
             TextBox_DuraciControl.Text = "";
             TextBox_PuntControl.Text = "";
             TextBox_PenaControl.Text = "";
+        }
+
+        //Metodo que comprueba la fecha(Control de validacion)
+        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
+        {
+            try
+            {
+                Convert.ToDateTime(e.Value);
+                e.IsValid = true;
+            }
+            catch (Exception)
+            {
+                e.IsValid = false;
+            }
         }
     }
 }
