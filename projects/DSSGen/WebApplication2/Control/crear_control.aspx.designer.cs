@@ -22,6 +22,24 @@ namespace DSSGenNHibernate.Control {
         protected global::System.Web.UI.WebControls.TextBox TextBox_NomControl;
         
         /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        
+        /// <summary>
+        /// RegularExpressionValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator4;
+        
+        /// <summary>
         /// TextBox_DescControl control.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,24 @@ namespace DSSGenNHibernate.Control {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_DescControl;
+        
+        /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
+        /// RegularExpressionValidator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
         
         /// <summary>
         /// TextBox_ApertuControl control.
@@ -40,6 +76,33 @@ namespace DSSGenNHibernate.Control {
         protected global::System.Web.UI.WebControls.TextBox TextBox_ApertuControl;
         
         /// <summary>
+        /// RequiredFieldValidator8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        
+        /// <summary>
+        /// RegularExpressionValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
+        
+        /// <summary>
+        /// CustomValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
+        
+        /// <summary>
         /// TextBox_CierreControl control.
         /// </summary>
         /// <remarks>
@@ -47,6 +110,33 @@ namespace DSSGenNHibernate.Control {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_CierreControl;
+        
+        /// <summary>
+        /// RequiredFieldValidator9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+        
+        /// <summary>
+        /// RegularExpressionValidator6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator6;
+        
+        /// <summary>
+        /// CustomValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
         
         /// <summary>
         /// TextBox_DuraciControl control.
@@ -58,6 +148,24 @@ namespace DSSGenNHibernate.Control {
         protected global::System.Web.UI.WebControls.TextBox TextBox_DuraciControl;
         
         /// <summary>
+        /// RequiredFieldValidator10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+        
+        /// <summary>
+        /// RegularExpressionValidator8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator8;
+        
+        /// <summary>
         /// TextBox_PuntControl control.
         /// </summary>
         /// <remarks>
@@ -67,6 +175,24 @@ namespace DSSGenNHibernate.Control {
         protected global::System.Web.UI.WebControls.TextBox TextBox_PuntControl;
         
         /// <summary>
+        /// RequiredFieldValidator11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+        
+        /// <summary>
+        /// RegularExpressionValidator7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator7;
+        
+        /// <summary>
         /// TextBox_PenaControl control.
         /// </summary>
         /// <remarks>
@@ -74,6 +200,24 @@ namespace DSSGenNHibernate.Control {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_PenaControl;
+        
+        /// <summary>
+        /// RequiredFieldValidator12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
+        
+        /// <summary>
+        /// RegularExpressionValidator9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator9;
         
         /// <summary>
         /// DropDownList_Anyos control.
