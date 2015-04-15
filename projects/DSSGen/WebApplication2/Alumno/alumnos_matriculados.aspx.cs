@@ -36,7 +36,7 @@ namespace DSSGenNHibernate.Alumno
             {
                 //Cargar datos
                 this.CargarDatos();
-                this.ObtenerExpedientesPaginados(1);
+                this.ObtenerAlumnosPaginados(1);
             }
         }
 
@@ -58,7 +58,6 @@ namespace DSSGenNHibernate.Alumno
         //Comprobar parámetros y cargar datos
         private void CargarDatos()
         {
-            throw new Exception("Not implemented yet");
             //Recuperar los datos de la asignatura-anyo
             if (!fachadaAsignatura.VincularAsignaturaAnyoPorIdLigero(id, TextBox_Asignatura))
             {
@@ -71,18 +70,17 @@ namespace DSSGenNHibernate.Alumno
         //Manejador al cambiar el tamaño de página
         protected void PageSize_Changed(object sender, EventArgs e)
         {
-            this.ObtenerExpedientesPaginados(1);
+            this.ObtenerAlumnosPaginados(1);
         }
 
         //Manejador para obtener alumnos paginados
-        private void ObtenerExpedientesPaginados(int pageIndex)
+        private void ObtenerAlumnosPaginados(int pageIndex)
         {
-            throw new Exception("Not implemented yet");
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
             //Vincular el grid con la lista de alumnos paginada
-            fachadaAlumno.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaAlumno.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -92,7 +90,7 @@ namespace DSSGenNHibernate.Alumno
         protected void Page_Changed(object sender, EventArgs e)
         {
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
-            this.ObtenerExpedientesPaginados(pageIndex);
+            this.ObtenerAlumnosPaginados(pageIndex);
         }
 
         //Listar las páginas para navegar sobre ellas
@@ -131,12 +129,20 @@ namespace DSSGenNHibernate.Alumno
 
             //Eliminar alumno
             if (fachadaAlumno.BorrarAlumno(alumnoId))
-                Notification.Notify(Response, "El alumno ha sido borrado");
+                Notification.Notify(Response, "El alumno ha sido matriculado");
             else
-                Notification.Notify(Response, "El alumno no ha podido ser borrado");
+                Notification.Notify(Response, "El alumno no ha podido ser matriculado");
 
             //Obtener de nuevo la lista de bolsas
-            this.ObtenerExpedientesPaginados(1);
+            this.ObtenerAlumnosPaginados(1);
+        }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
         }
     }
 }

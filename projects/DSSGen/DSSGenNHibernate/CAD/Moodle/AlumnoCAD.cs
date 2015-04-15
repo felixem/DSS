@@ -348,9 +348,41 @@ public long ReadCantidadIngresablesEnGrupo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AlumnoEN self where select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos ";
+                //String sql = @"FROM AlumnoEN self where select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCantidadIngresablesEnGrupoHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AlumnoEN self where select count (distinct alu) FROM AsignaturaAnyo as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where asig.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCantidadPorAsignaturaAnyoHQL");
                 query.SetParameter ("id", id);
 
 

@@ -80,12 +80,11 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         //Manejador del evento para listar los alumnos de una asignatura-anyo
         protected void lnkAlumnos_Click(object sender, EventArgs e)
         {
-            throw new Exception("not implemented yet");
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
+            link.Redirect(Response, link.ListarMatriculadosAsignaturaAnyo(asignaturaId));
         }
 
         //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo

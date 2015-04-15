@@ -125,6 +125,7 @@
     <Compile Include="CAD\Moodle\ControlCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\AlumnoCAD_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -304,6 +305,7 @@
     <Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs" />
     <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorGrupo.cs" />
     <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllIngresablesEnGrupo.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="EN\Moodle\TutoriaEN.cs" />
     <Compile Include="CEN\Moodle\TutoriaCEN.cs" />
     <Compile Include="EN\Moodle\MensajeEN.cs" />

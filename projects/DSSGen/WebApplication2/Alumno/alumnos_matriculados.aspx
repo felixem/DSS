@@ -23,6 +23,8 @@
                     <asp:ListItem Text="50" Value="50" />
                 </asp:DropDownList>
                 <hr />
+                <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
+                    CssClass="posicion_central" />
                 <asp:Button ID="Button_Crear" runat="server" Text="Matricular alumno" OnClick="Button_Crear_Click" />
                 <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                     <Columns>

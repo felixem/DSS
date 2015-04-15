@@ -231,5 +231,12 @@ namespace WebUtilities
             return "~/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
+
+        //Cadena para la página para listar los alumnos matriculados en una asignatura
+        public String ListarMatriculadosAsignaturaAnyo(int cod)
+        {
+            return "~/Alumno/alumnos_matriculados.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
 }

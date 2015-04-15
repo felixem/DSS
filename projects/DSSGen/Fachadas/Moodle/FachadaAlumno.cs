@@ -75,6 +75,17 @@ namespace Fachadas.Moodle
             alumnoBind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
         }
 
+        //Vincular a un gridview los alumnos matriculados en una asignatura con paginación
+        public void VincularDameTodosPorAsignaturaAnyo(int idAsigAnyo, GridView grid, int first, int size, out long numAlumnos)
+        {
+            //Obtener alumnos y enlazar sus datos con el gridview
+            AlumnoBinding alumnoBind = new AlumnoBinding();
+            IDameTodosAlumno consulta = new DameTodosAlumnoPorAsignaturaAnyo(idAsigAnyo);
+            BinderListaAlumnoGrid binder = new BinderListaAlumnoGrid(grid);
+
+            alumnoBind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
+        }
+
         //Vincular a un gridview los alumnos pertenecientes a un grupo de trabajo con paginación
         public void VincularDameTodosPorGrupo(int idGrupo, GridView grid, int first, int size, out long numAlumnos)
         {

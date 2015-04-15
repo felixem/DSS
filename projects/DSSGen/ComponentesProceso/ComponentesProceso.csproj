@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
     <Compile Include="Moodle\EntregaCP.cs" />
     <Compile Include="Moodle\AnyoAcademicoCP.cs" />
     <Compile Include="Moodle\AsignaturaAnyoCP.cs" />

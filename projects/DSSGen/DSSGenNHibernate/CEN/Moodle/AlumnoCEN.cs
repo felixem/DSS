@@ -118,6 +118,10 @@ public long ReadCantidadIngresablesEnGrupo (int id)
 {
         return _IAlumnoCAD.ReadCantidadIngresablesEnGrupo (id);
 }
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        return _IAlumnoCAD.ReadCantidadPorAsignaturaAnyo (id);
+}
 public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         //Call to AlumnoCAD
