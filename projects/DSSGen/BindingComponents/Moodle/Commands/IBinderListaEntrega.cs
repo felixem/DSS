@@ -7,10 +7,10 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace BindingComponents.Moodle.Commands
 {
-    //Interfaz para vincular controles con el contenido de una lista de Control
-    public interface IBinderListaControl
+    //Interfaz para vincular controles con el contenido de una lista de Entrega
+    public interface IBinderListaEntrega
     {
         //Realizar vinculación
-        void Vincular(IList<ControlEN> list);
+        void Vincular(IList<EntregaEN> list);
     }
 }

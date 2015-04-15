@@ -11,6 +11,6 @@ namespace BindingComponents.Moodle.Commands
     public interface IBinderControl
     {
         //Realizar vinculación
-        void Vincular(ControlEN profesor);
+        void Vincular(ControlEN en);
     }
 }
