@@ -45,22 +45,12 @@
 					
 			
 		  			
-						<bag name="Expedientes_asignatura" >
-							<key>
-								<column name="[FK_id_asignatura]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN"/>
-					    </bag>
-					
-			
-		  			
 						<bag name="Bolsas_preguntas" cascade="delete">
 							<key>
 								<column name="[FK_id_asignatura]"/>
 					      	</key>
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN"/>
 					    </bag>
-					
 					
 					
 					

@@ -442,6 +442,45 @@ public void Relationer_tutorias (int p_asignaturaanyo, System.Collections.Generi
         }
 }
 
+public void Relationer_expedientes_asignatura (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_expedienteasignatura)
+{
+        DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
+                DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedientes_asignaturaENAux = null;
+                if (asignaturaAnyoEN.Expedientes_asignatura == null) {
+                        asignaturaAnyoEN.Expedientes_asignatura = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN>();
+                }
+
+                foreach (int item in p_expedienteasignatura) {
+                        expedientes_asignaturaENAux = new DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN ();
+                        expedientes_asignaturaENAux = (DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN), item);
+                        expedientes_asignaturaENAux.Asignatura = asignaturaAnyoEN;
+
+                        asignaturaAnyoEN.Expedientes_asignatura.Add (expedientes_asignaturaENAux);
+                }
+
+
+                session.Update (asignaturaAnyoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
 public void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         try
@@ -574,6 +613,44 @@ public void Unrelationer_tutorias (int p_asignaturaanyo, System.Collections.Gene
                                 }
                                 else
                                         throw new ModelException ("The identifier " + item + " in p_tutoria you are trying to unrelationer, doesn't exist in AsignaturaAnyoEN");
+                        }
+                }
+
+                session.Update (asignaturaAnyoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Unrelationer_expedientes_asignatura (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_expedienteasignatura)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
+                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
+
+                DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedientes_asignaturaENAux = null;
+                if (asignaturaAnyoEN.Expedientes_asignatura != null) {
+                        foreach (int item in p_expedienteasignatura) {
+                                expedientes_asignaturaENAux = (DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN), item);
+                                if (asignaturaAnyoEN.Expedientes_asignatura.Contains (expedientes_asignaturaENAux) == true) {
+                                        asignaturaAnyoEN.Expedientes_asignatura.Remove (expedientes_asignaturaENAux);
+                                        expedientes_asignaturaENAux.Asignatura = null;
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_expedienteasignatura you are trying to unrelationer, doesn't exist in AsignaturaAnyoEN");
                         }
                 }
 

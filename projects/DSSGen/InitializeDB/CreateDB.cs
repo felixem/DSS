@@ -106,18 +106,18 @@ public static void InitializeData ()
                 expediente.Nota_media = 0;
                 expediente.Abierto = true;
 
-                AlumnoEN usuario = new AlumnoEN ();
-                usuario.Cod_alumno = 1;
-                usuario.Baneado = false;
-                usuario.Email = "felix@felix.es";
-                usuario.Dni = "48627745H";
-                usuario.Apellidos = "Escalona";
-                usuario.Fecha_nacimiento = DateTime.Parse ("08/11/1994");
-                usuario.Nombre = "Felix";
-                usuario.Password = "1234";
+                AlumnoEN alumno = new AlumnoEN ();
+                alumno.Cod_alumno = 1;
+                alumno.Baneado = false;
+                alumno.Email = "felix@felix.es";
+                alumno.Dni = "48627745H";
+                alumno.Apellidos = "Escalona";
+                alumno.Fecha_nacimiento = DateTime.Parse ("08/11/1994");
+                alumno.Nombre = "Felix";
+                alumno.Password = "1234";
                 AlumnoCEN aluCen = new AlumnoCEN ();
-                string alumno1 = aluCen.New_ (usuario.Cod_alumno, usuario.Baneado, usuario.Email, usuario.Dni, usuario.Password,
-                        usuario.Nombre, usuario.Apellidos, usuario.Fecha_nacimiento, expediente);
+                string alumno1 = aluCen.New_ (alumno.Cod_alumno, alumno.Baneado, alumno.Email, alumno.Dni, alumno.Password,
+                        alumno.Nombre, alumno.Apellidos, alumno.Fecha_nacimiento, expediente);
 
                 CursoEN curso = new CursoEN ();
                 CursoCEN cursoCen = new CursoCEN ();
@@ -189,14 +189,17 @@ public static void InitializeData ()
                 eval.Abierta = true;
                 int eval1 = evalCen.New_ (eval.Nombre, eval.Fecha_inicio, eval.Fecha_fin, eval.Abierta, idAnyo);
 
-                SistemaEvaluacionEN sistemaEval = new SistemaEvaluacionEN ();
-                SistemaEvaluacionCEN sistemaCen = new SistemaEvaluacionCEN ();
-                int sistema_eval1 = sistemaCen.New_ (10f, as_anyo1, eval1);
+                alumno = aluCen.ReadOID (alumno1);
+                int expediente1 = alumno.Expediente.Id;
 
-                EvaluacionAlumnoEN evalAlumno = new EvaluacionAlumnoEN ();
-                EvaluacionAlumnoCEN evalAlumnoCen = new EvaluacionAlumnoCEN ();
-                evalAlumnoCen.New_ (sistema_eval1, alumno1);
+                ExpedienteAnyoCEN expAnyoCen = new ExpedienteAnyoCEN ();
+                ExpedienteAnyoEN expAnyo = new ExpedienteAnyoEN ();
+                expAnyo.Abierto = true;
+                int expAnyo1 = expAnyoCen.New_ (expAnyo.Nota_media, expAnyo.Abierto, expediente1, idAnyo);
 
+                ExpedienteAsignaturaCEN expAsigCen = new ExpedienteAsignaturaCEN ();
+                ExpedienteAsignaturaEN expAsig = new ExpedienteAsignaturaEN ();
+                int expAsig1 = expAsigCen.New_ (expAsig.Nota_media, expAsig.Abierto, expAnyo1, as_anyo1);
 
 
                 /*PROTECTED REGION END*/

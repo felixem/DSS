@@ -20,6 +20,16 @@
 			
 			
 			
+			
+		  			
+						<bag name="Expedientes" >
+							<key>
+								<column name="[FK_id_nota]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN"/>
+					    </bag>
+					
+					
 					
 					
 					

@@ -55,6 +55,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Alumno\alumnos.aspx" />
+    <Content Include="Alumno\alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
     <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
     <Content Include="Asignatura\asignaturas.aspx" />
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="Alumno\alumnos.aspx.designer.cs">
       <DependentUpon>alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\alumnos_matriculados.aspx.cs">
+      <DependentUpon>alumnos_matriculados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\alumnos_matriculados.aspx.designer.cs">
+      <DependentUpon>alumnos_matriculados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Alumno\modificar_alumno.aspx.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>

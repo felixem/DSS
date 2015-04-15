@@ -51,6 +51,12 @@ private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvalu
  *
  */
 
+private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura;
+
+/**
+ *
+ */
+
 private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores;
 
 
@@ -92,6 +98,11 @@ public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.Siste
 }
 
 
+public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> Expedientes_asignatura {
+        get { return expedientes_asignatura; } set { expedientes_asignatura = value;  }
+}
+
+
 public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> Profesores {
         get { return profesores; } set { profesores = value;  }
 }
@@ -106,23 +117,24 @@ public AsignaturaAnyoEN()
         materiales = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.MaterialEN>();
         grupos_trabajo = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN>();
         sistemas_evaluacion = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN>();
+        expedientes_asignatura = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN>();
         profesores = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ProfesorEN>();
 }
 
 
 
-public AsignaturaAnyoEN(int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores)
+public AsignaturaAnyoEN(int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores)
 {
-        this.init (id, tutorias, materiales, grupos_trabajo, anyo, asignatura, sistemas_evaluacion, profesores);
+        this.init (id, tutorias, materiales, grupos_trabajo, anyo, asignatura, sistemas_evaluacion, expedientes_asignatura, profesores);
 }
 
 
 public AsignaturaAnyoEN(AsignaturaAnyoEN asignaturaAnyo)
 {
-        this.init (asignaturaAnyo.Id, asignaturaAnyo.Tutorias, asignaturaAnyo.Materiales, asignaturaAnyo.Grupos_trabajo, asignaturaAnyo.Anyo, asignaturaAnyo.Asignatura, asignaturaAnyo.Sistemas_evaluacion, asignaturaAnyo.Profesores);
+        this.init (asignaturaAnyo.Id, asignaturaAnyo.Tutorias, asignaturaAnyo.Materiales, asignaturaAnyo.Grupos_trabajo, asignaturaAnyo.Anyo, asignaturaAnyo.Asignatura, asignaturaAnyo.Sistemas_evaluacion, asignaturaAnyo.Expedientes_asignatura, asignaturaAnyo.Profesores);
 }
 
-private void init (int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores)
+private void init (int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores)
 {
         this.Id = id;
 
@@ -138,6 +150,8 @@ private void init (int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.
         this.Asignatura = asignatura;
 
         this.Sistemas_evaluacion = sistemas_evaluacion;
+
+        this.Expedientes_asignatura = expedientes_asignatura;
 
         this.Profesores = profesores;
 }

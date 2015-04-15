@@ -487,6 +487,45 @@ public void Relationer_tutorias (string p_profesor, System.Collections.Generic.I
         }
 }
 
+public void Relationer_asignaturas (string p_profesor, System.Collections.Generic.IList<int> p_asignaturaanyo)
+{
+        DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), p_profesor);
+                DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturasENAux = null;
+                if (profesorEN.Asignaturas == null) {
+                        profesorEN.Asignaturas = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN>();
+                }
+
+                foreach (int item in p_asignaturaanyo) {
+                        asignaturasENAux = new DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ();
+                        asignaturasENAux = (DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN), item);
+                        asignaturasENAux.Profesores.Add (profesorEN);
+
+                        profesorEN.Asignaturas.Add (asignaturasENAux);
+                }
+
+
+                session.Update (profesorEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
 public void Unrelationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         try
@@ -619,6 +658,44 @@ public void Unrelationer_tutorias (string p_profesor, System.Collections.Generic
                                 }
                                 else
                                         throw new ModelException ("The identifier " + item + " in p_tutoria you are trying to unrelationer, doesn't exist in ProfesorEN");
+                        }
+                }
+
+                session.Update (profesorEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Unrelationer_asignaturas (string p_profesor, System.Collections.Generic.IList<int> p_asignaturaanyo)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;
+                profesorEN = (ProfesorEN)session.Load (typeof(ProfesorEN), p_profesor);
+
+                DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturasENAux = null;
+                if (profesorEN.Asignaturas != null) {
+                        foreach (int item in p_asignaturaanyo) {
+                                asignaturasENAux = (DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN), item);
+                                if (profesorEN.Asignaturas.Contains (asignaturasENAux) == true) {
+                                        profesorEN.Asignaturas.Remove (asignaturasENAux);
+                                        asignaturasENAux.Profesores.Remove (profesorEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_asignaturaanyo you are trying to unrelationer, doesn't exist in ProfesorEN");
                         }
                 }
 

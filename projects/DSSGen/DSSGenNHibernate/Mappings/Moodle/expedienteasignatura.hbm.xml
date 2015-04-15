@@ -24,11 +24,16 @@
 											 					
 			
 		  			
-						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaEN" >	
+						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN" >	
 								<column name="[FK_id_asignatura]"/>
 						</many-to-one>
 											 					
 			
+		  			
+						<many-to-one name="Nota" class="DSSGenNHibernate.EN.Moodle.NotaEN" >	
+								<column name="[FK_id_nota]"/>
+						</many-to-one>
+											 					
 			
 		  			
 						<bag name="Expedientes_evaluacion" >
@@ -44,10 +49,6 @@
 					
 					
 					
-					
-						<many-to-one name="Nota" class="DSSGenNHibernate.EN.Moodle.NotaEN" >
-									<column name="[FK_id_nota]"/>
-						</many-to-one>
 					
 		
 		  </class>

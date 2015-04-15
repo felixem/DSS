@@ -18,6 +18,15 @@
 			
 			
 		  			
+						<bag name="Preguntas_control" >
+							<key>
+								<column name="[FK_id_pregunta]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.PreguntaControlEN"/>
+					    </bag>
+					
+			
+		  			
 						<bag name="Respuestas" cascade="delete">
 							<key>
 								<column name="[FK_id_pregunta]"/>
@@ -32,6 +41,7 @@
 								<column name="[FK_id_bolsa]"/>
 						</many-to-one>
 											 					
+					
 					
 					
 					

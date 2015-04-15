@@ -29,6 +29,12 @@ private string abreviatura;
 
 private int ponderacion;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes;
+
 
 
 
@@ -53,27 +59,33 @@ public virtual int Ponderacion {
 }
 
 
+public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> Expedientes {
+        get { return expedientes; } set { expedientes = value;  }
+}
+
+
 
 
 
 public NotaEN()
 {
+        expedientes = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN>();
 }
 
 
 
-public NotaEN(int id, string nombre, string abreviatura, int ponderacion)
+public NotaEN(int id, string nombre, string abreviatura, int ponderacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes)
 {
-        this.init (id, nombre, abreviatura, ponderacion);
+        this.init (id, nombre, abreviatura, ponderacion, expedientes);
 }
 
 
 public NotaEN(NotaEN nota)
 {
-        this.init (nota.Id, nota.Nombre, nota.Abreviatura, nota.Ponderacion);
+        this.init (nota.Id, nota.Nombre, nota.Abreviatura, nota.Ponderacion, nota.Expedientes);
 }
 
-private void init (int id, string nombre, string abreviatura, int ponderacion)
+private void init (int id, string nombre, string abreviatura, int ponderacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes)
 {
         this.Id = id;
 
@@ -83,6 +95,8 @@ private void init (int id, string nombre, string abreviatura, int ponderacion)
         this.Abreviatura = abreviatura;
 
         this.Ponderacion = ponderacion;
+
+        this.Expedientes = expedientes;
 }
 
 public override bool Equals (object obj)

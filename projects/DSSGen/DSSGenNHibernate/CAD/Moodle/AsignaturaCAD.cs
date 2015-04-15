@@ -372,45 +372,6 @@ public void Relationer_curso (int p_asignatura, int p_curso)
         }
 }
 
-public void Relationer_expedientes_asignatura (int p_asignatura, System.Collections.Generic.IList<int> p_expedienteasignatura)
-{
-        DSSGenNHibernate.EN.Moodle.AsignaturaEN asignaturaEN = null;
-        try
-        {
-                SessionInitializeTransaction ();
-                asignaturaEN = (AsignaturaEN)session.Load (typeof(AsignaturaEN), p_asignatura);
-                DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedientes_asignaturaENAux = null;
-                if (asignaturaEN.Expedientes_asignatura == null) {
-                        asignaturaEN.Expedientes_asignatura = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN>();
-                }
-
-                foreach (int item in p_expedienteasignatura) {
-                        expedientes_asignaturaENAux = new DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN ();
-                        expedientes_asignaturaENAux = (DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN), item);
-                        expedientes_asignaturaENAux.Asignatura = asignaturaEN;
-
-                        asignaturaEN.Expedientes_asignatura.Add (expedientes_asignaturaENAux);
-                }
-
-
-                session.Update (asignaturaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-
 public void Unrelationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         try
@@ -500,44 +461,6 @@ public void Unrelationer_curso (int p_asignatura, int p_curso)
                 }
                 else
                         throw new ModelException ("The identifier " + p_curso + " in p_curso you are trying to unrelationer, doesn't exist in AsignaturaEN");
-
-                session.Update (asignaturaEN);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSSGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-}
-public void Unrelationer_expedientes_asignatura (int p_asignatura, System.Collections.Generic.IList<int> p_expedienteasignatura)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                DSSGenNHibernate.EN.Moodle.AsignaturaEN asignaturaEN = null;
-                asignaturaEN = (AsignaturaEN)session.Load (typeof(AsignaturaEN), p_asignatura);
-
-                DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedientes_asignaturaENAux = null;
-                if (asignaturaEN.Expedientes_asignatura != null) {
-                        foreach (int item in p_expedienteasignatura) {
-                                expedientes_asignaturaENAux = (DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN), item);
-                                if (asignaturaEN.Expedientes_asignatura.Contains (expedientes_asignaturaENAux) == true) {
-                                        asignaturaEN.Expedientes_asignatura.Remove (expedientes_asignaturaENAux);
-                                        expedientes_asignaturaENAux.Asignatura = null;
-                                }
-                                else
-                                        throw new ModelException ("The identifier " + item + " in p_expedienteasignatura you are trying to unrelationer, doesn't exist in AsignaturaEN");
-                        }
-                }
 
                 session.Update (asignaturaEN);
                 SessionCommit ();

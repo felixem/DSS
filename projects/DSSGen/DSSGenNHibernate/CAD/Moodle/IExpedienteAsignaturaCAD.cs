@@ -25,7 +25,7 @@ ExpedienteAsignaturaEN ReadOID (int id);
 long ReadCantidad ();
 
 
-void Relationer_asignatura (int p_expedienteasignatura, int p_asignatura);
+void Relationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo);
 
 void Relationer_expediente_anyo (int p_expedienteasignatura, int p_expedienteanyo);
 
@@ -33,7 +33,7 @@ void Relationer_expedientes_evaluacion (int p_expedienteasignatura, System.Colle
 
 void Relationer_nota (int p_expedienteasignatura, int p_nota);
 
-void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignatura);
+void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo);
 
 void Unrelationer_expediente_anyo (int p_expedienteasignatura, int p_expedienteanyo);
 

@@ -125,6 +125,12 @@ public void Relationer_tutorias (int p_asignaturaanyo, System.Collections.Generi
 
         _IAsignaturaAnyoCAD.Relationer_tutorias (p_asignaturaanyo, p_tutoria);
 }
+public void Relationer_expedientes_asignatura (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_expedienteasignatura)
+{
+        //Call to AsignaturaAnyoCAD
+
+        _IAsignaturaAnyoCAD.Relationer_expedientes_asignatura (p_asignaturaanyo, p_expedienteasignatura);
+}
 public void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         //Call to AsignaturaAnyoCAD
@@ -148,6 +154,12 @@ public void Unrelationer_tutorias (int p_asignaturaanyo, System.Collections.Gene
         //Call to AsignaturaAnyoCAD
 
         _IAsignaturaAnyoCAD.Unrelationer_tutorias (p_asignaturaanyo, p_tutoria);
+}
+public void Unrelationer_expedientes_asignatura (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_expedienteasignatura)
+{
+        //Call to AsignaturaAnyoCAD
+
+        _IAsignaturaAnyoCAD.Unrelationer_expedientes_asignatura (p_asignaturaanyo, p_expedienteasignatura);
 }
 }
 }

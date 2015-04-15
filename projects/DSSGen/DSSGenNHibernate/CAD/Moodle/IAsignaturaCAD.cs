@@ -34,14 +34,10 @@ void Relationer_bolsas_preguntas (int p_asignatura, System.Collections.Generic.I
 
 void Relationer_curso (int p_asignatura, int p_curso);
 
-void Relationer_expedientes_asignatura (int p_asignatura, System.Collections.Generic.IList<int> p_expedienteasignatura);
-
 void Unrelationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo);
 
 void Unrelationer_bolsas_preguntas (int p_asignatura, System.Collections.Generic.IList<int> p_bolsapreguntas);
 
 void Unrelationer_curso (int p_asignatura, int p_curso);
-
-void Unrelationer_expedientes_asignatura (int p_asignatura, System.Collections.Generic.IList<int> p_expedienteasignatura);
 }
 }

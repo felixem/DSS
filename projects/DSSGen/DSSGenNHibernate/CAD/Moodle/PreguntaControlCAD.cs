@@ -63,6 +63,8 @@ public int New_ (PreguntaControlEN preguntaControl)
                 }
                 if (preguntaControl.Pregunta != null) {
                         preguntaControl.Pregunta = (DSSGenNHibernate.EN.Moodle.PreguntaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaEN), preguntaControl.Pregunta.Id);
+
+                        preguntaControl.Pregunta.Preguntas_control.Add (preguntaControl);
                 }
 
                 session.Save (preguntaControl);
@@ -260,6 +262,8 @@ public void Relationer_pregunta (int p_preguntacontrol, int p_pregunta)
                 preguntaControlEN = (PreguntaControlEN)session.Load (typeof(PreguntaControlEN), p_preguntacontrol);
                 preguntaControlEN.Pregunta = (DSSGenNHibernate.EN.Moodle.PreguntaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.PreguntaEN), p_pregunta);
 
+                preguntaControlEN.Pregunta.Preguntas_control.Add (preguntaControlEN);
+
 
 
                 session.Update (preguntaControlEN);
@@ -288,6 +292,8 @@ public void Relationer_respuesta_elegida (int p_preguntacontrol, int p_respuesta
                 SessionInitializeTransaction ();
                 preguntaControlEN = (PreguntaControlEN)session.Load (typeof(PreguntaControlEN), p_preguntacontrol);
                 preguntaControlEN.Respuesta_elegida = (DSSGenNHibernate.EN.Moodle.RespuestaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.RespuestaEN), p_respuesta);
+
+                preguntaControlEN.Respuesta_elegida.Preguntas_control.Add (preguntaControlEN);
 
 
 

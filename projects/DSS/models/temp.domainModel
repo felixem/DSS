@@ -171,6 +171,10 @@
         <arguments name="p_profesor" type="OID" typeObject="/0/@elements.3" isOrdered="true"/>
         <arguments name="p_tutoria" type="OID" collectionType="List" typeObject="/0/@elements.5" isOrdered="true"/>
       </operations>
+      <operations name="relationer_asignaturas" operationType="Relationer" type="Void" relatedRol="/0/@elements.3/@attributes.4">
+        <arguments name="p_profesor" type="OID" typeObject="/0/@elements.3" isOrdered="true"/>
+        <arguments name="p_asignaturaanyo" type="OID" collectionType="List" typeObject="/0/@elements.17" isOrdered="true"/>
+      </operations>
       <operations name="unrelationer_entregas_propuestas" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.3/@attributes.3">
         <arguments name="p_profesor" type="OID" typeObject="/0/@elements.3" isOrdered="true"/>
         <arguments name="p_entrega" type="OID" collectionType="List" typeObject="/0/@elements.19" isOrdered="true"/>
@@ -186,6 +190,10 @@
       <operations name="unrelationer_tutorias" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.3/@attributes.1">
         <arguments name="p_profesor" type="OID" typeObject="/0/@elements.3" isOrdered="true"/>
         <arguments name="p_tutoria" type="OID" collectionType="List" typeObject="/0/@elements.5" isOrdered="true"/>
+      </operations>
+      <operations name="unrelationer_asignaturas" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.3/@attributes.4">
+        <arguments name="p_profesor" type="OID" typeObject="/0/@elements.3" isOrdered="true"/>
+        <arguments name="p_asignaturaanyo" type="OID" collectionType="List" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
       <attributes alias="cod_profesor" navigable="false" name="cod_profesor" type="Integer" unique="true"/>
       <attributes alias="tutorias" visibility="Public" lower="0" upper="*" associationTarget="/0/@elements.35" name="tutorias" type="Object" collectionType="List"/>
@@ -243,7 +251,7 @@
       <operations name="readCantidadPorGrupo" operationType="ReadFilter" type="Long" filter="select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id">
         <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
       </operations>
-      <operations name="readCantidadIngresablesEnGrupo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Sistemas_evaluacion as eval INNER JOIN eval.Sistema_evaluacion as sist INNER JOIN sist.Asignatura as asig INNER JOIN asig.Grupos_trabajo as grupo where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos ">
+      <operations name="readCantidadIngresablesEnGrupo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos ">
         <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
       </operations>
       <operations name="readAllIngresablesEnGrupo" type="Object" collectionType="List" typeObject="/0/@elements.4">
@@ -431,7 +439,7 @@
       <attributes alias="tutoria" visibility="Public" associationTarget="/0/@elements.33" name="tutoria" type="Object"/>
       <attributes alias="usuario" visibility="Public" associationOrigin="/0/@elements.34" name="usuario" type="Object"/>
     </elements>
-    <elements xsi:type="es.ua.dlsi.ooh:Class" name="Asignatura" description="&quot;Clase que representa a una asignatura&quot;" alias="Asignatura" stereotyped="" associationOrigin="/0/@elements.45 /0/@elements.52 /0/@elements.58 /0/@elements.71">
+    <elements xsi:type="es.ua.dlsi.ooh:Class" name="Asignatura" description="&quot;Clase que representa a una asignatura&quot;" alias="Asignatura" stereotyped="" associationOrigin="/0/@elements.45 /0/@elements.52 /0/@elements.71">
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.7">
         <arguments name="p_cod_asignatura" isOrdered="true"/>
         <arguments name="p_nombre" isOrdered="true"/>
@@ -463,7 +471,7 @@
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_asignaturaanyo" type="OID" collectionType="List" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
-      <operations name="relationer_bolsas_preguntas" operationType="Relationer" type="Void" relatedRol="/0/@elements.7/@attributes.9">
+      <operations name="relationer_bolsas_preguntas" operationType="Relationer" type="Void" relatedRol="/0/@elements.7/@attributes.8">
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_bolsapreguntas" type="OID" collectionType="List" typeObject="/0/@elements.25" isOrdered="true"/>
       </operations>
@@ -471,25 +479,17 @@
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_curso" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
       </operations>
-      <operations name="relationer_expedientes_asignatura" operationType="Relationer" type="Void" relatedRol="/0/@elements.7/@attributes.8">
-        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
-        <arguments name="p_expedienteasignatura" type="OID" collectionType="List" typeObject="/0/@elements.12" isOrdered="true"/>
-      </operations>
       <operations name="unrelationer_asignaturas_anyo" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.7/@attributes.7">
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_asignaturaanyo" type="OID" collectionType="List" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
-      <operations name="unrelationer_bolsas_preguntas" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.7/@attributes.9">
+      <operations name="unrelationer_bolsas_preguntas" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.7/@attributes.8">
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_bolsapreguntas" type="OID" collectionType="List" typeObject="/0/@elements.25" isOrdered="true"/>
       </operations>
       <operations name="unrelationer_curso" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.7/@attributes.6">
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_curso" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
-      </operations>
-      <operations name="unrelationer_expedientes_asignatura" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.7/@attributes.8">
-        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
-        <arguments name="p_expedienteasignatura" type="OID" collectionType="List" typeObject="/0/@elements.12" isOrdered="true"/>
       </operations>
       <attributes alias="id" navigable="false" name="id" type="Autogenerated" isOID="true"/>
       <attributes alias="cod_asignatura" navigable="false" name="cod_asignatura" unique="true"/>
@@ -499,7 +499,6 @@
       <attributes alias="vigente" navigable="false" name="vigente" type="Boolean"/>
       <attributes alias="curso" visibility="Public" associationOrigin="/0/@elements.45" name="curso" type="Object"/>
       <attributes alias="asignaturas_anyo" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.52" name="asignaturas_anyo" type="Object" collectionType="List"/>
-      <attributes alias="expedientes_asignatura" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.58" name="expedientes_asignatura" type="Object" collectionType="List"/>
       <attributes alias="bolsas_preguntas" visibility="Public" aggregation="Composite" lower="0" upper="*" associationOrigin="/0/@elements.71" name="bolsas_preguntas" type="Object" collectionType="List"/>
     </elements>
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="Curso" description="&quot;Clase que representa un curso como conjunto de asignaturas&quot;" alias="Curso" stereotyped="" asociationTarget="/0/@elements.45">
@@ -557,7 +556,7 @@
       <attributes alias="nombre" navigable="false" name="nombre"/>
       <attributes alias="abreviatura" navigable="false" name="abreviatura" unique="true"/>
       <attributes alias="ponderacion" navigable="false" name="ponderacion" type="Integer"/>
-      <attributes alias="expedientes" visibility="Public" navigable="false" lower="0" upper="*" associationTarget="/0/@elements.59" name="expedientes" type="Object" collectionType="List"/>
+      <attributes alias="expedientes" visibility="Public" lower="0" upper="*" associationTarget="/0/@elements.59" name="expedientes" type="Object" collectionType="List"/>
     </elements>
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="Expediente" description="&quot;Clase que representa el expediente acad&#xe9;mico de un alumno&quot;" alias="Expediente" stereotyped="" asociationTarget="/0/@elements.46" associationOrigin="/0/@elements.47">
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.10">
@@ -659,7 +658,7 @@
         <arguments name="p_nota_media" type="Float" isOrdered="true"/>
         <arguments name="p_abierto" type="Boolean" isOrdered="true"/>
         <arguments name="p_expediente_anyo" type="OID" typeObject="/0/@elements.11" isOrdered="true"/>
-        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
+        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
       <operations name="modify" operationType="Modifier" type="Void">
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
@@ -676,7 +675,7 @@
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ExpedienteAsignaturaEN"/>
       <operations name="relationer_asignatura" operationType="Relationer" type="Void" relatedRol="/0/@elements.12/@attributes.4">
         <arguments name="p_expedienteasignatura" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
-        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
+        <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
       <operations name="relationer_expediente_anyo" operationType="Relationer" type="Void" relatedRol="/0/@elements.12/@attributes.3">
         <arguments name="p_expedienteasignatura" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
@@ -692,7 +691,7 @@
       </operations>
       <operations name="unrelationer_asignatura" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.12/@attributes.4">
         <arguments name="p_expedienteasignatura" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
-        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
+        <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
       </operations>
       <operations name="unrelationer_expediente_anyo" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.12/@attributes.3">
         <arguments name="p_expedienteasignatura" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
@@ -929,7 +928,7 @@
       <attributes alias="expedientes_anyo" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.48" name="expedientes_anyo" type="Object" collectionType="List"/>
       <attributes alias="asignaturas" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.51" name="asignaturas" type="Object" collectionType="List"/>
     </elements>
-    <elements xsi:type="es.ua.dlsi.ooh:Class" name="AsignaturaAnyo" description="&quot;Clase que representa una asignatura en un a&#xf1;o acad&#xe9;mico concreto&quot;" alias="AsignaturaAnyo" stereotyped="" asociationTarget="/0/@elements.37 /0/@elements.39 /0/@elements.41 /0/@elements.51 /0/@elements.52 /0/@elements.73" associationOrigin="/0/@elements.53">
+    <elements xsi:type="es.ua.dlsi.ooh:Class" name="AsignaturaAnyo" description="&quot;Clase que representa una asignatura en un a&#xf1;o acad&#xe9;mico concreto&quot;" alias="AsignaturaAnyo" stereotyped="" asociationTarget="/0/@elements.37 /0/@elements.39 /0/@elements.41 /0/@elements.51 /0/@elements.52 /0/@elements.73" associationOrigin="/0/@elements.53 /0/@elements.58">
       <operations name="new" operationType="New" type="Object" typeObject="/0/@elements.17">
         <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
@@ -948,14 +947,14 @@
       <operations name="readCantidadPorAnyo" operationType="ReadFilter" type="Long" filter="select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ">
         <arguments name="id" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
       </operations>
-      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.17" filter="FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo">
-        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
-        <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
-      </operations>
       <operations name="readAllPorAnyo" type="Object" collectionType="List" typeObject="/0/@elements.17">
         <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
         <arguments name="first" type="Integer" isOrdered="true"/>
         <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.17" filter="FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo">
+        <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
+        <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
       </operations>
       <operations name="relationer_grupos_trabajo" operationType="Relationer" type="Void" relatedRol="/0/@elements.17/@attributes.3">
         <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
@@ -973,6 +972,10 @@
         <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="p_tutoria" type="OID" collectionType="List" typeObject="/0/@elements.5" isOrdered="true"/>
       </operations>
+      <operations name="relationer_expedientes_asignatura" operationType="Relationer" type="Void" relatedRol="/0/@elements.17/@attributes.7">
+        <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="p_expedienteasignatura" type="OID" collectionType="List" typeObject="/0/@elements.12" isOrdered="true"/>
+      </operations>
       <operations name="unrelationer_grupos_trabajo" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.17/@attributes.3">
         <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="p_grupotrabajo" type="OID" collectionType="List" typeObject="/0/@elements.14" isOrdered="true"/>
@@ -989,6 +992,10 @@
         <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="p_tutoria" type="OID" collectionType="List" typeObject="/0/@elements.5" isOrdered="true"/>
       </operations>
+      <operations name="unrelationer_expedientes_asignatura" operationType="Unrelationer" type="Void" relatedRol="/0/@elements.17/@attributes.7">
+        <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="p_expedienteasignatura" type="OID" collectionType="List" typeObject="/0/@elements.12" isOrdered="true"/>
+      </operations>
       <attributes alias="id" navigable="false" name="id" type="Autogenerated" isOID="true"/>
       <attributes alias="tutorias" visibility="Public" lower="0" upper="*" associationTarget="/0/@elements.37" name="tutorias" type="Object" collectionType="List"/>
       <attributes alias="materiales" visibility="Public" aggregation="Composite" lower="0" upper="*" associationTarget="/0/@elements.39" name="materiales" type="Object" collectionType="List"/>
@@ -996,6 +1003,7 @@
       <attributes alias="anyo" visibility="Public" associationTarget="/0/@elements.51" name="anyo" type="Object"/>
       <attributes alias="asignatura" visibility="Public" associationTarget="/0/@elements.52" name="asignatura" type="Object"/>
       <attributes alias="sistemas_evaluacion" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.53" name="sistemas_evaluacion" type="Object" collectionType="List"/>
+      <attributes alias="expedientes_asignatura" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.58" name="expedientes_asignatura" type="Object" collectionType="List"/>
       <attributes alias="profesores" visibility="Public" lower="0" upper="*" associationTarget="/0/@elements.73" name="profesores" type="Object" collectionType="List"/>
     </elements>
     <elements xsi:type="es.ua.dlsi.ooh:Class" name="Evaluacion" description="&quot;Clase que representa un periodo de evaluaci&#xf3;n&quot;" alias="Evaluacion" stereotyped="" asociationTarget="/0/@elements.42" associationOrigin="/0/@elements.54 /0/@elements.61">
@@ -1511,7 +1519,7 @@
       <attributes alias="id" navigable="false" name="id" type="Autogenerated" isOID="true"/>
       <attributes alias="contenido" navigable="false" name="contenido"/>
       <attributes alias="explicacion" navigable="false" name="explicacion"/>
-      <attributes alias="preguntas_control" visibility="Public" navigable="false" lower="0" upper="*" associationOrigin="/0/@elements.65" name="preguntas_control" type="Object" collectionType="List"/>
+      <attributes alias="preguntas_control" visibility="Public" lower="0" upper="*" associationOrigin="/0/@elements.65" name="preguntas_control" type="Object" collectionType="List"/>
       <attributes alias="respuestas" visibility="Public" aggregation="Composite" lower="0" upper="*" associationOrigin="/0/@elements.67" name="respuestas" type="Object" collectionType="List"/>
       <attributes alias="respuesta_correcta" visibility="Public" lower="0" associationOrigin="/0/@elements.68" name="respuesta_correcta" type="Object"/>
       <attributes alias="bolsa" visibility="Public" associationTarget="/0/@elements.70" name="bolsa" type="Object"/>
@@ -1588,7 +1596,7 @@
       </operations>
       <attributes alias="id" navigable="false" name="id" type="Autogenerated" isOID="true"/>
       <attributes alias="contenido" navigable="false" name="contenido"/>
-      <attributes alias="preguntas_control" visibility="Public" navigable="false" lower="0" upper="*" associationTarget="/0/@elements.66" name="preguntas_control" type="Object" collectionType="List"/>
+      <attributes alias="preguntas_control" visibility="Public" lower="0" upper="*" associationTarget="/0/@elements.66" name="preguntas_control" type="Object" collectionType="List"/>
       <attributes alias="pregunta" visibility="Public" associationTarget="/0/@elements.67" name="pregunta" type="Object"/>
       <attributes alias="pregunta_relacionada" visibility="Public" navigable="false" lower="0" associationTarget="/0/@elements.68" name="pregunta_relacionada" type="Object"/>
     </elements>
@@ -1621,7 +1629,7 @@
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="sistemaevaluacion_evaluacionalumno" description="sistemaevaluacion_evaluacionalumno" alias="sistemaevaluacion_evaluacionalumno" rolOrigin="/0/@elements.21/@attributes.5" rolTarget="/0/@elements.22/@attributes.1" visibility="Public" classTarget="/0/@elements.22" classOrigin="/0/@elements.21" rolOriginName="evaluaciones_alumno" rolTargetName="sistema_evaluacion" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="alumno_evaluacionalumno" description="alumno_evaluacionalumno" alias="alumno_evaluacionalumno" rolOrigin="/0/@elements.4/@attributes.6" rolTarget="/0/@elements.22/@attributes.2" visibility="Public" classTarget="/0/@elements.22" classOrigin="/0/@elements.4" rolOriginName="sistemas_evaluacion" rolTargetName="alumno" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="expedienteanyo_expedienteasignatura" description="expedienteanyo_expedienteasignatura" alias="expedienteanyo_expedienteasignatura" rolOrigin="/0/@elements.11/@attributes.5" rolTarget="/0/@elements.12/@attributes.3" visibility="Public" classTarget="/0/@elements.12" classOrigin="/0/@elements.11" rolOriginName="expedientes_asignatura" rolTargetName="expediente_anyo" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="asignatura_expedienteasignatura" description="asignatura_expedienteasignatura" alias="asignatura_expedienteasignatura" rolOrigin="/0/@elements.7/@attributes.8" rolTarget="/0/@elements.12/@attributes.4" visibility="Public" classTarget="/0/@elements.12" classOrigin="/0/@elements.7" rolOriginName="expedientes_asignatura" rolTargetName="asignatura" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="asignaturaanyo_expedienteasignatura" description="asignaturaanyo_expedienteasignatura" alias="asignaturaanyo_expedienteasignatura" rolOrigin="/0/@elements.17/@attributes.7" rolTarget="/0/@elements.12/@attributes.4" visibility="Public" classTarget="/0/@elements.12" classOrigin="/0/@elements.17" rolOriginName="expedientes_asignatura" rolTargetName="asignatura" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="expedienteasignatura_nota" description="expedienteasignatura_nota" alias="expedienteasignatura_nota" rolOrigin="/0/@elements.12/@attributes.5" rolTarget="/0/@elements.9/@attributes.4" visibility="Public" classTarget="/0/@elements.9" classOrigin="/0/@elements.12" rolOriginName="nota" rolTargetName="expedientes" rolOriginMultiplicity="0..1" rolTargetMultiplicity="0..*"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="expedienteasignatura_expedienteevaluacion" description="expedienteasignatura_expedienteevaluacion" alias="expedienteasignatura_expedienteevaluacion" rolOrigin="/0/@elements.12/@attributes.6" rolTarget="/0/@elements.13/@attributes.3" visibility="Public" classTarget="/0/@elements.13" classOrigin="/0/@elements.12" rolOriginName="expedientes_evaluacion" rolTargetName="expediente_asignatura" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="evaluacion_expedienteevaluacion" description="evaluacion_expedienteevaluacion" alias="evaluacion_expedienteevaluacion" rolOrigin="/0/@elements.18/@attributes.7" rolTarget="/0/@elements.13/@attributes.4" visibility="Public" classTarget="/0/@elements.13" classOrigin="/0/@elements.18" rolOriginName="expedientes" rolTargetName="evaluacion" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
@@ -1634,9 +1642,9 @@
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="pregunta_respuestacorrecta" description="pregunta_respuestacorrecta" alias="pregunta_respuestacorrecta" rolOrigin="/0/@elements.26/@attributes.5" rolTarget="/0/@elements.28/@attributes.4" visibility="Public" classTarget="/0/@elements.28" classOrigin="/0/@elements.26" rolOriginName="respuesta_correcta" rolTargetName="pregunta_relacionada" rolOriginMultiplicity="0..1" rolTargetMultiplicity="0..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="control_bolsapreguntas" description="control_bolsapreguntas" alias="control_bolsapreguntas" rolOrigin="/0/@elements.23/@attributes.9" rolTarget="/0/@elements.25/@attributes.5" visibility="Public" classTarget="/0/@elements.25" classOrigin="/0/@elements.23" rolOriginName="bolsas_preguntas" rolTargetName="controles" rolOriginMultiplicity="0..*" rolTargetMultiplicity="0..*"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="bolsapreguntas_preguntas" description="bolsapreguntas_preguntas" alias="bolsapreguntas_preguntas" rolOrigin="/0/@elements.25/@attributes.6" rolTarget="/0/@elements.26/@attributes.6" visibility="Public" classTarget="/0/@elements.26" classOrigin="/0/@elements.25" rolOriginName="preguntas" rolTargetName="bolsa" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="asignatura_bolsapreguntas" description="asignatura_bolsapreguntas" alias="asignatura_bolsapreguntas" rolOrigin="/0/@elements.7/@attributes.9" rolTarget="/0/@elements.25/@attributes.7" visibility="Public" classTarget="/0/@elements.25" classOrigin="/0/@elements.7" rolOriginName="bolsas_preguntas" rolTargetName="asignatura" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="asignatura_bolsapreguntas" description="asignatura_bolsapreguntas" alias="asignatura_bolsapreguntas" rolOrigin="/0/@elements.7/@attributes.8" rolTarget="/0/@elements.25/@attributes.7" visibility="Public" classTarget="/0/@elements.25" classOrigin="/0/@elements.7" rolOriginName="bolsas_preguntas" rolTargetName="asignatura" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xsi:type="es.ua.dlsi.ooh:Association" name="sistemaevaluacion_control" description="sistemaevaluacion_control" alias="sistemaevaluacion_control" rolOrigin="/0/@elements.21/@attributes.6" rolTarget="/0/@elements.23/@attributes.10" visibility="Public" classTarget="/0/@elements.23" classOrigin="/0/@elements.21" rolOriginName="controles" rolTargetName="sistema_evaluacion" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
-    <elements xsi:type="es.ua.dlsi.ooh:Association" name="profesor_asignaturaanyo" description="profesor_asignaturaanyo" alias="profesor_asignaturaanyo" rolOrigin="/0/@elements.3/@attributes.4" rolTarget="/0/@elements.17/@attributes.7" visibility="Public" classTarget="/0/@elements.17" classOrigin="/0/@elements.3" rolOriginName="asignaturas" rolTargetName="profesores" rolOriginMultiplicity="0..*" rolTargetMultiplicity="0..*"/>
+    <elements xsi:type="es.ua.dlsi.ooh:Association" name="profesor_asignaturaanyo" description="profesor_asignaturaanyo" alias="profesor_asignaturaanyo" rolOrigin="/0/@elements.3/@attributes.4" rolTarget="/0/@elements.17/@attributes.8" visibility="Public" classTarget="/0/@elements.17" classOrigin="/0/@elements.3" rolOriginName="asignaturas" rolTargetName="profesores" rolOriginMultiplicity="0..*" rolTargetMultiplicity="0..*"/>
   </es.ua.dlsi.ooh:ConceptualModel>
   <notation:Diagram type="ConceptualView" element="/0" name="temp.domainModel" measurementUnit="Pixel">
     <styles xsi:type="notation:DiagramStyle"/>

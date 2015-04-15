@@ -57,12 +57,6 @@ private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAn
  *
  */
 
-private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura;
-
-/**
- *
- */
-
 private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas;
 
 
@@ -109,11 +103,6 @@ public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.Asign
 }
 
 
-public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> Expedientes_asignatura {
-        get { return expedientes_asignatura; } set { expedientes_asignatura = value;  }
-}
-
-
 public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> Bolsas_preguntas {
         get { return bolsas_preguntas; } set { bolsas_preguntas = value;  }
 }
@@ -125,24 +114,23 @@ public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.Bolsa
 public AsignaturaEN()
 {
         asignaturas_anyo = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN>();
-        expedientes_asignatura = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN>();
         bolsas_preguntas = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN>();
 }
 
 
 
-public AsignaturaEN(int id, string cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
+public AsignaturaEN(int id, string cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
 {
-        this.init (id, cod_asignatura, nombre, descripcion, optativa, vigente, curso, asignaturas_anyo, expedientes_asignatura, bolsas_preguntas);
+        this.init (id, cod_asignatura, nombre, descripcion, optativa, vigente, curso, asignaturas_anyo, bolsas_preguntas);
 }
 
 
 public AsignaturaEN(AsignaturaEN asignatura)
 {
-        this.init (asignatura.Id, asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente, asignatura.Curso, asignatura.Asignaturas_anyo, asignatura.Expedientes_asignatura, asignatura.Bolsas_preguntas);
+        this.init (asignatura.Id, asignatura.Cod_asignatura, asignatura.Nombre, asignatura.Descripcion, asignatura.Optativa, asignatura.Vigente, asignatura.Curso, asignatura.Asignaturas_anyo, asignatura.Bolsas_preguntas);
 }
 
-private void init (int id, string cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN> expedientes_asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
+private void init (int id, string cod_asignatura, string nombre, string descripcion, bool optativa, bool vigente, DSSGenNHibernate.EN.Moodle.CursoEN curso, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas_anyo, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN> bolsas_preguntas)
 {
         this.Id = id;
 
@@ -160,8 +148,6 @@ private void init (int id, string cod_asignatura, string nombre, string descripc
         this.Curso = curso;
 
         this.Asignaturas_anyo = asignaturas_anyo;
-
-        this.Expedientes_asignatura = expedientes_asignatura;
 
         this.Bolsas_preguntas = bolsas_preguntas;
 }

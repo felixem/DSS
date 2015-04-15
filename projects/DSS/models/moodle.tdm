@@ -114,10 +114,14 @@ ConceptualModel moodle
 			public relationer_materiales::Relationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
 			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
 			public relationer_tutorias::Relationer->tutoria_profesor.tutorias (p_profesor : OID -> Profesor, p_tutoria : List<OID -> Tutoria>) : Void;
+			public relationer_asignaturas::Relationer->profesor_asignaturaanyo.asignaturas (p_profesor : OID -> Profesor, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
+			
 			public unrelationer_entregas_propuestas::Unrelationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
 			public unrelationer_materiales::Unrelationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
 			public unrelationer_mensajes::Unrelationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
 			public unrelationer_tutorias::Unrelationer->tutoria_profesor.tutorias (p_profesor : OID -> Profesor, p_tutoria : List<OID -> Tutoria>) : Void;
+			public unrelationer_asignaturas::Unrelationer->profesor_asignaturaanyo.asignaturas (p_profesor : OID -> Profesor, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
+			
 		}
 	};
 	
@@ -149,7 +153,7 @@ ConceptualModel moodle
 			public readCantidadPorGrupo::ReadFilter (id : OID -> GrupoTrabajo) : Long 
 			{ filter = "select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id" };
 			public readCantidadIngresablesEnGrupo::ReadFilter (id : OID -> GrupoTrabajo) : Long 
-			{ filter = "select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Sistemas_evaluacion as eval INNER JOIN eval.Sistema_evaluacion as sist INNER JOIN sist.Asignatura as asig INNER JOIN asig.Grupos_trabajo as grupo where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos " };
+			{ filter = "select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos" };
 			public readAllIngresablesEnGrupo::Custom (id : OID -> GrupoTrabajo, first : Integer, size : Integer) : List<Object -> Alumno>;
 			
 			public relationer_controles::Relationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
@@ -271,11 +275,9 @@ ConceptualModel moodle
 			public relationer_asignaturas_anyo::Relationer->asignatura_asignaturaanyo.asignaturas_anyo (p_asignatura : OID -> Asignatura, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
 			public relationer_bolsas_preguntas::Relationer->asignatura_bolsapreguntas.bolsas_preguntas (p_asignatura : OID -> Asignatura, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
 			public relationer_curso::Relationer->asignatura_curso.curso (p_asignatura : OID -> Asignatura, p_curso : OID -> Curso) : Void;
-			public relationer_expedientes_asignatura::Relationer->asignatura_expedienteasignatura.expedientes_asignatura (p_asignatura : OID -> Asignatura, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
 			public unrelationer_asignaturas_anyo::Unrelationer->asignatura_asignaturaanyo.asignaturas_anyo (p_asignatura : OID -> Asignatura, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
 			public unrelationer_bolsas_preguntas::Unrelationer->asignatura_bolsapreguntas.bolsas_preguntas (p_asignatura : OID -> Asignatura, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
 			public unrelationer_curso::Unrelationer->asignatura_curso.curso (p_asignatura : OID -> Asignatura, p_curso : OID -> Curso) : Void;
-			public unrelationer_expedientes_asignatura::Unrelationer->asignatura_expedienteasignatura.expedientes_asignatura (p_asignatura : OID -> Asignatura, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
 		}
 	};
 	
@@ -418,7 +420,7 @@ ConceptualModel moodle
 		
 		operations
 		{
-			public new::New (p_nota_media : Float, p_abierto : Boolean, p_expediente_anyo : OID -> ExpedienteAnyo, p_asignatura : OID -> Asignatura) : Object->ExpedienteAsignatura;
+			public new::New (p_nota_media : Float, p_abierto : Boolean, p_expediente_anyo : OID -> ExpedienteAnyo, p_asignatura : OID -> AsignaturaAnyo) : Object->ExpedienteAsignatura;
 			public modify::Modifier (p_oid : OID -> ExpedienteAsignatura, p_nota_media : Float, p_abierto : Boolean) : Void;
 			public destroy::Destroy (p_oid : OID -> ExpedienteAsignatura) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->ExpedienteAsignatura>;
@@ -426,11 +428,11 @@ ConceptualModel moodle
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ExpedienteAsignaturaEN" };
 			
-			public relationer_asignatura::Relationer->asignatura_expedienteasignatura.asignatura (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_asignatura : OID -> Asignatura) : Void;
+			public relationer_asignatura::Relationer->asignaturaanyo_expedienteasignatura.asignatura (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
 			public relationer_expediente_anyo::Relationer->expedienteanyo_expedienteasignatura.expediente_anyo (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteanyo : OID -> ExpedienteAnyo) : Void;
 			public relationer_expedientes_evaluacion::Relationer->expedienteasignatura_expedienteevaluacion.expedientes_evaluacion (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
 			public relationer_nota::Relationer->expedienteasignatura_nota.nota (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_nota : OID -> Nota) : Void;
-			public unrelationer_asignatura::Unrelationer->asignatura_expedienteasignatura.asignatura (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_asignatura : OID -> Asignatura) : Void;
+			public unrelationer_asignatura::Unrelationer->asignaturaanyo_expedienteasignatura.asignatura (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
 			public unrelationer_expediente_anyo::Unrelationer->expedienteanyo_expedienteasignatura.expediente_anyo (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteanyo : OID -> ExpedienteAnyo) : Void;
 			public unrelationer_expedientes_evaluacion::Unrelationer->expedienteasignatura_expedienteevaluacion.expedientes_evaluacion (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
 			public unrelationer_nota::Unrelationer->expedienteasignatura_nota.nota (p_expedienteasignatura : OID -> ExpedienteAsignatura, p_nota : OID -> Nota) : Void;
@@ -600,18 +602,20 @@ ConceptualModel moodle
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AsignaturaAnyoEN" };
 			public readCantidadPorAnyo::ReadFilter (id : OID -> AnyoAcademico) : Long 
 			{ filter = "select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id " };
+			public readAllPorAnyo::Custom (p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
 			public readRelation::ReadFilter (p_asignatura : OID -> Asignatura, p_anyo : OID -> AnyoAcademico ) : Object -> AsignaturaAnyo 
 			{ filter = "FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo"};
-			public readAllPorAnyo::Custom (p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
 			
 			public relationer_grupos_trabajo::Relationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public relationer_materiales::Relationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
 			public relationer_sistemas_evaluacion::Relationer->asignaturaanyo_sistemaevaluacion.sistemas_evaluacion (p_asignaturaanyo : OID -> AsignaturaAnyo, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
 			public relationer_tutorias::Relationer->tutoria_asignaturaanyo.tutorias (p_asignaturaanyo : OID -> AsignaturaAnyo, p_tutoria : List<OID -> Tutoria>) : Void;
+			public relationer_expedientes_asignatura::Relationer->asignaturaanyo_expedienteasignatura.expedientes_asignatura (p_asignaturaanyo : OID -> AsignaturaAnyo, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
 			public unrelationer_grupos_trabajo::Unrelationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public unrelationer_materiales::Unrelationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
 			public unrelationer_sistemas_evaluacion::Unrelationer->asignaturaanyo_sistemaevaluacion.sistemas_evaluacion (p_asignaturaanyo : OID -> AsignaturaAnyo, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
 			public unrelationer_tutorias::Unrelationer->tutoria_asignaturaanyo.tutorias (p_asignaturaanyo : OID -> AsignaturaAnyo, p_tutoria : List<OID -> Tutoria>) : Void;
+			public unrelationer_expedientes_asignatura::Unrelationer->asignaturaanyo_expedienteasignatura.expedientes_asignatura (p_asignaturaanyo : OID -> AsignaturaAnyo, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
 		}
 	};
 	
@@ -1267,11 +1271,11 @@ ConceptualModel moodle
 		<= navigable expediente_anyo ("1","1");
 	};
 	
-	Association asignatura_expedienteasignatura (Asignatura - ExpedienteAsignatura)
+	Association asignaturaanyo_expedienteasignatura (AsignaturaAnyo - ExpedienteAsignatura)
 	{
 		description
 		{
-			"Relación entre una asignatura y el expediente de una asignatura para un alumno"
+			"Relación entre una asignatura-anyo y el expediente de una asignatura para un alumno"
 		}
 		
 		=> navigable expedientes_asignatura ("0","*");
@@ -1286,7 +1290,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable nota ("0","1");
-		<= expedientes ("0","*");
+		<= navigable expedientes ("0","*");
 	};
 	
 	Association expedienteasignatura_expedienteevaluacion (ExpedienteAsignatura - ExpedienteEvaluacion)
@@ -1351,7 +1355,7 @@ ConceptualModel moodle
 			"Relación entre una pregunta y una pregunta realizada en un control"
 		}
 		
-		=> preguntas_control("0","*");
+		=> navigable preguntas_control("0","*");
 		<= navigable pregunta ("1","1");
 	};
 	
@@ -1363,7 +1367,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable respuesta_elegida ("0","1");
-		<= preguntas_control ("0","*");
+		<= navigable preguntas_control ("0","*");
 	};
 	
 	Association pregunta_respuesta (Pregunta - Respuesta)

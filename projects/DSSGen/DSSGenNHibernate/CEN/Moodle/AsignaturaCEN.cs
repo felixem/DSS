@@ -124,12 +124,6 @@ public void Relationer_curso (int p_asignatura, int p_curso)
 
         _IAsignaturaCAD.Relationer_curso (p_asignatura, p_curso);
 }
-public void Relationer_expedientes_asignatura (int p_asignatura, System.Collections.Generic.IList<int> p_expedienteasignatura)
-{
-        //Call to AsignaturaCAD
-
-        _IAsignaturaCAD.Relationer_expedientes_asignatura (p_asignatura, p_expedienteasignatura);
-}
 public void Unrelationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         //Call to AsignaturaCAD
@@ -147,12 +141,6 @@ public void Unrelationer_curso (int p_asignatura, int p_curso)
         //Call to AsignaturaCAD
 
         _IAsignaturaCAD.Unrelationer_curso (p_asignatura, p_curso);
-}
-public void Unrelationer_expedientes_asignatura (int p_asignatura, System.Collections.Generic.IList<int> p_expedienteasignatura)
-{
-        //Call to AsignaturaCAD
-
-        _IAsignaturaCAD.Unrelationer_expedientes_asignatura (p_asignatura, p_expedienteasignatura);
 }
 }
 }

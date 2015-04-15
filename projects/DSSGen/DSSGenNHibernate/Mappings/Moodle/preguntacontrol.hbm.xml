@@ -15,19 +15,21 @@
 						</many-to-one>
 											 					
 			
+		  			
+						<many-to-one name="Pregunta" class="DSSGenNHibernate.EN.Moodle.PreguntaEN" >	
+								<column name="[FK_id_pregunta]"/>
+						</many-to-one>
+											 					
 			
-					
-					
-					
-					
-						<many-to-one name="Pregunta" class="DSSGenNHibernate.EN.Moodle.PreguntaEN" >
-									<column name="[FK_id_pregunta]"/>
+		  			
+						<many-to-one name="Respuesta_elegida" class="DSSGenNHibernate.EN.Moodle.RespuestaEN" >	
+								<column name="[FK_id_respuesta_elegida]"/>
 						</many-to-one>
+											 					
 					
 					
-						<many-to-one name="Respuesta_elegida" class="DSSGenNHibernate.EN.Moodle.RespuestaEN" >
-									<column name="[FK_id_respuesta_elegida]"/>
-						</many-to-one>
+					
+					
 		
 		  </class>
 		  

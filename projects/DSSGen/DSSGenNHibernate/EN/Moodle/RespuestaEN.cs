@@ -21,6 +21,12 @@ private string contenido;
  *
  */
 
+private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas_control;
+
+/**
+ *
+ */
+
 private DSSGenNHibernate.EN.Moodle.PreguntaEN pregunta;
 
 
@@ -37,6 +43,11 @@ public virtual string Contenido {
 }
 
 
+public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> Preguntas_control {
+        get { return preguntas_control; } set { preguntas_control = value;  }
+}
+
+
 public virtual DSSGenNHibernate.EN.Moodle.PreguntaEN Pregunta {
         get { return pregunta; } set { pregunta = value;  }
 }
@@ -47,27 +58,30 @@ public virtual DSSGenNHibernate.EN.Moodle.PreguntaEN Pregunta {
 
 public RespuestaEN()
 {
+        preguntas_control = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.PreguntaControlEN>();
 }
 
 
 
-public RespuestaEN(int id, string contenido, DSSGenNHibernate.EN.Moodle.PreguntaEN pregunta)
+public RespuestaEN(int id, string contenido, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas_control, DSSGenNHibernate.EN.Moodle.PreguntaEN pregunta)
 {
-        this.init (id, contenido, pregunta);
+        this.init (id, contenido, preguntas_control, pregunta);
 }
 
 
 public RespuestaEN(RespuestaEN respuesta)
 {
-        this.init (respuesta.Id, respuesta.Contenido, respuesta.Pregunta);
+        this.init (respuesta.Id, respuesta.Contenido, respuesta.Preguntas_control, respuesta.Pregunta);
 }
 
-private void init (int id, string contenido, DSSGenNHibernate.EN.Moodle.PreguntaEN pregunta)
+private void init (int id, string contenido, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas_control, DSSGenNHibernate.EN.Moodle.PreguntaEN pregunta)
 {
         this.Id = id;
 
 
         this.Contenido = contenido;
+
+        this.Preguntas_control = preguntas_control;
 
         this.Pregunta = pregunta;
 }

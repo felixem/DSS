@@ -51,7 +51,7 @@ public int New_ (float p_nota_media, bool p_abierto, int p_expediente_anyo, int 
 
 
         if (p_asignatura != -1) {
-                expedienteAsignaturaEN.Asignatura = new DSSGenNHibernate.EN.Moodle.AsignaturaEN ();
+                expedienteAsignaturaEN.Asignatura = new DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ();
                 expedienteAsignaturaEN.Asignatura.Id = p_asignatura;
         }
 
@@ -99,11 +99,11 @@ public long ReadCantidad ()
 {
         return _IExpedienteAsignaturaCAD.ReadCantidad ();
 }
-public void Relationer_asignatura (int p_expedienteasignatura, int p_asignatura)
+public void Relationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo)
 {
         //Call to ExpedienteAsignaturaCAD
 
-        _IExpedienteAsignaturaCAD.Relationer_asignatura (p_expedienteasignatura, p_asignatura);
+        _IExpedienteAsignaturaCAD.Relationer_asignatura (p_expedienteasignatura, p_asignaturaanyo);
 }
 public void Relationer_expediente_anyo (int p_expedienteasignatura, int p_expedienteanyo)
 {
@@ -123,11 +123,11 @@ public void Relationer_nota (int p_expedienteasignatura, int p_nota)
 
         _IExpedienteAsignaturaCAD.Relationer_nota (p_expedienteasignatura, p_nota);
 }
-public void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignatura)
+public void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo)
 {
         //Call to ExpedienteAsignaturaCAD
 
-        _IExpedienteAsignaturaCAD.Unrelationer_asignatura (p_expedienteasignatura, p_asignatura);
+        _IExpedienteAsignaturaCAD.Unrelationer_asignatura (p_expedienteasignatura, p_asignaturaanyo);
 }
 public void Unrelationer_expediente_anyo (int p_expedienteasignatura, int p_expedienteanyo)
 {

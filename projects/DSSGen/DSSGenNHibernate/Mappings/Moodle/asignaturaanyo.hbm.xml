@@ -58,6 +58,15 @@
 					
 			
 		  			
+						<bag name="Expedientes_asignatura" >
+							<key>
+								<column name="[FK_id_asignatura]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN"/>
+					    </bag>
+					
+			
+		  			
 						<bag name="Profesores" table="[profesor_asignaturaanyo]"  >
 							<key>
 									<column name="[FK_id_asignaturas]"/>
@@ -66,6 +75,7 @@
 									<column name="[FK_email_profesores]"/>
       						</many-to-many>
     					</bag>
+					
 					
 					
 					

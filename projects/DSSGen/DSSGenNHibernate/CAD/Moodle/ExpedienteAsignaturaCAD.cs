@@ -62,7 +62,7 @@ public int New_ (ExpedienteAsignaturaEN expedienteAsignatura)
                         expedienteAsignatura.Expediente_anyo.Expedientes_asignatura.Add (expedienteAsignatura);
                 }
                 if (expedienteAsignatura.Asignatura != null) {
-                        expedienteAsignatura.Asignatura = (DSSGenNHibernate.EN.Moodle.AsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaEN), expedienteAsignatura.Asignatura.Id);
+                        expedienteAsignatura.Asignatura = (DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN), expedienteAsignatura.Asignatura.Id);
 
                         expedienteAsignatura.Asignatura.Expedientes_asignatura.Add (expedienteAsignatura);
                 }
@@ -228,14 +228,14 @@ public long ReadCantidad ()
 
         return result;
 }
-public void Relationer_asignatura (int p_expedienteasignatura, int p_asignatura)
+public void Relationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedienteAsignaturaEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 expedienteAsignaturaEN = (ExpedienteAsignaturaEN)session.Load (typeof(ExpedienteAsignaturaEN), p_expedienteasignatura);
-                expedienteAsignaturaEN.Asignatura = (DSSGenNHibernate.EN.Moodle.AsignaturaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaEN), p_asignatura);
+                expedienteAsignaturaEN.Asignatura = (DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN), p_asignaturaanyo);
 
                 expedienteAsignaturaEN.Asignatura.Expedientes_asignatura.Add (expedienteAsignaturaEN);
 
@@ -338,6 +338,8 @@ public void Relationer_nota (int p_expedienteasignatura, int p_nota)
                 expedienteAsignaturaEN = (ExpedienteAsignaturaEN)session.Load (typeof(ExpedienteAsignaturaEN), p_expedienteasignatura);
                 expedienteAsignaturaEN.Nota = (DSSGenNHibernate.EN.Moodle.NotaEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.NotaEN), p_nota);
 
+                expedienteAsignaturaEN.Nota.Expedientes.Add (expedienteAsignaturaEN);
+
 
 
                 session.Update (expedienteAsignaturaEN);
@@ -358,7 +360,7 @@ public void Relationer_nota (int p_expedienteasignatura, int p_nota)
         }
 }
 
-public void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignatura)
+public void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo)
 {
         try
         {
@@ -366,11 +368,11 @@ public void Unrelationer_asignatura (int p_expedienteasignatura, int p_asignatur
                 DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedienteAsignaturaEN = null;
                 expedienteAsignaturaEN = (ExpedienteAsignaturaEN)session.Load (typeof(ExpedienteAsignaturaEN), p_expedienteasignatura);
 
-                if (expedienteAsignaturaEN.Asignatura.Id == p_asignatura) {
+                if (expedienteAsignaturaEN.Asignatura.Id == p_asignaturaanyo) {
                         expedienteAsignaturaEN.Asignatura = null;
                 }
                 else
-                        throw new ModelException ("The identifier " + p_asignatura + " in p_asignatura you are trying to unrelationer, doesn't exist in ExpedienteAsignaturaEN");
+                        throw new ModelException ("The identifier " + p_asignaturaanyo + " in p_asignaturaanyo you are trying to unrelationer, doesn't exist in ExpedienteAsignaturaEN");
 
                 session.Update (expedienteAsignaturaEN);
                 SessionCommit ();

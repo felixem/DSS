@@ -33,7 +33,7 @@ private DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expediente_anyo;
  *
  */
 
-private DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura;
+private DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura;
 
 /**
  *
@@ -71,7 +71,7 @@ public virtual DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN Expediente_anyo {
 }
 
 
-public virtual DSSGenNHibernate.EN.Moodle.AsignaturaEN Asignatura {
+public virtual DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN Asignatura {
         get { return asignatura; } set { asignatura = value;  }
 }
 
@@ -96,7 +96,7 @@ public ExpedienteAsignaturaEN()
 
 
 
-public ExpedienteAsignaturaEN(int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expediente_anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, DSSGenNHibernate.EN.Moodle.NotaEN nota, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN> expedientes_evaluacion)
+public ExpedienteAsignaturaEN(int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expediente_anyo, DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura, DSSGenNHibernate.EN.Moodle.NotaEN nota, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN> expedientes_evaluacion)
 {
         this.init (id, nota_media, abierto, expediente_anyo, asignatura, nota, expedientes_evaluacion);
 }
@@ -107,7 +107,7 @@ public ExpedienteAsignaturaEN(ExpedienteAsignaturaEN expedienteAsignatura)
         this.init (expedienteAsignatura.Id, expedienteAsignatura.Nota_media, expedienteAsignatura.Abierto, expedienteAsignatura.Expediente_anyo, expedienteAsignatura.Asignatura, expedienteAsignatura.Nota, expedienteAsignatura.Expedientes_evaluacion);
 }
 
-private void init (int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expediente_anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, DSSGenNHibernate.EN.Moodle.NotaEN nota, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN> expedientes_evaluacion)
+private void init (int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expediente_anyo, DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignatura, DSSGenNHibernate.EN.Moodle.NotaEN nota, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN> expedientes_evaluacion)
 {
         this.Id = id;
 

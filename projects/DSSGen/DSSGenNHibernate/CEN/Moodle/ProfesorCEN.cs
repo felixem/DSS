@@ -133,6 +133,12 @@ public void Relationer_tutorias (string p_profesor, System.Collections.Generic.I
 
         _IProfesorCAD.Relationer_tutorias (p_profesor, p_tutoria);
 }
+public void Relationer_asignaturas (string p_profesor, System.Collections.Generic.IList<int> p_asignaturaanyo)
+{
+        //Call to ProfesorCAD
+
+        _IProfesorCAD.Relationer_asignaturas (p_profesor, p_asignaturaanyo);
+}
 public void Unrelationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         //Call to ProfesorCAD
@@ -156,6 +162,12 @@ public void Unrelationer_tutorias (string p_profesor, System.Collections.Generic
         //Call to ProfesorCAD
 
         _IProfesorCAD.Unrelationer_tutorias (p_profesor, p_tutoria);
+}
+public void Unrelationer_asignaturas (string p_profesor, System.Collections.Generic.IList<int> p_asignaturaanyo)
+{
+        //Call to ProfesorCAD
+
+        _IProfesorCAD.Unrelationer_asignaturas (p_profesor, p_asignaturaanyo);
 }
 }
 }

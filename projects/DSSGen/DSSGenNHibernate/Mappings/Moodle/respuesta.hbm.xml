@@ -14,10 +14,20 @@
 			
 			
 		  			
+						<bag name="Preguntas_control" >
+							<key>
+								<column name="[FK_id_respuesta_elegida]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.PreguntaControlEN"/>
+					    </bag>
+					
+			
+		  			
 						<many-to-one name="Pregunta" class="DSSGenNHibernate.EN.Moodle.PreguntaEN" >	
 								<column name="[FK_id_pregunta]"/>
 						</many-to-one>
 											 					
+					
 					
 					
 					
