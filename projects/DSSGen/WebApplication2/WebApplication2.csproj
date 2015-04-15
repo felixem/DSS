@@ -102,6 +102,9 @@
     <Content Include="Control\controles.aspx" />
     <Content Include="Control\crear_control.aspx" />
     <Content Include="Control\modificar_control.aspx" />
+    <Content Include="Entrega\entregas.aspx" />
+    <Content Include="Entrega\crear_entrega.aspx" />
+    <Content Include="Entrega\modificar_entrega.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -338,6 +341,27 @@
     </Compile>
     <Compile Include="Control\modificar_control.aspx.designer.cs">
       <DependentUpon>modificar_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas.aspx.cs">
+      <DependentUpon>entregas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas.aspx.designer.cs">
+      <DependentUpon>entregas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega.aspx.cs">
+      <DependentUpon>crear_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega.aspx.designer.cs">
+      <DependentUpon>crear_entrega.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\modificar_entrega.aspx.cs">
+      <DependentUpon>modificar_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\modificar_entrega.aspx.designer.cs">
+      <DependentUpon>modificar_entrega.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
