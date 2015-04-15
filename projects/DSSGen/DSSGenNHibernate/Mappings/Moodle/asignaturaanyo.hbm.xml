@@ -56,6 +56,17 @@
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN"/>
 					    </bag>
 					
+			
+		  			
+						<bag name="Profesores" table="[profesor_asignaturaanyo]"  >
+							<key>
+									<column name="[FK_id_asignaturas]"/>
+							</key>
+      						<many-to-many class="DSSGenNHibernate.EN.Moodle.ProfesorEN">
+									<column name="[FK_email_profesores]"/>
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					

@@ -125,7 +125,8 @@
     <Compile Include="CAD\Moodle\ControlCAD.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IProfesorCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\ProfesorCAD_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -156,9 +157,7 @@
     <Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CAD\Moodle\GrupoTrabajo_ReadAllPorAsignaturaAnyo.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="CAD\Moodle\GrupoTrabajo_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="CAD\Moodle\IAdministradorCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -215,6 +214,7 @@
     <Compile Include="CAD\Moodle\IGrupoTrabajoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD_Extension.cs" />
     <Compile Include="CAD\Moodle\IMaterialCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -298,6 +298,7 @@
     <Compile Include="EN\Moodle\ProfesorEN.cs" />
     <Compile Include="CEN\Moodle\ProfesorCEN.cs" />
     <Compile Include="CEN\Moodle\ProfesorCEN_ModifyNoPassword.cs" />
+    <Compile Include="CEN\Moodle\ProfesorCEN_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="EN\Moodle\AlumnoEN.cs" />
     <Compile Include="CEN\Moodle\AlumnoCEN.cs" />
     <Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs" />

@@ -299,6 +299,38 @@ public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
 
         return result;
 }
+public long ReadCantidadPorAnyo (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProfesorEN self where select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCantidadPorAnyoHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ProfesorCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         DSSGenNHibernate.EN.Moodle.ProfesorEN profesorEN = null;

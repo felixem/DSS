@@ -106,6 +106,10 @@ ConceptualModel moodle
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ProfesorEN" };
 			public readCod::ReadFilter (cod : Integer) : Object -> Profesor { filter = "FROM ProfesorEN prof where prof.Cod_profesor =:cod "};
 			
+			public readCantidadPorAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
+			{ filter = "select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id " };
+			public readAllPorAsignaturaAnyo::Custom (p_asig_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->Profesor>;
+			
 			public relationer_entregas_propuestas::Relationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
 			public relationer_materiales::Relationer->material_profesor_uploader.materiales (p_profesor : OID -> Profesor, p_material : List<OID -> Material>) : Void;
 			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_profesor : OID -> Profesor, p_mensaje : List<OID -> Mensaje>) : Void;
@@ -1426,6 +1430,17 @@ ConceptualModel moodle
 		
 		=> navigable controles:Composite ("0","*");
 		<= navigable sistema_evaluacion ("1","1");
+	};
+	
+	Association profesor_asignaturaanyo (Profesor - AsignaturaAnyo)
+	{
+		description
+		{
+			"Relación entre un profesor y las asignaturas que imparte"
+		}
+		
+		=> navigable asignaturas ("0","*");
+		<= navigable profesores ("0","*");
 	};
 	
 }

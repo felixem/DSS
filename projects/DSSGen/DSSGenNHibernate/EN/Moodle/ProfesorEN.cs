@@ -31,6 +31,12 @@ private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> 
 
 private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas;
+
 
 
 
@@ -55,6 +61,11 @@ public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.Entre
 }
 
 
+public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> Asignaturas {
+        get { return asignaturas; } set { asignaturas = value;  }
+}
+
+
 
 
 
@@ -63,22 +74,23 @@ public ProfesorEN() : base ()
         tutorias = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.TutoriaEN>();
         materiales = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.MaterialEN>();
         entregas_propuestas = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.EntregaEN>();
+        asignaturas = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN>();
 }
 
 
 
-public ProfesorEN(string email, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
+public ProfesorEN(string email, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
-        this.init (email, cod_profesor, tutorias, materiales, entregas_propuestas, mensajes, dni, password, nombre, apellidos, fecha_nacimiento);
+        this.init (email, cod_profesor, tutorias, materiales, entregas_propuestas, asignaturas, mensajes, dni, password, nombre, apellidos, fecha_nacimiento);
 }
 
 
 public ProfesorEN(ProfesorEN profesor)
 {
-        this.init (profesor.Email, profesor.Cod_profesor, profesor.Tutorias, profesor.Materiales, profesor.Entregas_propuestas, profesor.Mensajes, profesor.Dni, profesor.Password, profesor.Nombre, profesor.Apellidos, profesor.Fecha_nacimiento);
+        this.init (profesor.Email, profesor.Cod_profesor, profesor.Tutorias, profesor.Materiales, profesor.Entregas_propuestas, profesor.Asignaturas, profesor.Mensajes, profesor.Dni, profesor.Password, profesor.Nombre, profesor.Apellidos, profesor.Fecha_nacimiento);
 }
 
-private void init (string email, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
+private void init (string email, int cod_profesor, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> entregas_propuestas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN> asignaturas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
         this.Email = email;
 
@@ -90,6 +102,8 @@ private void init (string email, int cod_profesor, System.Collections.Generic.IL
         this.Materiales = materiales;
 
         this.Entregas_propuestas = entregas_propuestas;
+
+        this.Asignaturas = asignaturas;
 
         this.Mensajes = mensajes;
 

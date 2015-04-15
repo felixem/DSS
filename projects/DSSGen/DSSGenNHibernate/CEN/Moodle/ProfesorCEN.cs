@@ -105,6 +105,10 @@ public DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod)
 {
         return _IProfesorCAD.ReadCod (cod);
 }
+public long ReadCantidadPorAnyo (int id)
+{
+        return _IProfesorCAD.ReadCantidadPorAnyo (id);
+}
 public void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega)
 {
         //Call to ProfesorCAD

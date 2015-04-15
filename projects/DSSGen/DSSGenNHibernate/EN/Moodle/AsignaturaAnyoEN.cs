@@ -47,6 +47,12 @@ private DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura;
 
 private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion;
 
+/**
+ *
+ */
+
+private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores;
+
 
 
 
@@ -86,6 +92,11 @@ public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.Siste
 }
 
 
+public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> Profesores {
+        get { return profesores; } set { profesores = value;  }
+}
+
+
 
 
 
@@ -95,22 +106,23 @@ public AsignaturaAnyoEN()
         materiales = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.MaterialEN>();
         grupos_trabajo = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN>();
         sistemas_evaluacion = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN>();
+        profesores = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ProfesorEN>();
 }
 
 
 
-public AsignaturaAnyoEN(int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion)
+public AsignaturaAnyoEN(int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores)
 {
-        this.init (id, tutorias, materiales, grupos_trabajo, anyo, asignatura, sistemas_evaluacion);
+        this.init (id, tutorias, materiales, grupos_trabajo, anyo, asignatura, sistemas_evaluacion, profesores);
 }
 
 
 public AsignaturaAnyoEN(AsignaturaAnyoEN asignaturaAnyo)
 {
-        this.init (asignaturaAnyo.Id, asignaturaAnyo.Tutorias, asignaturaAnyo.Materiales, asignaturaAnyo.Grupos_trabajo, asignaturaAnyo.Anyo, asignaturaAnyo.Asignatura, asignaturaAnyo.Sistemas_evaluacion);
+        this.init (asignaturaAnyo.Id, asignaturaAnyo.Tutorias, asignaturaAnyo.Materiales, asignaturaAnyo.Grupos_trabajo, asignaturaAnyo.Anyo, asignaturaAnyo.Asignatura, asignaturaAnyo.Sistemas_evaluacion, asignaturaAnyo.Profesores);
 }
 
-private void init (int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion)
+private void init (int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MaterialEN> materiales, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN anyo, DSSGenNHibernate.EN.Moodle.AsignaturaEN asignatura, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ProfesorEN> profesores)
 {
         this.Id = id;
 
@@ -126,6 +138,8 @@ private void init (int id, System.Collections.Generic.IList<DSSGenNHibernate.EN.
         this.Asignatura = asignatura;
 
         this.Sistemas_evaluacion = sistemas_evaluacion;
+
+        this.Profesores = profesores;
 }
 
 public override bool Equals (object obj)

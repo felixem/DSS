@@ -154,5 +154,13 @@ namespace DSSGenNHibernate.GrupoTrabajo
             //Obtener de nuevo la lista de bolsas
             this.ObtenerGruposTrabajoPaginados(1);
         }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
+        }
     }
 }

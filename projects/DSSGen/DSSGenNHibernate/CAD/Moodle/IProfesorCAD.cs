@@ -31,6 +31,10 @@ long ReadCantidad ();
 DSSGenNHibernate.EN.Moodle.ProfesorEN ReadCod (int cod);
 
 
+long ReadCantidadPorAnyo (int id);
+
+
+
 void Relationer_entregas_propuestas (string p_profesor, System.Collections.Generic.IList<int> p_entrega);
 
 void Relationer_materiales (string p_profesor, System.Collections.Generic.IList<int> p_material);

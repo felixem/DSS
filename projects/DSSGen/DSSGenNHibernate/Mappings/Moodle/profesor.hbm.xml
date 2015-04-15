@@ -39,6 +39,17 @@
 							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaEN"/>
 					    </bag>
 					
+			
+		  			
+						<bag name="Asignaturas" table="[profesor_asignaturaanyo]" inverse="true" >
+							<key>
+									<column name="[FK_email_profesores]"/>
+							</key>
+      						<many-to-many class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN">
+									<column name="[FK_id_asignaturas]"/>
+      						</many-to-many>
+    					</bag>
+					
 					
 					
 					
@@ -49,5 +60,6 @@
 		  <query name="ProfesorENReadAllHQL">from ProfesorEN</query>
 		  <query name="ProfesorENreadCantidadHQL"><![CDATA[select count(*) FROM ProfesorEN]]></query>
 		  <query name="ProfesorENreadCodHQL"><![CDATA[FROM ProfesorEN prof where prof.Cod_profesor =:cod ]]></query>
+		  <query name="ProfesorENreadCantidadPorAnyoHQL"><![CDATA[select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ]]></query>
 		</hibernate-mapping>
 	
