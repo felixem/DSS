@@ -78,6 +78,7 @@
     <Compile Include="Moodle\BolsaPreguntasBinding.cs" />
     <Compile Include="Moodle\AsignaturaBinding.cs" />
     <Compile Include="Moodle\Commands\BinderControl.cs" />
+    <Compile Include="Moodle\Commands\BinderEntrega.cs" />
     <Compile Include="Moodle\Commands\BinderListaAlumnoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaAnyoAcademicoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaAnyoAcademicoDropDownList.cs" />
@@ -89,18 +90,21 @@
     <Compile Include="Moodle\Commands\BinderListaControlGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaCursoDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaCursoGrid.cs" />
+    <Compile Include="Moodle\Commands\BinderListaEntregaGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaGrupoTrabajoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaSistemaEvaluacionDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderAsignaturaAnyoLigero.cs" />
     <Compile Include="Moodle\Commands\IBinderControl.cs" />
+    <Compile Include="Moodle\Commands\IBinderEntrega.cs" />
     <Compile Include="Moodle\Commands\IBinderListaBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAnyoAcademico.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAsignatura.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\IBinderListaControl.cs" />
     <Compile Include="Moodle\Commands\IBinderListaCurso.cs" />
+    <Compile Include="Moodle\Commands\IBinderListaEntrega.cs" />
     <Compile Include="Moodle\Commands\IBinderListaGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IBinderListaProfesor.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAlumno.cs" />
@@ -119,6 +123,7 @@
     <Compile Include="Moodle\Commands\BinderGrupoTrabajoCompleto.cs" />
     <Compile Include="Moodle\ControlBinding.cs" />
     <Compile Include="Moodle\CursoBinding.cs" />
+    <Compile Include="Moodle\EntregaBinding.cs" />
     <Compile Include="Moodle\GrupoTrabajoBinding.cs" />
     <Compile Include="Moodle\ProfesorBinding.cs" />
     <Compile Include="Moodle\SistemaEvaluacionBiding.cs" />
