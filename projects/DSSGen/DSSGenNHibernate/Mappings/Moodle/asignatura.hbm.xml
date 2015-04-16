@@ -67,5 +67,6 @@
 		  <query name="AsignaturaENReadAllHQL">from AsignaturaEN</query>
 		  <query name="AsignaturaENreadCantidadHQL"><![CDATA[select count(*) FROM AsignaturaEN]]></query>
 		  <query name="AsignaturaENreadCodHQL"><![CDATA[FROM AsignaturaEN asig where asig.Cod_asignatura=:cod]]></query>
+		  <query name="AsignaturaENreadCantidadVinculablesAAnyoHQL"><![CDATA[select count(asig) FROM AsignaturaEN asig where asig.Id NOT IN (select asignatura.Id FROM AsignaturaEN asignatura INNER JOIN asignatura.Asignaturas_anyo as asig_anyo where asig_anyo.Anyo.Id=:id) ]]></query>
 		</hibernate-mapping>
 	

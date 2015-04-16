@@ -25,6 +25,9 @@ ControlAlumnoEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno, int p_control);
+
+
 void Relationer_alumno (int p_controlalumno, string p_alumno);
 
 void Relationer_control (int p_controlalumno, int p_control);

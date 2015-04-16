@@ -117,6 +117,7 @@
 			<Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorGrupo.cs" />
 			<Compile Include="CEN\Moodle\AlumnoCEN_ReadAllIngresablesEnGrupo.cs" />
 			<Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorAsignaturaAnyo.cs" />
+			<Compile Include="CEN\Moodle\AlumnoCEN_ReadAllMatriculablesEnAsignaturaAnyo.cs" />
 	<Compile Include="EN\Moodle\TutoriaEN.cs" />
 	<Compile Include="CEN\Moodle\TutoriaCEN.cs" />
 	<Compile Include="CAD\Moodle\ITutoriaCAD.cs" />
@@ -129,6 +130,7 @@
 	<Compile Include="CEN\Moodle\AsignaturaCEN.cs" />
 	<Compile Include="CAD\Moodle\IAsignaturaCAD.cs" />
 	<Compile Include="CAD\Moodle\AsignaturaCAD.cs" />
+			<Compile Include="CEN\Moodle\AsignaturaCEN_ReadAllVinculablesAAnyo.cs" />
 	<Compile Include="EN\Moodle\CursoEN.cs" />
 	<Compile Include="CEN\Moodle\CursoCEN.cs" />
 	<Compile Include="CAD\Moodle\ICursoCAD.cs" />

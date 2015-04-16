@@ -48,5 +48,6 @@
 		  
 		  <query name="ExpedienteAnyoENReadAllHQL">from ExpedienteAnyoEN</query>
 		  <query name="ExpedienteAnyoENreadCantidadHQL"><![CDATA[select count(*) FROM ExpedienteAnyoEN]]></query>
+		  <query name="ExpedienteAnyoENreadRelationHQL"><![CDATA[FROM ExpedienteAnyoEN exp where exp.Expediente.Id=:p_exp AND exp.Anyo.Id=:p_anyo]]></query>
 		</hibernate-mapping>
 	

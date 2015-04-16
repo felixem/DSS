@@ -24,6 +24,16 @@ namespace Fachadas.Moodle
             asig.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
+        //Vincular a un DropDownList todas las asignaturas vinculables a un año
+        public void VincularDameTodosVinculablesAAnyo(int idAnyo, DropDownList drop)
+        {
+            AsignaturaBinding asig = new AsignaturaBinding();
+            IDameTodosAsignatura consulta = new DameTodosAsignaturaVinculablesAAnyo(idAnyo);
+            BinderListaAsignaturaDropDownList binder = new BinderListaAsignaturaDropDownList(drop);
+            long total;
+            asig.VincularDameTodos(consulta, binder, 0, -1, out total);
+        }
+
         //Vincular a un GridView todas las asignaturas
         public void VincularDameTodos(GridView grid, int first, int size, out long numElements)
         {

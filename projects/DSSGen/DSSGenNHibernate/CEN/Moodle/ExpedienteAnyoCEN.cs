@@ -99,6 +99,10 @@ public long ReadCantidad ()
 {
         return _IExpedienteAnyoCAD.ReadCantidad ();
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN ReadRelation (int p_exp, int p_anyo)
+{
+        return _IExpedienteAnyoCAD.ReadRelation (p_exp, p_anyo);
+}
 public void Relationer_anyo (int p_expedienteanyo, int p_anyoacademico)
 {
         //Call to ExpedienteAnyoCAD

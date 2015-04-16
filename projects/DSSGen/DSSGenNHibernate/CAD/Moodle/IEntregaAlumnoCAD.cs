@@ -25,6 +25,9 @@ EntregaAlumnoEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (string p_alumno, int p_entrega);
+
+
 void Relationer_alumno (int p_entregaalumno, string p_alumno);
 
 void Relationer_entrega (int p_entregaalumno, int p_entrega);

@@ -380,9 +380,41 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AlumnoEN self where select count (distinct alu) FROM AsignaturaAnyo as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where asig.Id=:id";
+                //String sql = @"FROM AlumnoEN self where select count (distinct alu) FROM AsignaturaAnyoEN as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where asig.Id=:id";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCantidadPorAsignaturaAnyoHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public long ReadCantidadMatriculablesEnAsignaturaAnyo (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AlumnoEN self where select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Anyo as anyo where anyo.Id IN (select year.Id FROM AsignaturaAnyoEN as asig INNER JOIN asig.Anyo as year where asig.Id=:id) AND exp_anyo.Id NOT IN (select ex_anyo.Id FROM AsignaturaAnyoEN as asignatura INNER JOIN asignatura.Expedientes_asignatura as expedi INNER JOIN expedi.Expediente_anyo as ex_anyo where asignatura.Id=:id)";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AlumnoENreadCantidadMatriculablesEnAsignaturaAnyoHQL");
                 query.SetParameter ("id", id);
 
 

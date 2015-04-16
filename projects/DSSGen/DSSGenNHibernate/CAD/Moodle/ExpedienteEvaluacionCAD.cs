@@ -228,6 +228,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN ReadRelation (int p_exp_asig, int p_evaluacion)
+{
+        DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ExpedienteEvaluacionEN self where FROM ExpedienteEvaluacionEN exp_eval where exp_eval.Expediente_asignatura.Id=:p_exp_asig AND exp_eval.Evaluacion.Id=:p_evaluacion";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ExpedienteEvaluacionENreadRelationHQL");
+                query.SetParameter ("p_exp_asig", p_exp_asig);
+                query.SetParameter ("p_evaluacion", p_evaluacion);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteEvaluacionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_evaluacion (int p_expedienteevaluacion, int p_evaluacion)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN expedienteEvaluacionEN = null;

@@ -25,6 +25,9 @@ ExpedienteEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.ExpedienteEN ReadRelation (string p_alu);
+
+
 void Relationer_alumno (int p_expediente, string p_alumno);
 
 void Relationer_expedientes_anyo (int p_expediente, System.Collections.Generic.IList<int> p_expedienteanyo);

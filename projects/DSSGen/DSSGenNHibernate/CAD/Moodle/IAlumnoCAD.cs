@@ -43,6 +43,10 @@ long ReadCantidadPorAsignaturaAnyo (int id);
 
 
 
+long ReadCantidadMatriculablesEnAsignaturaAnyo (int id);
+
+
+
 void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno);
 
 void Relationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno);

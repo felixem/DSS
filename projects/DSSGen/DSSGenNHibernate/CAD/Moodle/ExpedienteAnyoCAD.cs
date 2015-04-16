@@ -228,6 +228,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN ReadRelation (int p_exp, int p_anyo)
+{
+        DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ExpedienteAnyoEN self where FROM ExpedienteAnyoEN exp where exp.Expediente.Id=:p_exp AND exp.Anyo.Id=:p_anyo";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ExpedienteAnyoENreadRelationHQL");
+                query.SetParameter ("p_exp", p_exp);
+                query.SetParameter ("p_anyo", p_anyo);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_anyo (int p_expedienteanyo, int p_anyoacademico)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN expedienteAnyoEN = null;

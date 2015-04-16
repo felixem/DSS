@@ -25,6 +25,9 @@ ExpedienteEvaluacionEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN ReadRelation (int p_exp_asig, int p_evaluacion);
+
+
 void Relationer_evaluacion (int p_expedienteevaluacion, int p_evaluacion);
 
 void Relationer_expediente_asignatura (int p_expedienteevaluacion, int p_expedienteasignatura);

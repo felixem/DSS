@@ -160,5 +160,139 @@ namespace ComponentesProceso.Moodle
                 SessionClose();
             }
         }
+
+        //Método para matricular un alumno en una asignatura anyo
+        public void MatricularAlumno(int codAlumno, int idAsig)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Obtener alumno
+                AlumnoCAD aluCad = new AlumnoCAD(session);
+                AlumnoCEN aluCen = new AlumnoCEN(aluCad);
+                AlumnoEN alu = aluCen.ReadCod(codAlumno);
+
+                if (alu == null)
+                    throw new Exception("No se encontró el alumno");
+
+                //Obtener expediente del alumno
+                ExpedienteCAD expCad = new ExpedienteCAD(session);
+                ExpedienteCEN expCen = new ExpedienteCEN(expCad);
+                ExpedienteEN exp = expCen.ReadRelation(alu.Email);
+
+                if (exp == null)
+                    throw new Exception("No se encontró el expediente del Alumno");
+
+                //Obtener la asignatura
+                AsignaturaAnyoCAD asigCad = new AsignaturaAnyoCAD(session);
+                AsignaturaAnyoCEN asigCen = new AsignaturaAnyoCEN(asigCad);
+                AsignaturaAnyoEN asig = asigCen.ReadOID(idAsig);
+
+                if (asig == null)
+                    throw new Exception("No se encontró la asignatura");
+
+                //Obtener la id del Año académico
+                int anyo = asig.Anyo.Id;
+
+                //Obtener el expediente del alumno para el año académico
+                ExpedienteAnyoCAD expAnyoCad = new ExpedienteAnyoCAD(session);
+                ExpedienteAnyoCEN expAnyoCen = new ExpedienteAnyoCEN(expAnyoCad);
+                ExpedienteAnyoEN expAnyo = expAnyoCen.ReadRelation(exp.Id, anyo);
+
+                if (expAnyo == null)
+                    throw new Exception("No se encontró el expediente del alumno para el año académico");
+
+                //Comprobar que no exista matriculación todavía
+                ExpedienteAsignaturaCAD expAsigCad = new ExpedienteAsignaturaCAD(session);
+                ExpedienteAsignaturaCEN expAsigCen = new ExpedienteAsignaturaCEN(expAsigCad);
+                ExpedienteAsignaturaEN expAsig = expAsigCen.ReadRelation(asig.Id, expAnyo.Id);
+
+                if (expAsig != null)
+                    throw new Exception("El alumno ya está matriculado en la asignatura");
+
+                //Ejecutar la matriculación
+                expAsigCen.New_(0, true, expAnyo.Id, asig.Id);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
+        //Método para matricular un alumno en una asignatura anyo
+        public void DesmatricularAlumno(int codAlumno, int idAsig)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Obtener alumno
+                AlumnoCAD aluCad = new AlumnoCAD(session);
+                AlumnoCEN aluCen = new AlumnoCEN(aluCad);
+                AlumnoEN alu = aluCen.ReadCod(codAlumno);
+
+                if (alu == null)
+                    throw new Exception("No se encontró el alumno");
+
+                //Obtener expediente del alumno
+                ExpedienteCAD expCad = new ExpedienteCAD(session);
+                ExpedienteCEN expCen = new ExpedienteCEN(expCad);
+                ExpedienteEN exp = expCen.ReadRelation(alu.Email);
+
+                if (exp == null)
+                    throw new Exception("No se encontró el expediente del Alumno");
+
+                //Obtener la asignatura
+                AsignaturaAnyoCAD asigCad = new AsignaturaAnyoCAD(session);
+                AsignaturaAnyoCEN asigCen = new AsignaturaAnyoCEN(asigCad);
+                AsignaturaAnyoEN asig = asigCen.ReadOID(idAsig);
+
+                if (asig == null)
+                    throw new Exception("No se encontró la asignatura");
+
+                //Obtener la id del Año académico
+                int anyo = asig.Anyo.Id;
+
+                //Obtener el expediente del alumno para el año académico
+                ExpedienteAnyoCAD expAnyoCad = new ExpedienteAnyoCAD(session);
+                ExpedienteAnyoCEN expAnyoCen = new ExpedienteAnyoCEN(expAnyoCad);
+                ExpedienteAnyoEN expAnyo = expAnyoCen.ReadRelation(exp.Id, anyo);
+
+                if (expAnyo == null)
+                    throw new Exception("No se encontró el expediente del alumno para el año académico");
+
+                //Comprobar que no exista matriculación todavía
+                ExpedienteAsignaturaCAD expAsigCad = new ExpedienteAsignaturaCAD(session);
+                ExpedienteAsignaturaCEN expAsigCen = new ExpedienteAsignaturaCEN(expAsigCad);
+                ExpedienteAsignaturaEN expAsig = expAsigCen.ReadRelation(asig.Id, expAnyo.Id);
+
+                if (expAsig == null)
+                    throw new Exception("El alumno no está matriculado en la asignatura");
+
+                //Ejecutar la desmatriculación
+                expAsigCen.Destroy(expAsig.Id);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

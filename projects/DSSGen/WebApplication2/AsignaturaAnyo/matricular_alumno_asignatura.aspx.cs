@@ -7,18 +7,18 @@ using System.Web.UI.WebControls;
 
 using Fachadas.Moodle;
 using WebUtilities;
+using DSSGenNHibernate.EN.Moodle;
 
-namespace DSSGenNHibernate.Alumno
+namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class alumnos_matriculados : System.Web.UI.Page
+    public partial class matricular_alumno_asignatura : System.Web.UI.Page
     {
-        //Fachada utilizada en la página
+        FachadaAsignaturaAnyo fachadaAsignaturaAnyo;
         FachadaAlumno fachadaAlumno;
-        FachadaAsignaturaAnyo fachadaAsignatura;
         private int id;
         String param;
 
-        //Manejador al cargar la página
+        //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,7 +29,8 @@ namespace DSSGenNHibernate.Alumno
             }
 
             fachadaAlumno = new FachadaAlumno();
-            fachadaAsignatura = new FachadaAsignaturaAnyo();
+            fachadaAsignaturaAnyo = new FachadaAsignaturaAnyo();
+
             Obtener_Parametros();
 
             if (!IsPostBack)
@@ -37,33 +38,6 @@ namespace DSSGenNHibernate.Alumno
                 //Cargar datos
                 this.CargarDatos();
                 this.ObtenerAlumnosPaginados(1);
-            }
-        }
-
-        //Comprobar si se plantea operación de modificación
-        private void Obtener_Parametros()
-        {
-            param = Request.QueryString[PageParameters.MainParameter];
-            //Lanzar excepción no se ha recibido un parámetro
-            if (param == null)
-            {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
-            }
-            else
-                id = Int32.Parse(param);
-        }
-
-        //Comprobar parámetros y cargar datos
-        private void CargarDatos()
-        {
-            //Recuperar los datos de la asignatura-anyo
-            if (!fachadaAsignatura.VincularAsignaturaAnyoPorIdLigero(id, TextBox_Asignatura))
-            {
-                //Redirigir a la página que le llamó
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PreviousPage());
             }
         }
 
@@ -80,7 +54,7 @@ namespace DSSGenNHibernate.Alumno
             long numObjetos = 0;
 
             //Vincular el grid con la lista de alumnos paginada
-            fachadaAlumno.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaAlumno.VincularDameTodosMatriculablesEnAsignaturaAnyo(id, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -112,35 +86,55 @@ namespace DSSGenNHibernate.Alumno
             rptPager.DataBind();
         }
 
-        //Manejador para matricular un alumno en la asignatura
-        protected void Button_Crear_Click(object sender, EventArgs e)
+        //Comprobar los parámetros
+        private void Obtener_Parametros()
         {
-            Linker link = new Linker(true);
-            link.Redirect(Response, link.MatricularAlumnoEnAsignaturaAnyo(id));
-        }
-
-        //Manejador del evento para desmatricular un alumno
-        protected void lnkEliminar_Click(object sender, EventArgs e)
-        {
-            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
-
-            //Desmatricular alumno
-            if (fachadaAsignatura.DesmatricularAlumno(alumnoId,id))
-                Notification.Notify(Response, "El alumno ha sido desmatriculado");
+            param = Request.QueryString[PageParameters.MainParameter];
+            //Comprobar si no se ha recibido un parámetro
+            if (param == null)
+            {
+                //Redirigir a la página que le llamó
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
             else
-                Notification.Notify(Response, "El alumno no ha podido ser desmatriculado");
-
-            //Obtener de nuevo la lista de alumnos
-            this.ObtenerAlumnosPaginados(1);
+                id = Int32.Parse(param);
         }
 
+        //Comprobar parámetros
+        private void CargarDatos()
+        {
+            //Recuperar los datos de la asignatura-anyo
+            if (!fachadaAsignaturaAnyo.VincularAsignaturaAnyoPorIdLigero(id,TextBox_Asignatura))
+            {
+                //Redirigir a la página que le llamó en caso de error
+                Linker link = new Linker(false);
+                link.Redirect(Response, link.PreviousPage());
+            }
+        }
+       
         //Botón utilizado para cancelar la creación y volver atrás
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
+        }
+
+        //Manejador del evento para matricular a un alumno
+        protected void lnkMatricular_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
+
+            //Matricular alumno
+            if (fachadaAsignaturaAnyo.MatricularAlumno(alumnoId, id))
+                Notification.Notify(Response, "El alumno ha sido matriculado");
+            else
+                Notification.Notify(Response, "El alumno no ha podido ser matriculado");
+
+            //Obtener de nuevo la lista de alumnos
+            this.ObtenerAlumnosPaginados(1);
         }
     }
 }

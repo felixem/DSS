@@ -25,6 +25,9 @@ ExpedienteAnyoEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN ReadRelation (int p_exp, int p_anyo);
+
+
 void Relationer_anyo (int p_expedienteanyo, int p_anyoacademico);
 
 void Relationer_expediente (int p_expedienteanyo, int p_expediente);

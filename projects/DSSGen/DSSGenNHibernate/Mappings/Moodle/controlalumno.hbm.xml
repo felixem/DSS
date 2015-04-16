@@ -53,5 +53,6 @@
 		  
 		  <query name="ControlAlumnoENReadAllHQL">from ControlAlumnoEN</query>
 		  <query name="ControlAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM ControlAlumnoEN]]></query>
+		  <query name="ControlAlumnoENreadRelationHQL"><![CDATA[FROM ControlAlumnoEN cont_alu where cont_alu.Alumno.Email=:p_alumno AND cont_alu.Control.Id=:p_control]]></query>
 		</hibernate-mapping>
 	

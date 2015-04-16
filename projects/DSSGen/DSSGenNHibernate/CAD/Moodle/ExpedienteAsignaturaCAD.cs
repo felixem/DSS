@@ -228,6 +228,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN ReadRelation (int p_asig_anyo, int p_exp_anyo)
+{
+        DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ExpedienteAsignaturaEN self where FROM ExpedienteAsignaturaEN exp_asig where exp_asig.Asignatura.Id=:p_asig_anyo AND exp_asig.Expediente_anyo.Id=:p_exp_anyo";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ExpedienteAsignaturaENreadRelationHQL");
+                query.SetParameter ("p_asig_anyo", p_asig_anyo);
+                query.SetParameter ("p_exp_anyo", p_exp_anyo);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteAsignaturaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignatura (int p_expedienteasignatura, int p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expedienteAsignaturaEN = null;

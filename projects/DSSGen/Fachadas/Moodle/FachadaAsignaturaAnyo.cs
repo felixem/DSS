@@ -34,6 +34,15 @@ namespace Fachadas.Moodle
             binding.VincularDameTodos(consulta, binder, 0, -1, out total);
         }
 
+        //Vincular a un Gridview todas las asignaturas-anyo que se corresponden con un año determinado
+        public void VincularDameTodosPorAnyo(int idAnyo, GridView grid, int first, int size, out long numElements)
+        {
+            AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
+            DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
+            BinderListaAsignaturaAnyoGrid binder = new BinderListaAsignaturaAnyoGrid(grid);
+            binding.VincularDameTodos(consulta, binder, 0, -1, out numElements);
+        }
+
         //Vincular a un GridView todas las asignaturas-anyo
         public void VincularDameTodos(GridView grid, int first, int size, out long numElements)
         {
@@ -101,6 +110,38 @@ namespace Fachadas.Moodle
             {
                 AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
                 cp.BorrarAsignaturaAnyo(id);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //Método para matricular un alumno en una asignatura anyo
+        public bool MatricularAlumno(int codAlumno, int idAsignaturaAnyo)
+        {
+            try
+            {
+                AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
+                cp.MatricularAlumno(codAlumno, idAsignaturaAnyo);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //Método para desmatricular un alumno en una asignatura anyo
+        public bool DesmatricularAlumno(int codAlumno, int idAsignaturaAnyo)
+        {
+            try
+            {
+                AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
+                cp.DesmatricularAlumno(codAlumno, idAsignaturaAnyo);
             }
             catch (Exception)
             {

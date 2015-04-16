@@ -28,6 +28,10 @@ long ReadCantidad ();
 DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod);
 
 
+long ReadCantidadVinculablesAAnyo (int id);
+
+
+
 void Relationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo);
 
 void Relationer_bolsas_preguntas (int p_asignatura, System.Collections.Generic.IList<int> p_bolsapreguntas);

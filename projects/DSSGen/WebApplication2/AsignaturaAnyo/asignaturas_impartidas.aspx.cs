@@ -13,14 +13,19 @@ namespace DSSGenNHibernate.AsignaturaAnyo
     public partial class asignaturas_impartidas : System.Web.UI.Page
     {
         //Fachada utilizada en la página
-        FachadaAsignaturaAnyo fachada;
+        FachadaAsignaturaAnyo fachadaAsignatura;
+        //Fachada para los años
+        FachadaAnyoAcademico fachadaAnyo;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaAsignaturaAnyo();
+            fachadaAsignatura = new FachadaAsignaturaAnyo();
+            fachadaAnyo = new FachadaAnyoAcademico();
+
             if (!IsPostBack)
             {
+                this.ObtenerAnyosAcademicos();
                 this.ObtenerAsignaturasPaginadas(1);
             }
         }
@@ -37,8 +42,10 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            //Vincular el grid con la lista de asignaturas impartidas paginada
-            fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+
+            //Vincular el grid con la lista de asignaturas impartidas en el año paginada
+            fachadaAsignatura.VincularDameTodosPorAnyo(idAnyo, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -104,12 +111,24 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             int asignaturaAnyoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar asignatura
-            if (fachada.BorrarAsignaturaAnyo(asignaturaAnyoId))
+            if (fachadaAsignatura.BorrarAsignaturaAnyo(asignaturaAnyoId))
                 Notification.Notify(Response, "La asignatura ha sido desvinculada del curso académico");
             else
                 Notification.Notify(Response, "La asignatura no ha podido ser desvinculada del curso académico");
 
             //Obtener de nuevo la lista de bolsas
+            this.ObtenerAsignaturasPaginadas(1);
+        }
+
+        //Obtener los años académicos
+        protected void ObtenerAnyosAcademicos()
+        {
+            fachadaAnyo.VincularDameTodos(DropDownList_Anyos);
+        }
+
+        //Manejador cuando cambie la selección en el drop down list
+        protected void DropDownList_Anyos_SelectedIndexChanged(object sender, EventArgs e)
+        {
             this.ObtenerAsignaturasPaginadas(1);
         }
     }

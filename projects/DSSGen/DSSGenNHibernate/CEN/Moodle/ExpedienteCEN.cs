@@ -96,6 +96,10 @@ public long ReadCantidad ()
 {
         return _IExpedienteCAD.ReadCantidad ();
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteEN ReadRelation (string p_alu)
+{
+        return _IExpedienteCAD.ReadRelation (p_alu);
+}
 public void Relationer_alumno (int p_expediente, string p_alumno)
 {
         //Call to ExpedienteCAD

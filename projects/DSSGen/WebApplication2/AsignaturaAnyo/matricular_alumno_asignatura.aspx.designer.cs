@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.AsignaturaAnyo {
+namespace DSSGenNHibernate.GrupoTrabajo {
     
     
-    public partial class asignaturas_impartidas {
+    public partial class matricular_alumno_asignatura {
         
         /// <summary>
         /// Panel1 control.
@@ -22,31 +22,13 @@ namespace DSSGenNHibernate.AsignaturaAnyo {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// Label_Asignatura control.
+        /// Label_Listado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Asignatura;
-        
-        /// <summary>
-        /// Label_Anyo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Anyo;
-        
-        /// <summary>
-        /// DropDownList_Anyos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Anyos;
+        protected global::System.Web.UI.WebControls.Label Label_Listado;
         
         /// <summary>
         /// Panel2 control.
@@ -58,6 +40,24 @@ namespace DSSGenNHibernate.AsignaturaAnyo {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
+        /// Label_Asignatura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Asignatura;
+        
+        /// <summary>
+        /// TextBox_Asignatura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Asignatura;
+        
+        /// <summary>
         /// ddlPageSize control.
         /// </summary>
         /// <remarks>
@@ -67,13 +67,13 @@ namespace DSSGenNHibernate.AsignaturaAnyo {
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
         
         /// <summary>
-        /// Button_Crear control.
+        /// Button_Cancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Crear;
+        protected global::System.Web.UI.WebControls.Button Button_Cancelar;
         
         /// <summary>
         /// GridViewBolsas control.

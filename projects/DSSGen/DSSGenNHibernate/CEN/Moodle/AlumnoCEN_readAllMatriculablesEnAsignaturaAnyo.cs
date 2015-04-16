@@ -14,13 +14,13 @@ namespace DSSGenNHibernate.CEN.Moodle
 {
 public partial class AlumnoCEN
 {
-public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllPorAsignaturaAnyo (int id, int first, int size)
+public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllMatriculablesEnAsignaturaAnyo (int id, int first, int size)
 {
-        /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Alumno_readAllPorAsignaturaAnyo) ENABLED START*/
+        /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Alumno_readAllMatriculablesEnAsignaturaAnyo) ENABLED START*/
 
         // Write here your custom code...
 
-        return this._IAlumnoCAD.ReadAllPorAsignaturaAnyo (id, first, size);
+        return this._IAlumnoCAD.ReadAllMatriculablesEnAsignaturaAnyo (id, first, size);
 
         /*PROTECTED REGION END*/
 }

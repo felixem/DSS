@@ -20,7 +20,7 @@
                 Rellene los siguientes campos</p>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Anyo" runat="server" Text="Año académico" CssClass="posicion_izquierda"></asp:Label>
-                <asp:DropDownList ID="DropDownList_Anyos" runat="server" CssClass="posicion_derecha">
+                <asp:DropDownList ID="DropDownList_Anyos" runat="server" CssClass="posicion_derecha" OnSelectedIndexChanged="DropDownList_Anyos_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
             </div>
             <div class="row_crear_alumno">

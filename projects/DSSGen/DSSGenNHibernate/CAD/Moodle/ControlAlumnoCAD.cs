@@ -231,6 +231,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno, int p_control)
+{
+        DSSGenNHibernate.EN.Moodle.ControlAlumnoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ControlAlumnoEN self where FROM ControlAlumnoEN cont_alu where cont_alu.Alumno.Email=:p_alumno AND cont_alu.Control.Id=:p_control";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ControlAlumnoENreadRelationHQL");
+                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_control", p_control);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ControlAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumno (int p_controlalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlAlumnoEN = null;

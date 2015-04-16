@@ -73,5 +73,6 @@
 		  
 		  <query name="EntregaAlumnoENReadAllHQL">from EntregaAlumnoEN</query>
 		  <query name="EntregaAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM EntregaAlumnoEN]]></query>
+		  <query name="EntregaAlumnoENreadRelationHQL"><![CDATA[FROM EntregaAlumnoEN ent_alu where ent_alu.Alumno.Email=:p_alumno AND ent_alu.Entrega.Id=:p_entrega]]></query>
 		</hibernate-mapping>
 	

@@ -48,6 +48,8 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             }
             else
                 Notification.Notify(Response,"La asignatura no ha podido ser vinculada con el año académico");
+
+            this.ObtenerAsignaturas();
         }
     
         //Botón utilizado para cancelar la creación y volver atrás
@@ -61,13 +63,21 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         //Obtener las asignaturas
         protected void ObtenerAsignaturas()
         {
-            fachadaAsignatura.VincularDameTodos(DropDownList_Asignaturas);
+            DropDownList_Asignaturas.Items.Clear();
+            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+            fachadaAsignatura.VincularDameTodosVinculablesAAnyo(idAnyo,DropDownList_Asignaturas);
         }
 
         //Obtener los años académicos
         protected void ObtenerAnyosAcademicos()
         {
             fachadaAnyo.VincularDameTodos(DropDownList_Anyos);
+        }
+
+        //Manejador cuando cambie la selección en el drop down list
+        protected void DropDownList_Anyos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.ObtenerAsignaturas();
         }
 
     }

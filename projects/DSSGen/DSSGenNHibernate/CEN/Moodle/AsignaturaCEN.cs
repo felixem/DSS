@@ -106,6 +106,10 @@ public DSSGenNHibernate.EN.Moodle.AsignaturaEN ReadCod (string cod)
 {
         return _IAsignaturaCAD.ReadCod (cod);
 }
+public long ReadCantidadVinculablesAAnyo (int id)
+{
+        return _IAsignaturaCAD.ReadCantidadVinculablesAAnyo (id);
+}
 public void Relationer_asignaturas_anyo (int p_asignatura, System.Collections.Generic.IList<int> p_asignaturaanyo)
 {
         //Call to AsignaturaCAD

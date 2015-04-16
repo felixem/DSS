@@ -238,5 +238,12 @@ namespace WebUtilities
             return "~/Alumno/alumnos_matriculados.aspx" +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
+
+        //Cadena para la página para matricular alumnos en una asignatura
+        public String MatricularAlumnoEnAsignaturaAnyo(int cod)
+        {
+            return "~/AsignaturaAnyo/matricular_alumno_asignatura.aspx" +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
 }

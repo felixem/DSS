@@ -249,6 +249,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (string p_alumno, int p_entrega)
+{
+        DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM EntregaAlumnoEN self where FROM EntregaAlumnoEN ent_alu where ent_alu.Alumno.Email=:p_alumno AND ent_alu.Entrega.Id=:p_entrega";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("EntregaAlumnoENreadRelationHQL");
+                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_entrega", p_entrega);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EntregaAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumno (int p_entregaalumno, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;

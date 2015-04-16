@@ -102,6 +102,10 @@ public long ReadCantidad ()
 {
         return _IControlAlumnoCAD.ReadCantidad ();
 }
+public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno, int p_control)
+{
+        return _IControlAlumnoCAD.ReadRelation (p_alumno, p_control);
+}
 public void Relationer_alumno (int p_controlalumno, string p_alumno)
 {
         //Call to ControlAlumnoCAD

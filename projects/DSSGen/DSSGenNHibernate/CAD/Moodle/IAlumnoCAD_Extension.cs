@@ -11,5 +11,7 @@ namespace DSSGenNHibernate.CAD.Moodle
         System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllIngresablesEnGrupo(int id, int first, int size);
 
         System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllPorAsignaturaAnyo(int id, int first, int size);
+
+        System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AlumnoEN> ReadAllMatriculablesEnAsignaturaAnyo(int id, int first, int size);
     }
 }

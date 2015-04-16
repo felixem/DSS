@@ -251,11 +251,27 @@
       <operations name="readCantidadPorGrupo" operationType="ReadFilter" type="Long" filter="select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id">
         <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
       </operations>
-      <operations name="readCantidadIngresablesEnGrupo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos ">
+      <operations name="readCantidadIngresablesEnGrupo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos">
         <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
       </operations>
       <operations name="readAllIngresablesEnGrupo" type="Object" collectionType="List" typeObject="/0/@elements.4">
         <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
+      <operations name="readCantidadPorAsignaturaAnyo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM AsignaturaAnyoEN as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where asig.Id=:id">
+        <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+      </operations>
+      <operations name="readAllPorAsignaturaAnyo" type="Object" collectionType="List" typeObject="/0/@elements.4">
+        <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
+      <operations name="readCantidadMatriculablesEnAsignaturaAnyo" operationType="ReadFilter" type="Long" filter="select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Anyo as anyo where anyo.Id IN (select year.Id FROM AsignaturaAnyoEN as asig INNER JOIN asig.Anyo as year where asig.Id=:id) AND exp_anyo.Id NOT IN (select ex_anyo.Id FROM AsignaturaAnyoEN as asignatura INNER JOIN asignatura.Expedientes_asignatura as expedi INNER JOIN expedi.Expediente_anyo as ex_anyo where asignatura.Id=:id)">
+        <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+      </operations>
+      <operations name="readAllMatriculablesEnAsignaturaAnyo" type="Object" collectionType="List" typeObject="/0/@elements.4">
+        <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="first" type="Integer" isOrdered="true"/>
         <arguments name="size" type="Integer" isOrdered="true"/>
       </operations>
@@ -467,6 +483,14 @@
       <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.7" filter="FROM AsignaturaEN asig where asig.Cod_asignatura=:cod">
         <arguments name="cod" isOrdered="true"/>
       </operations>
+      <operations name="readCantidadVinculablesAAnyo" operationType="ReadFilter" type="Long" filter="select count(asig) FROM AsignaturaEN asig where asig.Id NOT IN (select asignatura.Id FROM AsignaturaEN asignatura INNER JOIN asignatura.Asignaturas_anyo as asig_anyo where asig_anyo.Anyo.Id=:id) ">
+        <arguments name="id" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+      </operations>
+      <operations name="readAllVinculablesAAnyo" type="Object" collectionType="List" typeObject="/0/@elements.7">
+        <arguments name="id" type="OID" typeObject="/0/@elements.14" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
       <operations name="relationer_asignaturas_anyo" operationType="Relationer" type="Void" relatedRol="/0/@elements.7/@attributes.7">
         <arguments name="p_asignatura" type="OID" typeObject="/0/@elements.7" isOrdered="true"/>
         <arguments name="p_asignaturaanyo" type="OID" collectionType="List" typeObject="/0/@elements.17" isOrdered="true"/>
@@ -579,6 +603,9 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.10" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ExpedienteEN"/>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.10" filter="FROM ExpedienteEN exp where exp.Alumno.Email=:p_alu">
+        <arguments name="p_alu" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+      </operations>
       <operations name="relationer_alumno" operationType="Relationer" type="Void" relatedRol="/0/@elements.10/@attributes.4">
         <arguments name="p_expediente" type="OID" typeObject="/0/@elements.10" isOrdered="true"/>
         <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
@@ -622,6 +649,10 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.11" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ExpedienteAnyoEN"/>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.11" filter="FROM ExpedienteAnyoEN exp where exp.Expediente.Id=:p_exp AND exp.Anyo.Id=:p_anyo">
+        <arguments name="p_exp" type="OID" typeObject="/0/@elements.10" isOrdered="true"/>
+        <arguments name="p_anyo" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+      </operations>
       <operations name="relationer_anyo" operationType="Relationer" type="Void" relatedRol="/0/@elements.11/@attributes.4">
         <arguments name="p_expedienteanyo" type="OID" typeObject="/0/@elements.11" isOrdered="true"/>
         <arguments name="p_anyoacademico" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
@@ -673,6 +704,10 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ExpedienteAsignaturaEN"/>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.12" filter="FROM ExpedienteAsignaturaEN exp_asig where exp_asig.Asignatura.Id=:p_asig_anyo AND exp_asig.Expediente_anyo.Id=:p_exp_anyo">
+        <arguments name="p_asig_anyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="p_exp_anyo" type="OID" typeObject="/0/@elements.11" isOrdered="true"/>
+      </operations>
       <operations name="relationer_asignatura" operationType="Relationer" type="Void" relatedRol="/0/@elements.12/@attributes.4">
         <arguments name="p_expedienteasignatura" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
         <arguments name="p_asignaturaanyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
@@ -733,6 +768,10 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.13" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ExpedienteEvaluacionEN"/>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.13" filter="FROM ExpedienteEvaluacionEN exp_eval where exp_eval.Expediente_asignatura.Id=:p_exp_asig AND exp_eval.Evaluacion.Id=:p_evaluacion">
+        <arguments name="p_exp_asig" type="OID" typeObject="/0/@elements.12" isOrdered="true"/>
+        <arguments name="p_evaluacion" type="OID" typeObject="/0/@elements.18" isOrdered="true"/>
+      </operations>
       <operations name="relationer_evaluacion" operationType="Relationer" type="Void" relatedRol="/0/@elements.13/@attributes.4">
         <arguments name="p_expedienteevaluacion" type="OID" typeObject="/0/@elements.13" isOrdered="true"/>
         <arguments name="p_evaluacion" type="OID" typeObject="/0/@elements.18" isOrdered="true"/>
@@ -1159,6 +1198,10 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.20" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM EntregaAlumnoEN"/>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.20" filter="FROM EntregaAlumnoEN ent_alu where ent_alu.Alumno.Email=:p_alumno AND ent_alu.Entrega.Id=:p_entrega">
+        <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+        <arguments name="p_entrega" type="OID" typeObject="/0/@elements.19" isOrdered="true"/>
+      </operations>
       <operations name="relationer_alumno" operationType="Relationer" type="Void" relatedRol="/0/@elements.20/@attributes.11">
         <arguments name="p_entregaalumno" type="OID" typeObject="/0/@elements.20" isOrdered="true"/>
         <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
@@ -1385,6 +1428,10 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.24" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ControlAlumnoEN"/>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.24" filter="FROM ControlAlumnoEN cont_alu where cont_alu.Alumno.Email=:p_alumno AND cont_alu.Control.Id=:p_control">
+        <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+        <arguments name="p_control" type="OID" typeObject="/0/@elements.23" isOrdered="true"/>
+      </operations>
       <operations name="relationer_alumno" operationType="Relationer" type="Void" relatedRol="/0/@elements.24/@attributes.4">
         <arguments name="p_controlalumno" type="OID" typeObject="/0/@elements.24" isOrdered="true"/>
         <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
