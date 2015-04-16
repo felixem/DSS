@@ -12,7 +12,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1 class="style2">
+    <h1>
         Crear Asignatura
     </h1>
     <div class="CentrarContenido">

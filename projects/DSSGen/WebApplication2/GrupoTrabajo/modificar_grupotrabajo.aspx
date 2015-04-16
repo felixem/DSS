@@ -12,7 +12,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1 class="style2">
+    <h1>
         Modificar Grupo de Trabajo</h1>
     <div class="CentrarContenido">
         <div class="ContenedorInternoNoPanel">

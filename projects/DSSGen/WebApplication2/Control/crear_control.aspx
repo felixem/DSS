@@ -11,7 +11,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1 class="style2">
+    <h1>
         Crear Control</h1>
     <p class="style2">
         Nombre<asp:TextBox ID="TextBox_NomControl" runat="server"></asp:TextBox>

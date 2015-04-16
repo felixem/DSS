@@ -4,9 +4,9 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
+    <h1>
         Cambiar contraseña
-    </h2>
+    </h1>
     <p>
         La contraseña se ha cambiado correctamente.
     </p>
