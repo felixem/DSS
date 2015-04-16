@@ -10,7 +10,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1 class="style2">
+    <h1>
         Modificar Control</h1>
     <p class="style2">
         Nombre <asp:TextBox ID="TextBox_Nom" runat="server"></asp:TextBox>
