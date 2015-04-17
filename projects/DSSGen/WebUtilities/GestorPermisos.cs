@@ -19,15 +19,55 @@ namespace WebUtilities
         {
             //Creación de los permisos
             Permiso permisoDefault = new Permiso(false);
+            Permiso permisoTodosUsuarios = new Permiso(true, typeof(UsuarioEN));
             Permiso permisoSoloProfesor = new Permiso(true, typeof(ProfesorEN));
             Permiso permisoSoloAdmin = new Permiso(true, typeof(AdministradorEN));
             Permiso permisoSoloAlumno = new Permiso(true, typeof(AlumnoEN));
+            Permiso permisoAdminProfesor = new Permiso(true, typeof(AdministradorEN), typeof(ProfesorEN));
 
             //Creación del hashmap
             permisos = new Dictionary<string, Permiso>();
 
-            //Añadir la lista de permisos
+            //AÑADIR LISTA DE PERMISOS
+
+            //Permisos POR DEFECTO
+            permisos.Add(Linker.login, permisoDefault);
+            permisos.Add(Linker.pageDefault, permisoDefault);
+
+            //Permisos para TODOS LOS USUARIOS LOGUEADOS
+            permisos.Add(Linker.passChanged, permisoTodosUsuarios);
+
+            //Permisos de ADMINISTRADOR
+            //Páginas de modificación
+            permisos.Add(Linker.modificarBolsa, permisoSoloAdmin);
+            permisos.Add(Linker.modificarPregunta, permisoSoloAdmin);
+            permisos.Add(Linker.modificarAlumno, permisoSoloAdmin);
+            permisos.Add(Linker.modificarProfesor, permisoSoloAdmin);
+            permisos.Add(Linker.modificarAsignatura, permisoSoloAdmin);
+            permisos.Add(Linker.modificarGrupoTrabajo, permisoSoloAdmin);
+            permisos.Add(Linker.modificarControl, permisoSoloAdmin);
+            //Páginas de creación
+            permisos.Add(Linker.crearGrupoTrabajoAsignaturaAnyo, permisoSoloAdmin);
+            permisos.Add(Linker.matricularAlumnoEnAsignaturaAnyo, permisoSoloAdmin);
+            permisos.Add(Linker.crearBolsa, permisoSoloAdmin);
+            permisos.Add(Linker.crearControl, permisoSoloAdmin);
+            permisos.Add(Linker.crearPregunta, permisoSoloAdmin);
             permisos.Add(Linker.crearAlumno, permisoSoloAdmin);
+            permisos.Add(Linker.crearProfesor, permisoSoloAdmin);
+            permisos.Add(Linker.crearAsignatura, permisoSoloAdmin);
+            permisos.Add(Linker.crearGrupoTrabajo, permisoSoloAdmin);
+            permisos.Add(Linker.crearAsignaturaAnyo, permisoSoloAdmin);
+            permisos.Add(Linker.crearEntrega, permisoSoloAdmin);
+            //Páginas de listado
+            permisos.Add(Linker.listarAlumnosGrupoTrabajo, permisoSoloAdmin);
+            permisos.Add(Linker.anyadirAlumnosGrupoTrabajo, permisoSoloAdmin);
+            permisos.Add(Linker.listarGruposTrabajoAsignaturaAnyo, permisoSoloAdmin);
+            permisos.Add(Linker.listarMatriculadosAsignaturaAnyo, permisoSoloAdmin);
+            permisos.Add(Linker.listadoBolsaPreguntas, permisoSoloAdmin);
+            permisos.Add(Linker.alumnos, permisoSoloAdmin);
+            permisos.Add(Linker.profesores, permisoSoloAdmin);
+            permisos.Add(Linker.asignaturas, permisoSoloAdmin);
+            permisos.Add(Linker.gruposTrabajo, permisoSoloAdmin);
         }
 
         //Constructor Singleton

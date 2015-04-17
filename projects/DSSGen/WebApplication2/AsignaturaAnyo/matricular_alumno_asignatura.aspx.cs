@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class matricular_alumno_asignatura : System.Web.UI.Page
+    public partial class matricular_alumno_asignatura : BasicPage
     {
         FachadaAsignaturaAnyo fachadaAsignaturaAnyo;
         FachadaAlumno fachadaAlumno;

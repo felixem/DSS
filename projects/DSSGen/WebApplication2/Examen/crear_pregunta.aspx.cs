@@ -10,7 +10,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Examen
 {
-    public partial class crear_pregunta : System.Web.UI.Page
+    public partial class crear_pregunta : BasicPage
     {
         //Carga de la página
         protected void Page_Load(object sender, EventArgs e)

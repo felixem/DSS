@@ -20,7 +20,7 @@ namespace WebUtilities
         internal static readonly string modificarAlumno = "/Alumno/modificar_alumno.aspx";
         internal static readonly string modificarProfesor = "/Profesor/modificar_profesor.aspx";
         internal static readonly string modificarAsignatura = "/Asignatura/modificar_asignatura.aspx";
-        internal static readonly string modificarGrupotrabajo = "/GrupoTrabajo/modificar_grupotrabajo.aspx";
+        internal static readonly string modificarGrupoTrabajo = "/GrupoTrabajo/modificar_grupotrabajo.aspx";
         internal static readonly string listarAlumnosGrupoTrabajo = "/GrupoTrabajo/alumnos_grupo_trabajo.aspx";
         internal static readonly string anyadirAlumnosGrupoTrabajo = "/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx";
         internal static readonly string listarGruposTrabajoAsignaturaAnyo = "/GrupoTrabajo/grupos_trabajo_asignatura.aspx";
@@ -44,6 +44,7 @@ namespace WebUtilities
         internal static readonly string gruposTrabajo = "/GrupoTrabajo/grupos_trabajo.aspx";
         internal static readonly string crearGrupoTrabajo = "/GrupoTrabajo/crear_grupotrabajo.aspx";
         internal static readonly string crearAsignaturaAnyo = "/AsignaturaAnyo/crear_asignaturaanyo.aspx";
+        internal static readonly string crearEntrega = "/Entrega/crear_entrega.aspx";
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
@@ -117,6 +118,12 @@ namespace WebUtilities
             return crearBolsa;
         }
 
+        //Cadena para la página de creación de una entrega
+        public string CrearEntrega()
+        {
+            return crearEntrega;
+        }
+
         //Cadena para la pagina de contraseña cambiada
         public string PassChanged()
         {
@@ -140,6 +147,13 @@ namespace WebUtilities
         public string ModificarControl(int id)
         {
             return modificarControl +
+                Parameter(PageParameters.MainParameter, id.ToString());
+        }
+
+        //Cadena para la página de modificación de una entrega
+        public string ModificarEntrega(int id)
+        {
+            return "~/Entrega/modificar_entrega.aspx" +
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
@@ -228,7 +242,7 @@ namespace WebUtilities
         //Cadena para la página de modificación de grupo de trabajo
         public String ModificarGrupoTrabajo(int cod)
         {
-            return modificarGrupotrabajo +
+            return modificarGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 

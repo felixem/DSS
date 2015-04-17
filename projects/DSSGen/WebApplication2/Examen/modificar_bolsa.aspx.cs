@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Examen
 {
-    public partial class modificar_bolsa : System.Web.UI.Page
+    public partial class modificar_bolsa : BasicPage
     {
         //Objetos utilizables
         BolsaSession bolsa;

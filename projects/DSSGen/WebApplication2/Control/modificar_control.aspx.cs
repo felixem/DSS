@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Control
 {
-    public partial class modificar_control : System.Web.UI.Page
+    public partial class modificar_control : BasicPage
     {
         FachadaControl fachada;
         private int id;

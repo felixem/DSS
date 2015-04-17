@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.AsignaturaAnyo
 {
-    public partial class crear_asignaturaanyo : System.Web.UI.Page
+    public partial class crear_asignaturaanyo : BasicPage
     {
         FachadaAsignatura fachadaAsignatura;
         FachadaAsignaturaAnyo fachadaAsignaturaAnyo;

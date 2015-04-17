@@ -9,7 +9,7 @@ using Fachadas.Moodle;
 
 namespace WebApplication2.Account
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : BasicPage
     {
         //Al cargar la página
         protected void Page_Load(object sender, EventArgs e)

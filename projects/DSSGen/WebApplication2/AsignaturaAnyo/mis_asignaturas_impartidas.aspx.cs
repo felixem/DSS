@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.AsignaturaAnyo
 {
-    public partial class mis_asignaturas_impartidas : System.Web.UI.Page
+    public partial class mis_asignaturas_impartidas : BasicPage
     {
         //Fachada utilizada en la página
         FachadaAsignaturaAnyo fachadaAsignatura;

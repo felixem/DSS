@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="BolsaSession.cs" />
     <Compile Include="BolsaSession_Sincronizacion.cs" />
     <Compile Include="GestorPermisos_Permisos.cs" />

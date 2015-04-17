@@ -9,7 +9,7 @@ using WebUtilities;
 
 namespace WebApplication2.Account
 {
-    public partial class ChangePassword : System.Web.UI.Page
+    public partial class ChangePassword : BasicPage
     {
         //Creamos la fachada
         FachadaPassword fachadapass;

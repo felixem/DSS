@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class modificar_grupotrabajo : System.Web.UI.Page
+    public partial class modificar_grupotrabajo : BasicPage
     {
         FachadaGrupoTrabajo fachadaGrupo;
         FachadaAsignaturaAnyo fachadaAsignaturaAnyo;

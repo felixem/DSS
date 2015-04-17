@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.Entrega
 {
-    public partial class crear_entrega : System.Web.UI.Page
+    public partial class crear_entrega : BasicPage
     {
         //Creo las fachadas
         FachadaEntrega fachada;
