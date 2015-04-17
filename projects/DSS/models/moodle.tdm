@@ -622,6 +622,9 @@ ConceptualModel moodle
 			public readCantidadPorAnyo::ReadFilter (id : OID -> AnyoAcademico) : Long 
 			{ filter = "select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id " };
 			public readAllPorAnyo::Custom (p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
+			public readCantidadPorAlumnoYAnyo::ReadFilter (p_alumno : OID -> Alumno ,p_anyo : OID -> AnyoAcademico) : Long 
+			{ filter = "select count(distinct asig) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Asignatura as asig where exp_anyo.Anyo.Id=:p_anyo AND alu.Email=:p_alumno" };
+			public readAllPorAlumnoYAnyo::Custom (p_alumno : OID -> Alumno, p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
 			public readRelation::ReadFilter (p_asignatura : OID -> Asignatura, p_anyo : OID -> AnyoAcademico ) : Object -> AsignaturaAnyo 
 			{ filter = "FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo"};
 			

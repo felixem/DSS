@@ -97,6 +97,10 @@ public long ReadCantidadPorAnyo (int id)
 {
         return _IAsignaturaAnyoCAD.ReadCantidadPorAnyo (id);
 }
+public long ReadCantidadPorAlumnoYAnyo (string p_alumno, int p_anyo)
+{
+        return _IAsignaturaAnyoCAD.ReadCantidadPorAlumnoYAnyo (p_alumno, p_anyo);
+}
 public DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo)
 {
         return _IAsignaturaAnyoCAD.ReadRelation (p_asignatura, p_anyo);
