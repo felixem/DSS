@@ -83,6 +83,11 @@ namespace WebUtilities
         {
             return "~/Examen/crear_bolsa.aspx";
         }
+        //Cadena para la página de creación de una entrega
+        public string CrearEntrega()
+        {
+            return "~/Entrega/crear_entrega.aspx";
+        }
         //Cadena para la pagina de contraseña cambiada
         public string PassChanged()
         {
@@ -105,6 +110,13 @@ namespace WebUtilities
         public string ModificarControl(int id)
         {
             return "~/Control/modificar_control.aspx" +
+                Parameter(PageParameters.MainParameter, id.ToString());
+        }
+
+        //Cadena para la página de modificación de una entrega
+        public string ModificarEntrega(int id)
+        {
+            return "~/Entrega/modificar_entrega.aspx" +
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
