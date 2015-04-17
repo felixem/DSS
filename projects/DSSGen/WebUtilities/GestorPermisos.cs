@@ -36,6 +36,7 @@ namespace WebUtilities
 
             //Permisos para TODOS LOS USUARIOS LOGUEADOS
             permisos.Add(Linker.passChanged, permisoTodosUsuarios);
+            permisos.Add(Linker.changePassword, permisoTodosUsuarios);
 
             //Permisos de ADMINISTRADOR
             //Páginas de modificación
@@ -68,6 +69,7 @@ namespace WebUtilities
             permisos.Add(Linker.profesores, permisoSoloAdmin);
             permisos.Add(Linker.asignaturas, permisoSoloAdmin);
             permisos.Add(Linker.gruposTrabajo, permisoSoloAdmin);
+            permisos.Add(Linker.asignaturasImpartidas, permisoSoloAdmin);
         }
 
         //Constructor Singleton

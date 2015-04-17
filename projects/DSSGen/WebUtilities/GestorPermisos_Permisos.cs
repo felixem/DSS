@@ -45,10 +45,10 @@ namespace WebUtilities
                     return false;
 
                 //Comprobar si alguno de los roles permitidos coincide
-                UsuarioEN us = sesion.Usuario;
+                Type tipoUs = sesion.Usuario.GetType();
                 foreach (Type rol in rolesPermitidos)
                 {
-                    if (us.GetType() == rol)
+                    if (rol.IsAssignableFrom(tipoUs))
                         return true;
                 }
 
