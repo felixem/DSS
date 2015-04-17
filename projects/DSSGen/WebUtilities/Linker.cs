@@ -27,7 +27,6 @@ namespace WebUtilities
         internal static readonly string crearGrupoTrabajoAsignaturaAnyo = "/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx";
         internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
         internal static readonly string matricularAlumnoEnAsignaturaAnyo = "/AsignaturaAnyo/matricular_alumno_asignatura.aspx";
-        
         internal static readonly string login = "/Account/Login.aspx";
         internal static readonly string pageDefault = "/Default.aspx";
         internal static readonly string listadoBolsaPreguntas = "/Examen/bolsas_preguntas.aspx";
@@ -45,6 +44,8 @@ namespace WebUtilities
         internal static readonly string crearGrupoTrabajo = "/GrupoTrabajo/crear_grupotrabajo.aspx";
         internal static readonly string crearAsignaturaAnyo = "/AsignaturaAnyo/crear_asignaturaanyo.aspx";
         internal static readonly string crearEntrega = "/Entrega/crear_entrega.aspx";
+        internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
+        internal static readonly string changePassword = "/Account/ChangePassword.aspx";
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
@@ -292,6 +293,12 @@ namespace WebUtilities
         {
             return matricularAlumnoEnAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página de asignaturas-anyo impartidas
+        public String AsignaturasImpartidas()
+        {
+            return asignaturasImpartidas;
         }
     }
 }
