@@ -150,5 +150,16 @@ namespace Fachadas.Moodle
 
             return true;
         }
+
+        //Método para vincular las asignaturas matriculadas de un alumno a un GridView
+        public void VincularDameTodosPorMariculadoAnyo(int idAnyo, GridView grid, int first, int size, out long numElements)
+        {
+
+            AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
+            DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
+            BinderListaAsignaturaAnyoGrid binder = new BinderListaAsignaturaAnyoGrid(grid);
+            binding.VincularDameTodos(consulta, binder, 0, -1, out numElements);
+
+        }
     }
 }

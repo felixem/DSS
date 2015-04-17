@@ -57,6 +57,7 @@
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
+    <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
     <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
     <Content Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx" />
     <Content Include="Asignatura\asignaturas.aspx" />
@@ -157,6 +158,13 @@
     </Compile>
     <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.designer.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="AsignaturaAnyo\crear_asignaturaanyo.aspx.cs">
       <DependentUpon>crear_asignaturaanyo.aspx</DependentUpon>
