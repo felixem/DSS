@@ -8,10 +8,10 @@ namespace WebUtilities
 {
     public class ResourceFinder
     {
-        private static string pathFotos = "Resources/Fotos/";
+        private static string pathFotos = "/Resources/Fotos/";
         private static string fotoProfesor = "profesor.png";
         private static string fotoAlumno = "alumno.png";
-        private static string fotoAdmin = "administrador.png";
+        private static string fotoAdmin = "administrador.jpg";
 
         //Buscar la foto correspondiente a una sesión
         public static string FotoSession(MySession sesion)

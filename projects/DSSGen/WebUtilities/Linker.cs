@@ -9,8 +9,41 @@ namespace WebUtilities
     //Clase utilizada para generar cadenas de url para redirección
     public class Linker
     {
+        //Variables privadas de navegación
         private bool cacheable;
-        NavigationSession navegacion;
+        private NavigationSession navegacion;
+
+        //Variables estáticas de direcciones
+        internal static readonly string modificarBolsa = "/Examen/modificar_bolsa.aspx";
+        internal static readonly string modificarControl = "/Control/modificar_control.aspx";
+        internal static readonly string modificarPregunta = "/Examen/modificar_pregunta.aspx";
+        internal static readonly string modificarAlumno = "/Alumno/modificar_alumno.aspx";
+        internal static readonly string modificarProfesor = "/Profesor/modificar_profesor.aspx";
+        internal static readonly string modificarAsignatura = "/Asignatura/modificar_asignatura.aspx";
+        internal static readonly string modificarGrupotrabajo = "/GrupoTrabajo/modificar_grupotrabajo.aspx";
+        internal static readonly string listarAlumnosGrupoTrabajo = "/GrupoTrabajo/alumnos_grupo_trabajo.aspx";
+        internal static readonly string anyadirAlumnosGrupoTrabajo = "/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx";
+        internal static readonly string listarGruposTrabajoAsignaturaAnyo = "/GrupoTrabajo/grupos_trabajo_asignatura.aspx";
+        internal static readonly string crearGrupoTrabajoAsignaturaAnyo = "/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx";
+        internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
+        internal static readonly string matricularAlumnoEnAsignaturaAnyo = "/AsignaturaAnyo/matricular_alumno_asignatura.aspx";
+        
+        internal static readonly string login = "/Account/Login.aspx";
+        internal static readonly string pageDefault = "/Default.aspx";
+        internal static readonly string listadoBolsaPreguntas = "/Examen/bolsas_preguntas.aspx";
+        internal static readonly string crearBolsa = "/Examen/crear_bolsa.aspx";
+        internal static readonly string passChanged = "/Account/ChangePasswordSuccess.aspx";
+        internal static readonly string crearControl = "/Control/crear_control.aspx";
+        internal static readonly string crearPregunta = "/Examen/crear_pregunta.aspx";
+        internal static readonly string alumnos = "/Alumno/alumnos.aspx";
+        internal static readonly string crearAlumno = "/Alumno/crear_alumno.aspx";
+        internal static readonly string profesores = "/Profesor/profesores.aspx";
+        internal static readonly string crearProfesor = "/Profesor/crear_profesor.aspx";
+        internal static readonly string asignaturas = "/Asignatura/asignaturas.aspx";
+        internal static readonly string crearAsignatura = "/Asignatura/crear_asignatura.aspx";
+        internal static readonly string gruposTrabajo = "/GrupoTrabajo/grupos_trabajo.aspx";
+        internal static readonly string crearGrupoTrabajo = "/GrupoTrabajo/crear_grupotrabajo.aspx";
+        internal static readonly string crearAsignaturaAnyo = "/AsignaturaAnyo/crear_asignaturaanyo.aspx";
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
@@ -63,186 +96,187 @@ namespace WebUtilities
         //Cadena para la página de login
         public string Login()
         {
-            return "~/Account/Login.aspx";
+            return login;
         }
 
         //Cadena para la página por defecto
         public string Default()
         {
-            return "~/Default.aspx";
+            return pageDefault;
         }
 
         //Cadena para la página de bolsas de preguntas
         public string ListadoBolsaPreguntas()
         {
-            return "~/Examen/bolsas_preguntas.aspx";
+            return listadoBolsaPreguntas;
         }
 
         //Cadena para la página de creación de una bolsa de preguntas
         public string CrearBolsa()
         {
-            return "~/Examen/crear_bolsa.aspx";
+            return crearBolsa;
         }
+
         //Cadena para la pagina de contraseña cambiada
         public string PassChanged()
         {
-            return "~/Account/ChangePasswordSuccess.aspx";
+            return passChanged;
         }
+
         //Cadena para la página de creación de un control
         public string CrearControl()
         {
-            return "~/Control/crear_control.aspx";
+            return crearControl;
         }
 
         //Cadena para la página de modificación de una bolsa de preguntas
         public string ModificarBolsa(int id)
         {
-            return "~/Examen/modificar_bolsa.aspx" +
+            return modificarBolsa +
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
         //Cadena para la página de modificación de un control
         public string ModificarControl(int id)
         {
-            return "~/Control/modificar_control.aspx" +
+            return modificarControl +
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
         //Cadena para la página de creación de una pregunta
         public string CrearPregunta()
         {
-            return "~/Examen/crear_pregunta.aspx";
+            return crearPregunta;
         }
 
         //Cadena para la página de modificación de una pregunta
         public string ModificarPregunta(int id)
         {
-            return "~/Examen/modificar_pregunta.aspx"
+            return modificarPregunta
             + Parameter(PageParameters.MainParameter, id.ToString());
         }
 
         //Cadena para la página de gestión de alumnos
         public string Alumnos()
         {
-            return "~/Alumno/alumnos.aspx";
+            return alumnos;
         }
 
         //Cadena para la página de creación de alumno
         public string CrearAlumno()
         {
-            return "~/Alumno/crear_alumno.aspx";
+            return crearAlumno;
         }
 
         //Cadena para la página de gestión de profesores
         public string Profesores()
         {
-            return "~/Profesor/profesores.aspx";
+            return profesores;
         }
 
         //Cadena para la página de modificación de alumno
         public String ModificarAlumno(int cod)
         {
-            return "~/Alumno/modificar_alumno.aspx" +
+            return modificarAlumno +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página de creación de profesor
         public string CrearProfesor()
         {
-            return "~/Profesor/crear_profesor.aspx";
+            return crearProfesor;
         }
 
         //Cadena para la página de modificación de profesor
         public String ModificarProfesor(int cod)
         {
-            return "~/Profesor/modificar_profesor.aspx" +
+            return modificarProfesor +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página de gestión de asignaturas
         public String Asignaturas()
         {
-            return "~/Asignatura/asignaturas.aspx";
+            return asignaturas;
         }
-
 
         //Cadena para la página de creación de asignatura
         public String CrearAsignatura()
         {
-            return "~/Asignatura/crear_asignatura.aspx";
+            return crearAsignatura;
         }
 
         //Cadena para la página de modificación de asignatura
         public String ModificarAsignatura(int cod)
         {
-            return "~/Asignatura/modificar_asignatura.aspx" +
+            return modificarAsignatura +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página de creación de grupo de trabajo
         public String GruposTrabajo()
         {
-            return "~/GrupoTrabajo/grupos_trabajo.aspx";
+            return gruposTrabajo;
         }
 
         //Cadena para la página de creación de grupo de trabajo
         public String CrearGrupoTrabajo()
         {
-            return "~/GrupoTrabajo/crear_grupotrabajo.aspx";
+            return crearGrupoTrabajo;
         }
 
         //Cadena para la página de modificación de grupo de trabajo
         public String ModificarGrupoTrabajo(int cod)
         {
-            return "~/GrupoTrabajo/modificar_grupotrabajo.aspx" +
+            return modificarGrupotrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para listar alumnos de un grupo de trabajo
         public String ListarAlumnosGrupoTrabajo(int cod)
         {
-            return "~/GrupoTrabajo/alumnos_grupo_trabajo.aspx" +
+            return listarAlumnosGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para añadir a un alumno a un grupo de trabajo
         public String AnyadirAlumnosGrupoTrabajo(int cod)
         {
-            return "~/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx" +
+            return anyadirAlumnosGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para vincular una asignatura con un año
         public String CrearAsignaturaAnyo()
         {
-            return "~/AsignaturaAnyo/crear_asignaturaanyo.aspx";
+            return crearAsignaturaAnyo;
         }
 
         //Cadena para la página para listar los grupos de trabajo de una asignatura-anyo
         public String ListarGruposTrabajoAsignaturaAnyo(int cod)
         {
-            return "~/GrupoTrabajo/grupos_trabajo_asignatura.aspx" +
+            return  listarGruposTrabajoAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para crear un grupo de trabajo para una asignatura-anyo
         public String CrearGrupoTrabajoAsignaturaAnyo(int cod)
         {
-            return "~/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx" +
+            return crearGrupoTrabajoAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para listar los alumnos matriculados en una asignatura
         public String ListarMatriculadosAsignaturaAnyo(int cod)
         {
-            return "~/Alumno/alumnos_matriculados.aspx" +
+            return listarMatriculadosAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para matricular alumnos en una asignatura
         public String MatricularAlumnoEnAsignaturaAnyo(int cod)
         {
-            return "~/AsignaturaAnyo/matricular_alumno_asignatura.aspx" +
+            return matricularAlumnoEnAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
     }

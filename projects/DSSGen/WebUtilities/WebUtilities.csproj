@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="BolsaSession.cs" />
     <Compile Include="BolsaSession_Sincronizacion.cs" />
+    <Compile Include="GestorPermisos_Permisos.cs" />
+    <Compile Include="GestorPermisos.cs" />
     <Compile Include="Linker.cs" />
     <Compile Include="MySession.cs" />
     <Compile Include="NavigationSession.cs" />

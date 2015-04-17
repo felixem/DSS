@@ -12,8 +12,16 @@ namespace DSSGenNHibernate.Alumno
 {
     public partial class crear_alumno : System.Web.UI.Page
     {
-        //Creo la fachada
+        //Fachadas usadas
         FachadaAlumno alumno;
+
+        //Manejador una vez se han inicializado las variables de la página
+        protected void Page_InitComplete(object sender, EventArgs e)
+        {
+            //Comprobar los permisos de acceso
+            GestorPermisos gestor = GestorPermisos.Create;
+            gestor.ComprobarPermisos(Response,Request, MySession.Current);
+        }
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
