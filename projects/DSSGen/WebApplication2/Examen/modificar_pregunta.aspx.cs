@@ -10,7 +10,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Examen
 {
-    public partial class modificar_pregunta : System.Web.UI.Page
+    public partial class modificar_pregunta : BasicPage
     {
         private BolsaSession bolsa;
         private int id;

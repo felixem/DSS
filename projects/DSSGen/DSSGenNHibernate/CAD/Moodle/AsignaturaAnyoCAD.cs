@@ -254,6 +254,39 @@ public long ReadCantidadPorAnyo (int id)
 
         return result;
 }
+public long ReadCantidadPorAlumnoYAnyo (string p_alumno, int p_anyo)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AsignaturaAnyoEN self where select count(distinct asig) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Asignatura as asig where exp_anyo.Anyo.Id=:p_anyo AND alu.Email=:p_alumno";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadCantidadPorAlumnoYAnyoHQL");
+                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_anyo", p_anyo);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo)
 {
         DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN result;

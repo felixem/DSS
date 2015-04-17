@@ -8,19 +8,24 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.Asignatura
+namespace DSSGenNHibernate.AsignaturaAnyo
 {
-    public partial class asignaturas : BasicPage
+    public partial class mis_asignaturas_impartidas : BasicPage
     {
         //Fachada utilizada en la página
-        FachadaAsignatura fachada;
+        FachadaAsignaturaAnyo fachadaAsignatura;
+        //Fachada para los años
+        FachadaAnyoAcademico fachadaAnyo;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachada = new FachadaAsignatura();
+            fachadaAsignatura = new FachadaAsignaturaAnyo();
+            fachadaAnyo = new FachadaAnyoAcademico();
+
             if (!IsPostBack)
             {
+                this.ObtenerAnyosAcademicos();
                 this.ObtenerAsignaturasPaginadas(1);
             }
         }
@@ -37,8 +42,10 @@ namespace DSSGenNHibernate.Asignatura
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            //Vincular el grid con la lista de alumnos paginada
-            fachada.VincularDameTodos(GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+
+            //Vincular el grid con la lista de asignaturas impartidas en el año paginada
+            fachadaAsignatura.VincularDameTodosPorAnyo(idAnyo, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -70,36 +77,58 @@ namespace DSSGenNHibernate.Asignatura
             rptPager.DataBind();
         }
 
-        //Manejador para la creación de una nueva asignatura
+        //Manejador para la creación de una nueva asignatura-anyo
         protected void Button_Crear_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(true);
-            link.Redirect(Response, link.CrearAsignatura());
+            link.Redirect(Response, link.CrearAsignaturaAnyo());
         }
 
-        //Manejador del evento para modificar una asignatura
-        protected void lnkEditar_Click(object sender, EventArgs e)
+        //Manejador del evento para listar los alumnos de una asignatura-anyo
+        protected void lnkAlumnos_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarAsignatura(asignaturaId));
+            link.Redirect(Response, link.ListarMatriculadosAsignaturaAnyo(asignaturaId));
         }
 
-        //Manejador del evento para eliminar una asignatura
-        protected void lnkEliminar_Click(object sender, EventArgs e)
+        //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo
+        protected void lnkGrupos_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyo(asignaturaId));
+        }
+
+        //Manejador del evento para eliminar una asignatura-anyo
+        protected void lnkEliminar_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int asignaturaAnyoId = Int32.Parse(grdrow.Cells[0].Text);
+
             //Eliminar asignatura
-            if (fachada.BorrarAsignatura(asignaturaId))
-                Notification.Notify(Response, "La asignatura ha sido borrada");
+            if (fachadaAsignatura.BorrarAsignaturaAnyo(asignaturaAnyoId))
+                Notification.Notify(Response, "La asignatura ha sido desvinculada del curso académico");
             else
-                Notification.Notify(Response, "La asignatura no ha podido ser borrada");
+                Notification.Notify(Response, "La asignatura no ha podido ser desvinculada del curso académico");
 
             //Obtener de nuevo la lista de bolsas
+            this.ObtenerAsignaturasPaginadas(1);
+        }
+
+        //Obtener los años académicos
+        protected void ObtenerAnyosAcademicos()
+        {
+            fachadaAnyo.VincularDameTodos(DropDownList_Anyos);
+        }
+
+        //Manejador cuando cambie la selección en el drop down list
+        protected void DropDownList_Anyos_SelectedIndexChanged(object sender, EventArgs e)
+        {
             this.ObtenerAsignaturasPaginadas(1);
         }
     }

@@ -11,7 +11,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.Control
 {
-    public partial class controles : System.Web.UI.Page
+    public partial class controles : BasicPage
     {
         //Fachada utilizada en la página
         FachadaControl fachada;

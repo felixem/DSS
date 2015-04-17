@@ -57,7 +57,11 @@
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
+<<<<<<< HEAD
     <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
+=======
+    <Content Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx" />
+>>>>>>> 1158ed65df0a7f0c51e7e515b54a93340f21b0ac
     <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
     <Content Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx" />
     <Content Include="Asignatura\asignaturas.aspx" />
@@ -99,7 +103,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="WebForm1.aspx" />
     <Content Include="Alumno\crear_alumno.aspx" />
     <Content Include="Profesor\crear_profesor.aspx" />
     <Content Include="Control\controles.aspx" />
@@ -159,12 +162,21 @@
     <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.cs">
       <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.designer.cs">
       <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
+=======
+    <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.cs">
+      <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.designer.cs">
+      <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
+>>>>>>> 1158ed65df0a7f0c51e7e515b54a93340f21b0ac
     </Compile>
     <Compile Include="AsignaturaAnyo\crear_asignaturaanyo.aspx.cs">
       <DependentUpon>crear_asignaturaanyo.aspx</DependentUpon>
@@ -324,13 +336,6 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Alumno\crear_alumno.aspx.cs">
       <DependentUpon>crear_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -408,6 +413,39 @@
       <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
       <Name>WebUtilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Alumno\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Asignatura\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AsignaturaAnyo\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Control\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entrega\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Examen\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GrupoTrabajo\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Profesor\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

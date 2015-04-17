@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.Entrega {
+namespace DSSGenNHibernate.AsignaturaAnyo {
     
     
-    public partial class entregas {
+    public partial class mis_asignaturas_impartidas {
         
         /// <summary>
         /// Panel1 control.
@@ -29,6 +29,24 @@ namespace DSSGenNHibernate.Entrega {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label_Asignatura;
+        
+        /// <summary>
+        /// Label_Anyo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Anyo;
+        
+        /// <summary>
+        /// DropDownList_Anyos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Anyos;
         
         /// <summary>
         /// Panel2 control.

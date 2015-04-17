@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.Control
 {
-    public partial class crear_control : System.Web.UI.Page
+    public partial class crear_control : BasicPage
     {
         //Creo la fachada del control
         FachadaControl fachada;

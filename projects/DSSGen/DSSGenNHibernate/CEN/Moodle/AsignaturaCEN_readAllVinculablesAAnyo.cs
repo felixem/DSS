@@ -20,7 +20,7 @@ public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaEN>
 
         // Write here your custom code...
 
-    return this._IAsignaturaCAD.ReadAllVinculablesAAnyo(id, first, size);
+        return this._IAsignaturaCAD.ReadAllVinculablesAAnyo (id, first, size);
 
         /*PROTECTED REGION END*/
 }

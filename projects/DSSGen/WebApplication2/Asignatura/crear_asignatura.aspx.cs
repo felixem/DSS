@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.Asignatura
 {
-    public partial class crear_asignatura : System.Web.UI.Page
+    public partial class crear_asignatura : BasicPage
     {
         FachadaAsignatura fachada;
         FachadaCurso fachadaCurso = new FachadaCurso();

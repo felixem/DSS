@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.Asignatura
 {
-    public partial class modificar_asignatura : System.Web.UI.Page
+    public partial class modificar_asignatura : BasicPage
     {
         FachadaAsignatura fachada;
         private int id;

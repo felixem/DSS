@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class crear_grupotrabajo : System.Web.UI.Page
+    public partial class crear_grupotrabajo : BasicPage
     {
         FachadaGrupoTrabajo fachadaGrupo;
         FachadaAsignaturaAnyo fachadaAsignaturaAnyo;

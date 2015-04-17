@@ -29,6 +29,10 @@ long ReadCantidadPorAnyo (int id);
 
 
 
+long ReadCantidadPorAlumnoYAnyo (string p_alumno, int p_anyo);
+
+
+
 DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo);
 
 

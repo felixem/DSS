@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.Examen
 {
-    public partial class bases : System.Web.UI.Page
+    public partial class bases : BasicPage
     {
         FachadaBolsaPreguntas fachada;
 
