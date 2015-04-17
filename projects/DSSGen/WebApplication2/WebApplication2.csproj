@@ -57,11 +57,8 @@
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
-<<<<<<< HEAD
     <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
-=======
     <Content Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx" />
->>>>>>> 1158ed65df0a7f0c51e7e515b54a93340f21b0ac
     <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
     <Content Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx" />
     <Content Include="Asignatura\asignaturas.aspx" />
@@ -162,21 +159,19 @@
     <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.cs">
       <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.designer.cs">
       <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
-=======
+    </Compile>
     <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.cs">
       <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.designer.cs">
       <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
->>>>>>> 1158ed65df0a7f0c51e7e515b54a93340f21b0ac
     </Compile>
     <Compile Include="AsignaturaAnyo\crear_asignaturaanyo.aspx.cs">
       <DependentUpon>crear_asignaturaanyo.aspx</DependentUpon>
