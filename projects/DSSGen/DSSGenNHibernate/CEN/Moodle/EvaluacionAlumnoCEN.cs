@@ -32,7 +32,7 @@ public IEvaluacionAlumnoCAD get_IEvaluacionAlumnoCAD ()
         return this._IEvaluacionAlumnoCAD;
 }
 
-public int New_ (int p_sistema_evaluacion, string p_alumno)
+public int New_ (int p_sistema_evaluacion, int p_expediente_evaluacion)
 {
         EvaluacionAlumnoEN evaluacionAlumnoEN = null;
         int oid;
@@ -46,9 +46,9 @@ public int New_ (int p_sistema_evaluacion, string p_alumno)
         }
 
 
-        if (p_alumno != null) {
-                evaluacionAlumnoEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                evaluacionAlumnoEN.Alumno.Email = p_alumno;
+        if (p_expediente_evaluacion != -1) {
+                evaluacionAlumnoEN.Expediente_evaluacion = new DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN ();
+                evaluacionAlumnoEN.Expediente_evaluacion.Id = p_expediente_evaluacion;
         }
 
         //Call to EvaluacionAlumnoCAD
@@ -93,11 +93,23 @@ public long ReadCantidad ()
 {
         return _IEvaluacionAlumnoCAD.ReadCantidad ();
 }
-public void Relationer_alumno (int p_evaluacionalumno, string p_alumno)
+public void Relationer_expediente_evaluacion (int p_evaluacionalumno, int p_expedienteevaluacion)
 {
         //Call to EvaluacionAlumnoCAD
 
-        _IEvaluacionAlumnoCAD.Relationer_alumno (p_evaluacionalumno, p_alumno);
+        _IEvaluacionAlumnoCAD.Relationer_expediente_evaluacion (p_evaluacionalumno, p_expedienteevaluacion);
+}
+public void Relationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno)
+{
+        //Call to EvaluacionAlumnoCAD
+
+        _IEvaluacionAlumnoCAD.Relationer_controles (p_evaluacionalumno, p_controlalumno);
+}
+public void Relationer_entregas (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_entregaalumno)
+{
+        //Call to EvaluacionAlumnoCAD
+
+        _IEvaluacionAlumnoCAD.Relationer_entregas (p_evaluacionalumno, p_entregaalumno);
 }
 public void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion)
 {
@@ -105,17 +117,23 @@ public void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistema
 
         _IEvaluacionAlumnoCAD.Relationer_sistema_evaluacion (p_evaluacionalumno, p_sistemaevaluacion);
 }
-public void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno)
-{
-        //Call to EvaluacionAlumnoCAD
-
-        _IEvaluacionAlumnoCAD.Unrelationer_alumno (p_evaluacionalumno, p_alumno);
-}
 public void Unrelationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion)
 {
         //Call to EvaluacionAlumnoCAD
 
         _IEvaluacionAlumnoCAD.Unrelationer_sistema_evaluacion (p_evaluacionalumno, p_sistemaevaluacion);
+}
+public void Unrelationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno)
+{
+        //Call to EvaluacionAlumnoCAD
+
+        _IEvaluacionAlumnoCAD.Unrelationer_controles (p_evaluacionalumno, p_controlalumno);
+}
+public void Unrelationer_entregas (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_entregaalumno)
+{
+        //Call to EvaluacionAlumnoCAD
+
+        _IEvaluacionAlumnoCAD.Unrelationer_entregas (p_evaluacionalumno, p_entregaalumno);
 }
 }
 }

@@ -61,10 +61,10 @@ public int New_ (EntregaAlumnoEN entregaAlumno)
 
                         entregaAlumno.Entrega.Entregas_alumno.Add (entregaAlumno);
                 }
-                if (entregaAlumno.Alumno != null) {
-                        entregaAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), entregaAlumno.Alumno.Email);
+                if (entregaAlumno.Evaluacion_alumno != null) {
+                        entregaAlumno.Evaluacion_alumno = (DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN), entregaAlumno.Evaluacion_alumno.Id);
 
-                        entregaAlumno.Alumno.Entregas.Add (entregaAlumno);
+                        entregaAlumno.Evaluacion_alumno.Entregas.Add (entregaAlumno);
                 }
 
                 session.Save (entregaAlumno);
@@ -249,16 +249,16 @@ public long ReadCantidad ()
 
         return result;
 }
-public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (string p_alumno, int p_entrega)
+public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno, int p_entrega)
 {
         DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM EntregaAlumnoEN self where FROM EntregaAlumnoEN ent_alu where ent_alu.Alumno.Email=:p_alumno AND ent_alu.Entrega.Id=:p_entrega";
+                //String sql = @"FROM EntregaAlumnoEN self where FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("EntregaAlumnoENreadRelationHQL");
-                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_evalalumno", p_evalalumno);
                 query.SetParameter ("p_entrega", p_entrega);
 
 
@@ -281,16 +281,16 @@ public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (string p_alumno,
 
         return result;
 }
-public void Relationer_alumno (int p_entregaalumno, string p_alumno)
+public void Relationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno)
 {
         DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 entregaAlumnoEN = (EntregaAlumnoEN)session.Load (typeof(EntregaAlumnoEN), p_entregaalumno);
-                entregaAlumnoEN.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), p_alumno);
+                entregaAlumnoEN.Evaluacion_alumno = (DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN), p_evaluacionalumno);
 
-                entregaAlumnoEN.Alumno.Entregas.Add (entregaAlumnoEN);
+                entregaAlumnoEN.Evaluacion_alumno.Entregas.Add (entregaAlumnoEN);
 
 
 
@@ -343,7 +343,7 @@ public void Relationer_entrega (int p_entregaalumno, int p_entrega)
         }
 }
 
-public void Unrelationer_alumno (int p_entregaalumno, string p_alumno)
+public void Unrelationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno)
 {
         try
         {
@@ -351,11 +351,11 @@ public void Unrelationer_alumno (int p_entregaalumno, string p_alumno)
                 DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;
                 entregaAlumnoEN = (EntregaAlumnoEN)session.Load (typeof(EntregaAlumnoEN), p_entregaalumno);
 
-                if (entregaAlumnoEN.Alumno.Email == p_alumno) {
-                        entregaAlumnoEN.Alumno = null;
+                if (entregaAlumnoEN.Evaluacion_alumno.Id == p_evaluacionalumno) {
+                        entregaAlumnoEN.Evaluacion_alumno = null;
                 }
                 else
-                        throw new ModelException ("The identifier " + p_alumno + " in p_alumno you are trying to unrelationer, doesn't exist in EntregaAlumnoEN");
+                        throw new ModelException ("The identifier " + p_evaluacionalumno + " in p_evaluacionalumno you are trying to unrelationer, doesn't exist in EntregaAlumnoEN");
 
                 session.Update (entregaAlumnoEN);
                 SessionCommit ();

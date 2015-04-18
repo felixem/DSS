@@ -126,18 +126,6 @@ public long ReadCantidadMatriculablesEnAsignaturaAnyo (int id)
 {
         return _IAlumnoCAD.ReadCantidadMatriculablesEnAsignaturaAnyo (id);
 }
-public void Relationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
-{
-        //Call to AlumnoCAD
-
-        _IAlumnoCAD.Relationer_controles (p_alumno, p_controlalumno);
-}
-public void Relationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno)
-{
-        //Call to AlumnoCAD
-
-        _IAlumnoCAD.Relationer_entregas (p_alumno, p_entregaalumno);
-}
 public void Relationer_expediente (string p_alumno, int p_expediente)
 {
         //Call to AlumnoCAD
@@ -156,29 +144,11 @@ public void Relationer_mensajes (string p_alumno, System.Collections.Generic.ILi
 
         _IAlumnoCAD.Relationer_mensajes (p_alumno, p_mensaje);
 }
-public void Relationer_sistemas_evaluacion (string p_alumno, System.Collections.Generic.IList<int> p_evaluacionalumno)
-{
-        //Call to AlumnoCAD
-
-        _IAlumnoCAD.Relationer_sistemas_evaluacion (p_alumno, p_evaluacionalumno);
-}
 public void Relationer_tutorias (string p_alumno, System.Collections.Generic.IList<int> p_tutoria)
 {
         //Call to AlumnoCAD
 
         _IAlumnoCAD.Relationer_tutorias (p_alumno, p_tutoria);
-}
-public void Unrelationer_controles (string p_alumno, System.Collections.Generic.IList<int> p_controlalumno)
-{
-        //Call to AlumnoCAD
-
-        _IAlumnoCAD.Unrelationer_controles (p_alumno, p_controlalumno);
-}
-public void Unrelationer_entregas (string p_alumno, System.Collections.Generic.IList<int> p_entregaalumno)
-{
-        //Call to AlumnoCAD
-
-        _IAlumnoCAD.Unrelationer_entregas (p_alumno, p_entregaalumno);
 }
 public void Unrelationer_expediente (string p_alumno, int p_expediente)
 {
@@ -197,12 +167,6 @@ public void Unrelationer_mensajes (string p_alumno, System.Collections.Generic.I
         //Call to AlumnoCAD
 
         _IAlumnoCAD.Unrelationer_mensajes (p_alumno, p_mensaje);
-}
-public void Unrelationer_sistemas_evaluacion (string p_alumno, System.Collections.Generic.IList<int> p_evaluacionalumno)
-{
-        //Call to AlumnoCAD
-
-        _IAlumnoCAD.Unrelationer_sistemas_evaluacion (p_alumno, p_evaluacionalumno);
 }
 public void Unrelationer_tutorias (string p_alumno, System.Collections.Generic.IList<int> p_tutoria)
 {

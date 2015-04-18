@@ -43,36 +43,6 @@
         					</many-to-one>
 					 
 						
-			
-		  			
-						<bag name="Entregas" >
-							<key>
-								<column name="[FK_email_alumno]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN"/>
-					    </bag>
-					
-			
-		  			
-						<bag name="Sistemas_evaluacion" >
-							<key>
-								<column name="[FK_email_alumno]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN"/>
-					    </bag>
-					
-			
-		  			
-						<bag name="Controles" >
-							<key>
-								<column name="[FK_email_alumno]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN"/>
-					    </bag>
-					
-					
-					
-					
 					
 					
 					

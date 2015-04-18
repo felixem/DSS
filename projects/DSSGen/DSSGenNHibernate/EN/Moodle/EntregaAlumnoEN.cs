@@ -75,7 +75,7 @@ private DSSGenNHibernate.EN.Moodle.EntregaEN entrega;
  *
  */
 
-private DSSGenNHibernate.EN.Moodle.AlumnoEN alumno;
+private DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno;
 
 
 
@@ -136,8 +136,8 @@ public virtual DSSGenNHibernate.EN.Moodle.EntregaEN Entrega {
 }
 
 
-public virtual DSSGenNHibernate.EN.Moodle.AlumnoEN Alumno {
-        get { return alumno; } set { alumno = value;  }
+public virtual DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN Evaluacion_alumno {
+        get { return evaluacion_alumno; } set { evaluacion_alumno = value;  }
 }
 
 
@@ -150,18 +150,18 @@ public EntregaAlumnoEN()
 
 
 
-public EntregaAlumnoEN(int id, string nombre_fichero, string extension, string ruta, float tam, Nullable<DateTime> fecha_entrega, float nota, bool corregido, string comentario_alumno, string comentario_profesor, DSSGenNHibernate.EN.Moodle.EntregaEN entrega, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno)
+public EntregaAlumnoEN(int id, string nombre_fichero, string extension, string ruta, float tam, Nullable<DateTime> fecha_entrega, float nota, bool corregido, string comentario_alumno, string comentario_profesor, DSSGenNHibernate.EN.Moodle.EntregaEN entrega, DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno)
 {
-        this.init (id, nombre_fichero, extension, ruta, tam, fecha_entrega, nota, corregido, comentario_alumno, comentario_profesor, entrega, alumno);
+        this.init (id, nombre_fichero, extension, ruta, tam, fecha_entrega, nota, corregido, comentario_alumno, comentario_profesor, entrega, evaluacion_alumno);
 }
 
 
 public EntregaAlumnoEN(EntregaAlumnoEN entregaAlumno)
 {
-        this.init (entregaAlumno.Id, entregaAlumno.Nombre_fichero, entregaAlumno.Extension, entregaAlumno.Ruta, entregaAlumno.Tam, entregaAlumno.Fecha_entrega, entregaAlumno.Nota, entregaAlumno.Corregido, entregaAlumno.Comentario_alumno, entregaAlumno.Comentario_profesor, entregaAlumno.Entrega, entregaAlumno.Alumno);
+        this.init (entregaAlumno.Id, entregaAlumno.Nombre_fichero, entregaAlumno.Extension, entregaAlumno.Ruta, entregaAlumno.Tam, entregaAlumno.Fecha_entrega, entregaAlumno.Nota, entregaAlumno.Corregido, entregaAlumno.Comentario_alumno, entregaAlumno.Comentario_profesor, entregaAlumno.Entrega, entregaAlumno.Evaluacion_alumno);
 }
 
-private void init (int id, string nombre_fichero, string extension, string ruta, float tam, Nullable<DateTime> fecha_entrega, float nota, bool corregido, string comentario_alumno, string comentario_profesor, DSSGenNHibernate.EN.Moodle.EntregaEN entrega, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno)
+private void init (int id, string nombre_fichero, string extension, string ruta, float tam, Nullable<DateTime> fecha_entrega, float nota, bool corregido, string comentario_alumno, string comentario_profesor, DSSGenNHibernate.EN.Moodle.EntregaEN entrega, DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno)
 {
         this.Id = id;
 
@@ -186,7 +186,7 @@ private void init (int id, string nombre_fichero, string extension, string ruta,
 
         this.Entrega = entrega;
 
-        this.Alumno = alumno;
+        this.Evaluacion_alumno = evaluacion_alumno;
 }
 
 public override bool Equals (object obj)

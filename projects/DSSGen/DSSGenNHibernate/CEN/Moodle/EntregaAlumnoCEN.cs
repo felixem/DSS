@@ -32,7 +32,7 @@ public IEntregaAlumnoCAD get_IEntregaAlumnoCAD ()
         return this._IEntregaAlumnoCAD;
 }
 
-public int New_ (string p_nombre_fichero, string p_extension, string p_ruta, float p_tam, Nullable<DateTime> p_fecha_entrega, float p_nota, bool p_corregido, string p_comentario_alumno, string p_comentario_profesor, int p_entrega, string p_alumno)
+public int New_ (string p_nombre_fichero, string p_extension, string p_ruta, float p_tam, Nullable<DateTime> p_fecha_entrega, float p_nota, bool p_corregido, string p_comentario_alumno, string p_comentario_profesor, int p_entrega, int p_evaluacion_alumno)
 {
         EntregaAlumnoEN entregaAlumnoEN = null;
         int oid;
@@ -64,9 +64,9 @@ public int New_ (string p_nombre_fichero, string p_extension, string p_ruta, flo
         }
 
 
-        if (p_alumno != null) {
-                entregaAlumnoEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                entregaAlumnoEN.Alumno.Email = p_alumno;
+        if (p_evaluacion_alumno != -1) {
+                entregaAlumnoEN.Evaluacion_alumno = new DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN ();
+                entregaAlumnoEN.Evaluacion_alumno.Id = p_evaluacion_alumno;
         }
 
         //Call to EntregaAlumnoCAD
@@ -120,15 +120,15 @@ public long ReadCantidad ()
 {
         return _IEntregaAlumnoCAD.ReadCantidad ();
 }
-public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (string p_alumno, int p_entrega)
+public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno, int p_entrega)
 {
-        return _IEntregaAlumnoCAD.ReadRelation (p_alumno, p_entrega);
+        return _IEntregaAlumnoCAD.ReadRelation (p_evalalumno, p_entrega);
 }
-public void Relationer_alumno (int p_entregaalumno, string p_alumno)
+public void Relationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno)
 {
         //Call to EntregaAlumnoCAD
 
-        _IEntregaAlumnoCAD.Relationer_alumno (p_entregaalumno, p_alumno);
+        _IEntregaAlumnoCAD.Relationer_evaluacion_alumno (p_entregaalumno, p_evaluacionalumno);
 }
 public void Relationer_entrega (int p_entregaalumno, int p_entrega)
 {
@@ -136,11 +136,11 @@ public void Relationer_entrega (int p_entregaalumno, int p_entrega)
 
         _IEntregaAlumnoCAD.Relationer_entrega (p_entregaalumno, p_entrega);
 }
-public void Unrelationer_alumno (int p_entregaalumno, string p_alumno)
+public void Unrelationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno)
 {
         //Call to EntregaAlumnoCAD
 
-        _IEntregaAlumnoCAD.Unrelationer_alumno (p_entregaalumno, p_alumno);
+        _IEntregaAlumnoCAD.Unrelationer_evaluacion_alumno (p_entregaalumno, p_evaluacionalumno);
 }
 public void Unrelationer_entrega (int p_entregaalumno, int p_entrega)
 {
