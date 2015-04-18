@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="mis_asignaturas_impartidas.aspx.cs" Inherits="DSSGenNHibernate.AsignaturaAnyo.mis_asignaturas_impartidas" %>
+    CodeBehind="mis_alumnos_matriculados.aspx.cs" Inherits="DSSGenNHibernate.Alumno.mis_alumnos_matriculados" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" type="text/css" />
@@ -9,16 +9,12 @@
     <div class="CentrarContenido">
         <div class="ConInternoSinDisplay">
             <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
-                <asp:Label ID="Label_Asignatura" runat="server" Text="Listado de Asignaturas impartidas"></asp:Label>
+                <asp:Label ID="Label_Listado" runat="server" Text="Listado de Alumnos Matriculados"></asp:Label>
             </asp:Panel>
         </div>
-        <div class="row_crear_alumno">
-            <asp:Label ID="Label_Anyo" runat="server" Text="Año académico" CssClass="posicion_izquierda"></asp:Label>
-            <asp:DropDownList ID="DropDownList_Anyos" runat="server" CssClass="posicion_derecha"
-                OnSelectedIndexChanged="DropDownList_Anyos_SelectedIndexChanged" AutoPostBack="True">
-            </asp:DropDownList>
-        </div>
         <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
+            <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
+            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
             <div class="">
                 PageSize:
                 <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
@@ -27,17 +23,16 @@
                     <asp:ListItem Text="50" Value="50" />
                 </asp:DropDownList>
                 <hr />
+                <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
+                    CssClass="posicion_central" />
                 <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                     <Columns>
-                        <asp:BoundField HeaderText="Id" DataField="Id" />
-                        <asp:BoundField HeaderText="Curso" DataField="Asignatura.Curso.Nombre" />
-                        <asp:BoundField HeaderText="Código" DataField="Asignatura.Cod_asignatura" />
-                        <asp:BoundField HeaderText="Nombre" DataField="Asignatura.Nombre" />
-                        <asp:BoundField HeaderText="Descripción" DataField="Asignatura.Descripcion" />
+                        <asp:BoundField HeaderText="Id" DataField="Cod_alumno" />
+                        <asp:BoundField HeaderText="Email" DataField="Email" />
+                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                        <asp:BoundField HeaderText="Apellidos" DataField="Apellidos" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="linkAlumnos" OnClick="lnkAlumnos_Click">Matriculados</asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="linkGrupos" OnClick="lnkGrupos_Click">Grupos</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

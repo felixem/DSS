@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAlumno.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAnyoYProfesor.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignaturaVinculablesAAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />

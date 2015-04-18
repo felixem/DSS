@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using WebUtilities;
 
 namespace WebApplication2
 {
@@ -22,10 +23,28 @@ namespace WebApplication2
 
         }
 
-        void Application_Error(object sender, EventArgs e)
+        protected void Application_Error(object sender, EventArgs e)
         {
-            // Código que se ejecuta al producirse un error no controlado
+            // An error has occured on a .Net page.
+            var serverError = Server.GetLastError() as HttpException;
 
+            if (null != serverError)
+            {
+                int errorCode = serverError.GetHttpCode();
+                Linker linker = new Linker(false);
+
+                if (404 == errorCode)
+                {
+                    Server.ClearError();
+                    Response.Redirect(linker.Error404());
+                }
+
+                if (403 == errorCode)
+                {
+                    Server.ClearError();
+                    Response.Redirect(linker.Error403());
+                }
+            }
         }
 
         void Session_Start(object sender, EventArgs e)

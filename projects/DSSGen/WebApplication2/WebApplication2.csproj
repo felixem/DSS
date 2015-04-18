@@ -56,6 +56,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\alumnos_matriculados.aspx" />
+    <Content Include="Alumno\mis_alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
     <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
     <Content Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx" />
@@ -65,6 +66,8 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="Errors\404.aspx" />
+    <Content Include="Errors\403.aspx" />
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
@@ -152,6 +155,13 @@
     <Compile Include="Alumno\alumnos_matriculados.aspx.designer.cs">
       <DependentUpon>alumnos_matriculados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Alumno\mis_alumnos_matriculados.aspx.cs">
+      <DependentUpon>mis_alumnos_matriculados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\mis_alumnos_matriculados.aspx.designer.cs">
+      <DependentUpon>mis_alumnos_matriculados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alumno\modificar_alumno.aspx.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -221,6 +231,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
     </Compile>
     <Compile Include="Examen\bolsas_preguntas.aspx.cs">
       <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
