@@ -33,6 +33,10 @@ long ReadCantidadPorAlumnoYAnyo (string p_alumno, int p_anyo);
 
 
 
+long ReadCantidadPorAnyoYProfesor (int p_anyo, string p_profesor);
+
+
+
 DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo);
 
 
@@ -46,6 +50,8 @@ void Relationer_tutorias (int p_asignaturaanyo, System.Collections.Generic.IList
 
 void Relationer_expedientes_asignatura (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_expedienteasignatura);
 
+void Relationer_profesores (int p_asignaturaanyo, System.Collections.Generic.IList<string> p_profesor);
+
 void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo);
 
 void Unrelationer_materiales (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_material);
@@ -55,5 +61,7 @@ void Unrelationer_sistemas_evaluacion (int p_asignaturaanyo, System.Collections.
 void Unrelationer_tutorias (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_tutoria);
 
 void Unrelationer_expedientes_asignatura (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_expedienteasignatura);
+
+void Unrelationer_profesores (int p_asignaturaanyo, System.Collections.Generic.IList<string> p_profesor);
 }
 }

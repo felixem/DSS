@@ -46,6 +46,7 @@ namespace WebUtilities
         internal static readonly string crearEntrega = "/Entrega/crear_entrega.aspx";
         internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
         internal static readonly string changePassword = "/Account/ChangePassword.aspx";
+        internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
@@ -270,7 +271,7 @@ namespace WebUtilities
         //Cadena para la página para listar los grupos de trabajo de una asignatura-anyo
         public String ListarGruposTrabajoAsignaturaAnyo(int cod)
         {
-            return  listarGruposTrabajoAsignaturaAnyo +
+            return listarGruposTrabajoAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
@@ -299,6 +300,12 @@ namespace WebUtilities
         public String AsignaturasImpartidas()
         {
             return asignaturasImpartidas;
+        }
+
+        //Cadena para la página de las asignaturas-anyo impartidas por el profesor
+        public String MisAsignaturasImpartidas()
+        {
+            return misAsignaturasImpartidas;
         }
     }
 }

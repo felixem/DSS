@@ -98,7 +98,7 @@ namespace DSSGenNHibernate.Control
         protected void ObtenerAsignaturasAnyo()
         {
             int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
-            fachadaAsignaturaAnyo.VincularDameTodosPorAnyo(DropDownList_AsignaturasAnyo, idAnyo);
+            fachadaAsignaturaAnyo.VincularDameTodosPorAnyo(idAnyo, DropDownList_AsignaturasAnyo);
         }
 
         //Obtener los años académicos

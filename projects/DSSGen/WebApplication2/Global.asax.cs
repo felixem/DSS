@@ -22,10 +22,27 @@ namespace WebApplication2
 
         }
 
-        void Application_Error(object sender, EventArgs e)
+        protected void Application_Error(object sender, EventArgs e)
         {
-            // Código que se ejecuta al producirse un error no controlado
+            // An error has occured on a .Net page.
+            var serverError = Server.GetLastError() as HttpException;
 
+            if (null != serverError)
+            {
+                int errorCode = serverError.GetHttpCode();
+
+                if (404 == errorCode)
+                {
+                    Server.ClearError();
+                    Response.Redirect("/Errors/404.aspx");
+                }
+
+                if (403 == errorCode)
+                {
+                    Server.ClearError();
+                    Response.Redirect("/Errors/403.aspx");
+                }
+            }
         }
 
         void Session_Start(object sender, EventArgs e)

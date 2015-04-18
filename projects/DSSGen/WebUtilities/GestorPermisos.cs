@@ -38,6 +38,9 @@ namespace WebUtilities
             permisos.Add(Linker.passChanged, permisoTodosUsuarios);
             permisos.Add(Linker.changePassword, permisoTodosUsuarios);
 
+            //Permisos sólo para PROFESOR
+            permisos.Add(Linker.misAsignaturasImpartidas, permisoSoloProfesor);
+
             //Permisos de ADMINISTRADOR
             //Páginas de modificación
             permisos.Add(Linker.modificarBolsa, permisoSoloAdmin);
@@ -102,8 +105,7 @@ namespace WebUtilities
             Permiso perm = permisos[reqURL];
             if (!perm.ComprobarPermisos(sesion))
             {
-                Linker linker = new Linker(false);
-                linker.Redirect(Response, linker.PreviousPage());
+                throw new HttpException(403, "Forbidden Access");
             }
         }
     }

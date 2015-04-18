@@ -101,6 +101,10 @@ public long ReadCantidadPorAlumnoYAnyo (string p_alumno, int p_anyo)
 {
         return _IAsignaturaAnyoCAD.ReadCantidadPorAlumnoYAnyo (p_alumno, p_anyo);
 }
+public long ReadCantidadPorAnyoYProfesor (int p_anyo, string p_profesor)
+{
+        return _IAsignaturaAnyoCAD.ReadCantidadPorAnyoYProfesor (p_anyo, p_profesor);
+}
 public DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo)
 {
         return _IAsignaturaAnyoCAD.ReadRelation (p_asignatura, p_anyo);
@@ -135,6 +139,12 @@ public void Relationer_expedientes_asignatura (int p_asignaturaanyo, System.Coll
 
         _IAsignaturaAnyoCAD.Relationer_expedientes_asignatura (p_asignaturaanyo, p_expedienteasignatura);
 }
+public void Relationer_profesores (int p_asignaturaanyo, System.Collections.Generic.IList<string> p_profesor)
+{
+        //Call to AsignaturaAnyoCAD
+
+        _IAsignaturaAnyoCAD.Relationer_profesores (p_asignaturaanyo, p_profesor);
+}
 public void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         //Call to AsignaturaAnyoCAD
@@ -164,6 +174,12 @@ public void Unrelationer_expedientes_asignatura (int p_asignaturaanyo, System.Co
         //Call to AsignaturaAnyoCAD
 
         _IAsignaturaAnyoCAD.Unrelationer_expedientes_asignatura (p_asignaturaanyo, p_expedienteasignatura);
+}
+public void Unrelationer_profesores (int p_asignaturaanyo, System.Collections.Generic.IList<string> p_profesor)
+{
+        //Call to AsignaturaAnyoCAD
+
+        _IAsignaturaAnyoCAD.Unrelationer_profesores (p_asignaturaanyo, p_profesor);
 }
 }
 }

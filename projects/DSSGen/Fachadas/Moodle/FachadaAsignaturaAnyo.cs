@@ -25,7 +25,7 @@ namespace Fachadas.Moodle
         }
 
         //Vincular a un DropDownList todas las asignaturas-anyo que se corresponden con un año determinado
-        public void VincularDameTodosPorAnyo(DropDownList drop, int idAnyo)
+        public void VincularDameTodosPorAnyo(int idAnyo, DropDownList drop)
         {
             AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
             DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
@@ -39,6 +39,15 @@ namespace Fachadas.Moodle
         {
             AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
             DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
+            BinderListaAsignaturaAnyoGrid binder = new BinderListaAsignaturaAnyoGrid(grid);
+            binding.VincularDameTodos(consulta, binder, 0, -1, out numElements);
+        }
+
+        //Vincular a un Gridview todas las asignaturas-anyo impartidas por un profesor que se corresponden con un año determinado
+        public void VincularDameTodosPorAnyoYProfesor(int idAnyo, string profesor, GridView grid, int first, int size, out long numElements)
+        {
+            AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
+            DameTodosAsignaturaAnyoPorAnyoYProfesor consulta = new DameTodosAsignaturaAnyoPorAnyoYProfesor(idAnyo,profesor);
             BinderListaAsignaturaAnyoGrid binder = new BinderListaAsignaturaAnyoGrid(grid);
             binding.VincularDameTodos(consulta, binder, 0, -1, out numElements);
         }
