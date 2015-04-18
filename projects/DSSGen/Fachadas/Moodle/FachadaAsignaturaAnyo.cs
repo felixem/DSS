@@ -152,11 +152,12 @@ namespace Fachadas.Moodle
         }
 
         //Método para vincular las asignaturas matriculadas de un alumno a un GridView
-        public void VincularDameTodosPorMariculadoAnyo(int idAnyo, GridView grid, int first, int size, out long numElements)
+        public void VincularDameTodosAsignaturaAnyoPorAlumno(string alumno, int idAnyo, GridView grid, int first, int size, out long numElements)
         {
 
             AsignaturaAnyoBinding binding = new AsignaturaAnyoBinding();
-            DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
+            IDameTodosAsignaturaAnyo consulta = new DameTodosAsignaturaAnyoPorAlumno(alumno, idAnyo);
+            //DameTodosAsignaturaAnyoPorAnyo consulta = new DameTodosAsignaturaAnyoPorAnyo(idAnyo);
             BinderListaAsignaturaAnyoGrid binder = new BinderListaAsignaturaAnyoGrid(grid);
             binding.VincularDameTodos(consulta, binder, 0, -1, out numElements);
 

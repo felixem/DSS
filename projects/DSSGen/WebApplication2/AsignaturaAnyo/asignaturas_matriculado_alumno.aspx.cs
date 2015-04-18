@@ -10,8 +10,10 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.AsignaturaAnyo
 {
-    public partial class asignaturas_matriculado_alumno : System.Web.UI.Page
+    public partial class asignaturas_matriculado_alumno : BasicPage //System.Web.UI.Page
     {
+        //Sesion de usuario
+        MySession session;
         //Fachada utilizada en la página
         FachadaAsignaturaAnyo fachadaAsignatura;
         //Fachada para los años
@@ -20,6 +22,7 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
         {
+            session = MySession.Current;
             fachadaAsignatura = new FachadaAsignaturaAnyo();
             fachadaAnyo = new FachadaAnyoAcademico();
 
@@ -45,7 +48,8 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
 
             //Vincular el grid con la lista de asignaturas impartidas en el año paginada
-            fachadaAsignatura.VincularDameTodosPorAnyo(idAnyo, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            if(session.IsAlumno())
+                fachadaAsignatura.VincularDameTodosAsignaturaAnyoPorAlumno("alumno",idAnyo, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);

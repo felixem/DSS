@@ -15,11 +15,13 @@ namespace ComponentesProceso.Moodle.Commands
     public class DameTodosAsignaturaAnyoPorAlumno : IDameTodosAsignaturaAnyo
     {
         //Variables
+        private string alumno;
         private int anyo;
 
         //Constructor a partir de una id de año
-        public DameTodosAsignaturaAnyoPorAlumno(int anyo)
+        public DameTodosAsignaturaAnyoPorAlumno(string alumno, int anyo)
         {
+            this.alumno = alumno;
             this.anyo = anyo;
         }
 
@@ -28,6 +30,12 @@ namespace ComponentesProceso.Moodle.Commands
         {
             get { return anyo; }
             set { anyo = value; }
+        }
+
+        public string Alumno
+        {
+            get { return alumno; }
+            set { alumno = value; }
         }
 
         //Ejecutar el método
@@ -39,7 +47,7 @@ namespace ComponentesProceso.Moodle.Commands
             AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
 
             //Programar las lecturas
-            lista = cen.ReadAllPorAnyo(anyo, first, size);
+            lista = cen.ReadAllPorAlumnoYAnyo(alumno,anyo, first, size);
 
             //Devolver lista
             return lista;
@@ -51,7 +59,7 @@ namespace ComponentesProceso.Moodle.Commands
             AsignaturaAnyoCAD cad = new AsignaturaAnyoCAD(session);
             AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
 
-            return cen.ReadCantidadPorAnyo(anyo);
+            return cen.ReadCantidadPorAlumnoYAnyo(alumno, anyo);
         }
     }
 }

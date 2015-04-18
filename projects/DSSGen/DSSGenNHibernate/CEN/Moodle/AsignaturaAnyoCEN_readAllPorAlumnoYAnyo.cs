@@ -18,8 +18,6 @@ public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.AsignaturaAny
 {
         /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_AsignaturaAnyo_readAllPorAlumnoYAnyo) ENABLED START*/
 
-
-
         // Write here your custom code...
 
     return this._IAsignaturaAnyoCAD.ReadAllPorAlumnoYAnyo(p_alumno, p_anyo, first, size);
