@@ -43,36 +43,6 @@
         					</many-to-one>
 					 
 						
-			
-		  			
-						<bag name="Entregas" >
-							<key>
-								<column name="[FK_email_alumno]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN"/>
-					    </bag>
-					
-			
-		  			
-						<bag name="Sistemas_evaluacion" >
-							<key>
-								<column name="[FK_email_alumno]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN"/>
-					    </bag>
-					
-			
-		  			
-						<bag name="Controles" >
-							<key>
-								<column name="[FK_email_alumno]"/>
-					      	</key>
-							<one-to-many class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN"/>
-					    </bag>
-					
-					
-					
-					
 					
 					
 					
@@ -84,7 +54,7 @@
 		  <query name="AlumnoENReadAllHQL">from AlumnoEN</query>
 		  <query name="AlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM AlumnoEN]]></query>
 		  <query name="AlumnoENreadCodHQL"><![CDATA[FROM AlumnoEN alu where alu.Cod_alumno =:cod ]]></query>
-		  <query name="AlumnoENreadCantidadPorGrupoHQL"><![CDATA[select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id]]></query>
+		  <query name="AlumnoENreadCantidadPorGrupoHQL"><![CDATA[select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id]]></query>
 		  <query name="AlumnoENreadCantidadIngresablesEnGrupoHQL"><![CDATA[select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos]]></query>
 		  <query name="AlumnoENreadCantidadPorAsignaturaAnyoHQL"><![CDATA[select count (distinct alu) FROM AsignaturaAnyoEN as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where asig.Id=:id]]></query>
 		  <query name="AlumnoENreadCantidadMatriculablesEnAsignaturaAnyoHQL"><![CDATA[select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Anyo as anyo where anyo.Id IN (select year.Id FROM AsignaturaAnyoEN as asig INNER JOIN asig.Anyo as year where asig.Id=:id) AND exp_anyo.Id NOT IN (select ex_anyo.Id FROM AsignaturaAnyoEN as asignatura INNER JOIN asignatura.Expedientes_asignatura as expedi INNER JOIN expedi.Expediente_anyo as ex_anyo where asignatura.Id=:id)]]></query>

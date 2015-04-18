@@ -32,7 +32,7 @@ public IControlAlumnoCAD get_IControlAlumnoCAD ()
         return this._IControlAlumnoCAD;
 }
 
-public int New_ (float p_nota, bool p_terminado, bool p_corregido, string p_alumno, int p_control)
+public int New_ (float p_nota, bool p_terminado, bool p_corregido, int p_evaluacion_alumno, int p_control)
 {
         ControlAlumnoEN controlAlumnoEN = null;
         int oid;
@@ -46,9 +46,9 @@ public int New_ (float p_nota, bool p_terminado, bool p_corregido, string p_alum
         controlAlumnoEN.Corregido = p_corregido;
 
 
-        if (p_alumno != null) {
-                controlAlumnoEN.Alumno = new DSSGenNHibernate.EN.Moodle.AlumnoEN ();
-                controlAlumnoEN.Alumno.Email = p_alumno;
+        if (p_evaluacion_alumno != -1) {
+                controlAlumnoEN.Evaluacion_alumno = new DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN ();
+                controlAlumnoEN.Evaluacion_alumno.Id = p_evaluacion_alumno;
         }
 
 
@@ -102,15 +102,15 @@ public long ReadCantidad ()
 {
         return _IControlAlumnoCAD.ReadCantidad ();
 }
-public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno, int p_control)
+public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (int p_evalalumno, int p_control)
 {
-        return _IControlAlumnoCAD.ReadRelation (p_alumno, p_control);
+        return _IControlAlumnoCAD.ReadRelation (p_evalalumno, p_control);
 }
-public void Relationer_alumno (int p_controlalumno, string p_alumno)
+public void Relationer_evaluacion_alumno (int p_controlalumno, int p_evaluacionalumno)
 {
         //Call to ControlAlumnoCAD
 
-        _IControlAlumnoCAD.Relationer_alumno (p_controlalumno, p_alumno);
+        _IControlAlumnoCAD.Relationer_evaluacion_alumno (p_controlalumno, p_evaluacionalumno);
 }
 public void Relationer_control (int p_controlalumno, int p_control)
 {
@@ -124,11 +124,11 @@ public void Relationer_preguntas (int p_controlalumno, System.Collections.Generi
 
         _IControlAlumnoCAD.Relationer_preguntas (p_controlalumno, p_preguntacontrol);
 }
-public void Unrelationer_alumno (int p_controlalumno, string p_alumno)
+public void Unrelationer_evaluacion_alumno (int p_controlalumno, int p_evaluacionalumno)
 {
         //Call to ControlAlumnoCAD
 
-        _IControlAlumnoCAD.Unrelationer_alumno (p_controlalumno, p_alumno);
+        _IControlAlumnoCAD.Unrelationer_evaluacion_alumno (p_controlalumno, p_evaluacionalumno);
 }
 public void Unrelationer_control (int p_controlalumno, int p_control)
 {

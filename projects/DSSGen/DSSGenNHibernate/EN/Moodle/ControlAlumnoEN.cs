@@ -33,7 +33,7 @@ private bool corregido;
  *
  */
 
-private DSSGenNHibernate.EN.Moodle.AlumnoEN alumno;
+private DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno;
 
 /**
  *
@@ -71,8 +71,8 @@ public virtual bool Corregido {
 }
 
 
-public virtual DSSGenNHibernate.EN.Moodle.AlumnoEN Alumno {
-        get { return alumno; } set { alumno = value;  }
+public virtual DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN Evaluacion_alumno {
+        get { return evaluacion_alumno; } set { evaluacion_alumno = value;  }
 }
 
 
@@ -96,18 +96,18 @@ public ControlAlumnoEN()
 
 
 
-public ControlAlumnoEN(int id, float nota, bool terminado, bool corregido, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno, DSSGenNHibernate.EN.Moodle.ControlEN control, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas)
+public ControlAlumnoEN(int id, float nota, bool terminado, bool corregido, DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno, DSSGenNHibernate.EN.Moodle.ControlEN control, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas)
 {
-        this.init (id, nota, terminado, corregido, alumno, control, preguntas);
+        this.init (id, nota, terminado, corregido, evaluacion_alumno, control, preguntas);
 }
 
 
 public ControlAlumnoEN(ControlAlumnoEN controlAlumno)
 {
-        this.init (controlAlumno.Id, controlAlumno.Nota, controlAlumno.Terminado, controlAlumno.Corregido, controlAlumno.Alumno, controlAlumno.Control, controlAlumno.Preguntas);
+        this.init (controlAlumno.Id, controlAlumno.Nota, controlAlumno.Terminado, controlAlumno.Corregido, controlAlumno.Evaluacion_alumno, controlAlumno.Control, controlAlumno.Preguntas);
 }
 
-private void init (int id, float nota, bool terminado, bool corregido, DSSGenNHibernate.EN.Moodle.AlumnoEN alumno, DSSGenNHibernate.EN.Moodle.ControlEN control, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas)
+private void init (int id, float nota, bool terminado, bool corregido, DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno, DSSGenNHibernate.EN.Moodle.ControlEN control, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.PreguntaControlEN> preguntas)
 {
         this.Id = id;
 
@@ -118,7 +118,7 @@ private void init (int id, float nota, bool terminado, bool corregido, DSSGenNHi
 
         this.Corregido = corregido;
 
-        this.Alumno = alumno;
+        this.Evaluacion_alumno = evaluacion_alumno;
 
         this.Control = control;
 

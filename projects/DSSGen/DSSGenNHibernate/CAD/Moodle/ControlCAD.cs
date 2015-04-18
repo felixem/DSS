@@ -238,6 +238,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ControlEN self where select count (distinct control) FROM ControlEN as control where control.Sistema_evaluacion.Asignatura.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ControlENreadCantidadPorAsignaturaAnyoHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ControlCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_bolsas_preguntas (int p_control, System.Collections.Generic.IList<int> p_bolsapreguntas)
 {
         DSSGenNHibernate.EN.Moodle.ControlEN controlEN = null;

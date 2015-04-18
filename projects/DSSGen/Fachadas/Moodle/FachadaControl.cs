@@ -52,15 +52,17 @@ namespace Fachadas.Moodle
         //Método para vincular un control a partir de su id a textboxes
         public bool VincularControlPorId(int id, TextBox TextBox_Nom,
             TextBox TextBox_Desc, TextBox TextBox_Apertura, TextBox TextBox_Cierre,
-            TextBox TextBox_Duracion, TextBox TextBox_PuntMax, TextBox TextBox_Penalizacion)
+            TextBox TextBox_Duracion, TextBox TextBox_PuntMax, TextBox TextBox_Penalizacion, 
+            TextBox TextBox_Anyo, TextBox TextBox_Asignatura, TextBox TextBox_Evaluacion, TextBox TextBox_CodControl)
         {
             try
             {
                 ControlBinding binding = new ControlBinding();
                 DameControlPorId consulta = new DameControlPorId(id);
-                BinderControl linker = new BinderControl(TextBox_Nom,
+                IBinderControl linker = new BinderControl(TextBox_Nom,
                     TextBox_Desc, TextBox_Apertura, TextBox_Cierre,
-                    TextBox_Duracion, TextBox_PuntMax, TextBox_Penalizacion);
+                    TextBox_Duracion, TextBox_PuntMax, TextBox_Penalizacion,
+                    TextBox_Anyo, TextBox_Asignatura, TextBox_Evaluacion, TextBox_CodControl);
 
                 binding.VincularDameControl(consulta, linker);
             }
@@ -95,6 +97,18 @@ namespace Fachadas.Moodle
             }
 
             return true;
+        }
+
+        //Vincular a un gridview los controles pertenecientes a una asignatura-anyo con paginación
+        public void VincularDameTodosPorAsignaturaAnyo(int idAsignaturaAnyo, GridView grid,
+            int first, int size, out long numAlumnos)
+        {
+            //Obtener controles y enlazar sus datos con el gridview
+            ControlBinding Bind = new ControlBinding();
+            IDameTodosControl consulta = new DameTodosControlPorAsignaturaAnyo(idAsignaturaAnyo);
+            BinderListaControlGrid binder = new BinderListaControlGrid(grid);
+
+            Bind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
         }
     }
 }

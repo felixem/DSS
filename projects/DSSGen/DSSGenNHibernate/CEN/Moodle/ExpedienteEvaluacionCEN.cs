@@ -103,6 +103,12 @@ public DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN ReadRelation (int p_exp
 {
         return _IExpedienteEvaluacionCAD.ReadRelation (p_exp_asig, p_evaluacion);
 }
+public void Relationer_evaluacion_alumno (int p_expedienteevaluacion, int p_evaluacionalumno)
+{
+        //Call to ExpedienteEvaluacionCAD
+
+        _IExpedienteEvaluacionCAD.Relationer_evaluacion_alumno (p_expedienteevaluacion, p_evaluacionalumno);
+}
 public void Relationer_evaluacion (int p_expedienteevaluacion, int p_evaluacion)
 {
         //Call to ExpedienteEvaluacionCAD

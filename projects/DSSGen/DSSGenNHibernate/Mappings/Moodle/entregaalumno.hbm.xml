@@ -52,8 +52,8 @@
 											 					
 			
 		  			
-						<many-to-one name="Alumno" class="DSSGenNHibernate.EN.Moodle.AlumnoEN" >	
-								<column name="[FK_email_alumno]"/>
+						<many-to-one name="Evaluacion_alumno" class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN" >	
+								<column name="[FK_id_evaluacion_alumno]"/>
 						</many-to-one>
 											 					
 					
@@ -73,6 +73,6 @@
 		  
 		  <query name="EntregaAlumnoENReadAllHQL">from EntregaAlumnoEN</query>
 		  <query name="EntregaAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM EntregaAlumnoEN]]></query>
-		  <query name="EntregaAlumnoENreadRelationHQL"><![CDATA[FROM EntregaAlumnoEN ent_alu where ent_alu.Alumno.Email=:p_alumno AND ent_alu.Entrega.Id=:p_entrega]]></query>
+		  <query name="EntregaAlumnoENreadRelationHQL"><![CDATA[select ent_alu FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega]]></query>
 		</hibernate-mapping>
 	

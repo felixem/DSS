@@ -61,10 +61,10 @@ public int New_ (EvaluacionAlumnoEN evaluacionAlumno)
 
                         evaluacionAlumno.Sistema_evaluacion.Evaluaciones_alumno.Add (evaluacionAlumno);
                 }
-                if (evaluacionAlumno.Alumno != null) {
-                        evaluacionAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), evaluacionAlumno.Alumno.Email);
+                if (evaluacionAlumno.Expediente_evaluacion != null) {
+                        evaluacionAlumno.Expediente_evaluacion = (DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN), evaluacionAlumno.Expediente_evaluacion.Id);
 
-                        evaluacionAlumno.Alumno.Sistemas_evaluacion.Add (evaluacionAlumno);
+                        evaluacionAlumno.Expediente_evaluacion.Evaluacion_alumno = evaluacionAlumno;
                 }
 
                 session.Save (evaluacionAlumno);
@@ -222,17 +222,96 @@ public long ReadCantidad ()
 
         return result;
 }
-public void Relationer_alumno (int p_evaluacionalumno, string p_alumno)
+public void Relationer_expediente_evaluacion (int p_evaluacionalumno, int p_expedienteevaluacion)
 {
         DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
-                evaluacionAlumnoEN.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), p_alumno);
+                evaluacionAlumnoEN.Expediente_evaluacion = (DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN), p_expedienteevaluacion);
 
-                evaluacionAlumnoEN.Alumno.Sistemas_evaluacion.Add (evaluacionAlumnoEN);
+                evaluacionAlumnoEN.Expediente_evaluacion.Evaluacion_alumno = evaluacionAlumnoEN;
 
+
+
+
+                session.Update (evaluacionAlumnoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EvaluacionAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void Relationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno)
+{
+        DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
+                DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlesENAux = null;
+                if (evaluacionAlumnoEN.Controles == null) {
+                        evaluacionAlumnoEN.Controles = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN>();
+                }
+
+                foreach (int item in p_controlalumno) {
+                        controlesENAux = new DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ();
+                        controlesENAux = (DSSGenNHibernate.EN.Moodle.ControlAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ControlAlumnoEN), item);
+                        controlesENAux.Evaluacion_alumno = evaluacionAlumnoEN;
+
+                        evaluacionAlumnoEN.Controles.Add (controlesENAux);
+                }
+
+
+                session.Update (evaluacionAlumnoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EvaluacionAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void Relationer_entregas (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_entregaalumno)
+{
+        DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
+                DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregasENAux = null;
+                if (evaluacionAlumnoEN.Entregas == null) {
+                        evaluacionAlumnoEN.Entregas = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN>();
+                }
+
+                foreach (int item in p_entregaalumno) {
+                        entregasENAux = new DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ();
+                        entregasENAux = (DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN), item);
+                        entregasENAux.Evaluacion_alumno = evaluacionAlumnoEN;
+
+                        evaluacionAlumnoEN.Entregas.Add (entregasENAux);
+                }
 
 
                 session.Update (evaluacionAlumnoEN);
@@ -284,7 +363,7 @@ public void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistema
         }
 }
 
-public void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno)
+public void Unrelationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion)
 {
         try
         {
@@ -292,11 +371,11 @@ public void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno)
                 DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
                 evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
 
-                if (evaluacionAlumnoEN.Alumno.Email == p_alumno) {
-                        evaluacionAlumnoEN.Alumno = null;
+                if (evaluacionAlumnoEN.Sistema_evaluacion.Id == p_sistemaevaluacion) {
+                        evaluacionAlumnoEN.Sistema_evaluacion = null;
                 }
                 else
-                        throw new ModelException ("The identifier " + p_alumno + " in p_alumno you are trying to unrelationer, doesn't exist in EvaluacionAlumnoEN");
+                        throw new ModelException ("The identifier " + p_sistemaevaluacion + " in p_sistemaevaluacion you are trying to unrelationer, doesn't exist in EvaluacionAlumnoEN");
 
                 session.Update (evaluacionAlumnoEN);
                 SessionCommit ();
@@ -315,7 +394,7 @@ public void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno)
                 SessionClose ();
         }
 }
-public void Unrelationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion)
+public void Unrelationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno)
 {
         try
         {
@@ -323,11 +402,56 @@ public void Unrelationer_sistema_evaluacion (int p_evaluacionalumno, int p_siste
                 DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
                 evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
 
-                if (evaluacionAlumnoEN.Sistema_evaluacion.Id == p_sistemaevaluacion) {
-                        evaluacionAlumnoEN.Sistema_evaluacion = null;
+                DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlesENAux = null;
+                if (evaluacionAlumnoEN.Controles != null) {
+                        foreach (int item in p_controlalumno) {
+                                controlesENAux = (DSSGenNHibernate.EN.Moodle.ControlAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ControlAlumnoEN), item);
+                                if (evaluacionAlumnoEN.Controles.Contains (controlesENAux) == true) {
+                                        evaluacionAlumnoEN.Controles.Remove (controlesENAux);
+                                        controlesENAux.Evaluacion_alumno = null;
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_controlalumno you are trying to unrelationer, doesn't exist in EvaluacionAlumnoEN");
+                        }
                 }
-                else
-                        throw new ModelException ("The identifier " + p_sistemaevaluacion + " in p_sistemaevaluacion you are trying to unrelationer, doesn't exist in EvaluacionAlumnoEN");
+
+                session.Update (evaluacionAlumnoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EvaluacionAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Unrelationer_entregas (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_entregaalumno)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;
+                evaluacionAlumnoEN = (EvaluacionAlumnoEN)session.Load (typeof(EvaluacionAlumnoEN), p_evaluacionalumno);
+
+                DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregasENAux = null;
+                if (evaluacionAlumnoEN.Entregas != null) {
+                        foreach (int item in p_entregaalumno) {
+                                entregasENAux = (DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN), item);
+                                if (evaluacionAlumnoEN.Entregas.Contains (entregasENAux) == true) {
+                                        evaluacionAlumnoEN.Entregas.Remove (entregasENAux);
+                                        entregasENAux.Evaluacion_alumno = null;
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_entregaalumno you are trying to unrelationer, doesn't exist in EvaluacionAlumnoEN");
+                        }
+                }
 
                 session.Update (evaluacionAlumnoEN);
                 SessionCommit ();

@@ -13,6 +13,51 @@ namespace DSSGenNHibernate.Entrega {
     public partial class modificar_entrega {
         
         /// <summary>
+        /// TextBox_Anyo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Anyo;
+        
+        /// <summary>
+        /// TextBox_Asignatura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Asignatura;
+        
+        /// <summary>
+        /// TextBox_Evaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Evaluacion;
+        
+        /// <summary>
+        /// TextBox_Profesor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Profesor;
+        
+        /// <summary>
+        /// TextBox_CodEntrega control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_CodEntrega;
+        
+        /// <summary>
         /// TextBox_Nom control.
         /// </summary>
         /// <remarks>

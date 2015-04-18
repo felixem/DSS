@@ -35,6 +35,12 @@ private DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expediente_asignatura;
 
 private DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacion;
 
+/**
+ *
+ */
+
+private DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno;
+
 
 
 
@@ -64,6 +70,11 @@ public virtual DSSGenNHibernate.EN.Moodle.EvaluacionEN Evaluacion {
 }
 
 
+public virtual DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN Evaluacion_alumno {
+        get { return evaluacion_alumno; } set { evaluacion_alumno = value;  }
+}
+
+
 
 
 
@@ -73,18 +84,18 @@ public ExpedienteEvaluacionEN()
 
 
 
-public ExpedienteEvaluacionEN(int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expediente_asignatura, DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacion)
+public ExpedienteEvaluacionEN(int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expediente_asignatura, DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacion, DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno)
 {
-        this.init (id, nota_media, abierto, expediente_asignatura, evaluacion);
+        this.init (id, nota_media, abierto, expediente_asignatura, evaluacion, evaluacion_alumno);
 }
 
 
 public ExpedienteEvaluacionEN(ExpedienteEvaluacionEN expedienteEvaluacion)
 {
-        this.init (expedienteEvaluacion.Id, expedienteEvaluacion.Nota_media, expedienteEvaluacion.Abierto, expedienteEvaluacion.Expediente_asignatura, expedienteEvaluacion.Evaluacion);
+        this.init (expedienteEvaluacion.Id, expedienteEvaluacion.Nota_media, expedienteEvaluacion.Abierto, expedienteEvaluacion.Expediente_asignatura, expedienteEvaluacion.Evaluacion, expedienteEvaluacion.Evaluacion_alumno);
 }
 
-private void init (int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expediente_asignatura, DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacion)
+private void init (int id, float nota_media, bool abierto, DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN expediente_asignatura, DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacion, DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacion_alumno)
 {
         this.Id = id;
 
@@ -96,6 +107,8 @@ private void init (int id, float nota_media, bool abierto, DSSGenNHibernate.EN.M
         this.Expediente_asignatura = expediente_asignatura;
 
         this.Evaluacion = evaluacion;
+
+        this.Evaluacion_alumno = evaluacion_alumno;
 }
 
 public override bool Equals (object obj)

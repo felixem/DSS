@@ -260,6 +260,38 @@ public DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN ReadRelation (int p_exp
 
         return result;
 }
+public void Relationer_evaluacion_alumno (int p_expedienteevaluacion, int p_evaluacionalumno)
+{
+        DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN expedienteEvaluacionEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                expedienteEvaluacionEN = (ExpedienteEvaluacionEN)session.Load (typeof(ExpedienteEvaluacionEN), p_expedienteevaluacion);
+                expedienteEvaluacionEN.Evaluacion_alumno = (DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN), p_evaluacionalumno);
+
+                expedienteEvaluacionEN.Evaluacion_alumno.Expediente_evaluacion = expedienteEvaluacionEN;
+
+
+
+
+                session.Update (expedienteEvaluacionEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteEvaluacionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
 public void Relationer_evaluacion (int p_expedienteevaluacion, int p_evaluacion)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN expedienteEvaluacionEN = null;

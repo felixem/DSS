@@ -108,6 +108,10 @@ public long ReadCantidad ()
 {
         return _IControlCAD.ReadCantidad ();
 }
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        return _IControlCAD.ReadCantidadPorAsignaturaAnyo (id);
+}
 public void Relationer_bolsas_preguntas (int p_control, System.Collections.Generic.IList<int> p_bolsapreguntas)
 {
         //Call to ControlCAD
