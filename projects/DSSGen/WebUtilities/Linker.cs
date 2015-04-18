@@ -25,8 +25,10 @@ namespace WebUtilities
         internal static readonly string anyadirAlumnosGrupoTrabajo = "/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx";
         internal static readonly string listarGruposTrabajoAsignaturaAnyo = "/GrupoTrabajo/grupos_trabajo_asignatura.aspx";
         internal static readonly string crearGrupoTrabajoAsignaturaAnyo = "/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx";
+        internal static readonly string listarGruposTrabajoAsignaturaAnyoAlumno = "/GrupoTrabajo/grupos_trabajo_asignatura_alumno.aspx";
         internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
         internal static readonly string matricularAlumnoEnAsignaturaAnyo = "/AsignaturaAnyo/matricular_alumno_asignatura.aspx";
+        internal static readonly string listarAsignaturasAnyoDeAlumno = "/AsignaturaAnyo/asignaturas_matriculado_alumno.aspx";
         internal static readonly string login = "/Account/Login.aspx";
         internal static readonly string pageDefault = "/Default.aspx";
         internal static readonly string listadoBolsaPreguntas = "/Examen/bolsas_preguntas.aspx";
@@ -170,6 +172,12 @@ namespace WebUtilities
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
+        //Cadena para la página de los grupos de trabajo de una asignatura de un alumno
+        public string ListarGruposTrabajoAsignaturaAnyoAlumno(int cod)
+        {
+            return listarGruposTrabajoAsignaturaAnyoAlumno + Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
         //Cadena para la página de creación de una pregunta
         public string CrearPregunta()
         {
@@ -264,6 +272,12 @@ namespace WebUtilities
         {
             return listarAlumnosGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página de creación de grupo de trabajo
+        public string ListarAsignaturasAnyoDeAlumno()
+        {
+            return listarAsignaturasAnyoDeAlumno;
         }
 
         //Cadena para la página para añadir a un alumno a un grupo de trabajo

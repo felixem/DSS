@@ -110,5 +110,11 @@ namespace WebApplication2
             Linker link = new Linker(false);
             link.Redirect(Response, link.GruposTrabajo());
         }
+
+        protected void btn_asignaturas_alumno_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListarAsignaturasAnyoDeAlumno());
+        }
     }
 }

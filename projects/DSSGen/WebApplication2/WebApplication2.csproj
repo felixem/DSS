@@ -58,6 +58,7 @@
     <Content Include="Alumno\alumnos_matriculados.aspx" />
     <Content Include="Alumno\mis_alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
+    <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
     <Content Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx" />
     <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
     <Content Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx" />
@@ -69,6 +70,7 @@
     <Content Include="Errors\403.aspx" />
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
+    <Content Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\modificar_grupotrabajo.aspx" />
@@ -167,6 +169,13 @@
     </Compile>
     <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.designer.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.cs">
       <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
@@ -289,6 +298,13 @@
     </Compile>
     <Compile Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx.designer.cs">
       <DependentUpon>anyadiralumnos_grupo_trabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.cs">
+      <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.designer.cs">
+      <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx.cs">
       <DependentUpon>crear_grupotrabajo_asignatura.aspx</DependentUpon>
