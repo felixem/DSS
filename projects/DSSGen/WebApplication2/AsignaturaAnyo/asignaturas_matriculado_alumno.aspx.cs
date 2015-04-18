@@ -18,6 +18,7 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         FachadaAsignaturaAnyo fachadaAsignatura;
         //Fachada para los años
         FachadaAnyoAcademico fachadaAnyo;
+        string param;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
@@ -46,10 +47,10 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             long numObjetos = 0;
 
             int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
+            string alumno = session.Usuario.Email;
 
             //Vincular el grid con la lista de asignaturas impartidas en el año paginada
-            if(session.IsAlumno())
-                fachadaAsignatura.VincularDameTodosAsignaturaAnyoPorAlumno("alumno",idAnyo, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaAsignatura.VincularDameTodosAsignaturaAnyoPorAlumno(alumno ,idAnyo, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);

@@ -24,6 +24,7 @@ namespace WebUtilities
             Permiso permisoSoloAdmin = new Permiso(true, typeof(AdministradorEN));
             Permiso permisoSoloAlumno = new Permiso(true, typeof(AlumnoEN));
             Permiso permisoAdminProfesor = new Permiso(true, typeof(AdministradorEN), typeof(ProfesorEN));
+            Permiso permisoAdminAlumno = new Permiso(true, typeof(AdministradorEN), typeof(AlumnoEN));
 
             //Creación del hashmap
             permisos = new Dictionary<string, Permiso>();
@@ -53,6 +54,10 @@ namespace WebUtilities
             permisos.Add(Linker.anyadirAlumnosGrupoTrabajo, permisoAdminProfesor);
             //Páginas de modificación
             permisos.Add(Linker.modificarGrupoTrabajo, permisoAdminProfesor);
+
+            //Permisos para ALUMNO y ADMINISTRADOR
+            //Páginas de listado
+            permisos.Add(Linker.listarAsignaturasAnyoDeAlumno, permisoAdminAlumno);
 
             //Permisos de ADMINISTRADOR
             //Páginas de modificación

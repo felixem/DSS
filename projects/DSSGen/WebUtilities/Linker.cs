@@ -27,6 +27,7 @@ namespace WebUtilities
         internal static readonly string crearGrupoTrabajoAsignaturaAnyo = "/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx";
         internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
         internal static readonly string matricularAlumnoEnAsignaturaAnyo = "/AsignaturaAnyo/matricular_alumno_asignatura.aspx";
+        internal static readonly string listarAsignaturasAnyoDeAlumno = "/AsignaturaAnyo/asignaturas_matriculado_alumno.aspx";
         internal static readonly string login = "/Account/Login.aspx";
         internal static readonly string pageDefault = "/Default.aspx";
         internal static readonly string listadoBolsaPreguntas = "/Examen/bolsas_preguntas.aspx";
