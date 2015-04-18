@@ -35,6 +35,7 @@ namespace WebUtilities
         internal static readonly string crearBolsa = "/Examen/crear_bolsa.aspx";
         internal static readonly string passChanged = "/Account/ChangePasswordSuccess.aspx";
         internal static readonly string crearControl = "/Control/crear_control.aspx";
+        internal static readonly string listarControles = "/Control/controles.aspx";
         internal static readonly string crearPregunta = "/Examen/crear_pregunta.aspx";
         internal static readonly string alumnos = "/Alumno/alumnos.aspx";
         internal static readonly string crearAlumno = "/Alumno/crear_alumno.aspx";
@@ -46,6 +47,7 @@ namespace WebUtilities
         internal static readonly string crearGrupoTrabajo = "/GrupoTrabajo/crear_grupotrabajo.aspx";
         internal static readonly string crearAsignaturaAnyo = "/AsignaturaAnyo/crear_asignaturaanyo.aspx";
         internal static readonly string crearEntrega = "/Entrega/crear_entrega.aspx";
+        internal static readonly string listarEntregas = "/Entrega/entregas.aspx";
         internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
         internal static readonly string changePassword = "/Account/ChangePassword.aspx";
         internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
@@ -293,6 +295,11 @@ namespace WebUtilities
             return crearAsignaturaAnyo;
         }
 
+        //Cadena para la página cambiar contraseña
+        public string  ChangePassword(){
+            return changePassword;
+        }
+
         //Cadena para la página para listar los grupos de trabajo de una asignatura-anyo
         public string ListarGruposTrabajoAsignaturaAnyo(int cod)
         {
@@ -312,6 +319,18 @@ namespace WebUtilities
         {
             return listarMatriculadosAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la ruta para listar los controles
+        public string ListarControles()
+        {
+            return listarControles;
+        }
+
+        //Cadena para la ruta para listar las entregas
+        public string ListarEntregas()
+        {
+            return listarEntregas;
         }
 
         //Cadena para la página para matricular alumnos en una asignatura
