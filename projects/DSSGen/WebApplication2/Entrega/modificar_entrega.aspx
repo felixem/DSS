@@ -13,6 +13,31 @@
     <h1>
         Modificar Entrega</h1>
     <p class="style2">
+        Año Academico
+                <asp:TextBox ID="TextBox_Anyo" runat="server" 
+                    ReadOnly="True"></asp:TextBox>
+    </p>
+    <p class="style2">
+        Asignatura
+                <asp:TextBox ID="TextBox_Asignatura" runat="server"
+                    ReadOnly="True"></asp:TextBox>
+            </p>
+    <p class="style2">
+        Evaluación
+                <asp:TextBox ID="TextBox_Evaluacion" runat="server"
+                    ReadOnly="True"></asp:TextBox>
+            </p>
+    <p class="style2">
+        Profesor
+                <asp:TextBox ID="TextBox_Profesor" runat="server"
+                    ReadOnly="True"></asp:TextBox>
+            </p>
+    <p class="style2">
+        Cod Entrega
+                <asp:TextBox ID="TextBox_CodEntrega" runat="server"
+                    ReadOnly="True"></asp:TextBox>
+            </p>
+    <p class="style2">
         Nombre<asp:TextBox ID="TextBox_Nom" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_Nom"
                 Display="Dynamic" ErrorMessage="Introduce Nombre" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
