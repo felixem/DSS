@@ -18,7 +18,6 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         FachadaAsignaturaAnyo fachadaAsignatura;
         //Fachada para los años
         FachadaAnyoAcademico fachadaAnyo;
-        string param;
 
         //Manejador al cargar la página
         protected void Page_Load(object sender, EventArgs e)
@@ -82,40 +81,14 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             rptPager.DataBind();
         }
 
-        //Manejador del evento para listar los alumnos de una asignatura-anyo
-        protected void lnkAlumnos_Click(object sender, EventArgs e)
-        {
-            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
-
-            Linker link = new Linker(true);
-            link.Redirect(Response, link.ListarMatriculadosAsignaturaAnyo(asignaturaId));
-        }
-
         //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo
-        protected void lnkGrupos_Click(object sender, EventArgs e)
+        protected void lnkInscripcionGrupo_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyo(asignaturaId));
-        }
-
-        //Manejador del evento para eliminar una asignatura-anyo
-        protected void lnkEliminar_Click(object sender, EventArgs e)
-        {
-            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int asignaturaAnyoId = Int32.Parse(grdrow.Cells[0].Text);
-
-            //Eliminar asignatura
-            if (fachadaAsignatura.BorrarAsignaturaAnyo(asignaturaAnyoId))
-                Notification.Notify(Response, "La asignatura ha sido desvinculada del curso académico");
-            else
-                Notification.Notify(Response, "La asignatura no ha podido ser desvinculada del curso académico");
-
-            //Obtener de nuevo la lista de bolsas
-            this.ObtenerAsignaturasPaginadas(1);
+            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(asignaturaId));
         }
 
         //Obtener los años académicos

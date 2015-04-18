@@ -55,9 +55,13 @@ namespace WebUtilities
             //Páginas de modificación
             permisos.Add(Linker.modificarGrupoTrabajo, permisoAdminProfesor);
 
+            //Permisos para ALUMNO
+            //Páginas de listado
+            permisos.Add(Linker.listarGruposTrabajoAsignaturaAnyoAlumno, permisoSoloAlumno);
+            permisos.Add(Linker.listarAsignaturasAnyoDeAlumno, permisoSoloAlumno);
+
             //Permisos para ALUMNO y ADMINISTRADOR
             //Páginas de listado
-            permisos.Add(Linker.listarAsignaturasAnyoDeAlumno, permisoAdminAlumno);
 
             //Permisos de ADMINISTRADOR
             //Páginas de modificación

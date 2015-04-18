@@ -51,6 +51,8 @@
 		<ul>
 			<asp:Button ID="btn_inicio_va" runat="server" Text="Inicio" CssClass="estilob" 
                 onclick="btn_inicio_Click" />
+            <asp:Button ID="btn_asignaturas_va" runat="server" Text="Asignaturas" CssClass="estilob" 
+                onclick="btn_asignaturas_alumno_Click" />
 		</ul>
         </asp:View>
         <asp:View runat="server" ID="ViewProfesor">
