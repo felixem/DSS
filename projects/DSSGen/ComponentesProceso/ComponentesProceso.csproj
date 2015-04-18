@@ -76,6 +76,8 @@
     <Compile Include="Moodle\Commands\DameTodosAsignaturaVinculablesAAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosControlPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEntregaPorAsignaturaAnyo.cs" />
     <Compile Include="Moodle\EntregaCP.cs" />
     <Compile Include="Moodle\AnyoAcademicoCP.cs" />
     <Compile Include="Moodle\AsignaturaAnyoCP.cs" />

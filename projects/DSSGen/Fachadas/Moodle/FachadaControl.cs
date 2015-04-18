@@ -98,5 +98,17 @@ namespace Fachadas.Moodle
 
             return true;
         }
+
+        //Vincular a un gridview los controles pertenecientes a una asignatura-anyo con paginación
+        public void VincularDameTodosPorAsignaturaAnyo(int idAsignaturaAnyo, GridView grid,
+            int first, int size, out long numAlumnos)
+        {
+            //Obtener controles y enlazar sus datos con el gridview
+            ControlBinding Bind = new ControlBinding();
+            IDameTodosControl consulta = new DameTodosControlPorAsignaturaAnyo(idAsignaturaAnyo);
+            BinderListaControlGrid binder = new BinderListaControlGrid(grid);
+
+            Bind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
+        }
     }
 }

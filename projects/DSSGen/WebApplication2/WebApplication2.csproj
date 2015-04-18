@@ -112,6 +112,10 @@
     <Content Include="Entrega\entregas.aspx" />
     <Content Include="Entrega\crear_entrega.aspx" />
     <Content Include="Entrega\modificar_entrega.aspx" />
+    <Content Include="Entrega\entregas_asignatura.aspx" />
+    <Content Include="Entrega\crear_entrega_asignatura.aspx" />
+    <Content Include="Control\crear_control_asignatura.aspx" />
+    <Content Include="Control\controles_asignatura.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -418,6 +422,34 @@
     </Compile>
     <Compile Include="Entrega\modificar_entrega.aspx.designer.cs">
       <DependentUpon>modificar_entrega.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura.aspx.cs">
+      <DependentUpon>entregas_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura.aspx.designer.cs">
+      <DependentUpon>entregas_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega_asignatura.aspx.cs">
+      <DependentUpon>crear_entrega_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_entrega_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crear_control_asignatura.aspx.cs">
+      <DependentUpon>crear_control_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\crear_control_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_control_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\controles_asignatura.aspx.cs">
+      <DependentUpon>controles_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\controles_asignatura.aspx.designer.cs">
+      <DependentUpon>controles_asignatura.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
