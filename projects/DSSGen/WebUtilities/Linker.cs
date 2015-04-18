@@ -46,6 +46,8 @@ namespace WebUtilities
         internal static readonly string crearEntrega = "/Entrega/crear_entrega.aspx";
         internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
         internal static readonly string changePassword = "/Account/ChangePassword.aspx";
+        internal static readonly string crearEvaluacion = "/Evaluacion/crear_evaluacion.aspx";
+        internal static readonly string modificarEvaluacion = "/Evaluacion/modificar_evaluacion.aspx";
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
@@ -300,5 +302,12 @@ namespace WebUtilities
         {
             return asignaturasImpartidas;
         }
+        public String CrearEvaluacion() {
+            return crearEvaluacion;
+        }
+        public String ModificarEvaluacion(int cod) {
+            return modificarEvaluacion + Parameter(PageParameters.MainParameter, cod.ToString());
+        }
     }
+        
 }

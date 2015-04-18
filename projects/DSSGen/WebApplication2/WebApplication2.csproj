@@ -64,6 +64,9 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="Evaluacion\crear_evaluacion.aspx" />
+    <Content Include="Evaluacion\evaluaciones.aspx" />
+    <Content Include="Evaluacion\modificar_evaluacion.aspx" />
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
@@ -213,6 +216,27 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\crear_evaluacion.aspx.cs">
+      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\crear_evaluacion.aspx.designer.cs">
+      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\evaluaciones.aspx.cs">
+      <DependentUpon>evaluaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\evaluaciones.aspx.designer.cs">
+      <DependentUpon>evaluaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\modificar_evaluacion.aspx.cs">
+      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\modificar_evaluacion.aspx.designer.cs">
+      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Examen\bolsas_preguntas.aspx.cs">
       <DependentUpon>bolsas_preguntas.aspx</DependentUpon>

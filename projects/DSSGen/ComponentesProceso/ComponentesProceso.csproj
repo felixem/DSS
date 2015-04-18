@@ -71,9 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
+    <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignaturaVinculablesAAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosEvaluacion.cs" />
     <Compile Include="Moodle\EntregaCP.cs" />
     <Compile Include="Moodle\AnyoAcademicoCP.cs" />
     <Compile Include="Moodle\AsignaturaAnyoCP.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Moodle\Commands\IDameEntrega.cs" />
     <Compile Include="Moodle\Commands\IDameTodosControl.cs" />
     <Compile Include="Moodle\Commands\IDameTodosEntrega.cs" />
+    <Compile Include="Moodle\EvaluacionCP.cs" />
     <Compile Include="Moodle\UsuarioCP.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoIngresablesEnGrupo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorGrupo.cs" />
