@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cambiar contraseña" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Acceso Restringido" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="403.aspx.cs" Inherits="WebApplication2.Errors.Error403" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

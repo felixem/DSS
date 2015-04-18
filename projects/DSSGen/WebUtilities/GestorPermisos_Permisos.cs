@@ -7,7 +7,7 @@ using DSSGenNHibernate.EN.Moodle;
 namespace WebUtilities
 {
     //Gestor de permisos de acceso para las páginas
-    public partial class GestorPermisos
+    public static partial class GestorPermisos
     {
         //Clase que representa un nivel de permiso
         private class Permiso

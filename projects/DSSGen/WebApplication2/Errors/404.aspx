@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cambiar contraseña" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Recurso no encontrado" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="404.aspx.cs" Inherits="WebApplication2.Errors.Error404" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

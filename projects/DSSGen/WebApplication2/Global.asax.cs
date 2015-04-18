@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using WebUtilities;
 
 namespace WebApplication2
 {
@@ -30,17 +31,18 @@ namespace WebApplication2
             if (null != serverError)
             {
                 int errorCode = serverError.GetHttpCode();
+                Linker linker = new Linker(false);
 
                 if (404 == errorCode)
                 {
                     Server.ClearError();
-                    Response.Redirect("/Errors/404.aspx");
+                    Response.Redirect(linker.Error404());
                 }
 
                 if (403 == errorCode)
                 {
                     Server.ClearError();
-                    Response.Redirect("/Errors/403.aspx");
+                    Response.Redirect(linker.Error403());
                 }
             }
         }

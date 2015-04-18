@@ -47,12 +47,15 @@ namespace WebUtilities
         internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
         internal static readonly string changePassword = "/Account/ChangePassword.aspx";
         internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
+        internal static readonly string misAlumnosMatriculadosAsignaturaAnyo = "/Alumno/mis_alumnos_matriculados.aspx";
+
+        internal static readonly string error404 = "/Errors/404.aspx";
+        internal static readonly string error403 = "/Errors/403.aspx";
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
         {
             cacheable = cach;
-            navegacion = NavigationSession.Current;
         }
 
         //Manipular el valor de cacheabilidad
@@ -63,7 +66,7 @@ namespace WebUtilities
         }
 
         //Crear un parámetro para añadir a una url
-        private string Parameter(string paramName, string paramValue, bool isFirstParameter = true)
+        private static string Parameter(string paramName, string paramValue, bool isFirstParameter = true)
         {
             string cadena = "";
             //Añadir el comienzo correspondiente en caso de ser o no el primer parámetro
@@ -80,6 +83,10 @@ namespace WebUtilities
         //Método utilizado para redirigir hacia una dirección
         public void Redirect(HttpResponse response, String url)
         {
+            //Inicializar variable
+            if (navegacion == null)
+                navegacion = NavigationSession.Current;
+
             navegacion.Cacheable = cacheable;
             response.Redirect(url);
         }
@@ -87,6 +94,10 @@ namespace WebUtilities
         //Cadena para la página anterior a la actual
         public string PreviousPage()
         {
+            //Inicializar variable
+            if (navegacion == null)
+                navegacion = NavigationSession.Current;
+
             String url = navegacion.PopLastUrl();
 
             //Llevar a la página por defecto si no hay previa
@@ -191,7 +202,7 @@ namespace WebUtilities
         }
 
         //Cadena para la página de modificación de alumno
-        public String ModificarAlumno(int cod)
+        public string ModificarAlumno(int cod)
         {
             return modificarAlumno +
                 Parameter(PageParameters.MainParameter, cod.ToString());
@@ -204,108 +215,127 @@ namespace WebUtilities
         }
 
         //Cadena para la página de modificación de profesor
-        public String ModificarProfesor(int cod)
+        public string ModificarProfesor(int cod)
         {
             return modificarProfesor +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página de gestión de asignaturas
-        public String Asignaturas()
+        public string Asignaturas()
         {
             return asignaturas;
         }
 
         //Cadena para la página de creación de asignatura
-        public String CrearAsignatura()
+        public string CrearAsignatura()
         {
             return crearAsignatura;
         }
 
         //Cadena para la página de modificación de asignatura
-        public String ModificarAsignatura(int cod)
+        public string ModificarAsignatura(int cod)
         {
             return modificarAsignatura +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página de creación de grupo de trabajo
-        public String GruposTrabajo()
+        public string GruposTrabajo()
         {
             return gruposTrabajo;
         }
 
         //Cadena para la página de creación de grupo de trabajo
-        public String CrearGrupoTrabajo()
+        public string CrearGrupoTrabajo()
         {
             return crearGrupoTrabajo;
         }
 
         //Cadena para la página de modificación de grupo de trabajo
-        public String ModificarGrupoTrabajo(int cod)
+        public string ModificarGrupoTrabajo(int cod)
         {
             return modificarGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para listar alumnos de un grupo de trabajo
-        public String ListarAlumnosGrupoTrabajo(int cod)
+        public string ListarAlumnosGrupoTrabajo(int cod)
         {
             return listarAlumnosGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para añadir a un alumno a un grupo de trabajo
-        public String AnyadirAlumnosGrupoTrabajo(int cod)
+        public string AnyadirAlumnosGrupoTrabajo(int cod)
         {
             return anyadirAlumnosGrupoTrabajo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para vincular una asignatura con un año
-        public String CrearAsignaturaAnyo()
+        public string CrearAsignaturaAnyo()
         {
             return crearAsignaturaAnyo;
         }
 
         //Cadena para la página para listar los grupos de trabajo de una asignatura-anyo
-        public String ListarGruposTrabajoAsignaturaAnyo(int cod)
+        public string ListarGruposTrabajoAsignaturaAnyo(int cod)
         {
             return listarGruposTrabajoAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para crear un grupo de trabajo para una asignatura-anyo
-        public String CrearGrupoTrabajoAsignaturaAnyo(int cod)
+        public string CrearGrupoTrabajoAsignaturaAnyo(int cod)
         {
             return crearGrupoTrabajoAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para listar los alumnos matriculados en una asignatura
-        public String ListarMatriculadosAsignaturaAnyo(int cod)
+        public string ListarMatriculadosAsignaturaAnyo(int cod)
         {
             return listarMatriculadosAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para matricular alumnos en una asignatura
-        public String MatricularAlumnoEnAsignaturaAnyo(int cod)
+        public string MatricularAlumnoEnAsignaturaAnyo(int cod)
         {
             return matricularAlumnoEnAsignaturaAnyo +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página de asignaturas-anyo impartidas
-        public String AsignaturasImpartidas()
+        public string AsignaturasImpartidas()
         {
             return asignaturasImpartidas;
         }
 
         //Cadena para la página de las asignaturas-anyo impartidas por el profesor
-        public String MisAsignaturasImpartidas()
+        public string MisAsignaturasImpartidas()
         {
             return misAsignaturasImpartidas;
+        }
+
+        //Cadena para la página de los alumnos matriculados en una asignatura-anyo impartida por un profesor
+        public string MisAlumnosMatriculadosAsignaturaAnyo(int cod)
+        {
+            return misAlumnosMatriculadosAsignaturaAnyo +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página de error 403
+        public string Error403()
+        {
+            return error403;
+        }
+
+        //Cadena para la página de error 404
+        public string Error404()
+        {
+            return error404;
         }
     }
 }

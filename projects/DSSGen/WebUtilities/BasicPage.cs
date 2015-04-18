@@ -14,8 +14,7 @@ namespace WebUtilities
         protected void Page_InitComplete(object sender, EventArgs e)
         {
             //Comprobar los permisos de acceso
-            GestorPermisos gestor = GestorPermisos.Create;
-            gestor.ComprobarPermisos(Response, Request, MySession.Current);
+            GestorPermisos.ComprobarPermisos(Response, Request, MySession.Current);
         }
     }
 }

@@ -84,7 +84,7 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ListarMatriculadosAsignaturaAnyo(asignaturaId));
+            link.Redirect(Response, link.MisAlumnosMatriculadosAsignaturaAnyo(asignaturaId));
         }
 
         //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo

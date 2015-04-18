@@ -9,7 +9,7 @@ using WebUtilities;
 
 namespace WebApplication2.Errors
 {
-    public partial class Error404 : BasicPage
+    public partial class Error404 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
