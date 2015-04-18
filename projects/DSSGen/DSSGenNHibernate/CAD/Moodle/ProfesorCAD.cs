@@ -306,7 +306,7 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ProfesorEN self where select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ";
+                //String sql = @"FROM ProfesorEN self where select count(distinct prof) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ProfesorENreadCantidadPorAsignaturaAnyoHQL");
                 query.SetParameter ("id", id);

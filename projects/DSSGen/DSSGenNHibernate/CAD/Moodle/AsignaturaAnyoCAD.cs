@@ -229,7 +229,7 @@ public long ReadCantidadPorAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AsignaturaAnyoEN self where select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ";
+                //String sql = @"FROM AsignaturaAnyoEN self where select count(distinct asig) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadCantidadPorAnyoHQL");
                 query.SetParameter ("id", id);
@@ -326,7 +326,7 @@ public DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatur
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AsignaturaAnyoEN self where FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo";
+                //String sql = @"FROM AsignaturaAnyoEN self where select as_anyo FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadRelationHQL");
                 query.SetParameter ("p_asignatura", p_asignatura);

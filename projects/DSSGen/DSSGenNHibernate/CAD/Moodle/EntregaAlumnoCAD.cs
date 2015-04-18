@@ -255,7 +255,7 @@ public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM EntregaAlumnoEN self where FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega";
+                //String sql = @"FROM EntregaAlumnoEN self where select ent_alu FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("EntregaAlumnoENreadRelationHQL");
                 query.SetParameter ("p_evalalumno", p_evalalumno);

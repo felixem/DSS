@@ -183,6 +183,7 @@
 	<Compile Include="CEN\Moodle\EntregaCEN.cs" />
 	<Compile Include="CAD\Moodle\IEntregaCAD.cs" />
 	<Compile Include="CAD\Moodle\EntregaCAD.cs" />
+			<Compile Include="CEN\Moodle\EntregaCEN_ReadAllPorAsignaturaAnyo.cs" />
 			<Compile Include="CEN\Moodle\EntregaCEN_Custom.cs" />
 	<Compile Include="EN\Moodle\EntregaAlumnoEN.cs" />
 	<Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
@@ -201,6 +202,7 @@
 	<Compile Include="CEN\Moodle\ControlCEN.cs" />
 	<Compile Include="CAD\Moodle\IControlCAD.cs" />
 	<Compile Include="CAD\Moodle\ControlCAD.cs" />
+			<Compile Include="CEN\Moodle\ControlCEN_ReadAllPorAsignaturaAnyo.cs" />
 	<Compile Include="EN\Moodle\ControlAlumnoEN.cs" />
 	<Compile Include="CEN\Moodle\ControlAlumnoCEN.cs" />
 	<Compile Include="CAD\Moodle\IControlAlumnoCAD.cs" />

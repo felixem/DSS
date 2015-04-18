@@ -25,6 +25,10 @@ EntregaEN ReadOID (int id);
 long ReadCantidad ();
 
 
+long ReadCantidadPorAsignaturaAnyo (int id);
+
+
+
 void Relationer_entregas_alumno (int p_entrega, System.Collections.Generic.IList<int> p_entregaalumno);
 
 void Relationer_evaluacion (int p_entrega, int p_sistemaevaluacion);
