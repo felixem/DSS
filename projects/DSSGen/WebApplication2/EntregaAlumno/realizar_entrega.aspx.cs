@@ -58,7 +58,7 @@ namespace DSSGenNHibernate.EntregaAlumno
         private void CargarDatos()
         {
             //Recuperar los datos de la entrega
-            if (!fachadaEntrega.VincularEntregaPorId(id, TextBox_Nom,
+            if (!fachadaEntrega.VincularEntregaPorIdLigero(id, TextBox_Nom,
             TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt))
             {
                 //Redirigir a la página que le llamó
