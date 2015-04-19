@@ -28,6 +28,10 @@ long ReadCantidad ();
 DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno, int p_entrega);
 
 
+long ReadCantidadPorEntrega (int id);
+
+
+
 void Relationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno);
 
 void Relationer_entrega (int p_entregaalumno, int p_entrega);

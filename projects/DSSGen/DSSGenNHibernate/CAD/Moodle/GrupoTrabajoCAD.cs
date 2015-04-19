@@ -295,6 +295,39 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
 
         return result;
 }
+public long ReadCantidadPorAlumnoYAsignaturaAnyo (string p_alumno, int p_asig)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM GrupoTrabajoEN self where select count(distinct grupo) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Alumnos as alu where grupo.Asignatura.Id=:p_asig AND alu.Email=:p_alumno";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("GrupoTrabajoENreadCantidadPorAlumnoYAsignaturaAnyoHQL");
+                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_asig", p_asig);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in GrupoTrabajoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN grupoTrabajoEN = null;

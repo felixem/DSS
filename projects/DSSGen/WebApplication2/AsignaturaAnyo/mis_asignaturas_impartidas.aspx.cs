@@ -97,6 +97,26 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyo(asignaturaId));
         }
 
+        //Manejador del evento para listar los entregas de una asignatura-anyo
+        protected void lnkEntrega_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
+
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ListarEntregaAsignaturaAnyo(asignaturaId));
+        }
+
+        //Manejador del evento para listar los controles de una asignatura-anyo
+        protected void lnkControl_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
+
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ListarControlAsignaturaAnyo(asignaturaId));
+        }
+
         //Obtener los años académicos
         protected void ObtenerAnyosAcademicos()
         {

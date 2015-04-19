@@ -124,6 +124,10 @@ public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno
 {
         return _IEntregaAlumnoCAD.ReadRelation (p_evalalumno, p_entrega);
 }
+public long ReadCantidadPorEntrega (int id)
+{
+        return _IEntregaAlumnoCAD.ReadCantidadPorEntrega (id);
+}
 public void Relationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno)
 {
         //Call to EntregaAlumnoCAD

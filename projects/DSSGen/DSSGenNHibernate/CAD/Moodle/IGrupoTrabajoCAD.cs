@@ -32,6 +32,10 @@ long ReadCantidadPorAsignaturaAnyo (int id);
 
 
 
+long ReadCantidadPorAlumnoYAsignaturaAnyo (string p_alumno, int p_asig);
+
+
+
 void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno);
 
 void Relationer_asignatura (int p_grupotrabajo, int p_asignaturaanyo);

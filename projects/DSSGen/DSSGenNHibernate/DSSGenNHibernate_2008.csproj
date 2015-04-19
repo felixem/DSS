@@ -160,6 +160,7 @@
 	<Compile Include="CAD\Moodle\IGrupoTrabajoCAD.cs" />
 	<Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs" />
 			<Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAsignaturaAnyo.cs" />
+			<Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAlumnoYAsignaturaAnyo.cs" />
 	<Compile Include="EN\Moodle\MaterialEN.cs" />
 	<Compile Include="CEN\Moodle\MaterialCEN.cs" />
 	<Compile Include="CAD\Moodle\IMaterialCAD.cs" />
@@ -189,6 +190,7 @@
 	<Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
 	<Compile Include="CAD\Moodle\IEntregaAlumnoCAD.cs" />
 	<Compile Include="CAD\Moodle\EntregaAlumnoCAD.cs" />
+			<Compile Include="CEN\Moodle\EntregaAlumnoCEN_ReadAllPorEntrega.cs" />
 	<Compile Include="EN\Moodle\SistemaEvaluacionEN.cs" />
 	<Compile Include="CEN\Moodle\SistemaEvaluacionCEN.cs" />
 	<Compile Include="CAD\Moodle\ISistemaEvaluacionCAD.cs" />
