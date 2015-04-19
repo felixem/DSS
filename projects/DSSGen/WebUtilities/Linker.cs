@@ -52,12 +52,17 @@ namespace WebUtilities
         internal static readonly string crearEntregaAsignaturaAnyo = "/Entrega/crear_entrega_asignatura.aspx";
         internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
         internal static readonly string changePassword = "/Account/ChangePassword.aspx";
+
+        internal static readonly string crearEvaluacion = "/Evaluacion/crear_evaluacion.aspx";
+        internal static readonly string modificarEvaluacion = "/Evaluacion/modificar_evaluacion.aspx";
+
         internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
         internal static readonly string misAlumnosMatriculadosAsignaturaAnyo = "/Alumno/mis_alumnos_matriculados.aspx";
         internal static readonly string realizarEntregaPracticas = "/EntregaAlumno/realizar_entrega.aspx";
 
         internal static readonly string error404 = "/Errors/404.aspx";
         internal static readonly string error403 = "/Errors/403.aspx";
+
 
         //Constructor para indicar si la página actual debe ser o no cacheada
         public Linker(bool cach)
@@ -363,6 +368,14 @@ namespace WebUtilities
             return asignaturasImpartidas;
         }
 
+        public String CrearEvaluacion() {
+            return crearEvaluacion;
+        }
+        public String ModificarEvaluacion(int cod)
+        {
+            return modificarEvaluacion + Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
         //Cadena para la página de las asignaturas-anyo impartidas por el profesor
         public string MisAsignaturasImpartidas()
         {
@@ -395,4 +408,5 @@ namespace WebUtilities
             return error404;
         }
     }
+        
 }
