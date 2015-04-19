@@ -248,6 +248,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Download\DownloadFile.cs" />
     <Compile Include="EntregaAlumno\detalles_entrega_alumno.aspx.cs">
       <DependentUpon>detalles_entrega_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -49,9 +49,9 @@
             runat="server" Width="679px"></asp:TextBox>
     </p>
     <p class="style2">
-        &nbsp;</p>
-    <p class="style2">
-        Descargar Entrega</p>
+        &nbsp;Descargar Entrega
+        <asp:Button ID="Button_descargar" runat="server" OnClick="Button_Descargar_Click" Text="Bajar Achivo" Width="130px" />
+    </p>
     <p class="style2">
         <asp:Button ID="Button_Calificar" runat="server" OnClick="Button_Calificar_Click"
                 Text="Calificar" ValidationGroup="Registro"  />

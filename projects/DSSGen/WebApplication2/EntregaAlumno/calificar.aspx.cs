@@ -101,5 +101,11 @@ namespace DSSGenNHibernate.EntregaAlumno
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
         }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Descargar_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
