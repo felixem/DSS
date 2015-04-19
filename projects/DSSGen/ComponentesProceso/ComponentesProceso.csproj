@@ -77,7 +77,11 @@
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosEntregaAlumnoPorEntrega.cs" />
     <Compile Include="Moodle\Commands\DameTodosEvaluacion.cs" />
+<<<<<<< HEAD
     <Compile Include="Moodle\Commands\IDameEntregaAlumno.cs" />
+=======
+    <Compile Include="Moodle\Commands\DameTodosEvaluacionPorAnyo.cs" />
+>>>>>>> origin/user-iterface
     <Compile Include="Moodle\Commands\IDameEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IDameTodosEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameTodosEvaluacion.cs" />

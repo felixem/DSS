@@ -88,6 +88,9 @@
     <Content Include="Examen\modificar_bolsa.aspx" />
     <Content Include="Examen\crear_bolsa.aspx" />
     <Content Include="Examen\crear_pregunta.aspx" />
+    <Content Include="Sistema Evaluacion\crear_sistema.aspx" />
+    <Content Include="Sistema Evaluacion\modificar_sistema.aspx" />
+    <Content Include="Sistema Evaluacion\sistemas_evaluacion.aspx" />
     <Content Include="Styles\default.css" />
     <Content Include="Styles\utilities\centrar_contenido.css" />
     <Content Include="Styles\utilities\tabla_dos_columnas.css" />
@@ -378,6 +381,27 @@
       <DependentUpon>modificar_profesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistema Evaluacion\crear_sistema.aspx.cs">
+      <DependentUpon>crear_sistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\crear_sistema.aspx.designer.cs">
+      <DependentUpon>crear_sistema.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\modificar_sistema.aspx.cs">
+      <DependentUpon>modificar_sistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\modificar_sistema.aspx.designer.cs">
+      <DependentUpon>modificar_sistema.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\sistemas_evaluacion.aspx.cs">
+      <DependentUpon>sistemas_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\sistemas_evaluacion.aspx.designer.cs">
+      <DependentUpon>sistemas_evaluacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
