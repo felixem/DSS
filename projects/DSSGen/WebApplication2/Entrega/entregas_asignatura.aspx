@@ -4,6 +4,10 @@
         type="text/css" />
     <link href="../Styles/utilities/centrar_contenido.css" rel="stylesheet" 
         type="text/css" />
+    <style type="text/css">
+        .posicion_derecha
+        {}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div class="CentrarContenido">
@@ -14,7 +18,8 @@
     </div>
     <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
             <asp:Label ID="Label1" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" 
+                ReadOnly="True" Width="159px"></asp:TextBox>
         <div class="">
             PageSize:
             <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">

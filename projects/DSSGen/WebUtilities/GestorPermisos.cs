@@ -54,6 +54,7 @@ namespace WebUtilities
             permisos.Add(Linker.anyadirAlumnosGrupoTrabajo, permisoAdminProfesor);
             //Páginas de modificación
             permisos.Add(Linker.modificarGrupoTrabajo, permisoAdminProfesor);
+            permisos.Add(Linker.modificarControl, permisoAdminProfesor);
 
             //Permisos para ALUMNO
             //Páginas de listado
@@ -73,7 +74,6 @@ namespace WebUtilities
             permisos.Add(Linker.modificarAlumno, permisoSoloAdmin);
             permisos.Add(Linker.modificarProfesor, permisoSoloAdmin);
             permisos.Add(Linker.modificarAsignatura, permisoSoloAdmin);
-            permisos.Add(Linker.modificarControl, permisoSoloAdmin);
             //Páginas de creación
             permisos.Add(Linker.matricularAlumnoEnAsignaturaAnyo, permisoSoloAdmin);
             permisos.Add(Linker.crearBolsa, permisoSoloAdmin);

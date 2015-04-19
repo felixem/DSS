@@ -38,6 +38,8 @@
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" ID="linkAlumnos" OnClick="lnkAlumnos_Click">Matriculados</asp:LinkButton>
                                 <asp:LinkButton runat="server" ID="linkGrupos" OnClick="lnkGrupos_Click">Grupos</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="LinkEntrega" OnClick="lnkEntrega_Click">Entregas</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="LinkControl" OnClick="lnkControl_Click">Controles</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

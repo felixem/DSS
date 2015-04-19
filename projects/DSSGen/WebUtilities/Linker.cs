@@ -60,6 +60,9 @@ namespace WebUtilities
         internal static readonly string misAlumnosMatriculadosAsignaturaAnyo = "/Alumno/mis_alumnos_matriculados.aspx";
         internal static readonly string realizarEntregaPracticas = "/EntregaAlumno/realizar_entrega.aspx";
 
+        internal static readonly string listarEntregaAsignaturaAnyo = "/Entrega/entregas_asignatura.aspx";
+        internal static readonly string listarControlAsignaturaAnyo = "/Control/controles_asignatura.aspx";
+
         internal static readonly string error404 = "/Errors/404.aspx";
         internal static readonly string error403 = "/Errors/403.aspx";
 
@@ -306,6 +309,20 @@ namespace WebUtilities
         //Cadena para la página cambiar contraseña
         public string  ChangePassword(){
             return changePassword;
+        }
+
+        //Cadena para la página para listar los controles de una asignatura-anyo
+        public string ListarControlAsignaturaAnyo(int cod)
+        {
+            return listarControlAsignaturaAnyo +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página para listar las entregas de una asignatura-anyo
+        public string ListarEntregaAsignaturaAnyo(int cod)
+        {
+            return listarEntregaAsignaturaAnyo +
+                Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
         //Cadena para la página para listar los grupos de trabajo de una asignatura-anyo
