@@ -25,14 +25,14 @@ EntregaAlumnoEN ReadOID (int id);
 long ReadCantidad ();
 
 
-DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (string p_alumno, int p_entrega);
+DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno, int p_entrega);
 
 
-void Relationer_alumno (int p_entregaalumno, string p_alumno);
+void Relationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno);
 
 void Relationer_entrega (int p_entregaalumno, int p_entrega);
 
-void Unrelationer_alumno (int p_entregaalumno, string p_alumno);
+void Unrelationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno);
 
 void Unrelationer_entrega (int p_entregaalumno, int p_entrega);
 }

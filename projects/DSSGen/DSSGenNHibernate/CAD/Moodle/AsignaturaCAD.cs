@@ -270,7 +270,7 @@ public long ReadCantidadVinculablesAAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AsignaturaEN self where select count(asig) FROM AsignaturaEN asig where asig.Id NOT IN (select asignatura.Id FROM AsignaturaEN asignatura INNER JOIN asignatura.Asignaturas_anyo as asig_anyo where asig_anyo.Anyo.Id=:id) ";
+                //String sql = @"FROM AsignaturaEN self where select count(distinct asig) FROM AsignaturaEN asig where asig.Id NOT IN (select asignatura.Id FROM AsignaturaEN asignatura INNER JOIN asignatura.Asignaturas_anyo as asig_anyo where asig_anyo.Anyo.Id=:id) ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaENreadCantidadVinculablesAAnyoHQL");
                 query.SetParameter ("id", id);

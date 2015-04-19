@@ -33,7 +33,8 @@ namespace WebApplication2
                 user_image.ImageUrl = ResourceFinder.FotoSession(sesion);
                 user_label.Visible = true;
                 user_label.Text = usuario.Nombre + " " + usuario.Apellidos;
-                Button_Desloguear.Visible = true;
+                lnk_desloguear.Visible = true;
+                lnk_cambiar_pass.Visible = true;
                 //MultiView de la barra de herramientas
                 if(sesion.IsAlumno())
                     mv_barra.ActiveViewIndex = 1;
@@ -46,13 +47,14 @@ namespace WebApplication2
             {
                 user_image.Visible = false;
                 user_label.Visible = false;
-                Button_Desloguear.Visible = false;
+                lnk_desloguear.Visible = false;
+                lnk_cambiar_pass.Visible = false;
                 mv_barra.ActiveViewIndex = 0;
             }
         }
 
         //Manejador para efectuar el deslogueo
-        protected void Button_Desloguear_Click(object sender, EventArgs args)
+        protected void lnk_desloguear_Click(object sender, EventArgs args)
         {
 
             Fachadas.Moodle.FachadaLogin fachada= new Fachadas.Moodle.FachadaLogin();
@@ -62,53 +64,88 @@ namespace WebApplication2
             link.Redirect(Response, link.Default());
         }
 
+        //Evento para ir a la página para cambiar contraseña
+        protected void lnk_cambiar_pass_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ChangePassword());
+        }
+
         //Evento para ir a la pagina de inicio
-        protected void btn_inicio_Click(object sender, EventArgs e)
+        protected void lnk_inicio_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Default());
         }
 
         //Evento que redireciona a la pagina del login
-        protected void btn_login_Click(object sender, EventArgs e)
+        protected void lnk_login_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Login());
         }
 
         //Evento que redirecciona a la página de gestión de alumnos
-        protected void btn_alumnos_Click(object sender, EventArgs e)
+        protected void lnk_alumnos_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Alumnos());
         }
 
         //Evento que redirecciona a la página de gestión de profesores
-        protected void btn_profesores_Click(object sender, EventArgs e)
+        protected void lnk_profesores_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Profesores());
         }
 
         //Evento que redirecciona a la página de gestión de asignaturas
-        protected void btn_asignaturas_Click(object sender, EventArgs e)
+        protected void lnk_asignaturas_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.Asignaturas());
         }
 
         //Evento que redirecciona a la página de gestión de examenes
-        protected void btn_examenes_Click(object sender, EventArgs e)
+        protected void lnk_examenes_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.ListadoBolsaPreguntas());
         }
 
         //Evento que redirecciona a la página de gestión de grupos de trabajo
-        protected void btn_grupos_trabajo_Click(object sender, EventArgs e)
+        protected void lnk_grupos_trabajo_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
             link.Redirect(Response, link.GruposTrabajo());
+        }
+
+        //Evento que redirecciona a la página de lista de asignaturas en el contexto del alumno
+        protected void lnk_asignaturas_alumno_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListarAsignaturasAnyoDeAlumno());
+        }
+
+        //Evento que redirecciona a la página con la lista de los controles
+        protected void lnk_controles_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListarControles());
+        }
+
+        //Evento que redirecciona a la lista de entregas
+        protected void lnk_entregas_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListarEntregas());
+        }
+
+        //Evento que redirecciona a la lista de asignaturas impartidas
+        protected void lnk_plan_estudio_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.AsignaturasImpartidas());
         }
     }
 }

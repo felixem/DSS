@@ -89,8 +89,9 @@
 		  
 		  <query name="AsignaturaAnyoENReadAllHQL">from AsignaturaAnyoEN</query>
 		  <query name="AsignaturaAnyoENreadCantidadHQL"><![CDATA[select count(*) FROM AsignaturaAnyoEN]]></query>
-		  <query name="AsignaturaAnyoENreadCantidadPorAnyoHQL"><![CDATA[select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ]]></query>
+		  <query name="AsignaturaAnyoENreadCantidadPorAnyoHQL"><![CDATA[select count(distinct asig) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ]]></query>
 		  <query name="AsignaturaAnyoENreadCantidadPorAlumnoYAnyoHQL"><![CDATA[select count(distinct asig) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Asignatura as asig where exp_anyo.Anyo.Id=:p_anyo AND alu.Email=:p_alumno]]></query>
-		  <query name="AsignaturaAnyoENreadRelationHQL"><![CDATA[FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo]]></query>
+		  <query name="AsignaturaAnyoENreadCantidadPorAnyoYProfesorHQL"><![CDATA[select count(distinct asig) FROM AsignaturaAnyoEN as asig INNER JOIN asig.Profesores as profesor INNER JOIN asig.Anyo as anyo where anyo.Id=:p_anyo AND profesor.Email=:p_profesor]]></query>
+		  <query name="AsignaturaAnyoENreadRelationHQL"><![CDATA[select as_anyo FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo]]></query>
 		</hibernate-mapping>
 	

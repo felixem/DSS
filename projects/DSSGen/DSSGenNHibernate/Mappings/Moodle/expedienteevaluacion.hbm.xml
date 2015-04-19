@@ -28,6 +28,13 @@
 								<column name="[FK_id_evaluacion]"/>
 						</many-to-one>
 											 					
+			
+		  			
+					
+							   <one-to-one name="Evaluacion_alumno" class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN" property-ref="Expediente_evaluacion" />							
+					 
+						
+					
 					
 					
 					

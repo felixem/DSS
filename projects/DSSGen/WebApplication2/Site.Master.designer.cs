@@ -40,13 +40,22 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.Label user_label;
         
         /// <summary>
-        /// Control Button_Desloguear.
+        /// Control lnk_cambiar_pass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Desloguear;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_cambiar_pass;
+        
+        /// <summary>
+        /// Control lnk_desloguear.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnk_desloguear;
         
         /// <summary>
         /// Control mv_barra.
@@ -67,22 +76,22 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.View ViewGeneral;
         
         /// <summary>
-        /// Control btn_inicio_vg.
+        /// Control lnk_inicio_vg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_inicio_vg;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_inicio_vg;
         
         /// <summary>
-        /// Control btn_login.
+        /// Control lnk_login_vg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_login;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_login_vg;
         
         /// <summary>
         /// Control ViewAlumno.
@@ -94,13 +103,22 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.View ViewAlumno;
         
         /// <summary>
-        /// Control btn_inicio_va.
+        /// Control lnk_inicio_va.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_inicio_va;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_inicio_va;
+        
+        /// <summary>
+        /// Control lnk_asignaturas_va.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnk_asignaturas_va;
         
         /// <summary>
         /// Control ViewProfesor.
@@ -112,22 +130,22 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.View ViewProfesor;
         
         /// <summary>
-        /// Control btn_inicio_vp.
+        /// Control lnk_inicio_vp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_inicio_vp;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_inicio_vp;
         
         /// <summary>
-        /// Control Button2.
+        /// Control lnkButton2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.LinkButton lnkButton2;
         
         /// <summary>
         /// Control ViewAdministrador.
@@ -139,58 +157,85 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.View ViewAdministrador;
         
         /// <summary>
-        /// Control btn_inicio_vadm.
+        /// Control lnk_inicio_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_inicio_vadm;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_inicio_vadm;
         
         /// <summary>
-        /// Control btn_profesores_vadm.
+        /// Control lnk_profesores_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_profesores_vadm;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_profesores_vadm;
         
         /// <summary>
-        /// Control btn_alumnos_vadm.
+        /// Control lnk_alumnos_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_alumnos_vadm;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_alumnos_vadm;
         
         /// <summary>
-        /// Control btn_asignaturas_vadm.
+        /// Control lnk_asignaturas_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_asignaturas_vadm;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_asignaturas_vadm;
         
         /// <summary>
-        /// Control btn_examenes_vadm.
+        /// Control lnk_examenes_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_examenes_vadm;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_examenes_vadm;
         
         /// <summary>
-        /// Control btn_grupos_trabajo.
+        /// Control lnk_grupos_trabajo_vadm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_grupos_trabajo;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_grupos_trabajo_vadm;
+        
+        /// <summary>
+        /// Control lnk_controles_vadm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnk_controles_vadm;
+        
+        /// <summary>
+        /// Control lnk_entregas_vadm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnk_entregas_vadm;
+        
+        /// <summary>
+        /// Control lnk_plan_estudio_vadm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnk_plan_estudio_vadm;
         
         /// <summary>
         /// Control MainContent.

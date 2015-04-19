@@ -25,16 +25,16 @@ ControlAlumnoEN ReadOID (int id);
 long ReadCantidad ();
 
 
-DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno, int p_control);
+DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (int p_evalalumno, int p_control);
 
 
-void Relationer_alumno (int p_controlalumno, string p_alumno);
+void Relationer_evaluacion_alumno (int p_controlalumno, int p_evaluacionalumno);
 
 void Relationer_control (int p_controlalumno, int p_control);
 
 void Relationer_preguntas (int p_controlalumno, System.Collections.Generic.IList<int> p_preguntacontrol);
 
-void Unrelationer_alumno (int p_controlalumno, string p_alumno);
+void Unrelationer_evaluacion_alumno (int p_controlalumno, int p_evaluacionalumno);
 
 void Unrelationer_control (int p_controlalumno, int p_control);
 

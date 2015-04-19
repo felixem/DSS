@@ -100,6 +100,15 @@ public static void InitializeData ()
                 ProfesorCEN profCen = new ProfesorCEN ();
                 string profesor1 = profCen.New_ (prof.Cod_profesor, prof.Email, prof.Dni, prof.Password, prof.Nombre, prof.Apellidos, prof.Fecha_nacimiento);
 
+                prof.Cod_profesor = 11;
+                prof.Email = "profesor@profesor.com";
+                prof.Dni = "3335556V";
+                prof.Apellidos = "Profesor";
+                prof.Fecha_nacimiento = DateTime.Parse ("08/01/1960");
+                prof.Nombre = "Don";
+                prof.Password = "1234";
+                string profesor2 = profCen.New_ (prof.Cod_profesor, prof.Email, prof.Dni, prof.Password, prof.Nombre, prof.Apellidos, prof.Fecha_nacimiento);
+
                 ExpedienteEN expediente = new ExpedienteEN ();
                 ExpedienteCEN expCen = new ExpedienteCEN ();
                 expediente.Cod_expediente = "EX1";
@@ -171,6 +180,14 @@ public static void InitializeData ()
                 int as_anyo1 = asignaturaAnyoCen.New_ (idAnyo, asig1);
                 int as_anyo2 = asignaturaAnyoCen.New_ (idAnyo, asig2);
                 int as_anyo3 = asignaturaAnyoCen.New_ (idAnyo2, asig3);
+
+                //Vincular profesores con asignaturas
+                List<String> profesores = new List<String>();
+                profesores.Add (profesor1);
+                profesores.Add (profesor2);
+
+                asignaturaAnyoCen.Relationer_profesores (as_anyo1, profesores);
+                asignaturaAnyoCen.Relationer_profesores (as_anyo3, profesores);
 
                 GrupoTrabajoEN grupo = new GrupoTrabajoEN ();
                 GrupoTrabajoCEN grupoCen = new GrupoTrabajoCEN ();

@@ -229,7 +229,7 @@ public long ReadCantidadPorAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AsignaturaAnyoEN self where select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ";
+                //String sql = @"FROM AsignaturaAnyoEN self where select count(distinct asig) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadCantidadPorAnyoHQL");
                 query.SetParameter ("id", id);
@@ -287,13 +287,46 @@ public long ReadCantidadPorAlumnoYAnyo (string p_alumno, int p_anyo)
 
         return result;
 }
+public long ReadCantidadPorAnyoYProfesor (int p_anyo, string p_profesor)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AsignaturaAnyoEN self where select count(distinct asig) FROM AsignaturaAnyoEN as asig INNER JOIN asig.Profesores as profesor INNER JOIN asig.Anyo as anyo where anyo.Id=:p_anyo AND profesor.Email=:p_profesor";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadCantidadPorAnyoYProfesorHQL");
+                query.SetParameter ("p_anyo", p_anyo);
+                query.SetParameter ("p_profesor", p_profesor);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN ReadRelation (int p_asignatura, int p_anyo)
 {
         DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AsignaturaAnyoEN self where FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo";
+                //String sql = @"FROM AsignaturaAnyoEN self where select as_anyo FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AsignaturaAnyoENreadRelationHQL");
                 query.SetParameter ("p_asignatura", p_asignatura);
@@ -514,6 +547,45 @@ public void Relationer_expedientes_asignatura (int p_asignaturaanyo, System.Coll
         }
 }
 
+public void Relationer_profesores (int p_asignaturaanyo, System.Collections.Generic.IList<string> p_profesor)
+{
+        DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
+                DSSGenNHibernate.EN.Moodle.ProfesorEN profesoresENAux = null;
+                if (asignaturaAnyoEN.Profesores == null) {
+                        asignaturaAnyoEN.Profesores = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ProfesorEN>();
+                }
+
+                foreach (string item in p_profesor) {
+                        profesoresENAux = new DSSGenNHibernate.EN.Moodle.ProfesorEN ();
+                        profesoresENAux = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), item);
+                        profesoresENAux.Asignaturas.Add (asignaturaAnyoEN);
+
+                        asignaturaAnyoEN.Profesores.Add (profesoresENAux);
+                }
+
+
+                session.Update (asignaturaAnyoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
 public void Unrelationer_grupos_trabajo (int p_asignaturaanyo, System.Collections.Generic.IList<int> p_grupotrabajo)
 {
         try
@@ -684,6 +756,44 @@ public void Unrelationer_expedientes_asignatura (int p_asignaturaanyo, System.Co
                                 }
                                 else
                                         throw new ModelException ("The identifier " + item + " in p_expedienteasignatura you are trying to unrelationer, doesn't exist in AsignaturaAnyoEN");
+                        }
+                }
+
+                session.Update (asignaturaAnyoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in AsignaturaAnyoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+public void Unrelationer_profesores (int p_asignaturaanyo, System.Collections.Generic.IList<string> p_profesor)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN asignaturaAnyoEN = null;
+                asignaturaAnyoEN = (AsignaturaAnyoEN)session.Load (typeof(AsignaturaAnyoEN), p_asignaturaanyo);
+
+                DSSGenNHibernate.EN.Moodle.ProfesorEN profesoresENAux = null;
+                if (asignaturaAnyoEN.Profesores != null) {
+                        foreach (string item in p_profesor) {
+                                profesoresENAux = (DSSGenNHibernate.EN.Moodle.ProfesorEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ProfesorEN), item);
+                                if (asignaturaAnyoEN.Profesores.Contains (profesoresENAux) == true) {
+                                        asignaturaAnyoEN.Profesores.Remove (profesoresENAux);
+                                        profesoresENAux.Asignaturas.Remove (asignaturaAnyoEN);
+                                }
+                                else
+                                        throw new ModelException ("The identifier " + item + " in p_profesor you are trying to unrelationer, doesn't exist in AsignaturaAnyoEN");
                         }
                 }
 

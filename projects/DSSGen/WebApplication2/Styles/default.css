@@ -41,7 +41,7 @@ hr {
 
 #header {
 	width: 940px;
-	height: 270px;
+	height: 220px;
 	margin: 0px auto;
 }
 
@@ -54,8 +54,8 @@ hr {
 
 #logo h1 {
 	margin: 0;
-	height: 160px;
-	padding: 40px 0 0 170px;
+	height: 60px;/*160px*/
+	padding: 40px 0 0 10px;
 	background: url(images/img04.jpg) no-repeat left top;
 	text-transform: lowercase;
 	letter-spacing: -2px;
@@ -131,7 +131,7 @@ hr {
 #menub .user
 {
     margin-top: 40px;
-    float: left;
+    float: right;
     width: 200px;
     height: 70px;
 }
@@ -142,7 +142,7 @@ hr {
 
 #menu ul {
 	margin: 0px;
-	padding: 176px 0px 0px 0px;
+	padding: 46px 0px 0px 0px;/*padding: 176px 0px 0px 0px;*/
 	list-style: none;
 }
 
@@ -154,7 +154,7 @@ hr {
 	display: block;
 	float: left;
 	margin-left: 5px;
-	padding: 5px 20px;
+	padding: 2px 7px;/*Modificar el segundo valor para la anchura de los botones*/
 	background: #FFFFFF;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -165,11 +165,11 @@ hr {
 	color: #182C33;
 }
 
-#menu .user
+.user
 {
     margin-top: 40px;
-    float: left;
-    width: 200px;
+    float: right;
+    width: 250px;
     height: 70px;
 }
 
@@ -196,6 +196,25 @@ hr {
     font-style:oblique;
     display: inline;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Maquetación básica para los botones desloqueag y cambiar password */
+.userb
+{
+    clear:both;
+    display:inline-block;
+	/*display: block;
+	float: left;
+	margin-left: 5px;
+	padding: 2px 7px;//Modificar el segundo valor para la anchura de los botones
+	background: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	border-top: 2px solid #EBEAD1;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-weight: bold;
+	font-size: 11px;
+	color: #182C33;*/
 }
 
 #menu a:hover, .active a {

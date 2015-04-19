@@ -19,7 +19,7 @@ namespace DSSGenNHibernate.CAD.Moodle
             try
             {
                 SessionInitializeTransaction();
-                String sql = @"FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id";
+                String sql = @"select prof FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id";
                 IQuery query = session.CreateQuery(sql);
                 query.SetParameter("id", id);
 

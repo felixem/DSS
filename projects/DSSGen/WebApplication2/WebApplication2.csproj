@@ -56,7 +56,9 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\alumnos_matriculados.aspx" />
+    <Content Include="Alumno\mis_alumnos_matriculados.aspx" />
     <Content Include="Alumno\modificar_alumno.aspx" />
+    <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
     <Content Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx" />
     <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
     <Content Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx" />
@@ -64,11 +66,17 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+<<<<<<< HEAD
     <Content Include="Evaluacion\crear_evaluacion.aspx" />
     <Content Include="Evaluacion\evaluaciones.aspx" />
     <Content Include="Evaluacion\modificar_evaluacion.aspx" />
+=======
+    <Content Include="Errors\404.aspx" />
+    <Content Include="Errors\403.aspx" />
+>>>>>>> origin/user-iterface
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
+    <Content Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\modificar_grupotrabajo.aspx" />
@@ -113,6 +121,10 @@
     <Content Include="Entrega\entregas.aspx" />
     <Content Include="Entrega\crear_entrega.aspx" />
     <Content Include="Entrega\modificar_entrega.aspx" />
+    <Content Include="Entrega\entregas_asignatura.aspx" />
+    <Content Include="Entrega\crear_entrega_asignatura.aspx" />
+    <Content Include="Control\crear_control_asignatura.aspx" />
+    <Content Include="Control\controles_asignatura.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -157,12 +169,26 @@
     <Compile Include="Alumno\alumnos_matriculados.aspx.designer.cs">
       <DependentUpon>alumnos_matriculados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Alumno\mis_alumnos_matriculados.aspx.cs">
+      <DependentUpon>mis_alumnos_matriculados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\mis_alumnos_matriculados.aspx.designer.cs">
+      <DependentUpon>mis_alumnos_matriculados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alumno\modificar_alumno.aspx.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
       <DependentUpon>modificar_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.designer.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.cs">
       <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
@@ -220,6 +246,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Evaluacion\crear_evaluacion.aspx.cs">
       <DependentUpon>crear_evaluacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -240,6 +267,21 @@
     </Compile>
     <Compile Include="Evaluacion\modificar_evaluacion.aspx.designer.cs">
       <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
+=======
+    <Compile Include="Errors\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+>>>>>>> origin/user-iterface
     </Compile>
     <Compile Include="Examen\bolsas_preguntas.aspx.cs">
       <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
@@ -292,6 +334,13 @@
     </Compile>
     <Compile Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx.designer.cs">
       <DependentUpon>anyadiralumnos_grupo_trabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.cs">
+      <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.designer.cs">
+      <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
     </Compile>
     <Compile Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx.cs">
       <DependentUpon>crear_grupotrabajo_asignatura.aspx</DependentUpon>
@@ -426,6 +475,34 @@
     </Compile>
     <Compile Include="Entrega\modificar_entrega.aspx.designer.cs">
       <DependentUpon>modificar_entrega.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura.aspx.cs">
+      <DependentUpon>entregas_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura.aspx.designer.cs">
+      <DependentUpon>entregas_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega_asignatura.aspx.cs">
+      <DependentUpon>crear_entrega_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_entrega_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crear_control_asignatura.aspx.cs">
+      <DependentUpon>crear_control_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\crear_control_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_control_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\controles_asignatura.aspx.cs">
+      <DependentUpon>controles_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\controles_asignatura.aspx.designer.cs">
+      <DependentUpon>controles_asignatura.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

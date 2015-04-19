@@ -10,16 +10,38 @@
 			
 			
 		  			
+						<bag name="Entregas" >
+							<key>
+								<column name="[FK_id_evaluacion_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN"/>
+					    </bag>
+					
+			
+		  			
 						<many-to-one name="Sistema_evaluacion" class="DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN" >	
 								<column name="[FK_id_sistema_evaluacion]"/>
 						</many-to-one>
 											 					
 			
 		  			
-						<many-to-one name="Alumno" class="DSSGenNHibernate.EN.Moodle.AlumnoEN" >	
-								<column name="[FK_email_alumno]"/>
-						</many-to-one>
-											 					
+						<bag name="Controles" >
+							<key>
+								<column name="[FK_id_evaluacion_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN"/>
+					    </bag>
+					
+			
+		  			
+					
+							<many-to-one name="Expediente_evaluacion" class="DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN" >
+								<column name="[FK_id_expediente_evaluacion]"/>
+        					</many-to-one>
+					 
+						
+					
+					
 					
 					
 					

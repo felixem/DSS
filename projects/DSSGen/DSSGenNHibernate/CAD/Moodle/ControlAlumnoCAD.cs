@@ -56,10 +56,10 @@ public int New_ (ControlAlumnoEN controlAlumno)
         try
         {
                 SessionInitializeTransaction ();
-                if (controlAlumno.Alumno != null) {
-                        controlAlumno.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), controlAlumno.Alumno.Email);
+                if (controlAlumno.Evaluacion_alumno != null) {
+                        controlAlumno.Evaluacion_alumno = (DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN), controlAlumno.Evaluacion_alumno.Id);
 
-                        controlAlumno.Alumno.Controles.Add (controlAlumno);
+                        controlAlumno.Evaluacion_alumno.Controles.Add (controlAlumno);
                 }
                 if (controlAlumno.Control != null) {
                         controlAlumno.Control = (DSSGenNHibernate.EN.Moodle.ControlEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.ControlEN), controlAlumno.Control.Id);
@@ -231,16 +231,16 @@ public long ReadCantidad ()
 
         return result;
 }
-public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno, int p_control)
+public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (int p_evalalumno, int p_control)
 {
         DSSGenNHibernate.EN.Moodle.ControlAlumnoEN result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ControlAlumnoEN self where FROM ControlAlumnoEN cont_alu where cont_alu.Alumno.Email=:p_alumno AND cont_alu.Control.Id=:p_control";
+                //String sql = @"FROM ControlAlumnoEN self where select cont_alu FROM ControlAlumnoEN cont_alu where cont_alu.Evaluacion_alumno.Id=:p_evalalumno AND cont_alu.Control.Id=:p_control";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ControlAlumnoENreadRelationHQL");
-                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_evalalumno", p_evalalumno);
                 query.SetParameter ("p_control", p_control);
 
 
@@ -263,16 +263,16 @@ public DSSGenNHibernate.EN.Moodle.ControlAlumnoEN ReadRelation (string p_alumno,
 
         return result;
 }
-public void Relationer_alumno (int p_controlalumno, string p_alumno)
+public void Relationer_evaluacion_alumno (int p_controlalumno, int p_evaluacionalumno)
 {
         DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlAlumnoEN = null;
         try
         {
                 SessionInitializeTransaction ();
                 controlAlumnoEN = (ControlAlumnoEN)session.Load (typeof(ControlAlumnoEN), p_controlalumno);
-                controlAlumnoEN.Alumno = (DSSGenNHibernate.EN.Moodle.AlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.AlumnoEN), p_alumno);
+                controlAlumnoEN.Evaluacion_alumno = (DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN)session.Load (typeof(DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN), p_evaluacionalumno);
 
-                controlAlumnoEN.Alumno.Controles.Add (controlAlumnoEN);
+                controlAlumnoEN.Evaluacion_alumno.Controles.Add (controlAlumnoEN);
 
 
 
@@ -364,7 +364,7 @@ public void Relationer_preguntas (int p_controlalumno, System.Collections.Generi
         }
 }
 
-public void Unrelationer_alumno (int p_controlalumno, string p_alumno)
+public void Unrelationer_evaluacion_alumno (int p_controlalumno, int p_evaluacionalumno)
 {
         try
         {
@@ -372,11 +372,11 @@ public void Unrelationer_alumno (int p_controlalumno, string p_alumno)
                 DSSGenNHibernate.EN.Moodle.ControlAlumnoEN controlAlumnoEN = null;
                 controlAlumnoEN = (ControlAlumnoEN)session.Load (typeof(ControlAlumnoEN), p_controlalumno);
 
-                if (controlAlumnoEN.Alumno.Email == p_alumno) {
-                        controlAlumnoEN.Alumno = null;
+                if (controlAlumnoEN.Evaluacion_alumno.Id == p_evaluacionalumno) {
+                        controlAlumnoEN.Evaluacion_alumno = null;
                 }
                 else
-                        throw new ModelException ("The identifier " + p_alumno + " in p_alumno you are trying to unrelationer, doesn't exist in ControlAlumnoEN");
+                        throw new ModelException ("The identifier " + p_evaluacionalumno + " in p_evaluacionalumno you are trying to unrelationer, doesn't exist in ControlAlumnoEN");
 
                 session.Update (controlAlumnoEN);
                 SessionCommit ();

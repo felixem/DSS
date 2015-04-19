@@ -5,7 +5,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>Interlude Free Css Templates</title>
+    <title>Woodle</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <link href="Styles/default.css" rel="stylesheet" type="text/css"/>
@@ -28,53 +28,64 @@
 
       <!-- start header -->
 <div id="header">
-	<div id="logo">
-		<h1><a href="#">interlude</a></h1>
-		<p><a href="http://www.freecsstemplates.org/">Design by Free CSS Templates</a></p>
-	</div>
-	<div id="menub">
+    <div>
+	    <div id="logo">
+		    <h1><a href="#">Woodle</a></h1>
+		    <!-- <p><a href="http://www.freecsstemplates.org/">Design by Free CSS Templates</a></p> -->
+	    </div>
+        
         <div class="user">
             <asp:Image ID="user_image" CssClass="user_logged_image" runat="server"/>
             <asp:Label ID="user_label" runat="server" CssClass="user_logged_text" Text="UserDefault"/>
-            <asp:Button ID="Button_Desloguear" runat="server" CssClass="user_logged_button" Text="Desloguear" OnClick="Button_Desloguear_Click" OnClientClick = "return confirm('¿Estás seguro de querer cerrar sesión?');" />
+            <asp:LinkButton ID="lnk_cambiar_pass" runat="server" CssClass="userb" Text="Cabiar contraseña" OnClick="lnk_cambiar_pass_Click"/>
+            <asp:LinkButton ID="lnk_desloguear" runat="server" CssClass="userb" Text="Desloguear" OnClick="lnk_desloguear_Click" OnClientClick = "return confirm('¿Estás seguro de querer cerrar sesión?');" />
         </div>
+    </div>
+    <div style="clear:both"></div>
+	<div id="menu">
         <asp:MultiView ID="mv_barra" runat="server" ActiveViewIndex="0">
         <asp:View runat="server" ID="ViewGeneral">
 		<ul>
-			<asp:Button ID="btn_inicio_vg" runat="server" Text="Inicio" CssClass="estilob" 
-                onclick="btn_inicio_Click" />
-            <asp:Button ID="btn_login" runat="server" Text="Login" CssClass="estilob" 
-                onclick="btn_login_Click" />
+            <li><asp:LinkButton runat="server" ID="lnk_inicio_vg" OnClick="lnk_inicio_Click">Inicio</asp:LinkButton></li>
+            <li><asp:LinkButton runat="server" ID="lnk_login_vg" OnClick="lnk_login_Click">Login</asp:LinkButton></li>
 		</ul>
         </asp:View>
         <asp:View runat="server" ID="ViewAlumno">
 		<ul>
-			<asp:Button ID="btn_inicio_va" runat="server" Text="Inicio" CssClass="estilob" 
-                onclick="btn_inicio_Click" />
+			<li><asp:LinkButton ID="lnk_inicio_va" runat="server" Text="Inicio"
+                onclick="lnk_inicio_Click"/></li>
+            <li><asp:LinkButton ID="lnk_asignaturas_va" runat="server" Text="Asignaturas"
+                onclick="lnk_asignaturas_alumno_Click" /></li>
 		</ul>
         </asp:View>
         <asp:View runat="server" ID="ViewProfesor">
 		<ul>
-			<asp:Button ID="btn_inicio_vp" runat="server" Text="Inicio" CssClass="estilob" 
-                onclick="btn_inicio_Click" />
-			<asp:Button ID="Button2" runat="server" Text="VistaProfesor" CssClass="estilob" 
-                onclick="btn_inicio_Click" />
+			<li><asp:LinkButton ID="lnk_inicio_vp" runat="server" Text="Inicio"
+                onclick="lnk_inicio_Click" /></li>
+			<li><asp:LinkButton ID="lnkButton2" runat="server" Text="VistaProfesor"
+                onclick="lnk_inicio_Click" /></li>
 		</ul>
         </asp:View>
         <asp:View runat="server" ID="ViewAdministrador">
 		<ul>
-			<asp:Button ID="btn_inicio_vadm" runat="server" Text="Inicio" CssClass="estilobadm" 
-                onclick="btn_inicio_Click" />
-			<asp:Button ID="btn_profesores_vadm" runat="server" Text="Profesores" CssClass="estilobadm" 
-                onclick="btn_profesores_Click" />
-            <asp:Button ID="btn_alumnos_vadm" runat="server" Text="Alumnos" CssClass="estilobadm" 
-                onclick="btn_alumnos_Click" />
-            <asp:Button ID="btn_asignaturas_vadm" runat="server" Text="Asignaturas" CssClass="estilobadm" 
-                onclick="btn_asignaturas_Click" />
-            <asp:Button ID="btn_examenes_vadm" runat="server" Text="Examenes" CssClass="estilobadm" 
-                onclick="btn_examenes_Click" />
-            <asp:Button ID="btn_grupos_trabajo" runat="server" Text="Grupos Trabajo" CssClass="estilobadm" 
-                onclick="btn_grupos_trabajo_Click" />
+			<li><asp:LinkButton ID="lnk_inicio_vadm" runat="server" Text="Inicio"
+                onclick="lnk_inicio_Click" /></li>
+			<li><asp:LinkButton ID="lnk_profesores_vadm" runat="server" Text="Profesores"
+                onclick="lnk_profesores_Click" /></li>
+            <li><asp:LinkButton ID="lnk_alumnos_vadm" runat="server" Text="Alumnos"
+                onclick="lnk_alumnos_Click" /></li>
+            <li><asp:LinkButton ID="lnk_asignaturas_vadm" runat="server" Text="Asignaturas"
+                onclick="lnk_asignaturas_Click" /></li>
+            <li><asp:LinkButton ID="lnk_examenes_vadm" runat="server" Text="Preguntas"
+                onclick="lnk_examenes_Click" /></li>
+            <li><asp:LinkButton ID="lnk_grupos_trabajo_vadm" runat="server" Text="Grupos Trabajo"
+                onclick="lnk_grupos_trabajo_Click" /></li>
+            <li><asp:LinkButton ID="lnk_controles_vadm" runat="server" Text="Controles"
+                onclick="lnk_controles_Click" /></li>
+            <li><asp:LinkButton ID="lnk_entregas_vadm" runat="server" Text="Entregas"
+                onclick="lnk_entregas_Click" /></li>
+            <li><asp:LinkButton ID="lnk_plan_estudio_vadm" runat="server" Text="Plan de estudio"
+                onclick="lnk_plan_estudio_Click" /></li>
 		</ul>
         </asp:View>
         </asp:MultiView>

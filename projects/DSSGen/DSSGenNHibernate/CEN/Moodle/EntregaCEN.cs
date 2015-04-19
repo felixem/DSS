@@ -108,6 +108,10 @@ public long ReadCantidad ()
 {
         return _IEntregaCAD.ReadCantidad ();
 }
+public long ReadCantidadPorAsignaturaAnyo (int id)
+{
+        return _IEntregaCAD.ReadCantidadPorAsignaturaAnyo (id);
+}
 public void Relationer_entregas_alumno (int p_entrega, System.Collections.Generic.IList<int> p_entregaalumno)
 {
         //Call to EntregaCAD

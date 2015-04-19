@@ -37,24 +37,6 @@ private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajo
 
 private DSSGenNHibernate.EN.Moodle.ExpedienteEN expediente;
 
-/**
- *
- */
-
-private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN> entregas;
-
-/**
- *
- */
-
-private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN> sistemas_evaluacion;
-
-/**
- *
- */
-
-private System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN> controles;
-
 
 
 
@@ -84,21 +66,6 @@ public virtual DSSGenNHibernate.EN.Moodle.ExpedienteEN Expediente {
 }
 
 
-public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN> Entregas {
-        get { return entregas; } set { entregas = value;  }
-}
-
-
-public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN> Sistemas_evaluacion {
-        get { return sistemas_evaluacion; } set { sistemas_evaluacion = value;  }
-}
-
-
-public virtual System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN> Controles {
-        get { return controles; } set { controles = value;  }
-}
-
-
 
 
 
@@ -106,25 +73,22 @@ public AlumnoEN() : base ()
 {
         tutorias = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.TutoriaEN>();
         grupos_trabajo = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN>();
-        entregas = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN>();
-        sistemas_evaluacion = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN>();
-        controles = new System.Collections.Generic.List<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN>();
 }
 
 
 
-public AlumnoEN(string email, int cod_alumno, bool baneado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.ExpedienteEN expediente, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN> entregas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN> controles, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
+public AlumnoEN(string email, int cod_alumno, bool baneado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.ExpedienteEN expediente, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
-        this.init (email, cod_alumno, baneado, tutorias, grupos_trabajo, expediente, entregas, sistemas_evaluacion, controles, mensajes, dni, password, nombre, apellidos, fecha_nacimiento);
+        this.init (email, cod_alumno, baneado, tutorias, grupos_trabajo, expediente, mensajes, dni, password, nombre, apellidos, fecha_nacimiento);
 }
 
 
 public AlumnoEN(AlumnoEN alumno)
 {
-        this.init (alumno.Email, alumno.Cod_alumno, alumno.Baneado, alumno.Tutorias, alumno.Grupos_trabajo, alumno.Expediente, alumno.Entregas, alumno.Sistemas_evaluacion, alumno.Controles, alumno.Mensajes, alumno.Dni, alumno.Password, alumno.Nombre, alumno.Apellidos, alumno.Fecha_nacimiento);
+        this.init (alumno.Email, alumno.Cod_alumno, alumno.Baneado, alumno.Tutorias, alumno.Grupos_trabajo, alumno.Expediente, alumno.Mensajes, alumno.Dni, alumno.Password, alumno.Nombre, alumno.Apellidos, alumno.Fecha_nacimiento);
 }
 
-private void init (string email, int cod_alumno, bool baneado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.ExpedienteEN expediente, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN> entregas, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN> sistemas_evaluacion, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.ControlAlumnoEN> controles, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
+private void init (string email, int cod_alumno, bool baneado, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.TutoriaEN> tutorias, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoEN> grupos_trabajo, DSSGenNHibernate.EN.Moodle.ExpedienteEN expediente, System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.MensajeEN> mensajes, string dni, String password, string nombre, string apellidos, Nullable<DateTime> fecha_nacimiento)
 {
         this.Email = email;
 
@@ -138,12 +102,6 @@ private void init (string email, int cod_alumno, bool baneado, System.Collection
         this.Grupos_trabajo = grupos_trabajo;
 
         this.Expediente = expediente;
-
-        this.Entregas = entregas;
-
-        this.Sistemas_evaluacion = sistemas_evaluacion;
-
-        this.Controles = controles;
 
         this.Mensajes = mensajes;
 

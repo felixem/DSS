@@ -232,7 +232,7 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SistemaEvaluacionEN self where select count(*) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id ";
+                //String sql = @"FROM SistemaEvaluacionEN self where select count(distinct sis) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SistemaEvaluacionENreadCantidadPorAsignaturaAnyoHQL");
                 query.SetParameter ("id", id);

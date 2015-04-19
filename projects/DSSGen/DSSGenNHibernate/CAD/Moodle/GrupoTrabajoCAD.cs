@@ -270,7 +270,7 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM GrupoTrabajoEN self where select count(*) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id";
+                //String sql = @"FROM GrupoTrabajoEN self where select count(distinct grupo) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("GrupoTrabajoENreadCantidadPorAsignaturaAnyoHQL");
                 query.SetParameter ("id", id);

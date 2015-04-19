@@ -25,12 +25,18 @@ EvaluacionAlumnoEN ReadOID (int id);
 long ReadCantidad ();
 
 
-void Relationer_alumno (int p_evaluacionalumno, string p_alumno);
+void Relationer_expediente_evaluacion (int p_evaluacionalumno, int p_expedienteevaluacion);
+
+void Relationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno);
+
+void Relationer_entregas (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_entregaalumno);
 
 void Relationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion);
 
-void Unrelationer_alumno (int p_evaluacionalumno, string p_alumno);
-
 void Unrelationer_sistema_evaluacion (int p_evaluacionalumno, int p_sistemaevaluacion);
+
+void Unrelationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno);
+
+void Unrelationer_entregas (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_entregaalumno);
 }
 }

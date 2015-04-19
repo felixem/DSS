@@ -27,7 +27,6 @@
                     <asp:ListItem Text="50" Value="50" />
                 </asp:DropDownList>
                 <hr />
-                <asp:Button ID="Button_Crear" runat="server" Text="Registrar Asignatura en Año" OnClick="Button_Crear_Click" />
                 <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField HeaderText="Id" DataField="Id" />
@@ -39,7 +38,6 @@
                             <ItemTemplate>
                                 <asp:LinkButton runat="server" ID="linkAlumnos" OnClick="lnkAlumnos_Click">Matriculados</asp:LinkButton>
                                 <asp:LinkButton runat="server" ID="linkGrupos" OnClick="lnkGrupos_Click">Grupos</asp:LinkButton>
-                                <asp:LinkButton runat="server" ID="lnkEliminar" OnClick="lnkEliminar_Click">Desvincular</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

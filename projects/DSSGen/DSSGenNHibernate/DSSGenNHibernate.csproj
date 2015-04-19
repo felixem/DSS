@@ -114,7 +114,9 @@
     <Compile Include="CAD\Moodle\AsignaturaAnyoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAlumnoYAnyo.cs" />
     <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAnyo.cs" />
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAnyoYProfesor.cs" />
     <Compile Include="CAD\Moodle\AsignaturaCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,7 +130,10 @@
     <Compile Include="CAD\Moodle\ControlCAD.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAlumnoYAnyo.cs" />
+    <Compile Include="CAD\Moodle\ControlCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\IEntregaCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\EntregaCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\IControlCAD_Extension.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -341,11 +346,12 @@
     <Compile Include="CEN\Moodle\AsignaturaAnyoCEN.cs" />
     <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyo.cs" />
     <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAlumnoYAnyo.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyoYProfesor.cs" />
     <Compile Include="EN\Moodle\EvaluacionEN.cs" />
     <Compile Include="CEN\Moodle\EvaluacionCEN.cs" />
     <Compile Include="EN\Moodle\EntregaEN.cs" />
     <Compile Include="CEN\Moodle\EntregaCEN.cs" />
-    <Compile Include="CEN\Moodle\EntregaCEN_Custom.cs" />
+    <Compile Include="CEN\Moodle\EntregaCEN_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="EN\Moodle\EntregaAlumnoEN.cs" />
     <Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
     <Compile Include="EN\Moodle\SistemaEvaluacionEN.cs" />
@@ -355,6 +361,7 @@
     <Compile Include="CEN\Moodle\EvaluacionAlumnoCEN.cs" />
     <Compile Include="EN\Moodle\ControlEN.cs" />
     <Compile Include="CEN\Moodle\ControlCEN.cs" />
+    <Compile Include="CEN\Moodle\ControlCEN_ReadAllPorAsignaturaAnyo.cs" />
     <Compile Include="EN\Moodle\ControlAlumnoEN.cs" />
     <Compile Include="CEN\Moodle\ControlAlumnoCEN.cs" />
     <Compile Include="EN\Moodle\BolsaPreguntasEN.cs" />
