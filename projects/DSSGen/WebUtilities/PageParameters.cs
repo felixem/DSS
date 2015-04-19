@@ -13,6 +13,8 @@ namespace WebUtilities
         private static string noCacheParameter = "no_cache";
         //Valor que tiene el parámetro no caché para indicar que no debe ser considerada la página previa
         private static string noCacheValue = "true";
+        //Parámetro para indicar una entregaalumno en una petición de descarga
+        private static string descargaEntregaAlumno = "entrega";
 
         public static string MainParameter
         {
@@ -27,6 +29,11 @@ namespace WebUtilities
         public static string NoCacheValue
         {
             get { return noCacheValue; }
+        }
+
+        public static string DescargaEntregaAlumno
+        {
+            get { return descargaEntregaAlumno; }
         }
     }
 }
