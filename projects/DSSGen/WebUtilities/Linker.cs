@@ -56,6 +56,7 @@ namespace WebUtilities
 
         internal static readonly string crearEvaluacion = "/Evaluacion/crear_evaluacion.aspx";
         internal static readonly string modificarEvaluacion = "/Evaluacion/modificar_evaluacion.aspx";
+        internal static readonly string listarEvaluaciones = "/Evaluacion/evaluaciones.aspx";
 
         internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
         internal static readonly string misAlumnosMatriculadosAsignaturaAnyo = "/Alumno/mis_alumnos_matriculados.aspx";
@@ -65,6 +66,10 @@ namespace WebUtilities
         internal static readonly string listarControlAsignaturaAnyo = "/Control/controles_asignatura.aspx";
 
         internal static readonly string calificarEntregaAlumno = "/EntregaAlumno/calificar.aspx";
+
+        internal static readonly string listarSistemaEvaluacion = "/Sistema Evaluacion/sistemas_evaluacion.aspx";
+        internal static readonly string crearSistemaEvaluacion = "/Sistema Evaluacion/crear_evaluacion.aspx";
+        internal static readonly string modificarSistemaEvaluacion = "/Sistema Evaluacion/modificar_evaluacion.aspx";
 
         internal static readonly string error404 = "/Errors/404.aspx";
         internal static readonly string error403 = "/Errors/403.aspx";
@@ -375,6 +380,12 @@ namespace WebUtilities
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
+        //Cadena para la página para listar la lista de evaluacion
+        public string ListarEvaluaciones()
+        {
+            return listarEvaluaciones;
+        }
+
         //Cadena para la ruta para listar los controles
         public string ListarControles()
         {
@@ -439,6 +450,8 @@ namespace WebUtilities
         {
             return error404;
         }
+
+
     }
         
 }
