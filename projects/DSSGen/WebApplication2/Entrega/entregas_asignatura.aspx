@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="entregas.aspx.cs" Inherits="DSSGenNHibernate.Entrega.entregas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="entregas_asignatura.aspx.cs" Inherits="DSSGenNHibernate.Entrega.entregas_asignatura" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" 
         type="text/css" />
@@ -13,6 +13,8 @@
     </asp:Panel>
     </div>
     <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
+            <asp:Label ID="Label1" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
+            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
         <div class="">
             PageSize:
             <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
@@ -49,4 +51,5 @@
     </asp:Panel>
     </div>
 </asp:Content>
+
 

@@ -58,7 +58,8 @@ namespace DSSGenNHibernate.Control
             //Recuperar los datos del control
             if (!fachada.VincularControlPorId(id, TextBox_Nom,
             TextBox_Desc, TextBox_Apertura, TextBox_Cierre,
-            TextBox_Duracion, TextBox_PuntMax, TextBox_Penalizacion))
+            TextBox_Duracion, TextBox_PuntMax, TextBox_Penalizacion, 
+            TextBox_Anyo, TextBox_Asignatura, TextBox_Evaluacion, TextBox_CodControl))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="entregas.aspx.cs" Inherits="DSSGenNHibernate.Entrega.entregas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="controles_asignatura.aspx.cs" Inherits="DSSGenNHibernate.Control.controles_asignatura" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" 
         type="text/css" />
@@ -9,10 +9,12 @@
 <div class="CentrarContenido">
     <div class="ConInternoSinDisplay">
     <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
-        <asp:Label ID="Label_Asignatura" runat="server" Text="Listado de Entregas"></asp:Label>
+        <asp:Label ID="Label_Asignatura" runat="server" Text="Listado de Controles"></asp:Label>
     </asp:Panel>
     </div>
     <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
+            <asp:Label ID="Label1" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
+            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
         <div class="">
             PageSize:
             <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
@@ -21,7 +23,7 @@
                 <asp:ListItem Text="50" Value="50" />
             </asp:DropDownList>
             <hr />
-            <asp:Button ID="Button_Crear" runat="server" Text="Crear entrega" OnClick="Button_Crear_Click" />
+            <asp:Button ID="Button_Crear" runat="server" Text="Crear control" OnClick="Button_Crear_Click" />
             <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="Id" />
@@ -29,7 +31,9 @@
                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                     <asp:BoundField HeaderText="Apertura" DataField="Fecha_apertura" />
                     <asp:BoundField HeaderText="Cierre" DataField="Fecha_cierre" />
+                    <asp:BoundField HeaderText="Duracion" DataField="Duracion_minutos" />
                     <asp:BoundField HeaderText="Puntuacion Maxima" DataField="Puntuacion_maxima" />
+                    <asp:BoundField HeaderText="Penalizacion Fallo" DataField="Penalizacion_fallo" />
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" ID="lnkEditar" OnClick="lnkEditar_Click">Editar</asp:LinkButton>

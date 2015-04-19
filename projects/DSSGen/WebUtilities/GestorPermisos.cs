@@ -93,6 +93,8 @@ namespace WebUtilities
             permisos.Add(Linker.asignaturas, permisoSoloAdmin);
             permisos.Add(Linker.gruposTrabajo, permisoSoloAdmin);
             permisos.Add(Linker.asignaturasImpartidas, permisoSoloAdmin);
+            permisos.Add(Linker.listarControles, permisoSoloAdmin);
+            permisos.Add(Linker.listarEntregas, permisoSoloAdmin);
         }
 
         //Comprobar permisos de una url
