@@ -93,6 +93,10 @@ public long ReadCantidad ()
 {
         return _IEvaluacionAlumnoCAD.ReadCantidad ();
 }
+public DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN ReadPorAlumnoYEntrega (string p_alumno, int p_entrega)
+{
+        return _IEvaluacionAlumnoCAD.ReadPorAlumnoYEntrega (p_alumno, p_entrega);
+}
 public void Relationer_expediente_evaluacion (int p_evaluacionalumno, int p_expedienteevaluacion)
 {
         //Call to EvaluacionAlumnoCAD

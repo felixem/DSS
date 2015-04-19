@@ -222,6 +222,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN ReadPorAlumnoYEntrega (string p_alumno, int p_entrega)
+{
+        DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM EvaluacionAlumnoEN self where select eval FROM EntregaEN entrega INNER JOIN entrega.Evaluacion.Evaluaciones_alumno eval where eval.Expediente_evaluacion.Expediente_asignatura.Expediente_anyo.Expediente.Alumno.Email=:p_alumno AND entrega.Id=:p_entrega";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("EvaluacionAlumnoENreadPorAlumnoYEntregaHQL");
+                query.SetParameter ("p_alumno", p_alumno);
+                query.SetParameter ("p_entrega", p_entrega);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EvaluacionAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_expediente_evaluacion (int p_evaluacionalumno, int p_expedienteevaluacion)
 {
         DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN evaluacionAlumnoEN = null;

@@ -12,6 +12,7 @@ namespace WebUtilities
         private static string fotoProfesor = "profesor.png";
         private static string fotoAlumno = "alumno.png";
         private static string fotoAdmin = "administrador.jpg";
+        private static string dirEntregas = "/App_Data/Entregas/";
 
         //Buscar la foto correspondiente a una sesión
         public static string FotoSession(MySession sesion)
@@ -29,6 +30,12 @@ namespace WebUtilities
                 throw new Exception("Recurso no encontrado");
 
             return pathFotos + relativePath;
+        }
+
+        //Directorio de entregas de prácticas
+        public static string DirectorioEntregas()
+        {
+            return dirEntregas;
         }
     }
 }

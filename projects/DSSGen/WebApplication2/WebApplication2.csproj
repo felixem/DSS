@@ -66,14 +66,12 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
-<<<<<<< HEAD
     <Content Include="Evaluacion\crear_evaluacion.aspx" />
     <Content Include="Evaluacion\evaluaciones.aspx" />
     <Content Include="Evaluacion\modificar_evaluacion.aspx" />
-=======
+    <Content Include="EntregaAlumno\realizar_entrega.aspx" />
     <Content Include="Errors\404.aspx" />
     <Content Include="Errors\403.aspx" />
->>>>>>> origin/user-iterface
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx" />
@@ -246,7 +244,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Evaluacion\crear_evaluacion.aspx.cs">
       <DependentUpon>crear_evaluacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,7 +264,13 @@
     </Compile>
     <Compile Include="Evaluacion\modificar_evaluacion.aspx.designer.cs">
       <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
-=======
+    <Compile Include="EntregaAlumno\realizar_entrega.aspx.cs">
+      <DependentUpon>realizar_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\realizar_entrega.aspx.designer.cs">
+      <DependentUpon>realizar_entrega.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Errors\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -281,7 +284,6 @@
     </Compile>
     <Compile Include="Errors\403.aspx.designer.cs">
       <DependentUpon>403.aspx</DependentUpon>
->>>>>>> origin/user-iterface
     </Compile>
     <Compile Include="Examen\bolsas_preguntas.aspx.cs">
       <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
@@ -506,7 +508,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Entregas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -558,6 +560,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntregaAlumno\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
