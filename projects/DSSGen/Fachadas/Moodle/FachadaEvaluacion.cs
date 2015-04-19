@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using ComponentesProceso.Moodle;
 using System.Web.UI.WebControls;
 using BindingComponents.Moodle;
-using ComponentesProceso.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
@@ -19,7 +19,7 @@ namespace Fachadas.Moodle
             try
             {
                 EvaluacionCP evaluacion = new EvaluacionCP();
-                evaluacion.CrearEvaluación(p_nombre, p_fecha_inicio,p_fecha_fin,p_abierta,p_anyo_academico);
+                evaluacion.CrearEvaluacion(p_nombre, p_fecha_inicio,p_fecha_fin,p_abierta,p_anyo_academico);
             }
             catch (Exception)
             {
@@ -60,6 +60,15 @@ namespace Fachadas.Moodle
                 return false;
             }
             return true;
+        }
+        //Vincular a un DropDownList todas las evaluaciones-anyo que se corresponden con un año determinado
+        public void VincularDameTodosPorAnyo(int idAnyo, DropDownList drop)
+        {
+            EvaluacionBinding binding = new EvaluacionBinding();
+            DameTodosEvaluacionPorAnyo consulta = new DameTodosEvaluacionPorAnyo(idAnyo);
+            BinderListaEvaluacionDropDownList binder = new BinderListaEvaluacionDropDownList(drop);
+            long total;
+            binding.VincularDameTodosPorAnyo(consulta, binder, 0, -1, out total);
         }
         //Vincular a un grid view los Evaluaciones con paginación
         public void VincularDameTodos(GridView grid, int first, int size, out long numEvaluaciones)

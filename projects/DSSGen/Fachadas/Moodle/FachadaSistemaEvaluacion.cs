@@ -15,6 +15,20 @@ namespace Fachadas.Moodle
     //Fachada para la clase Sistema Evaluacion
     public class FachadaSistemaEvaluacion
     {
+        public bool RegistrarSistema(float puntuacion,int asignaturaany,int eval)
+        {
+            try
+            {
+                SistemaEvaluacionCP evaluacion = new SistemaEvaluacionCP();
+                evaluacion.CrearSistema(puntuacion,asignaturaany,eval);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
         //Vincular a un DropDownList todos los sistemas de evaluacion
         public void VincularDameTodos(DropDownList drop)
         {

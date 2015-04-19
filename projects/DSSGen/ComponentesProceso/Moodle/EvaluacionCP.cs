@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NHibernate;
+using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.CAD.Moodle;
@@ -17,7 +18,8 @@ namespace ComponentesProceso.Moodle
 
         //Constructor con sesión
         public EvaluacionCP(ISession sesion) : base(sesion) { }
-        public int CrearEvaluación(string p_nombre, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_abierta, int p_anyo_academico)
+
+        public int CrearEvaluacion(string p_nombre, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_abierta, int p_anyo_academico)
         {
             int resultado;
 
@@ -28,7 +30,7 @@ namespace ComponentesProceso.Moodle
                 //Creo el evaluacion
                 EvaluacionCAD cad = new EvaluacionCAD(session);
                 EvaluacionCEN cen = new EvaluacionCEN(cad);
-                resultado = cen.New_(p_nombre,p_fecha_inicio,p_fecha_fin,p_abierta,p_anyo_academico);
+                resultado = cen.New_(p_nombre, p_fecha_inicio, p_fecha_fin, p_abierta, p_anyo_academico);
 
                 SessionCommit();
             }
@@ -144,6 +146,33 @@ namespace ComponentesProceso.Moodle
                 //Cerrar sesión
                 SessionClose();
             }
+        }
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de Evaluaciones que satisfacen la consulta
+        public System.Collections.Generic.IList<EvaluacionEN> DameTodosPorAnyo(IDameTodosEvaluacion consulta,
+            int first, int size, out long numElementos)
+        {
+            System.Collections.Generic.IList<EvaluacionEN> lista = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                lista = consulta.Execute(session, first, size);
+                numElementos = consulta.Total(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return lista;
         }
     }
 }
