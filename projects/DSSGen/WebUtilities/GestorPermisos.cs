@@ -60,6 +60,9 @@ namespace WebUtilities
             permisos.Add(Linker.listarGruposTrabajoAsignaturaAnyoAlumno, permisoSoloAlumno);
             permisos.Add(Linker.listarAsignaturasAnyoDeAlumno, permisoSoloAlumno);
 
+            //Páginas de creación
+            permisos.Add(Linker.realizarEntregaPracticas, permisoSoloAlumno);
+
             //Permisos para ALUMNO y ADMINISTRADOR
             //Páginas de listado
 

@@ -25,6 +25,9 @@ EvaluacionAlumnoEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN ReadPorAlumnoYEntrega (string p_alumno, int p_entrega);
+
+
 void Relationer_expediente_evaluacion (int p_evaluacionalumno, int p_expedienteevaluacion);
 
 void Relationer_controles (int p_evaluacionalumno, System.Collections.Generic.IList<int> p_controlalumno);

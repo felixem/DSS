@@ -71,11 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
+    <Compile Include="Moodle\Commands\DameEvaluacionAlumnoPorAlumnoYEntrega.cs" />
+    <Compile Include="Moodle\Commands\IDameEvaluacionAlumno.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAlumno.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAnyoYProfesor.cs" />
     <Compile Include="Moodle\Commands\DameTodosAsignaturaVinculablesAAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\EntregaAlumnoCP.cs" />
     <Compile Include="Moodle\EntregaCP.cs" />
     <Compile Include="Moodle\AnyoAcademicoCP.cs" />
     <Compile Include="Moodle\AsignaturaAnyoCP.cs" />
@@ -142,6 +145,10 @@
     <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
       <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
       <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

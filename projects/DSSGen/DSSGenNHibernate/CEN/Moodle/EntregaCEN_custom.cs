@@ -14,13 +14,13 @@ namespace DSSGenNHibernate.CEN.Moodle
 {
 public partial class EntregaCEN
 {
-public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaEN> ReadAllPorAsignaturaAnyo (int p_anyo, int first, int size)
+public void Custom (int p_oid)
 {
-        /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Entrega_readAllPorAsignaturaAnyo) ENABLED START*/
+        /*PROTECTED REGION ID(DSSGenNHibernate.CEN.Moodle_Entrega_custom) ENABLED START*/
 
         // Write here your custom code...
 
-        return this._IEntregaCAD.ReadAllPorAsignaturaAnyo (p_anyo, first, size);
+        throw new NotImplementedException ("Method Custom() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }
