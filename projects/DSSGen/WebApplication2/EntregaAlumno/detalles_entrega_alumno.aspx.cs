@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.EntregaAlumno
 {
-    public partial class realizar_entrega : BasicPage
+    public partial class detalles_entrega_alumno : BasicPage
     {
         FachadaEntrega fachadaEntrega;
         FachadaEntregaAlumno fachadaEntregaAlumno;
@@ -64,25 +64,6 @@ namespace DSSGenNHibernate.EntregaAlumno
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
-            }
-        }
-
-        //Realizar Entrega
-        protected void Button_Entregar_Click(object sender, EventArgs e)
-        {
-            int entregaAlumnoGenerada = -1;
-
-            //Entregar la práctica
-            if (fachadaEntregaAlumno.EntregarPractica
-                (id, MySession.Current, Server, FileUploadControl, StatusLabel,
-                TextBox_Comentario, out entregaAlumnoGenerada))
-            {
-                Notification.Notify(Response, "Entrega Generada nº" + entregaAlumnoGenerada);
-            }
-            else
-            {
-                Notification.Notify(Response, "La entrega no pudo ser realizada" + entregaAlumnoGenerada);
-                StatusLabel.Text = "Estado de Subida: No ha podido ser realizada";
             }
         }
 

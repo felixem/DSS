@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="realizar_entrega.aspx.cs" Inherits="DSSGenNHibernate.EntregaAlumno.realizar_entrega" %>
+    CodeBehind="detalles_entrega_alumno.aspx.cs" Inherits="DSSGenNHibernate.EntregaAlumno.detalles_entrega_alumno" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <link href="../Styles/submenu/login.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1>
-        Realizar Entrega de Practica</h1>
+        Detalles de la Entrega de Practica</h1>
     <p class="style2">
         Detalles de la practica
     </p>
@@ -36,21 +36,16 @@
         <asp:TextBox ID="TextBox_Punt" runat="server" ReadOnly="True"></asp:TextBox>
     </p>
     <p class="style2">
-        Rellenar datos de la entrega
+        Detalles específicos de tu entrega
     </p>
     <p class="style2">
-        <asp:Label runat="server" ID="StatusLabel" Text="" />
+        Tus Comentarios
+        <asp:TextBox ID="TextBox_ComentarioAlumno" runat="server"></asp:TextBox>
     </p>
     <p class="style2">
-        <asp:FileUpload ID="FileUploadControl" runat="server" />
+        Comentarios del Profesor
+        <asp:TextBox ID="TextBox_ComentarioProfesor" runat="server"></asp:TextBox>
     </p>
     <p class="style2">
-        Comentarios
-        <asp:TextBox ID="TextBox_Comentario" runat="server"></asp:TextBox>
-    </p>
-    <p class="style2">
-        <asp:Button ID="Button_Entregar" runat="server" OnClick="Button_Entregar_Click" Text="Realizar Entrega"
-            ValidationGroup="Registro" />
-        &nbsp;
         <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" /></p>
 </asp:Content>

@@ -10,7 +10,7 @@
 namespace DSSGenNHibernate.EntregaAlumno {
     
     
-    public partial class realizar_entrega {
+    public partial class detalles_entrega_alumno {
         
         /// <summary>
         /// TextBox_Nom control.
@@ -58,40 +58,22 @@ namespace DSSGenNHibernate.EntregaAlumno {
         protected global::System.Web.UI.WebControls.TextBox TextBox_Punt;
         
         /// <summary>
-        /// StatusLabel control.
+        /// TextBox_ComentarioAlumno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label StatusLabel;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ComentarioAlumno;
         
         /// <summary>
-        /// FileUploadControl control.
+        /// TextBox_ComentarioProfesor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
-        
-        /// <summary>
-        /// TextBox_Comentario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Comentario;
-        
-        /// <summary>
-        /// Button_Entregar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Entregar;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ComentarioProfesor;
         
         /// <summary>
         /// Button_Cancelar control.
