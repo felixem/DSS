@@ -47,5 +47,38 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+        //Vincular a TextBoxes el contenido de una consulta individual sobre un Control
+        public void VincularDameSistema(IDameSistemaEvaluacion consulta, IBinderSistemaEvaluacion linker)
+        {
+            SistemaEvaluacionEN en = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                SistemaEvaluacionCP cp = new SistemaEvaluacionCP(session);
+                //Ejecutar la consulta recibida
+                en = cp.DameSistema(consulta);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Comprobar que se ha encontrado el Control
+                if (en == null)
+                    throw new Exception("Sistema de evaluacion no encontrado");
+
+                //Vincular con los textboxes
+                linker.Vincular(en);
+
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

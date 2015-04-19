@@ -70,6 +70,9 @@
     <Content Include="EntregaAlumno\realizar_entrega.aspx" />
     <Content Include="Errors\404.aspx" />
     <Content Include="Errors\403.aspx" />
+    <Content Include="Evaluacion\crear_evaluacion.aspx" />
+    <Content Include="Evaluacion\evaluaciones.aspx" />
+    <Content Include="Evaluacion\modificar_evaluacion.aspx" />
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx" />
@@ -272,6 +275,27 @@
     </Compile>
     <Compile Include="Errors\403.aspx.designer.cs">
       <DependentUpon>403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\crear_evaluacion.aspx.cs">
+      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\crear_evaluacion.aspx.designer.cs">
+      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\evaluaciones.aspx.cs">
+      <DependentUpon>evaluaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\evaluaciones.aspx.designer.cs">
+      <DependentUpon>evaluaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\modificar_evaluacion.aspx.cs">
+      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\modificar_evaluacion.aspx.designer.cs">
+      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Examen\bolsas_preguntas.aspx.cs">
       <DependentUpon>bolsas_preguntas.aspx</DependentUpon>

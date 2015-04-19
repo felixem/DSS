@@ -75,5 +75,79 @@ namespace ComponentesProceso.Moodle
 
             return lista;
         }
+        //Devolver el resultado de una consulta individual sobre un sistema de evaluacion
+        public SistemaEvaluacionEN DameSistema(IDameSistemaEvaluacion consulta)
+        {
+            SistemaEvaluacionEN en = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                en = consulta.Execute(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return en;
+        }
+        public void ModificarSistemaEvaluacion(int p_oid,  float p_maxima)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+               SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
+               SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
+                //Ejecutar la modificación
+                cen.Modify(p_oid, p_maxima);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+        //Borrar Control a partir de su código de sistema
+        public void BorrarSistemaEvaluacion(int cod)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
+                SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
+                //Ejecutar la modificación
+                cen.Destroy(cod);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

@@ -103,7 +103,7 @@
     <Compile Include="Moodle\Commands\BinderListaSistemaEvaluacionDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderAsignaturaAnyoLigero.cs" />
     <Compile Include="Moodle\Commands\BinderEntregaLigero.cs" />
-    <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
+    <Compile Include="Moodle\Commands\BinderSistemaEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IBinderControl.cs" />
     <Compile Include="Moodle\Commands\IBinderEntrega.cs" />
     <Compile Include="Moodle\Commands\IBinderEntregaAlumno.cs" />
@@ -133,6 +133,7 @@
     <Compile Include="Moodle\Commands\IBinderGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\BinderGrupoTrabajoCompleto.cs" />
     <Compile Include="Moodle\Commands\IBinderListaEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IBinderSistemaEvaluacion.cs" />
     <Compile Include="Moodle\ControlBinding.cs" />
     <Compile Include="Moodle\CursoBinding.cs" />
     <Compile Include="Moodle\EntregaAlumnoBiding.cs" />

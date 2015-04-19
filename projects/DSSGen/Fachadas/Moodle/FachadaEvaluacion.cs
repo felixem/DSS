@@ -50,7 +50,7 @@ namespace Fachadas.Moodle
             {
                 EvaluacionBinding binding = new EvaluacionBinding();
                 DameEvaluacionPorId consulta = new DameEvaluacionPorId(id);
-                BinderEvaluacion linker = new BinderEvaluacion(TextBox_Nom,
+                IBinderEvaluacion linker = new BinderEvaluacion(TextBox_Nom,
                     TextBox_inicio, TextBox_fin, abierta);
 
                 binding.VincularDameEvaluacion(consulta, linker);
