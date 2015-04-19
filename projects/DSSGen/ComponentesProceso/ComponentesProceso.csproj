@@ -71,11 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicCP.cs" />
+    <Compile Include="Moodle\Commands\DameEntregaAlumnoPorId.cs" />
     <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosEntregaAlumnoPorEntrega.cs" />
     <Compile Include="Moodle\Commands\DameTodosEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IDameTodosEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameTodosEvaluacion.cs" />

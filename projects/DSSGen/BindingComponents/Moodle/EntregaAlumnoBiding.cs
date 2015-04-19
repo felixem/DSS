@@ -45,5 +45,39 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+
+        //Vincular a TextBoxes el contenido de una consulta individual sobre un Control
+        public void VincularDameEntregaAlumno(IDameEntregaAlumno consulta, IBinderEntregaAlumno linker)
+        {
+            EntregaAlumnoEN en = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                EntregaAlumnoCP cp = new EntregaAlumnoCP(session);
+                //Ejecutar la consulta recibida
+                en = cp.DameEntregaAlumno(consulta);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Comprobar que se ha encontrado la Entrega
+                if (en == null)
+                    throw new Exception("Entrega no encontrada");
+
+                //Vincular con los textboxes
+                linker.Vincular(en);
+
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

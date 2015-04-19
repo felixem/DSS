@@ -79,6 +79,7 @@
     <Compile Include="Moodle\AsignaturaBinding.cs" />
     <Compile Include="Moodle\Commands\BinderControl.cs" />
     <Compile Include="Moodle\Commands\BinderEntrega.cs" />
+    <Compile Include="Moodle\Commands\BinderEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\BinderEntregaMuyLigero.cs" />
     <Compile Include="Moodle\Commands\BinderEvaluacion.cs" />
     <Compile Include="Moodle\Commands\BinderListaAlumnoGrid.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
     <Compile Include="Moodle\Commands\IBinderControl.cs" />
     <Compile Include="Moodle\Commands\IBinderEntrega.cs" />
+    <Compile Include="Moodle\Commands\IBinderEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IBinderEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IBinderListaBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAnyoAcademico.cs" />

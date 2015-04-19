@@ -68,5 +68,42 @@ namespace Fachadas.Moodle
 
             Bind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
         }
+
+        //Método para vincular un entrega a partir de su id a textboxes
+        public bool VincularEntregaAlumnoPorIdLigero(int id, TextBox TextBox_Cod, TextBox TextBox_NomAlu, 
+            TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, CheckBox CheckBox_Corregido)
+        {
+            try
+            {
+                EntregaAlumnoBinding binding = new EntregaAlumnoBinding();
+                DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
+                IBinderEntregaAlumno linker = new BinderEntregaAlumno(TextBox_Cod,
+                    TextBox_NomAlu, TextBox_ApeAlu, TextBox_Dni,
+                    TextBox_ComentAlu, CheckBox_Corregido);
+
+                binding.VincularDameEntregaAlumno(consulta, linker);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Metodo que modifica el Entrega en BD
+        public bool CalificarEntrega(int p_oid, float nota, string comentario, bool corregido)
+        {
+            try
+            {
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                cp.CalificarEntrega(p_oid, nota, comentario, corregido);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
