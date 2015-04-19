@@ -55,6 +55,18 @@ namespace Fachadas.Moodle
             return true;
 
         }
-        
+
+
+        //Vincular a un gridview los controles pertenecientes a una entrega con paginación
+        public void VincularDameTodosPorEntrega(int idEntrega, GridView grid,
+            int first, int size, out long numAlumnos)
+        {
+            //Obtener entregas y enlazar sus datos con el gridview
+            EntregaAlumnoBinding Bind = new EntregaAlumnoBinding();
+            IDameTodosEntregaAlumno consulta = new DameTodosEntregaAlumnoPorEntrega(idEntrega);
+            BinderListaEntregaAlumnoGrid binder = new BinderListaEntregaAlumnoGrid(grid);
+
+            Bind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
+        }
     }
 }

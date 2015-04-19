@@ -247,7 +247,7 @@ public static void InitializeData ()
                         entrega.Puntuacion_maxima, profesor1, sistemaEval1);
                 int entrega2 = entregaCen.New_ (entrega.Nombre, entrega.Descripcion, entrega.Fecha_apertura, entrega.Fecha_cierre,
                         entrega.Puntuacion_maxima, profesor2, sistemaEval2);
-
+                
                 /*PROTECTED REGION END*/
         }
         catch (Exception ex)

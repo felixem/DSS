@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -74,8 +74,10 @@
     <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
     <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEntregaAlumnoPorEntrega.cs" />
     <Compile Include="Moodle\Commands\DameTodosEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IDameEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IDameTodosEvaluacion.cs" />
     <Compile Include="Moodle\Commands\DameEvaluacionAlumnoPorAlumnoYEntrega.cs" />
     <Compile Include="Moodle\Commands\IDameEvaluacionAlumno.cs" />
