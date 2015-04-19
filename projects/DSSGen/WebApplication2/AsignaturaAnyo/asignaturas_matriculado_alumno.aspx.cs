@@ -82,13 +82,13 @@ namespace DSSGenNHibernate.AsignaturaAnyo
         }
 
         //Manejador del evento para listar los grupos de trabajo de una asignatura-anyo
-        protected void lnkInscripcionGrupo_Click(object sender, EventArgs e)
+        protected void lnkMisGrupos_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
+            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(asignaturaId));
+            link.Redirect(Response, link.MisGruposTrabajoAsignatura(grupoId));
         }
 
         //Obtener los años académicos

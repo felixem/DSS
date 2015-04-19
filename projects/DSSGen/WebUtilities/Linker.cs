@@ -24,6 +24,7 @@ namespace WebUtilities
         internal static readonly string listarAlumnosGrupoTrabajo = "/GrupoTrabajo/alumnos_grupo_trabajo.aspx";
         internal static readonly string anyadirAlumnosGrupoTrabajo = "/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx";
         internal static readonly string listarGruposTrabajoAsignaturaAnyo = "/GrupoTrabajo/grupos_trabajo_asignatura.aspx";
+        internal static readonly string listarMisGruposTrabajoAsignatura = "/GrupoTrabajo/mis_grupos_trabajo_asignatura.aspx";
         internal static readonly string crearGrupoTrabajoAsignaturaAnyo = "/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx";
         internal static readonly string listarGruposTrabajoAsignaturaAnyoAlumno = "/GrupoTrabajo/grupos_trabajo_asignatura_alumno.aspx";
         internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
@@ -141,6 +142,11 @@ namespace WebUtilities
         public string CrearEntrega()
         {
             return crearEntrega;
+        }
+
+        public string MisGruposTrabajoAsignatura(int id)
+        {
+            return listarMisGruposTrabajoAsignatura + Parameter(PageParameters.MainParameter, id.ToString());
         }
 
         //Cadena para la pagina de contraseña cambiada

@@ -10,7 +10,7 @@ using WebUtilities;
 
 namespace DSSGenNHibernate.GrupoTrabajo
 {
-    public partial class grupos_trabajo_asignatura_alumno : BasicPage
+    public partial class mis_grupos_trabajo_asignatura : BasicPage
     {
         //Fachada utilizada en la página
         FachadaGrupoTrabajo fachadaGrupo;
@@ -112,14 +112,15 @@ namespace DSSGenNHibernate.GrupoTrabajo
             rptPager.DataBind();
         }
 
-        //Manejador del evento para modificar un grupo de trabajo
+        //Manejador del evento para acceder a un grupo de trabajo
         protected void lnkAccederGrupo_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarGrupoTrabajo(grupoId));
+            //Acceso a modificar o editar algo del grupo, como eliminarme
+            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(grupoId));
         }
 
         //Botón utilizado para cancelar la creación y volver atrás
@@ -130,5 +131,12 @@ namespace DSSGenNHibernate.GrupoTrabajo
             link.Redirect(Response, link.PreviousPage());
         }
 
+        //Botón utilizado para acceder a la página donde poder acceder a otros grupos de la signatura
+        protected void Button_Otros_Grupos_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(id));
+        }
     }
 }

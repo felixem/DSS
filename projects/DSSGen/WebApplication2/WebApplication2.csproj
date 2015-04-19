@@ -70,6 +70,7 @@
     <Content Include="Errors\403.aspx" />
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
+    <Content Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo_asignatura.aspx" />
@@ -303,6 +304,13 @@
     <Compile Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx.designer.cs">
       <DependentUpon>anyadiralumnos_grupo_trabajo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx.cs">
+      <DependentUpon>mis_grupos_trabajo_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx.designer.cs">
+      <DependentUpon>mis_grupos_trabajo_asignatura.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.cs">
       <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -514,7 +522,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52754</DevelopmentServerPort>
+          <DevelopmentServerPort>61227</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
