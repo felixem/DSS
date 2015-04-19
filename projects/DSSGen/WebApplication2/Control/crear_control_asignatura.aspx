@@ -95,7 +95,7 @@
     <p class="style2">
         Asignatura
         <asp:TextBox ID="TextBox_Asignatura" runat="server"  
-                    ReadOnly="True"></asp:TextBox>
+                    ReadOnly="True" Width="179px"></asp:TextBox>
     </p>
     <p class="style2">
         Evaluacion

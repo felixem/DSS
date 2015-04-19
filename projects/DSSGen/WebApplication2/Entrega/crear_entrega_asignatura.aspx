@@ -71,7 +71,7 @@
     <p class="style2">
         Asignatura
         <asp:TextBox ID="TextBox_Asignatura" runat="server"  
-                    ReadOnly="True"></asp:TextBox>&nbsp;</p>
+                    ReadOnly="True" Width="171px"></asp:TextBox>&nbsp;</p>
     <p class="style2">
         Evaluacion
         <asp:DropDownList ID="DropDownList_SistemaEvaluacion" runat="server">

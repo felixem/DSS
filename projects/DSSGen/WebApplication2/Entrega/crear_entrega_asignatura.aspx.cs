@@ -31,10 +31,7 @@ namespace DSSGenNHibernate.Entrega
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
-                navegacion.SavePreviuosPage(Request);
-
-                //Obtener los sistemas evaluacion
-                this.ObtenerSistemasEvaluacion();
+                navegacion.SavePreviuosPage(Request);                
             }
 
             Obtener_Parametros();
@@ -43,6 +40,8 @@ namespace DSSGenNHibernate.Entrega
             {
                 //Cargar datos
                 this.CargarDatos();
+                //Obtener los sistemas evaluacion
+                this.ObtenerSistemasEvaluacion();
             }
         }
 
