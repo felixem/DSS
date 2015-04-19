@@ -180,6 +180,7 @@
 	<Compile Include="CEN\Moodle\EvaluacionCEN.cs" />
 	<Compile Include="CAD\Moodle\IEvaluacionCAD.cs" />
 	<Compile Include="CAD\Moodle\EvaluacionCAD.cs" />
+			<Compile Include="CEN\Moodle\EvaluacionCEN_ReadAllPorAnyo.cs" />
 	<Compile Include="EN\Moodle\EntregaEN.cs" />
 	<Compile Include="CEN\Moodle\EntregaCEN.cs" />
 	<Compile Include="CAD\Moodle\IEntregaCAD.cs" />

@@ -99,6 +99,10 @@ public long ReadCantidad ()
 {
         return _IEvaluacionCAD.ReadCantidad ();
 }
+public long ReadCantidadPorAnyo (int id)
+{
+        return _IEvaluacionCAD.ReadCantidadPorAnyo (id);
+}
 public void Relationer_anyo_academico (int p_evaluacion, int p_anyoacademico)
 {
         //Call to EvaluacionCAD

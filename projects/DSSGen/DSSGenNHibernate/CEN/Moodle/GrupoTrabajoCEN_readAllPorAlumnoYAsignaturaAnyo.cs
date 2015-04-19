@@ -20,7 +20,7 @@ public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.GrupoTrabajoE
 
         // Write here your custom code...
 
-    return this._IGrupoTrabajoCAD.ReadAllPorAlumnoYAsignaturaAnyo(p_alumno, p_asig, first, size);
+        return this._IGrupoTrabajoCAD.ReadAllPorAlumnoYAsignaturaAnyo (p_alumno, p_asig, first, size);
 
         /*PROTECTED REGION END*/
 }
