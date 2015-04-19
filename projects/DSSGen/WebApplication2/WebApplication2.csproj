@@ -66,9 +66,6 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
-    <Content Include="Evaluacion\crear_evaluacion.aspx" />
-    <Content Include="Evaluacion\evaluaciones.aspx" />
-    <Content Include="Evaluacion\modificar_evaluacion.aspx" />
     <Content Include="EntregaAlumno\realizar_entrega.aspx" />
     <Content Include="Errors\404.aspx" />
     <Content Include="Errors\403.aspx" />
@@ -90,9 +87,6 @@
     <Content Include="Examen\modificar_bolsa.aspx" />
     <Content Include="Examen\crear_bolsa.aspx" />
     <Content Include="Examen\crear_pregunta.aspx" />
-    <Content Include="Sistema Evaluacion\crear_sistema.aspx" />
-    <Content Include="Sistema Evaluacion\modificar_sistema.aspx" />
-    <Content Include="Sistema Evaluacion\sistemas_evaluacion.aspx" />
     <Content Include="Styles\default.css" />
     <Content Include="Styles\utilities\centrar_contenido.css" />
     <Content Include="Styles\utilities\tabla_dos_columnas.css" />
@@ -244,26 +238,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Evaluacion\crear_evaluacion.aspx.cs">
-      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Evaluacion\crear_evaluacion.aspx.designer.cs">
-      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Evaluacion\evaluaciones.aspx.cs">
-      <DependentUpon>evaluaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Evaluacion\evaluaciones.aspx.designer.cs">
-      <DependentUpon>evaluaciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Evaluacion\modificar_evaluacion.aspx.cs">
-      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Evaluacion\modificar_evaluacion.aspx.designer.cs">
-      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
     <Compile Include="EntregaAlumno\realizar_entrega.aspx.cs">
       <DependentUpon>realizar_entrega.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -394,27 +368,6 @@
       <DependentUpon>modificar_profesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sistema Evaluacion\crear_sistema.aspx.cs">
-      <DependentUpon>crear_sistema.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sistema Evaluacion\crear_sistema.aspx.designer.cs">
-      <DependentUpon>crear_sistema.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sistema Evaluacion\modificar_sistema.aspx.cs">
-      <DependentUpon>modificar_sistema.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sistema Evaluacion\modificar_sistema.aspx.designer.cs">
-      <DependentUpon>modificar_sistema.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sistema Evaluacion\sistemas_evaluacion.aspx.cs">
-      <DependentUpon>sistemas_evaluacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sistema Evaluacion\sistemas_evaluacion.aspx.designer.cs">
-      <DependentUpon>sistemas_evaluacion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
