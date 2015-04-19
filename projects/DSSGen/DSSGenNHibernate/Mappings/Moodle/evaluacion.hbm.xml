@@ -61,5 +61,6 @@
 		  
 		  <query name="EvaluacionENReadAllHQL">from EvaluacionEN</query>
 		  <query name="EvaluacionENreadCantidadHQL"><![CDATA[select count(*) FROM EvaluacionEN]]></query>
+		  <query name="EvaluacionENreadCantidadPorAnyoHQL"><![CDATA[select count(distinct eval) FROM EvaluacionEN eval where eval.Anyo_academico.Id=:id ]]></query>
 		</hibernate-mapping>
 	

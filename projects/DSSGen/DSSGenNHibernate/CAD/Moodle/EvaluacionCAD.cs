@@ -229,6 +229,38 @@ public long ReadCantidad ()
 
         return result;
 }
+public long ReadCantidadPorAnyo (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM EvaluacionEN self where select count(distinct eval) FROM EvaluacionEN eval where eval.Anyo_academico.Id=:id ";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("EvaluacionENreadCantidadPorAnyoHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EvaluacionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_anyo_academico (int p_evaluacion, int p_anyoacademico)
 {
         DSSGenNHibernate.EN.Moodle.EvaluacionEN evaluacionEN = null;

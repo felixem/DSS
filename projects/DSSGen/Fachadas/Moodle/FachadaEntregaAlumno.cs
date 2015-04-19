@@ -55,6 +55,55 @@ namespace Fachadas.Moodle
             return true;
 
         }
-        
+
+
+        //Vincular a un gridview los controles pertenecientes a una entrega con paginación
+        public void VincularDameTodosPorEntrega(int idEntrega, GridView grid,
+            int first, int size, out long numAlumnos)
+        {
+            //Obtener entregas y enlazar sus datos con el gridview
+            EntregaAlumnoBinding Bind = new EntregaAlumnoBinding();
+            IDameTodosEntregaAlumno consulta = new DameTodosEntregaAlumnoPorEntrega(idEntrega);
+            BinderListaEntregaAlumnoGrid binder = new BinderListaEntregaAlumnoGrid(grid);
+
+            Bind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
+        }
+
+        //Método para vincular un entrega a partir de su id a textboxes
+        public bool VincularEntregaAlumnoPorIdLigero(int id, TextBox TextBox_Cod, TextBox TextBox_NomAlu, 
+            TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, CheckBox CheckBox_Corregido)
+        {
+            try
+            {
+                EntregaAlumnoBinding binding = new EntregaAlumnoBinding();
+                DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
+                IBinderEntregaAlumno linker = new BinderEntregaAlumno(TextBox_Cod,
+                    TextBox_NomAlu, TextBox_ApeAlu, TextBox_Dni,
+                    TextBox_ComentAlu, CheckBox_Corregido);
+
+                binding.VincularDameEntregaAlumno(consulta, linker);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Metodo que modifica el Entrega en BD
+        public bool CalificarEntrega(int p_oid, float nota, string comentario, bool corregido)
+        {
+            try
+            {
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                cp.CalificarEntrega(p_oid, nota, comentario, corregido);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -67,5 +67,87 @@ namespace ComponentesProceso.Moodle
             }
             return entregaAlumno;
         }
+
+        //Devolver el resultado de la consulta especificada devolviendo la cantidad de Entrega que satisfacen la consulta
+        public System.Collections.Generic.IList<EntregaAlumnoEN> DameTodosTotal(IDameTodosEntregaAlumno consulta,
+            int first, int size, out long numElementos)
+        {
+            System.Collections.Generic.IList<EntregaAlumnoEN> lista = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                lista = consulta.Execute(session, first, size);
+                numElementos = consulta.Total(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return lista;
+        }
+
+        //Devolver el resultado de una consulta individual sobre un Control
+        public EntregaAlumnoEN DameEntregaAlumno(IDameEntregaAlumno consulta)
+        {
+            EntregaAlumnoEN en = null;
+            try
+            {
+                SessionInitializeTransaction();
+                //Ejecutar la consulta recibida 
+                en = consulta.Execute(session);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return en;
+        }
+
+        //Modifica el entrega en la BD
+        public void CalificarEntrega(int p_oid, float nota, string comentario, bool corregido)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                EntregaAlumnoCAD cad = new EntregaAlumnoCAD(session);
+                EntregaAlumnoCEN cen = new EntregaAlumnoCEN(cad);
+
+                EntregaAlumnoEN en = cen.ReadOID(p_oid);
+                //Ejecutar la modificación
+                cen.Modify(p_oid,en.Nombre_fichero,en.Extension,en.Ruta,en.Tam,en.Fecha_entrega,nota,corregido,en.Comentario_alumno,comentario);
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }

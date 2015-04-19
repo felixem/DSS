@@ -25,6 +25,10 @@ EvaluacionEN ReadOID (int id);
 long ReadCantidad ();
 
 
+long ReadCantidadPorAnyo (int id);
+
+
+
 void Relationer_anyo_academico (int p_evaluacion, int p_anyoacademico);
 
 void Relationer_expedientes (int p_evaluacion, System.Collections.Generic.IList<int> p_expedienteevaluacion);

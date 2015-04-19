@@ -133,5 +133,23 @@ namespace Fachadas.Moodle
 
             Bind.VincularDameTodos(consulta, binder, first, size, out numAlumnos);
         }
+
+        //Método para vincular un entrega a partir de su id a textboxes con vista ligera
+        public bool VincularEntregaPorIdMuyLigero(int id, TextBox TextBox_Nom)
+        {
+            try
+            {
+                EntregaBinding binding = new EntregaBinding();
+                DameEntregaPorId consulta = new DameEntregaPorId(id);
+                IBinderEntrega linker = new BinderEntregaMuyLigero(TextBox_Nom);
+
+                binding.VincularDameEntrega(consulta, linker);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

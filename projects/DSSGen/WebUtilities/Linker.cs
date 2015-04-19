@@ -64,6 +64,8 @@ namespace WebUtilities
         internal static readonly string listarEntregaAsignaturaAnyo = "/Entrega/entregas_asignatura.aspx";
         internal static readonly string listarControlAsignaturaAnyo = "/Control/controles_asignatura.aspx";
 
+        internal static readonly string calificarEntregaAlumno = "/EntregaAlumno/calificar.aspx";
+
         internal static readonly string error404 = "/Errors/404.aspx";
         internal static readonly string error403 = "/Errors/403.aspx";
 
@@ -176,6 +178,13 @@ namespace WebUtilities
             return modificarBolsa +
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
+
+        //Cadena para la página de modificación de una bolsa de preguntas
+        public string CalificarEntregaAlumno(int id)
+        {
+            return calificarEntregaAlumno +
+                Parameter(PageParameters.MainParameter, id.ToString());
+        }        
 
         //Cadena para la página de modificación de un control
         public string ModificarControl(int id)

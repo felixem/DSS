@@ -20,6 +20,34 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public SistemaEvaluacionCP(ISession sesion) : base(sesion) { }
 
+        public int CrearSistema(float puntuacion, int asignaturaanyo, int evaluacion)
+        {
+            int resultado;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Creo el evaluacion
+                SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
+                SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
+                resultado = cen.New_(puntuacion,asignaturaanyo,evaluacion);
+
+                SessionCommit();
+            }
+            catch (Exception e)
+            {
+                SessionRollBack();
+                throw e;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+            return resultado;
+        }
+
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de sistemas evaluacion que satisfacen la consulta
         public System.Collections.Generic.IList<SistemaEvaluacionEN> DameTodosTotal(IDameTodosSistemaEvaluacion consulta,
             int first, int size, out long numElementos)

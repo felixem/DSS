@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -79,6 +79,8 @@
     <Compile Include="Moodle\AsignaturaBinding.cs" />
     <Compile Include="Moodle\Commands\BinderControl.cs" />
     <Compile Include="Moodle\Commands\BinderEntrega.cs" />
+    <Compile Include="Moodle\Commands\BinderEntregaAlumno.cs" />
+    <Compile Include="Moodle\Commands\BinderEntregaMuyLigero.cs" />
     <Compile Include="Moodle\Commands\BinderEvaluacion.cs" />
     <Compile Include="Moodle\Commands\BinderListaAlumnoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaAnyoAcademicoGrid.cs" />
@@ -91,8 +93,10 @@
     <Compile Include="Moodle\Commands\BinderListaControlGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaCursoDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaCursoGrid.cs" />
+    <Compile Include="Moodle\Commands\BinderListaEntregaAlumnoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaEntregaGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\BinderListaEvaluacionDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaGrupoTrabajoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorGrid.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
     <Compile Include="Moodle\Commands\IBinderControl.cs" />
     <Compile Include="Moodle\Commands\IBinderEntrega.cs" />
+    <Compile Include="Moodle\Commands\IBinderEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IBinderEvaluacion.cs" />
     <Compile Include="Moodle\Commands\IBinderListaBolsaPreguntas.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAnyoAcademico.cs" />
@@ -110,6 +115,7 @@
     <Compile Include="Moodle\Commands\IBinderListaControl.cs" />
     <Compile Include="Moodle\Commands\IBinderListaCurso.cs" />
     <Compile Include="Moodle\Commands\IBinderListaEntrega.cs" />
+    <Compile Include="Moodle\Commands\IBinderListaEntregaAlumno.cs" />
     <Compile Include="Moodle\Commands\IBinderListaGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IBinderListaProfesor.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAlumno.cs" />
@@ -126,9 +132,10 @@
     <Compile Include="Moodle\Commands\BinderGrupoTrabajoParcial.cs" />
     <Compile Include="Moodle\Commands\IBinderGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\BinderGrupoTrabajoCompleto.cs" />
-    <Compile Include="Moodle\Commands\InterfazBinderListaEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IBinderListaEvaluacion.cs" />
     <Compile Include="Moodle\ControlBinding.cs" />
     <Compile Include="Moodle\CursoBinding.cs" />
+    <Compile Include="Moodle\EntregaAlumnoBiding.cs" />
     <Compile Include="Moodle\EntregaBinding.cs" />
     <Compile Include="Moodle\EvaluacionBinding.cs" />
     <Compile Include="Moodle\GrupoTrabajoBinding.cs" />

@@ -75,5 +75,34 @@ namespace BindingComponents.Moodle
                 SessionClose();
             }
         }
+        //Vincular GridView al resultado de la consulta especificada devolviendo los Evaluaciones existentes
+        public void VincularDameTodosPorAnyo(IDameTodosEvaluacion consulta, IBinderListaEvaluacion binder,
+            int first, int size, out long numBases)
+        {
+            System.Collections.Generic.IList<EvaluacionEN> lista = null;
+
+            try
+            {
+                SessionInitializeTransaction();
+                EvaluacionCP Evaluacion = new EvaluacionCP(session);
+                //Ejecutar la consulta recibida 
+                lista = Evaluacion.DameTodosPorAnyo(consulta, first, size, out numBases);
+                SessionCommit();
+
+                //Vincular
+                binder.Vincular(lista);
+
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
     }
 }
