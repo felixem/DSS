@@ -165,5 +165,16 @@ namespace Fachadas.Moodle
 
             return true;
         }
+
+        //Método para vincular a un GridView los grupos a los que pertenece un Alumno en una AsignaturaAnyo
+        public void VincularDameTodosPorAlumnoYAsignaturaAnyo(string alumno,int idAsignaturaAnyo, GridView grid,
+            int first, int size, out long numGrupos)
+        {
+            GrupoTrabajoBinding grupo = new GrupoTrabajoBinding();
+            IDameTodosGrupoTrabajo consulta=new DameTodosGrupoPorAlumnoYAsignaturaAnyo(alumno,idAsignaturaAnyo);
+            BinderListaGrupoTrabajoGrid binder = new BinderListaGrupoTrabajoGrid(grid);
+
+            grupo.VincularDameTodos(consulta, binder, first, size, out numGrupos);
+        }
     }
 }

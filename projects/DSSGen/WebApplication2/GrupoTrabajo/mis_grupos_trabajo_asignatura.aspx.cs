@@ -15,7 +15,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Fachada utilizada en la página
         FachadaGrupoTrabajo fachadaGrupo;
         FachadaAsignaturaAnyo fachadaAsignatura;
-        private int id;
+        private int asignaturaanyoId;
+        private string alumno;
         String param;
 
         //Manejador al cargar la página
@@ -34,6 +35,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
 
             if (!IsPostBack)
             {
+                alumno = MySession.Current.Usuario.Email;
                 //Cargar datos
                 this.CargarDatos();
                 this.ObtenerGruposTrabajoPaginados(1);
@@ -52,14 +54,14 @@ namespace DSSGenNHibernate.GrupoTrabajo
                 link.Redirect(Response, link.PreviousPage());
             }
             else
-                id = Int32.Parse(param);
+                asignaturaanyoId = Int32.Parse(param);
         }
 
         //Comprobar parámetros y cargar datos
         private void CargarDatos()
         {
             //Recuperar los datos de la asignatura-anyo
-            if (!fachadaAsignatura.VincularAsignaturaAnyoPorIdLigero(id, TextBox_Asignatura))
+            if (!fachadaAsignatura.VincularAsignaturaAnyoPorIdLigero(asignaturaanyoId, TextBox_Asignatura))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
@@ -80,7 +82,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             long numObjetos = 0;
 
             //Vincular el grid con la lista de grupos de trabajo paginados
-            fachadaGrupo.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaGrupo.VincularDameTodosPorAlumnoYAsignaturaAnyo(alumno, asignaturaanyoId,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -136,7 +138,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
         {
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
-            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(id));
+            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(asignaturaanyoId));
         }
     }
 }

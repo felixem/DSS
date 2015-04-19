@@ -77,6 +77,7 @@ public static void InitializeData ()
         /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
         try
         {
+
                 AdministradorEN admin = new AdministradorEN ();
                 admin.Cod_administrador = 0;
                 admin.Ocupacion = "Administrador";
