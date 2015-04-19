@@ -6,7 +6,6 @@ using NHibernate;
 using DSSGenNHibernate.EN.Moodle;
 using DSSGenNHibernate.CEN.Moodle;
 using DSSGenNHibernate.CAD.Moodle;
-using DSSGenNHibernate.CAD.Moodle;
 using ComponentesProceso.Moodle.Commands;
 
 namespace ComponentesProceso.Moodle
