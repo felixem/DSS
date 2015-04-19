@@ -33,7 +33,7 @@ namespace ComponentesProceso.Moodle.Commands
             EvaluacionCEN en = new EvaluacionCEN(cad);
 
             //Programar las lecturas
-            lista = en.ReadAllPoranyo(anyo,first, size);
+            lista = en.ReadAllPorAnyo(anyo,first, size);
 
             //Devolver lista
             return lista;
