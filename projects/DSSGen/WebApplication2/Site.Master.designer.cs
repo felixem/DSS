@@ -139,13 +139,13 @@ namespace WebApplication2 {
         protected global::System.Web.UI.WebControls.LinkButton lnk_inicio_vp;
         
         /// <summary>
-        /// Control lnkButton2.
+        /// Control lnk_asignaturas_impartidas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_asignaturas_impartidas;
         
         /// <summary>
         /// Control ViewAdministrador.
@@ -236,6 +236,15 @@ namespace WebApplication2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnk_plan_estudio_vadm;
+        
+        /// <summary>
+        /// Control lnk_evaluacion_vadm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnk_evaluacion_vadm;
         
         /// <summary>
         /// Control MainContent.

@@ -9,7 +9,7 @@
     <div class="CentrarContenido">
         <div class="ConInternoSinDisplay">
             <asp:Panel ID="Panel1" runat="server" CssClass="ContenedorInterno">
-                <asp:Label ID="Label_Asignatura" runat="server" Text="Listado de Asignaturas impartidas"></asp:Label>
+                <h1><asp:Label ID="Label_Asignatura" runat="server" Text="Listado de Asignaturas impartidas"></asp:Label></h1>
             </asp:Panel>
         </div>
         <div class="row_crear_alumno">

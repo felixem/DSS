@@ -62,8 +62,8 @@
 		<ul>
 			<li><asp:LinkButton ID="lnk_inicio_vp" runat="server" Text="Inicio"
                 onclick="lnk_inicio_Click" /></li>
-			<li><asp:LinkButton ID="lnkButton2" runat="server" Text="VistaProfesor"
-                onclick="lnk_inicio_Click" /></li>
+			<li><asp:LinkButton ID="lnk_asignaturas_impartidas" runat="server" Text="Asignaturas Impartidas"
+                onclick="lnk_asignaturas_impartidas_Click" /></li>
 		</ul>
         </asp:View>
         <asp:View runat="server" ID="ViewAdministrador">
@@ -86,6 +86,8 @@
                 onclick="lnk_entregas_Click" /></li>
             <li><asp:LinkButton ID="lnk_plan_estudio_vadm" runat="server" Text="Plan de estudio"
                 onclick="lnk_plan_estudio_Click" /></li>
+                <li><asp:LinkButton ID="lnk_evaluacion_vadm" runat="server" Text="Evaluación"
+                onclick="lnk_evaluacion_Click" /></li>
 		</ul>
         </asp:View>
         </asp:MultiView>

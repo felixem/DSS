@@ -147,5 +147,17 @@ namespace WebApplication2
             Linker link = new Linker(false);
             link.Redirect(Response, link.AsignaturasImpartidas());
         }
+
+        protected void lnk_asignaturas_impartidas_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.MisAsignaturasImpartidas());
+        }
+
+        protected void lnk_evaluacion_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.ListarEvaluaciones());
+        }
     }
 }
