@@ -18,7 +18,7 @@ namespace DSSGenNHibernate.CAD.Moodle
             try
             {
                 SessionInitializeTransaction();
-                String sql = @"select asig FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ";
+                String sql = @"select distinct asig FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id ";
                 IQuery query = session.CreateQuery(sql);
 
                 query.SetParameter("id", p_anyo);

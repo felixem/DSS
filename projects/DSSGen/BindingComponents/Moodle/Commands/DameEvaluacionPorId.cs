@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WebApplication2.Test.Moodle
+namespace BindingComponents.Moodle.Commands
 {
-    class AlumnoCENStub : WebApplication2.CEN.Moodle.AlumnoCEN
+    class DameEvaluacionPorId
     {
     }
 }

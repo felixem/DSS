@@ -107,7 +107,7 @@ ConceptualModel moodle
 			public readCod::ReadFilter (cod : Integer) : Object -> Profesor { filter = "FROM ProfesorEN prof where prof.Cod_profesor =:cod "};
 			
 			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
-			{ filter = "select count(*) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id " };
+			{ filter = "select count(distinct prof) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id " };
 			public readAllPorAsignaturaAnyo::Custom (p_asig_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->Profesor>;
 			
 			public relationer_entregas_propuestas::Relationer->profesor_entrega.entregas_propuestas (p_profesor : OID -> Profesor, p_entrega : List<OID -> Entrega>) : Void;
@@ -151,7 +151,7 @@ ConceptualModel moodle
 			public readCod::ReadFilter (cod : Integer) : Object -> Alumno { filter = "FROM AlumnoEN alu where alu.Cod_alumno =:cod "};
 			public readAllPorGrupo::Custom (p_grupo : OID -> GrupoTrabajo, first : Integer, size : Integer) : List<Object -> Alumno>;
 			public readCantidadPorGrupo::ReadFilter (id : OID -> GrupoTrabajo) : Long 
-			{ filter = "select count (*) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id" };
+			{ filter = "select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Grupos_trabajo as grupo where grupo.Id=:id" };
 			public readCantidadIngresablesEnGrupo::ReadFilter (id : OID -> GrupoTrabajo) : Long 
 			{ filter = "select count (distinct alu) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Asignatura as asig INNER JOIN asig.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Expediente_anyo as exp_anyo INNER JOIN exp_anyo.Expediente as exp INNER JOIN exp.Alumno as alu where grupo.Id=:id AND alu NOT MEMBER OF grupo.Alumnos" };
 			public readAllIngresablesEnGrupo::Custom (id : OID -> GrupoTrabajo, first : Integer, size : Integer) : List<Object -> Alumno>;
@@ -161,20 +161,14 @@ ConceptualModel moodle
 			public readCantidadMatriculablesEnAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
 			{ filter = "select count (distinct alu) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Anyo as anyo where anyo.Id IN (select year.Id FROM AsignaturaAnyoEN as asig INNER JOIN asig.Anyo as year where asig.Id=:id) AND exp_anyo.Id NOT IN (select ex_anyo.Id FROM AsignaturaAnyoEN as asignatura INNER JOIN asignatura.Expedientes_asignatura as expedi INNER JOIN expedi.Expediente_anyo as ex_anyo where asignatura.Id=:id)" };
 			public readAllMatriculablesEnAsignaturaAnyo::Custom (id : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object -> Alumno>;
-			
-			public relationer_controles::Relationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
-			public relationer_entregas::Relationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
+
 			public relationer_expediente::Relationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
 			public relationer_grupos_trabajo::Relationer->grupotrabajo_alumno.grupos_trabajo (p_alumno : OID -> Alumno, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public relationer_mensajes::Relationer->mensaje_usuariocomun.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
-			public relationer_sistemas_evaluacion::Relationer->alumno_evaluacionalumno.sistemas_evaluacion (p_alumno : OID -> Alumno, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
 			public relationer_tutorias::Relationer->tutoria_alumno.tutorias (p_alumno : OID -> Alumno, p_tutoria : List<OID -> Tutoria>) : Void;
-			public unrelationer_controles::Unrelationer->alumno_controlalumno.controles (p_alumno : OID -> Alumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
-			public unrelationer_entregas::Unrelationer->alumno_entregaalumno.entregas (p_alumno : OID -> Alumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public unrelationer_expediente::Unrelationer->alumno_expediente.expediente (p_alumno : OID -> Alumno, p_expediente : OID -> Expediente) : Void;
 			public unrelationer_grupos_trabajo::Unrelationer->grupotrabajo_alumno.grupos_trabajo (p_alumno : OID -> Alumno, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public unrelationer_mensajes::Unrelationer->mensaje_usuariocomun.mensajes (p_alumno : OID -> Alumno, p_mensaje : List<OID -> Mensaje>) : Void;
-			public unrelationer_sistemas_evaluacion::Unrelationer->alumno_evaluacionalumno.sistemas_evaluacion (p_alumno : OID -> Alumno, p_evaluacionalumno : List<OID -> EvaluacionAlumno>) : Void;
 			public unrelationer_tutorias::Unrelationer->tutoria_alumno.tutorias (p_alumno : OID -> Alumno, p_tutoria : List<OID -> Tutoria>) : Void;
 		}
 	};
@@ -279,7 +273,7 @@ ConceptualModel moodle
 			public readCod::ReadFilter (cod : String) : Object -> Asignatura { filter = "FROM AsignaturaEN asig where asig.Cod_asignatura=:cod"};
 			
 			public readCantidadVinculablesAAnyo::ReadFilter (id : OID -> AnyoAcademico) : Long 
-			{ filter = "select count(asig) FROM AsignaturaEN asig where asig.Id NOT IN (select asignatura.Id FROM AsignaturaEN asignatura INNER JOIN asignatura.Asignaturas_anyo as asig_anyo where asig_anyo.Anyo.Id=:id) " };
+			{ filter = "select count(distinct asig) FROM AsignaturaEN asig where asig.Id NOT IN (select asignatura.Id FROM AsignaturaEN asignatura INNER JOIN asignatura.Asignaturas_anyo as asig_anyo where asig_anyo.Anyo.Id=:id) " };
 			public readAllVinculablesAAnyo::Custom (id : OID -> GrupoTrabajo, first : Integer, size : Integer) : List<Object -> Asignatura>;
 			
 			public relationer_asignaturas_anyo::Relationer->asignatura_asignaturaanyo.asignaturas_anyo (p_asignatura : OID -> Asignatura, p_asignaturaanyo : List<OID -> AsignaturaAnyo>) : Void;
@@ -482,8 +476,10 @@ ConceptualModel moodle
 			public readRelation::ReadFilter (p_exp_asig : OID -> ExpedienteAsignatura, p_evaluacion : OID -> Evaluacion ) : Object -> ExpedienteEvaluacion
 			{ filter = "FROM ExpedienteEvaluacionEN exp_eval where exp_eval.Expediente_asignatura.Id=:p_exp_asig AND exp_eval.Evaluacion.Id=:p_evaluacion"};
 			
+			public relationer_evaluacion_alumno::Relationer->evaluacionalu_expedienteeval.evaluacion_alumno (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
 			public relationer_evaluacion::Relationer->evaluacion_expedienteevaluacion.evaluacion (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_evaluacion : OID -> Evaluacion) : Void;
 			public relationer_expediente_asignatura::Relationer->expedienteasignatura_expedienteevaluacion.expediente_asignatura (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_expedienteasignatura : OID -> ExpedienteAsignatura) : Void;
+			
 			public unrelationer_evaluacion::Unrelationer->evaluacion_expedienteevaluacion.evaluacion (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_evaluacion : OID -> Evaluacion) : Void;
 			public unrelationer_expediente_asignatura::Unrelationer->expedienteasignatura_expedienteevaluacion.expediente_asignatura (p_expedienteevaluacion : OID -> ExpedienteEvaluacion, p_expedienteasignatura : OID -> ExpedienteAsignatura) : Void;
 		}
@@ -517,7 +513,7 @@ ConceptualModel moodle
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM GrupoTrabajoEN" };
 			public readCod::ReadFilter (cod : String) : Object -> GrupoTrabajo { filter = "FROM GrupoTrabajoEN grupo where grupo.Cod_grupo=:cod"};
 			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
-			{ filter = "select count(*) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id" };
+			{ filter = "select count(distinct grupo) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id" };
 			public readAllPorAsignaturaAnyo::Custom (p_as_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->GrupoTrabajo>;
 			
 			public relationer_alumnos::Relationer->grupotrabajo_alumno.alumnos (p_grupotrabajo : OID -> GrupoTrabajo, p_alumno : List<OID -> Alumno>) : Void;
@@ -620,24 +616,29 @@ ConceptualModel moodle
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM AsignaturaAnyoEN" };
 			public readCantidadPorAnyo::ReadFilter (id : OID -> AnyoAcademico) : Long 
-			{ filter = "select count(*) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id " };
+			{ filter = "select count(distinct asig) FROM AsignaturaAnyoEN asig where asig.Anyo.Id=:id " };
 			public readAllPorAnyo::Custom (p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
 			public readCantidadPorAlumnoYAnyo::ReadFilter (p_alumno : OID -> Alumno ,p_anyo : OID -> AnyoAcademico) : Long 
 			{ filter = "select count(distinct asig) FROM AlumnoEN as alu INNER JOIN alu.Expediente as exp INNER JOIN exp.Expedientes_anyo as exp_anyo INNER JOIN exp_anyo.Expedientes_asignatura as exp_asig INNER JOIN exp_asig.Asignatura as asig where exp_anyo.Anyo.Id=:p_anyo AND alu.Email=:p_alumno" };
 			public readAllPorAlumnoYAnyo::Custom (p_alumno : OID -> Alumno, p_anyo : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
+			public readCantidadPorAnyoYProfesor::ReadFilter (p_anyo : OID -> AnyoAcademico, p_profesor : OID -> Profesor) : Long 
+			{ filter = "select count(distinct asig) FROM AsignaturaAnyoEN as asig INNER JOIN asig.Profesores as profesor INNER JOIN asig.Anyo as anyo where anyo.Id=:p_anyo AND profesor.Email=:p_profesor" };
+			public readAllPorAnyoYProfesor::Custom (p_anyo : OID -> AnyoAcademico, p_profesor : OID -> Profesor, first : Integer, size : Integer) : List<Object->AsignaturaAnyo>;
 			public readRelation::ReadFilter (p_asignatura : OID -> Asignatura, p_anyo : OID -> AnyoAcademico ) : Object -> AsignaturaAnyo 
-			{ filter = "FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo"};
+			{ filter = "select as_anyo FROM AsignaturaAnyoEN as_anyo where as_anyo.Asignatura.Id=:p_asignatura AND as_anyo.Anyo.Id=:p_anyo"};
 			
 			public relationer_grupos_trabajo::Relationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public relationer_materiales::Relationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
 			public relationer_sistemas_evaluacion::Relationer->asignaturaanyo_sistemaevaluacion.sistemas_evaluacion (p_asignaturaanyo : OID -> AsignaturaAnyo, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
 			public relationer_tutorias::Relationer->tutoria_asignaturaanyo.tutorias (p_asignaturaanyo : OID -> AsignaturaAnyo, p_tutoria : List<OID -> Tutoria>) : Void;
 			public relationer_expedientes_asignatura::Relationer->asignaturaanyo_expedienteasignatura.expedientes_asignatura (p_asignaturaanyo : OID -> AsignaturaAnyo, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
+			public relationer_profesores::Relationer->profesor_asignaturaanyo.profesores (p_asignaturaanyo : OID -> AsignaturaAnyo, p_profesor : List<OID -> Profesor>) : Void;
 			public unrelationer_grupos_trabajo::Unrelationer->grupotrabajo_asignaturaanyo.grupos_trabajo (p_asignaturaanyo : OID -> AsignaturaAnyo, p_grupotrabajo : List<OID -> GrupoTrabajo>) : Void;
 			public unrelationer_materiales::Unrelationer->material_asignaturaanyo.materiales (p_asignaturaanyo : OID -> AsignaturaAnyo, p_material : List<OID -> Material>) : Void;
 			public unrelationer_sistemas_evaluacion::Unrelationer->asignaturaanyo_sistemaevaluacion.sistemas_evaluacion (p_asignaturaanyo : OID -> AsignaturaAnyo, p_sistemaevaluacion : List<OID -> SistemaEvaluacion>) : Void;
 			public unrelationer_tutorias::Unrelationer->tutoria_asignaturaanyo.tutorias (p_asignaturaanyo : OID -> AsignaturaAnyo, p_tutoria : List<OID -> Tutoria>) : Void;
 			public unrelationer_expedientes_asignatura::Unrelationer->asignaturaanyo_expedienteasignatura.expedientes_asignatura (p_asignaturaanyo : OID -> AsignaturaAnyo, p_expedienteasignatura : List<OID -> ExpedienteAsignatura>) : Void;
+			public unrelationer_profesores::Unrelationer->profesor_asignaturaanyo.profesores (p_asignaturaanyo : OID -> AsignaturaAnyo, p_profesor : List<OID -> Profesor>) : Void;
 		}
 	};
 	
@@ -702,6 +703,9 @@ ConceptualModel moodle
 			public readOID::ReadOID (p_oid : OID -> Entrega) : Object -> Entrega;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM EntregaEN" };
+			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
+			{ filter = "select count (distinct entrega) FROM EntregaEN as entrega where entrega.Evaluacion.Asignatura.Id=:id" };
+			public readAllPorAsignaturaAnyo::Custom (p_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->Entrega>;
 			
 			public relationer_entregas_alumno::Relationer->entrega_entregaalumno.entregas_alumno (p_entrega : OID -> Entrega, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public relationer_evaluacion::Relationer->entrega_sistemaevaluacion.evaluacion (p_entrega : OID -> Entrega, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
@@ -735,19 +739,19 @@ ConceptualModel moodle
 		
 		operations
 		{
-			public new::New (p_nombre_fichero : String, p_extension : String, p_ruta : String, p_tam : Float, p_fecha_entrega : Date, p_nota : Float, p_corregido : Boolean, p_comentario_alumno : String, p_comentario_profesor : String, p_entrega : OID -> Entrega, p_alumno : OID -> Alumno) : Object->EntregaAlumno;
+			public new::New (p_nombre_fichero : String, p_extension : String, p_ruta : String, p_tam : Float, p_fecha_entrega : Date, p_nota : Float, p_corregido : Boolean, p_comentario_alumno : String, p_comentario_profesor : String, p_entrega : OID -> Entrega, p_evaluacion_alumno : OID -> EvaluacionAlumno) : Object->EntregaAlumno;
 			public modify::Modifier (p_oid : OID -> EntregaAlumno, p_nombre_fichero : String, p_extension : String, p_ruta : String, p_tam : Float, p_fecha_entrega : Date, p_nota : Float, p_corregido : Boolean, p_comentario_alumno : String, p_comentario_profesor : String) : Void;
 			public destroy::Destroy (p_oid : OID -> EntregaAlumno) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->EntregaAlumno>;
 			public readOID::ReadOID (p_oid : OID -> EntregaAlumno) : Object -> EntregaAlumno;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM EntregaAlumnoEN" };
-			public readRelation::ReadFilter (p_alumno : OID -> Alumno, p_entrega : OID -> Entrega ) : Object -> EntregaAlumno
-			{ filter = "FROM EntregaAlumnoEN ent_alu where ent_alu.Alumno.Email=:p_alumno AND ent_alu.Entrega.Id=:p_entrega"};
+			public readRelation::ReadFilter (p_evalalumno : OID -> EvaluacionAlumno, p_entrega : OID -> Entrega ) : Object -> EntregaAlumno
+			{ filter = "select ent_alu FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega"};
 			
-			public relationer_alumno::Relationer->alumno_entregaalumno.alumno (p_entregaalumno : OID -> EntregaAlumno, p_alumno : OID -> Alumno) : Void;
+			public relationer_evaluacion_alumno::Relationer->evaluacionalumno_entregaalumno.evaluacion_alumno (p_entregaalumno : OID -> EntregaAlumno, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
 			public relationer_entrega::Relationer->entrega_entregaalumno.entrega (p_entregaalumno : OID -> EntregaAlumno, p_entrega : OID -> Entrega) : Void;
-			public unrelationer_alumno::Unrelationer->alumno_entregaalumno.alumno (p_entregaalumno : OID -> EntregaAlumno, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_evaluacion_alumno::Unrelationer->evaluacionalumno_entregaalumno.evaluacion_alumno (p_entregaalumno : OID -> EntregaAlumno, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
 			public unrelationer_entrega::Unrelationer->entrega_entregaalumno.entrega (p_entregaalumno : OID -> EntregaAlumno, p_entrega : OID -> Entrega) : Void;
 		}
 	};
@@ -775,7 +779,7 @@ ConceptualModel moodle
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM SistemaEvaluacionEN" };
 			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
-			{ filter = "select count(*) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id " };
+			{ filter = "select count(distinct sis) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id " };
 			public readAllPorAsignaturaAnyo::Custom (id : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->SistemaEvaluacion>;
 			
 			public relationer_asignatura::Relationer->asignaturaanyo_sistemaevaluacion.asignatura (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
@@ -805,18 +809,24 @@ ConceptualModel moodle
 		
 		operations
 		{
-			public new::New (p_sistema_evaluacion : OID -> SistemaEvaluacion, p_alumno : OID -> Alumno) : Object->EvaluacionAlumno;
+			public new::New (p_sistema_evaluacion : OID -> SistemaEvaluacion, p_expediente_evaluacion : OID -> ExpedienteEvaluacion) : Object->EvaluacionAlumno;
 			public modify::Modifier (p_oid : OID -> EvaluacionAlumno) : Void;
 			public destroy::Destroy (p_oid : OID -> EvaluacionAlumno) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->EvaluacionAlumno>;
 			public readOID::ReadOID (p_oid : OID -> EvaluacionAlumno) : Object -> EvaluacionAlumno;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM EvaluacionAlumnoEN" };
+			public readPorAlumnoYEntrega::ReadFilter (p_alumno : OID ->Alumno, p_entrega : OID -> Entrega) : Object->EvaluacionAlumno 
+			{ filter = "select eval FROM EntregaEN entrega INNER JOIN entrega.Evaluacion.Evaluaciones_alumno eval where eval.Expediente_evaluacion.Expediente_asignatura.Expediente_anyo.Expediente.Alumno.Email=:p_alumno AND entrega.Id=:p_entrega" };
 			
-			public relationer_alumno::Relationer->alumno_evaluacionalumno.alumno (p_evaluacionalumno : OID -> EvaluacionAlumno, p_alumno : OID -> Alumno) : Void;
+			public relationer_expediente_evaluacion::Relationer->evaluacionalu_expedienteeval.expediente_evaluacion (p_evaluacionalumno : OID -> EvaluacionAlumno, p_expedienteevaluacion : OID -> ExpedienteEvaluacion) : Void;
+			public relationer_controles::Relationer->evaluacionalumno_controlalumno.controles (p_evaluacionalumno : OID -> EvaluacionAlumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
+			public relationer_entregas::Relationer->evaluacionalumno_entregaalumno.entregas (p_evaluacionalumno : OID -> EvaluacionAlumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 			public relationer_sistema_evaluacion::Relationer->sistemaevaluacion_evaluacionalumno.sistema_evaluacion (p_evaluacionalumno : OID -> EvaluacionAlumno, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
-			public unrelationer_alumno::Unrelationer->alumno_evaluacionalumno.alumno (p_evaluacionalumno : OID -> EvaluacionAlumno, p_alumno : OID -> Alumno) : Void;
+			
 			public unrelationer_sistema_evaluacion::Unrelationer->sistemaevaluacion_evaluacionalumno.sistema_evaluacion (p_evaluacionalumno : OID -> EvaluacionAlumno, p_sistemaevaluacion : OID -> SistemaEvaluacion) : Void;
+			public unrelationer_controles::Unrelationer->evaluacionalumno_controlalumno.controles (p_evaluacionalumno : OID -> EvaluacionAlumno, p_controlalumno : List<OID -> ControlAlumno>) : Void;
+			public unrelationer_entregas::Unrelationer->evaluacionalumno_entregaalumno.entregas (p_evaluacionalumno : OID -> EvaluacionAlumno, p_entregaalumno : List<OID -> EntregaAlumno>) : Void;
 		}
 	};
 	
@@ -848,6 +858,9 @@ ConceptualModel moodle
 			public readOID::ReadOID (p_oid : OID -> Control) : Object -> Control;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ControlEN" };
+			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
+			{ filter = "select count (distinct control) FROM ControlEN as control where control.Sistema_evaluacion.Asignatura.Id=:id" };
+			public readAllPorAsignaturaAnyo::Custom (p_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->Control>;
 			
 			public relationer_bolsas_preguntas::Relationer->control_bolsapreguntas.bolsas_preguntas (p_control : OID -> Control, p_bolsapreguntas : List<OID -> BolsaPreguntas>) : Void;
 			public relationer_controles_alumno::Relationer->control_controlalumno.controles_alumno (p_control : OID -> Control, p_controlalumno : List<OID -> ControlAlumno>) : Void;
@@ -875,20 +888,20 @@ ConceptualModel moodle
 		
 		operations
 		{
-			public new::New (p_nota : Float, p_terminado : Boolean, p_corregido : Boolean, p_alumno : OID -> Alumno, p_control : OID -> Control) : Object->ControlAlumno;
+			public new::New (p_nota : Float, p_terminado : Boolean, p_corregido : Boolean, p_evaluacion_alumno : OID -> EvaluacionAlumno, p_control : OID -> Control) : Object->ControlAlumno;
 			public modify::Modifier (p_oid : OID -> ControlAlumno, p_nota : Float, p_terminado : Boolean, p_corregido : Boolean) : Void;
 			public destroy::Destroy (p_oid : OID -> ControlAlumno) : Void;
 			public readAll::ReadAll (/* No arguments */) : List<Object->ControlAlumno>;
 			public readOID::ReadOID (p_oid : OID -> ControlAlumno) : Object -> ControlAlumno;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ControlAlumnoEN" };
-			public readRelation::ReadFilter (p_alumno : OID -> Alumno, p_control : OID -> Control) : Object -> ControlAlumno
-			{ filter = "FROM ControlAlumnoEN cont_alu where cont_alu.Alumno.Email=:p_alumno AND cont_alu.Control.Id=:p_control"};
+			public readRelation::ReadFilter (p_evalalumno : OID -> EvaluacionAlumno, p_control : OID -> Control) : Object -> ControlAlumno
+			{ filter = "select cont_alu FROM ControlAlumnoEN cont_alu where cont_alu.Evaluacion_alumno.Id=:p_evalalumno AND cont_alu.Control.Id=:p_control"};
 			
-			public relationer_alumno::Relationer->alumno_controlalumno.alumno (p_controlalumno : OID -> ControlAlumno, p_alumno : OID -> Alumno) : Void;
+			public relationer_evaluacion_alumno::Relationer->evaluacionalumno_controlalumno.evaluacion_alumno (p_controlalumno : OID -> ControlAlumno, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
 			public relationer_control::Relationer->control_controlalumno.control (p_controlalumno : OID -> ControlAlumno, p_control : OID -> Control) : Void;
 			public relationer_preguntas::Relationer->controlalumno_preguntacontrol.preguntas (p_controlalumno : OID -> ControlAlumno, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
-			public unrelationer_alumno::Unrelationer->alumno_controlalumno.alumno (p_controlalumno : OID -> ControlAlumno, p_alumno : OID -> Alumno) : Void;
+			public unrelationer_evaluacion_alumno::Unrelationer->evaluacionalumno_controlalumno.evaluacion_alumno (p_controlalumno : OID -> ControlAlumno, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
 			public unrelationer_control::Unrelationer->control_controlalumno.control (p_controlalumno : OID -> ControlAlumno, p_control : OID -> Control) : Void;
 			public unrelationer_preguntas::Unrelationer->controlalumno_preguntacontrol.preguntas (p_controlalumno : OID -> ControlAlumno, p_preguntacontrol : List<OID -> PreguntaControl>) : Void;
 		}
@@ -1208,7 +1221,7 @@ ConceptualModel moodle
 		<= navigable entrega ("1","1");
 	};
 	
-	Association alumno_entregaalumno (Alumno - EntregaAlumno)
+	Association evaluacionalumno_entregaalumno (EvaluacionAlumno - EntregaAlumno)
 	{
 		description
 		{
@@ -1216,7 +1229,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable entregas ("0", "*");
-		<= navigable alumno ("1","1");
+		<= navigable evaluacion_alumno ("1","1");
 	};
 	
 	Association anyo_asignaturaanyo (AnyoAcademico - AsignaturaAnyo)
@@ -1275,17 +1288,6 @@ ConceptualModel moodle
 		
 	};
 	
-	Association alumno_evaluacionalumno (Alumno - EvaluacionAlumno)
-	{
-		description
-		{
-			"Relación entre un alumno y un sistema de evaluación"
-		}
-		
-		=> navigable sistemas_evaluacion ("0","*");
-		<= navigable alumno ("1","1");
-	};
-	
 	Association expedienteanyo_expedienteasignatura (ExpedienteAnyo - ExpedienteAsignatura)
 	{
 		description
@@ -1341,7 +1343,7 @@ ConceptualModel moodle
 		<= navigable evaluacion ("1","1");
 	};
 	
-	Association alumno_controlalumno (Alumno - ControlAlumno)
+	Association evaluacionalumno_controlalumno (EvaluacionAlumno - ControlAlumno)
 	{
 		description
 		{
@@ -1349,7 +1351,7 @@ ConceptualModel moodle
 		}
 		
 		=> navigable controles ("0","*");
-		<= navigable alumno ("1","1");
+		<= navigable evaluacion_alumno ("1","1");
 	};
 	
 	Association control_controlalumno (Control - ControlAlumno)
@@ -1471,6 +1473,17 @@ ConceptualModel moodle
 		
 		=> navigable asignaturas ("0","*");
 		<= navigable profesores ("0","*");
+	};
+	
+	Association evaluacionalu_expedienteeval (EvaluacionAlumno - ExpedienteEvaluacion)
+	{
+		description
+		{
+			"Relación entre la evaluación de un alumno y el expediente de evaluación al que pertenece"
+		}
+		
+		=> navigable expediente_evaluacion ("1","1");
+		<= navigable evaluacion_alumno ("0","1");
 	};
 	
 }

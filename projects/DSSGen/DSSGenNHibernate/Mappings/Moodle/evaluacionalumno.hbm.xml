@@ -50,5 +50,6 @@
 		  
 		  <query name="EvaluacionAlumnoENReadAllHQL">from EvaluacionAlumnoEN</query>
 		  <query name="EvaluacionAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM EvaluacionAlumnoEN]]></query>
+		  <query name="EvaluacionAlumnoENreadPorAlumnoYEntregaHQL"><![CDATA[select eval FROM EntregaEN entrega INNER JOIN entrega.Evaluacion.Evaluaciones_alumno eval where eval.Expediente_evaluacion.Expediente_asignatura.Expediente_anyo.Expediente.Alumno.Email=:p_alumno AND entrega.Id=:p_entrega]]></query>
 		</hibernate-mapping>
 	

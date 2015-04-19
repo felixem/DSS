@@ -187,6 +187,7 @@ public static void InitializeData ()
                 profesores.Add (profesor2);
 
                 asignaturaAnyoCen.Relationer_profesores (as_anyo1, profesores);
+                asignaturaAnyoCen.Relationer_profesores (as_anyo2, profesores);
                 asignaturaAnyoCen.Relationer_profesores (as_anyo3, profesores);
 
                 GrupoTrabajoEN grupo = new GrupoTrabajoEN ();
@@ -217,7 +218,35 @@ public static void InitializeData ()
                 ExpedienteAsignaturaCEN expAsigCen = new ExpedienteAsignaturaCEN ();
                 ExpedienteAsignaturaEN expAsig = new ExpedienteAsignaturaEN ();
                 int expAsig1 = expAsigCen.New_ (expAsig.Nota_media, expAsig.Abierto, expAnyo1, as_anyo1);
+                int expAsig2 = expAsigCen.New_ (expAsig.Nota_media, expAsig.Abierto, expAnyo1, as_anyo2);
 
+                ExpedienteEvaluacionEN expEval = new ExpedienteEvaluacionEN ();
+                ExpedienteEvaluacionCEN expEvalCen = new ExpedienteEvaluacionCEN ();
+                expEval.Abierto = true;
+                int expEval1 = expEvalCen.New_ (expEval.Nota_media, expEval.Abierto, expAsig1, eval1);
+                int expEval2 = expEvalCen.New_ (expEval.Nota_media, expEval.Abierto, expAsig2, eval1);
+
+                SistemaEvaluacionEN sistemaEval = new SistemaEvaluacionEN ();
+                SistemaEvaluacionCEN sistemaEvalCen = new SistemaEvaluacionCEN ();
+                int sistemaEval1 = sistemaEvalCen.New_ (sistemaEval.Puntuacion_maxima, as_anyo1, eval1);
+                int sistemaEval2 = sistemaEvalCen.New_ (sistemaEval.Puntuacion_maxima, as_anyo2, eval1);
+
+                EvaluacionAlumnoEN evalAlumno = new EvaluacionAlumnoEN ();
+                EvaluacionAlumnoCEN evalAlumnoCen = new EvaluacionAlumnoCEN ();
+                int evalAlumno1 = evalAlumnoCen.New_ (sistemaEval1, expEval1);
+                int evalAlumno2 = evalAlumnoCen.New_ (sistemaEval2, expEval2);
+
+                EntregaEN entrega = new EntregaEN ();
+                entrega.Nombre = "entrega";
+                entrega.Descripcion = "descripcion";
+                entrega.Fecha_apertura = DateTime.Now;
+                entrega.Fecha_cierre = DateTime.Now;
+                entrega.Puntuacion_maxima = 10;
+                EntregaCEN entregaCen = new EntregaCEN ();
+                int entrega1 = entregaCen.New_ (entrega.Nombre, entrega.Descripcion, entrega.Fecha_apertura, entrega.Fecha_cierre,
+                        entrega.Puntuacion_maxima, profesor1, sistemaEval1);
+                int entrega2 = entregaCen.New_ (entrega.Nombre, entrega.Descripcion, entrega.Fecha_apertura, entrega.Fecha_cierre,
+                        entrega.Puntuacion_maxima, profesor2, sistemaEval2);
 
                 /*PROTECTED REGION END*/
         }
