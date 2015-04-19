@@ -20,7 +20,7 @@ public System.Collections.Generic.IList<DSSGenNHibernate.EN.Moodle.EntregaAlumno
 
         // Write here your custom code...
 
-    return this._IEntregaAlumnoCAD.ReadAllPorEntrega(p_entrega, first, size);
+        return this._IEntregaAlumnoCAD.ReadAllPorEntrega (p_entrega, first, size);
 
         /*PROTECTED REGION END*/
 }

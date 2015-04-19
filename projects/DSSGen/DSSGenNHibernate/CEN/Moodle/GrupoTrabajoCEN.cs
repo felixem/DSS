@@ -110,6 +110,10 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
 {
         return _IGrupoTrabajoCAD.ReadCantidadPorAsignaturaAnyo (id);
 }
+public long ReadCantidadPorAlumnoYAsignaturaAnyo (string p_alumno, int p_asig)
+{
+        return _IGrupoTrabajoCAD.ReadCantidadPorAlumnoYAsignaturaAnyo (p_alumno, p_asig);
+}
 public void Relationer_alumnos (int p_grupotrabajo, System.Collections.Generic.IList<string> p_alumno)
 {
         //Call to GrupoTrabajoCAD

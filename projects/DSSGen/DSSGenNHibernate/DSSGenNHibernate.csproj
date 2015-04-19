@@ -131,14 +131,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CAD\Moodle\ControlCAD_ReadAllPorAsignaturaAnyo.cs" />
-    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD_Extension.cs" />
-    <Compile Include="CAD\Moodle\EntregaAlumnoCAD_ReadAllPorEntrega.cs" />
+    <Compile Include="CAD\Moodle\GrupoTrabajo_ReadAllPorAlumnoYAsignaturaAnyo.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CAD\Moodle\EntregaAlumnoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\EntregaAlumnoCAD_ReadAllPorEntrega.cs" />
     <Compile Include="CAD\Moodle\EntregaCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -199,6 +199,7 @@
     <Compile Include="CAD\Moodle\IEntregaAlumnoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD_Extension.cs" />
     <Compile Include="CAD\Moodle\IEntregaCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -340,6 +341,7 @@
     <Compile Include="EN\Moodle\GrupoTrabajoEN.cs" />
     <Compile Include="CEN\Moodle\GrupoTrabajoCEN.cs" />
     <Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAlumnoYAsignaturaAnyo.cs" />
     <Compile Include="EN\Moodle\MaterialEN.cs" />
     <Compile Include="CEN\Moodle\MaterialCEN.cs" />
     <Compile Include="EN\Moodle\AnyoAcademicoEN.cs" />

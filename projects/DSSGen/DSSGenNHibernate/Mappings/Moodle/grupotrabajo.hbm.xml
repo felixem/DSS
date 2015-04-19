@@ -59,5 +59,6 @@
 		  <query name="GrupoTrabajoENreadCantidadHQL"><![CDATA[select count(*) FROM GrupoTrabajoEN]]></query>
 		  <query name="GrupoTrabajoENreadCodHQL"><![CDATA[FROM GrupoTrabajoEN grupo where grupo.Cod_grupo=:cod]]></query>
 		  <query name="GrupoTrabajoENreadCantidadPorAsignaturaAnyoHQL"><![CDATA[select count(distinct grupo) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id]]></query>
+		  <query name="GrupoTrabajoENreadCantidadPorAlumnoYAsignaturaAnyoHQL"><![CDATA[select count(distinct grupo) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Alumnos as alu where grupo.Asignatura.Id=:p_asig AND alu.Email=:p_alumno]]></query>
 		</hibernate-mapping>
 	

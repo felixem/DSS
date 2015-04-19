@@ -160,6 +160,7 @@
 	<Compile Include="CAD\Moodle\IGrupoTrabajoCAD.cs" />
 	<Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs" />
 			<Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAsignaturaAnyo.cs" />
+			<Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAlumnoYAsignaturaAnyo.cs" />
 	<Compile Include="EN\Moodle\MaterialEN.cs" />
 	<Compile Include="CEN\Moodle\MaterialCEN.cs" />
 	<Compile Include="CAD\Moodle\IMaterialCAD.cs" />
