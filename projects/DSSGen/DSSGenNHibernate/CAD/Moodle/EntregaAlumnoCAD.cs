@@ -281,6 +281,38 @@ public DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN ReadRelation (int p_evalalumno
 
         return result;
 }
+public long ReadCantidadPorEntrega (int id)
+{
+        long result;
+
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM EntregaAlumnoEN self where select count (distinct entrega) FROM EntregaAlumnoEN as entrega where entrega.Entrega.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("EntregaAlumnoENreadCantidadPorEntregaHQL");
+                query.SetParameter ("id", id);
+
+
+                result = query.UniqueResult<long>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in EntregaAlumnoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_evaluacion_alumno (int p_entregaalumno, int p_evaluacionalumno)
 {
         DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN entregaAlumnoEN = null;

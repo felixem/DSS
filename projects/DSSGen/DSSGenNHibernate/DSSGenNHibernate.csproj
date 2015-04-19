@@ -131,6 +131,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CAD\Moodle\ControlCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\EntregaAlumnoCAD_ReadAllPorEntrega.cs" />
     <Compile Include="CAD\Moodle\CursoCAD.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -355,6 +357,7 @@
     <Compile Include="CEN\Moodle\EntregaCEN_Custom.cs" />
     <Compile Include="EN\Moodle\EntregaAlumnoEN.cs" />
     <Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
+    <Compile Include="CEN\Moodle\EntregaAlumnoCEN_ReadAllPorEntrega.cs" />
     <Compile Include="EN\Moodle\SistemaEvaluacionEN.cs" />
     <Compile Include="CEN\Moodle\SistemaEvaluacionCEN.cs" />
     <Compile Include="CEN\Moodle\SistemaEvaluacionCEN_ReadAllPorAsignaturaAnyo.cs" />

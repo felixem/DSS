@@ -189,6 +189,7 @@
 	<Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
 	<Compile Include="CAD\Moodle\IEntregaAlumnoCAD.cs" />
 	<Compile Include="CAD\Moodle\EntregaAlumnoCAD.cs" />
+			<Compile Include="CEN\Moodle\EntregaAlumnoCEN_ReadAllPorEntrega.cs" />
 	<Compile Include="EN\Moodle\SistemaEvaluacionEN.cs" />
 	<Compile Include="CEN\Moodle\SistemaEvaluacionCEN.cs" />
 	<Compile Include="CAD\Moodle\ISistemaEvaluacionCAD.cs" />
