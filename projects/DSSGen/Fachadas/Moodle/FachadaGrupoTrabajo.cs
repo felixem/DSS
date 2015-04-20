@@ -176,5 +176,24 @@ namespace Fachadas.Moodle
 
             grupo.VincularDameTodos(consulta, binder, first, size, out numGrupos);
         }
+
+        //Método para comprobar el password del grupo
+        public bool ComprobarPassword(int grupoId, string password)
+        {
+            GrupoTrabajoCP cp;
+            IDameGrupoTrabajo consulta;
+
+            try
+            {
+                consulta = new DameGrupoTrabajoPorId(grupoId);
+                cp = new GrupoTrabajoCP();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return cp.DameGrupoTrabajo(consulta).Password == password;
+        }
     }
 }

@@ -14,7 +14,7 @@
         </div>
         <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
             <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="background_locked" ReadOnly="True"></asp:TextBox>
             <div class="">
                 PageSize:
                 <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
@@ -38,7 +38,7 @@
                         <asp:BoundField HeaderText="Capacidad" DataField="Capacidad" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="lnkAccederGrupo" OnClick="lnkAccederGrupo_Click">Salir del grupo</asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="lnkSalirDelGrupo" OnClick="lnkSalirDelGrupo_Click">Salir del grupo</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

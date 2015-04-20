@@ -75,6 +75,7 @@
     <Content Include="Evaluacion\modificar_evaluacion.aspx" />
     <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
     <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
+    <Content Include="GrupoTrabajo\acceso_grupotrabajo.aspx" />
     <Content Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx" />
     <Content Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx" />
     <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
@@ -129,6 +130,7 @@
     <Content Include="Control\controles_asignatura.aspx" />
     <Content Include="EntregaAlumno\entregas_alumnos.aspx" />
     <Content Include="EntregaAlumno\calificar.aspx" />
+    <Content Include="Entrega\entregas_asignatura_vista_alumno.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -354,6 +356,13 @@
     <Compile Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx.designer.cs">
       <DependentUpon>anyadiralumnos_grupo_trabajo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GrupoTrabajo\acceso_grupotrabajo.aspx.cs">
+      <DependentUpon>acceso_grupotrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\acceso_grupotrabajo.aspx.designer.cs">
+      <DependentUpon>acceso_grupotrabajo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx.cs">
       <DependentUpon>mis_grupos_trabajo_asignatura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -543,6 +552,13 @@
     </Compile>
     <Compile Include="EntregaAlumno\calificar.aspx.designer.cs">
       <DependentUpon>calificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura_vista_alumno.aspx.cs">
+      <DependentUpon>entregas_asignatura_vista_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura_vista_alumno.aspx.designer.cs">
+      <DependentUpon>entregas_asignatura_vista_alumno.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

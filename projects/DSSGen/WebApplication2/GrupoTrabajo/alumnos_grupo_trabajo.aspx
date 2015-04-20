@@ -23,7 +23,7 @@
                 <asp:Label ID="Label_Capacidad" runat="server" Text="Inscritos:" Style="color: #000000" CssClass="posicion_izquierda"></asp:Label>
                 <asp:TextBox ID="TextBox_Capacidad" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
             </div>
-            <div class="">
+            <div class="" style="margin-left:-60px">
                 PageSize:
                 <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
                     <asp:ListItem Text="10" Value="10" />
@@ -33,7 +33,7 @@
                 <hr />
                 <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
                 <asp:Button ID="Button_Crear" runat="server" Text="Añadir Alumnos" OnClick="Button_Crear_Click" />
-                <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False" Style="margin-left: 90px">
                     <Columns>
                         <asp:BoundField HeaderText="Email" DataField="Email" />
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

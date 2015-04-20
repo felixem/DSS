@@ -31,11 +31,11 @@ namespace DSSGenNHibernate.GrupoTrabajo
 
             fachadaGrupo = new FachadaGrupoTrabajo();
             fachadaAsignatura = new FachadaAsignaturaAnyo();
+            alumno = MySession.Current.Usuario.Email;
             Obtener_Parametros();
 
             if (!IsPostBack)
             {
-                alumno = MySession.Current.Usuario.Email;
                 //Cargar datos
                 this.CargarDatos();
                 this.ObtenerGruposTrabajoPaginados(1);
@@ -115,14 +115,19 @@ namespace DSSGenNHibernate.GrupoTrabajo
         }
 
         //Manejador del evento para acceder a un grupo de trabajo
-        protected void lnkAccederGrupo_Click(object sender, EventArgs e)
+        protected void lnkSalirDelGrupo_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
-            Linker link = new Linker(true);
-            //Acceso a modificar o editar algo del grupo, como eliminarme
-            link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(grupoId));
+            //Desvincular un alumno de un grupo de trabajo
+            if (fachadaGrupo.DesvincularAlumno(grupoId, alumno))
+                Notification.Notify(Response, "El alumno ha sido desvinculado del grupo");
+            else
+                Notification.Notify(Response, "El alumno no ha podido ser desvinculado del grupo");
+
+            this.CargarDatos();
+            this.ObtenerGruposTrabajoPaginados(1);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

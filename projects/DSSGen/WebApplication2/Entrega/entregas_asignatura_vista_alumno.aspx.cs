@@ -8,12 +8,12 @@ using System.Web.UI.WebControls;
 using Fachadas.Moodle;
 using WebUtilities;
 
-namespace DSSGenNHibernate.GrupoTrabajo
+namespace DSSGenNHibernate.Entrega
 {
-    public partial class grupos_trabajo_asignatura_alumno : BasicPage
+    public partial class entregas_asignatura_vista_alumno : BasicPage
     {
         //Fachada utilizada en la página
-        FachadaGrupoTrabajo fachadaGrupo;
+        FachadaEntrega fachada;
         FachadaAsignaturaAnyo fachadaAsignatura;
         private int id;
         String param;
@@ -28,7 +28,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
                 navegacion.SavePreviuosPage(Request);
             }
 
-            fachadaGrupo = new FachadaGrupoTrabajo();
+            fachada = new FachadaEntrega();
             fachadaAsignatura = new FachadaAsignaturaAnyo();
             Obtener_Parametros();
 
@@ -36,7 +36,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             {
                 //Cargar datos
                 this.CargarDatos();
-                this.ObtenerGruposTrabajoPaginados(1);
+                this.ObtenerEntregasPaginadas(1);
             }
         }
 
@@ -70,17 +70,17 @@ namespace DSSGenNHibernate.GrupoTrabajo
         //Manejador al cambiar el tamaño de página
         protected void PageSize_Changed(object sender, EventArgs e)
         {
-            this.ObtenerGruposTrabajoPaginados(1);
+            this.ObtenerEntregasPaginadas(1);
         }
 
-        //Manejador para obtener los grupos de trabajo paginados
-        private void ObtenerGruposTrabajoPaginados(int pageIndex)
+        //Manejador para obtener las entregas paginadas
+        private void ObtenerEntregasPaginadas(int pageIndex)
         {
             int pageSize = int.Parse(ddlPageSize.SelectedValue);
             long numObjetos = 0;
 
-            //Vincular el grid con la lista de grupos de trabajo paginados
-            fachadaGrupo.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            //Vincular el grid con la lista de entregas paginada
+            fachada.VincularDameTodosPorAsignaturaAnyo(id, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -90,7 +90,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
         protected void Page_Changed(object sender, EventArgs e)
         {
             int pageIndex = int.Parse((sender as LinkButton).CommandArgument);
-            this.ObtenerGruposTrabajoPaginados(pageIndex);
+            this.ObtenerEntregasPaginadas(pageIndex);
         }
 
         //Listar las páginas para navegar sobre ellas
@@ -110,25 +110,16 @@ namespace DSSGenNHibernate.GrupoTrabajo
             }
             rptPager.DataSource = pages;
             rptPager.DataBind();
-        }
+        }        
 
-        //Manejador del evento para acceder a un grupo de trabajo
-        protected void lnkAccederGrupo_Click(object sender, EventArgs e)
+        //Manejador del evento para ver las entregas de los alumnos
+        protected void lnkMiEntrega_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            int grupoId = Int32.Parse(grdrow.Cells[0].Text);
+            int Id = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.AccesoGrupoTrabajo(grupoId));
+            link.Redirect(Response, link.RealizarEntregaPracticas(Id));
         }
-
-        //Botón utilizado para cancelar la creación y volver atrás
-        protected void Button_Cancelar_Click(object sender, EventArgs e)
-        {
-            //Redirigir a la página que le llamó
-            Linker link = new Linker(false);
-            link.Redirect(Response, link.PreviousPage());
-        }
-
     }
 }
