@@ -13,8 +13,8 @@
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="Id" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Inicio" DataField="Inicio" />
-                    <asp:BoundField HeaderText="Fin" DataField="Fin" />
+                    <asp:BoundField HeaderText="Inicio" DataField="Fecha_inicio" />
+                    <asp:BoundField HeaderText="Fin" DataField="Fecha_fin" />
                     <asp:BoundField HeaderText="Abierta" DataField="Abierta" />
                     <asp:BoundField HeaderText="Año académico" DataField="Anyo" />
                     <asp:TemplateField HeaderText="Acciones">
