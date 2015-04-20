@@ -71,6 +71,10 @@ namespace WebUtilities
         internal static readonly string crearSistemaEvaluacion = "/Sistema Evaluacion/crear_evaluacion.aspx";
         internal static readonly string modificarSistemaEvaluacion = "/Sistema Evaluacion/modificar_evaluacion.aspx";
 
+        internal static readonly string listarEntregasAlumno = "/EntregaAlumno/entregas_alumnos.aspx";
+
+        internal static readonly string descargarRecurso = "/Download/DownloadFile.ashx";
+
         internal static readonly string error404 = "/Errors/404.aspx";
         internal static readonly string error403 = "/Errors/403.aspx";
 
@@ -439,6 +443,13 @@ namespace WebUtilities
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
+        //Listar Entregas de Alumnos
+        public string ListarEntregasAlumno(int cod)
+        {
+            return listarEntregasAlumno +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
         //Cadena para la página de error 403
         public string Error403()
         {
@@ -451,6 +462,12 @@ namespace WebUtilities
             return error404;
         }
 
+        //Cadena para el controlador de descarga de entregas de prácticas
+        public string DescargaEntregaPracticas(int cod)
+        {
+            return descargarRecurso +
+                Parameter(PageParameters.DescargaEntregaAlumno, cod.ToString());
+        }
 
     }
         

@@ -44,6 +44,7 @@ namespace WebUtilities
             //Páginas de listado
             permisos.Add(Linker.misAsignaturasImpartidas, permisoSoloProfesor);
             permisos.Add(Linker.misAlumnosMatriculadosAsignaturaAnyo, permisoSoloProfesor);
+            permisos.Add(Linker.listarEntregasAlumno, permisoSoloProfesor);
 
             //Permisos para PROFESOR y ADMINISTRADOR
             //Páginas de listado
