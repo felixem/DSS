@@ -52,8 +52,7 @@
     </p>
     <p>
              Año academico
-        <asp:DropDownList ID="DropDownList_Anyos" runat="server" 
-                    OnSelectedIndexChanged="DropDownList_Anyos_SelectedIndexChanged" AutoPostBack="True">
+        <asp:DropDownList ID="DropDownList_Anyos" runat="server" AutoPostBack="True">
                 </asp:DropDownList>
     </p>
     <p>

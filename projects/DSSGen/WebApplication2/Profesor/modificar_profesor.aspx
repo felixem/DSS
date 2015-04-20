@@ -60,7 +60,7 @@
     <div class="row_modificar_alumno">
         <asp:Label ID="Label_EmailProf" runat="server" Text="Correo:" 
         CssClass="posicion_izquierda"></asp:Label>
-        <asp:TextBox ID="TextBox_EmailProf" runat="server" ReadOnly="True" CssClass="posicion_derecha_locked"></asp:TextBox>
+        <asp:TextBox ID="TextBox_EmailProf" runat="server" ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
         ControlToValidate="TextBox_EmailProf" Display="Dynamic" 

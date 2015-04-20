@@ -20,12 +20,12 @@
                 Rellene los siguientes campos</p>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Anyo" runat="server" Text="Año académico" CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_Anyo" runat="server" CssClass="posicion_derecha" 
+                <asp:TextBox ID="TextBox_Anyo" runat="server" CssClass="position_derecha_locked" 
                     ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Asignatura" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" 
+                <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="position_derecha_locked" 
                     ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">

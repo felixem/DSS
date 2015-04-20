@@ -21,11 +21,11 @@
                 Rellene los siguientes campos</p>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Curso" runat="server" Text="Curso:" CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_Curso" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+                <asp:TextBox ID="TextBox_Curso" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_IdAsig" runat="server" Text="Id:" CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_IdAsig" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+                <asp:TextBox ID="TextBox_IdAsig" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="LabelCod_Asig" runat="server" Text="Código de Asignatura:" CssClass="posicion_izquierda"></asp:Label>
