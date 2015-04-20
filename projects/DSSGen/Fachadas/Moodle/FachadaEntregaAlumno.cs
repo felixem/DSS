@@ -32,7 +32,7 @@ namespace Fachadas.Moodle
 
             //Inicializar las variables
             HttpPostedFile file = FileUploadControl.PostedFile;
-            string nombreFichero = file.FileName;
+            string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
             string extension = System.IO.Path.GetExtension(nombreFichero);
             string ruta = "";
             float tam = file.ContentLength;
@@ -97,6 +97,31 @@ namespace Fachadas.Moodle
             {
                 EntregaAlumnoCP cp = new EntregaAlumnoCP();
                 cp.CalificarEntrega(p_oid, nota, comentario, corregido);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        //Método que obtiene el nombre del fichero y la extensión a partir de la id de la entrega
+        public bool ObtenerDatosFichero(int idEntregaAlumno, out string nombre, out string extension)
+        {
+            nombre = "";
+            extension = "";
+
+            try
+            {
+                //Obtener entrega
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(idEntregaAlumno);
+                EntregaAlumnoEN entrega = cp.DameEntregaAlumno(consulta);
+
+                nombre = entrega.Nombre_fichero;
+                extension = entrega.Extension;
+
             }
             catch (Exception)
             {

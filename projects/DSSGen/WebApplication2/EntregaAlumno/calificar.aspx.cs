@@ -105,7 +105,9 @@ namespace DSSGenNHibernate.EntregaAlumno
         //Botón utilizado para cancelar la creación y volver atrás
         protected void Button_Descargar_Click(object sender, EventArgs e)
         {
-            
+            //Intentar descargar el fichero
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.DescargaEntregaPracticas(id));
         }
     }
 }

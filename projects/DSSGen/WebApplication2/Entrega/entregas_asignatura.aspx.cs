@@ -129,6 +129,16 @@ namespace DSSGenNHibernate.Entrega
             link.Redirect(Response, link.ModificarEntrega(Id));
         }
 
+        //Manejador del evento para ver las entregas de los alumnos
+        protected void lnkEntregas_Click(object sender, EventArgs e)
+        {
+            GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            int Id = Int32.Parse(grdrow.Cells[0].Text);
+
+            Linker link = new Linker(true);
+            link.Redirect(Response, link.ListarEntregasAlumno(Id));
+        }
+
         //Manejador del evento para eliminar una entrega
         protected void lnkEliminar_Click(object sender, EventArgs e)
         {
