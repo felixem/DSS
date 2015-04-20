@@ -9,10 +9,25 @@ namespace WebUtilities
     public class ResourceFinder
     {
         private static string pathFotos = "/Resources/Fotos/";
+        private static string pathIconos = "/Resources/Iconos/";
+
         private static string fotoProfesor = "profesor.png";
         private static string fotoAlumno = "alumno.png";
         private static string fotoAdmin = "administrador.jpg";
+
+        private static string checked_true = "checked.png";
+        private static string checked_false = "unchecked.gif";
+
         private static string dirEntregas = "/App_Data/Entregas/";
+
+        //Obtener el icono de checkado
+        public static string CheckImg(bool chequeado)
+        {
+            if (chequeado == true)
+                return checked_true;
+            else
+                return checked_false;
+        }
 
         //Buscar la foto correspondiente a una sesión
         public static string FotoSession(MySession sesion)

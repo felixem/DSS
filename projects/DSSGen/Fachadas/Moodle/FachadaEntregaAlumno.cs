@@ -20,7 +20,7 @@ namespace Fachadas.Moodle
     public class FachadaEntregaAlumno
     {
         //Gestionar la subida provisional de un fichero
-        public bool EntregarPractica(int idEntrega, MySession session, HttpServerUtility Server, 
+        public bool EntregarPractica(int idEntrega, MySession session, HttpServerUtility Server,
             FileUpload FileUploadControl, Label StatusLabel, TextBox TextBox_Comentario, out int entregaAlumno)
         {
             Uploader uploader = new Uploader(Server, FileUploadControl);
@@ -44,12 +44,12 @@ namespace Fachadas.Moodle
 
             //Crear método de consulta para obtener la EvaluacionAlumno a partir de un alumno y un control
             string email = session.Usuario.Email;
-            DameEvaluacionAlumnoPorAlumnoYEntrega consulta = 
-                new DameEvaluacionAlumnoPorAlumnoYEntrega(email,idEntrega);
+            DameEvaluacionAlumnoPorAlumnoYEntrega consulta =
+                new DameEvaluacionAlumnoPorAlumnoYEntrega(email, idEntrega);
 
             //Crear la entrega de prácticas en la base de datos
             EntregaAlumnoCP cp = new EntregaAlumnoCP();
-            entregaAlumno = cp.CrearEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega, 
+            entregaAlumno = cp.CrearEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
                 nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega, consulta);
 
             return true;
@@ -70,16 +70,40 @@ namespace Fachadas.Moodle
         }
 
         //Método para vincular un entrega a partir de su id a textboxes
-        public bool VincularEntregaAlumnoPorIdLigero(int id, TextBox TextBox_Cod, TextBox TextBox_NomAlu, 
+        public bool VincularEntregaAlumnoPorIdLigero(int id, TextBox TextBox_Cod, TextBox TextBox_NomAlu,
             TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, CheckBox CheckBox_Corregido)
         {
             try
             {
                 EntregaAlumnoBinding binding = new EntregaAlumnoBinding();
                 DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
-                IBinderEntregaAlumno linker = new BinderEntregaAlumno(TextBox_Cod,
+                IBinderEntregaAlumno linker = new BinderEntregaAlumnoLigero(TextBox_Cod,
                     TextBox_NomAlu, TextBox_ApeAlu, TextBox_Dni,
                     TextBox_ComentAlu, CheckBox_Corregido);
+
+                binding.VincularDameEntregaAlumno(consulta, linker);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Método para vincular un entrega a partir de su id a textboxes
+        public bool VincularEntregaAlumnoPorId(int id, TextBox TextBox_Nom,
+            TextBox TextBox_Desc, TextBox TextBox_Apertu, TextBox TextBox_Cierre, TextBox TextBox_Punt,
+            TextBox TextBox_ComentarioAlumno, TextBox TextBox_NombreArchivo,
+            Image Img_Corregido, TextBox TextBox_Nota, TextBox TextBox_ComentarioProfesor)
+        {
+            try
+            {
+                EntregaAlumnoBinding binding = new EntregaAlumnoBinding();
+                DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
+                IBinderEntregaAlumno linker = new BinderEntregaAlumnoCompleto(TextBox_Nom,
+                        TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt,
+                        TextBox_ComentarioAlumno, TextBox_NombreArchivo,
+                        Img_Corregido, TextBox_Nota, TextBox_ComentarioProfesor);
 
                 binding.VincularDameEntregaAlumno(consulta, linker);
             }
@@ -130,6 +154,6 @@ namespace Fachadas.Moodle
 
             return true;
         }
-    
+
     }
 }

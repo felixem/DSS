@@ -40,11 +40,23 @@
     </p>
     <p class="style2">
         Tus Comentarios
-        <asp:TextBox ID="TextBox_ComentarioAlumno" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_ComentarioAlumno" runat="server" ReadOnly="True"></asp:TextBox>
+    </p>
+    <p class="style2">
+        Nombre del archivo
+        <asp:TextBox ID="TextBox_NombreArchivo" runat="server" ReadOnly="True"></asp:TextBox>
+    </p>
+    <p class="style2">
+        Corregido
+        <asp:Image ID="Img_Corregido" runat="server"></asp:Image>
+    </p>
+    <p class="style2">
+        Nota
+        <asp:TextBox ID="TextBox_Nota" runat="server" ReadOnly="True"></asp:TextBox>
     </p>
     <p class="style2">
         Comentarios del Profesor
-        <asp:TextBox ID="TextBox_ComentarioProfesor" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_ComentarioProfesor" ReadOnly="True" runat="server"></asp:TextBox>
     </p>
     <p class="style2">
         <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" /></p>

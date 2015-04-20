@@ -13,7 +13,6 @@ namespace DSSGenNHibernate.EntregaAlumno
 {
     public partial class detalles_entrega_alumno : BasicPage
     {
-        FachadaEntrega fachadaEntrega;
         FachadaEntregaAlumno fachadaEntregaAlumno;
         private int id;
         String param;
@@ -28,7 +27,6 @@ namespace DSSGenNHibernate.EntregaAlumno
                 navegacion.SavePreviuosPage(Request);
             }
 
-            fachadaEntrega = new FachadaEntrega();
             fachadaEntregaAlumno = new FachadaEntregaAlumno();
             Obtener_Parametros();
 
@@ -58,8 +56,9 @@ namespace DSSGenNHibernate.EntregaAlumno
         private void CargarDatos()
         {
             //Recuperar los datos de la entrega
-            if (!fachadaEntrega.VincularEntregaPorIdLigero(id, TextBox_Nom,
-            TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt))
+            if (!fachadaEntregaAlumno.VincularEntregaAlumnoPorId(id, TextBox_Nom,
+            TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt,TextBox_ComentarioAlumno,
+            TextBox_NombreArchivo,Img_Corregido,TextBox_Nota, TextBox_ComentarioProfesor))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

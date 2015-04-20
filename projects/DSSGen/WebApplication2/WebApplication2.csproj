@@ -92,6 +92,8 @@
     <Content Include="Examen\modificar_bolsa.aspx" />
     <Content Include="Examen\crear_bolsa.aspx" />
     <Content Include="Examen\crear_pregunta.aspx" />
+    <Content Include="Resources\Icons\checked.png" />
+    <Content Include="Resources\Icons\unchecked.gif" />
     <Content Include="Sistema Evaluacion\crear_sistema.aspx" />
     <Content Include="Sistema Evaluacion\modificar_sistema.aspx" />
     <Content Include="Sistema Evaluacion\sistemas_evaluacion.aspx" />

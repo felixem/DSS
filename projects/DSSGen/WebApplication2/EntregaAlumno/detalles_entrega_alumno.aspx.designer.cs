@@ -67,6 +67,33 @@ namespace DSSGenNHibernate.EntregaAlumno {
         protected global::System.Web.UI.WebControls.TextBox TextBox_ComentarioAlumno;
         
         /// <summary>
+        /// TextBox_NombreArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_NombreArchivo;
+        
+        /// <summary>
+        /// Img_Corregido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Img_Corregido;
+        
+        /// <summary>
+        /// TextBox_Nota control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Nota;
+        
+        /// <summary>
         /// TextBox_ComentarioProfesor control.
         /// </summary>
         /// <remarks>
