@@ -24,9 +24,9 @@ namespace WebUtilities
         public static string CheckImg(bool chequeado)
         {
             if (chequeado == true)
-                return checked_true;
+                return pathIconos + checked_true;
             else
-                return checked_false;
+                return pathIconos + checked_false;
         }
 
         //Buscar la foto correspondiente a una sesión

@@ -78,7 +78,9 @@ namespace WebUtilities
 
         internal static readonly string descargarRecurso = "/Download/DownloadFile.ashx";
 
-        internal static readonly string EntregasProgramadasAsignaturaAlumno = "/Entrega/entregas_asignatura_vista_alumno.aspx";
+        internal static readonly string entregasProgramadasAsignaturaAlumno = "/Entrega/entregas_asignatura_vista_alumno.aspx";
+
+        internal static readonly string detallesMiEntregaAlumno = "/EntregaAlumno/detalles_entrega_alumno.aspx";
         
 
         internal static readonly string error404 = "/Errors/404.aspx";
@@ -326,7 +328,7 @@ namespace WebUtilities
         //Cadena para la página para listar las entregas programadas de una asignatura
         public string EntregasProgramadasAsignaturaVistaAlumno(int cod)
         {
-            return EntregasProgramadasAsignaturaAlumno +
+            return entregasProgramadasAsignaturaAlumno +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
@@ -466,6 +468,13 @@ namespace WebUtilities
         public string ListarEntregasAlumno(int cod)
         {
             return listarEntregasAlumno +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Ver detalles de una entrega del alumno (vista desde el alumno)
+        public string DetallesMiEntregaAlumno(int cod)
+        {
+            return detallesMiEntregaAlumno +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 

@@ -76,6 +76,15 @@ namespace DSSGenNHibernate.EntregaAlumno {
         protected global::System.Web.UI.WebControls.TextBox TextBox_NombreArchivo;
         
         /// <summary>
+        /// Button_Descargar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Descargar;
+        
+        /// <summary>
         /// Img_Corregido control.
         /// </summary>
         /// <remarks>

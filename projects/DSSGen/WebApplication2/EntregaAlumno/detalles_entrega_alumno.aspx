@@ -45,6 +45,7 @@
     <p class="style2">
         Nombre del archivo
         <asp:TextBox ID="TextBox_NombreArchivo" runat="server" ReadOnly="True"></asp:TextBox>
+        <asp:Button ID="Button_Descargar" runat="server" OnClick="Button_Descargar_Click" Text="Descargar" />
     </p>
     <p class="style2">
         Corregido

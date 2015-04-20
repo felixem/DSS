@@ -77,7 +77,9 @@ namespace DSSGenNHibernate.EntregaAlumno
                 (id, MySession.Current, Server, FileUploadControl, StatusLabel,
                 TextBox_Comentario, out entregaAlumnoGenerada))
             {
-                Notification.Notify(Response, "Entrega Generada nº" + entregaAlumnoGenerada);
+                //Llevar a la página de detalles de entrega
+                Linker linker = new Linker(false);
+                linker.Redirect(Response,linker.DetallesMiEntregaAlumno(entregaAlumnoGenerada));
             }
             else
             {
