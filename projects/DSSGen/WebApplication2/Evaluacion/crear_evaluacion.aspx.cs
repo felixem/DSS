@@ -51,13 +51,13 @@ namespace DSSGenNHibernate.Evaluacion
             //Verifico si se creo el alumno
             if (verificado)
             {
-                Notification.Notify(Response, "El control ha sido creado");
+                Notification.Notify(Response, "La evaluación ha sido creada");
                 Linker link = new Linker(true);
-                link.Redirect(Response, link.PreviousPage());
+                this.Clean();
             }
             else
             {
-                Notification.Notify(Response, "El control no ha podido ser creado");
+                Notification.Notify(Response, "La evaluación no ha podido ser creada");
             }
         }        //Botón utilizado para cancelar la creación y volver atrás
         protected void Button_Cancelar_Click(object sender, EventArgs e)
@@ -78,6 +78,7 @@ namespace DSSGenNHibernate.Evaluacion
             TextBox_Nombre.Text="";
             TextBox_FechaI.Text="";
             TextBox_FechaF.Text="";
+            CheckBox_Abierta.Checked = false;
         }
        
         //Obtener los años académicos
