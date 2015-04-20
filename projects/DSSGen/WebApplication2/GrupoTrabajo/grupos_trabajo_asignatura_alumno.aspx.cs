@@ -112,14 +112,14 @@ namespace DSSGenNHibernate.GrupoTrabajo
             rptPager.DataBind();
         }
 
-        //Manejador del evento para modificar un grupo de trabajo
+        //Manejador del evento para acceder a un grupo de trabajo
         protected void lnkAccederGrupo_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.ModificarGrupoTrabajo(grupoId));
+            link.Redirect(Response, link.AccesoGrupoTrabajo(grupoId));
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

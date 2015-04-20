@@ -20,6 +20,7 @@ namespace WebUtilities
         internal static readonly string modificarAlumno = "/Alumno/modificar_alumno.aspx";
         internal static readonly string modificarProfesor = "/Profesor/modificar_profesor.aspx";
         internal static readonly string modificarAsignatura = "/Asignatura/modificar_asignatura.aspx";
+
         internal static readonly string modificarGrupoTrabajo = "/GrupoTrabajo/modificar_grupotrabajo.aspx";
         internal static readonly string listarAlumnosGrupoTrabajo = "/GrupoTrabajo/alumnos_grupo_trabajo.aspx";
         internal static readonly string anyadirAlumnosGrupoTrabajo = "/GrupoTrabajo/anyadiralumnos_grupo_trabajo.aspx";
@@ -27,6 +28,8 @@ namespace WebUtilities
         internal static readonly string listarMisGruposTrabajoAsignatura = "/GrupoTrabajo/mis_grupos_trabajo_asignatura.aspx";
         internal static readonly string crearGrupoTrabajoAsignaturaAnyo = "/GrupoTrabajo/crear_grupotrabajo_asignatura.aspx";
         internal static readonly string listarGruposTrabajoAsignaturaAnyoAlumno = "/GrupoTrabajo/grupos_trabajo_asignatura_alumno.aspx";
+        internal static readonly string accesoGrupoTrabajo = "/GrupoTrabajo/acceso_grupotrabajo.aspx";
+
         internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
         internal static readonly string matricularAlumnoEnAsignaturaAnyo = "/AsignaturaAnyo/matricular_alumno_asignatura.aspx";
         internal static readonly string listarAsignaturasAnyoDeAlumno = "/AsignaturaAnyo/asignaturas_matriculado_alumno.aspx";
@@ -162,6 +165,12 @@ namespace WebUtilities
         public string CrearEntrega()
         {
             return crearEntrega;
+        }
+
+        //Cadena para la interfaz de acceso a la base de datos
+        public string AccesoGrupoTrabajo(int id)
+        {
+            return accesoGrupoTrabajo + Parameter(PageParameters.MainParameter, id.ToString());
         }
 
         public string MisGruposTrabajoAsignatura(int id)
