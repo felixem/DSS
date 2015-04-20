@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/utilities/maqueta_tabla.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/utilities/tabla_dos_columnas.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/utilities/centrar_contenido.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -16,12 +17,12 @@
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_NombreGrupo" runat="server" Text="Grupo:" Style="color: #000000"
                     CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_NomGrupo" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+                <asp:TextBox ID="TextBox_NomGrupo" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
             </div>
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_Capacidad" runat="server" Text="Inscritos:" Style="color: #000000"
                     CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_Capacidad" runat="server" CssClass="posicion_derecha" ReadOnly="True"></asp:TextBox>
+                <asp:TextBox ID="TextBox_Capacidad" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
             </div>
             <div class="">
                 PageSize:
@@ -32,7 +33,7 @@
                 </asp:DropDownList>
                 <hr />
                 <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
-                <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False" Style="margin-left:60px">
                     <Columns>
                         <asp:BoundField HeaderText="Email" DataField="Email" />
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />

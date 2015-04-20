@@ -20,7 +20,7 @@
     <p class="style2">
         Asignatura
                 <asp:TextBox ID="TextBox_Asignatura" runat="server"
-                    ReadOnly="True" Width="185px"></asp:TextBox>
+                    ReadOnly="True"  Width="185px"></asp:TextBox>
             </p>
     <p class="style2">
         Evaluación
@@ -29,7 +29,7 @@
             </p>
     <p class="style2">
         Profesor
-                <asp:TextBox ID="TextBox_Profesor" runat="server"
+                <asp:TextBox ID="TextBox_Profesor" runat="server" 
                     ReadOnly="True"></asp:TextBox>
             </p>
     <p class="style2">

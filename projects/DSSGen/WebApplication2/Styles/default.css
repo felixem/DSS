@@ -467,3 +467,8 @@ hr {
 	text-decoration: none;
 	color: #939393;
 }
+
+.background_locked
+{
+    background: #C4C4C4;
+}
