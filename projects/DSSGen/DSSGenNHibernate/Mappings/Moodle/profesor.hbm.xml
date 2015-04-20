@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+				
+<joined-subclass name="ProfesorEN" extends="DSSGenNHibernate.EN.Moodle.UsuarioComunEN" table="[Profesor]">
+	<key>
+    		<column name="[email]"/>
+   	</key>
+
+					<property name="Cod_profesor" type="integer"> 
+						<column name="[cod_profesor]"  unique="true" not-null="true"/>
+					</property>
+			
+			
+		  			
+						<bag name="Tutorias" >
+							<key>
+								<column name="[FK_email_profesor]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.TutoriaEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Materiales" >
+							<key>
+								<column name="[FK_email_profesor]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.MaterialEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Entregas_propuestas" >
+							<key>
+								<column name="[FK_email_profesor]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Asignaturas" table="[profesor_asignaturaanyo]" inverse="true" >
+							<key>
+									<column name="[FK_email_profesores]"/>
+							</key>
+      						<many-to-many class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN">
+									<column name="[FK_id_asignaturas]"/>
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+					
+		
+		  </joined-subclass>	
+		  
+		  <query name="ProfesorENReadAllHQL">from ProfesorEN</query>
+		  <query name="ProfesorENreadCantidadHQL"><![CDATA[select count(*) FROM ProfesorEN]]></query>
+		  <query name="ProfesorENreadCodHQL"><![CDATA[FROM ProfesorEN prof where prof.Cod_profesor =:cod ]]></query>
+		  <query name="ProfesorENreadCantidadPorAsignaturaAnyoHQL"><![CDATA[select count(distinct prof) FROM ProfesorEN prof INNER JOIN prof.Asignaturas as asig where asig.Id=:id ]]></query>
+		</hibernate-mapping>
+	

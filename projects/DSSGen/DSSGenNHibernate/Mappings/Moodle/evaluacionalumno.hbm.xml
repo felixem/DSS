@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="EvaluacionAlumnoEN" table="[EvaluacionAlumno]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+			
+			
+		  			
+						<bag name="Entregas" >
+							<key>
+								<column name="[FK_id_evaluacion_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.EntregaAlumnoEN"/>
+					    </bag>
+					
+			
+		  			
+						<many-to-one name="Sistema_evaluacion" class="DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN" >	
+								<column name="[FK_id_sistema_evaluacion]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Controles" >
+							<key>
+								<column name="[FK_id_evaluacion_alumno]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN"/>
+					    </bag>
+					
+			
+		  			
+					
+							<many-to-one name="Expediente_evaluacion" class="DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN" >
+								<column name="[FK_id_expediente_evaluacion]"/>
+        					</many-to-one>
+					 
+						
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="EvaluacionAlumnoENReadAllHQL">from EvaluacionAlumnoEN</query>
+		  <query name="EvaluacionAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM EvaluacionAlumnoEN]]></query>
+		  <query name="EvaluacionAlumnoENreadPorAlumnoYEntregaHQL"><![CDATA[select eval FROM EntregaEN entrega INNER JOIN entrega.Evaluacion.Evaluaciones_alumno eval where eval.Expediente_evaluacion.Expediente_asignatura.Expediente_anyo.Expediente.Alumno.Email=:p_alumno AND entrega.Id=:p_entrega]]></query>
+		</hibernate-mapping>
+	

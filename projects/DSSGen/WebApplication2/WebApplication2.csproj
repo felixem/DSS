@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0752BB7F-4D6C-40DE-AE7D-6A88D3937666}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DSSGenNHibernate</RootNamespace>
+    <AssemblyName>WebApplication2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Alumno\alumnos.aspx" />
+    <Content Include="Alumno\alumnos_matriculados.aspx" />
+    <Content Include="Alumno\mis_alumnos_matriculados.aspx" />
+    <Content Include="Alumno\modificar_alumno.aspx" />
+    <Content Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx" />
+    <Content Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx" />
+    <Content Include="AsignaturaAnyo\crear_asignaturaanyo.aspx" />
+    <Content Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx" />
+    <Content Include="Asignatura\asignaturas.aspx" />
+    <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
+    <Content Include="Asignatura\modificar_asignatura.aspx" />
+    <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="EntregaAlumno\detalles_entrega_alumno.aspx" />
+    <Content Include="EntregaAlumno\realizar_entrega.aspx" />
+    <Content Include="Errors\404.aspx" />
+    <Content Include="Errors\403.aspx" />
+    <Content Include="Evaluacion\crear_evaluacion.aspx" />
+    <Content Include="Evaluacion\evaluaciones.aspx" />
+    <Content Include="Evaluacion\modificar_evaluacion.aspx" />
+    <Content Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx" />
+    <Content Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx" />
+    <Content Include="GrupoTrabajo\acceso_grupotrabajo.aspx" />
+    <Content Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx" />
+    <Content Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx" />
+    <Content Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx" />
+    <Content Include="GrupoTrabajo\grupos_trabajo_asignatura.aspx" />
+    <Content Include="GrupoTrabajo\modificar_grupotrabajo.aspx" />
+    <Content Include="GrupoTrabajo\crear_grupotrabajo.aspx" />
+    <Content Include="GrupoTrabajo\grupos_trabajo.aspx" />
+    <Content Include="Profesor\profesores.aspx" />
+    <Content Include="Profesor\modificar_profesor.aspx" />
+    <Content Include="Resources\Fotos\alumno.png" />
+    <Content Include="Resources\Fotos\administrador.jpg" />
+    <Content Include="Resources\Fotos\profesor.png" />
+    <Content Include="Examen\bolsas_preguntas.aspx" />
+    <Content Include="Examen\modificar_pregunta.aspx" />
+    <Content Include="Examen\modificar_bolsa.aspx" />
+    <Content Include="Examen\crear_bolsa.aspx" />
+    <Content Include="Examen\crear_pregunta.aspx" />
+    <Content Include="Resources\Iconos\checked.png" />
+    <Content Include="Resources\Iconos\unchecked.gif" />
+    <Content Include="Sistema Evaluacion\crear_sistema.aspx" />
+    <Content Include="Sistema Evaluacion\modificar_sistema.aspx" />
+    <Content Include="Sistema Evaluacion\sistemas_evaluacion.aspx" />
+    <Content Include="Styles\default.css" />
+    <Content Include="Styles\utilities\centrar_contenido.css" />
+    <Content Include="Styles\utilities\tabla_dos_columnas.css" />
+    <Content Include="Styles\utilities\maqueta_tabla.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\submenu\login.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Alumno\crear_alumno.aspx" />
+    <Content Include="Profesor\crear_profesor.aspx" />
+    <Content Include="Control\controles.aspx" />
+    <Content Include="Control\crear_control.aspx" />
+    <Content Include="Control\modificar_control.aspx" />
+    <Content Include="Entrega\entregas.aspx" />
+    <Content Include="Entrega\crear_entrega.aspx" />
+    <Content Include="Entrega\modificar_entrega.aspx" />
+    <Content Include="Entrega\entregas_asignatura.aspx" />
+    <Content Include="Entrega\crear_entrega_asignatura.aspx" />
+    <Content Include="Control\crear_control_asignatura.aspx" />
+    <Content Include="Control\controles_asignatura.aspx" />
+    <Content Include="EntregaAlumno\entregas_alumnos.aspx" />
+    <Content Include="EntregaAlumno\calificar.aspx" />
+    <Content Include="Entrega\entregas_asignatura_vista_alumno.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\alumnos.aspx.cs">
+      <DependentUpon>alumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\alumnos.aspx.designer.cs">
+      <DependentUpon>alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\alumnos_matriculados.aspx.cs">
+      <DependentUpon>alumnos_matriculados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\alumnos_matriculados.aspx.designer.cs">
+      <DependentUpon>alumnos_matriculados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\mis_alumnos_matriculados.aspx.cs">
+      <DependentUpon>mis_alumnos_matriculados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\mis_alumnos_matriculados.aspx.designer.cs">
+      <DependentUpon>mis_alumnos_matriculados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\modificar_alumno.aspx.designer.cs">
+      <DependentUpon>modificar_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_matriculado_alumno.aspx.designer.cs">
+      <DependentUpon>asignaturas_matriculado_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.cs">
+      <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\mis_asignaturas_impartidas.aspx.designer.cs">
+      <DependentUpon>mis_asignaturas_impartidas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\crear_asignaturaanyo.aspx.cs">
+      <DependentUpon>crear_asignaturaanyo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\crear_asignaturaanyo.aspx.designer.cs">
+      <DependentUpon>crear_asignaturaanyo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx.cs">
+      <DependentUpon>matricular_alumno_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\matricular_alumno_asignatura.aspx.designer.cs">
+      <DependentUpon>matricular_alumno_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asignatura\asignaturas.aspx.cs">
+      <DependentUpon>asignaturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asignatura\asignaturas.aspx.designer.cs">
+      <DependentUpon>asignaturas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_impartidas.aspx.cs">
+      <DependentUpon>asignaturas_impartidas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaturaAnyo\asignaturas_impartidas.aspx.designer.cs">
+      <DependentUpon>asignaturas_impartidas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asignatura\modificar_asignatura.aspx.cs">
+      <DependentUpon>modificar_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asignatura\modificar_asignatura.aspx.designer.cs">
+      <DependentUpon>modificar_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Asignatura\crear_asignatura.aspx.cs">
+      <DependentUpon>crear_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asignatura\crear_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Download\DownloadFile.ashx.cs">
+      <DependentUpon>DownloadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\detalles_entrega_alumno.aspx.cs">
+      <DependentUpon>detalles_entrega_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\detalles_entrega_alumno.aspx.designer.cs">
+      <DependentUpon>detalles_entrega_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\realizar_entrega.aspx.cs">
+      <DependentUpon>realizar_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\realizar_entrega.aspx.designer.cs">
+      <DependentUpon>realizar_entrega.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\crear_evaluacion.aspx.cs">
+      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\crear_evaluacion.aspx.designer.cs">
+      <DependentUpon>crear_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\evaluaciones.aspx.cs">
+      <DependentUpon>evaluaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\evaluaciones.aspx.designer.cs">
+      <DependentUpon>evaluaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Evaluacion\modificar_evaluacion.aspx.cs">
+      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Evaluacion\modificar_evaluacion.aspx.designer.cs">
+      <DependentUpon>modificar_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\bolsas_preguntas.aspx.cs">
+      <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\bolsas_preguntas.aspx.designer.cs">
+      <DependentUpon>bolsas_preguntas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\modificar_pregunta.aspx.cs">
+      <DependentUpon>modificar_pregunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\modificar_pregunta.aspx.designer.cs">
+      <DependentUpon>modificar_pregunta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\modificar_bolsa.aspx.cs">
+      <DependentUpon>modificar_bolsa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\modificar_bolsa.aspx.designer.cs">
+      <DependentUpon>modificar_bolsa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\crear_bolsa.aspx.cs">
+      <DependentUpon>crear_bolsa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\crear_bolsa.aspx.designer.cs">
+      <DependentUpon>crear_bolsa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examen\crear_pregunta.aspx.cs">
+      <DependentUpon>crear_pregunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examen\crear_pregunta.aspx.designer.cs">
+      <DependentUpon>crear_pregunta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx.cs">
+      <DependentUpon>alumnos_grupo_trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\alumnos_grupo_trabajo.aspx.designer.cs">
+      <DependentUpon>alumnos_grupo_trabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx.cs">
+      <DependentUpon>anyadiralumnos_grupo_trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\anyadiralumnos_grupo_trabajo.aspx.designer.cs">
+      <DependentUpon>anyadiralumnos_grupo_trabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\acceso_grupotrabajo.aspx.cs">
+      <DependentUpon>acceso_grupotrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\acceso_grupotrabajo.aspx.designer.cs">
+      <DependentUpon>acceso_grupotrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx.cs">
+      <DependentUpon>mis_grupos_trabajo_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\mis_grupos_trabajo_asignatura.aspx.designer.cs">
+      <DependentUpon>mis_grupos_trabajo_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.cs">
+      <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura_alumno.aspx.designer.cs">
+      <DependentUpon>grupos_trabajo_asignatura_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx.cs">
+      <DependentUpon>crear_grupotrabajo_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\crear_grupotrabajo_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_grupotrabajo_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura.aspx.cs">
+      <DependentUpon>grupos_trabajo_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo_asignatura.aspx.designer.cs">
+      <DependentUpon>grupos_trabajo_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\modificar_grupotrabajo.aspx.cs">
+      <DependentUpon>modificar_grupotrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\modificar_grupotrabajo.aspx.designer.cs">
+      <DependentUpon>modificar_grupotrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\crear_grupotrabajo.aspx.cs">
+      <DependentUpon>crear_grupotrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\crear_grupotrabajo.aspx.designer.cs">
+      <DependentUpon>crear_grupotrabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo.aspx.cs">
+      <DependentUpon>grupos_trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GrupoTrabajo\grupos_trabajo.aspx.designer.cs">
+      <DependentUpon>grupos_trabajo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\profesores.aspx.cs">
+      <DependentUpon>profesores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\profesores.aspx.designer.cs">
+      <DependentUpon>profesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\modificar_profesor.aspx.cs">
+      <DependentUpon>modificar_profesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\modificar_profesor.aspx.designer.cs">
+      <DependentUpon>modificar_profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistema Evaluacion\crear_sistema.aspx.cs">
+      <DependentUpon>crear_sistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\crear_sistema.aspx.designer.cs">
+      <DependentUpon>crear_sistema.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\modificar_sistema.aspx.cs">
+      <DependentUpon>modificar_sistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\modificar_sistema.aspx.designer.cs">
+      <DependentUpon>modificar_sistema.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\sistemas_evaluacion.aspx.cs">
+      <DependentUpon>sistemas_evaluacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema Evaluacion\sistemas_evaluacion.aspx.designer.cs">
+      <DependentUpon>sistemas_evaluacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Alumno\crear_alumno.aspx.cs">
+      <DependentUpon>crear_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Alumno\crear_alumno.aspx.designer.cs">
+      <DependentUpon>crear_alumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesor\crear_profesor.aspx.cs">
+      <DependentUpon>crear_profesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesor\crear_profesor.aspx.designer.cs">
+      <DependentUpon>crear_profesor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\controles.aspx.cs">
+      <DependentUpon>controles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\controles.aspx.designer.cs">
+      <DependentUpon>controles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crear_control.aspx.cs">
+      <DependentUpon>crear_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\crear_control.aspx.designer.cs">
+      <DependentUpon>crear_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\modificar_control.aspx.cs">
+      <DependentUpon>modificar_control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\modificar_control.aspx.designer.cs">
+      <DependentUpon>modificar_control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas.aspx.cs">
+      <DependentUpon>entregas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas.aspx.designer.cs">
+      <DependentUpon>entregas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega.aspx.cs">
+      <DependentUpon>crear_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega.aspx.designer.cs">
+      <DependentUpon>crear_entrega.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\modificar_entrega.aspx.cs">
+      <DependentUpon>modificar_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\modificar_entrega.aspx.designer.cs">
+      <DependentUpon>modificar_entrega.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura.aspx.cs">
+      <DependentUpon>entregas_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura.aspx.designer.cs">
+      <DependentUpon>entregas_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega_asignatura.aspx.cs">
+      <DependentUpon>crear_entrega_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\crear_entrega_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_entrega_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\crear_control_asignatura.aspx.cs">
+      <DependentUpon>crear_control_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\crear_control_asignatura.aspx.designer.cs">
+      <DependentUpon>crear_control_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\controles_asignatura.aspx.cs">
+      <DependentUpon>controles_asignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\controles_asignatura.aspx.designer.cs">
+      <DependentUpon>controles_asignatura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\entregas_alumnos.aspx.cs">
+      <DependentUpon>entregas_alumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\entregas_alumnos.aspx.designer.cs">
+      <DependentUpon>entregas_alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\calificar.aspx.cs">
+      <DependentUpon>calificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\calificar.aspx.designer.cs">
+      <DependentUpon>calificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura_vista_alumno.aspx.cs">
+      <DependentUpon>entregas_asignatura_vista_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura_vista_alumno.aspx.designer.cs">
+      <DependentUpon>entregas_asignatura_vista_alumno.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Entregas\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
+      <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
+      <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fachadas\Fachadas.csproj">
+      <Project>{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}</Project>
+      <Name>Fachadas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Alumno\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Asignatura\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AsignaturaAnyo\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Control\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entrega\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Examen\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GrupoTrabajo\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Profesor\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntregaAlumno\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Download\DownloadFile.ashx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61227</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

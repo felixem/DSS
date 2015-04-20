@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DSSGenNHibernate</RootNamespace>
+    <AssemblyName>DSSGenNHibernate</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppLib\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppLib\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppLib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppLib\Antlr3.Runtime.dll" />
+    <Content Include="AppLib\Castle.DynamicProxy2.dll" />
+    <Content Include="AppLib\Iesi.Collections.dll" />
+    <Content Include="AppLib\LinFu.DynamicProxy.dll" />
+    <Content Include="AppLib\log4net.dll" />
+    <Content Include="AppLib\NHibernate.ByteCode.Castle.dll" />
+    <Content Include="AppLib\NHibernate.ByteCode.LinFu.dll" />
+    <Content Include="AppLib\NHibernate.dll" />
+    <Content Include="AppLib\nunit.core.dll" />
+    <Content Include="AppLib\nunit.framework.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auxiliar\Encrypter.cs" />
+    <Compile Include="CAD\BasicCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AdministradorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AlumnoCAD_ReadAllIngresablesEnGrupo.cs" />
+    <Compile Include="CAD\Moodle\AlumnoCAD_ReadAllMatriculablesEnAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\AlumnoCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\AlumnoCAD_ReadAllPorGrupo.cs" />
+    <Compile Include="CAD\Moodle\AnyoAcademicoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAlumnoYAnyo.cs" />
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAnyo.cs" />
+    <Compile Include="CAD\Moodle\AsignaturaAnyoCAD_ReadAllPorAnyoYProfesor.cs" />
+    <Compile Include="CAD\Moodle\AsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\AsignaturaCAD_ReadAllVinculablesAAnyo.cs" />
+    <Compile Include="CAD\Moodle\BolsaPreguntasCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ControlAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ControlCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\IEvaluacionCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\EvaluacionCAD_ReadAllPorAnyo.cs" />
+    <Compile Include="CAD\Moodle\CursoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EntregaAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EntregaAlumnoCAD_ReadAllPorEntrega.cs" />
+    <Compile Include="CAD\Moodle\EntregaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EntregaCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\EvaluacionAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\EvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteAsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ExpedienteEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\GrupoTrabajoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\GrupoTrabajo_ReadAllPorAlumnoYAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\GrupoTrabajo_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\IAdministradorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAlumnoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IAnyoAcademicoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAsignaturaAnyoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IAsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IAsignaturaCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IBolsaPreguntasCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IControlAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IControlCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\ICursoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEntregaAlumnoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IEntregaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEntregaCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IEvaluacionAlumnoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteAnyoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteAsignaturaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IExpedienteEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IGrupoTrabajoCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IMaterialCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IMensajeCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\INotaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IPreguntaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IPreguntaControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IProfesorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IProfesorCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\IRespuestaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ISistemaEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ISistemaEvaluacionCAD_Extension.cs" />
+    <Compile Include="CAD\Moodle\ITutoriaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IUsuarioCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\IUsuarioComunCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\MaterialCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\MensajeCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\NotaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\PreguntaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\PreguntaControlCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ProfesorCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\ProfesorCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\RespuestaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\SistemaEvaluacionCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\SistemaEvaluacionCAD_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CAD\Moodle\TutoriaCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\UsuarioCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CAD\Moodle\UsuarioComunCAD.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utils\Util.cs" />
+    <Compile Include="NHibernateHelper.cs" />
+    <Compile Include="Exceptions\ModelException.cs" />
+    <Compile Include="Exceptions\DataLayerException.cs" />
+    <Compile Include="EN\Moodle\UsuarioEN.cs" />
+    <Compile Include="CEN\Moodle\UsuarioCEN.cs" />
+    <Compile Include="CEN\Moodle\UsuarioCEN_Login.cs" />
+    <Compile Include="CEN\Moodle\UsuarioCEN_ChangePassword.cs" />
+    <Compile Include="EN\Moodle\AdministradorEN.cs" />
+    <Compile Include="CEN\Moodle\AdministradorCEN.cs" />
+    <Compile Include="EN\Moodle\UsuarioComunEN.cs" />
+    <Compile Include="CEN\Moodle\UsuarioComunCEN.cs" />
+    <Compile Include="EN\Moodle\ProfesorEN.cs" />
+    <Compile Include="CEN\Moodle\ProfesorCEN.cs" />
+    <Compile Include="CEN\Moodle\ProfesorCEN_ModifyNoPassword.cs" />
+    <Compile Include="CEN\Moodle\ProfesorCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="EN\Moodle\AlumnoEN.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ModifyNoPassword.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorGrupo.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllIngresablesEnGrupo.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CEN\Moodle\AlumnoCEN_ReadAllMatriculablesEnAsignaturaAnyo.cs" />
+    <Compile Include="EN\Moodle\TutoriaEN.cs" />
+    <Compile Include="CEN\Moodle\TutoriaCEN.cs" />
+    <Compile Include="EN\Moodle\MensajeEN.cs" />
+    <Compile Include="CEN\Moodle\MensajeCEN.cs" />
+    <Compile Include="EN\Moodle\AsignaturaEN.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaCEN.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaCEN_ReadAllVinculablesAAnyo.cs" />
+    <Compile Include="EN\Moodle\CursoEN.cs" />
+    <Compile Include="CEN\Moodle\CursoCEN.cs" />
+    <Compile Include="EN\Moodle\NotaEN.cs" />
+    <Compile Include="CEN\Moodle\NotaCEN.cs" />
+    <Compile Include="EN\Moodle\ExpedienteEN.cs" />
+    <Compile Include="CEN\Moodle\ExpedienteCEN.cs" />
+    <Compile Include="EN\Moodle\ExpedienteAnyoEN.cs" />
+    <Compile Include="CEN\Moodle\ExpedienteAnyoCEN.cs" />
+    <Compile Include="EN\Moodle\ExpedienteAsignaturaEN.cs" />
+    <Compile Include="CEN\Moodle\ExpedienteAsignaturaCEN.cs" />
+    <Compile Include="EN\Moodle\ExpedienteEvaluacionEN.cs" />
+    <Compile Include="CEN\Moodle\ExpedienteEvaluacionCEN.cs" />
+    <Compile Include="EN\Moodle\GrupoTrabajoEN.cs" />
+    <Compile Include="CEN\Moodle\GrupoTrabajoCEN.cs" />
+    <Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CEN\Moodle\GrupoTrabajoCEN_ReadAllPorAlumnoYAsignaturaAnyo.cs" />
+    <Compile Include="EN\Moodle\MaterialEN.cs" />
+    <Compile Include="CEN\Moodle\MaterialCEN.cs" />
+    <Compile Include="EN\Moodle\AnyoAcademicoEN.cs" />
+    <Compile Include="CEN\Moodle\AnyoAcademicoCEN.cs" />
+    <Compile Include="EN\Moodle\AsignaturaAnyoEN.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyo.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAlumnoYAnyo.cs" />
+    <Compile Include="CEN\Moodle\AsignaturaAnyoCEN_ReadAllPorAnyoYProfesor.cs" />
+    <Compile Include="EN\Moodle\EvaluacionEN.cs" />
+    <Compile Include="CEN\Moodle\EvaluacionCEN.cs" />
+    <Compile Include="CEN\Moodle\EvaluacionCEN_ReadAllPorAnyo.cs" />
+    <Compile Include="EN\Moodle\EntregaEN.cs" />
+    <Compile Include="CEN\Moodle\EntregaCEN.cs" />
+    <Compile Include="CEN\Moodle\EntregaCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="CEN\Moodle\EntregaCEN_Custom.cs" />
+    <Compile Include="EN\Moodle\EntregaAlumnoEN.cs" />
+    <Compile Include="CEN\Moodle\EntregaAlumnoCEN.cs" />
+    <Compile Include="CEN\Moodle\EntregaAlumnoCEN_ReadAllPorEntrega.cs" />
+    <Compile Include="EN\Moodle\SistemaEvaluacionEN.cs" />
+    <Compile Include="CEN\Moodle\SistemaEvaluacionCEN.cs" />
+    <Compile Include="CEN\Moodle\SistemaEvaluacionCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="EN\Moodle\EvaluacionAlumnoEN.cs" />
+    <Compile Include="CEN\Moodle\EvaluacionAlumnoCEN.cs" />
+    <Compile Include="EN\Moodle\ControlEN.cs" />
+    <Compile Include="CEN\Moodle\ControlCEN.cs" />
+    <Compile Include="CEN\Moodle\ControlCEN_ReadAllPorAsignaturaAnyo.cs" />
+    <Compile Include="EN\Moodle\ControlAlumnoEN.cs" />
+    <Compile Include="CEN\Moodle\ControlAlumnoCEN.cs" />
+    <Compile Include="EN\Moodle\BolsaPreguntasEN.cs" />
+    <Compile Include="CEN\Moodle\BolsaPreguntasCEN.cs" />
+    <Compile Include="EN\Moodle\PreguntaEN.cs" />
+    <Compile Include="CEN\Moodle\PreguntaCEN.cs" />
+    <Compile Include="EN\Moodle\PreguntaControlEN.cs" />
+    <Compile Include="CEN\Moodle\PreguntaControlCEN.cs" />
+    <Compile Include="EN\Moodle\RespuestaEN.cs" />
+    <Compile Include="CEN\Moodle\RespuestaCEN.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Moodle\usuario.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\administrador.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\usuariocomun.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\profesor.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\alumno.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\tutoria.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\mensaje.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\asignatura.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\curso.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\nota.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\expediente.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\expedienteanyo.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\expedienteasignatura.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\expedienteevaluacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\grupotrabajo.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\material.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\anyoacademico.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\asignaturaanyo.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\evaluacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\entrega.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\entregaalumno.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\sistemaevaluacion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\evaluacionalumno.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\control.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\controlalumno.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\bolsapreguntas.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\pregunta.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\preguntacontrol.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Moodle\respuesta.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\xsd\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\xsd\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		       Other similar extension points exist, see Microsoft.Common.targets.
+		  <Target Name="BeforeBuild">
+		  </Target>
+		  <Target Name="AfterBuild">
+		  </Target>
+		  -->
+</Project>

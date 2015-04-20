@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComponentesProceso</RootNamespace>
+    <AssemblyName>ComponentesProceso</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\DSSGenNHibernate\AppLib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2">
+      <HintPath>..\DSSGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\DSSGenNHibernate\AppLib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy">
+      <HintPath>..\DSSGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\DSSGenNHibernate\AppLib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\DSSGenNHibernate\AppLib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\DSSGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu">
+      <HintPath>..\DSSGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>..\DSSGenNHibernate\AppLib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\DSSGenNHibernate\AppLib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicCP.cs" />
+    <Compile Include="Moodle\Commands\DameTodosGrupoPorAlumnoYAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameEntregaAlumnoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameEvaluacionPorId.cs" />
+    <Compile Include="Moodle\Commands\DameSistemaPorId.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAlumnoMatriculablesEnAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAlumnoPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEntregaAlumnoPorEntrega.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameEntregaAlumno.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEvaluacionPorAnyo.cs" />
+    <Compile Include="Moodle\Commands\IDameEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameSistemaEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosEntregaAlumno.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\DameEvaluacionAlumnoPorAlumnoYEntrega.cs" />
+    <Compile Include="Moodle\Commands\IDameEvaluacionAlumno.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAlumno.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAnyoYProfesor.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaVinculablesAAnyo.cs" />
+    <Compile Include="Moodle\EntregaAlumnoCP.cs" />
+    <Compile Include="Moodle\Commands\DameTodosControlPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEntregaPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\EntregaCP.cs" />
+    <Compile Include="Moodle\AnyoAcademicoCP.cs" />
+    <Compile Include="Moodle\AsignaturaAnyoCP.cs" />
+    <Compile Include="Moodle\BolsaPreguntasCP.cs" />
+    <Compile Include="Moodle\Commands\DameEntregaPorId.cs" />
+    <Compile Include="Moodle\Commands\DameTodosEntrega.cs" />
+    <Compile Include="Moodle\Commands\DameTodosGrupoTrabajoPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameControlPorId.cs" />
+    <Compile Include="Moodle\Commands\DameTodosControl.cs" />
+    <Compile Include="Moodle\Commands\DameTodosProfesorPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosSistemaEvaluacionPorAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\IDameControl.cs" />
+    <Compile Include="Moodle\Commands\IDameEntrega.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosControl.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosEntrega.cs" />
+    <Compile Include="Moodle\EvaluacionCP.cs" />
+    <Compile Include="Moodle\UsuarioCP.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAlumnoIngresablesEnGrupo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAlumnoPorGrupo.cs" />
+    <Compile Include="Moodle\Commands\DameCursoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyoPorAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameAnyoAcademicoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameAsignaturaAnyoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameAsignaturaPorId.cs" />
+    <Compile Include="Moodle\Commands\DameAlumnoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameGrupoTrabajoPorId.cs" />
+    <Compile Include="Moodle\Commands\DameProfesorPorId.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAlumno.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAnyoAcademico.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosBolsaPreguntas.cs" />
+    <Compile Include="Moodle\Commands\DameTodosAsignatura.cs" />
+    <Compile Include="Moodle\Commands\DameTodosCurso.cs" />
+    <Compile Include="Moodle\Commands\DameTodosGrupoTrabajo.cs" />
+    <Compile Include="Moodle\Commands\DameTodosProfesor.cs" />
+    <Compile Include="Moodle\Commands\DameTodosSistemaEvaluacion.cs" />
+    <Compile Include="Moodle\Commands\IDameAlumno.cs" />
+    <Compile Include="Moodle\Commands\IDameAnyoAcademico.cs" />
+    <Compile Include="Moodle\Commands\IDameAsignatura.cs" />
+    <Compile Include="Moodle\Commands\IDameAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\IDameCurso.cs" />
+    <Compile Include="Moodle\Commands\IDameGrupoTrabajo.cs" />
+    <Compile Include="Moodle\Commands\IDameProfesor.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosAlumno.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosAnyoAcademico.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosBolsaPreguntas.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosAsignatura.cs" />
+    <Compile Include="Moodle\AlumnoCP.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosCurso.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosGrupoTrabajo.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosProfesor.cs" />
+    <Compile Include="Moodle\Commands\IDameTodosSistemaEvaluacion.cs" />
+    <Compile Include="Moodle\ControlCP.cs" />
+    <Compile Include="Moodle\CursoCP.cs" />
+    <Compile Include="Moodle\GrupoTrabajoCP.cs" />
+    <Compile Include="Moodle\LoginCP.cs" />
+    <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
+    <Compile Include="Moodle\AsignaturaCP.cs" />
+    <Compile Include="Moodle\ProfesorCP.cs" />
+    <Compile Include="Moodle\SistemaEvaluacionCP.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
+      <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
+      <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

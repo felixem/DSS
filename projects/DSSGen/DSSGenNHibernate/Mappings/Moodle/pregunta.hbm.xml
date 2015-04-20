@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="PreguntaEN" table="[Pregunta]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Contenido" type="string"> 
+						<column name="[contenido]"  not-null="true"/>
+					</property>
+					<property name="Explicacion" type="string"> 
+						<column name="[explicacion]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<bag name="Preguntas_control" >
+							<key>
+								<column name="[FK_id_pregunta]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.PreguntaControlEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Respuestas" cascade="delete">
+							<key>
+								<column name="[FK_id_pregunta]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.RespuestaEN"/>
+					    </bag>
+					
+			
+			
+		  			
+						<many-to-one name="Bolsa" class="DSSGenNHibernate.EN.Moodle.BolsaPreguntasEN" >	
+								<column name="[FK_id_bolsa]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+   						<many-to-one name="Respuesta_correcta" class="DSSGenNHibernate.EN.Moodle.RespuestaEN" >
+								<column name="[FK_id_respuesta_correcta]" unique="true"/>
+						</many-to-one>
+					
+					
+		
+		  </class>
+		  
+		  <query name="PreguntaENReadAllHQL">from PreguntaEN</query>
+		  <query name="PreguntaENreadCantidadHQL"><![CDATA[select count(*) FROM PreguntaEN]]></query>
+		</hibernate-mapping>
+	

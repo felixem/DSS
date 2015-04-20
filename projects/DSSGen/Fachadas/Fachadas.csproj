@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB3F8A6A-0A59-4BB8-9B02-5F634AA61716}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fachadas</RootNamespace>
+    <AssemblyName>Fachadas</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Excepciones\ExcepcionAccesoDatos.cs" />
+    <Compile Include="Moodle\FachadaEvaluacion.cs" />
+    <Compile Include="Moodle\FachadaEntregaAlumno.cs" />
+    <Compile Include="Moodle\FachadaEntrega.cs" />
+    <Compile Include="Moodle\FachadaAlumno.cs" />
+    <Compile Include="Moodle\FachadaAnyoAcademico.cs" />
+    <Compile Include="Moodle\FachadaAsignaturaAnyo.cs" />
+    <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
+    <Compile Include="Moodle\FachadaControl.cs" />
+    <Compile Include="Moodle\FachadaCurso.cs" />
+    <Compile Include="Moodle\FachadaGrupoTrabajo.cs" />
+    <Compile Include="Moodle\FachadaLogin.cs" />
+    <Compile Include="Moodle\FachadaAsignatura.cs" />
+    <Compile Include="Moodle\FachadaPassword.cs" />
+    <Compile Include="Moodle\FachadaProfesor.cs" />
+    <Compile Include="Moodle\FachadaSistemaEvaluacion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BindingComponents\BindingComponents.csproj">
+      <Project>{D648E41C-8C30-4D8D-BC41-75626A941DC5}</Project>
+      <Name>BindingComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComponentesProceso\ComponentesProceso.csproj">
+      <Project>{1C5AC9DC-A802-4B6A-B69E-A61F907B6551}</Project>
+      <Name>ComponentesProceso</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSSGenNHibernate\DSSGenNHibernate.csproj">
+      <Project>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</Project>
+      <Name>DSSGenNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebUtilities\WebUtilities.csproj">
+      <Project>{3D33E0BC-7D17-43DC-A700-FDCE383F88AB}</Project>
+      <Name>WebUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="UsuarioEN" table="[Usuario]">
+						<id name="Email" column="[email]"/>
+					<property name="Dni" type="string"> 
+						<column name="[dni]"  unique="true" not-null="true"/>
+					</property>
+					<property name="Password" type="string"> 
+						<column name="[password]"  not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="[apellidos]"  not-null="true"/>
+					</property>
+					<property name="Fecha_nacimiento" type="date"> 
+						<column name="[fecha_nacimiento]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENreadCantidadHQL"><![CDATA[select count(*) FROM UsuarioEN]]></query>
+		  <query name="UsuarioENreadDniHQL"><![CDATA[FROM UsuarioEN us where us.Dni = :dni]]></query>
+		</hibernate-mapping>
+	

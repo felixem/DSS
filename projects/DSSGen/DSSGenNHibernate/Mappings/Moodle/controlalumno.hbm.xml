@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="ControlAlumnoEN" table="[ControlAlumno]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nota" type="float"> 
+						<column name="[nota]"  not-null="true"/>
+					</property>
+					<property name="Terminado" type="boolean"> 
+						<column name="[terminado]"  not-null="true"/>
+					</property>
+					<property name="Corregido" type="boolean"> 
+						<column name="[corregido]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Evaluacion_alumno" class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN" >	
+								<column name="[FK_id_evaluacion_alumno]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Control" class="DSSGenNHibernate.EN.Moodle.ControlEN" >	
+								<column name="[FK_id_control]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Preguntas" >
+							<key>
+								<column name="[FK_id_control]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.PreguntaControlEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="ControlAlumnoENReadAllHQL">from ControlAlumnoEN</query>
+		  <query name="ControlAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM ControlAlumnoEN]]></query>
+		  <query name="ControlAlumnoENreadRelationHQL"><![CDATA[select cont_alu FROM ControlAlumnoEN cont_alu where cont_alu.Evaluacion_alumno.Id=:p_evalalumno AND cont_alu.Control.Id=:p_control]]></query>
+		</hibernate-mapping>
+	

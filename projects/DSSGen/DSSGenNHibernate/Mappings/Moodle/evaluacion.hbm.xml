@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="EvaluacionEN" table="[Evaluacion]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nombre" type="string"> 
+						<column name="[nombre]"  not-null="true"/>
+					</property>
+					<property name="Fecha_inicio" type="date"> 
+						<column name="[fecha_inicio]"  not-null="true"/>
+					</property>
+					<property name="Fecha_fin" type="date"> 
+						<column name="[fecha_fin]"  not-null="true"/>
+					</property>
+					<property name="Abierta" type="boolean"> 
+						<column name="[abierta]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Anyo_academico" class="DSSGenNHibernate.EN.Moodle.AnyoAcademicoEN" >	
+								<column name="[FK_id_anyo_academico]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Sistemas_evaluacion" >
+							<key>
+								<column name="[FK_id_evaluacion]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Expedientes" >
+							<key>
+								<column name="[FK_id_evaluacion]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="EvaluacionENReadAllHQL">from EvaluacionEN</query>
+		  <query name="EvaluacionENreadCantidadHQL"><![CDATA[select count(*) FROM EvaluacionEN]]></query>
+		  <query name="EvaluacionENreadCantidadPorAnyoHQL"><![CDATA[select count(distinct eval) FROM EvaluacionEN eval where eval.Anyo_academico.Id=:id ]]></query>
+		</hibernate-mapping>
+	

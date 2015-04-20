@@ -1,0 +1,93 @@
+﻿.radioButtonPostBack
+{
+    font-size:13px;
+}
+
+.posicion_izquierda
+{
+    margin:3px;
+    float:left;
+}
+
+.posicion_derecha
+{
+    margin: 1px;
+    float: right;
+}
+
+.position_derecha_locked
+{
+    margin: 1px;
+    float: right;
+    background: #C4C4C4;
+}
+
+.clean_float
+{
+    width: 300px;
+    margin: 5px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+/* Filas de la tabla crear alumno */
+.row_crear_alumno
+{
+    width: 400px;
+    margin: 5px;
+    margin-left: -45px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+/* Filas tabla modificar alumno */
+.row_modificar_alumno
+{
+    width: 350px;
+    margin: 5px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+.row_crear_alumno_buttons
+{
+    width: 400px;
+    margin: 5px;
+    margin-left: -45px;
+    margin-top: 25px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
+}
+
+.posicion_central
+{
+    margin: 3px;
+    float: left;
+    margin-left: 55px;
+    text-align:center;
+}
+
+.buttons
+{
+    margin: 10px;
+}
+
+/* Tabla con texbox en columnas*/
+.row_textbox
+{
+    width: 500px;
+    margin: 2px;
+    clear:both;
+    overflow:hidden
+}
+
+.position_textbox_right
+{
+    width: 80%;
+    margin: 1px;
+    float: right;
+}

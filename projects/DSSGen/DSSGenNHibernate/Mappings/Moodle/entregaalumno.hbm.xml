@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="EntregaAlumnoEN" table="[EntregaAlumno]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nombre_fichero" type="string"> 
+						<column name="[nombre_fichero]"  not-null="true"/>
+					</property>
+					<property name="Extension" type="string"> 
+						<column name="[extension]"  not-null="true"/>
+					</property>
+					<property name="Ruta" type="string"> 
+						<column name="[ruta]"  unique="true" not-null="true"/>
+					</property>
+					<property name="Tam" type="float"> 
+						<column name="[tam]"  not-null="true"/>
+					</property>
+					<property name="Fecha_entrega" type="date"> 
+						<column name="[fecha_entrega]"  not-null="true"/>
+					</property>
+					<property name="Nota" type="float"> 
+						<column name="[nota]"  not-null="true"/>
+					</property>
+					<property name="Corregido" type="boolean"> 
+						<column name="[corregido]"  not-null="true"/>
+					</property>
+					<property name="Comentario_alumno" type="string"> 
+						<column name="[comentario_alumno]"  not-null="true"/>
+					</property>
+					<property name="Comentario_profesor" type="string"> 
+						<column name="[comentario_profesor]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Entrega" class="DSSGenNHibernate.EN.Moodle.EntregaEN" >	
+								<column name="[FK_id_entrega]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Evaluacion_alumno" class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN" >	
+								<column name="[FK_id_evaluacion_alumno]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="EntregaAlumnoENReadAllHQL">from EntregaAlumnoEN</query>
+		  <query name="EntregaAlumnoENreadCantidadHQL"><![CDATA[select count(*) FROM EntregaAlumnoEN]]></query>
+		  <query name="EntregaAlumnoENreadRelationHQL"><![CDATA[select ent_alu FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega]]></query>
+		  <query name="EntregaAlumnoENreadCantidadPorEntregaHQL"><![CDATA[select count (distinct entrega) FROM EntregaAlumnoEN as entrega where entrega.Entrega.Id=:id]]></query>
+		</hibernate-mapping>
+	

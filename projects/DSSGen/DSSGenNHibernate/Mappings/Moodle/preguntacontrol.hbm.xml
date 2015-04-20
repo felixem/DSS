@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="PreguntaControlEN" table="[PreguntaControl]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+			
+			
+		  			
+						<many-to-one name="Control" class="DSSGenNHibernate.EN.Moodle.ControlAlumnoEN" >	
+								<column name="[FK_id_control]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Pregunta" class="DSSGenNHibernate.EN.Moodle.PreguntaEN" >	
+								<column name="[FK_id_pregunta]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Respuesta_elegida" class="DSSGenNHibernate.EN.Moodle.RespuestaEN" >	
+								<column name="[FK_id_respuesta_elegida]"/>
+						</many-to-one>
+											 					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="PreguntaControlENReadAllHQL">from PreguntaControlEN</query>
+		  <query name="PreguntaControlENreadCantidadHQL"><![CDATA[select count(*) FROM PreguntaControlEN]]></query>
+		</hibernate-mapping>
+	

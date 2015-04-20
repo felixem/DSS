@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="ExpedienteAsignaturaEN" table="[ExpedienteAsignatura]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nota_media" type="float"> 
+						<column name="[nota_media]"  not-null="true"/>
+					</property>
+					<property name="Abierto" type="boolean"> 
+						<column name="[abierto]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Expediente_anyo" class="DSSGenNHibernate.EN.Moodle.ExpedienteAnyoEN" >	
+								<column name="[FK_id_expediente_anyo]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Asignatura" class="DSSGenNHibernate.EN.Moodle.AsignaturaAnyoEN" >	
+								<column name="[FK_id_asignatura]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Nota" class="DSSGenNHibernate.EN.Moodle.NotaEN" >	
+								<column name="[FK_id_nota]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Expedientes_evaluacion" >
+							<key>
+								<column name="[FK_id_expediente_asignatura]"/>
+					      	</key>
+							<one-to-many class="DSSGenNHibernate.EN.Moodle.ExpedienteEvaluacionEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="ExpedienteAsignaturaENReadAllHQL">from ExpedienteAsignaturaEN</query>
+		  <query name="ExpedienteAsignaturaENreadCantidadHQL"><![CDATA[select count(*) FROM ExpedienteAsignaturaEN]]></query>
+		  <query name="ExpedienteAsignaturaENreadRelationHQL"><![CDATA[FROM ExpedienteAsignaturaEN exp_asig where exp_asig.Asignatura.Id=:p_asig_anyo AND exp_asig.Expediente_anyo.Id=:p_exp_anyo]]></query>
+		</hibernate-mapping>
+	

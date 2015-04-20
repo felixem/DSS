@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication2.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Woodle</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="Styles/default.css" rel="stylesheet" type="text/css"/>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <!-- <div class="page">
+    <div class="main">
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div> -->
+
+      <!-- start header -->
+<div id="header">
+    <div>
+	    <div id="logo">
+		    <h1><a href="#">Woodle</a></h1>
+		    <!-- <p><a href="http://www.freecsstemplates.org/">Design by Free CSS Templates</a></p> -->
+	    </div>
+        
+        <div class="user">
+            <asp:Image ID="user_image" CssClass="user_logged_image" runat="server"/>
+            <asp:Label ID="user_label" runat="server" CssClass="user_logged_text" Text="UserDefault"/>
+            <asp:LinkButton ID="lnk_cambiar_pass" runat="server" CssClass="userb" Text="Cambiar contraseña" OnClick="lnk_cambiar_pass_Click"/>
+            <asp:LinkButton ID="lnk_desloguear" runat="server" CssClass="userb" Text="Desloguear" OnClick="lnk_desloguear_Click" OnClientClick = "return confirm('¿Estás seguro de querer cerrar sesión?');" />
+        </div>
+    </div>
+    <div style="clear:both"></div>
+	<div id="menu">
+        <asp:MultiView ID="mv_barra" runat="server" ActiveViewIndex="0">
+        <asp:View runat="server" ID="ViewGeneral">
+		<ul>
+            <li><asp:LinkButton runat="server" ID="lnk_inicio_vg" OnClick="lnk_inicio_Click">Inicio</asp:LinkButton></li>
+            <li><asp:LinkButton runat="server" ID="lnk_login_vg" OnClick="lnk_login_Click">Login</asp:LinkButton></li>
+		</ul>
+        </asp:View>
+        <asp:View runat="server" ID="ViewAlumno">
+		<ul>
+			<li><asp:LinkButton ID="lnk_inicio_va" runat="server" Text="Inicio"
+                onclick="lnk_inicio_Click"/></li>
+            <li><asp:LinkButton ID="lnk_asignaturas_va" runat="server" Text="Asignaturas"
+                onclick="lnk_asignaturas_alumno_Click" /></li>
+		</ul>
+        </asp:View>
+        <asp:View runat="server" ID="ViewProfesor">
+		<ul>
+			<li><asp:LinkButton ID="lnk_inicio_vp" runat="server" Text="Inicio"
+                onclick="lnk_inicio_Click" /></li>
+			<li><asp:LinkButton ID="lnk_asignaturas_impartidas" runat="server" Text="Asignaturas Impartidas"
+                onclick="lnk_asignaturas_impartidas_Click" /></li>
+		</ul>
+        </asp:View>
+        <asp:View runat="server" ID="ViewAdministrador">
+		<ul>
+			<li><asp:LinkButton ID="lnk_inicio_vadm" runat="server" Text="Inicio"
+                onclick="lnk_inicio_Click" /></li>
+			<li><asp:LinkButton ID="lnk_profesores_vadm" runat="server" Text="Profesores"
+                onclick="lnk_profesores_Click" /></li>
+            <li><asp:LinkButton ID="lnk_alumnos_vadm" runat="server" Text="Alumnos"
+                onclick="lnk_alumnos_Click" /></li>
+            <li><asp:LinkButton ID="lnk_asignaturas_vadm" runat="server" Text="Asignaturas"
+                onclick="lnk_asignaturas_Click" /></li>
+            <li><asp:LinkButton ID="lnk_examenes_vadm" runat="server" Text="Preguntas"
+                onclick="lnk_examenes_Click" /></li>
+            <li><asp:LinkButton ID="lnk_grupos_trabajo_vadm" runat="server" Text="Grupos Trabajo"
+                onclick="lnk_grupos_trabajo_Click" /></li>
+            <li><asp:LinkButton ID="lnk_controles_vadm" runat="server" Text="Controles"
+                onclick="lnk_controles_Click" /></li>
+            <li><asp:LinkButton ID="lnk_entregas_vadm" runat="server" Text="Entregas"
+                onclick="lnk_entregas_Click" /></li>
+            <li><asp:LinkButton ID="lnk_plan_estudio_vadm" runat="server" Text="Plan de estudio"
+                onclick="lnk_plan_estudio_Click" /></li>
+                <li><asp:LinkButton ID="lnk_evaluacion_vadm" runat="server" Text="Evaluación"
+                onclick="lnk_evaluacion_Click" /></li>
+		</ul>
+        </asp:View>
+        </asp:MultiView>
+	</div>
+</div>
+<hr/>
+<!-- end header -->
+<div id="wrapper">
+	<div id="page">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+    </div>
+</div>
+<!-- start footer -->
+<div id="wrapper2">
+	<div id="footer">
+		<ul>
+			<li class="first">
+				<h2>Mauris vulputate dolor</h2>
+				<ul>
+					<li><a href="#">Nulla luctus eleifend purus</a></li>
+					<li><a href="#">Praesent scelerisque scelerisque erat</a></li>
+					<li><a href="#">Ut nonummy rutrum sem</a></li>
+					<li><a href="#">Pellentesque tempus quam quis nulla</a></li>
+					<li><a href="#">Fusce ultrices fringilla metus</a></li>
+					<li><a href="#">Praesent mattis condimentum nisl</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Praesent scelerisque sceler</h2>
+				<ul>
+					<li><a href="#">Nulla luctus eleifend purus</a></li>
+					<li><a href="#">Praesent scelerisque scelerisque erat</a></li>
+					<li><a href="#">Ut nonummy rutrum sem</a></li>
+					<li><a href="#">Pellentesque tempus quam quis nulla</a></li>
+					<li><a href="#">Fusce ultrices fringilla metus</a></li>
+					<li><a href="#">Praesent mattis condimentum nisl</a></li>
+				</ul>
+			</li>
+			<li>
+				<h2>Fusce ultrices fringilla</h2>
+				<ul>
+					<li><a href="#">Nulla luctus eleifend purus</a></li>
+					<li><a href="#">Praesent scelerisque scelerisque erat</a></li>
+					<li><a href="#">Ut nonummy rutrum sem</a></li>
+					<li><a href="#">Pellentesque tempus quam quis nulla</a></li>
+					<li><a href="#">Fusce ultrices fringilla metus</a></li>
+					<li><a href="#">Praesent mattis condimentum nisl</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<p id="legal"> ©2007 Interlude. All Rights Reserved.
+		&nbsp;&nbsp;•&nbsp;&nbsp;
+		Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> &nbsp;&nbsp;•&nbsp;&nbsp;
+		Icons by <a href="http://famfamfam.com/">FAMFAMFAM</a>.	<a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">Valid <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> &nbsp;&nbsp;•&nbsp;&nbsp; <a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">Valid <abbr title="Cascading Style Sheets">CSS</abbr></a> </p>
+</div>
+<!-- end footer -->
+
+    </form>
+</body>
+</html>

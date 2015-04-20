@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSSGenNHibernate"
+		                   namespace="DSSGenNHibernate.EN.Moodle">
+			<class name="ExpedienteEvaluacionEN" table="[ExpedienteEvaluacion]">
+				  	
+						<id name="Id" column="[id]" type="integer">
+							<generator class="identity"/>
+						</id>
+					<property name="Nota_media" type="float"> 
+						<column name="[nota_media]"  not-null="true"/>
+					</property>
+					<property name="Abierto" type="boolean"> 
+						<column name="[abierto]"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Expediente_asignatura" class="DSSGenNHibernate.EN.Moodle.ExpedienteAsignaturaEN" >	
+								<column name="[FK_id_expediente_asignatura]"/>
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Evaluacion" class="DSSGenNHibernate.EN.Moodle.EvaluacionEN" >	
+								<column name="[FK_id_evaluacion]"/>
+						</many-to-one>
+											 					
+			
+		  			
+					
+							   <one-to-one name="Evaluacion_alumno" class="DSSGenNHibernate.EN.Moodle.EvaluacionAlumnoEN" property-ref="Expediente_evaluacion" />							
+					 
+						
+					
+					
+					
+					
+					
+					
+		
+		  </class>
+		  
+		  <query name="ExpedienteEvaluacionENReadAllHQL">from ExpedienteEvaluacionEN</query>
+		  <query name="ExpedienteEvaluacionENreadCantidadHQL"><![CDATA[select count(*) FROM ExpedienteEvaluacionEN]]></query>
+		  <query name="ExpedienteEvaluacionENreadRelationHQL"><![CDATA[FROM ExpedienteEvaluacionEN exp_eval where exp_eval.Expediente_asignatura.Id=:p_exp_asig AND exp_eval.Evaluacion.Id=:p_evaluacion]]></query>
+		</hibernate-mapping>
+	
