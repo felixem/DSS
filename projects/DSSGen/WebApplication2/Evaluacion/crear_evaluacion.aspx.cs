@@ -28,7 +28,7 @@ namespace DSSGenNHibernate.Evaluacion
                 this.ObtenerAnyosAcademicos();
             }
         }
-        protected void Button_RegControl_Click(Object sender, EventArgs e)
+        protected void Button_Evaluacion_Click(Object sender, EventArgs e)
         {
             //Llamo al metodo que registra al alumno
             bool verificado;
