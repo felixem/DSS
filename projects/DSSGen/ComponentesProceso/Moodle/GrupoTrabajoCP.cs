@@ -103,6 +103,39 @@ namespace ComponentesProceso.Moodle
             return grupo;
         }
 
+        public void VincularAlumnoConPassword(int grupoId, string alumno, string pass)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                GrupoTrabajoEN en = cen.ReadOID(grupoId);
+                List<string> emails = new List<string>();
+
+                if (Auxiliar.Encrypter.Verificar(pass, en.Password))
+                {
+                    emails.Add(alumno);
+                    cen.Relationer_alumnos(grupoId, emails);
+                }
+                else
+                    throw new Exception("Contraseña incorrecta");
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
         //Modificar grupo de trabajo
         public void ModificarGrupoTrabajo(int id, string cod, string nombre, string descripcion,
             string password, int capacidad)

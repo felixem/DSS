@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Auxiliar
 {
-    class Encrypter
+    public class Encrypter
     {
         public static string GetMd5Hash(MD5 md5Hash, string input)
         {

@@ -178,22 +178,21 @@ namespace Fachadas.Moodle
         }
 
         //Método para comprobar el password del grupo
-        public bool ComprobarPassword(int grupoId, string password)
+        public bool VincularAlumnoConPassword(int grupoId, string alumno, string password)
         {
             GrupoTrabajoCP cp;
-            IDameGrupoTrabajo consulta;
 
             try
             {
-                consulta = new DameGrupoTrabajoPorId(grupoId);
                 cp = new GrupoTrabajoCP();
+                cp.VincularAlumnoConPassword(grupoId, alumno, password);
             }
             catch (Exception)
             {
                 return false;
             }
 
-            return cp.DameGrupoTrabajo(consulta).Password == password;
+            return true;
         }
     }
 }

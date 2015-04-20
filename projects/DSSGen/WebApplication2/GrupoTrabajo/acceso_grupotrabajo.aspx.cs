@@ -80,16 +80,13 @@ namespace DSSGenNHibernate.GrupoTrabajo
 
             //Crear la asignatura
             //Si tras comprobar el pass ingresa al grupo
-            if (fachadaGrupo.ComprobarPassword(id, password))
+            if (fachadaGrupo.VincularAlumnoConPassword(id, alumno, password))
             {
-                if (fachadaGrupo.VincularAlumno(id, alumno))
-                    Notification.Notify(Response, "Se ha unido al grupo con éxito");
-                else
-                    Notification.Notify(Response, "No se ha podido unir al grupo");
+                Notification.Notify(Response, "Se ha unido al grupo con éxito");
             }
             else
             {
-                Notification.Notify(Response,"Contraseña Incorrecta");
+                Notification.Notify(Response,"No se ha podido unir al grupo");
             }
         }
        
