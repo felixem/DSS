@@ -128,6 +128,7 @@
     <Content Include="Control\controles_asignatura.aspx" />
     <Content Include="EntregaAlumno\entregas_alumnos.aspx" />
     <Content Include="EntregaAlumno\calificar.aspx" />
+    <Content Include="Entrega\entregas_asignatura_vista_alumno.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -549,6 +550,13 @@
     </Compile>
     <Compile Include="EntregaAlumno\calificar.aspx.designer.cs">
       <DependentUpon>calificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura_vista_alumno.aspx.cs">
+      <DependentUpon>entregas_asignatura_vista_alumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrega\entregas_asignatura_vista_alumno.aspx.designer.cs">
+      <DependentUpon>entregas_asignatura_vista_alumno.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

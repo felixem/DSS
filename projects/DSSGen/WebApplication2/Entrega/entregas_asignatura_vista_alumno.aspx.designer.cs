@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DSSGenNHibernate.AsignaturaAnyo {
+namespace DSSGenNHibernate.Entrega {
     
     
-    public partial class asignaturas_matriculado_alumno {
+    public partial class entregas_asignatura_vista_alumno {
         
         /// <summary>
         /// Panel1 control.
@@ -31,24 +31,6 @@ namespace DSSGenNHibernate.AsignaturaAnyo {
         protected global::System.Web.UI.WebControls.Label Label_Asignatura;
         
         /// <summary>
-        /// Label_Anyo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Anyo;
-        
-        /// <summary>
-        /// DropDownList_Anyos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Anyos;
-        
-        /// <summary>
         /// Panel2 control.
         /// </summary>
         /// <remarks>
@@ -56,6 +38,24 @@ namespace DSSGenNHibernate.AsignaturaAnyo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel2;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// TextBox_Asignatura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Asignatura;
         
         /// <summary>
         /// ddlPageSize control.

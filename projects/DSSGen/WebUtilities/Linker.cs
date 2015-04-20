@@ -78,6 +78,9 @@ namespace WebUtilities
 
         internal static readonly string descargarRecurso = "/Download/DownloadFile.ashx";
 
+        internal static readonly string EntregasProgramadasAsignaturaAlumno = "/Entrega/entregas_asignatura_vista_alumno.aspx";
+        
+
         internal static readonly string error404 = "/Errors/404.aspx";
         internal static readonly string error403 = "/Errors/403.aspx";
 
@@ -317,6 +320,13 @@ namespace WebUtilities
         public string ListarAlumnosGrupoTrabajo(int cod)
         {
             return listarAlumnosGrupoTrabajo +
+                Parameter(PageParameters.MainParameter, cod.ToString());
+        }
+
+        //Cadena para la página para listar las entregas programadas de una asignatura
+        public string EntregasProgramadasAsignaturaVistaAlumno(int cod)
+        {
+            return EntregasProgramadasAsignaturaAlumno +
                 Parameter(PageParameters.MainParameter, cod.ToString());
         }
 
