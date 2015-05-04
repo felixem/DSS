@@ -14,7 +14,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1>
-        Modificar Grupo de Trabajo</h1>
+        Acceder a Grupo de Trabajo</h1>
     <div class="CentrarContenido">
         <div class="ContenedorInternoNoPanel">
             <p class="style2">
