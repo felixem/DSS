@@ -57,12 +57,12 @@ namespace DSSGenNHibernate.Alumno
             //Verifico si se creo el alumno
             if (verificado)
             {
-                Notification.Notify(Response, "El alumno ha sido creado");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
             {
-                Notification.Notify(Response,"El alumno no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 

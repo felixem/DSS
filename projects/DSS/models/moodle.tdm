@@ -368,7 +368,8 @@ ConceptualModel moodle
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ExpedienteEN" };
 			public readRelation::ReadFilter (p_alu : OID -> Alumno) : Object -> Expediente
 			{ filter = "FROM ExpedienteEN exp where exp.Alumno.Email=:p_alu"};
-			
+			public readCod::ReadFilter (cod : String) : Object -> Expediente
+			{ filter = "FROM ExpedienteEN exp where exp.Cod_expediente=:cod"};
 			
 			public relationer_alumno::Relationer->alumno_expediente.alumno (p_expediente : OID -> Expediente, p_alumno : OID -> Alumno) : Void;
 			public relationer_expedientes_anyo::Relationer->expendiente_expedienteanyo.expedientes_anyo (p_expediente : OID -> Expediente, p_expedienteanyo : List<OID -> ExpedienteAnyo>) : Void;

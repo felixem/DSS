@@ -29,14 +29,37 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
+                //Creo el alumno
+                AlumnoCAD cad = new AlumnoCAD(session);
+                AlumnoCEN cen = new AlumnoCEN(cad); 
+           
+                //Comprobar si ya está registrado el email
+                if (cen.ReadOID(email) != null)
+                    throw new Exception("El email ya está registrado");
+
+                //Comprobar si el código ya está registrado
+                if (cen.ReadCod(cod) != null)
+                    throw new Exception("El código de alumno ya está registrado");
+
+                //Comprobar si el dni ya está registrado
+                UsuarioCAD userCad = new UsuarioCAD(session);
+                UsuarioCEN userCen = new UsuarioCEN(userCad);
+
+                //Comprobar si el dni está registrado
+                if (userCen.ReadDni(dni) != null)
+                    throw new Exception("El dni ya está registrado");
+
+                //Comprobar si existe el expediente
+                ExpedienteCAD expCad = new ExpedienteCAD(session);
+                ExpedienteCEN expCen = new ExpedienteCEN(expCad);
+                if (expCen.ReadCod(codExpediente) != null)
+                    throw new Exception("El código de expediente ya está registrado");
+
                 //Crear el expediente vacío a partir del código
                 ExpedienteEN expediente = new ExpedienteEN();
                 expediente.Cod_expediente = codExpediente;
                 expediente.Abierto = expedienteAbierto;
 
-                //Creo el alumno
-                AlumnoCAD cad = new AlumnoCAD(session);
-                AlumnoCEN cen = new AlumnoCEN(cad);            
                 resultado = cen.New_(cod, false, email, dni, pass, nombre, apellidos, fecha, expediente);
 
                 SessionCommit();
