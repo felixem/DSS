@@ -49,13 +49,18 @@ namespace ComponentesProceso.Moodle
         }
 
         //Crear un año académico y devolver su id de creación
-        public int CrearAnyoAcademico(string anyo, DateTime? fecha_inicio,
-            DateTime? fecha_fin, bool finalizado)
+        public int CrearAnyoAcademico(string anyo, DateTime fecha_inicio,
+            DateTime fecha_fin, bool finalizado)
         {
             int id = -1;
             try
             {
                 SessionInitializeTransaction();
+
+                //Comparar las fechas de inicio y de fin
+                if(DateTime.Compare(fecha_inicio,fecha_fin) >= 0)
+                    throw new Exception("La fecha de inicio debe ser anterior a la fecha de fin");
+
                 //Crear el año académico
                 AnyoAcademicoCAD cad = new AnyoAcademicoCAD(session);
                 AnyoAcademicoCEN cen = new AnyoAcademicoCEN(cad);
@@ -109,12 +114,16 @@ namespace ComponentesProceso.Moodle
         }
 
         //Modificar año académico
-        public void ModificarAnyoAcademico(int oid, string anyo, DateTime? fecha_inicio,
-            DateTime? fecha_fin, bool finalizado)
+        public void ModificarAnyoAcademico(int oid, string anyo, DateTime fecha_inicio,
+            DateTime fecha_fin, bool finalizado)
         {
             try
             {
                 SessionInitializeTransaction();
+
+                //Comparar las fechas de inicio y de fin
+                if (DateTime.Compare(fecha_inicio, fecha_fin) >= 0)
+                    throw new Exception("La fecha de inicio debe ser anterior a la fecha de fin");
 
                 AnyoAcademicoCAD cad = new AnyoAcademicoCAD(session);
                 AnyoAcademicoCEN cen = new AnyoAcademicoCEN(cad);

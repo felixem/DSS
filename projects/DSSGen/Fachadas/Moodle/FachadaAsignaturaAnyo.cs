@@ -8,6 +8,7 @@ using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -88,11 +89,13 @@ namespace Fachadas.Moodle
                 AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
                 cp.CrearAsignaturaAnyo(idAnyo,idAsignatura);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La asignatura no pudo ser vinculada con el año. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La asignatura ha sido vinculada con el año");
             return true;
         }
 
@@ -104,11 +107,13 @@ namespace Fachadas.Moodle
                 AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
                 cp.ModificarAsignaturaAnyo(oid);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: No pudieron ser modificados los atributos de la vinculación. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("Los atributos de la vinculación fueron modificados");
             return true;
         }
 
@@ -120,11 +125,13 @@ namespace Fachadas.Moodle
                 AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
                 cp.BorrarAsignaturaAnyo(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: No pudo ser eliminada la vinculación. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La vinculación entre asignatura y año ha sido eliminada");
             return true;
         }
 
@@ -136,11 +143,13 @@ namespace Fachadas.Moodle
                 AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
                 cp.MatricularAlumno(codAlumno, idAsignaturaAnyo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser matriculado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El alumno ha sido matriculado");
             return true;
         }
 
@@ -152,11 +161,13 @@ namespace Fachadas.Moodle
                 AsignaturaAnyoCP cp = new AsignaturaAnyoCP();
                 cp.DesmatricularAlumno(codAlumno, idAsignaturaAnyo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser desmatriculado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El alumno ha sido desmatriculado");
             return true;
         }
 

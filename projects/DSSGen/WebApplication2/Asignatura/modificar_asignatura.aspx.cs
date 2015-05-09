@@ -77,14 +77,8 @@ namespace DSSGenNHibernate.Asignatura
             bool vigente = CheckBox_VigenteAsig.Checked;
 
             //Modificar la asignatura
-            if (fachada.ModificarAsignatura(id,codigo,nombre,descripcion,optativo,vigente))
-            {
-                Notification.Notify(Response, "La asignatura ha sido modificada");
-            }
-            else
-            {
-                Notification.Notify(Response,"La asignatura no ha podido ser modificada");
-            }
+            fachada.ModificarAsignatura(id,codigo,nombre,descripcion,optativo,vigente);
+            Notification.Current.NotifyLastNotification(Response);
         }
        
         //Botón utilizado para cancelar la creación y volver atrás

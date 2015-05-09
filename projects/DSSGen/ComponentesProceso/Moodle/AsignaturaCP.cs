@@ -59,6 +59,18 @@ namespace ComponentesProceso.Moodle
                 //Crear la asignatura
                 AsignaturaCAD cad = new AsignaturaCAD(session);
                 AsignaturaCEN cen = new AsignaturaCEN(cad);
+
+                //Comprobar si ya existe una asignatura con ese código
+                if (cen.ReadCod(codigo) != null)
+                    throw new Exception("El código de la asignatura ya está registrado");
+
+                //Comprobar si existe el curso académico
+                CursoCAD cursoCad = new CursoCAD(session);
+                CursoCEN cursoCen = new CursoCEN(cursoCad);
+
+                if (cursoCen.ReadOID(p_curso) == null)
+                    throw new Exception("El curso no existe");
+
                 id = cen.New_(codigo, nombre, descripcion, optativa, vigente, p_curso);
 
                 SessionCommit();
@@ -113,6 +125,16 @@ namespace ComponentesProceso.Moodle
 
                 AsignaturaCAD cad = new AsignaturaCAD(session);
                 AsignaturaCEN cen = new AsignaturaCEN(cad);
+
+                //Comprobar si existe la asignatura
+                AsignaturaEN en = cen.ReadOID(oid);
+                if (en == null)
+                    throw new Exception("La asignatura no existe");
+
+                //Comprobar si el código cambia y no entra en conflicto con otros
+                if (codAsignatura != en.Cod_asignatura && cen.ReadCod(codAsignatura) != null)
+                    throw new Exception("El código de la asignatura ya está registrado");
+
                 //Ejecutar la modificación
                 cen.Modify(oid,codAsignatura,nombre,descripcion,optativa,vigente);
 
@@ -139,6 +161,11 @@ namespace ComponentesProceso.Moodle
 
                 AsignaturaCAD cad = new AsignaturaCAD(session);
                 AsignaturaCEN cen = new AsignaturaCEN(cad);
+
+                //Comprobar si existe la asignatura
+                if (cen.ReadOID(id) == null)
+                    throw new Exception("La asignatura no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(id);
 

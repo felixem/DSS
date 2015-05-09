@@ -64,6 +64,7 @@ namespace Fachadas.Moodle
             catch (Exception ex)
             {
                 Notification.Current.AddNotification("ERROR: El alumno no pudo ser borrado. " + ex.Message);
+                return false;
             }
 
             Notification.Current.AddNotification("El alumno ha sido borrado");
