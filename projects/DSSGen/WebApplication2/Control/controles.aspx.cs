@@ -94,11 +94,9 @@ namespace DSSGenNHibernate.Control
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int Id = Int32.Parse(grdrow.Cells[0].Text);
 
-            //Eliminar profesor
-            if (fachada.BorrarControl(Id))
-                Notification.Notify(Response, "El control se ha podido borrar");
-            else
-                Notification.Notify(Response, "El control no ha podido ser borrado");
+            //Eliminar control
+            fachada.BorrarControl(Id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerControlesPaginados(1);
