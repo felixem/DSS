@@ -59,6 +59,11 @@ namespace ComponentesProceso.Moodle
                 //Crear el año académico
                 AnyoAcademicoCAD cad = new AnyoAcademicoCAD(session);
                 AnyoAcademicoCEN cen = new AnyoAcademicoCEN(cad);
+
+                AnyoAcademicoEN anyoEn = cen.ReadCod(anyo);
+                if (anyoEn != null)
+                    throw new Exception("El año académico ya está registrado");
+
                 id = cen.New_(anyo, fecha_inicio, fecha_fin, finalizado);
 
                 SessionCommit();
@@ -113,6 +118,14 @@ namespace ComponentesProceso.Moodle
 
                 AnyoAcademicoCAD cad = new AnyoAcademicoCAD(session);
                 AnyoAcademicoCEN cen = new AnyoAcademicoCEN(cad);
+
+                AnyoAcademicoEN anyoEn = cen.ReadOID(oid);
+                if (anyoEn == null)
+                    throw new Exception("El año académico no existe");
+
+                if (anyo != anyoEn.Anyo && cen.ReadCod(anyo) != null)
+                    throw new Exception("El nombre del año académico ya existe");
+
                 //Ejecutar la modificación
                 cen.Modify(oid,anyo,fecha_inicio,fecha_fin,finalizado);
 
@@ -139,6 +152,10 @@ namespace ComponentesProceso.Moodle
 
                 AnyoAcademicoCAD cad = new AnyoAcademicoCAD(session);
                 AnyoAcademicoCEN cen = new AnyoAcademicoCEN(cad);
+
+                if (cen.ReadOID(id) == null)
+                    throw new Exception("El año académico no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(id);
 

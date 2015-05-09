@@ -42,9 +42,11 @@ namespace Fachadas.Moodle
             {
                 AlumnoCP cp = new AlumnoCP();
                 cp.ModificarAlumnoNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                Notification.Current.AddNotification("El alumno ha sido modificado");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser modificado. " + ex.Message);
                 return false;
             }
 
@@ -59,11 +61,12 @@ namespace Fachadas.Moodle
                 AlumnoCP cp = new AlumnoCP();
                 cp.BorrarAlumno(codAlumno);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser borrado. " + ex.Message);
             }
 
+            Notification.Current.AddNotification("El alumno ha sido borrado");
             return true;
         }
 

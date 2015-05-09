@@ -140,7 +140,24 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
 
                 AlumnoCAD cad = new AlumnoCAD(session);
-                AlumnoCEN cen = new AlumnoCEN(cad);    
+                AlumnoCEN cen = new AlumnoCEN(cad);
+
+                AlumnoEN actual = cen.ReadOID(email);
+                if (actual == null)
+                    throw new Exception("El alumno no existe");
+
+                //Comprobar si el código cambia pero ya está registrado
+                if (codAlumno != actual.Cod_alumno && cen.ReadCod(codAlumno) != null)
+                    throw new Exception("El código de alumno ya está registrado");
+
+                //Comprobar si el dni ya está registrado
+                UsuarioCAD userCad = new UsuarioCAD(session);
+                UsuarioCEN userCen = new UsuarioCEN(userCad);
+
+                //Comprobar si el dni está registrado
+                if (dni != actual.Dni && userCen.ReadDni(dni) != null)
+                    throw new Exception("El dni ya está registrado");
+    
                 //Ejecutar la modificación
                 cen.ModifyNoPassword(email,codAlumno,baneado,dni,nombre,apellidos, fechaNacimiento);
 
@@ -166,9 +183,13 @@ namespace ComponentesProceso.Moodle
                 SessionInitializeTransaction();
 
                 AlumnoCAD cad = new AlumnoCAD(session);
-                AlumnoCEN cen = new AlumnoCEN(cad);    
+                AlumnoCEN cen = new AlumnoCEN(cad); 
+   
                 //Recuperar datos del alumno
                 AlumnoEN alu = cen.ReadCod(codAlumno);
+                if (alu == null)
+                    throw new Exception("El alumno no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(alu.Email);
 
