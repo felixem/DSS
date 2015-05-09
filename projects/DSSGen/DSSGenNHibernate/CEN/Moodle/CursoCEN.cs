@@ -87,6 +87,10 @@ public long ReadCantidad ()
 {
         return _ICursoCAD.ReadCantidad ();
 }
+public DSSGenNHibernate.EN.Moodle.CursoEN ReadCod (string cod)
+{
+        return _ICursoCAD.ReadCod (cod);
+}
 public void Relationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura)
 {
         //Call to CursoCAD

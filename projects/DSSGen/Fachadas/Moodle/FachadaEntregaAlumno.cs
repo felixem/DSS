@@ -23,34 +23,44 @@ namespace Fachadas.Moodle
         public bool EntregarPractica(int idEntrega, MySession session, HttpServerUtility Server,
             FileUpload FileUploadControl, Label StatusLabel, TextBox TextBox_Comentario, out int entregaAlumno)
         {
-            Uploader uploader = new Uploader(Server, FileUploadControl);
             entregaAlumno = -1;
 
-            //Comprobar las precondiciones del archivo
-            if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
+            try
+            {
+                Uploader uploader = new Uploader(Server, FileUploadControl);
+                entregaAlumno = -1;
+
+                //Comprobar las precondiciones del archivo
+                if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
+                    return false;
+
+                //Inicializar las variables
+                HttpPostedFile file = FileUploadControl.PostedFile;
+                string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = System.IO.Path.GetExtension(nombreFichero);
+                string ruta = "";
+                float tam = file.ContentLength;
+                DateTime? fecha_entrega = DateTime.Now;
+                float nota = 0;
+                bool corregido = false;
+                string comentarioAlumno = TextBox_Comentario.Text;
+                string comentarioProfesor = "";
+
+                //Crear método de consulta para obtener la EvaluacionAlumno a partir de un alumno y un control
+                string email = session.Usuario.Email;
+                DameEvaluacionAlumnoPorAlumnoYEntrega consulta =
+                    new DameEvaluacionAlumnoPorAlumnoYEntrega(email, idEntrega);
+
+                //Crear la entrega de prácticas en la base de datos
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                entregaAlumno = cp.CrearEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
+                    nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega, consulta);
+            }
+            catch (Exception ex)
+            {
+                Notification.Current.AddNotification("ERROR: La entrega no pudo ser realizada. " + ex.Message);
                 return false;
-
-            //Inicializar las variables
-            HttpPostedFile file = FileUploadControl.PostedFile;
-            string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
-            string extension = System.IO.Path.GetExtension(nombreFichero);
-            string ruta = "";
-            float tam = file.ContentLength;
-            DateTime? fecha_entrega = DateTime.Now;
-            float nota = 0;
-            bool corregido = false;
-            string comentarioAlumno = TextBox_Comentario.Text;
-            string comentarioProfesor = "";
-
-            //Crear método de consulta para obtener la EvaluacionAlumno a partir de un alumno y un control
-            string email = session.Usuario.Email;
-            DameEvaluacionAlumnoPorAlumnoYEntrega consulta =
-                new DameEvaluacionAlumnoPorAlumnoYEntrega(email, idEntrega);
-
-            //Crear la entrega de prácticas en la base de datos
-            EntregaAlumnoCP cp = new EntregaAlumnoCP();
-            entregaAlumno = cp.CrearEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
-                nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega, consulta);
+            }
 
             return true;
 
@@ -122,11 +132,13 @@ namespace Fachadas.Moodle
                 EntregaAlumnoCP cp = new EntregaAlumnoCP();
                 cp.CalificarEntrega(p_oid, nota, comentario, corregido);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser calificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido calificada");
             return true;
         }
 
@@ -147,8 +159,10 @@ namespace Fachadas.Moodle
                 extension = entrega.Extension;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification(
+                    "ERROR: Los datos del fichero no pudieron ser recuperados. " + ex.Message);
                 return false;
             }
 
