@@ -28,7 +28,7 @@ namespace Fachadas.Moodle
             //Relanzar excepciones producidas
             catch (Exception ex)
             {
-                Notification.Current.AddNotification("ERROR: No pudo realizarse el acceso. " + ex);
+                Notification.Current.AddNotification("ERROR: No pudo realizarse el acceso. " + ex.Message);
                 return false;
             }
 

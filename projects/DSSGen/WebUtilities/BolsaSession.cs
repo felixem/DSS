@@ -231,7 +231,7 @@ namespace WebUtilities
                 return false;
             }
 
-            Notification.Current.AddNotification("La pregunta ha sido creada");
+            Notification.Current.AddNotification("La pregunta ha sido creada provisionalmente");
             return true;
         }
 
@@ -253,7 +253,7 @@ namespace WebUtilities
                 return false;
             }
 
-            Notification.Current.AddNotification("ERROR: La pregunta ha sido modificada");
+            Notification.Current.AddNotification("ERROR: La pregunta ha sido modificada provisionalmente");
             return true;
         }
 
@@ -302,7 +302,7 @@ namespace WebUtilities
                 return false;
             }
 
-            Notification.Current.AddNotification("La pregunta ha sido borrada");
+            Notification.Current.AddNotification("La pregunta ha sido borrada provisionalmente");
             return true;
         }
 

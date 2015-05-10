@@ -43,7 +43,6 @@ namespace WebApplication2.Account
             //Se crea la sesión si se ha autentificado el usuario
             if (Authenticated)
                 LoginUser_LoggedIn(sender, e);
-
             else
                 Notification.Current.NotifyLastNotification(Response);
         }
