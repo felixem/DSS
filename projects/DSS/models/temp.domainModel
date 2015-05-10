@@ -516,6 +516,9 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM CursoEN"/>
+      <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.8" filter="FROM CursoEN curs where curs=:cod ">
+        <arguments name="cod" isOrdered="true"/>
+      </operations>
       <operations name="relationer_asignaturas" operationType="Relationer" type="Void" relatedRol="/0/@elements.8/@attributes.3">
         <arguments name="p_curso" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
         <arguments name="p_asignatura" type="OID" collectionType="List" typeObject="/0/@elements.7" isOrdered="true"/>
@@ -1299,6 +1302,10 @@
         <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="first" type="Integer" isOrdered="true"/>
         <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.21" filter="FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:p_asig AND sis.Evaluacion.Id=:p_eval">
+        <arguments name="p_asig" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="p_eval" type="OID" typeObject="/0/@elements.18" isOrdered="true"/>
       </operations>
       <operations name="relationer_asignatura" operationType="Relationer" type="Void" relatedRol="/0/@elements.21/@attributes.3">
         <arguments name="p_sistemaevaluacion" type="OID" typeObject="/0/@elements.21" isOrdered="true"/>

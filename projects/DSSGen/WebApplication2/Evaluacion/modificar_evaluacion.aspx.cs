@@ -68,27 +68,11 @@ namespace DSSGenNHibernate.Evaluacion
             string fin = TextBox_FechaF.Text;
             bool abierta = CheckBox_Abierta.Checked;
             
+            fachada.ModificarEvaluacion(id, nombre, DateTime.Parse(inicio), DateTime.Parse(fin),abierta);
 
-            bool verificado;
-            //Pruebo a registrar el control
-            try
-            {
-                verificado = fachada.ModificarEvaluacion(id, nombre, DateTime.Parse(inicio), DateTime.Parse(fin),abierta);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "La evaluación ha sido modificada");
-            }
-            else
-            {
-                Notification.Notify(Response, "La evaluación no ha podido ser modificada");
-            }
+            //Modificar evaluación
+            fachada.ModificarEvaluacion(id, nombre, DateTime.Parse(inicio), DateTime.Parse(fin),abierta);
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

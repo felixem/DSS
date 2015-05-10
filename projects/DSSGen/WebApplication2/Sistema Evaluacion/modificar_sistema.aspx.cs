@@ -65,27 +65,9 @@ namespace DSSGenNHibernate.Sistema_Evaluacion
             //Recojo los datos
             float puntuacion = float.Parse(TextBox_Puntuacion.Text);
 
-
-            bool verificado;
-            //Pruebo a registrar el sistema
-            try
-            {
-                verificado = fachada.ModificarSistemaEvaluacion(id, puntuacion);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "El sistema de evaluación ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response, "El sistema de evaluación no ha podido ser modificado");
-            }
+            //Modificar sistema de evaluación
+            fachada.ModificarSistemaEvaluacion(id, puntuacion);
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

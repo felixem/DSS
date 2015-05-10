@@ -30,36 +30,26 @@ namespace DSSGenNHibernate.Evaluacion
         }
         protected void Button_Evaluacion_Click(Object sender, EventArgs e)
         {
-            //Llamo al metodo que registra al alumno
-            bool verificado;
-
-            try
-            {
                 //Recogo los datos
                 string nombre = TextBox_Nombre.Text;
                 DateTime inicio = DateTime.Parse(TextBox_FechaI.Text);
                 DateTime fin = DateTime.Parse(TextBox_FechaF.Text);
                 bool abierto= CheckBox_Abierta.Checked;
                 int anyo= Int32.Parse(DropDownList_Anyos.SelectedValue);
-                verificado = fachada.RegistrarEvaluacion(nombre,inicio,fin,abierto,anyo);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
+                fachada.RegistrarEvaluacion(nombre,inicio,fin,abierto,anyo);
 
-            //Verifico si se creo el alumno
-            if (verificado)
+            //Registrar evaluación
+            if (fachada.RegistrarEvaluacion(nombre,inicio,fin,abierto,anyo))
             {
-                Notification.Notify(Response, "La evaluación ha sido creada");
-                Linker link = new Linker(true);
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
             {
-                Notification.Notify(Response, "La evaluación no ha podido ser creada");
+                Notification.Current.NotifyLastNotification(Response);
             }
-        }        //Botón utilizado para cancelar la creación y volver atrás
+        }        
+        //Botón utilizado para cancelar la creación y volver atrás
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
             //Redirigir a la página que le llamó

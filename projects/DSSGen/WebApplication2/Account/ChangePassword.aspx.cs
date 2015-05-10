@@ -12,11 +12,11 @@ namespace WebApplication2.Account
     public partial class ChangePassword : BasicPage
     {
         //Creamos la fachada
-        FachadaPassword fachadapass;
+        FachadaUsuario fachadapass;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            fachadapass = new FachadaPassword();
+            fachadapass = new FachadaUsuario();
             if (!MySession.Current.IsLoged())
             {
                 Linker link = new Linker(false);
@@ -25,11 +25,9 @@ namespace WebApplication2.Account
             }
             if (!IsPostBack)
             {
-
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
-                fachadapass = new FachadaPassword();
             }
         }
         //Metodo que llama el botón ChangePasswordPushButton
@@ -38,26 +36,17 @@ namespace WebApplication2.Account
             string user= MySession.Current.Usuario.Email;
             string pass = T_Anterior.Text;
             string npass= T_nueva.Text;
-            bool verificado = false;
-            try
-            {
-                verificado = fachadapass.ChangePass(user, pass, npass);
 
-            }
-            catch (Exception) {
-                verificado = false;
-            }
             //Compruebo si se han almacenado los cambios
-            if (verificado)
+            if (fachadapass.ChangePass(user, pass, npass))
             {
-                
                 //Redirigir a la página password cambiado
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PassChanged());
             }
             else
             {
-                Notification.Notify(Response,"La contraseña no ha podido ser modificada");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 
@@ -66,7 +55,5 @@ namespace WebApplication2.Account
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
         }
-
-
     }
 }

@@ -129,10 +129,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string emailAlumno = grdrow.Cells[0].Text;
 
             //Desvincular un alumno de un grupo de trabajo
-            if (fachadaGrupo.DesvincularAlumno(id, emailAlumno))
-                Notification.Notify(Response, "El alumno ha sido desvinculado del grupo");
-            else
-                Notification.Notify(Response, "El alumno no ha podido ser desvinculado del grupo");
+            fachadaGrupo.DesvincularAlumno(id, emailAlumno);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener los datos
             this.CargarDatos();

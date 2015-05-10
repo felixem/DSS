@@ -80,7 +80,7 @@ namespace DSSGenNHibernate.Alumno
             long numObjetos = 0;
 
             //Vincular el grid con la lista de alumnos paginada
-            fachadaAlumno.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaAlumno.VincularDameTodosPorAsignaturaAnyo(id, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -126,10 +126,8 @@ namespace DSSGenNHibernate.Alumno
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Desmatricular alumno
-            if (fachadaAsignatura.DesmatricularAlumno(alumnoId,id))
-                Notification.Notify(Response, "El alumno ha sido desmatriculado");
-            else
-                Notification.Notify(Response, "El alumno no ha podido ser desmatriculado");
+            fachadaAsignatura.DesmatricularAlumno(alumnoId, id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de alumnos
             this.ObtenerAlumnosPaginados(1);

@@ -28,12 +28,9 @@ namespace Fachadas.Moodle
             //Relanzar excepciones producidas
             catch (Exception ex)
             {
-                throw ex;
-            }
-
-            //Comprobar si se ha realizado correctamente el login
-            if (usuario == null)
+                Notification.Current.AddNotification("ERROR: No pudo realizarse el acceso. " + ex);
                 return false;
+            }
 
             //Login realizado correctamente
             sesion.Usuario = usuario;

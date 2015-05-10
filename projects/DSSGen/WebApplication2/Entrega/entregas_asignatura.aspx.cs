@@ -146,10 +146,8 @@ namespace DSSGenNHibernate.Entrega
             int Id = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar profesor
-            if (fachada.BorrarEntrega(Id))
-                Notification.Notify(Response, "La entrega se ha podido borrar");
-            else
-                Notification.Notify(Response, "La entrega no ha podido ser borrado");
+            fachada.BorrarEntrega(Id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerEntregasPaginadas(1);

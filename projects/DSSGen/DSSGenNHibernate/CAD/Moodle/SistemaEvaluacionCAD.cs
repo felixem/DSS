@@ -257,6 +257,38 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN ReadRelation (int p_asig, int p_eval)
+{
+        DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM SistemaEvaluacionEN self where FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:p_asig AND sis.Evaluacion.Id=:p_eval";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("SistemaEvaluacionENreadRelationHQL");
+                query.SetParameter ("p_asig", p_asig);
+                query.SetParameter ("p_eval", p_eval);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in SistemaEvaluacionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignatura (int p_sistemaevaluacion, int p_asignaturaanyo)
 {
         DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN sistemaEvaluacionEN = null;

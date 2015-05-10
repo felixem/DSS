@@ -14,8 +14,6 @@ namespace DSSGenNHibernate.GrupoTrabajo
     public partial class acceso_grupotrabajo : BasicPage
     {
         FachadaGrupoTrabajo fachadaGrupo;
-        //FachadaAsignaturaAnyo fachadaAsignaturaAnyo;
-        //FachadaAnyoAcademico fachadaAnyo;
         private int id;
         private string alumno;
         String param;
@@ -31,10 +29,9 @@ namespace DSSGenNHibernate.GrupoTrabajo
             }
 
             fachadaGrupo = new FachadaGrupoTrabajo();
-            //fachadaAsignaturaAnyo = new FachadaAsignaturaAnyo();
-            //fachadaAnyo = new FachadaAnyoAcademico();
             alumno = MySession.Current.Usuario.Email;
 
+            //Obtener parámetros
             Obtener_Parametros();
 
             if (!IsPostBack)
@@ -73,21 +70,14 @@ namespace DSSGenNHibernate.GrupoTrabajo
             }
         }
 
-        //Método que llama el botón para modificar un grupo de trabajo
+        //Método que llama el botón para ingresar en un grupo de trabajo
         protected void Button_AccederGrupo_Click(Object sender, EventArgs e)
         {
             string password = TextBox_Pass.Text;
 
-            //Crear la asignatura
-            //Si tras comprobar el pass ingresa al grupo
+            //Ingresar al grupo
             if (fachadaGrupo.VincularAlumnoConPassword(id, alumno, password))
-            {
-                Notification.Notify(Response, "Se ha unido al grupo con éxito");
-            }
-            else
-            {
-                Notification.Notify(Response,"No se ha podido unir al grupo");
-            }
+                Notification.Current.NotifyLastNotification(Response);
         }
        
         //Botón utilizado para cancelar la creación y volver atrás

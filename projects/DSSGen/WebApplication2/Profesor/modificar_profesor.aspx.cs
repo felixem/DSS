@@ -77,26 +77,9 @@ namespace DSSGenNHibernate.Profesor
             string email = TextBox_EmailProf.Text;
             string cod = TextBox_CodProf.Text;
 
-            bool verificado;
-            //Pruebo a registrar el profesor
-            try
-            {
-                verificado = fachada.ModificarProfesorNoPassword(email, Convert.ToInt32(cod), dni, nombre, apellidos, Convert.ToDateTime(fecha));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "El profesor ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response, "El profesor no ha podido ser modificado");
-            }
+            //Modificar profesor
+            fachada.ModificarProfesorNoPassword(email, Convert.ToInt32(cod), dni, nombre, apellidos, Convert.ToDateTime(fecha));
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Metodo que comprueba la fecha(Control de validacion)

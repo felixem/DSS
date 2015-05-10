@@ -20,6 +20,7 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public SistemaEvaluacionCP(ISession sesion) : base(sesion) { }
 
+        //Crear sistema de evaluación
         public int CrearSistema(float puntuacion, int asignaturaanyo, int evaluacion)
         {
             int resultado;
@@ -28,10 +29,26 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                //Creo el evaluacion
+                //Comprobar si existe la asignatura
+                AsignaturaAnyoCAD asigAnyoCad = new AsignaturaAnyoCAD(session);
+                AsignaturaAnyoCEN asigAnyoCen = new AsignaturaAnyoCEN(asigAnyoCad);
+                if (asigAnyoCen.ReadOID(asignaturaanyo) == null)
+                    throw new Exception("La asignatura no existe");
+
+                //Comprobar si existe la evaluación
+                EvaluacionCAD evalCad = new EvaluacionCAD(session);
+                EvaluacionCEN evalCen = new EvaluacionCEN(evalCad);
+                if (evalCen.ReadOID(evaluacion) == null)
+                    throw new Exception("La evaluación no existe");
+
+                //Comprobar si ya existía una relación entre la asignaturaanyo y la evaluación
                 SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
                 SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
-                resultado = cen.New_(puntuacion,asignaturaanyo,evaluacion);
+                if (cen.ReadRelation(asignaturaanyo, evaluacion) != null)
+                    throw new Exception("La vinculación entre la asignatura y la evaluación ya existe");
+
+                //Crear el sistema de evaluación
+                resultado = cen.New_(puntuacion, asignaturaanyo, evaluacion);
 
                 SessionCommit();
             }
@@ -100,14 +117,21 @@ namespace ComponentesProceso.Moodle
 
             return en;
         }
-        public void ModificarSistemaEvaluacion(int p_oid,  float p_maxima)
+
+        //Modificar sistema de evaluación
+        public void ModificarSistemaEvaluacion(int p_oid, float p_maxima)
         {
             try
             {
                 SessionInitializeTransaction();
 
-               SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
-               SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
+                SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
+                SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
+
+                //Comprobar la existencia del sistema
+                if (cen.ReadOID(p_oid) == null)
+                    throw new Exception("El sistema de evaluación no existe");
+
                 //Ejecutar la modificación
                 cen.Modify(p_oid, p_maxima);
 
@@ -124,7 +148,7 @@ namespace ComponentesProceso.Moodle
                 SessionClose();
             }
         }
-        //Borrar Control a partir de su código de sistema
+        //Borrar el sistema de evaluación
         public void BorrarSistemaEvaluacion(int cod)
         {
             try
@@ -133,7 +157,12 @@ namespace ComponentesProceso.Moodle
 
                 SistemaEvaluacionCAD cad = new SistemaEvaluacionCAD(session);
                 SistemaEvaluacionCEN cen = new SistemaEvaluacionCEN(cad);
-                //Ejecutar la modificación
+
+                //Comprobar la existencia del sistema
+                if (cen.ReadOID(cod) == null)
+                    throw new Exception("El sistema de evaluación no existe");
+
+                //Ejecutar el borrado
                 cen.Destroy(cod);
 
                 SessionCommit();

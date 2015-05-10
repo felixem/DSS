@@ -41,26 +41,15 @@ namespace DSSGenNHibernate.Profesor
             string cod = TextBox_CodProf.Text;
 
             //Llamo al metodo que registra al profesor
-            bool verificado;
-
-            try
+            if (profesor.RegistrarProfesor(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, 
+                Convert.ToInt32(cod)))
             {
-                verificado = profesor.RegistrarProfesor(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Comprobamos si se creo el usuario
-            if (verificado)
-            {
-                Notification.Notify(Response, "El profesor ha sido creado");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
             {
-                Notification.Notify(Response,"El profesor no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 
