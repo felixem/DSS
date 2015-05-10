@@ -37,7 +37,6 @@ namespace WebUtilities
 
             //Permisos para TODOS LOS USUARIOS LOGUEADOS
             //Páginas de modificación
-            permisos.Add(Linker.passChanged, permisoTodosUsuarios);
             permisos.Add(Linker.changePassword, permisoTodosUsuarios);
 
             //Permisos sólo para PROFESOR
