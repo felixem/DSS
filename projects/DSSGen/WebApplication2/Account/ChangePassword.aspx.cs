@@ -17,12 +17,6 @@ namespace WebApplication2.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             fachadapass = new FachadaUsuario();
-            if (!MySession.Current.IsLoged())
-            {
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.Default());
-                return;
-            }
             if (!IsPostBack)
             {
                 //Capturar la página que realizó la petición
@@ -37,17 +31,9 @@ namespace WebApplication2.Account
             string pass = T_Anterior.Text;
             string npass= T_nueva.Text;
 
-            //Compruebo si se han almacenado los cambios
-            if (fachadapass.ChangePass(user, pass, npass))
-            {
-                //Redirigir a la página password cambiado
-                Linker link = new Linker(false);
-                link.Redirect(Response, link.PassChanged());
-            }
-            else
-            {
-                Notification.Current.NotifyLastNotification(Response);
-            }
+            //Cambiar la contraseña
+            fachadapass.ChangePass(user, pass, npass);
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         protected void Cancelar(object sender, EventArgs e)
