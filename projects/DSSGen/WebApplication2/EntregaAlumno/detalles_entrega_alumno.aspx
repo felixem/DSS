@@ -66,8 +66,8 @@
         <asp:TextBox ID="TextBox_ComentarioProfesor" CssClass="position_derecha_locked" ReadOnly="True" runat="server"></asp:TextBox>
     </div>
     <div class="row_textbox_medium">
-        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
-        <asp:Button ID="Button_Modificar" runat="server" OnClick="Button_Editar_Click" Text="Modificar" />
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" CssClass="posicion_izquierda"/>
+        <asp:Button ID="Button_Modificar" runat="server" OnClick="Button_Editar_Click" Text="Modificar" CssClass="posicion_derecha"/>
     </div>
     </div>
     </div>
