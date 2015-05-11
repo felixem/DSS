@@ -15,12 +15,12 @@ namespace Fachadas.Moodle
 {
     public class FachadaFecha
     {
-        public void VincularDameAnyos(DropDownList ddl) {
+        public void VincularDameAnyos(DropDownList ddl,int previos,int proximos) {
 
             FechaBinding fecha = new FechaBinding();
             DateTime tnow= DateTime.Now;
             BinderListaFechaDropDownList binder = new BinderListaFechaDropDownList(ddl);
-            fecha.VincularDameAnyos(tnow, binder);
+            fecha.VincularDameAnyos(tnow, binder,previos,proximos);
         
         }
         public void VincularDameMeses(int anyo,DropDownList ddl) 

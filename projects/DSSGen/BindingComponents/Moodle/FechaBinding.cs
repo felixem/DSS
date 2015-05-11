@@ -18,10 +18,10 @@ namespace BindingComponents.Moodle
         public FechaBinding() : base() { }
         public FechaBinding(ISession sesion) : base(sesion) { }
 
-        public void VincularDameAnyos(DateTime tnow,IBinderListaFecha binder)
+        public void VincularDameAnyos(DateTime tnow,IBinderListaFecha binder,int previos,int proximos)
         {
             ArrayList lista = new ArrayList();
-            for (int i = tnow.Year-10; i <= tnow.Year + 10; i++)
+            for (int i = tnow.Year-previos; i <= tnow.Year + proximos; i++)
                 lista.Add(i);
 
             binder.Vincular(lista);
