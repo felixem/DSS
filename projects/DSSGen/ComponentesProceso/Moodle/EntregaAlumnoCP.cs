@@ -43,6 +43,10 @@ namespace ComponentesProceso.Moodle
                 if (entregaEn == null)
                     throw new Exception("La entrega propuesta no existe");
 
+                //Comprobar si está abierto el plazo de entrega
+                if (DateTime.Compare(p_fecha_entrega, entregaEn.Fecha_apertura.Value) < 0)
+                    throw new Exception("El periodo de entrega no ha sido abierto");
+
                 //Comprobar que no se haya cerrado el plazo de entrega
                 if (DateTime.Compare(p_fecha_entrega, entregaEn.Fecha_cierre.Value) > 0)
                     throw new Exception("El periodo de entrega ha sido cerrado");
@@ -98,6 +102,10 @@ namespace ComponentesProceso.Moodle
                 EntregaAlumnoEN entregaEn = entregaCen.ReadOID(p_entrega);
                 if (entregaEn == null)
                     throw new Exception("La entrega del alumno no existe");
+
+                //Comprobar si está abierto el plazo de entrega
+                if (DateTime.Compare(p_fecha_entrega, entregaEn.Entrega.Fecha_apertura.Value) < 0)
+                    throw new Exception("El periodo de entrega no ha sido abierto");
 
                 //Comprobar que no se haya cerrado el plazo de entrega
                 if (DateTime.Compare(p_fecha_entrega, entregaEn.Entrega.Fecha_cierre.Value) > 0)
