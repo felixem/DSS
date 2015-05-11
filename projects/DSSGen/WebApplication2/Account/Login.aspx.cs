@@ -20,7 +20,7 @@ namespace WebApplication2.Account
                 if (MySession.Current.IsLoged())
                 {
                     Linker link = new Linker(false);
-                    link.Redirect(Response,link.Default());
+                    link.Redirect(Response, link.Default());
                     return;
                 }
 
@@ -32,18 +32,10 @@ namespace WebApplication2.Account
         protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
         {
             bool Authenticated = false;
-            
+
             //Comprobar si la contraseña es correcta
-            try
-            {
-                FachadaLogin fachada = new FachadaLogin();
-                Authenticated = fachada.Login(LoginUser.UserName, LoginUser.Password);
-            }
-            catch (Exception excep)
-            {
-                Notification.Notify(Response,excep.Message);
-                return;
-            }
+            FachadaLogin fachada = new FachadaLogin();
+            Authenticated = fachada.Login(LoginUser.UserName, LoginUser.Password);
 
             //Actualizar el valor de autentificación
             e.Authenticated = Authenticated;
@@ -51,16 +43,15 @@ namespace WebApplication2.Account
             //Se crea la sesión si se ha autentificado el usuario
             if (Authenticated)
                 LoginUser_LoggedIn(sender, e);
-
             else
-                Notification.Notify(Response,"El usuario o la contraseña son incorrectos");
+                Notification.Current.NotifyLastNotification(Response);
         }
 
         //Una vez logueado, entrar en la página principal
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
-            link.Redirect(Response,link.Default());
+            link.Redirect(Response, link.Default());
         }
     }
 }

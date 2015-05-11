@@ -76,26 +76,11 @@ namespace DSSGenNHibernate.Entrega
             string cierre = TextBox_Cierre.Text;
             string puntmaxima = TextBox_Punt.Text;
 
-            bool verificado;
             //Pruebo a registrar la entrega
-            try
-            {
-                verificado = fachada.ModificarEntrega(id, nombre, descripcion, DateTime.Parse(apertura), DateTime.Parse(cierre), float.Parse(puntmaxima));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "La entrega ha sido modificada");
-            }
-            else
-            {
-                Notification.Notify(Response, "La entrega no ha podido ser modificada");
-            }
+            fachada.ModificarEntrega(id, nombre, descripcion, DateTime.Parse(apertura), 
+                DateTime.Parse(cierre), float.Parse(puntmaxima));
+            //Mostrar notificación
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

@@ -20,16 +20,33 @@ namespace ComponentesProceso.Moodle
         public ProfesorCP(ISession sesion) : base(sesion) { }
 
         //Registra el profesor en la BD y de
-        public string CrearProfesor(string nombre, string apellidos, string pass, DateTime fecha, string dni, string email, int cod)
+        public string CrearProfesor(string nombre, string apellidos, string pass, 
+            DateTime fecha, string dni, string email, int cod)
         {
             string resultado;
 
             try
             {
-                SessionInitializeTransaction();
+                SessionInitializeTransaction();                
+
                 //Creo el profesor    
                 ProfesorCAD cad = new ProfesorCAD(session);
                 ProfesorCEN cen = new ProfesorCEN(cad);
+
+                //Comprobar si ya está registrado el email
+                if (cen.ReadOID(email) != null)
+                    throw new Exception("El email ya está registrado");
+
+                //Comprobar si ya está registrado el código
+                if (cen.ReadCod(cod) != null)
+                    throw new Exception("El código ya está registrado");
+
+                //Comprobar si el dni ya está registrado
+                UsuarioCAD usCad = new UsuarioCAD(session);
+                UsuarioCEN usCen = new UsuarioCEN(usCad);
+                if (usCen.ReadDni(dni) != null)
+                    throw new Exception("El dni ya está registrado");
+
                 resultado = cen.New_(cod, email, dni, pass, nombre, apellidos, fecha);
 
                 SessionCommit();
@@ -111,6 +128,22 @@ namespace ComponentesProceso.Moodle
 
                 ProfesorCAD cad = new ProfesorCAD(session);
                 ProfesorCEN cen = new ProfesorCEN(cad);
+                ProfesorEN en = cen.ReadOID(email);
+
+                //Comprobar si existe el profesor
+                if (en == null)
+                    throw new Exception("El profesor no existe");
+
+                //Comprobar si el código cambia y ya está registrado
+                if (codProfesor != en.Cod_profesor && cen.ReadCod(codProfesor) != null)
+                    throw new Exception("El código ya está registrado");
+
+                //Comprobar si el dni ya está registrado
+                UsuarioCAD usCad = new UsuarioCAD(session);
+                UsuarioCEN usCen = new UsuarioCEN(usCad);
+                if (dni != en.Dni && usCen.ReadDni(dni) != null)
+                    throw new Exception("El dni ya está registrado");
+
                 //Ejecutar la modificación
                 cen.ModifyNoPassword(email, dni, nombre, apellidos, fechaNacimiento, codProfesor);
 
@@ -137,8 +170,14 @@ namespace ComponentesProceso.Moodle
 
                 ProfesorCAD cad = new ProfesorCAD(session);
                 ProfesorCEN cen = new ProfesorCEN(cad);
+
                 //Recuperar datos del profesor
                 ProfesorEN prof = cen.ReadCod(codProfesor);
+
+                //Comprobar si existe el profesor
+                if (prof == null)
+                    throw new Exception("El profesor no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(prof.Email);
 

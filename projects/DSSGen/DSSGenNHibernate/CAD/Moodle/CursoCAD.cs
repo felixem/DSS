@@ -218,6 +218,37 @@ public long ReadCantidad ()
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.CursoEN ReadCod (string cod)
+{
+        DSSGenNHibernate.EN.Moodle.CursoEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CursoEN self where FROM CursoEN curs where curs=:cod ";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CursoENreadCodHQL");
+                query.SetParameter ("cod", cod);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.CursoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in CursoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura)
 {
         DSSGenNHibernate.EN.Moodle.CursoEN cursoEN = null;

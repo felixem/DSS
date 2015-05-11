@@ -100,6 +100,10 @@ public DSSGenNHibernate.EN.Moodle.ExpedienteEN ReadRelation (string p_alu)
 {
         return _IExpedienteCAD.ReadRelation (p_alu);
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteEN ReadCod (string cod)
+{
+        return _IExpedienteCAD.ReadCod (cod);
+}
 public void Relationer_alumno (int p_expediente, string p_alumno)
 {
         //Call to ExpedienteCAD

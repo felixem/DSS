@@ -61,38 +61,27 @@ namespace DSSGenNHibernate.Sistema_Evaluacion
         protected void ObtenerEvaluaciones()
         {
             int idAnyo = Int32.Parse(DropDownList_Anyos.SelectedValue);
-            fachadaeval.VincularDameTodosPorAnyo(idAnyo,DropDownList_Anyos);
+            fachadaeval.VincularDameTodosPorAnyo(idAnyo, DropDownList_Anyos);
         }
 
         //Método que llama el botón crear
         protected void Button_RegSistema_Click(Object sender, EventArgs e)
         {
-            //Llamo al metodo que registra al sistema
-            bool verificado;
+            //Recogo los datos
+            float puntMax = float.Parse(TextBox_Puntuacion.Text);
+            int asignatura = Int32.Parse(DropDownList_AsignaturasAnyo.SelectedValue);
+            int evaluacion = Int32.Parse(DropDownList_Evaluacion.SelectedValue);
+            fachada.RegistrarSistema(puntMax, asignatura, evaluacion);
 
-            try
+            //Registrar sistema
+            if (fachada.RegistrarSistema(puntMax, asignatura, evaluacion))
             {
-                //Recogo los datos
-                float puntMax = float.Parse(TextBox_Puntuacion.Text);
-                int asignatura = Int32.Parse(DropDownList_AsignaturasAnyo.SelectedValue);
-                int evaluacion = Int32.Parse(DropDownList_Evaluacion.SelectedValue);
-                verificado = fachada.RegistrarSistema(puntMax,asignatura,evaluacion);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Verifico si se creo el alumno
-            if (verificado)
-            {
-                Notification.Notify(Response, "El control ha sido creado");
-                Linker link = new Linker(true);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Current.NotifyLastNotification(Response);
+                this.Clean();
             }
             else
             {
-                Notification.Notify(Response, "El control no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
         //Botón utilizado para cancelar la creación y volver atrás

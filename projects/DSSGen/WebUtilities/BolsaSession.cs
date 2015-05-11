@@ -225,11 +225,13 @@ namespace WebUtilities
                 //Añadirla a la bolsa
                 bolsa.Preguntas.Add(pregunta);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La pregunta no pudo ser creada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La pregunta ha sido creada provisionalmente");
             return true;
         }
 
@@ -245,11 +247,13 @@ namespace WebUtilities
                 //Modificar la pregunta
                 bolsa.Preguntas[id] = ConstruirPregunta(id, enunciado, respuestas, correcta, explicacion);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La pregunta no pudo ser modificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("ERROR: La pregunta ha sido modificada provisionalmente");
             return true;
         }
 
@@ -292,11 +296,13 @@ namespace WebUtilities
                     bolsa.Preguntas[i].Id = i;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La pregunta no pudo ser borrada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La pregunta ha sido borrada provisionalmente");
             return true;
         }
 

@@ -34,11 +34,21 @@ namespace ComponentesProceso.Moodle
                 //Obtener el objeto EvaluacionAlumno correspondiente
                 EvaluacionAlumnoEN eval = consulta.Execute(session);
                 if (eval == null)
-                    throw new Exception("No se encontró la Evaluación del Alumno");
+                    throw new Exception("La evaluación del alumno no existe");
 
-                //Registrar la entrega en la BD
+                //Comprobar si existe la entrega propuesta
+                EntregaCAD entregaCad = new EntregaCAD(session);
+                EntregaCEN entregaCen = new EntregaCEN(entregaCad);
+                if (entregaCen.ReadOID(p_entrega) == null)
+                    throw new Exception("La entrega propuesta no existe");
+
                 EntregaAlumnoCAD cad = new EntregaAlumnoCAD(session);
                 EntregaAlumnoCEN cen = new EntregaAlumnoCEN(cad);
+                //Comprobar la existencia de una entrega previa
+                if (cen.ReadRelation(eval.Id, p_entrega) != null)
+                    throw new Exception("El alumno ya realizó la entrega de esta práctica");
+                
+                //Registrar la entrega en la BD
                 entregaAlumno = cen.New_(p_nombre_fichero,p_extension,p_ruta,p_tam,p_fecha_entrega, p_nota,
                     p_corregido, p_comentario_alumno, p_comentario_profesor, p_entrega, eval.Id);
 
@@ -133,6 +143,10 @@ namespace ComponentesProceso.Moodle
                 EntregaAlumnoCEN cen = new EntregaAlumnoCEN(cad);
 
                 EntregaAlumnoEN en = cen.ReadOID(p_oid);
+                //Comprobar la existencia de la entrega
+                if (en == null)
+                    throw new Exception("La entrega del alumno no existe");
+
                 //Ejecutar la modificación
                 cen.Modify(p_oid,en.Nombre_fichero,en.Extension,en.Ruta,en.Tam,en.Fecha_entrega,nota,corregido,en.Comentario_alumno,comentario);
 

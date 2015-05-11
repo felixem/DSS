@@ -128,10 +128,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Matricular alumno
-            if (fachadaAsignaturaAnyo.MatricularAlumno(alumnoId, id))
-                Notification.Notify(Response, "El alumno ha sido matriculado");
-            else
-                Notification.Notify(Response, "El alumno no ha podido ser matriculado");
+            fachadaAsignaturaAnyo.MatricularAlumno(alumnoId, id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de alumnos
             this.ObtenerAlumnosPaginados(1);

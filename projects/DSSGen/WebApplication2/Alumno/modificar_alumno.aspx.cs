@@ -78,26 +78,10 @@ namespace DSSGenNHibernate.Alumno
             string cod = TextBox_CodAlu.Text;
             bool baneado = CheckBox_Baneado.Checked;
 
-            bool verificado;
-            //Pruebo a registrar el alumno
-            try
-            {
-                verificado = fachada.ModificarAlumnoNoPassword(email, Convert.ToInt32(cod), baneado, dni, nombre, apellidos, Convert.ToDateTime(fecha));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se ha modificado
-            if (verificado)
-            {
-                Notification.Notify(Response, "El alumno ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response, "El alumno no ha podido ser modificado");
-            }
+            //Intentar modificar el alumno
+            fachada.ModificarAlumnoNoPassword(email, Convert.ToInt32(cod), baneado, dni, nombre, apellidos, Convert.ToDateTime(fecha));
+            //Mostrar notificación
+            Notification.Current.NotifyLastNotification(Response);
         }
      
         //Metodo que comprueba la fecha(Control de validacion)

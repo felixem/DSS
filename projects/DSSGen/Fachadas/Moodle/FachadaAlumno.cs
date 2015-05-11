@@ -9,6 +9,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -23,11 +24,13 @@ namespace Fachadas.Moodle
                 AlumnoCP alumno = new AlumnoCP();
                 alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod, codExpediente, expedienteAbierto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser creado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El alumno ha sido creado");
             return true;
         }
 
@@ -39,9 +42,11 @@ namespace Fachadas.Moodle
             {
                 AlumnoCP cp = new AlumnoCP();
                 cp.ModificarAlumnoNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                Notification.Current.AddNotification("El alumno ha sido modificado");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser modificado. " + ex.Message);
                 return false;
             }
 
@@ -56,11 +61,13 @@ namespace Fachadas.Moodle
                 AlumnoCP cp = new AlumnoCP();
                 cp.BorrarAlumno(codAlumno);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser borrado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El alumno ha sido borrado");
             return true;
         }
 

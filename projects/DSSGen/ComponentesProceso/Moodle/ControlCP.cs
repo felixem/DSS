@@ -20,7 +20,7 @@ namespace ComponentesProceso.Moodle
         public ControlCP(ISession sesion) : base(sesion) { }
 
         //Registra el control en la BD y devuelve su resultado
-        public int CrearControl(string p_nombre, string p_descripcion, Nullable<DateTime> p_fecha_apertura, Nullable<DateTime> p_fecha_cierre, int p_duracion_minutos, float p_puntuacion_maxima, float p_penalizacion_fallo, int p_sistema_evaluacion)
+        public int CrearControl(string p_nombre, string p_descripcion, DateTime p_fecha_apertura, DateTime p_fecha_cierre, int p_duracion_minutos, float p_puntuacion_maxima, float p_penalizacion_fallo, int p_sistema_evaluacion)
         {
             int resultado;
 
@@ -28,9 +28,14 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
+                //Comprobar que la fecha de apertura sea anterior a la de cierre
+                if (DateTime.Compare(p_fecha_apertura, p_fecha_cierre) >= 0)
+                    throw new Exception("La fecha de apertura debe ser anterior a la de cierre");
+
                 //Creo el control
                 ControlCAD cad = new ControlCAD(session);
                 ControlCEN cen = new ControlCEN(cad);
+
                 resultado = cen.New_(p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_duracion_minutos, p_puntuacion_maxima, p_penalizacion_fallo, p_sistema_evaluacion);
 
                 SessionCommit();
@@ -49,16 +54,25 @@ namespace ComponentesProceso.Moodle
         }
     
         //Modifica el control en la BD
-        public void ModificarControl(int p_oid, string p_nombre, string p_descripcion, Nullable<DateTime> p_fecha_apertura,
-            Nullable<DateTime> p_fecha_cierre, int p_duracion_minutos, float p_puntuacion_maxima,
+        public void ModificarControl(int p_oid, string p_nombre, string p_descripcion, DateTime p_fecha_apertura,
+            DateTime p_fecha_cierre, int p_duracion_minutos, float p_puntuacion_maxima,
             float p_penalizacion_fallo)
         {
             try
             {
                 SessionInitializeTransaction();
 
+                //Comprobar que la fecha de apertura sea anterior a la de cierre
+                if (DateTime.Compare(p_fecha_apertura, p_fecha_cierre) >= 0)
+                    throw new Exception("La fecha de apertura debe ser anterior a la de cierre");
+
                 ControlCAD cad = new ControlCAD(session);
                 ControlCEN cen = new ControlCEN(cad);
+
+                //Comprobar la existencia del control
+                if (cen.ReadOID(p_oid) == null)
+                    throw new Exception("El control no existe");
+
                 //Ejecutar la modificación
                 cen.Modify(p_oid, p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_duracion_minutos, p_puntuacion_maxima, p_penalizacion_fallo);
 
@@ -139,7 +153,12 @@ namespace ComponentesProceso.Moodle
 
                 ControlCAD cad = new ControlCAD(session);
                 ControlCEN cen = new ControlCEN(cad);
-                //Ejecutar la modificación
+
+                //Comprobar la existencia
+                if (cen.ReadOID(cod) == null)
+                    throw new Exception("El control no existe");
+
+                //Ejecutar el borrado
                 cen.Destroy(cod);
 
                 SessionCommit();

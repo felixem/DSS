@@ -82,15 +82,9 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string capacidad = TextBox_Capacidad.Text;
 
             //Crear la asignatura
-            if (fachadaGrupo.ModificarGrupoTrabajo(id, codigo, nombre, descripcion, password,
-                Int32.Parse(capacidad)))
-            {
-                Notification.Notify(Response, "El grupo de trabajo ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response,"El grupo de trabajo no ha podido ser modificado");
-            }
+            fachadaGrupo.ModificarGrupoTrabajo(id, codigo, nombre, descripcion, password,
+                Int32.Parse(capacidad));
+            Notification.Current.NotifyLastNotification(Response);
         }
        
         //Botón utilizado para cancelar la creación y volver atrás

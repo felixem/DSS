@@ -58,6 +58,11 @@ namespace ComponentesProceso.Moodle
                 //Crear el curso
                 CursoCAD cad = new CursoCAD(session);
                 CursoCEN cen = new CursoCEN(cad);
+
+                //Comprobar si el código ya está registrado
+                if (cen.ReadCod(p_cod_curso) != null)
+                    throw new Exception("El código del curso ya está registrado");
+
                 id = cen.New_(p_cod_curso,p_nombre);
 
                 SessionCommit();
@@ -111,6 +116,16 @@ namespace ComponentesProceso.Moodle
 
                 CursoCAD cad = new CursoCAD(session);
                 CursoCEN cen = new CursoCEN(cad);
+                CursoEN cursoEN = cen.ReadOID(p_oid);
+
+                //Comprobar si existe el curso
+                if (cursoEN == null)
+                    throw new Exception("El curso no existe");
+
+                //Comprobar si cambia el código del curso si ya existe
+                if (p_cod_curso != cursoEN.Cod_curso && cen.ReadCod(p_cod_curso) != null)
+                    throw new Exception("El código ya está registrado");
+
                 //Ejecutar la modificación
                 cen.Modify(p_oid,p_cod_curso,p_nombre);
 
@@ -137,6 +152,11 @@ namespace ComponentesProceso.Moodle
 
                 CursoCAD cad = new CursoCAD(session);
                 CursoCEN cen = new CursoCEN(cad);
+
+                //Comprobar si existe el curso
+                if (cen.ReadOID(id) == null)
+                    throw new Exception("El curso no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(id);
 

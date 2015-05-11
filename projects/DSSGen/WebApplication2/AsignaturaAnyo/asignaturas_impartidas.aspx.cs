@@ -111,10 +111,8 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             int asignaturaAnyoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar asignatura
-            if (fachadaAsignatura.BorrarAsignaturaAnyo(asignaturaAnyoId))
-                Notification.Notify(Response, "La asignatura ha sido desvinculada del curso académico");
-            else
-                Notification.Notify(Response, "La asignatura no ha podido ser desvinculada del curso académico");
+            fachadaAsignatura.BorrarAsignaturaAnyo(asignaturaAnyoId);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAsignaturasPaginadas(1);

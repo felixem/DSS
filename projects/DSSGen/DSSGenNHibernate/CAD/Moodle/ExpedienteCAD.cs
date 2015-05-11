@@ -257,6 +257,37 @@ public DSSGenNHibernate.EN.Moodle.ExpedienteEN ReadRelation (string p_alu)
 
         return result;
 }
+public DSSGenNHibernate.EN.Moodle.ExpedienteEN ReadCod (string cod)
+{
+        DSSGenNHibernate.EN.Moodle.ExpedienteEN result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ExpedienteEN self where FROM ExpedienteEN exp where exp.Cod_expediente=:cod";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ExpedienteENreadCodHQL");
+                query.SetParameter ("cod", cod);
+
+
+                result = query.UniqueResult<DSSGenNHibernate.EN.Moodle.ExpedienteEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSSGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSSGenNHibernate.Exceptions.DataLayerException ("Error in ExpedienteCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void Relationer_alumno (int p_expediente, string p_alumno)
 {
         DSSGenNHibernate.EN.Moodle.ExpedienteEN expedienteEN = null;

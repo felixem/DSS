@@ -97,6 +97,7 @@
     <Compile Include="Moodle\Commands\BinderListaEntregaGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaEvaluacion.cs" />
     <Compile Include="Moodle\Commands\BinderListaEvaluacionDropDownList.cs" />
+    <Compile Include="Moodle\Commands\BinderListaFechaDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaGrupoTrabajoGrid.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorDropDownList.cs" />
     <Compile Include="Moodle\Commands\BinderListaProfesorGrid.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Moodle\Commands\IBinderListaCurso.cs" />
     <Compile Include="Moodle\Commands\IBinderListaEntrega.cs" />
     <Compile Include="Moodle\Commands\IBinderListaEntregaAlumno.cs" />
+    <Compile Include="Moodle\Commands\IBinderListaFecha.cs" />
     <Compile Include="Moodle\Commands\IBinderListaGrupoTrabajo.cs" />
     <Compile Include="Moodle\Commands\IBinderListaProfesor.cs" />
     <Compile Include="Moodle\Commands\IBinderListaAlumno.cs" />
@@ -140,6 +142,7 @@
     <Compile Include="Moodle\EntregaAlumnoBiding.cs" />
     <Compile Include="Moodle\EntregaBinding.cs" />
     <Compile Include="Moodle\EvaluacionBinding.cs" />
+    <Compile Include="Moodle\FechaBinding.cs" />
     <Compile Include="Moodle\GrupoTrabajoBinding.cs" />
     <Compile Include="Moodle\ProfesorBinding.cs" />
     <Compile Include="Moodle\SistemaEvaluacionBiding.cs" />

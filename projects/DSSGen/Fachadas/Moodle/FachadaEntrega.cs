@@ -9,6 +9,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -16,7 +17,7 @@ namespace Fachadas.Moodle
     {
         //Metodo que registra la entrega en BD
         public bool RegistrarEntrega(string p_nombre, string p_descripcion, 
-            Nullable<DateTime> p_fecha_apertura, Nullable<DateTime> p_fecha_cierre, 
+            DateTime p_fecha_apertura, DateTime p_fecha_cierre, 
             float p_puntuacion_maxima, string p_profesor, int p_evaluacion)
         {
             try
@@ -24,11 +25,13 @@ namespace Fachadas.Moodle
                 EntregaCP entrega = new EntregaCP();
                 entrega.CrearEntrega(p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_puntuacion_maxima, p_profesor, p_evaluacion);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser creada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido creada");
             return true;
         }
 
@@ -40,11 +43,13 @@ namespace Fachadas.Moodle
                 EntregaCP cp = new EntregaCP();
                 cp.BorrarEntrega(cod);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser borrada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido borrada");
             return true;
         }
 
@@ -60,19 +65,21 @@ namespace Fachadas.Moodle
 
         //Metodo que modifica el Entrega en BD
         public bool ModificarEntrega(int p_oid, string p_nombre, string p_descripcion,
-            Nullable<DateTime> p_fecha_apertura,
-            Nullable<DateTime> p_fecha_cierre, float p_puntuacion_maxima)
+            DateTime p_fecha_apertura,
+            DateTime p_fecha_cierre, float p_puntuacion_maxima)
         {
             try
             {
                 EntregaCP cp = new EntregaCP();
                 cp.ModificarEntrega(p_oid, p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_puntuacion_maxima);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser modificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido modificada");
             return true;
         }
 

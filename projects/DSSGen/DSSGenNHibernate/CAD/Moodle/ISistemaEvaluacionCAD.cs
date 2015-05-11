@@ -29,6 +29,9 @@ long ReadCantidadPorAsignaturaAnyo (int id);
 
 
 
+DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN ReadRelation (int p_asig, int p_eval);
+
+
 void Relationer_asignatura (int p_sistemaevaluacion, int p_asignaturaanyo);
 
 void Relationer_controles (int p_sistemaevaluacion, System.Collections.Generic.IList<int> p_control);

@@ -9,6 +9,7 @@ using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -35,35 +36,39 @@ namespace Fachadas.Moodle
         }
 
         //Método para crear un año académico en la BD
-        public bool CrearAnyoAcademico(string anyo, DateTime? fecha_inicio, DateTime? fecha_fin, bool finalizado)
+        public bool CrearAnyoAcademico(string anyo, DateTime fecha_inicio, DateTime fecha_fin, bool finalizado)
         {
             try
             {
                 AnyoAcademicoCP cp = new AnyoAcademicoCP();
                 cp.CrearAnyoAcademico(anyo,fecha_inicio,fecha_fin,finalizado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: No se pudo crear el año académico. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El año académico ha sido creado");
             return true;
         }
 
         //Método para modificar un año académico en la BD
-        public bool ModificarAnyoAcademico(int oid, string anyo, DateTime? fecha_inicio,
-            DateTime? fecha_fin, bool finalizado)
+        public bool ModificarAnyoAcademico(int oid, string anyo, DateTime fecha_inicio,
+            DateTime fecha_fin, bool finalizado)
         {
             try
             {
                 AnyoAcademicoCP cp = new AnyoAcademicoCP();
                 cp.ModificarAnyoAcademico(oid,anyo,fecha_inicio,fecha_fin,finalizado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: No se pudo modificar el año académico. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El año académico ha sido modificado");
             return true;
         }
 
@@ -75,11 +80,13 @@ namespace Fachadas.Moodle
                 AnyoAcademicoCP cp = new AnyoAcademicoCP();
                 cp.BorrarAnyoAcademico(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: No se pudo borrar el año académico. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El año académico ha sido borrado");
             return true;
         }
     }

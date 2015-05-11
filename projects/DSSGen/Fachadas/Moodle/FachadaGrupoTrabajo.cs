@@ -9,6 +9,7 @@ using BindingComponents.Moodle.Commands;
 using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -45,11 +46,14 @@ namespace Fachadas.Moodle
                 GrupoTrabajoCP cp = new GrupoTrabajoCP();
                 cp.CrearGrupoTrabajo(codigo, nombre, descripcion, password, capacidad, asignatura_anyo);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El grupo de trabajo no pudo ser creado. " 
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El grupo de trabajo ha sido creado");
             return true;
         }
 
@@ -104,11 +108,14 @@ namespace Fachadas.Moodle
                 GrupoTrabajoCP cp = new GrupoTrabajoCP();
                 cp.ModificarGrupoTrabajo(oid, cod, nombre, descripcion, password, capacidad);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El grupo de trabajo no pudo ser modificado. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El grupo de trabajo ha sido modificado");
             return true;
         }
 
@@ -120,11 +127,14 @@ namespace Fachadas.Moodle
                 GrupoTrabajoCP cp = new GrupoTrabajoCP();
                 cp.BorrarGrupoTrabajo(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El grupo de trabajo no pudo ser borrado. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El grupo de trabajo ha sido borrado");
             return true;
         }
 
@@ -139,11 +149,14 @@ namespace Fachadas.Moodle
                 emails.Add(email);
                 cp.DesvincularAlumnos(idGrupo,emails);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La expulsión del grupo no pudo ser realizada. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La expulsión del grupo ha sido realizada");
             return true;
         }
 
@@ -158,11 +171,14 @@ namespace Fachadas.Moodle
                 emails.Add(email);
                 cp.VincularAlumnos(idGrupo, emails);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La admisión en el grupo del alumno no pudo ser realizada. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La admisión en el grupo del alumno ha sido realizada");
             return true;
         }
 
@@ -177,7 +193,7 @@ namespace Fachadas.Moodle
             grupo.VincularDameTodos(consulta, binder, first, size, out numGrupos);
         }
 
-        //Método para comprobar el password del grupo
+        //Método para ingresar un alumno a un grupo a través del password
         public bool VincularAlumnoConPassword(int grupoId, string alumno, string password)
         {
             GrupoTrabajoCP cp;
@@ -187,11 +203,14 @@ namespace Fachadas.Moodle
                 cp = new GrupoTrabajoCP();
                 cp.VincularAlumnoConPassword(grupoId, alumno, password);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El ingreso en el grupo no pudo ser realizado. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El ingreso en el grupo ha sido realizado");
             return true;
         }
     }

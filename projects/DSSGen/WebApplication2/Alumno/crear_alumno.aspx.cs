@@ -43,26 +43,17 @@ namespace DSSGenNHibernate.Alumno
             bool expedienteAbierto = CheckBox_ExpedienteAbierto.Checked;
 
             //Llamo al metodo que registra al alumno
-            bool verificado;
-
-            try
-            {
-                verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, fecha, dni, email, cod, codExpediente, expedienteAbierto);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
+            bool verificado = alumno.RegistrarAlumno(nombre, apellidos, pass, fecha, dni, email, cod, codExpediente, expedienteAbierto);
 
             //Verifico si se creo el alumno
             if (verificado)
             {
-                Notification.Notify(Response, "El alumno ha sido creado");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
             {
-                Notification.Notify(Response,"El alumno no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 

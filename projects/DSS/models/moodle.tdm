@@ -308,6 +308,7 @@ ConceptualModel moodle
 			public readOID::ReadOID (p_oid : OID -> Curso) : Object -> Curso;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM CursoEN" };
+			public readCod::ReadFilter (cod : String) : Object->Curso {filter = "FROM CursoEN curs where curs=:cod "};
 			
 			public relationer_asignaturas::Relationer->asignatura_curso.asignaturas (p_curso : OID -> Curso, p_asignatura : List<OID -> Asignatura>) : Void;
 			public unrelationer_asignaturas::Unrelationer->asignatura_curso.asignaturas (p_curso : OID -> Curso, p_asignatura : List<OID -> Asignatura>) : Void;
@@ -368,7 +369,8 @@ ConceptualModel moodle
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM ExpedienteEN" };
 			public readRelation::ReadFilter (p_alu : OID -> Alumno) : Object -> Expediente
 			{ filter = "FROM ExpedienteEN exp where exp.Alumno.Email=:p_alu"};
-			
+			public readCod::ReadFilter (cod : String) : Object -> Expediente
+			{ filter = "FROM ExpedienteEN exp where exp.Cod_expediente=:cod"};
 			
 			public relationer_alumno::Relationer->alumno_expediente.alumno (p_expediente : OID -> Expediente, p_alumno : OID -> Alumno) : Void;
 			public relationer_expedientes_anyo::Relationer->expendiente_expedienteanyo.expedientes_anyo (p_expediente : OID -> Expediente, p_expedienteanyo : List<OID -> ExpedienteAnyo>) : Void;
@@ -515,6 +517,9 @@ ConceptualModel moodle
 			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
 			{ filter = "select count(distinct grupo) FROM GrupoTrabajoEN grupo where grupo.Asignatura.Id=:id" };
 			public readAllPorAsignaturaAnyo::Custom (p_as_anyo : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->GrupoTrabajo>;
+			public readCantidadPorAlumnoYAsignaturaAnyo::ReadFilter (p_alumno : OID->Alumno, p_asig : OID->AsignaturaAnyo) : Long 
+			{ filter = "select count(distinct grupo) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Alumnos as alu where grupo.Asignatura.Id=:p_asig AND alu.Email=:p_alumno" };
+			public readAllPorAlumnoYAsignaturaAnyo::Custom (p_alumno : OID->Alumno, p_asig : OID->AsignaturaAnyo, first : Integer, size : Integer) : List<Object->GrupoTrabajo>;
 			
 			public relationer_alumnos::Relationer->grupotrabajo_alumno.alumnos (p_grupotrabajo : OID -> GrupoTrabajo, p_alumno : List<OID -> Alumno>) : Void;
 			public relationer_asignatura::Relationer->grupotrabajo_asignaturaanyo.asignatura (p_grupotrabajo : OID -> GrupoTrabajo, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
@@ -667,6 +672,9 @@ ConceptualModel moodle
 			public readOID::ReadOID (p_oid : OID -> Evaluacion) : Object -> Evaluacion;
 			
 			public readCantidad::ReadFilter () : Long { filter = "select count(*) FROM EvaluacionEN" };
+			public readCantidadPorAnyo::ReadFilter (id : OID -> AnyoAcademico) : Long 
+			{ filter = "select count(distinct eval) FROM EvaluacionEN eval where eval.Anyo_academico.Id=:id " };
+			public readAllPorAnyo::Custom (id : OID -> AnyoAcademico, first : Integer, size : Integer) : List<Object->Evaluacion>;
 			
 			public relationer_anyo_academico::Relationer->anyoacademico_evaluacion.anyo_academico (p_evaluacion : OID -> Evaluacion, p_anyoacademico : OID -> AnyoAcademico) : Void;
 			public relationer_expedientes::Relationer->evaluacion_expedienteevaluacion.expedientes (p_evaluacion : OID -> Evaluacion, p_expedienteevaluacion : List<OID -> ExpedienteEvaluacion>) : Void;
@@ -749,6 +757,10 @@ ConceptualModel moodle
 			public readRelation::ReadFilter (p_evalalumno : OID -> EvaluacionAlumno, p_entrega : OID -> Entrega ) : Object -> EntregaAlumno
 			{ filter = "select ent_alu FROM EntregaAlumnoEN ent_alu where ent_alu.Evaluacion_alumno.Id=:p_evalalumno AND ent_alu.Entrega.Id=:p_entrega"};
 			
+			public readCantidadPorEntrega::ReadFilter (id : OID -> Entrega) : Long 
+			{ filter = "select count (distinct entrega) FROM EntregaAlumnoEN as entrega where entrega.Entrega.Id=:id" };
+			public readAllPorEntrega::Custom (p_entrega : OID -> Entrega, first : Integer, size : Integer) : List<Object->EntregaAlumno>;
+			
 			public relationer_evaluacion_alumno::Relationer->evaluacionalumno_entregaalumno.evaluacion_alumno (p_entregaalumno : OID -> EntregaAlumno, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
 			public relationer_entrega::Relationer->entrega_entregaalumno.entrega (p_entregaalumno : OID -> EntregaAlumno, p_entrega : OID -> Entrega) : Void;
 			public unrelationer_evaluacion_alumno::Unrelationer->evaluacionalumno_entregaalumno.evaluacion_alumno (p_entregaalumno : OID -> EntregaAlumno, p_evaluacionalumno : OID -> EvaluacionAlumno) : Void;
@@ -781,6 +793,8 @@ ConceptualModel moodle
 			public readCantidadPorAsignaturaAnyo::ReadFilter (id : OID -> AsignaturaAnyo) : Long 
 			{ filter = "select count(distinct sis) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id " };
 			public readAllPorAsignaturaAnyo::Custom (id : OID -> AsignaturaAnyo, first : Integer, size : Integer) : List<Object->SistemaEvaluacion>;
+			public readRelation::ReadFilter (p_asig : OID -> AsignaturaAnyo, p_eval : OID -> Evaluacion) : Object -> SistemaEvaluacion
+			{ filter = "FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:p_asig AND sis.Evaluacion.Id=:p_eval"};
 			
 			public relationer_asignatura::Relationer->asignaturaanyo_sistemaevaluacion.asignatura (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_asignaturaanyo : OID -> AsignaturaAnyo) : Void;
 			public relationer_controles::Relationer->sistemaevaluacion_control.controles (p_sistemaevaluacion : OID -> SistemaEvaluacion, p_control : List<OID -> Control>) : Void;

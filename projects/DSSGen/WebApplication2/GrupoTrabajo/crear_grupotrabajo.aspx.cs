@@ -49,11 +49,11 @@ namespace DSSGenNHibernate.GrupoTrabajo
             if (fachadaGrupo.CrearGrupoTrabajo(codigo,nombre,descripcion,password,
                 Int32.Parse(capacidad),Int32.Parse(idAsignaturaAnyo)))
             {
-                Notification.Notify(Response, "El grupo de trabajo ha sido creado");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
-                Notification.Notify(Response,"El grupo de trabajo no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
         }
     
         //Método para limpiar

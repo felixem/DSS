@@ -93,11 +93,9 @@ namespace DSSGenNHibernate.Alumno
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int alumnoId = Int32.Parse(grdrow.Cells[0].Text);
 
-            //Eliminar alumno
-            if (fachada.BorrarAlumno(alumnoId))
-                Notification.Notify(Response, "El alumno ha sido borrado");
-            else
-                Notification.Notify(Response, "El alumno no ha podido ser borrado");
+            //Intentar eliminar alumno
+            fachada.BorrarAlumno(alumnoId);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAlumnosPaginados(1);

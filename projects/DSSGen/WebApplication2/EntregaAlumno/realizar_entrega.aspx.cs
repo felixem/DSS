@@ -83,7 +83,7 @@ namespace DSSGenNHibernate.EntregaAlumno
             }
             else
             {
-                Notification.Notify(Response, "La entrega no pudo ser realizada" + entregaAlumnoGenerada);
+                Notification.Current.NotifyLastNotification(Response);
                 StatusLabel.Text = "Estado de Subida: No ha podido ser realizada";
             }
         }

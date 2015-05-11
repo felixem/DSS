@@ -31,7 +31,7 @@ namespace DSSGenNHibernate.Entrega
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
-                navegacion.SavePreviuosPage(Request);                
+                navegacion.SavePreviuosPage(Request);
             }
 
             Obtener_Parametros();
@@ -75,37 +75,25 @@ namespace DSSGenNHibernate.Entrega
         //Método que llama el botón crear
         protected void Button_RegEntrega_Click(Object sender, EventArgs e)
         {
-            //Llamo al metodo que registra al alumno
-            bool verificado;
+            //Recogo los datos
+            string nombre = TextBox_NomControl.Text;
+            string descripcion = TextBox_DescControl.Text;
+            DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
+            DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
+            float puntMax = float.Parse(TextBox_PuntControl.Text);
+            int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
+            //El profesor de la sesion actual
+            string profesor = MySession.Current.Usuario.Email;
 
-            try
+            //Crear entrega
+            if (fachada.RegistrarEntrega(nombre, descripcion, apertura, cierre, puntMax, profesor, sistemaEvaluacion))
             {
-                //Recogo los datos
-                string nombre = TextBox_NomControl.Text;
-                string descripcion = TextBox_DescControl.Text;
-                DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
-                DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
-                float puntMax = float.Parse(TextBox_PuntControl.Text);
-                int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
-                //El profesor de la sesion actual
-                string profesor = MySession.Current.Usuario.Email;
-                verificado = fachada.RegistrarEntrega(nombre, descripcion, apertura, cierre, puntMax, profesor, sistemaEvaluacion);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Verifico si se creo el alumno
-            if (verificado)
-            {
-                Notification.Notify(Response, "La entrega ha sido creada");
-                Linker link = new Linker(true);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Current.NotifyLastNotification(Response);
+                this.Clean();
             }
             else
             {
-                Notification.Notify(Response, "La entrega no ha podido ser creada");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 

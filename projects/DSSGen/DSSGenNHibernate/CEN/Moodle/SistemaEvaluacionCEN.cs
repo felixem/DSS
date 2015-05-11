@@ -100,6 +100,10 @@ public long ReadCantidadPorAsignaturaAnyo (int id)
 {
         return _ISistemaEvaluacionCAD.ReadCantidadPorAsignaturaAnyo (id);
 }
+public DSSGenNHibernate.EN.Moodle.SistemaEvaluacionEN ReadRelation (int p_asig, int p_eval)
+{
+        return _ISistemaEvaluacionCAD.ReadRelation (p_asig, p_eval);
+}
 public void Relationer_asignatura (int p_sistemaevaluacion, int p_asignaturaanyo)
 {
         //Call to SistemaEvaluacionCAD

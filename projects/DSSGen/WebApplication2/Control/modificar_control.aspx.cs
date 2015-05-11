@@ -79,26 +79,11 @@ namespace DSSGenNHibernate.Control
             string puntmaxima = TextBox_PuntMax.Text;
             string penalizacion = TextBox_Penalizacion.Text;
 
-            bool verificado;
-            //Pruebo a registrar el control
-            try
-            {
-                verificado = fachada.ModificarControl(id,nombre,descripcion,DateTime.Parse(apertura),DateTime.Parse(cierre),Int32.Parse(duracion),float.Parse(puntmaxima), float.Parse(penalizacion));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "El control ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response, "El control no ha podido ser modificado");
-            }
+            //Modificar el control
+            fachada.ModificarControl(id,nombre,descripcion,DateTime.Parse(apertura),DateTime.Parse(cierre),
+                Int32.Parse(duracion),float.Parse(puntmaxima), float.Parse(penalizacion));
+            //Mostrar notificación
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

@@ -76,37 +76,26 @@ namespace DSSGenNHibernate.Control
         //Método que llama el botón crear
         protected void Button_RegControl_Click(Object sender, EventArgs e)
         {
-            //Llamo al metodo que registra al alumno
-            bool verificado;
+            //Recogo los datos
+            string nombre = TextBox_NomControl.Text;
+            string descripcion = TextBox_DescControl.Text;
+            DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
+            DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
+            int duracionMin = Int32.Parse(TextBox_DuraciControl.Text);
+            float puntMax = float.Parse(TextBox_PuntControl.Text);
+            float penalizacion = float.Parse(TextBox_PenaControl.Text);
+            int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
 
-            try
+            //Registrar control
+            if (fachada.RegistrarControl(nombre, descripcion, apertura, cierre,
+                    duracionMin, puntMax, penalizacion, sistemaEvaluacion))
             {
-                //Recogo los datos
-                string nombre = TextBox_NomControl.Text;
-                string descripcion = TextBox_DescControl.Text;
-                DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
-                DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
-                int duracionMin = Int32.Parse(TextBox_DuraciControl.Text);
-                float puntMax = float.Parse(TextBox_PuntControl.Text);
-                float penalizacion = float.Parse(TextBox_PenaControl.Text);
-                int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
-                verificado = fachada.RegistrarControl(nombre, descripcion, apertura, cierre, duracionMin, puntMax, penalizacion, sistemaEvaluacion);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Verifico si se creo el alumno
-            if (verificado)
-            {
-                Notification.Notify(Response, "El control ha sido creado");
-                Linker link = new Linker(true);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Current.NotifyLastNotification(Response);
+                this.Clean();
             }
             else
             {
-                Notification.Notify(Response, "El control no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 

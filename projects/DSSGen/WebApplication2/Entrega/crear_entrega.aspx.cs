@@ -45,11 +45,6 @@ namespace DSSGenNHibernate.Entrega
         //Método que llama el botón crear
         protected void Button_RegEntrega_Click(Object sender, EventArgs e)
         {
-            //Llamo al metodo que registra al alumno
-            bool verificado;
-
-            try
-            {
                 //Recogo los datos
                 string nombre = TextBox_NomControl.Text;
                 string descripcion = TextBox_DescControl.Text;
@@ -58,23 +53,16 @@ namespace DSSGenNHibernate.Entrega
                 float puntMax = float.Parse(TextBox_PuntControl.Text);
                 int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
                 string profesor = DropDownList_Profesores.SelectedValue;
-                verificado = fachada.RegistrarEntrega(nombre, descripcion, apertura, cierre, puntMax, profesor, sistemaEvaluacion);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
 
-            //Verifico si se creo el alumno
-            if (verificado)
+            //Crear entrega
+            if (fachada.RegistrarEntrega(nombre, descripcion, apertura, cierre, puntMax, profesor, sistemaEvaluacion))
             {
-                Notification.Notify(Response, "La entrega ha sido creada");
-                Linker link = new Linker(true);
-                link.Redirect(Response, link.PreviousPage());
+                Notification.Current.NotifyLastNotification(Response);
+                this.Clean();
             }
             else
             {
-                Notification.Notify(Response, "La entrega no ha podido ser creada");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 

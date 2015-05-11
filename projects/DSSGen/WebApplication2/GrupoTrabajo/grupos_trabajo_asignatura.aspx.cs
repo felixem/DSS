@@ -80,7 +80,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
             long numObjetos = 0;
 
             //Vincular el grid con la lista de grupos de trabajo paginados
-            fachadaGrupo.VincularDameTodosPorAsignaturaAnyo(id,GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
+            fachadaGrupo.VincularDameTodosPorAsignaturaAnyo(id, GridViewBolsas, (pageIndex - 1) * pageSize, pageSize, out numObjetos);
 
             int recordCount = (int)numObjetos;
             this.ListarPaginas(recordCount, pageIndex);
@@ -146,10 +146,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar grupo de trabajo
-            if (fachadaGrupo.BorrarGrupoTrabajo(grupoId))
-                Notification.Notify(Response,"El grupo de trabajo ha sido borrado");
-            else
-                Notification.Notify(Response, "El grupo de trabajo no ha podido ser borrado");
+            fachadaGrupo.BorrarGrupoTrabajo(grupoId);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerGruposTrabajoPaginados(1);

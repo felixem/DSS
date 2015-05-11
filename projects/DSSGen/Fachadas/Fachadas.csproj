@@ -51,10 +51,11 @@
     <Compile Include="Moodle\FachadaBolsaPreguntas.cs" />
     <Compile Include="Moodle\FachadaControl.cs" />
     <Compile Include="Moodle\FachadaCurso.cs" />
+    <Compile Include="Moodle\FachadaFecha.cs" />
     <Compile Include="Moodle\FachadaGrupoTrabajo.cs" />
     <Compile Include="Moodle\FachadaLogin.cs" />
     <Compile Include="Moodle\FachadaAsignatura.cs" />
-    <Compile Include="Moodle\FachadaPassword.cs" />
+    <Compile Include="Moodle\FachadaUsuario.cs" />
     <Compile Include="Moodle\FachadaProfesor.cs" />
     <Compile Include="Moodle\FachadaSistemaEvaluacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

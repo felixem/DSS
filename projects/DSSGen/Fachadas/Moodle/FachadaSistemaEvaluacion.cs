@@ -9,12 +9,14 @@ using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
     //Fachada para la clase Sistema Evaluacion
     public class FachadaSistemaEvaluacion
     {
+        //Crear sistema
         public bool RegistrarSistema(float puntuacion,int asignaturaany,int eval)
         {
             try
@@ -22,11 +24,14 @@ namespace Fachadas.Moodle
                 SistemaEvaluacionCP evaluacion = new SistemaEvaluacionCP();
                 evaluacion.CrearSistema(puntuacion,asignaturaany,eval);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El sistema de evaluación no pudo ser creado. " 
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El sistema de evaluación ha sido creado");
             return true;
         }
         //Metodo que modifica el sitema en BD
@@ -37,11 +42,14 @@ namespace Fachadas.Moodle
                SistemaEvaluacionCP cp = new SistemaEvaluacionCP();
                cp.ModificarSistemaEvaluacion(p_oid, p_maxima);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El sistema de evaluación no pudo ser modificado. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El sistema de evaluación ha sido modificado");
             return true;
         }
         //Método para eliminar un sistema en la BD
@@ -52,11 +60,14 @@ namespace Fachadas.Moodle
                SistemaEvaluacionCP cp = new SistemaEvaluacionCP();
                 cp.BorrarSistemaEvaluacion(cod);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El sistema de evaluación no pudo ser borrado. "
+                    + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El sistema de evaluación ha sido borrado");
             return true;
         }
         //Vincular a un DropDownList todos los sistemas de evaluacion

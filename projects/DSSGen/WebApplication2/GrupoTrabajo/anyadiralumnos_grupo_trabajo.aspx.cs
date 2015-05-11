@@ -122,10 +122,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string emailAlumno = grdrow.Cells[0].Text;
 
             //Vincular un alumno a un grupo de trabajo
-            if (fachadaGrupo.VincularAlumno(id,emailAlumno))
-                Notification.Notify(Response,"El alumno ha sido añadido del grupo");
-            else
-                Notification.Notify(Response, "El alumno no ha podido ser añadido al grupo");
+            fachadaGrupo.VincularAlumno(id,emailAlumno);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener los datos
             this.CargarDatos();
