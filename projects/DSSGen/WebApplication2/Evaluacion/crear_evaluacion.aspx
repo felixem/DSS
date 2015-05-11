@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="crear_evaluacion.aspx.cs" Inherits="DSSGenNHibernate.Evaluacion.crear_evaluacion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="../Styles/utilities/centrar_contenido.css" rel="stylesheet" 
+        type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="CentrarContenido">
     <p>
         Nombre de la evaluación: <asp:TextBox ID="TextBox_Nombre" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_Nombre"
@@ -64,4 +67,5 @@
         <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos"
                  /></p>
 
+        </div>
 </asp:Content>

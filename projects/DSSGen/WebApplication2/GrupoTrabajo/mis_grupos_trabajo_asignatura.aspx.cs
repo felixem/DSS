@@ -142,7 +142,7 @@ namespace DSSGenNHibernate.GrupoTrabajo
         protected void Button_Otros_Grupos_Click(object sender, EventArgs e)
         {
             //Redirigir a la página que le llamó
-            Linker link = new Linker(false);
+            Linker link = new Linker(true);
             link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(asignaturaanyoId));
         }
     }
