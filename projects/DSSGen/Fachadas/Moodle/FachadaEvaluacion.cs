@@ -50,15 +50,13 @@ namespace Fachadas.Moodle
             return true;
         }
         //Método para vincular una evaluacion a partir de su id a textboxes
-        public bool VincularEvaluacionPorId(int id, TextBox TextBox_Nom,
-            TextBox TextBox_inicio,TextBox TextBox_fin,CheckBox abierta)
+        public bool VincularEvaluacionPorId(int id, TextBox TextBox_Nom,CheckBox abierta)
         {
             try
             {
                 EvaluacionBinding binding = new EvaluacionBinding();
                 DameEvaluacionPorId consulta = new DameEvaluacionPorId(id);
-                IBinderEvaluacion linker = new BinderEvaluacion(TextBox_Nom,
-                    TextBox_inicio, TextBox_fin, abierta);
+                IBinderEvaluacion linker = new BinderEvaluacion(TextBox_Nom, abierta);
 
                 binding.VincularDameEvaluacion(consulta, linker);
             }

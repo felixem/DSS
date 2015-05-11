@@ -9,43 +9,31 @@
             ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
     </p>
     <p>
-        Fecha de inicio: <asp:TextBox ID="TextBox_FechaI" runat="server"></asp:TextBox>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_FechaI"
-                Display="Dynamic" ErrorMessage="Introduce fecha inicio evaluación" 
-            ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" 
-            runat="server" ControlToValidate="TextBox_FechaI"
-                Display="Dynamic" ErrorMessage="Formato fecha inválida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))" 
-            ForeColor="Red" ValidationExpression="\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sAM|\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sPM"
-                ValidationGroup="Registro"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="CustomValidator1" runat="server" OnServerValidate="ComprobarFecha"
-                ControlToValidate="TextBox_FechaF" Display="Dynamic" ErrorMessage="Fecha incorrecta revise día, mes, año y hora introducida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))"
-                ForeColor="Red" ValidationGroup="Registro"></asp:CustomValidator> <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_FechaF"
-                Display="Dynamic" ErrorMessage="Introduce fecha inicio evaluación" 
-            ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" 
-            runat="server" ControlToValidate="TextBox_FechaI"
-                Display="Dynamic" ErrorMessage="Formato fecha inválida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))" 
-            ForeColor="Red" ValidationExpression="\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sAM|\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sPM"
-                ValidationGroup="Registro"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="CustomValidator3" runat="server" OnServerValidate="ComprobarFecha"
-                ControlToValidate="TextBox_FechaF" Display="Dynamic" ErrorMessage="Fecha incorrecta revise día, mes, año y hora introducida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))"
-                ForeColor="Red" ValidationGroup="Registro"></asp:CustomValidator>
+        Fecha de inicio:
+                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
+                            AutoPostBack="True">
+                        </asp:DropDownList> 
+                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged"
+                            AutoPostBack="True">
+                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+                        </asp:DropDownList>
+                       
+                        
     </p>
     <p>
-        Fecha de fin: <asp:TextBox ID="TextBox_FechaF" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextBox_FechaF"
-                Display="Dynamic" ErrorMessage="Introduce fecha fin evaluación" 
-            ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" 
-            runat="server" ControlToValidate="TextBox_FechaF"
-                Display="Dynamic" ErrorMessage="Formato fecha inválida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))" 
-            ForeColor="Red" ValidationExpression="\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sAM|\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sPM"
-                ValidationGroup="Registro"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="CustomValidator2" runat="server" OnServerValidate="ComprobarFecha"
-                ControlToValidate="TextBox_FechaF" Display="Dynamic" ErrorMessage="Fecha incorrecta revise día, mes, año y hora introducida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))"
-                ForeColor="Red" ValidationGroup="Registro"></asp:CustomValidator>
-        </p>
+        Fecha de fin: 
+                        <asp:DropDownList ID="ddlAnoC" runat="server" OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged"
+                            AutoPostBack="True">
+                       </asp:DropDownList>
+                       <asp:DropDownList ID="ddlMesC" runat="server" OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged"
+                            AutoPostBack="True">
+                       </asp:DropDownList>
+                       <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True">
+                       </asp:DropDownList>
+                       
+                       
+    </p>
     <p>
         Abierta 
         <asp:CheckBox ID="CheckBox_Abierta" runat="server" />
