@@ -96,6 +96,15 @@ namespace WebUtilities
             return ruta;
         }
 
+        //Modificar la entrega del alumno a partir de una id de entrega
+        public string ModificarEntregaAlumno(int id, string extension)
+        {
+            string ruta = ResourceFinder.DirectorioEntregas() + id.ToString() + extension;
+            FileUploadControl.SaveAs(Server.MapPath(ruta));
+
+            return ruta;
+        }
+
         //Borrar del servidor físicamente la entrega del alumno a partir de una id de entrega
         public void BorrarEntregaAlumno(int id, string extension)
         {

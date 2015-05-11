@@ -66,6 +66,45 @@ namespace Fachadas.Moodle
 
         }
 
+        //Modificar la entrega de la práctica del alumno
+        public bool ModificarEntregaPractica(int idEntrega, HttpServerUtility Server,
+            FileUpload FileUploadControl, Label StatusLabel, TextBox TextBox_Comentario)
+        {
+            try
+            {
+                Uploader uploader = new Uploader(Server, FileUploadControl);
+
+                //Comprobar las precondiciones del archivo
+                if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
+                    return false;
+
+                //Inicializar las variables
+                HttpPostedFile file = FileUploadControl.PostedFile;
+                string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = System.IO.Path.GetExtension(nombreFichero);
+                string ruta = "";
+                float tam = file.ContentLength;
+                DateTime? fecha_entrega = DateTime.Now;
+                float nota = 0;
+                bool corregido = false;
+                string comentarioAlumno = TextBox_Comentario.Text;
+                string comentarioProfesor = "";
+
+                //Crear la entrega de prácticas en la base de datos
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                cp.ModificarEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
+                    nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega);
+            }
+            catch (Exception ex)
+            {
+                Notification.Current.AddNotification("ERROR: La entrega no pudo ser modificada. " + ex.Message);
+                return false;
+            }
+
+            return true;
+
+        }
+
 
         //Vincular a un gridview los controles pertenecientes a una entrega con paginación
         public void VincularDameTodosPorEntrega(int idEntrega, GridView grid,
@@ -114,6 +153,28 @@ namespace Fachadas.Moodle
                         TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt,
                         TextBox_ComentarioAlumno, TextBox_NombreArchivo,
                         Img_Corregido, TextBox_Nota, TextBox_ComentarioProfesor);
+
+                binding.VincularDameEntregaAlumno(consulta, linker);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Método para vincular un entrega a partir de su id a textboxes
+        public bool VincularEntregaAlumnoPorIdMuyLigero(int id, TextBox TextBox_Nom,
+            TextBox TextBox_Desc, TextBox TextBox_Apertu, TextBox TextBox_Cierre, TextBox TextBox_Punt,
+            TextBox TextBox_Comentario)
+        {
+            try
+            {
+                EntregaAlumnoBinding binding = new EntregaAlumnoBinding();
+                DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
+                IBinderEntregaAlumno linker = new BinderEntregaAlumnoMuyLigero(TextBox_Nom,
+                        TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt,
+                        TextBox_Comentario);
 
                 binding.VincularDameEntregaAlumno(consulta, linker);
             }

@@ -78,6 +78,49 @@ namespace ComponentesProceso.Moodle
             return entregaAlumno;
         }
 
+        //Modificar entrega de prácticas de un alumno
+        public int ModificarEntregaAlumno(Uploader Uploader, String p_nombre_fichero, String p_extension, String p_ruta,
+            float p_tam, DateTime? p_fecha_entrega, float p_nota, bool p_corregido, String p_comentario_alumno,
+            String p_comentario_profesor, int p_entrega)
+        {
+            int entregaAlumno = -1;
+
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Comprobar si existe la entrega propuesta
+                EntregaAlumnoCAD entregaCad = new EntregaAlumnoCAD(session);
+                EntregaAlumnoCEN entregaCen = new EntregaAlumnoCEN(entregaCad);
+                if (entregaCen.ReadOID(p_entrega) == null)
+                    throw new Exception("La entrega propuesta no existe");
+
+                //Modificar el archivo al directorio físico
+                p_ruta = Uploader.ModificarEntregaAlumno(entregaAlumno, p_extension);
+
+                //Establecer la ruta en la entrega
+                entregaCen.Modify(entregaAlumno, p_nombre_fichero, p_extension, p_ruta, p_tam, p_fecha_entrega, 
+                    p_nota, p_corregido, p_comentario_alumno, p_comentario_profesor);
+
+                SessionCommit();
+            }
+            catch (Exception e)
+            {
+                SessionRollBack();
+
+                //Borrar la entrega en caso de error
+                Uploader.BorrarEntregaAlumno(entregaAlumno, p_extension);
+
+                throw e;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+            return entregaAlumno;
+        }
+
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de Entrega que satisfacen la consulta
         public System.Collections.Generic.IList<EntregaAlumnoEN> DameTodosTotal(IDameTodosEntregaAlumno consulta,
             int first, int size, out long numElementos)
