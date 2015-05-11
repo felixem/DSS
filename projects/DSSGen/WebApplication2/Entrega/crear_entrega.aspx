@@ -16,7 +16,7 @@
     <div class="ContenedorInterno">
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Nombre</div>
-        <asp:TextBox ID="TextBox_NomControl" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_NomControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox_NomControl"
                 Display="Dynamic" ErrorMessage="Introduce Nombre" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
@@ -26,7 +26,7 @@
 
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Descripcion</div>
-        <asp:TextBox ID="TextBox_DescControl" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_DescControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox_DescControl"
                 Display="Dynamic" ErrorMessage="Introduce Descripcion" ForeColor="Red" 
@@ -38,7 +38,7 @@
                 ValidationGroup="Registro"></asp:RegularExpressionValidator>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Fecha Apertura </div>
-        <asp:TextBox ID="TextBox_ApertuControl" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_ApertuControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox_ApertuControl"
                 Display="Dynamic" ErrorMessage="Introduce Fecha Apertura" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
@@ -51,7 +51,7 @@
 
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Fecha Cierre </div>
-        <asp:TextBox ID="TextBox_CierreControl" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_CierreControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextBox_CierreControl"
                 Display="Dynamic" ErrorMessage="Introduce Fecha Cierre" 
@@ -67,7 +67,7 @@
     
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Puntuación </div>
-        <asp:TextBox ID="TextBox_PuntControl" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_PuntControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="TextBox_PuntControl"
                 Display="Dynamic" 
@@ -81,32 +81,33 @@
     
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Año academico</div>
-        <asp:DropDownList ID="DropDownList_Anyos" runat="server" 
+        <asp:DropDownList ID="DropDownList_Anyos" runat="server" CssClass="posicion_derecha"
                     OnSelectedIndexChanged="DropDownList_Anyos_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
     </div>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Asignatura</div>
-        <asp:DropDownList ID="DropDownList_AsignaturasAnyo" runat="server" 
+        <asp:DropDownList ID="DropDownList_AsignaturasAnyo" runat="server" CssClass="posicion_derecha"
                     OnSelectedIndexChanged="DropDownList_AsignaturasAnyo_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
     </div>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Evaluacion</div>
-        <asp:DropDownList ID="DropDownList_SistemaEvaluacion" runat="server">
+        <asp:DropDownList ID="DropDownList_SistemaEvaluacion" runat="server" CssClass="posicion_derecha">
         </asp:DropDownList>
     </div>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Profesor</div>
-        <asp:DropDownList ID="DropDownList_Profesores" runat="server">
+        <asp:DropDownList ID="DropDownList_Profesores" CssClass="posicion_derecha" runat="server">
         </asp:DropDownList>
     </div>
     
-        <asp:Button ID="Button_RegEntrega" runat="server" OnClick="Button_RegEntrega_Click" Text="Crear"
+
+        <asp:Button ID="Button_RegEntrega" runat="server" OnClick="Button_RegEntrega_Click" Text="Crear" CssClass="posicion_izquierda"
                 ValidationGroup="Registro" />
-        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" CssClass="posicion_central"
                  />
-        <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos"
+        <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos" CssClass="posicion_derecha"
                  />
     </div>
     </div>
