@@ -10,52 +10,59 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1>
-        Calificar Entrega Alumno</h1>
-    <p class="style2">
-        CodEntrega
-                <asp:TextBox ID="TextBox_Cod" runat="server" 
+    <h1>Calificar Entrega Alumno</h1>
+    <div class="CentrarContenido" style="width: 450px;">
+    <div class="ContenedorInterno">
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">CodEntrega</div>
+        <asp:TextBox ID="TextBox_Cod" runat="server" CssClass="position_derecha_locked"
                     ReadOnly="True"></asp:TextBox>
-    </p>
-    <p class="style2">
-        Nombre Alumno
-                <asp:TextBox ID="TextBox_NomAlu" runat="server"
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Nombre Alumno</div>
+        <asp:TextBox ID="TextBox_NomAlu" runat="server" CssClass="position_derecha_locked"
                     ReadOnly="True" Width="185px"></asp:TextBox>
-            </p>
-    <p class="style2">
-        Apellidos Alumno
-                <asp:TextBox ID="TextBox_ApeAlu" runat="server"
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Apellidos Alumno</div>
+        <asp:TextBox ID="TextBox_ApeAlu" runat="server" CssClass="position_derecha_locked"
                     ReadOnly="True"></asp:TextBox>
-            </p>
-    <p class="style2">
-        DNI
-                <asp:TextBox ID="TextBox_Dni" runat="server"
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">DNI</div>
+        <asp:TextBox ID="TextBox_Dni" runat="server" CssClass="position_derecha_locked"
                     ReadOnly="True"></asp:TextBox>
-            </p>
-    <p class="style2">
-        Comentarios Alumno
-                <asp:TextBox ID="TextBox_ComentAlu" runat="server"
-                    ReadOnly="True" Width="685px"></asp:TextBox>
-            </p>
-    <p class="style2">
-        Nota <asp:TextBox ID="TextBox_Nota" runat="server"></asp:TextBox>
-    </p>
-    <p class="style2">
-        Corregido
-        <asp:CheckBox ID="CheckBox_Corregido" runat="server" />
-    </p>
-    <p class="style2">
-        Comentarios Profesor <asp:TextBox ID="TextBox_ComentProf" 
-            runat="server" Width="679px"></asp:TextBox>
-    </p>
-    <p class="style2">
-        &nbsp;Descargar Entrega
-        <asp:Button ID="Button_descargar" runat="server" OnClick="Button_Descargar_Click" Text="Bajar Achivo" Width="130px" />
-    </p>
-    <p class="style2">
-        <asp:Button ID="Button_Calificar" runat="server" OnClick="Button_Calificar_Click"
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Comentarios Alumno</div>
+        <asp:TextBox ID="TextBox_ComentAlu" runat="server" CssClass="position_derecha_locked"
+                    ReadOnly="True" Width="200px" Rows="2" TextMode="MultiLine"></asp:TextBox>
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Nota </div>
+        <asp:TextBox ID="TextBox_Nota" CssClass="posicion_derecha" runat="server"></asp:TextBox>
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Corregido</div>
+        <asp:CheckBox CssClass="posicion_derecha" ID="CheckBox_Corregido" runat="server" />
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Comentarios Profesor </div>
+        <asp:TextBox ID="TextBox_ComentProf" 
+            runat="server" CssClass="posicion_derecha" Width="200px" Rows="2" 
+            TextMode="MultiLine"></asp:TextBox>
+    </div>
+    <div class="row_textbox_medium">
+        <div class="posicion_izquierda">Descargar Entrega</div>
+        <asp:Button ID="Button_descargar" runat="server" OnClick="Button_Descargar_Click" CssClass="posicion_derecha" Text="Bajar Achivo" Width="130px" />
+    </div>
+    <div class="row_textbox_medium">
+        <asp:Button ID="Button_Calificar" runat="server" OnClick="Button_Calificar_Click" CssClass="posicion_izquierda"
                 Text="Calificar" ValidationGroup="Registro"  />
                 &nbsp;
-        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
-                 /></p>
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" CssClass="posicion_derecha"
+                 />
+    </div>
+        </div>
+        </div>
 </asp:Content>
