@@ -82,8 +82,8 @@ namespace DSSGenNHibernate.Evaluacion
         
         protected void ObtenerAnyos() 
         {
-            fachadaFecha.VincularDameAnyos(ddlAno);
-            fachadaFecha.VincularDameAnyos(ddlAnoC);
+            fachadaFecha.VincularDameAnyos(ddlAno,10,10);
+            fachadaFecha.VincularDameAnyos(ddlAnoC,10,10);
         }
         protected void ObtenerMeses()
         {

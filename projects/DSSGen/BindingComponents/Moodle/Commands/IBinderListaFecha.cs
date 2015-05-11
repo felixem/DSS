@@ -11,5 +11,8 @@ namespace BindingComponents.Moodle.Commands
     {
         //Realizar vinculación
         void Vincular(ArrayList lista);
+
+        //Realizar vinculación mes
+        void VincularMes(ArrayList mes);
     }
 }

@@ -11,7 +11,7 @@ using DSSGenNHibernate.EN.Moodle;
 
 namespace DSSGenNHibernate.EntregaAlumno
 {
-    public partial class detalles_entrega_alumno : BasicPage
+    public partial class editar_entrega : BasicPage
     {
         FachadaEntregaAlumno fachadaEntregaAlumno;
         private int id;
@@ -32,8 +32,6 @@ namespace DSSGenNHibernate.EntregaAlumno
 
             if (!IsPostBack)
             {
-                //Mostrar notificaciones recibidas
-                Notification.Current.NotifyLastNotification(Response);
                 //Cargar datos
                 this.CargarDatos();
             }
@@ -58,13 +56,30 @@ namespace DSSGenNHibernate.EntregaAlumno
         private void CargarDatos()
         {
             //Recuperar los datos de la entrega
-            if (!fachadaEntregaAlumno.VincularEntregaAlumnoPorId(id, TextBox_Nom,
-            TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt,TextBox_ComentarioAlumno,
-            TextBox_NombreArchivo,Img_Corregido,TextBox_Nota, TextBox_ComentarioProfesor))
+            if (!fachadaEntregaAlumno.VincularEntregaAlumnoPorIdMuyLigero(id, TextBox_Nom,
+            TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt, TextBox_Comentario))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
                 link.Redirect(Response, link.PreviousPage());
+            }
+        }
+
+        //Realizar Entrega
+        protected void Button_Modificar_Click(object sender, EventArgs e)
+        {
+            //Modificar la práctica
+            if (fachadaEntregaAlumno.ModificarEntregaPractica
+                (id, Server, FileUploadControl, StatusLabel, TextBox_Comentario))
+            {
+                //Llevar a la página de detalles de entrega
+                Linker linker = new Linker(false);
+                linker.Redirect(Response, linker.DetallesMiEntregaAlumno(id));
+            }
+            else
+            {
+                Notification.Current.NotifyLastNotification(Response);
+                StatusLabel.Text = "Estado de Subida: No ha podido ser realizada";
             }
         }
 
@@ -74,14 +89,6 @@ namespace DSSGenNHibernate.EntregaAlumno
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
-        }
-
-        //Botón utilizado para cancelar la creación y volver atrás
-        protected void Button_Descargar_Click(object sender, EventArgs e)
-        {
-            //Intentar descargar el fichero
-            Linker link = new Linker(false);
-            link.Redirect(Response, link.DescargaEntregaPracticas(id));
         }
     }
 }

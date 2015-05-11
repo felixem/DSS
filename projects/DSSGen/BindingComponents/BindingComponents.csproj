@@ -106,6 +106,7 @@
     <Compile Include="Moodle\Commands\BinderEntregaLigero.cs" />
     <Compile Include="Moodle\Commands\BinderSistemaEvaluacion.cs" />
     <Compile Include="Moodle\Commands\BinderEntregaAlumnoCompleto.cs" />
+    <Compile Include="Moodle\Commands\BinderEntregaAlumnoMuyLigero.cs" />
     <Compile Include="Moodle\Commands\IBinderControl.cs" />
     <Compile Include="Moodle\Commands\IBinderEntrega.cs" />
     <Compile Include="Moodle\Commands\IBinderEntregaAlumno.cs" />
@@ -139,7 +140,7 @@
     <Compile Include="Moodle\Commands\IBinderSistemaEvaluacion.cs" />
     <Compile Include="Moodle\ControlBinding.cs" />
     <Compile Include="Moodle\CursoBinding.cs" />
-    <Compile Include="Moodle\EntregaAlumnoBiding.cs" />
+    <Compile Include="Moodle\EntregaAlumnoBinding.cs" />
     <Compile Include="Moodle\EntregaBinding.cs" />
     <Compile Include="Moodle\EvaluacionBinding.cs" />
     <Compile Include="Moodle\FechaBinding.cs" />

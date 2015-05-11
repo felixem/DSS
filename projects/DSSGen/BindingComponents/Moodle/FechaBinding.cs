@@ -18,49 +18,26 @@ namespace BindingComponents.Moodle
         public FechaBinding() : base() { }
         public FechaBinding(ISession sesion) : base(sesion) { }
 
-        public void VincularDameAnyos(DateTime tnow,IBinderListaFecha binder)
+        public void VincularDameAnyos(DateTime tnow,IBinderListaFecha binder,int previos,int proximos)
         {
             ArrayList lista = new ArrayList();
-            for (int i = tnow.Year; i >= tnow.Year - 10; i--)
+            for (int i = tnow.Year-previos; i <= tnow.Year + proximos; i++)
                 lista.Add(i);
 
             binder.Vincular(lista);
         }
-        public void VincularDameMeses(int year,IBinderListaFecha binder)
+        public void VincularDameMeses(IBinderListaFecha binder)
         {
-            DateTime tnow = DateTime.Now;
             ArrayList months = new ArrayList();
-
-            if (year == tnow.Year)
-            {
-                //Año actual
-                for (int i = tnow.Month; i <= 12; i++)
-                {
-                    months.Add(i);
-                }
-            }
-
-            else
-            {
-                //Año normal
                 for (int i = 1; i <= 12; i++)
                 {
                     months.Add(i);
                 }
-            }
-            binder.Vincular(months);
+            binder.VincularMes(months);
         }
         public void VincularDameDias(int month, int year,IBinderListaFecha binder)
         {
             ArrayList aday = new ArrayList();
-
-            //Comprobar si estamos en el mes y año actual
-            DateTime tnow = DateTime.Now;
-            int i = 1;
-            if (year == tnow.Year && month == tnow.Month)
-            {
-                i = tnow.Day;
-            }
 
             //Comprobar el mes de la fecha
             switch (month)
@@ -81,8 +58,8 @@ namespace BindingComponents.Moodle
                 case 12:
 
                     //Añadir los días al array
-                    for (int j = i; j <= 31; j++)
-                        aday.Add(j);
+                    for (int i = 1; i <= 31; i++)
+                        aday.Add(i);
 
                     break;
 
@@ -91,7 +68,7 @@ namespace BindingComponents.Moodle
                     //Si el mes es febrero, comprobar si se generan 29 o 28 días
                     if (CheckLeapYear(year))
                     {
-                        for (int j = i; j <= 29; j++)
+                        for (int j = 1; j <= 29; j++)
                             aday.Add(j);
                     }
 
@@ -99,7 +76,7 @@ namespace BindingComponents.Moodle
                     else
                     {
 
-                        for (int j = i; j <= 28; j++)
+                        for (int j = 1; j <= 28; j++)
                             aday.Add(j);
 
                     }
@@ -115,7 +92,7 @@ namespace BindingComponents.Moodle
                 case 11:
 
                     //Meses de 30 días
-                    for (int j = i; j <= 30; j++)
+                    for (int j = 1; j <= 30; j++)
                         aday.Add(j);
 
                     break;

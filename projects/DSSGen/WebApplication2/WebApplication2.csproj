@@ -65,6 +65,7 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="EntregaAlumno\editar_entrega.aspx" />
     <Content Include="EntregaAlumno\detalles_entrega_alumno.aspx" />
     <Content Include="EntregaAlumno\realizar_entrega.aspx" />
     <Content Include="Errors\404.aspx" />
@@ -246,6 +247,13 @@
     </Compile>
     <Compile Include="Download\DownloadFile.ashx.cs">
       <DependentUpon>DownloadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\editar_entrega.aspx.cs">
+      <DependentUpon>editar_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\editar_entrega.aspx.designer.cs">
+      <DependentUpon>editar_entrega.aspx</DependentUpon>
     </Compile>
     <Compile Include="EntregaAlumno\detalles_entrega_alumno.aspx.cs">
       <DependentUpon>detalles_entrega_alumno.aspx</DependentUpon>
