@@ -72,7 +72,9 @@ namespace DSSGenNHibernate.EntregaAlumno
             if (fachadaEntregaAlumno.ModificarEntregaPractica
                 (id, Server, FileUploadControl, StatusLabel, TextBox_Comentario))
             {
-                Notification.Current.NotifyLastNotification(Response);
+                //Llevar a la página de detalles de entrega
+                Linker linker = new Linker(false);
+                linker.Redirect(Response, linker.DetallesMiEntregaAlumno(id));
             }
             else
             {

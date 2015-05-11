@@ -17,7 +17,8 @@ namespace WebUtilities
         private static string[] matchMimeType = { "application/x-rar-compressed", "application/octet-stream", 
                                                     "application/zip", "application/x-zip-compressed",
                                                 "multipart/x-zip", "application/x-rar"};
-        private int maxKBytes = 20 * 1024;
+        private static int maxKBytes = 20 * 1024;
+        private static string extensionProvisional = ".temp";
 
         //Variables privadas de instancia
         HttpServerUtility Server;
@@ -100,9 +101,40 @@ namespace WebUtilities
         public string ModificarEntregaAlumno(int id, string extension)
         {
             string ruta = ResourceFinder.DirectorioEntregas() + id.ToString() + extension;
+
+            //Mover el archivo original a una extensión provisional
+            string file = Server.MapPath(ruta);
+            if (System.IO.File.Exists(file))
+                System.IO.File.Move(file,Server.MapPath(ruta+extensionProvisional));
+
+            //Copiar el archivo original
             FileUploadControl.SaveAs(Server.MapPath(ruta));
 
             return ruta;
+        }
+
+        //Recuperar entrega anterior marcada como provisional
+        public bool RecuperarEntregaAlumno(int id, string extension)
+        {
+            string ruta = ResourceFinder.DirectorioEntregas() + id.ToString() + extension;
+
+            bool recuperado = false;
+
+            //Mover el archivo provisional a su localización original
+            string file = Server.MapPath(ruta+extensionProvisional);
+            if (System.IO.File.Exists(file))
+            {
+                System.IO.File.Move(file, Server.MapPath(ruta));
+                recuperado = true;
+            }
+
+            return recuperado;
+        }
+
+        //Borrar del servidor físicamente la copia provisional de la entrega
+        public void BorrarCopiaProvisional(int id, string extension)
+        {
+            this.BorrarEntregaAlumno(id, extension + extensionProvisional);
         }
 
         //Borrar del servidor físicamente la entrega del alumno a partir de una id de entrega
@@ -110,6 +142,8 @@ namespace WebUtilities
         {
             string ruta = ResourceFinder.DirectorioEntregas() + id.ToString() + extension;
             string file = Server.MapPath(ruta);
+
+            //Borrar fichero
             if (System.IO.File.Exists(file))
                 System.IO.File.Delete(file);
         }

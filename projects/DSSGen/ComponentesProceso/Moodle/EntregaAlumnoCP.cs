@@ -79,12 +79,10 @@ namespace ComponentesProceso.Moodle
         }
 
         //Modificar entrega de prácticas de un alumno
-        public int ModificarEntregaAlumno(Uploader Uploader, String p_nombre_fichero, String p_extension, String p_ruta,
+        public void ModificarEntregaAlumno(Uploader Uploader, String p_nombre_fichero, String p_extension, String p_ruta,
             float p_tam, DateTime? p_fecha_entrega, float p_nota, bool p_corregido, String p_comentario_alumno,
             String p_comentario_profesor, int p_entrega)
         {
-            int entregaAlumno = -1;
-
             try
             {
                 SessionInitializeTransaction();
@@ -93,14 +91,17 @@ namespace ComponentesProceso.Moodle
                 EntregaAlumnoCAD entregaCad = new EntregaAlumnoCAD(session);
                 EntregaAlumnoCEN entregaCen = new EntregaAlumnoCEN(entregaCad);
                 if (entregaCen.ReadOID(p_entrega) == null)
-                    throw new Exception("La entrega propuesta no existe");
+                    throw new Exception("La entrega del alumno no existe");
 
                 //Modificar el archivo al directorio físico
-                p_ruta = Uploader.ModificarEntregaAlumno(entregaAlumno, p_extension);
+                p_ruta = Uploader.ModificarEntregaAlumno(p_entrega, p_extension);
 
                 //Establecer la ruta en la entrega
-                entregaCen.Modify(entregaAlumno, p_nombre_fichero, p_extension, p_ruta, p_tam, p_fecha_entrega, 
+                entregaCen.Modify(p_entrega, p_nombre_fichero, p_extension, p_ruta, p_tam, p_fecha_entrega, 
                     p_nota, p_corregido, p_comentario_alumno, p_comentario_profesor);
+
+                //Borrar la copia provisional de la entrega
+                Uploader.BorrarCopiaProvisional(p_entrega, p_extension);
 
                 SessionCommit();
             }
@@ -109,7 +110,7 @@ namespace ComponentesProceso.Moodle
                 SessionRollBack();
 
                 //Borrar la entrega en caso de error
-                Uploader.BorrarEntregaAlumno(entregaAlumno, p_extension);
+                Uploader.RecuperarEntregaAlumno(p_entrega, p_extension);
 
                 throw e;
             }
@@ -118,7 +119,6 @@ namespace ComponentesProceso.Moodle
                 //Cerrar sesión
                 SessionClose();
             }
-            return entregaAlumno;
         }
 
         //Devolver el resultado de la consulta especificada devolviendo la cantidad de Entrega que satisfacen la consulta

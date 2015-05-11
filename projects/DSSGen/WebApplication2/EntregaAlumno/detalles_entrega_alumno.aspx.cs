@@ -32,6 +32,8 @@ namespace DSSGenNHibernate.EntregaAlumno
 
             if (!IsPostBack)
             {
+                //Mostrar notificaciones recibidas
+                Notification.Current.NotifyLastNotification(Response);
                 //Cargar datos
                 this.CargarDatos();
             }

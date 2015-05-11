@@ -28,11 +28,10 @@ namespace Fachadas.Moodle
             try
             {
                 Uploader uploader = new Uploader(Server, FileUploadControl);
-                entregaAlumno = -1;
 
                 //Comprobar las precondiciones del archivo
                 if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
-                    return false;
+                    throw new Exception(StatusLabel.Text);
 
                 //Inicializar las variables
                 HttpPostedFile file = FileUploadControl.PostedFile;
@@ -62,6 +61,7 @@ namespace Fachadas.Moodle
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido realizada");
             return true;
 
         }
@@ -76,7 +76,7 @@ namespace Fachadas.Moodle
 
                 //Comprobar las precondiciones del archivo
                 if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
-                    return false;
+                    throw new Exception(StatusLabel.Text);
 
                 //Inicializar las variables
                 HttpPostedFile file = FileUploadControl.PostedFile;
@@ -101,6 +101,7 @@ namespace Fachadas.Moodle
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido modificada");
             return true;
 
         }

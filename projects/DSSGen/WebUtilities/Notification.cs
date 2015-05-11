@@ -46,13 +46,9 @@ namespace WebUtilities
         //Notificar última notificación
         public void NotifyLastNotification(HttpResponse Response)
         {
-            string mensaje = "";
-
             //Sacar último mensaje
-            if(mensajes.Count>0)
-                mensaje = mensajes.Pop();
-
-            Response.Write("<script>window.alert('" + mensaje + "');</script>");
+            if (mensajes.Count > 0)
+                Response.Write("<script>window.alert('" + mensajes.Pop() + "');</script>");
         }
 
         //Almacenar notificación en la pila
