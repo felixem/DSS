@@ -93,9 +93,9 @@ public static void InitializeData ()
                 prof.Cod_profesor = 3;
                 prof.Email = "jacv050@jacv050.com";
                 prof.Dni = "48627746H";
-                prof.Apellidos = "jacv050";
+                prof.Apellidos = "Castor";
                 prof.Fecha_nacimiento = DateTime.Parse ("08/01/1994");
-                prof.Nombre = "jacv050";
+                prof.Nombre = "John";
                 prof.Password = "1234";
                 ProfesorCEN profCen = new ProfesorCEN ();
                 string profesor1 = profCen.New_ (prof.Cod_profesor, prof.Email, prof.Dni, prof.Password, prof.Nombre, prof.Apellidos, prof.Fecha_nacimiento);

@@ -248,6 +248,9 @@
     <Compile Include="Download\DownloadFile.ashx.cs">
       <DependentUpon>DownloadFile.ashx</DependentUpon>
     </Compile>
+    <Compile Include="EntregaAlumno\MiEntrega.ashx.cs">
+      <DependentUpon>MiEntrega.ashx</DependentUpon>
+    </Compile>
     <Compile Include="EntregaAlumno\editar_entrega.aspx.cs">
       <DependentUpon>editar_entrega.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -620,6 +623,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Download\DownloadFile.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntregaAlumno\MiEntrega.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

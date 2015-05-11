@@ -18,28 +18,28 @@
     <div class="row_modificar_alumno">
         Año Academico
                 <asp:TextBox ID="TextBox_Anyo" runat="server" 
-                    ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+                    ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
                     </div>
     </p>
     <p class="style2">
     <div class="row_modificar_alumno">
         Asignatura
                 <asp:TextBox ID="TextBox_Asignatura" runat="server"
-                    ReadOnly="True" Width="173px" CssClass="posicion_derecha"></asp:TextBox>
+                    ReadOnly="True" Width="173px" CssClass="position_derecha_locked"></asp:TextBox>
                     </div>
     </p>
     <p class="style2">
     <div class="row_modificar_alumno">
         Evaluación
                 <asp:TextBox ID="TextBox_Evaluacion" runat="server"
-                    ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+                    ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
                     </div>
     </p>
     <p class="style2">
     <div class="row_modificar_alumno">
         Cod Control
                 <asp:TextBox ID="TextBox_CodControl" runat="server"
-                    ReadOnly="True" CssClass="posicion_derecha"></asp:TextBox>
+                    ReadOnly="True" CssClass="position_derecha_locked"></asp:TextBox>
                     </div>
     </p>
     <p class="style2">

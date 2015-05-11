@@ -22,7 +22,7 @@ namespace ComponentesProceso.Moodle
         
         //Crear entrega de prácticas de un alumno
         public int CrearEntregaAlumno(Uploader Uploader, String p_nombre_fichero, String p_extension, String p_ruta,
-            float p_tam,DateTime? p_fecha_entrega, float p_nota, bool p_corregido, String p_comentario_alumno, 
+            float p_tam,DateTime p_fecha_entrega, float p_nota, bool p_corregido, String p_comentario_alumno, 
             String p_comentario_profesor, int p_entrega, IDameEvaluacionAlumno consulta)
         {
             int entregaAlumno=-1;
@@ -39,8 +39,17 @@ namespace ComponentesProceso.Moodle
                 //Comprobar si existe la entrega propuesta
                 EntregaCAD entregaCad = new EntregaCAD(session);
                 EntregaCEN entregaCen = new EntregaCEN(entregaCad);
-                if (entregaCen.ReadOID(p_entrega) == null)
+                EntregaEN entregaEn = entregaCen.ReadOID(p_entrega);
+                if (entregaEn == null)
                     throw new Exception("La entrega propuesta no existe");
+
+                //Comprobar si está abierto el plazo de entrega
+                if (DateTime.Compare(p_fecha_entrega, entregaEn.Fecha_apertura.Value) < 0)
+                    throw new Exception("El periodo de entrega no ha sido abierto");
+
+                //Comprobar que no se haya cerrado el plazo de entrega
+                if (DateTime.Compare(p_fecha_entrega, entregaEn.Fecha_cierre.Value) > 0)
+                    throw new Exception("El periodo de entrega ha sido cerrado");
 
                 EntregaAlumnoCAD cad = new EntregaAlumnoCAD(session);
                 EntregaAlumnoCEN cen = new EntregaAlumnoCEN(cad);
@@ -80,7 +89,7 @@ namespace ComponentesProceso.Moodle
 
         //Modificar entrega de prácticas de un alumno
         public void ModificarEntregaAlumno(Uploader Uploader, String p_nombre_fichero, String p_extension, String p_ruta,
-            float p_tam, DateTime? p_fecha_entrega, float p_nota, bool p_corregido, String p_comentario_alumno,
+            float p_tam, DateTime p_fecha_entrega, float p_nota, bool p_corregido, String p_comentario_alumno,
             String p_comentario_profesor, int p_entrega)
         {
             try
@@ -90,8 +99,17 @@ namespace ComponentesProceso.Moodle
                 //Comprobar si existe la entrega propuesta
                 EntregaAlumnoCAD entregaCad = new EntregaAlumnoCAD(session);
                 EntregaAlumnoCEN entregaCen = new EntregaAlumnoCEN(entregaCad);
-                if (entregaCen.ReadOID(p_entrega) == null)
+                EntregaAlumnoEN entregaEn = entregaCen.ReadOID(p_entrega);
+                if (entregaEn == null)
                     throw new Exception("La entrega del alumno no existe");
+
+                //Comprobar si está abierto el plazo de entrega
+                if (DateTime.Compare(p_fecha_entrega, entregaEn.Entrega.Fecha_apertura.Value) < 0)
+                    throw new Exception("El periodo de entrega no ha sido abierto");
+
+                //Comprobar que no se haya cerrado el plazo de entrega
+                if (DateTime.Compare(p_fecha_entrega, entregaEn.Entrega.Fecha_cierre.Value) > 0)
+                    throw new Exception("El periodo de entrega ha sido cerrado");
 
                 //Modificar el archivo al directorio físico
                 p_ruta = Uploader.ModificarEntregaAlumno(p_entrega, p_extension);
@@ -205,6 +223,45 @@ namespace ComponentesProceso.Moodle
                 //Cerrar sesión
                 SessionClose();
             }
+        }
+
+        //Comprobar si existe la entrega de un alumno
+        public bool ExisteEntregaAlumno(int entrega, string alumno, out int idEntregaAlu)
+        {
+            bool existe = false;
+            idEntregaAlu = -1;
+
+            try
+            {
+                SessionInitializeTransaction();
+                //Recuperar la evaluación del alumno
+                EvaluacionAlumnoCAD evalCad = new EvaluacionAlumnoCAD(session);
+                EvaluacionAlumnoCEN evalCen = new EvaluacionAlumnoCEN(evalCad);
+                EvaluacionAlumnoEN evalEn = evalCen.ReadPorAlumnoYEntrega(alumno, entrega);
+
+                //Obtener la entrega del alumno
+                EntregaAlumnoCAD cad = new EntregaAlumnoCAD(session);
+                EntregaAlumnoCEN cen = new EntregaAlumnoCEN(cad);
+                EntregaAlumnoEN en = cen.ReadRelation(evalEn.Id, entrega);
+
+                //Recuperar id de la entrega
+                idEntregaAlu = en.Id;
+                existe = true;
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+
+            return existe;
         }
     }
 }

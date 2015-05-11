@@ -119,7 +119,7 @@ namespace DSSGenNHibernate.Entrega
             int Id = Int32.Parse(grdrow.Cells[0].Text);
 
             Linker link = new Linker(true);
-            link.Redirect(Response, link.RealizarEntregaPracticas(Id));
+            link.Redirect(Response, link.AccesoMiEntrega(Id));
         }
     }
 }

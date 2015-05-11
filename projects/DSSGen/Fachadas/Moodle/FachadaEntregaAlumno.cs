@@ -39,7 +39,7 @@ namespace Fachadas.Moodle
                 string extension = System.IO.Path.GetExtension(nombreFichero);
                 string ruta = "";
                 float tam = file.ContentLength;
-                DateTime? fecha_entrega = DateTime.Now;
+                DateTime fecha_entrega = DateTime.Now;
                 float nota = 0;
                 bool corregido = false;
                 string comentarioAlumno = TextBox_Comentario.Text;
@@ -84,7 +84,7 @@ namespace Fachadas.Moodle
                 string extension = System.IO.Path.GetExtension(nombreFichero);
                 string ruta = "";
                 float tam = file.ContentLength;
-                DateTime? fecha_entrega = DateTime.Now;
+                DateTime fecha_entrega = DateTime.Now;
                 float nota = 0;
                 bool corregido = false;
                 string comentarioAlumno = TextBox_Comentario.Text;
@@ -229,6 +229,25 @@ namespace Fachadas.Moodle
             }
 
             return true;
+        }
+
+        //Método para comprobar si existe una entrega de un alumno a partir de una entrega propuesta
+        public bool ExisteEntregaAlumno(int idEntrega, MySession session, out int idEntregaAlu)
+        {
+            bool resultado = false;
+            idEntregaAlu = -1;
+
+            try
+            {
+                EntregaAlumnoCP entrega = new EntregaAlumnoCP();
+                resultado = entrega.ExisteEntregaAlumno(idEntrega, session.Usuario.Email, out idEntregaAlu);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return resultado;
         }
 
     }
