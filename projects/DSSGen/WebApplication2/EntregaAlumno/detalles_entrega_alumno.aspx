@@ -67,6 +67,7 @@
     </div>
     <div class="row_textbox_medium">
         <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" />
+        <asp:Button ID="Button_Modificar" runat="server" OnClick="Button_Editar_Click" Text="Modificar" />
     </div>
     </div>
     </div>

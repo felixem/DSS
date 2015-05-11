@@ -85,6 +85,7 @@ namespace WebUtilities
         internal static readonly string modificarSistemaEvaluacion = "/Sistema Evaluacion/modificar_evaluacion.aspx";
 
         internal static readonly string listarEntregasAlumno = "/EntregaAlumno/entregas_alumnos.aspx";
+        internal static readonly string editarEntregaAlumno = "/EntregaAlumno/editar_entrega.aspx";
 
         internal static readonly string descargarRecurso = "/Download/DownloadFile.ashx";
 
@@ -204,6 +205,11 @@ namespace WebUtilities
         {
             return modificarBolsa +
                 Parameter(PageParameters.MainParameter, id.ToString());
+        }
+
+        public string EditarEntregaAlumno()
+        {
+            return editarEntregaAlumno;
         }
 
         //Cadena para la página de modificación de una bolsa de preguntas

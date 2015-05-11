@@ -83,5 +83,12 @@ namespace DSSGenNHibernate.EntregaAlumno
             Linker link = new Linker(false);
             link.Redirect(Response, link.DescargaEntregaPracticas(id));
         }
+
+        //Botón uttilizado para ir a la interfaz editar
+        protected void Button_Editar_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.EditarEntregaAlumno());
+        }
     }
 }
