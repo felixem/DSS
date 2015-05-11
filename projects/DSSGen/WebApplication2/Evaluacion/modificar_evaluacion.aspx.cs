@@ -28,12 +28,13 @@ namespace DSSGenNHibernate.Evaluacion
             fachada = new FachadaEvaluacion();
             fachadaFecha = new FachadaFecha();
             Obtener_Parametros();
-            ObtenerAnyos();
-            ObtenerMeses();
-            ObtenerDias();
+            
             if (!IsPostBack)
             {
                 //Cargar datos
+                ObtenerAnyos();
+                ObtenerMeses();
+                ObtenerDias();
                 this.CargarDatos();
             }
 
@@ -56,7 +57,7 @@ namespace DSSGenNHibernate.Evaluacion
         private void CargarDatos()
         {
             //Recuperar los datos de la evaluacion
-            if (!fachada.VincularEvaluacionPorId(id,TextBox_Nombre,CheckBox_Abierta))
+            if (!fachada.VincularEvaluacionPorId(id,TextBox_Nombre,ddlAno,ddlMes,ddlDia,ddlAnoC,ddlMesC,ddlDiaC,CheckBox_Abierta))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

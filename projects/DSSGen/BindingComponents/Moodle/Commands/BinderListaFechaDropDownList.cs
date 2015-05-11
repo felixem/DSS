@@ -6,6 +6,7 @@ using System.Text;
 using DSSGenNHibernate.EN.Moodle;
 using System.Web.UI.WebControls;
 using System.Collections;
+using WebUtilities;
 
 
 namespace BindingComponents.Moodle.Commands
@@ -28,6 +29,16 @@ namespace BindingComponents.Moodle.Commands
             foreach (int x in lista)
             {
                 drop.Items.Add(new ListItem(x.ToString()));
+            }
+        }
+        public void VincularMes(ArrayList lista)
+        {
+            Mes mes;
+            //Vincular con el dropdownlist
+            foreach (int x in lista)
+            {
+                mes = (Mes)x;
+                drop.Items.Add(new ListItem(mes.ToString(),x.ToString()));
             }
         }
 

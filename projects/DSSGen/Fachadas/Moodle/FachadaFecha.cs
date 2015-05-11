@@ -28,7 +28,7 @@ namespace Fachadas.Moodle
             FechaBinding fecha = new FechaBinding();
             DateTime tnow = DateTime.Now;
             BinderListaFechaDropDownList binder = new BinderListaFechaDropDownList(ddl);
-            fecha.VincularDameMeses(anyo, binder);
+            fecha.VincularDameMeses(binder);
 
         }
         public void VincularDameDias(int month,int year,DropDownList ddl) {
