@@ -119,6 +119,14 @@ namespace DSSGenNHibernate.Control
             link.Redirect(Response, link.CrearControlAsignaturaAnyo(id));
         }
 
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
+        }
+
         //Manejador del evento para modificar un control
         protected void lnkEditar_Click(object sender, EventArgs e)
         {

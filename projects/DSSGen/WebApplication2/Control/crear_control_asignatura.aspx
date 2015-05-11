@@ -112,7 +112,7 @@
     <div class="row_modificar_alumno">
         Asignatura
         <asp:TextBox ID="TextBox_Asignatura" runat="server"  
-                    ReadOnly="True" Width="179px" CssClass="posicion_derecha"></asp:TextBox>
+                    ReadOnly="True" Width="179px" CssClass="position_derecha_locked"></asp:TextBox>
     </div>
     </p>
     <p class="style2">
