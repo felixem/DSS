@@ -74,6 +74,7 @@ namespace WebUtilities
         internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
         internal static readonly string misAlumnosMatriculadosAsignaturaAnyo = "/Alumno/mis_alumnos_matriculados.aspx";
         internal static readonly string realizarEntregaPracticas = "/EntregaAlumno/realizar_entrega.aspx";
+        internal static readonly string accesoMiEntrega = "/EntregaAlumno/MiEntrega.ashx";
 
         internal static readonly string listarEntregaAsignaturaAnyo = "/Entrega/entregas_asignatura.aspx";
         internal static readonly string listarControlAsignaturaAnyo = "/Control/controles_asignatura.aspx";
@@ -499,6 +500,13 @@ namespace WebUtilities
         {
             return descargarRecurso +
                 Parameter(PageParameters.DescargaEntregaAlumno, cod.ToString());
+        }
+
+        //Acceder a la entrega desde el punto de vista del alumno
+        public string AccesoMiEntrega(int codEntregaPropuesta)
+        {
+            return accesoMiEntrega +
+                Parameter(PageParameters.MainParameter, codEntregaPropuesta.ToString());
         }
 
     }
