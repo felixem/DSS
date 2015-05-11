@@ -85,9 +85,31 @@
     overflow:hidden
 }
 
+.row_textbox_medium
+{
+    width: 400px;
+    margin: 2px;
+    margin-top: 5px;
+    margin-bottom: 6px;
+    clear:both;
+    background-color: #E0E0E0;
+    overflow:hidden
+}
+
+
 .position_textbox_right
 {
     width: 80%;
     margin: 1px;
     float: right;
+}
+
+.row_margin_left
+{
+    width: 400px;
+    margin: 5px;
+    margin-left: -45px;
+    background-color: #E0E0E0;
+    clear:both;
+    overflow:hidden;
 }
