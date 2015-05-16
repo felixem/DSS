@@ -25,7 +25,7 @@ namespace DSSGenNHibernate.Profesor
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
-                navegacion.SavePreviuosPage(Request)
+                navegacion.SavePreviuosPage(Request);
             }
             fachadaFecha = new FachadaFecha();
             fachada = new FachadaProfesor();

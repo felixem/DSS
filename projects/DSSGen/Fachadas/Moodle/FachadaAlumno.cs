@@ -128,7 +128,7 @@ namespace Fachadas.Moodle
 
         //Método para vincular un alumno a partir de su id a textboxes
         public bool VincularAlumnoPorId(int id, TextBox TextBox_NomAlu,
-            TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
+            TextBox TextBox_ApellAlu, DropDownList ddlAno, DropDownList ddlMes, DropDownList ddlDia, TextBox TextBox_DNIAlu,
             TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado,
             TextBox TextBox_CodExpediente)
         {
@@ -137,7 +137,7 @@ namespace Fachadas.Moodle
                 AlumnoBinding binding = new AlumnoBinding();
                 DameAlumnoPorId consulta = new DameAlumnoPorId(id);
                 BinderAlumnoCompleto linker = new BinderAlumnoCompleto(TextBox_NomAlu,
-                TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
+                TextBox_ApellAlu,ddlAno, ddlMes, ddlDia, TextBox_DNIAlu, TextBox_EmailAlu,
                 TextBox_CodAlu, CheckBox_Baneado, TextBox_CodExpediente);
 
                 binding.VincularDameAlumno(consulta, linker);

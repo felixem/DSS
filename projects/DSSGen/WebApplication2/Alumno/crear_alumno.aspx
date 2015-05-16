@@ -93,16 +93,17 @@
             <div class="row_crear_alumno">
                 <asp:Label ID="Label_NaciAlu" runat="server" Text="Fecha Nacimiento (MM/DD/AAAA):"
                     CssClass="posicion_izquierda"></asp:Label>
-                <asp:TextBox ID="TextBox_NaciAlu" runat="server" CssClass="posicion_derecha"></asp:TextBox>
+                <div class="posicion_derecha">
+                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
+                            AutoPostBack="True">
+                        </asp:DropDownList> 
+                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged"
+                            AutoPostBack="True">
+                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+                        </asp:DropDownList>
+     </div>
             </div>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox_NaciAlu"
-                Display="Dynamic" ErrorMessage="Introduce Fecha Nacimiento" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_NaciAlu"
-                Display="Dynamic" ErrorMessage="Formato fecha inválida" ForeColor="Red" ValidationExpression="\d{2}/\d{2}/\d{4}"
-                ValidationGroup="Registro"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="CustomValidator1" runat="server" OnServerValidate="ComprobarFecha"
-                ControlToValidate="TextBox_NaciAlu" Display="Dynamic" ErrorMessage="Fecha incorrecta revise día, mes y año introducido"
-                ForeColor="Red" ValidationGroup="Registro"></asp:CustomValidator>
         </div>
         <div class="row_crear_alumno_buttons">
             <asp:Button ID="Button_RegAlu" runat="server" OnClick="Button_RegAlu_Click" Text="Registrar"

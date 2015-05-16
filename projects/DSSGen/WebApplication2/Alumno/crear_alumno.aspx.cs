@@ -14,17 +14,21 @@ namespace DSSGenNHibernate.Alumno
     {
         //Fachadas usadas
         FachadaAlumno alumno;
+        FachadaFecha fachadaFecha;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
             alumno = new FachadaAlumno();
-
+            fachadaFecha = new FachadaFecha();
             if (!IsPostBack)
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
+                this.ObtenerAnyos();
+                this.ObtenerMeses();
+                this.ObtenerDias();
             }
         }
 
@@ -35,10 +39,10 @@ namespace DSSGenNHibernate.Alumno
             string nombre = TextBox_NomAlu.Text;
             string apellidos = TextBox_ApellAlu.Text;
             string pass = TextBox_ContAlu.Text;
-            DateTime fecha = Convert.ToDateTime(TextBox_NaciAlu.Text);
+            DateTime fecha = DateTime.Parse("" + ddlDia.Text + "/" + ddlMes.Text + "/" + ddlAno.Text);
             string dni = TextBox_DNIAlu.Text;
             string email = TextBox_EmailAlu.Text;
-            int cod = Convert.ToInt32(TextBox_CodAlu.Text);
+            int cod = Int32.Parse(TextBox_CodAlu.Text);
             string codExpediente = TextBox_CodExpediente.Text;
             bool expedienteAbierto = CheckBox_ExpedienteAbierto.Checked;
 
@@ -64,7 +68,6 @@ namespace DSSGenNHibernate.Alumno
             TextBox_ApellAlu.Text = "";
             TextBox_ContAlu.Text = "";
             TextBox_VContAlu.Text = "";
-            TextBox_NaciAlu.Text = "";
             TextBox_DNIAlu.Text = "";
             TextBox_EmailAlu.Text = "";
             TextBox_CodAlu.Text = "";
@@ -77,6 +80,44 @@ namespace DSSGenNHibernate.Alumno
         {
             this.Clean();
         }
+        protected void ObtenerAnyos()
+        {
+            fachadaFecha.VincularDameAnyos(ddlAno, 100, 0);
+
+        }
+        protected void ObtenerMeses()
+        {
+
+            fachadaFecha.VincularDameMesesNac(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+
+
+        }
+        protected void ObtenerDias()
+        {
+
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
+
+        }
+
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMes.Items.Clear();
+            ddlDia.Items.Clear();
+
+            fachadaFecha.VincularDameMesesNac(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDia.Items.Clear();
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
+        }
+
 
         //Metodo que comprueba la fecha(Control de validacion)
         protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
