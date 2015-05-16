@@ -108,5 +108,38 @@ namespace BindingComponents.Moodle
 
             else return false;
         }
+        public void VincularDameMesesNac(int year,IBinderListaFecha binder)
+        {
+            ArrayList months = new ArrayList();
+            DateTime tnow = DateTime.Now;
+            if (tnow.Year == year)
+            {
+                for (int i = 1; i <= tnow.Month; i++)
+                {
+                    months.Add(i);
+                    binder.VincularMes(months);
+                }
+            }
+            else {
+                this.VincularDameMeses(binder);
+            }
+            
+        }
+        public void VincularDameDiasNac(int month, int year, IBinderListaFecha binder)
+        {
+            ArrayList aday = new ArrayList();
+            DateTime tnow = DateTime.Now;
+            if (tnow.Year == year && tnow.Month == month)
+            {
+                for (int i = 1; i <= tnow.Day; i++)
+                    aday.Add(i);
+                    binder.Vincular(aday);
+            }
+            else {
+                this.VincularDameDias(month, year, binder);
+            }
+            
+        }
+
     }
 }

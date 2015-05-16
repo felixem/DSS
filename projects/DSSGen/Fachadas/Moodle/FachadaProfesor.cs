@@ -92,7 +92,7 @@ namespace Fachadas.Moodle
 
         //Método para vincular un profesor a partir de su id a textboxes
         public bool VincularProfesorPorId(int id, TextBox TextBox_NomProf,
-            TextBox TextBox_ApellProf, TextBox TextBox_NaciProf, TextBox TextBox_DNIProf,
+            TextBox TextBox_ApellProf, DropDownList ddlAno,DropDownList ddlMes,DropDownList ddlDia, TextBox TextBox_DNIProf,
             TextBox TextBox_EmailProf, TextBox TextBox_CodProf)
         {
             try
@@ -100,7 +100,7 @@ namespace Fachadas.Moodle
                 ProfesorBinding binding = new ProfesorBinding();
                 DameProfesorPorId consulta = new DameProfesorPorId(id);
                 BinderProfesorCompleto linker = new BinderProfesorCompleto(TextBox_NomProf,
-                    TextBox_ApellProf, TextBox_NaciProf, TextBox_DNIProf,
+                    TextBox_ApellProf, ddlAno, ddlMes, ddlDia, TextBox_DNIProf,
                     TextBox_EmailProf, TextBox_CodProf);
 
                 binding.VincularDameProfesor(consulta, linker);

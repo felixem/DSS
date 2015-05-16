@@ -39,6 +39,23 @@ namespace Fachadas.Moodle
             fecha.VincularDameDias(month, year, binder);
         
         }
+        public void VincularDameMesesNac(int anyo, DropDownList ddl)
+        {
+            FechaBinding fecha = new FechaBinding();
+            DateTime tnow = DateTime.Now;
+            BinderListaFechaDropDownList binder = new BinderListaFechaDropDownList(ddl);
+            fecha.VincularDameMesesNac(anyo,binder);
+
+        }
+        public void VincularDameDiasNac(int month, int year, DropDownList ddl)
+        {
+
+            FechaBinding fecha = new FechaBinding();
+            DateTime tnow = DateTime.Now;
+            BinderListaFechaDropDownList binder = new BinderListaFechaDropDownList(ddl);
+            fecha.VincularDameDiasNac(month, year, binder);
+
+        }
 
     }
 }

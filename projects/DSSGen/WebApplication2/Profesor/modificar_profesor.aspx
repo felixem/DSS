@@ -73,7 +73,16 @@
     <div class="row_modificar_alumno">
     <asp:Label ID="Label_NaciProf" runat="server" 
         Text="Fecha Nacimiento (MM/DD/AAAA):" CssClass="posicion_izquierda"></asp:Label>
-    <asp:TextBox ID="TextBox_NaciProf" runat="server" CssClass="posicion_derecha"></asp:TextBox>
+    <div class="posicion_derecha">
+                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
+                            AutoPostBack="True">
+                        </asp:DropDownList> 
+                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged"
+                            AutoPostBack="True">
+                        </asp:DropDownList>
+                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+                        </asp:DropDownList>
+     </div>
     </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
         ControlToValidate="TextBox_NaciProf" Display="Dynamic" 
