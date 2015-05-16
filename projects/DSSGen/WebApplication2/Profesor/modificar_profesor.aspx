@@ -84,20 +84,6 @@
                         </asp:DropDownList>
      </div>
     </div>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
-        ControlToValidate="TextBox_NaciProf" Display="Dynamic" 
-        ErrorMessage="Introduce Fecha Nacimiento" ForeColor="Red" 
-        ValidationGroup="Registro"></asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
-        ControlToValidate="TextBox_NaciProf" Display="Dynamic" 
-        ErrorMessage="Formato fecha inválida" ForeColor="Red" 
-        ValidationExpression="\d{2}/\d{2}/\d{4}" ValidationGroup="Registro"></asp:RegularExpressionValidator>
-    <asp:CustomValidator ID="CustomValidator1" runat="server" 
-        OnServerValidate="ComprobarFecha" ControlToValidate="TextBox_NaciProf" 
-        Display="Dynamic" 
-        ErrorMessage="Fecha incorrecta revise día, mes y año introducido" ForeColor="Red" 
-        ValidationGroup="Registro"></asp:CustomValidator>
-
     <div class="row_modificar_alumno">
     <asp:Button ID="Button_Modificar" runat="server" onclick="Button_Modificar_Click" CssClass="posicion_izquierda"
         Text="Actualizar cambios" ValidationGroup="Registro" />

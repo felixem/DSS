@@ -117,8 +117,8 @@ namespace BindingComponents.Moodle
                 for (int i = 1; i <= tnow.Month; i++)
                 {
                     months.Add(i);
-                    binder.VincularMes(months);
                 }
+                binder.VincularMes(months);
             }
             else {
                 this.VincularDameMeses(binder);
