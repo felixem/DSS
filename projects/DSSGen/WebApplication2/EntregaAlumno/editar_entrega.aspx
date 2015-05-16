@@ -13,44 +13,71 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1>
-        Realizar Entrega de Practica</h1>
+        Editar Entrega de Practica</h1>
+    <div class="CentrarContenido" style="width: 450px;">
+    <div class="ContenedorInterno">    
     <p class="style2">
+    <div class="row_textbox_medium">
         Detalles de la practica
+        </div>
     </p>
     <p class="style2">
-        Practica<asp:TextBox ID="TextBox_Nom" runat="server" ReadOnly="True"></asp:TextBox>
+    <div class="row_textbox_medium">
+        Practica<asp:TextBox ID="TextBox_Nom" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
+    </div>
     </p>
     <p class="style2">
-        Descripcion<asp:TextBox ID="TextBox_Desc" runat="server" ReadOnly="True"></asp:TextBox>
+    <div class="row_textbox_medium">
+        Descripcion<asp:TextBox ID="TextBox_Desc" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
+    </div>
     </p>
     <p class="style2">
+    <div class="row_textbox_medium">
         Fecha Apertura
-        <asp:TextBox ID="TextBox_Apertu" runat="server" ReadOnly="True"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Apertu" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
+    </div>
     </p>
     <p class="style2">
+    <div class="row_textbox_medium">
         Fecha Cierre
-        <asp:TextBox ID="TextBox_Cierre" runat="server" ReadOnly="True"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Cierre" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
+    </div>
     </p>
     <p class="style2">
+    <div class="row_textbox_medium">
         Puntuación Máxima
-        <asp:TextBox ID="TextBox_Punt" runat="server" ReadOnly="True"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Punt" runat="server" CssClass="position_derecha_locked" ReadOnly="True"></asp:TextBox>
+    </div>
     </p>
     <p class="style2">
+    <div class="row_textbox_medium">
         Rellenar datos de la entrega
+        </div>
     </p>
     <p class="style2">
-        <asp:Label runat="server" ID="StatusLabel" Text="" />
+    <div class="row_textbox_medium">
+        <asp:Label runat="server" ID="StatusLabel" Font-Bold="True" ForeColor="Red" />
+    </div>
     </p>
     <p class="style2">
+    <div class="row_textbox_medium">
         <asp:FileUpload ID="FileUploadControl" runat="server" />
+    </div>
     </p>
     <p class="style2">
+    <div class="row_textbox_medium">
         Comentarios
-        <asp:TextBox ID="TextBox_Comentario" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Comentario" CssClass="posicion_derecha" runat="server"></asp:TextBox>
+    </div>
     </p>
     <p class="style2">
-        <asp:Button ID="Button_Modificar" runat="server" OnClick="Button_Modificar_Click" Text="Modificar Entrega"
+    <div class="row_textbox_medium">
+        <asp:Button ID="Button_Modificar" runat="server" OnClick="Button_Modificar_Click" CssClass="posicion_izquierda" Text="Modificar Entrega"
             ValidationGroup="Registro" />
         &nbsp;
-        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" /></p>
+        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" CssClass="posicion_derecha" Text="Volver" />
+        </div>
+        </p>
+        </div>
+        </div>
 </asp:Content>

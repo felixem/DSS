@@ -31,6 +31,7 @@
                 </asp:DropDownList>
                 <hr />
                 <asp:Button ID="Button_Crear" runat="server" Text="Crear entrega" OnClick="Button_Crear_Click" />
+                <asp:Button ID="Button_Volver" runat="server" Text="Volver" OnClick="Button_Cancelar_Click" />
                 <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                     <Columns>
                         <asp:BoundField HeaderText="Id" DataField="Id" />
