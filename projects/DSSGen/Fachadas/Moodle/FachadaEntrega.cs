@@ -85,7 +85,8 @@ namespace Fachadas.Moodle
 
         //Método para vincular un entrega a partir de su id a textboxes
         public bool VincularEntregaPorId(int id, TextBox TextBox_Nom,
-            TextBox TextBox_Desc, TextBox TextBox_Apertura, TextBox TextBox_Cierre,
+            TextBox TextBox_Desc, DropDownList ddlAno, DropDownList ddlMes, DropDownList ddlDia,
+            DropDownList ddlAnoC, DropDownList ddlMesC, DropDownList ddlDiaC,
             TextBox TextBox_PuntMax,
             TextBox TextBox_Anyo, TextBox TextBox_Asignatura, TextBox TextBox_Evaluacion, TextBox TextBox_Profesor, TextBox TextBox_CodEntrega)
         {
@@ -94,7 +95,7 @@ namespace Fachadas.Moodle
                 EntregaBinding binding = new EntregaBinding();
                 DameEntregaPorId consulta = new DameEntregaPorId(id);
                 IBinderEntrega linker = new BinderEntrega(TextBox_Nom,
-                    TextBox_Desc, TextBox_Apertura, TextBox_Cierre,
+                    TextBox_Desc, ddlAno, ddlMes, ddlDia, ddlAnoC, ddlMesC, ddlDiaC,
                     TextBox_PuntMax,
                     TextBox_Anyo, TextBox_Asignatura, TextBox_Evaluacion, TextBox_Profesor, TextBox_CodEntrega);
 

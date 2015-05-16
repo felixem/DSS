@@ -16,6 +16,7 @@ namespace DSSGenNHibernate.Entrega
         FachadaEntrega fachada;
         FachadaAsignaturaAnyo fachadaAsignaturaAnyo;
         FachadaSistemaEvaluacion fachadastmeval;
+        FachadaFecha fachadaFecha;
 
         private int id;
         String param;
@@ -26,6 +27,7 @@ namespace DSSGenNHibernate.Entrega
             fachada = new FachadaEntrega();
             fachadaAsignaturaAnyo = new FachadaAsignaturaAnyo();
             fachadastmeval = new FachadaSistemaEvaluacion();
+            fachadaFecha = new FachadaFecha();
 
             if (!IsPostBack)
             {
@@ -40,6 +42,9 @@ namespace DSSGenNHibernate.Entrega
             {
                 //Cargar datos
                 this.CargarDatos();
+                this.ObtenerAnyos();
+                this.ObtenerMeses();
+                this.ObtenerDias();
                 //Obtener los sistemas evaluacion
                 this.ObtenerSistemasEvaluacion();
             }
@@ -78,8 +83,8 @@ namespace DSSGenNHibernate.Entrega
             //Recogo los datos
             string nombre = TextBox_NomControl.Text;
             string descripcion = TextBox_DescControl.Text;
-            DateTime apertura = DateTime.Parse(TextBox_ApertuControl.Text);
-            DateTime cierre = DateTime.Parse(TextBox_CierreControl.Text);
+            DateTime apertura = DateTime.Parse("" + ddlDia.Text + "/" + ddlMes.Text + "/" + ddlAno.Text);
+            DateTime cierre = DateTime.Parse("" + ddlDiaC.Text + "/" + ddlMesC.Text + "/" + ddlAnoC.Text); 
             float puntMax = float.Parse(TextBox_PuntControl.Text);
             int sistemaEvaluacion = Int32.Parse(DropDownList_SistemaEvaluacion.SelectedValue);
             //El profesor de la sesion actual
@@ -122,23 +127,61 @@ namespace DSSGenNHibernate.Entrega
         {
             TextBox_NomControl.Text = "";
             TextBox_DescControl.Text = "";
-            TextBox_ApertuControl.Text = "";
-            TextBox_CierreControl.Text = "";
             TextBox_PuntControl.Text = "";
         }
 
-        //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
+        protected void ObtenerAnyos()
         {
-            try
-            {
-                Convert.ToDateTime(e.Value);
-                e.IsValid = true;
-            }
-            catch (Exception)
-            {
-                e.IsValid = false;
-            }
+            fachadaFecha.VincularDameAnyos(ddlAno, 10, 10);
+            fachadaFecha.VincularDameAnyos(ddlAnoC, 10, 10);
+        }
+        protected void ObtenerMeses()
+        {
+
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAnoC.SelectedValue), ddlMesC);
+
+        }
+        protected void ObtenerDias()
+        {
+
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMesC.SelectedValue), Int32.Parse(ddlAnoC.SelectedValue), ddlDiaC);
+
+        }
+
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMes.Items.Clear();
+            ddlDia.Items.Clear();
+
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDia.Items.Clear();
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
+        }
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAnoC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMesC.Items.Clear();
+            ddlDiaC.Items.Clear();
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAnoC.SelectedValue), ddlMesC);
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMesC.SelectedValue), Int32.Parse(ddlAnoC.SelectedValue), ddlDiaC);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMesC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDiaC.Items.Clear();
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMesC.SelectedValue), Int32.Parse(ddlAnoC.SelectedValue), ddlDiaC);
+
         }
     }
 }

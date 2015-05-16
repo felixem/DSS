@@ -36,36 +36,37 @@
                 Display="Dynamic" ErrorMessage="Introduce descripcion válida" 
             ForeColor="Red" ValidationExpression="\D+"
                 ValidationGroup="Registro"></asp:RegularExpressionValidator>
-    <div class="row_textbox_medium">
-        <div class="posicion_izquierda">Fecha Apertura </div>
-        <asp:TextBox ID="TextBox_ApertuControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
+    <div class="row_modificar_alumno">
+        Fecha Apertura 
+        <div class="posicion_derecha">
+            <asp:DropDownList ID="ddlAno" runat="server" AutoPostBack="True" 
+                OnSelectedIndexChanged="ddlAno_SelectedIndexChanged">
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlMes" runat="server" AutoPostBack="True" 
+                OnSelectedIndexChanged="ddlMes_SelectedIndexChanged">
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+            </asp:DropDownList>
+        </div>
     </div>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextBox_ApertuControl"
-                Display="Dynamic" ErrorMessage="Introduce Fecha Apertura" ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox_ApertuControl"
-                Display="Dynamic" ErrorMessage="Formato fecha inválida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))" ForeColor="Red" ValidationExpression="\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sAM|\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sPM"
-                ValidationGroup="Registro"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="CustomValidator1" runat="server" OnServerValidate="ComprobarFecha"
-                ControlToValidate="TextBox_ApertuControl" Display="Dynamic" ErrorMessage="Fecha incorrecta revise día, mes, año y hora introducida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))"
-                ForeColor="Red" ValidationGroup="Registro"></asp:CustomValidator>
-
-    <div class="row_textbox_medium">
-        <div class="posicion_izquierda">Fecha Cierre </div>
-        <asp:TextBox ID="TextBox_CierreControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
-    </div>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextBox_CierreControl"
-                Display="Dynamic" ErrorMessage="Introduce Fecha Cierre" 
-            ForeColor="Red" ValidationGroup="Registro"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" 
-            runat="server" ControlToValidate="TextBox_CierreControl"
-                Display="Dynamic" ErrorMessage="Formato fecha inválida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))" 
-            ForeColor="Red" ValidationExpression="\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sAM|\d{2}/\d{2}/\d{4}\s\d{2}:\d{2}:\d{2}\sPM"
-                ValidationGroup="Registro"></asp:RegularExpressionValidator>
-            <asp:CustomValidator ID="CustomValidator2" runat="server" OnServerValidate="ComprobarFecha"
-                ControlToValidate="TextBox_CierreControl" Display="Dynamic" ErrorMessage="Fecha incorrecta revise día, mes, año y hora introducida Formato:(MM/DD/AAAA NN:NN:NN (AM/PM))"
-                ForeColor="Red" ValidationGroup="Registro"></asp:CustomValidator>
-    
-    <div class="row_textbox_medium">
+            </p>
+    <p class="style2">
+    <div class="row_modificar_alumno">
+        Fecha Cierre 
+        <div class="posicion_derecha">
+            <asp:DropDownList ID="ddlAnoC" runat="server" AutoPostBack="True" 
+                OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged">
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlMesC" runat="server" AutoPostBack="True" 
+                OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged">
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True">
+            </asp:DropDownList>
+        </div>
+        </div>
+            </p>
+    <p class="style2">
+    <div class="row_modificar_alumno">
         <div class="posicion_izquierda">Puntuación </div>
         <asp:TextBox ID="TextBox_PuntControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
