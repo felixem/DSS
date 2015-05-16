@@ -25,7 +25,7 @@ namespace DSSGenNHibernate.Profesor
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
-                navegacion.SavePreviuosPage(Request);
+                navegacion.SavePreviuosPage(Request)
             }
             fachadaFecha = new FachadaFecha();
             fachada = new FachadaProfesor();
@@ -34,10 +34,10 @@ namespace DSSGenNHibernate.Profesor
             if (!IsPostBack)
             {
                 //Cargar datos
-                this.CargarDatos();
                 ObtenerAnyos();
                 ObtenerMeses();
                 ObtenerDias();
+                this.CargarDatos();
             }
         }
 
@@ -84,20 +84,6 @@ namespace DSSGenNHibernate.Profesor
             //Modificar profesor
             fachada.ModificarProfesorNoPassword(email, Convert.ToInt32(cod), dni, nombre, apellidos, DateTime.Parse(fecha));
             Notification.Current.NotifyLastNotification(Response);
-        }
-
-        //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
-        {
-            try
-            {
-                Convert.ToDateTime(e.Value);
-                e.IsValid = true;
-            }
-            catch (Exception)
-            {
-                e.IsValid = false;
-            }
         }
 
         //Botón utilizado para cancelar la creación y volver atrás
