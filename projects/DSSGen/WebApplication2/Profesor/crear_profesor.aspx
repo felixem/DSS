@@ -97,7 +97,7 @@
         ValidationGroup="Registro"></asp:CompareValidator>
     <div class="row_crear_alumno">
     <asp:Label ID="Label_NaciProf" runat="server" 
-        Text="Fecha Nacimiento (MM/DD/AAAA):" CssClass="posicion_izquierda"></asp:Label>
+        Text="Fecha Nacimiento:" CssClass="posicion_izquierda"></asp:Label>
     <div class="posicion_derecha">
                        <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
                             AutoPostBack="True">
