@@ -24,7 +24,7 @@ namespace BindingComponents.Moodle
             for (int i = tnow.Year-previos; i <= tnow.Year + proximos; i++)
                 lista.Add(i);
 
-            binder.Vincular(lista);
+            binder.VincularAnyos(lista);
         }
         public void VincularDameMeses(IBinderListaFecha binder)
         {

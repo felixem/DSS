@@ -23,6 +23,16 @@ namespace BindingComponents.Moodle.Commands
         }
 
         //Vincular la lista
+        public void VincularAnyos(ArrayList lista)
+        {
+            //Vincular con el dropdownlist
+            foreach (int x in lista)
+            {
+                drop.Items.Add(new ListItem(x.ToString()));
+            }
+            drop.SelectedValue = DateTime.Now.Year.ToString();
+        }
+        //Vincular la lista
         public void Vincular(ArrayList lista)
         {
             //Vincular con el dropdownlist
@@ -30,6 +40,7 @@ namespace BindingComponents.Moodle.Commands
             {
                 drop.Items.Add(new ListItem(x.ToString()));
             }
+            drop.SelectedValue = DateTime.Now.Day.ToString();
         }
         public void VincularMes(ArrayList lista)
         {
@@ -40,6 +51,8 @@ namespace BindingComponents.Moodle.Commands
                 mes = (Mes)x;
                 drop.Items.Add(new ListItem(mes.ToString(),x.ToString()));
             }
+
+            drop.SelectedIndex = DateTime.Now.Month-1;
         }
 
     }
