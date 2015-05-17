@@ -76,8 +76,8 @@ namespace DSSGenNHibernate.GrupoTrabajo
             string password = TextBox_Pass.Text;
 
             //Ingresar al grupo
-            if (fachadaGrupo.VincularAlumnoConPassword(id, alumno, password))
-                Notification.Current.NotifyLastNotification(Response);
+            fachadaGrupo.VincularAlumnoConPassword(id, alumno, password);
+            Notification.Current.NotifyLastNotification(Response);
         }
        
         //Botón utilizado para cancelar la creación y volver atrás
