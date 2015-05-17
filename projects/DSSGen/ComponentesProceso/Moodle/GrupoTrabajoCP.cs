@@ -140,8 +140,13 @@ namespace ComponentesProceso.Moodle
                 if (en == null)
                     throw new Exception("El grupo de trabajo no existe");
 
-                //Comprobar si la capacidad del grupo es suficiente
+                //Comprobar si no está ya registrado
+                AlumnoEN alu = new AlumnoEN();
+                alu.Email = alumno;
+                if (en.Alumnos.Contains(alu))
+                    throw new Exception("El alumno ya está registrado en el grupo");
 
+                //Comprobar si la capacidad del grupo es suficiente
                 List<string> emails = new List<string>();
 
                 if (Auxiliar.Encrypter.Verificar(pass, en.Password))
@@ -251,10 +256,22 @@ namespace ComponentesProceso.Moodle
 
                 GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                GrupoTrabajoEN en = cen.ReadOID(id);
 
                 //Comprobar su existencia
-                if (cen.ReadOID(id) == null)
+                if ( en == null)
                     throw new Exception("El grupo de trabajo no existe");
+
+                //Comprobar que estuvieran vinculados
+                AlumnoEN alu = new AlumnoEN();
+                IList<AlumnoEN> alumnosInscritos = en.Alumnos;
+
+                foreach (String email in emails)
+                {
+                    alu.Email = email;
+                    if (!alumnosInscritos.Contains(alu))
+                        throw new Exception("El alumno " + email + " no estaba registrado en el grupo");
+                }
 
                 //Ejecutar la desvinculación
                 cen.Unrelationer_alumnos(id, emails);
@@ -291,6 +308,17 @@ namespace ComponentesProceso.Moodle
                 //Comprobar tamaño
                 if ((en.Alumnos.Count + emails.Count) > en.Capacidad)
                     throw new Exception("El tamaño del grupo es insuficiente");
+
+                //Comprobar que no estuvieran ya vinculados
+                AlumnoEN alu = new AlumnoEN();
+                IList<AlumnoEN> alumnosInscritos = en.Alumnos;
+
+                foreach(String email in emails)
+                {
+                    alu.Email = email;
+                    if (alumnosInscritos.Contains(alu))
+                        throw new Exception("El alumno " + email + " ya está registrado en el grupo");
+                }
 
                 //Ejecutar la relación
                 cen.Relationer_alumnos(id, emails);
