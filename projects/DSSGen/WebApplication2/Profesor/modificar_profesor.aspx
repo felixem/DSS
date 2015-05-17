@@ -74,13 +74,13 @@
     <asp:Label ID="Label_NaciProf" runat="server" 
         Text="Fecha Nacimiento:" CssClass="posicion_izquierda"></asp:Label>
     <div class="posicion_derecha">
-                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
+                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged" CssClass="posicion_derecha"
                             AutoPostBack="True">
                         </asp:DropDownList> 
-                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged"
+                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged" CssClass="posicion_derecha"
                             AutoPostBack="True">
                         </asp:DropDownList>
-                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True" CssClass="posicion_derecha">
                         </asp:DropDownList>
      </div>
     </div>

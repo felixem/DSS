@@ -19,26 +19,26 @@
         <div class="row_textbox_medium">
             <div class="posicion_izquierda">Fecha de inicio:</div>
             <div class="posicion_derecha">
-                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
+                       <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged" CssClass="posicion_derecha"
                             AutoPostBack="True">
                         </asp:DropDownList> 
-                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged"
+                         <asp:DropDownList ID="ddlMes" runat="server" OnSelectedIndexChanged="ddlMes_SelectedIndexChanged" CssClass="posicion_derecha"
                             AutoPostBack="True">
                         </asp:DropDownList>
-                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+                        <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True" CssClass="posicion_derecha">
                         </asp:DropDownList>
             </div>
         </div>           
         <div class="row_textbox_medium">
             <div class="posicion_izquierda">Fecha de fin: </div>
             <div class="posicion_derecha">
-                        <asp:DropDownList ID="ddlAnoC" runat="server" OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged"
+                        <asp:DropDownList ID="ddlAnoC" runat="server" OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged" CssClass="posicion_derecha"
                             AutoPostBack="True">
                        </asp:DropDownList>
-                       <asp:DropDownList ID="ddlMesC" runat="server" OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged"
+                       <asp:DropDownList ID="ddlMesC" runat="server" OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged" CssClass="posicion_derecha"
                             AutoPostBack="True">
                        </asp:DropDownList>
-                       <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True">
+                       <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True" CssClass="posicion_derecha" >
                        </asp:DropDownList>
             </div>
         </div>

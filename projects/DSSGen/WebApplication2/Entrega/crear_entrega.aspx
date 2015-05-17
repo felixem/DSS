@@ -39,13 +39,13 @@
     <div class="row_modificar_alumno">
         Fecha Apertura 
         <div class="posicion_derecha">
-            <asp:DropDownList ID="ddlAno" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlAno" runat="server" AutoPostBack="True" CssClass="posicion_derecha"
                 OnSelectedIndexChanged="ddlAno_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlMes" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlMes" runat="server" AutoPostBack="True" CssClass="posicion_derecha"
                 OnSelectedIndexChanged="ddlMes_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True" CssClass="posicion_derecha">
             </asp:DropDownList>
         </div>
     </div>
