@@ -69,7 +69,7 @@
             Display="Dynamic" ErrorMessage="Introduce correo válido" ForeColor="Red" ValidationExpression="\S+@\S+\.\S+"
             ValidationGroup="Registro"></asp:RegularExpressionValidator>
         <div class="row_modificar_alumno">
-            <asp:Label ID="Label_NaciAlu" runat="server" Text="Fecha Nacimiento (MM/DD/AAAA):"
+            <asp:Label ID="Label_NaciAlu" runat="server" Text="Fecha Nacimiento:"
                 CssClass="posicion_izquierda"></asp:Label>
                 <div class="posicion_derecha">
                        <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"

@@ -91,7 +91,7 @@
                 ControlToValidate="TextBox_VContAlu" Display="Dynamic" ErrorMessage="Contraseñas Diferentes"
                 ForeColor="Red" ValidationGroup="Registro"></asp:CompareValidator>
             <div class="row_crear_alumno">
-                <asp:Label ID="Label_NaciAlu" runat="server" Text="Fecha Nacimiento (MM/DD/AAAA):"
+                <asp:Label ID="Label_NaciAlu" runat="server" Text="Fecha Nacimiento:"
                     CssClass="posicion_izquierda"></asp:Label>
                 <div class="posicion_derecha">
                        <asp:DropDownList ID="ddlAno" runat="server" OnSelectedIndexChanged="ddlAno_SelectedIndexChanged"
