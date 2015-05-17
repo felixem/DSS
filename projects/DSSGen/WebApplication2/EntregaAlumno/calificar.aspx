@@ -54,7 +54,7 @@
     </div>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Descargar Entrega</div>
-        <asp:Button ID="Button_descargar" runat="server" OnClick="Button_Descargar_Click" CssClass="posicion_derecha" Text="Bajar Achivo" Width="130px" />
+        <asp:Button ID="Button_descargar" runat="server" OnClick="Button_Descargar_Click" CssClass="posicion_derecha" Text="Bajar Archivo" Width="130px" />
     </div>
     <div class="row_textbox_medium">
         <asp:Button ID="Button_Calificar" runat="server" OnClick="Button_Calificar_Click" CssClass="posicion_izquierda"

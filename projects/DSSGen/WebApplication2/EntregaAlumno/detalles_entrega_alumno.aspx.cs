@@ -88,7 +88,7 @@ namespace DSSGenNHibernate.EntregaAlumno
         protected void Button_Editar_Click(object sender, EventArgs e)
         {
             Linker link = new Linker(false);
-            link.Redirect(Response, link.EditarEntregaAlumno());
+            link.Redirect(Response, link.EditarEntregaAlumno(id));
         }
     }
 }

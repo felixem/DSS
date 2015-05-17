@@ -208,9 +208,10 @@ namespace WebUtilities
                 Parameter(PageParameters.MainParameter, id.ToString());
         }
 
-        public string EditarEntregaAlumno()
+        public string EditarEntregaAlumno(int id)
         {
-            return editarEntregaAlumno;
+            return editarEntregaAlumno + 
+                Parameter(PageParameters.MainParameter,id.ToString());
         }
 
         //Cadena para la página de modificación de una bolsa de preguntas
