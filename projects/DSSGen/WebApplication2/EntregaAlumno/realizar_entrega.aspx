@@ -63,8 +63,11 @@
     </p>
     <p class="style2">
     <div class="row_modificar_alumno">
-        Comentarios
-        <asp:TextBox ID="TextBox_Comentario" CssClass="posicion_derecha" runat="server"></asp:TextBox>
+        <div class="posicion_izquierda" style="margin-top:15px">
+            Comentarios
+        </div>
+        <asp:TextBox ID="TextBox_Comentario" CssClass="posicion_derecha" runat="server" 
+            Rows="2" TextMode="MultiLine"></asp:TextBox>
         </div>
     </p>
     <p class="style2">
