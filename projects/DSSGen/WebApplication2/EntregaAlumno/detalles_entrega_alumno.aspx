@@ -55,7 +55,8 @@
     </div>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Corregido</div>
-        <asp:Image ID="Img_Corregido" CssClass="posicion_derecha" runat="server"></asp:Image>
+        <asp:Image ID="Img_Corregido" CssClass="posicion_derecha" runat="server" 
+            Height="20px" Width="20px"></asp:Image>
     </div>
     <div class="row_textbox_medium">
         <div class="posicion_izquierda">Nota</div>

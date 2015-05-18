@@ -56,7 +56,7 @@ namespace DSSGenNHibernate.EntregaAlumno
         {
             //Recuperar los datos de la entrega
             if (!fachada.VincularEntregaAlumnoPorIdLigero(id, TextBox_Cod, TextBox_NomAlu, TextBox_ApeAlu,
-                TextBox_Dni, TextBox_ComentAlu, CheckBox_Corregido))
+                TextBox_Dni, TextBox_ComentAlu, TextBox_Nota, TextBox_ComentProf, CheckBox_Corregido))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);

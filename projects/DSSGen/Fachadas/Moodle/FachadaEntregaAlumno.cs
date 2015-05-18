@@ -121,7 +121,8 @@ namespace Fachadas.Moodle
 
         //Método para vincular un entrega a partir de su id a textboxes
         public bool VincularEntregaAlumnoPorIdLigero(int id, TextBox TextBox_Cod, TextBox TextBox_NomAlu,
-            TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, CheckBox CheckBox_Corregido)
+            TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, TextBox TextBox_Nota,
+            TextBox TextBox_ComentProf, CheckBox CheckBox_Corregido)
         {
             try
             {
@@ -129,7 +130,7 @@ namespace Fachadas.Moodle
                 DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
                 IBinderEntregaAlumno linker = new BinderEntregaAlumnoLigero(TextBox_Cod,
                     TextBox_NomAlu, TextBox_ApeAlu, TextBox_Dni,
-                    TextBox_ComentAlu, CheckBox_Corregido);
+                    TextBox_ComentAlu, TextBox_Nota, CheckBox_Corregido, TextBox_ComentProf);
 
                 binding.VincularDameEntregaAlumno(consulta, linker);
             }
