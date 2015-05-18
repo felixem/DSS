@@ -44,12 +44,12 @@ namespace DSSGenNHibernate.Asignatura
             //Crear la asignatura
             if (fachada.CrearAsignatura(codigo,nombre,descripcion,optativo,vigente,curso))
             {
-                Notification.Notify(Response, "La asignatura ha sido creada");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
             {
-                Notification.Notify(Response,"La asignatura no ha podido ser creada");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 

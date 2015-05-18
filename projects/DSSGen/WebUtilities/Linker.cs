@@ -33,27 +33,37 @@ namespace WebUtilities
         internal static readonly string listarMatriculadosAsignaturaAnyo = "/Alumno/alumnos_matriculados.aspx";
         internal static readonly string matricularAlumnoEnAsignaturaAnyo = "/AsignaturaAnyo/matricular_alumno_asignatura.aspx";
         internal static readonly string listarAsignaturasAnyoDeAlumno = "/AsignaturaAnyo/asignaturas_matriculado_alumno.aspx";
+        
         internal static readonly string login = "/Account/Login.aspx";
         internal static readonly string pageDefault = "/Default.aspx";
+
         internal static readonly string listadoBolsaPreguntas = "/Examen/bolsas_preguntas.aspx";
         internal static readonly string crearBolsa = "/Examen/crear_bolsa.aspx";
-        internal static readonly string passChanged = "/Account/ChangePasswordSuccess.aspx";
+
         internal static readonly string crearControl = "/Control/crear_control.aspx";
         internal static readonly string listarControles = "/Control/controles.aspx";
         internal static readonly string crearControlAsignaturaAnyo = "/Control/crear_control_asignatura.aspx";
+
         internal static readonly string crearPregunta = "/Examen/crear_pregunta.aspx";
+
         internal static readonly string alumnos = "/Alumno/alumnos.aspx";
         internal static readonly string crearAlumno = "/Alumno/crear_alumno.aspx";
+
         internal static readonly string profesores = "/Profesor/profesores.aspx";
         internal static readonly string crearProfesor = "/Profesor/crear_profesor.aspx";
+
         internal static readonly string asignaturas = "/Asignatura/asignaturas.aspx";
         internal static readonly string crearAsignatura = "/Asignatura/crear_asignatura.aspx";
+
         internal static readonly string gruposTrabajo = "/GrupoTrabajo/grupos_trabajo.aspx";
         internal static readonly string crearGrupoTrabajo = "/GrupoTrabajo/crear_grupotrabajo.aspx";
+
         internal static readonly string crearAsignaturaAnyo = "/AsignaturaAnyo/crear_asignaturaanyo.aspx";
+
         internal static readonly string crearEntrega = "/Entrega/crear_entrega.aspx";
         internal static readonly string listarEntregas = "/Entrega/entregas.aspx";
         internal static readonly string crearEntregaAsignaturaAnyo = "/Entrega/crear_entrega_asignatura.aspx";
+
         internal static readonly string asignaturasImpartidas = "/AsignaturaAnyo/asignaturas_impartidas.aspx";
         internal static readonly string changePassword = "/Account/ChangePassword.aspx";
 
@@ -64,6 +74,7 @@ namespace WebUtilities
         internal static readonly string misAsignaturasImpartidas = "/AsignaturaAnyo/mis_asignaturas_impartidas.aspx";
         internal static readonly string misAlumnosMatriculadosAsignaturaAnyo = "/Alumno/mis_alumnos_matriculados.aspx";
         internal static readonly string realizarEntregaPracticas = "/EntregaAlumno/realizar_entrega.aspx";
+        internal static readonly string accesoMiEntrega = "/EntregaAlumno/MiEntrega.ashx";
 
         internal static readonly string listarEntregaAsignaturaAnyo = "/Entrega/entregas_asignatura.aspx";
         internal static readonly string listarControlAsignaturaAnyo = "/Control/controles_asignatura.aspx";
@@ -75,6 +86,7 @@ namespace WebUtilities
         internal static readonly string modificarSistemaEvaluacion = "/Sistema Evaluacion/modificar_evaluacion.aspx";
 
         internal static readonly string listarEntregasAlumno = "/EntregaAlumno/entregas_alumnos.aspx";
+        internal static readonly string editarEntregaAlumno = "/EntregaAlumno/editar_entrega.aspx";
 
         internal static readonly string descargarRecurso = "/Download/DownloadFile.ashx";
 
@@ -183,12 +195,6 @@ namespace WebUtilities
             return listarMisGruposTrabajoAsignatura + Parameter(PageParameters.MainParameter, id.ToString());
         }
 
-        //Cadena para la pagina de contraseña cambiada
-        public string PassChanged()
-        {
-            return passChanged;
-        }
-
         //Cadena para la página de creación de un control
         public string CrearControl()
         {
@@ -200,6 +206,12 @@ namespace WebUtilities
         {
             return modificarBolsa +
                 Parameter(PageParameters.MainParameter, id.ToString());
+        }
+
+        public string EditarEntregaAlumno(int id)
+        {
+            return editarEntregaAlumno + 
+                Parameter(PageParameters.MainParameter,id.ToString());
         }
 
         //Cadena para la página de modificación de una bolsa de preguntas
@@ -495,6 +507,13 @@ namespace WebUtilities
         {
             return descargarRecurso +
                 Parameter(PageParameters.DescargaEntregaAlumno, cod.ToString());
+        }
+
+        //Acceder a la entrega desde el punto de vista del alumno
+        public string AccesoMiEntrega(int codEntregaPropuesta)
+        {
+            return accesoMiEntrega +
+                Parameter(PageParameters.MainParameter, codEntregaPropuesta.ToString());
         }
 
     }

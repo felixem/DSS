@@ -67,6 +67,15 @@ namespace DSSGenNHibernate.Entrega {
         protected global::System.Web.UI.WebControls.DropDownList ddlPageSize;
         
         /// <summary>
+        /// Button_Volver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Volver;
+        
+        /// <summary>
         /// GridViewBolsas control.
         /// </summary>
         /// <remarks>

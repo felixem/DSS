@@ -119,6 +119,14 @@ namespace DSSGenNHibernate.Control
             link.Redirect(Response, link.CrearControlAsignaturaAnyo(id));
         }
 
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
+        }
+
         //Manejador del evento para modificar un control
         protected void lnkEditar_Click(object sender, EventArgs e)
         {
@@ -135,11 +143,9 @@ namespace DSSGenNHibernate.Control
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int Id = Int32.Parse(grdrow.Cells[0].Text);
 
-            //Eliminar profesor
-            if (fachada.BorrarControl(Id))
-                Notification.Notify(Response, "El control se ha podido borrar");
-            else
-                Notification.Notify(Response, "El control no ha podido ser borrado");
+            //Eliminar control
+            fachada.BorrarControl(Id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerControlesPaginados(1);

@@ -29,11 +29,13 @@ namespace Fachadas.Moodle
                 BolsaPreguntasCP bolsaCP = new BolsaPreguntasCP();
                 bolsaCP.CrearBolsa(nombre, descripcion, DateTime.Now, DateTime.Now, asignatura, preguntas);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La bolsa de preguntas no pudo ser creada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La bolsa de preguntas ha sido creada");
             return true;
         }
 
@@ -57,11 +59,13 @@ namespace Fachadas.Moodle
                 bolsaCP.ModificarBolsa(idBolsa, nombre, descripcion, fecha_creacion, fecha_modificacion,
                     asignaturaOriginal, asignaturaNueva, preguntasCreadas, preguntasModificadas, preguntasBorradas);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La bolsa de preguntas no pudo ser modificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La bolsa de preguntas ha sido modificada");
             return true;
         }
 
@@ -84,11 +88,13 @@ namespace Fachadas.Moodle
                 BolsaPreguntasCP bolsa = new BolsaPreguntasCP();
                 bolsa.BorrarBolsa(p_oid);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La bolsa de preguntas no pudo ser borrada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La bolsa de preguntas ha sido borrada");
             return true;
         }
 

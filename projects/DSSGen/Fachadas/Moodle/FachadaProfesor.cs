@@ -9,6 +9,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -22,11 +23,13 @@ namespace Fachadas.Moodle
                 ProfesorCP profesor = new ProfesorCP();
                 profesor.CrearProfesor(nombre, apellidos, pass, fecha, dni, email, cod);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El profesor no pudo ser creado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El profesor ha sido creado");
             return true;
         }
 
@@ -39,11 +42,13 @@ namespace Fachadas.Moodle
                 ProfesorCP cp = new ProfesorCP();
                 cp.ModificarProfesorNoPassword(email, codProfesor, dni, nombre, apellidos, fechaNacimiento);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El profesor no pudo ser modificado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El profesor ha sido modificado");
             return true;
         }
 
@@ -55,11 +60,13 @@ namespace Fachadas.Moodle
                 ProfesorCP cp = new ProfesorCP();
                 cp.BorrarProfesor(codProfesor);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El profesor no pudo ser borrado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El profesor ha sido borrado");
             return true;
         }
 
@@ -85,7 +92,7 @@ namespace Fachadas.Moodle
 
         //Método para vincular un profesor a partir de su id a textboxes
         public bool VincularProfesorPorId(int id, TextBox TextBox_NomProf,
-            TextBox TextBox_ApellProf, TextBox TextBox_NaciProf, TextBox TextBox_DNIProf,
+            TextBox TextBox_ApellProf, DropDownList ddlAno,DropDownList ddlMes,DropDownList ddlDia, TextBox TextBox_DNIProf,
             TextBox TextBox_EmailProf, TextBox TextBox_CodProf)
         {
             try
@@ -93,7 +100,7 @@ namespace Fachadas.Moodle
                 ProfesorBinding binding = new ProfesorBinding();
                 DameProfesorPorId consulta = new DameProfesorPorId(id);
                 BinderProfesorCompleto linker = new BinderProfesorCompleto(TextBox_NomProf,
-                    TextBox_ApellProf, TextBox_NaciProf, TextBox_DNIProf,
+                    TextBox_ApellProf, ddlAno, ddlMes, ddlDia, TextBox_DNIProf,
                     TextBox_EmailProf, TextBox_CodProf);
 
                 binding.VincularDameProfesor(consulta, linker);

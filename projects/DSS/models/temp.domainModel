@@ -516,6 +516,9 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM CursoEN"/>
+      <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.8" filter="FROM CursoEN curs where curs=:cod ">
+        <arguments name="cod" isOrdered="true"/>
+      </operations>
       <operations name="relationer_asignaturas" operationType="Relationer" type="Void" relatedRol="/0/@elements.8/@attributes.3">
         <arguments name="p_curso" type="OID" typeObject="/0/@elements.8" isOrdered="true"/>
         <arguments name="p_asignatura" type="OID" collectionType="List" typeObject="/0/@elements.7" isOrdered="true"/>
@@ -578,6 +581,9 @@
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM ExpedienteEN"/>
       <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.10" filter="FROM ExpedienteEN exp where exp.Alumno.Email=:p_alu">
         <arguments name="p_alu" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+      </operations>
+      <operations name="readCod" operationType="ReadFilter" type="Object" typeObject="/0/@elements.10" filter="FROM ExpedienteEN exp where exp.Cod_expediente=:cod">
+        <arguments name="cod" isOrdered="true"/>
       </operations>
       <operations name="relationer_alumno" operationType="Relationer" type="Void" relatedRol="/0/@elements.10/@attributes.4">
         <arguments name="p_expediente" type="OID" typeObject="/0/@elements.10" isOrdered="true"/>
@@ -805,6 +811,16 @@
       </operations>
       <operations name="readAllPorAsignaturaAnyo" type="Object" collectionType="List" typeObject="/0/@elements.14">
         <arguments name="p_as_anyo" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
+      <operations name="readCantidadPorAlumnoYAsignaturaAnyo" operationType="ReadFilter" type="Long" filter="select count(distinct grupo) FROM GrupoTrabajoEN as grupo INNER JOIN grupo.Alumnos as alu where grupo.Asignatura.Id=:p_asig AND alu.Email=:p_alumno">
+        <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+        <arguments name="p_asig" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+      </operations>
+      <operations name="readAllPorAlumnoYAsignaturaAnyo" type="Object" collectionType="List" typeObject="/0/@elements.14">
+        <arguments name="p_alumno" type="OID" typeObject="/0/@elements.4" isOrdered="true"/>
+        <arguments name="p_asig" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="first" type="Integer" isOrdered="true"/>
         <arguments name="size" type="Integer" isOrdered="true"/>
       </operations>
@@ -1074,6 +1090,14 @@
         <arguments name="p_oid" type="OID" typeObject="/0/@elements.18" isOrdered="true"/>
       </operations>
       <operations name="readCantidad" operationType="ReadFilter" type="Long" filter="select count(*) FROM EvaluacionEN"/>
+      <operations name="readCantidadPorAnyo" operationType="ReadFilter" type="Long" filter="select count(distinct eval) FROM EvaluacionEN eval where eval.Anyo_academico.Id=:id ">
+        <arguments name="id" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+      </operations>
+      <operations name="readAllPorAnyo" type="Object" collectionType="List" typeObject="/0/@elements.18">
+        <arguments name="id" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
       <operations name="relationer_anyo_academico" operationType="Relationer" type="Void" relatedRol="/0/@elements.18/@attributes.5">
         <arguments name="p_evaluacion" type="OID" typeObject="/0/@elements.18" isOrdered="true"/>
         <arguments name="p_anyoacademico" type="OID" typeObject="/0/@elements.16" isOrdered="true"/>
@@ -1216,6 +1240,14 @@
         <arguments name="p_evalalumno" type="OID" typeObject="/0/@elements.22" isOrdered="true"/>
         <arguments name="p_entrega" type="OID" typeObject="/0/@elements.19" isOrdered="true"/>
       </operations>
+      <operations name="readCantidadPorEntrega" operationType="ReadFilter" type="Long" filter="select count (distinct entrega) FROM EntregaAlumnoEN as entrega where entrega.Entrega.Id=:id">
+        <arguments name="id" type="OID" typeObject="/0/@elements.19" isOrdered="true"/>
+      </operations>
+      <operations name="readAllPorEntrega" type="Object" collectionType="List" typeObject="/0/@elements.20">
+        <arguments name="p_entrega" type="OID" typeObject="/0/@elements.19" isOrdered="true"/>
+        <arguments name="first" type="Integer" isOrdered="true"/>
+        <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
       <operations name="relationer_evaluacion_alumno" operationType="Relationer" type="Void" relatedRol="/0/@elements.20/@attributes.11">
         <arguments name="p_entregaalumno" type="OID" typeObject="/0/@elements.20" isOrdered="true"/>
         <arguments name="p_evaluacionalumno" type="OID" typeObject="/0/@elements.22" isOrdered="true"/>
@@ -1270,6 +1302,10 @@
         <arguments name="id" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
         <arguments name="first" type="Integer" isOrdered="true"/>
         <arguments name="size" type="Integer" isOrdered="true"/>
+      </operations>
+      <operations name="readRelation" operationType="ReadFilter" type="Object" typeObject="/0/@elements.21" filter="FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:p_asig AND sis.Evaluacion.Id=:p_eval">
+        <arguments name="p_asig" type="OID" typeObject="/0/@elements.17" isOrdered="true"/>
+        <arguments name="p_eval" type="OID" typeObject="/0/@elements.18" isOrdered="true"/>
       </operations>
       <operations name="relationer_asignatura" operationType="Relationer" type="Void" relatedRol="/0/@elements.21/@attributes.3">
         <arguments name="p_sistemaevaluacion" type="OID" typeObject="/0/@elements.21" isOrdered="true"/>

@@ -29,7 +29,7 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                //Intentar loguear como usuario normal
+                //Intentar loguear como usuario
                 rol = loginUsuario(user, pass);
 
                 SessionCommit();
@@ -44,17 +44,18 @@ namespace ComponentesProceso.Moodle
                 SessionClose();
             }
 
-            //No se pudo realizar login correctamente
+            //Devolver el rol
             return rol;
         }
 
         //Método para realizar login para un usuario normal
         private UsuarioEN loginUsuario(string user, string pass)
         {
-            //Probar el login para un usuario normal
+            //Probar el login
             UsuarioCAD usCAD = new UsuarioCAD(session);
             UsuarioCEN usCEN = new UsuarioCEN(usCAD);
 
+            //Realizar login
             if (usCEN.Login(user, pass))
             {
                 //Comprobar si es un alumno
@@ -81,9 +82,11 @@ namespace ComponentesProceso.Moodle
                 //Error al recibir los datos
                 throw new ExcepcionAccesoDatos();
             }
-
-            //Devolver null si no es un usuario normal
-            return null;
+            else
+            {
+                //Lanzar excepción si no se pudo hacer login
+                throw new Exception("El usuario o la contraseña son incorrectos");
+            }
         }
     }
 }

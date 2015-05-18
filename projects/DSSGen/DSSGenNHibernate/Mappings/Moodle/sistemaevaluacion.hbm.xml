@@ -64,5 +64,6 @@
 		  <query name="SistemaEvaluacionENReadAllHQL">from SistemaEvaluacionEN</query>
 		  <query name="SistemaEvaluacionENreadCantidadHQL"><![CDATA[select count(*) FROM SistemaEvaluacionEN]]></query>
 		  <query name="SistemaEvaluacionENreadCantidadPorAsignaturaAnyoHQL"><![CDATA[select count(distinct sis) FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:id ]]></query>
+		  <query name="SistemaEvaluacionENreadRelationHQL"><![CDATA[FROM SistemaEvaluacionEN sis where sis.Asignatura.Id=:p_asig AND sis.Evaluacion.Id=:p_eval]]></query>
 		</hibernate-mapping>
 	

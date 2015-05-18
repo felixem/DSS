@@ -46,11 +46,11 @@ namespace DSSGenNHibernate.Examen
             if (bolsa.AddPregunta(enunciado, respuestas, idCorrecta, explicacion))
             {
                 this.Clear();
-                Notification.Notify(Response, "La pregunta ha sido creada");
+                Notification.Current.NotifyLastNotification(Response);
             }
 
             else
-                Notification.Notify(Response, "La pregunta no ha podido ser creada");
+                Notification.Current.NotifyLastNotification(Response);
         }
 
         //Limpiar contenido

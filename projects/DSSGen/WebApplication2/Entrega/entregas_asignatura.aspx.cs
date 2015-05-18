@@ -146,13 +146,19 @@ namespace DSSGenNHibernate.Entrega
             int Id = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar profesor
-            if (fachada.BorrarEntrega(Id))
-                Notification.Notify(Response, "La entrega se ha podido borrar");
-            else
-                Notification.Notify(Response, "La entrega no ha podido ser borrado");
+            fachada.BorrarEntrega(Id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerEntregasPaginadas(1);
+        }
+
+        //Botón utilizado para cancelar la creación y volver atrás
+        protected void Button_Cancelar_Click(object sender, EventArgs e)
+        {
+            //Redirigir a la página que le llamó
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.PreviousPage());
         }
     }
 }

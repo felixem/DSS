@@ -14,6 +14,7 @@ namespace DSSGenNHibernate.Alumno
     public partial class modificar_alumno : BasicPage
     {
         FachadaAlumno fachada;
+        FachadaFecha fachadaFecha;
         private int id;
         String param;
 
@@ -28,10 +29,14 @@ namespace DSSGenNHibernate.Alumno
             }
 
             fachada = new FachadaAlumno();
+            fachadaFecha = new FachadaFecha();
             Obtener_Parametros();
 
             if (!IsPostBack)
             {
+                ObtenerAnyos();
+                ObtenerMeses();
+                ObtenerDias();
                 //Procesar parámetros y cargar datos
                 this.CargarDatos();
             }
@@ -57,7 +62,7 @@ namespace DSSGenNHibernate.Alumno
         {
             //Recuperar los datos del alumno
             if (!fachada.VincularAlumnoPorId(id, TextBox_NomAlu,
-                TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
+                TextBox_ApellAlu, ddlAno, ddlMes, ddlDia, TextBox_DNIAlu, TextBox_EmailAlu,
                 TextBox_CodAlu, CheckBox_Baneado, TextBox_CodExpediente))
             {
                 //Redirigir a la página que le llamó
@@ -72,32 +77,15 @@ namespace DSSGenNHibernate.Alumno
             //Recojo los datos
             string nombre = TextBox_NomAlu.Text;
             string apellidos = TextBox_ApellAlu.Text;
-            string fecha = TextBox_NaciAlu.Text;
             string dni = TextBox_DNIAlu.Text;
             string email = TextBox_EmailAlu.Text;
             string cod = TextBox_CodAlu.Text;
+            string fecha = "" + ddlDia.Text + "/" + ddlMes.Text + "/" + ddlAno.Text;
             bool baneado = CheckBox_Baneado.Checked;
-
-            bool verificado;
-            //Pruebo a registrar el alumno
-            try
-            {
-                verificado = fachada.ModificarAlumnoNoPassword(email, Convert.ToInt32(cod), baneado, dni, nombre, apellidos, Convert.ToDateTime(fecha));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se ha modificado
-            if (verificado)
-            {
-                Notification.Notify(Response, "El alumno ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response, "El alumno no ha podido ser modificado");
-            }
+            //Intentar modificar el alumno
+            fachada.ModificarAlumnoNoPassword(email, Convert.ToInt32(cod), baneado, dni, nombre, apellidos, DateTime.Parse(fecha));
+            //Mostrar notificación
+            Notification.Current.NotifyLastNotification(Response);
         }
      
         //Metodo que comprueba la fecha(Control de validacion)
@@ -120,6 +108,43 @@ namespace DSSGenNHibernate.Alumno
             //Redirigir a la página que le llamó
             Linker link = new Linker(false);
             link.Redirect(Response, link.PreviousPage());
+        }
+        protected void ObtenerAnyos()
+        {
+            fachadaFecha.VincularDameAnyos(ddlAno, 100, 0);
+
+        }
+        protected void ObtenerMeses()
+        {
+
+            fachadaFecha.VincularDameMesesNac(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+
+
+        }
+        protected void ObtenerDias()
+        {
+
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
+
+        }
+
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMes.Items.Clear();
+            ddlDia.Items.Clear();
+
+            fachadaFecha.VincularDameMesesNac(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDia.Items.Clear();
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
         }
     }
 }

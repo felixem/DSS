@@ -25,6 +25,9 @@ CursoEN ReadOID (int id);
 long ReadCantidad ();
 
 
+DSSGenNHibernate.EN.Moodle.CursoEN ReadCod (string cod);
+
+
 void Relationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura);
 
 void Unrelationer_asignaturas (int p_curso, System.Collections.Generic.IList<int> p_asignatura);

@@ -9,50 +9,55 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 
 namespace Fachadas.Moodle
 {
     public class FachadaEvaluacion
     {
-        public bool RegistrarEvaluacion(string p_nombre, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_abierta, int p_anyo_academico) {
+        public bool RegistrarEvaluacion(string p_nombre, DateTime p_fecha_inicio, 
+            DateTime p_fecha_fin, bool p_abierta, int p_anyo_academico) {
             try
             {
                 EvaluacionCP evaluacion = new EvaluacionCP();
                 evaluacion.CrearEvaluacion(p_nombre, p_fecha_inicio,p_fecha_fin,p_abierta,p_anyo_academico);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La evaluación no ha podido ser creada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La evaluación ha sido creada");
             return true;
         }
-        public bool ModificarEvaluacion(int id,string p_nombre, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_abierta)
+        public bool ModificarEvaluacion(int id,string p_nombre, DateTime p_fecha_inicio, 
+            DateTime p_fecha_fin, bool p_abierta)
         {
             try
             {
                 EvaluacionCP evaluacion = new EvaluacionCP();
                 evaluacion.ModificarEvaluacion(id,p_nombre, p_fecha_inicio, p_fecha_fin, p_abierta);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La evaluación no ha podido ser modificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La evaluación ha sido modificada");
             return true;
         }
         //Método para vincular una evaluacion a partir de su id a textboxes
-        public bool VincularEvaluacionPorId(int id, TextBox TextBox_Nom,
-            TextBox TextBox_inicio,TextBox TextBox_fin,CheckBox abierta)
+        public bool VincularEvaluacionPorId(int id, TextBox TextBox_Nom,DropDownList ddlAno,DropDownList ddlMes,DropDownList ddlDia,
+            DropDownList ddlAnoC, DropDownList ddlMesC, DropDownList ddlDiaC,CheckBox abierta)
         {
             try
             {
                 EvaluacionBinding binding = new EvaluacionBinding();
                 DameEvaluacionPorId consulta = new DameEvaluacionPorId(id);
-                IBinderEvaluacion linker = new BinderEvaluacion(TextBox_Nom,
-                    TextBox_inicio, TextBox_fin, abierta);
-
+                IBinderEvaluacion linker = new BinderEvaluacion(TextBox_Nom,ddlAno,ddlMes,ddlDia,ddlAnoC,ddlMesC,ddlDiaC,abierta);
                 binding.VincularDameEvaluacion(consulta, linker);
             }
             catch (Exception)
@@ -87,11 +92,13 @@ namespace Fachadas.Moodle
                 EvaluacionCP cp = new EvaluacionCP();
                 cp.BorrarEvaluacion(cod);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La evaluación no ha podido ser borrada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La evaluación ha sido borrada");
             return true;
         }
     }

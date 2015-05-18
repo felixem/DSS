@@ -56,7 +56,7 @@ namespace DSSGenNHibernate.EntregaAlumno
         {
             //Recuperar los datos de la entrega
             if (!fachada.VincularEntregaAlumnoPorIdLigero(id, TextBox_Cod, TextBox_NomAlu, TextBox_ApeAlu,
-                TextBox_Dni, TextBox_ComentAlu, CheckBox_Corregido))
+                TextBox_Dni, TextBox_ComentAlu, TextBox_Nota, TextBox_ComentProf, CheckBox_Corregido))
             {
                 //Redirigir a la página que le llamó
                 Linker link = new Linker(false);
@@ -72,26 +72,9 @@ namespace DSSGenNHibernate.EntregaAlumno
             string comentarioprofesor = TextBox_ComentProf.Text;
             bool calificado = CheckBox_Corregido.Checked;
 
-            bool verificado;
-            //Pruebo a registrar el control
-            try
-            {
-                verificado = fachada.CalificarEntrega(id, nota, comentarioprofesor, calificado);
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "La entrega ha sido calificada");
-            }
-            else
-            {
-                Notification.Notify(Response, "La entrega no ha podido ser calificada");
-            }
+            //Calificar entrega
+            fachada.CalificarEntrega(id, nota, comentarioprofesor, calificado);
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

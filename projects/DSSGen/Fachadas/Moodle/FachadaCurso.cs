@@ -9,6 +9,7 @@ using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -42,11 +43,13 @@ namespace Fachadas.Moodle
                 CursoCP cp = new CursoCP();
                 cp.CrearCurso(p_cod_curso,p_nombre);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El curso no ha podido ser creado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El curso ha sido creado");
             return true;
         }
 
@@ -58,11 +61,13 @@ namespace Fachadas.Moodle
                 CursoCP cp = new CursoCP();
                 cp.ModificarCurso(p_oid,p_cod_curso,p_nombre);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El curso no ha podido ser modificado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El curso ha sido modificado");
             return true;
         }
 
@@ -74,11 +79,13 @@ namespace Fachadas.Moodle
                 CursoCP cp = new CursoCP();
                 cp.BorrarCurso(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El curso no ha podido ser borrado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El curso ha sido borrado");
             return true;
         }
     }

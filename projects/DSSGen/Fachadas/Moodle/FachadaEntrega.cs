@@ -9,6 +9,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -16,7 +17,7 @@ namespace Fachadas.Moodle
     {
         //Metodo que registra la entrega en BD
         public bool RegistrarEntrega(string p_nombre, string p_descripcion, 
-            Nullable<DateTime> p_fecha_apertura, Nullable<DateTime> p_fecha_cierre, 
+            DateTime p_fecha_apertura, DateTime p_fecha_cierre, 
             float p_puntuacion_maxima, string p_profesor, int p_evaluacion)
         {
             try
@@ -24,11 +25,13 @@ namespace Fachadas.Moodle
                 EntregaCP entrega = new EntregaCP();
                 entrega.CrearEntrega(p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_puntuacion_maxima, p_profesor, p_evaluacion);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser creada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido creada");
             return true;
         }
 
@@ -40,11 +43,13 @@ namespace Fachadas.Moodle
                 EntregaCP cp = new EntregaCP();
                 cp.BorrarEntrega(cod);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser borrada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido borrada");
             return true;
         }
 
@@ -60,25 +65,28 @@ namespace Fachadas.Moodle
 
         //Metodo que modifica el Entrega en BD
         public bool ModificarEntrega(int p_oid, string p_nombre, string p_descripcion,
-            Nullable<DateTime> p_fecha_apertura,
-            Nullable<DateTime> p_fecha_cierre, float p_puntuacion_maxima)
+            DateTime p_fecha_apertura,
+            DateTime p_fecha_cierre, float p_puntuacion_maxima)
         {
             try
             {
                 EntregaCP cp = new EntregaCP();
                 cp.ModificarEntrega(p_oid, p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_puntuacion_maxima);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser modificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido modificada");
             return true;
         }
 
         //Método para vincular un entrega a partir de su id a textboxes
         public bool VincularEntregaPorId(int id, TextBox TextBox_Nom,
-            TextBox TextBox_Desc, TextBox TextBox_Apertura, TextBox TextBox_Cierre,
+            TextBox TextBox_Desc, DropDownList ddlAno, DropDownList ddlMes, DropDownList ddlDia,
+            DropDownList ddlAnoC, DropDownList ddlMesC, DropDownList ddlDiaC,
             TextBox TextBox_PuntMax,
             TextBox TextBox_Anyo, TextBox TextBox_Asignatura, TextBox TextBox_Evaluacion, TextBox TextBox_Profesor, TextBox TextBox_CodEntrega)
         {
@@ -87,7 +95,7 @@ namespace Fachadas.Moodle
                 EntregaBinding binding = new EntregaBinding();
                 DameEntregaPorId consulta = new DameEntregaPorId(id);
                 IBinderEntrega linker = new BinderEntrega(TextBox_Nom,
-                    TextBox_Desc, TextBox_Apertura, TextBox_Cierre,
+                    TextBox_Desc, ddlAno, ddlMes, ddlDia, ddlAnoC, ddlMesC, ddlDiaC,
                     TextBox_PuntMax,
                     TextBox_Anyo, TextBox_Asignatura, TextBox_Evaluacion, TextBox_Profesor, TextBox_CodEntrega);
 

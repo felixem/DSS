@@ -20,12 +20,22 @@ namespace ComponentesProceso.Moodle
 
         public bool CambiarPassword(string user, string pass, string newpass){
             bool result = false;
-            UsuarioCAD usCAD = new UsuarioCAD(session);
-            UsuarioCEN usCEN = new UsuarioCEN(usCAD);
+
             try
             {
                 SessionInitializeTransaction();
+
+                UsuarioCAD usCAD = new UsuarioCAD(session);
+                UsuarioCEN usCEN = new UsuarioCEN(usCAD);
+
+                //Comprobar la existencia del usuario
+                if (usCEN.ReadOID(user) == null)
+                    throw new Exception("El usuario no existe");
+
+                //Comprobar si se ha realizado correctamente el cambio del password
                 result=usCEN.ChangePassword(user, pass, newpass);
+                if (result == false)
+                    throw new Exception("La contraseña anterior no coincide");
 
                 SessionCommit();
             }

@@ -94,10 +94,8 @@ namespace DSSGenNHibernate.Asignatura
             int asignaturaId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar asignatura
-            if (fachada.BorrarAsignatura(asignaturaId))
-                Notification.Notify(Response, "La asignatura ha sido borrada");
-            else
-                Notification.Notify(Response, "La asignatura no ha podido ser borrada");
+            fachada.BorrarAsignatura(asignaturaId);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerAsignaturasPaginadas(1);

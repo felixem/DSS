@@ -84,11 +84,11 @@ namespace DSSGenNHibernate.GrupoTrabajo
             if (fachadaGrupo.CrearGrupoTrabajo(codigo, nombre, descripcion, password,
                 capacidad, idAsignaturaAnyo))
             {
-                Notification.Notify(Response, "El grupo de trabajo ha sido creado");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
-                Notification.Notify(Response, "El grupo de trabajo no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
         }
        
         //Botón utilizado para cancelar la creación y volver atrás

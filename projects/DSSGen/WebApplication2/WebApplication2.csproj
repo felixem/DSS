@@ -52,7 +52,6 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
-    <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Alumno\alumnos.aspx" />
     <Content Include="Alumno\alumnos_matriculados.aspx" />
@@ -66,6 +65,7 @@
     <Content Include="AsignaturaAnyo\asignaturas_impartidas.aspx" />
     <Content Include="Asignatura\modificar_asignatura.aspx" />
     <Content Include="Asignatura\crear_asignatura.aspx" />
+    <Content Include="EntregaAlumno\editar_entrega.aspx" />
     <Content Include="EntregaAlumno\detalles_entrega_alumno.aspx" />
     <Content Include="EntregaAlumno\realizar_entrega.aspx" />
     <Content Include="Errors\404.aspx" />
@@ -146,13 +146,6 @@
     </Compile>
     <Compile Include="Account\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
-      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
-      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -254,6 +247,16 @@
     </Compile>
     <Compile Include="Download\DownloadFile.ashx.cs">
       <DependentUpon>DownloadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\MiEntrega.ashx.cs">
+      <DependentUpon>MiEntrega.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="EntregaAlumno\editar_entrega.aspx.cs">
+      <DependentUpon>editar_entrega.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntregaAlumno\editar_entrega.aspx.designer.cs">
+      <DependentUpon>editar_entrega.aspx</DependentUpon>
     </Compile>
     <Compile Include="EntregaAlumno\detalles_entrega_alumno.aspx.cs">
       <DependentUpon>detalles_entrega_alumno.aspx</DependentUpon>
@@ -620,6 +623,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Download\DownloadFile.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntregaAlumno\MiEntrega.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

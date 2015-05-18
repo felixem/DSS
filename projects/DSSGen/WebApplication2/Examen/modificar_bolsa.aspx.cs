@@ -167,10 +167,8 @@ namespace DSSGenNHibernate.Examen
             SalvarMenu();
 
             //Eliminar la pregunta
-            if (bolsa.RemovePregunta(id))
-                Notification.Notify(Response, "La pregunta ha sido borrada");
-            else
-                Notification.Notify(Response, "La pregunta no ha podido ser borrada");
+            bolsa.RemovePregunta(id);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Actualizar la lista de preguntas
             this.ObtenerPreguntasPaginadas(1);
@@ -198,10 +196,8 @@ namespace DSSGenNHibernate.Examen
             SalvarMenu();
 
             //Modificar la bolsa
-            if (fachadaBolsa.ModificarBolsa(bolsa))
-                Notification.Notify(Response, "La bolsa ha sido modificada");
-            else
-                Notification.Notify(Response, "La bolsa no ha podido ser modificada");
+            fachadaBolsa.ModificarBolsa(bolsa);
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Manejador cuando cambie la selección en el drop down list

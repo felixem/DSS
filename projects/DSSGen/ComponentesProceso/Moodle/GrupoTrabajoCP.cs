@@ -56,9 +56,25 @@ namespace ComponentesProceso.Moodle
             try
             {
                 SessionInitializeTransaction();
+
+                //Comprobar que la capacidad no sea negativa
+                if (capacidad < 0)
+                    throw new Exception("La capacidad no puede ser un número negativo");
+
                 //Crear la asignatura
                 GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+
+                //Comprobar que el código sea único
+                if (cen.ReadCod(cod) != null)
+                    throw new Exception("El código ya está registrado");
+
+                //Comprobar que existe la asignatura
+                AsignaturaAnyoCAD asigCad = new AsignaturaAnyoCAD(session);
+                AsignaturaAnyoCEN asigCen = new AsignaturaAnyoCEN(asigCad);
+                if (asigCen.ReadOID(asignatura_anyo) == null)
+                    throw new Exception("La asignatura no existe");
+
                 id = cen.New_(cod,nombre,descripcion,password,capacidad,asignatura_anyo);
 
                 SessionCommit();
@@ -103,6 +119,58 @@ namespace ComponentesProceso.Moodle
             return grupo;
         }
 
+        //Método para autoregistrar un alumno en un grupo a partir de un password
+        public void VincularAlumnoConPassword(int grupoId, string alumno, string pass)
+        {
+            try
+            {
+                SessionInitializeTransaction();
+
+                //Comprobar que existe el alumno
+                AlumnoCAD aluCad = new AlumnoCAD(session);
+                AlumnoCEN aluCen = new AlumnoCEN(aluCad);
+                if (aluCen.ReadOID(alumno) == null)
+                    throw new Exception("El alumno no existe");
+
+                GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
+                GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                GrupoTrabajoEN en = cen.ReadOID(grupoId);
+
+                //Comprobar si existe el grupo de trabajo
+                if (en == null)
+                    throw new Exception("El grupo de trabajo no existe");
+
+                //Comprobar si no está ya registrado
+                AlumnoEN alu = new AlumnoEN();
+                alu.Email = alumno;
+                if (en.Alumnos.Contains(alu))
+                    throw new Exception("El alumno ya está registrado en el grupo");
+
+                //Comprobar si la capacidad del grupo es suficiente
+                List<string> emails = new List<string>();
+
+                if (Auxiliar.Encrypter.Verificar(pass, en.Password))
+                {
+                    emails.Add(alumno);
+                    cen.Relationer_alumnos(grupoId, emails);
+                }
+                else
+                    throw new Exception("Contraseña incorrecta");
+
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
+                throw ex;
+            }
+            finally
+            {
+                //Cerrar sesión
+                SessionClose();
+            }
+        }
+
         //Modificar grupo de trabajo
         public void ModificarGrupoTrabajo(int id, string cod, string nombre, string descripcion,
             string password, int capacidad)
@@ -111,8 +179,26 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
+                //Comprobar que la capacidad no sea negativa
+                if (capacidad < 0)
+                    throw new Exception("La capacidad no puede ser un número negativo");
+
                 GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                GrupoTrabajoEN en = cen.ReadOID(id);
+
+                //Comprobar si existe el grupo de trabajo
+                if (en == null)
+                    throw new Exception("El grupo de trabajo no existe");
+
+                //Comprobar capacidad
+                if (en.Alumnos.Count >= en.Capacidad)
+                    throw new Exception("El grupo ya está completo");
+
+                //Comprobar si el código cambia y ya está registrado
+                if (cod != en.Cod_grupo && cen.ReadCod(cod) != null)
+                    throw new Exception("El código ya está registrado");
+
                 //Ejecutar la modificación
                 cen.Modify(id,cod,nombre,descripcion,password,capacidad);
 
@@ -139,6 +225,11 @@ namespace ComponentesProceso.Moodle
 
                 GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+
+                //Comprobar su existencia
+                if (cen.ReadOID(id) == null)
+                    throw new Exception("El grupo de trabajo no existe");
+
                 //Ejecutar el borrado
                 cen.Destroy(id);
 
@@ -165,6 +256,23 @@ namespace ComponentesProceso.Moodle
 
                 GrupoTrabajoCAD cad = new GrupoTrabajoCAD(session);
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
+                GrupoTrabajoEN en = cen.ReadOID(id);
+
+                //Comprobar su existencia
+                if ( en == null)
+                    throw new Exception("El grupo de trabajo no existe");
+
+                //Comprobar que estuvieran vinculados
+                AlumnoEN alu = new AlumnoEN();
+                IList<AlumnoEN> alumnosInscritos = en.Alumnos;
+
+                foreach (String email in emails)
+                {
+                    alu.Email = email;
+                    if (!alumnosInscritos.Contains(alu))
+                        throw new Exception("El alumno " + email + " no estaba registrado en el grupo");
+                }
+
                 //Ejecutar la desvinculación
                 cen.Unrelationer_alumnos(id, emails);
 
@@ -193,9 +301,24 @@ namespace ComponentesProceso.Moodle
                 GrupoTrabajoCEN cen = new GrupoTrabajoCEN(cad);
                 GrupoTrabajoEN en = cen.ReadOID(id);
 
+                //Comprobar su existencia
+                if (cen.ReadOID(id) == null)
+                    throw new Exception("El grupo de trabajo no existe");
+
                 //Comprobar tamaño
                 if ((en.Alumnos.Count + emails.Count) > en.Capacidad)
                     throw new Exception("El tamaño del grupo es insuficiente");
+
+                //Comprobar que no estuvieran ya vinculados
+                AlumnoEN alu = new AlumnoEN();
+                IList<AlumnoEN> alumnosInscritos = en.Alumnos;
+
+                foreach(String email in emails)
+                {
+                    alu.Email = email;
+                    if (alumnosInscritos.Contains(alu))
+                        throw new Exception("El alumno " + email + " ya está registrado en el grupo");
+                }
 
                 //Ejecutar la relación
                 cen.Relationer_alumnos(id, emails);

@@ -34,5 +34,6 @@
 		  
 		  <query name="CursoENReadAllHQL">from CursoEN</query>
 		  <query name="CursoENreadCantidadHQL"><![CDATA[select count(*) FROM CursoEN]]></query>
+		  <query name="CursoENreadCodHQL"><![CDATA[FROM CursoEN curs where curs=:cod ]]></query>
 		</hibernate-mapping>
 	

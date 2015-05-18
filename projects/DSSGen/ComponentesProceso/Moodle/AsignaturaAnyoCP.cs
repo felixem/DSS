@@ -56,13 +56,23 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
-                AsignaturaAnyoCAD cad = new AsignaturaAnyoCAD(session);
-                AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
+                //Comprobar la existencia del Año
+                AnyoAcademicoCAD anyoCad = new AnyoAcademicoCAD(session);
+                AnyoAcademicoCEN anyoCen = new AnyoAcademicoCEN(anyoCad);
+                if (anyoCen.ReadOID(idAnyo) == null)
+                    throw new Exception("El año académico no existe");
+
+                //Comprobar la existencia de la asignatura
+                AsignaturaCAD asigCad = new AsignaturaCAD(session);
+                AsignaturaCEN asigCen = new AsignaturaCEN(asigCad);
+                if (asigCen.ReadOID(idAsignatura) == null)
+                    throw new Exception("La asignatura no existe");
 
                 //Comprobar si existe previamente una relación entre la asignatura y el año
-                AsignaturaAnyoEN asig = cen.ReadRelation(idAsignatura, idAnyo);
-                if (asig != null)
-                    throw new Exception("Relación ya existente");
+                AsignaturaAnyoCAD cad = new AsignaturaAnyoCAD(session);
+                AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
+                if (cen.ReadRelation(idAsignatura, idAnyo) != null)
+                    throw new Exception("La vinculación entre la asignatura y el año ya existe");
 
                 //Crear la asignatura-anyo
                 id = cen.New_(idAnyo,idAsignatura);
@@ -118,6 +128,11 @@ namespace ComponentesProceso.Moodle
 
                 AsignaturaAnyoCAD cad = new AsignaturaAnyoCAD(session);
                 AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
+
+                //Comprobar existencia
+                if (cen.ReadOID(oid) == null)
+                    throw new Exception("La vinculación entre la asignatura y el año no existe");
+
                 //Ejecutar la modificación
                 cen.Modify(oid);
 
@@ -144,6 +159,11 @@ namespace ComponentesProceso.Moodle
 
                 AsignaturaAnyoCAD cad = new AsignaturaAnyoCAD(session);
                 AsignaturaAnyoCEN cen = new AsignaturaAnyoCEN(cad);
+
+                //Comprobar existencia
+                if (cen.ReadOID(id) == null)
+                    throw new Exception("La vinculación entre la asignatura y el año no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(id);
 
@@ -174,7 +194,7 @@ namespace ComponentesProceso.Moodle
                 AlumnoEN alu = aluCen.ReadCod(codAlumno);
 
                 if (alu == null)
-                    throw new Exception("No se encontró el alumno");
+                    throw new Exception("El alumno no existe");
 
                 //Obtener expediente del alumno
                 ExpedienteCAD expCad = new ExpedienteCAD(session);
@@ -182,7 +202,7 @@ namespace ComponentesProceso.Moodle
                 ExpedienteEN exp = expCen.ReadRelation(alu.Email);
 
                 if (exp == null)
-                    throw new Exception("No se encontró el expediente del Alumno");
+                    throw new Exception("El expediente del alumno no existe");
 
                 //Obtener la asignatura
                 AsignaturaAnyoCAD asigCad = new AsignaturaAnyoCAD(session);
@@ -190,7 +210,7 @@ namespace ComponentesProceso.Moodle
                 AsignaturaAnyoEN asig = asigCen.ReadOID(idAsig);
 
                 if (asig == null)
-                    throw new Exception("No se encontró la asignatura");
+                    throw new Exception("La vinculación entre la asignatura y el año no existe");
 
                 //Obtener la id del Año académico
                 int anyo = asig.Anyo.Id;
@@ -201,7 +221,7 @@ namespace ComponentesProceso.Moodle
                 ExpedienteAnyoEN expAnyo = expAnyoCen.ReadRelation(exp.Id, anyo);
 
                 if (expAnyo == null)
-                    throw new Exception("No se encontró el expediente del alumno para el año académico");
+                    throw new Exception("El expediente del alumno para el año académico no existe");
 
                 //Comprobar que no exista matriculación todavía
                 ExpedienteAsignaturaCAD expAsigCad = new ExpedienteAsignaturaCAD(session);
@@ -241,7 +261,7 @@ namespace ComponentesProceso.Moodle
                 AlumnoEN alu = aluCen.ReadCod(codAlumno);
 
                 if (alu == null)
-                    throw new Exception("No se encontró el alumno");
+                    throw new Exception("El alumno no existe");
 
                 //Obtener expediente del alumno
                 ExpedienteCAD expCad = new ExpedienteCAD(session);
@@ -249,7 +269,7 @@ namespace ComponentesProceso.Moodle
                 ExpedienteEN exp = expCen.ReadRelation(alu.Email);
 
                 if (exp == null)
-                    throw new Exception("No se encontró el expediente del Alumno");
+                    throw new Exception("El expediente del alumno no existe");
 
                 //Obtener la asignatura
                 AsignaturaAnyoCAD asigCad = new AsignaturaAnyoCAD(session);
@@ -257,7 +277,7 @@ namespace ComponentesProceso.Moodle
                 AsignaturaAnyoEN asig = asigCen.ReadOID(idAsig);
 
                 if (asig == null)
-                    throw new Exception("No se encontró la asignatura");
+                    throw new Exception("La vinculación entre la asignatura y el año no existe");
 
                 //Obtener la id del Año académico
                 int anyo = asig.Anyo.Id;
@@ -268,7 +288,7 @@ namespace ComponentesProceso.Moodle
                 ExpedienteAnyoEN expAnyo = expAnyoCen.ReadRelation(exp.Id, anyo);
 
                 if (expAnyo == null)
-                    throw new Exception("No se encontró el expediente del alumno para el año académico");
+                    throw new Exception("El expediente del alumno para el año académico no existe");
 
                 //Comprobar que no exista matriculación todavía
                 ExpedienteAsignaturaCAD expAsigCad = new ExpedienteAsignaturaCAD(session);

@@ -94,10 +94,8 @@ namespace DSSGenNHibernate.Profesor
             int profesorId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Eliminar profesor
-            if (fachada.BorrarProfesor(profesorId))
-                Notification.Notify(Response,"El profesor no ha podido ser borrado");
-            else
-                Notification.Notify(Response, "El profesor no ha podido ser borrado");
+            fachada.BorrarProfesor(profesorId);
+            Notification.Current.NotifyLastNotification(Response);
 
             //Obtener de nuevo la lista de bolsas
             this.ObtenerProfesoresPaginados(1);

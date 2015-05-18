@@ -14,17 +14,22 @@ namespace DSSGenNHibernate.Profesor
     {
         //Creo la fachada
         FachadaProfesor profesor;
+        FachadaFecha fachadaFecha;
 
         //Manejador para la carga de la página
         protected void Page_Load(object sender, EventArgs e)
         {
             profesor = new FachadaProfesor();
+            fachadaFecha = new FachadaFecha();
 
             if (!IsPostBack)
             {
                 //Capturar la página que realizó la petición
                 NavigationSession navegacion = NavigationSession.Current;
                 navegacion.SavePreviuosPage(Request);
+                this.ObtenerAnyos();
+                this.ObtenerMeses();
+                this.ObtenerDias();
             }
         }
 
@@ -35,32 +40,21 @@ namespace DSSGenNHibernate.Profesor
             string nombre = TextBox_NomProf.Text;
             string apellidos = TextBox_ApellProf.Text;
             string pass = TextBox_ContProf.Text;
-            string fecha = TextBox_NaciProf.Text;
+            DateTime fecha = DateTime.Parse("" + ddlDia.Text + "/" + ddlMes.Text + "/" + ddlAno.Text);
             string dni = TextBox_DNIProf.Text;
             string email = TextBox_EmailProf.Text;
             string cod = TextBox_CodProf.Text;
 
             //Llamo al metodo que registra al profesor
-            bool verificado;
-
-            try
+            if (profesor.RegistrarProfesor(nombre, apellidos, pass, fecha, dni, email, 
+                Convert.ToInt32(cod)))
             {
-                verificado = profesor.RegistrarProfesor(nombre, apellidos, pass, Convert.ToDateTime(fecha), dni, email, Convert.ToInt32(cod));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Comprobamos si se creo el usuario
-            if (verificado)
-            {
-                Notification.Notify(Response, "El profesor ha sido creado");
+                Notification.Current.NotifyLastNotification(Response);
                 this.Clean();
             }
             else
             {
-                Notification.Notify(Response,"El profesor no ha podido ser creado");
+                Notification.Current.NotifyLastNotification(Response);
             }
         }
 
@@ -71,7 +65,6 @@ namespace DSSGenNHibernate.Profesor
             TextBox_ApellProf.Text = "";
             TextBox_ContProf.Text = "";
             TextBox_VContProf.Text = "";
-            TextBox_NaciProf.Text = "";
             TextBox_DNIProf.Text = "";
             TextBox_EmailProf.Text = "";
             TextBox_CodProf.Text = "";
@@ -83,18 +76,42 @@ namespace DSSGenNHibernate.Profesor
             this.Clean();
         }
 
-        //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
+        protected void ObtenerAnyos()
         {
-            try
-            {
-                Convert.ToDateTime(e.Value);
-                e.IsValid = true;
-            }
-            catch (Exception)
-            {
-                e.IsValid = false;
-            }
+            fachadaFecha.VincularDameAnyos(ddlAno, 100, 0);
+           
+        }
+        protected void ObtenerMeses()
+        {
+
+            fachadaFecha.VincularDameMesesNac(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+           
+
+        }
+        protected void ObtenerDias()
+        {
+
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+           
+
+        }
+
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMes.Items.Clear();
+            ddlDia.Items.Clear();
+
+            fachadaFecha.VincularDameMesesNac(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDia.Items.Clear();
+            fachadaFecha.VincularDameDiasNac(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
         }
 
         //Botón utilizado para cancelar la creación y volver atrás

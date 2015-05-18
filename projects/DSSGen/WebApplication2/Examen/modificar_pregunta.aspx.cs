@@ -95,10 +95,8 @@ namespace DSSGenNHibernate.Examen
             String explicacion = TextBox_Explicacion.Text;
 
             //Modificar la pregunta de la bolsa
-            if (bolsa.ModificarPregunta(id, enunciado, respuestas, idCorrecta, explicacion))
-                Notification.Notify(Response, "La pregunta ha sido modificada");
-            else
-                Notification.Notify(Response, "La pregunta no ha podido ser modificada");
+            bolsa.ModificarPregunta(id, enunciado, respuestas, idCorrecta, explicacion);
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Cancelar la creación de la respuesta

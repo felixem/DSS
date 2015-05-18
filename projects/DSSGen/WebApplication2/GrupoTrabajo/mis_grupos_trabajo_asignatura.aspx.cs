@@ -114,23 +114,21 @@ namespace DSSGenNHibernate.GrupoTrabajo
             rptPager.DataBind();
         }
 
-        //Manejador del evento para acceder a un grupo de trabajo
+        //Manejador del evento para salir de un grupo de trabajo
         protected void lnkSalirDelGrupo_Click(object sender, EventArgs e)
         {
             GridViewRow grdrow = (GridViewRow)((LinkButton)sender).NamingContainer;
             int grupoId = Int32.Parse(grdrow.Cells[0].Text);
 
             //Desvincular un alumno de un grupo de trabajo
-            if (fachadaGrupo.DesvincularAlumno(grupoId, alumno))
-                Notification.Notify(Response, "El alumno ha sido desvinculado del grupo");
-            else
-                Notification.Notify(Response, "El alumno no ha podido ser desvinculado del grupo");
+            fachadaGrupo.DesvincularAlumno(grupoId, alumno);
+            Notification.Current.NotifyLastNotification(Response);
 
             this.CargarDatos();
             this.ObtenerGruposTrabajoPaginados(1);
         }
 
-        //Botón utilizado para cancelar la creación y volver atrás
+        //Botón utilizado para volver atrás
         protected void Button_Cancelar_Click(object sender, EventArgs e)
         {
             //Redirigir a la página que le llamó
@@ -138,11 +136,11 @@ namespace DSSGenNHibernate.GrupoTrabajo
             link.Redirect(Response, link.PreviousPage());
         }
 
-        //Botón utilizado para acceder a la página donde poder acceder a otros grupos de la signatura
+        //Botón utilizado para acceder a la página donde poder acceder a otros grupos de la asignatura
         protected void Button_Otros_Grupos_Click(object sender, EventArgs e)
         {
             //Redirigir a la página que le llamó
-            Linker link = new Linker(false);
+            Linker link = new Linker(true);
             link.Redirect(Response, link.ListarGruposTrabajoAsignaturaAnyoAlumno(asignaturaanyoId));
         }
     }

@@ -57,6 +57,12 @@ namespace ComponentesProceso.Moodle
             {
                 SessionInitializeTransaction();
 
+                //Comprobar si existe la asignatura
+                AsignaturaCAD asigCad = new AsignaturaCAD(session);
+                AsignaturaCEN asigCen = new AsignaturaCEN(asigCad);
+                if (asigCen.ReadOID(asignatura) == null)
+                    throw new Exception("La asignatura no existe");
+
                 //Crear bolsa
                 BolsaPreguntasCAD cad = new BolsaPreguntasCAD(session);
                 BolsaPreguntasCEN cen = new BolsaPreguntasCEN(cad);
@@ -92,10 +98,25 @@ namespace ComponentesProceso.Moodle
                 //Modificar valores de bolsa
                 BolsaPreguntasCAD cad = new BolsaPreguntasCAD(session);
                 BolsaPreguntasCEN cen = new BolsaPreguntasCEN(cad);
+                BolsaPreguntasEN bolsaEn = cen.ReadOID(idBolsa);
+
+                //Comprobar si existe la bolsa
+                if (bolsaEn == null)
+                    throw new Exception("La bolsa no existe");
+
                 cen.Modify(idBolsa, nombre, descripcion, fecha_creacion, fecha_modificacion);
 
                 //Relacionar la bolsa con la nueva asignatura y desvincularla con la anterior
+                if (bolsaEn.Asignatura.Id != asignaturaOriginal)
+                    throw new Exception("No se pudo desvincular la bolsa con la asignatura original");
+
                 cen.Unrelationer_asignatura(idBolsa, asignaturaOriginal);
+
+                AsignaturaCAD asigCad = new AsignaturaCAD(session);
+                AsignaturaCEN asigCen = new AsignaturaCEN(asigCad);
+
+                if (asigCen.ReadOID(asignaturaNueva) == null)
+                    throw new Exception("No existe la asignatura");
                 cen.Relationer_asignatura(idBolsa, asignaturaNueva);
 
                 //Crear las preguntas nuevas
@@ -166,6 +187,7 @@ namespace ComponentesProceso.Moodle
                 //Modificar pregunta
                 int idPreg = preg.Id;
                 preguntaCen.Modify(idPreg,preg.Contenido,preg.Explicacion);
+
                 int idRespCorrecta = preg.Respuesta_correcta.Id;
                 //Relacionar con el id de la respuesta correcta
                 preguntaCen.Relationer_respuesta_correcta(idPreg, idRespCorrecta);
@@ -209,6 +231,10 @@ namespace ComponentesProceso.Moodle
                 BolsaPreguntasCAD bolsaCad = new BolsaPreguntasCAD(session);
                 BolsaPreguntasCEN bolsaCen = new BolsaPreguntasCEN(bolsaCad);
                 BolsaPreguntasEN bolsa = bolsaCen.ReadOID(id);
+
+                //Comprobar si existe la bolsa
+                if (bolsa == null)
+                    throw new Exception("La bolsa no existe");
 
                 //Borrar las preguntas
                 PreguntaCAD preguntaCad = new PreguntaCAD(session);

@@ -8,6 +8,7 @@ using ComponentesProceso.Moodle.Commands;
 using ComponentesProceso.Moodle;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -52,11 +53,13 @@ namespace Fachadas.Moodle
                 AsignaturaCP cp = new AsignaturaCP();
                 cp.CrearAsignatura(codigo, nombre, descripcion, optativa, vigente, p_curso);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La asignatura no pudo ser creada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La asignatura ha sido creada");
             return true;
         }
 
@@ -92,11 +95,13 @@ namespace Fachadas.Moodle
                 AsignaturaCP cp = new AsignaturaCP();
                 cp.ModificarAsignatura(oid, codAsignatura, nombre, descripcion, optativa, vigente);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La asignatura no pudo ser modificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La asignatura ha sido modificada");
             return true;
         }
 
@@ -108,11 +113,13 @@ namespace Fachadas.Moodle
                 AsignaturaCP cp = new AsignaturaCP();
                 cp.BorrarAsignatura(id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La asignatura no pudo ser borrada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La asignatura ha sido borrada");
             return true;
         }
     }

@@ -42,12 +42,8 @@ namespace DSSGenNHibernate.AsignaturaAnyo
             int idAsignatura = Int32.Parse(DropDownList_Asignaturas.SelectedValue);
 
             //Crear la asignatura
-            if (fachadaAsignaturaAnyo.CrearAsignaturaAnyo(idAnyo,idAsignatura))
-            {
-                Notification.Notify(Response, "La asignatura ha sido vinculada con el año académico");
-            }
-            else
-                Notification.Notify(Response,"La asignatura no ha podido ser vinculada con el año académico");
+            fachadaAsignaturaAnyo.CrearAsignaturaAnyo(idAnyo,idAsignatura);
+            Notification.Current.NotifyLastNotification(Response);
 
             this.ObtenerAsignaturas();
         }

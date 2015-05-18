@@ -19,13 +19,24 @@ namespace ComponentesProceso.Moodle
         //Constructor con sesión
         public EvaluacionCP(ISession sesion) : base(sesion) { }
 
-        public int CrearEvaluacion(string p_nombre, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_abierta, int p_anyo_academico)
+        public int CrearEvaluacion(string p_nombre, DateTime p_fecha_inicio, DateTime p_fecha_fin, 
+            bool p_abierta, int p_anyo_academico)
         {
             int resultado;
 
             try
             {
                 SessionInitializeTransaction();
+
+                //Comprobar fechas
+                if (DateTime.Compare(p_fecha_inicio, p_fecha_fin) >= 0)
+                    throw new Exception("La fecha de inicio debe ser anterior a la de fin");
+
+                //Comprobar la existencia del año académico
+                AnyoAcademicoCAD anyoCad = new AnyoAcademicoCAD(session);
+                AnyoAcademicoCEN anyoCen = new AnyoAcademicoCEN(anyoCad);
+                if (anyoCen.ReadOID(p_anyo_academico) == null)
+                    throw new Exception("El año académico no existe");
 
                 //Creo el evaluacion
                 EvaluacionCAD cad = new EvaluacionCAD(session);
@@ -46,7 +57,8 @@ namespace ComponentesProceso.Moodle
             }
             return resultado;
         }
-        public void ModificarEvaluacion(int id,string p_nombre, Nullable<DateTime> p_fecha_inicio, Nullable<DateTime> p_fecha_fin, bool p_abierta)
+        public void ModificarEvaluacion(int id,string p_nombre, DateTime p_fecha_inicio, 
+           DateTime p_fecha_fin, bool p_abierta)
         {
               try
             {
@@ -55,6 +67,11 @@ namespace ComponentesProceso.Moodle
                 //Creo el evaluacion
                 EvaluacionCAD cad = new EvaluacionCAD(session);
                 EvaluacionCEN cen = new EvaluacionCEN(cad);
+
+                //Comprobar fechas
+                if (DateTime.Compare(p_fecha_inicio, p_fecha_fin) >= 0)
+                    throw new Exception("La fecha de inicio debe ser anterior a la de fin");
+
                 cen.Modify(id,p_nombre,p_fecha_inicio,p_fecha_fin,p_abierta);
 
                 SessionCommit();
@@ -131,6 +148,11 @@ namespace ComponentesProceso.Moodle
 
                 EvaluacionCAD cad = new EvaluacionCAD(session);
                 EvaluacionCEN cen = new EvaluacionCEN(cad);
+
+                //Comprobar la existencia de la evaluación
+                if (cen.ReadOID(cod) == null)
+                    throw new Exception("La evaluación no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(cod);
 

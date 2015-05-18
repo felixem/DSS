@@ -18,8 +18,7 @@
     </div>
     <asp:Panel ID="Panel2" runat="server" CssClass="ContenedorInterno">
             <asp:Label ID="Label1" runat="server" Text="Asignatura" CssClass="posicion_izquierda"></asp:Label>
-            <asp:TextBox ID="TextBox_Asignatura" runat="server" CssClass="posicion_derecha" 
-                ReadOnly="True" Width="172px"></asp:TextBox>
+            <asp:TextBox ID="TextBox_Asignatura" runat="server" ReadOnly="True" Width="172px" CssClass="background_locked"></asp:TextBox>
         <div class="">
             PageSize:
             <asp:DropDownList ID="ddlPageSize" runat="server" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
@@ -29,6 +28,7 @@
             </asp:DropDownList>
             <hr />
             <asp:Button ID="Button_Crear" runat="server" Text="Crear control" OnClick="Button_Crear_Click" />
+            <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" CssClass="posicion_derecha" Text="Volver"/>
             <asp:GridView ID="GridViewBolsas" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="Id" />

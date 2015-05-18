@@ -14,7 +14,9 @@ namespace BindingComponents.Moodle.Commands
         //Variables privadas
         private TextBox TextBox_NomAlu;
         private TextBox TextBox_ApellAlu;
-        private TextBox TextBox_NaciAlu;
+        private DropDownList ddl_ano;
+        private DropDownList ddl_mes;
+        private DropDownList ddl_dia;
         private TextBox TextBox_DNIAlu;
         private TextBox TextBox_EmailAlu;
         private TextBox TextBox_CodAlu;
@@ -23,13 +25,15 @@ namespace BindingComponents.Moodle.Commands
 
         //Crear el vinculador a partir de sus textboxes
         public BinderAlumnoCompleto(TextBox TextBox_NomAlu,
-            TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
+            TextBox TextBox_ApellAlu, DropDownList Ano, DropDownList Mes, DropDownList Dia, TextBox TextBox_DNIAlu,
             TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado,
             TextBox TextBox_CodExpediente)
         {
             this.TextBox_NomAlu = TextBox_NomAlu;
             this.TextBox_ApellAlu = TextBox_ApellAlu;
-            this.TextBox_NaciAlu = TextBox_NaciAlu;
+            this.ddl_ano = Ano;
+            this.ddl_mes = Mes;
+            this.ddl_dia = Dia;
             this.TextBox_DNIAlu = TextBox_DNIAlu;
             this.TextBox_EmailAlu = TextBox_EmailAlu;
             this.TextBox_CodAlu = TextBox_CodAlu;
@@ -43,7 +47,9 @@ namespace BindingComponents.Moodle.Commands
             //Vincular con los textboxes
             TextBox_NomAlu.Text = alumno.Nombre;
             TextBox_ApellAlu.Text = alumno.Apellidos;
-            TextBox_NaciAlu.Text = alumno.Fecha_nacimiento.ToString();
+            ddl_ano.SelectedValue = alumno.Fecha_nacimiento.Value.Year.ToString();
+            ddl_mes.SelectedValue = alumno.Fecha_nacimiento.Value.Month.ToString();
+            ddl_dia.SelectedValue = alumno.Fecha_nacimiento.Value.Day.ToString();
             TextBox_DNIAlu.Text = alumno.Dni;
             TextBox_EmailAlu.Text = alumno.Email;
             TextBox_CodAlu.Text = alumno.Cod_alumno.ToString();

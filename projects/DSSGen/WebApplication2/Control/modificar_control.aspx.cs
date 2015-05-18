@@ -14,6 +14,7 @@ namespace DSSGenNHibernate.Control
     public partial class modificar_control : BasicPage
     {
         FachadaControl fachada;
+        FachadaFecha fachadaFecha;
         private int id;
         String param;
 
@@ -28,10 +29,14 @@ namespace DSSGenNHibernate.Control
             }
 
             fachada = new FachadaControl();
+            fachadaFecha = new FachadaFecha();
             Obtener_Parametros();
 
             if (!IsPostBack)
             {
+                ObtenerAnyos();
+                ObtenerMeses();
+                ObtenerDias();
                 //Cargar datos
                 this.CargarDatos();
             }
@@ -57,7 +62,7 @@ namespace DSSGenNHibernate.Control
         {
             //Recuperar los datos del control
             if (!fachada.VincularControlPorId(id, TextBox_Nom,
-            TextBox_Desc, TextBox_Apertura, TextBox_Cierre,
+            TextBox_Desc, ddlAno, ddlMes, ddlDia, ddlAnoC, ddlMesC, ddlDiaC,
             TextBox_Duracion, TextBox_PuntMax, TextBox_Penalizacion, 
             TextBox_Anyo, TextBox_Asignatura, TextBox_Evaluacion, TextBox_CodControl))
             {
@@ -73,32 +78,17 @@ namespace DSSGenNHibernate.Control
             //Recojo los datos
             string nombre = TextBox_Nom.Text;
             string descripcion = TextBox_Desc.Text;
-            string apertura = TextBox_Apertura.Text;
-            string cierre = TextBox_Cierre.Text;
+            string apertura = "" + ddlDia.Text + "/" + ddlMes.Text + "/" + ddlAno.Text;
+            string cierre = "" + ddlDiaC.Text + "/" + ddlMesC.Text + "/" + ddlAnoC.Text;
             string duracion = TextBox_Duracion.Text;
             string puntmaxima = TextBox_PuntMax.Text;
             string penalizacion = TextBox_Penalizacion.Text;
 
-            bool verificado;
-            //Pruebo a registrar el control
-            try
-            {
-                verificado = fachada.ModificarControl(id,nombre,descripcion,DateTime.Parse(apertura),DateTime.Parse(cierre),Int32.Parse(duracion),float.Parse(puntmaxima), float.Parse(penalizacion));
-            }
-            catch (Exception)
-            {
-                verificado = false;
-            }
-
-            //Compruebo si se han almacenado los cambios
-            if (verificado)
-            {
-                Notification.Notify(Response, "El control ha sido modificado");
-            }
-            else
-            {
-                Notification.Notify(Response, "El control no ha podido ser modificado");
-            }
+            //Modificar el control
+            fachada.ModificarControl(id,nombre,descripcion,DateTime.Parse(apertura),DateTime.Parse(cierre),
+                Int32.Parse(duracion),float.Parse(puntmaxima), float.Parse(penalizacion));
+            //Mostrar notificación
+            Notification.Current.NotifyLastNotification(Response);
         }
 
         //Botón utilizado para cancelar la creación y volver atrás
@@ -109,18 +99,61 @@ namespace DSSGenNHibernate.Control
             link.Redirect(Response, link.PreviousPage());
         }
 
-        //Metodo que comprueba la fecha(Control de validacion)
-        protected void ComprobarFecha(object sender, ServerValidateEventArgs e)
+        //Cargar el ddl Anyos
+        protected void ObtenerAnyos()
         {
-            try
-            {
-                Convert.ToDateTime(e.Value);
-                e.IsValid = true;
-            }
-            catch (Exception)
-            {
-                e.IsValid = false;
-            }
+            fachadaFecha.VincularDameAnyos(ddlAno, 10, 10);
+            fachadaFecha.VincularDameAnyos(ddlAnoC, 10, 10);
+        }
+        //Cargar el dll  meses
+        protected void ObtenerMeses()
+        {
+
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAnoC.SelectedValue), ddlMesC);
+
+        }
+        //Cargar el ddl dias
+        protected void ObtenerDias()
+        {
+
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMesC.SelectedValue), Int32.Parse(ddlAnoC.SelectedValue), ddlDiaC);
+
+        }
+
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMes.Items.Clear();
+            ddlDia.Items.Clear();
+
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAno.SelectedValue), ddlMes);
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDia.Items.Clear();
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMes.SelectedValue), Int32.Parse(ddlAno.SelectedValue), ddlDia);
+
+        }
+        //Evento ocurrido al seleccionar un año
+        protected void ddlAnoC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlMesC.Items.Clear();
+            ddlDiaC.Items.Clear();
+            fachadaFecha.VincularDameMeses(Int32.Parse(ddlAnoC.SelectedValue), ddlMesC);
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMesC.SelectedValue), Int32.Parse(ddlAnoC.SelectedValue), ddlDiaC);
+        }
+
+        //Evento ocurrido al seleccionar un mes
+        protected void ddlMesC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlDiaC.Items.Clear();
+            fachadaFecha.VincularDameDias(Int32.Parse(ddlMesC.SelectedValue), Int32.Parse(ddlAnoC.SelectedValue), ddlDiaC);
+
         }
     }
 }

@@ -9,7 +9,7 @@ using WebUtilities;
 
 namespace Fachadas.Moodle
 {
-    public class FachadaPassword
+    public class FachadaUsuario
     {
         public bool ChangePass(String user, String pass, String npass) {
             bool result = false;
@@ -18,10 +18,14 @@ namespace Fachadas.Moodle
                 UsuarioCP passCP = new UsuarioCP();
                 result=passCP.CambiarPassword(user, pass, npass);
             }
-            catch (Exception ex) {
-                throw ex;
+            catch (Exception ex)
+            {
+                Notification.Current.AddNotification("ERROR: La contraseña no ha podido ser cambiada. " + ex.Message);
+                return false;
             }
-            return result;
+
+            Notification.Current.AddNotification("La contraseña ha sido cambiada");
+            return true;
         }
     }
 }

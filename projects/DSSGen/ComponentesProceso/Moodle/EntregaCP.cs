@@ -20,13 +20,30 @@ namespace ComponentesProceso.Moodle
         public EntregaCP(ISession sesion) : base(sesion) { }
 
         //Registra la entrega en la BD y devuelve su resultado
-        public int CrearEntrega(string p_nombre, string p_descripcion, Nullable<DateTime> p_fecha_apertura, Nullable<DateTime> p_fecha_cierre, float p_puntuacion_maxima, string p_profesor, int p_evaluacion)
+        public int CrearEntrega(string p_nombre, string p_descripcion, DateTime p_fecha_apertura, 
+            DateTime p_fecha_cierre, float p_puntuacion_maxima, string p_profesor, int p_evaluacion)
         {
             int resultado;
 
             try
             {
                 SessionInitializeTransaction();
+
+                //Comprobar las fechas de apertura
+                if (DateTime.Compare(p_fecha_apertura, p_fecha_cierre) >= 0)
+                    throw new Exception("La fecha de apertura debe ser anterior a la de cierre");
+
+                //Comprobar si existe el sistema de evaluación
+                SistemaEvaluacionCAD sistemaCad = new SistemaEvaluacionCAD(session);
+                SistemaEvaluacionCEN sistemaCen = new SistemaEvaluacionCEN(sistemaCad);
+                if (sistemaCen.ReadOID(p_evaluacion) == null)
+                    throw new Exception("El sistema de evaluación no existe");
+
+                //Comprobar si existe el profesor
+                ProfesorCAD profesorCad = new ProfesorCAD(session);
+                ProfesorCEN profesorCen = new ProfesorCEN(profesorCad);
+                if (profesorCen.ReadOID(p_profesor) == null)
+                    throw new Exception("El profesor no existe");
 
                 //Creo el control
                 EntregaCAD cad = new EntregaCAD(session);
@@ -57,6 +74,11 @@ namespace ComponentesProceso.Moodle
 
                 EntregaCAD cad = new EntregaCAD(session);
                 EntregaCEN cen = new EntregaCEN(cad);
+
+                //Comprobar la existencia de la entrega
+                if (cen.ReadOID(cod) == null)
+                    throw new Exception("La entrega no existe");
+
                 //Ejecutar la modificación
                 cen.Destroy(cod);
 
@@ -130,15 +152,23 @@ namespace ComponentesProceso.Moodle
 
         //Modifica el entrega en la BD
         public void ModificarEntrega(int p_oid, string p_nombre, string p_descripcion, 
-            Nullable<DateTime> p_fecha_apertura, 
-            Nullable<DateTime> p_fecha_cierre, float p_puntuacion_maxima)
+            DateTime p_fecha_apertura, DateTime p_fecha_cierre, float p_puntuacion_maxima)
         {
             try
             {
                 SessionInitializeTransaction();
 
+                //Comprobar fecha
+                if (DateTime.Compare(p_fecha_apertura, p_fecha_cierre) >= 0)
+                    throw new Exception("La fecha de apertura debe ser anterior a la de cierre");
+
                 EntregaCAD cad = new EntregaCAD(session);
                 EntregaCEN cen = new EntregaCEN(cad);
+
+                //Comprobar la existencia de la entrega
+                if (cen.ReadOID(p_oid) == null)
+                    throw new Exception("La entrega no existe");
+
                 //Ejecutar la modificación
                 cen.Modify(p_oid, p_nombre, p_descripcion, p_fecha_apertura, p_fecha_cierre, p_puntuacion_maxima);
 

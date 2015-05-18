@@ -32,6 +32,8 @@ namespace DSSGenNHibernate.EntregaAlumno
 
             if (!IsPostBack)
             {
+                //Mostrar notificaciones recibidas
+                Notification.Current.NotifyLastNotification(Response);
                 //Cargar datos
                 this.CargarDatos();
             }
@@ -80,6 +82,13 @@ namespace DSSGenNHibernate.EntregaAlumno
             //Intentar descargar el fichero
             Linker link = new Linker(false);
             link.Redirect(Response, link.DescargaEntregaPracticas(id));
+        }
+
+        //Botón uttilizado para ir a la interfaz editar
+        protected void Button_Editar_Click(object sender, EventArgs e)
+        {
+            Linker link = new Linker(false);
+            link.Redirect(Response, link.EditarEntregaAlumno(id));
         }
     }
 }

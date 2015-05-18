@@ -9,6 +9,7 @@ using BindingComponents.Moodle;
 using ComponentesProceso.Moodle.Commands;
 using DSSGenNHibernate.EN.Moodle;
 using BindingComponents.Moodle.Commands;
+using WebUtilities;
 
 namespace Fachadas.Moodle
 {
@@ -23,11 +24,13 @@ namespace Fachadas.Moodle
                 AlumnoCP alumno = new AlumnoCP();
                 alumno.CrearAlumno(nombre, apellidos, pass, fecha, dni, email, cod, codExpediente, expedienteAbierto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser creado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El alumno ha sido creado");
             return true;
         }
 
@@ -39,9 +42,11 @@ namespace Fachadas.Moodle
             {
                 AlumnoCP cp = new AlumnoCP();
                 cp.ModificarAlumnoNoPassword(email, codAlumno, baneado, dni, nombre, apellidos, fechaNacimiento);
+                Notification.Current.AddNotification("El alumno ha sido modificado");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser modificado. " + ex.Message);
                 return false;
             }
 
@@ -56,11 +61,13 @@ namespace Fachadas.Moodle
                 AlumnoCP cp = new AlumnoCP();
                 cp.BorrarAlumno(codAlumno);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: El alumno no pudo ser borrado. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("El alumno ha sido borrado");
             return true;
         }
 
@@ -121,7 +128,7 @@ namespace Fachadas.Moodle
 
         //Método para vincular un alumno a partir de su id a textboxes
         public bool VincularAlumnoPorId(int id, TextBox TextBox_NomAlu,
-            TextBox TextBox_ApellAlu, TextBox TextBox_NaciAlu, TextBox TextBox_DNIAlu,
+            TextBox TextBox_ApellAlu, DropDownList ddlAno, DropDownList ddlMes, DropDownList ddlDia, TextBox TextBox_DNIAlu,
             TextBox TextBox_EmailAlu, TextBox TextBox_CodAlu, CheckBox CheckBox_Baneado,
             TextBox TextBox_CodExpediente)
         {
@@ -130,7 +137,7 @@ namespace Fachadas.Moodle
                 AlumnoBinding binding = new AlumnoBinding();
                 DameAlumnoPorId consulta = new DameAlumnoPorId(id);
                 BinderAlumnoCompleto linker = new BinderAlumnoCompleto(TextBox_NomAlu,
-                TextBox_ApellAlu, TextBox_NaciAlu, TextBox_DNIAlu, TextBox_EmailAlu,
+                TextBox_ApellAlu,ddlAno, ddlMes, ddlDia, TextBox_DNIAlu, TextBox_EmailAlu,
                 TextBox_CodAlu, CheckBox_Baneado, TextBox_CodExpediente);
 
                 binding.VincularDameAlumno(consulta, linker);

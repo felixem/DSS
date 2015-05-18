@@ -23,35 +23,85 @@ namespace Fachadas.Moodle
         public bool EntregarPractica(int idEntrega, MySession session, HttpServerUtility Server,
             FileUpload FileUploadControl, Label StatusLabel, TextBox TextBox_Comentario, out int entregaAlumno)
         {
-            Uploader uploader = new Uploader(Server, FileUploadControl);
             entregaAlumno = -1;
 
-            //Comprobar las precondiciones del archivo
-            if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
+            try
+            {
+                Uploader uploader = new Uploader(Server, FileUploadControl);
+
+                //Comprobar las precondiciones del archivo
+                if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
+                    throw new Exception(StatusLabel.Text);
+
+                //Inicializar las variables
+                HttpPostedFile file = FileUploadControl.PostedFile;
+                string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = System.IO.Path.GetExtension(nombreFichero);
+                string ruta = "";
+                float tam = file.ContentLength;
+                DateTime fecha_entrega = DateTime.Now;
+                float nota = 0;
+                bool corregido = false;
+                string comentarioAlumno = TextBox_Comentario.Text;
+                string comentarioProfesor = "";
+
+                //Crear método de consulta para obtener la EvaluacionAlumno a partir de un alumno y un control
+                string email = session.Usuario.Email;
+                DameEvaluacionAlumnoPorAlumnoYEntrega consulta =
+                    new DameEvaluacionAlumnoPorAlumnoYEntrega(email, idEntrega);
+
+                //Crear la entrega de prácticas en la base de datos
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                entregaAlumno = cp.CrearEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
+                    nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega, consulta);
+            }
+            catch (Exception ex)
+            {
+                Notification.Current.AddNotification("ERROR: La entrega no pudo ser realizada. " + ex.Message);
                 return false;
+            }
 
-            //Inicializar las variables
-            HttpPostedFile file = FileUploadControl.PostedFile;
-            string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
-            string extension = System.IO.Path.GetExtension(nombreFichero);
-            string ruta = "";
-            float tam = file.ContentLength;
-            DateTime? fecha_entrega = DateTime.Now;
-            float nota = 0;
-            bool corregido = false;
-            string comentarioAlumno = TextBox_Comentario.Text;
-            string comentarioProfesor = "";
+            Notification.Current.AddNotification("La entrega ha sido realizada");
+            return true;
 
-            //Crear método de consulta para obtener la EvaluacionAlumno a partir de un alumno y un control
-            string email = session.Usuario.Email;
-            DameEvaluacionAlumnoPorAlumnoYEntrega consulta =
-                new DameEvaluacionAlumnoPorAlumnoYEntrega(email, idEntrega);
+        }
 
-            //Crear la entrega de prácticas en la base de datos
-            EntregaAlumnoCP cp = new EntregaAlumnoCP();
-            entregaAlumno = cp.CrearEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
-                nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega, consulta);
+        //Modificar la entrega de la práctica del alumno
+        public bool ModificarEntregaPractica(int idEntrega, HttpServerUtility Server,
+            FileUpload FileUploadControl, Label StatusLabel, TextBox TextBox_Comentario)
+        {
+            try
+            {
+                Uploader uploader = new Uploader(Server, FileUploadControl);
 
+                //Comprobar las precondiciones del archivo
+                if (!uploader.ComprobarPrecondicionesSubidaAlumno(StatusLabel))
+                    throw new Exception(StatusLabel.Text);
+
+                //Inicializar las variables
+                HttpPostedFile file = FileUploadControl.PostedFile;
+                string nombreFichero = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = System.IO.Path.GetExtension(nombreFichero);
+                string ruta = "";
+                float tam = file.ContentLength;
+                DateTime fecha_entrega = DateTime.Now;
+                float nota = 0;
+                bool corregido = false;
+                string comentarioAlumno = TextBox_Comentario.Text;
+                string comentarioProfesor = "";
+
+                //Crear la entrega de prácticas en la base de datos
+                EntregaAlumnoCP cp = new EntregaAlumnoCP();
+                cp.ModificarEntregaAlumno(uploader, nombreFichero, extension, ruta, tam, fecha_entrega,
+                    nota, corregido, comentarioAlumno, comentarioProfesor, idEntrega);
+            }
+            catch (Exception ex)
+            {
+                Notification.Current.AddNotification("ERROR: La entrega no pudo ser modificada. " + ex.Message);
+                return false;
+            }
+
+            Notification.Current.AddNotification("La entrega ha sido modificada");
             return true;
 
         }
@@ -71,7 +121,8 @@ namespace Fachadas.Moodle
 
         //Método para vincular un entrega a partir de su id a textboxes
         public bool VincularEntregaAlumnoPorIdLigero(int id, TextBox TextBox_Cod, TextBox TextBox_NomAlu,
-            TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, CheckBox CheckBox_Corregido)
+            TextBox TextBox_ApeAlu, TextBox TextBox_Dni, TextBox TextBox_ComentAlu, TextBox TextBox_Nota,
+            TextBox TextBox_ComentProf, CheckBox CheckBox_Corregido)
         {
             try
             {
@@ -79,7 +130,7 @@ namespace Fachadas.Moodle
                 DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
                 IBinderEntregaAlumno linker = new BinderEntregaAlumnoLigero(TextBox_Cod,
                     TextBox_NomAlu, TextBox_ApeAlu, TextBox_Dni,
-                    TextBox_ComentAlu, CheckBox_Corregido);
+                    TextBox_ComentAlu, TextBox_Nota, CheckBox_Corregido, TextBox_ComentProf);
 
                 binding.VincularDameEntregaAlumno(consulta, linker);
             }
@@ -114,6 +165,28 @@ namespace Fachadas.Moodle
             return true;
         }
 
+        //Método para vincular un entrega a partir de su id a textboxes
+        public bool VincularEntregaAlumnoPorIdMuyLigero(int id, TextBox TextBox_Nom,
+            TextBox TextBox_Desc, TextBox TextBox_Apertu, TextBox TextBox_Cierre, TextBox TextBox_Punt,
+            TextBox TextBox_Comentario)
+        {
+            try
+            {
+                EntregaAlumnoBinding binding = new EntregaAlumnoBinding();
+                DameEntregaAlumnoPorId consulta = new DameEntregaAlumnoPorId(id);
+                IBinderEntregaAlumno linker = new BinderEntregaAlumnoMuyLigero(TextBox_Nom,
+                        TextBox_Desc, TextBox_Apertu, TextBox_Cierre, TextBox_Punt,
+                        TextBox_Comentario);
+
+                binding.VincularDameEntregaAlumno(consulta, linker);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+
         //Metodo que modifica el Entrega en BD
         public bool CalificarEntrega(int p_oid, float nota, string comentario, bool corregido)
         {
@@ -122,11 +195,13 @@ namespace Fachadas.Moodle
                 EntregaAlumnoCP cp = new EntregaAlumnoCP();
                 cp.CalificarEntrega(p_oid, nota, comentario, corregido);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Notification.Current.AddNotification("ERROR: La entrega no ha podido ser calificada. " + ex.Message);
                 return false;
             }
 
+            Notification.Current.AddNotification("La entrega ha sido calificada");
             return true;
         }
 
@@ -147,12 +222,33 @@ namespace Fachadas.Moodle
                 extension = entrega.Extension;
 
             }
+            catch (Exception ex)
+            {
+                Notification.Current.AddNotification(
+                    "ERROR: Los datos del fichero no pudieron ser recuperados. " + ex.Message);
+                return false;
+            }
+
+            return true;
+        }
+
+        //Método para comprobar si existe una entrega de un alumno a partir de una entrega propuesta
+        public bool ExisteEntregaAlumno(int idEntrega, MySession session, out int idEntregaAlu)
+        {
+            bool resultado = false;
+            idEntregaAlu = -1;
+
+            try
+            {
+                EntregaAlumnoCP entrega = new EntregaAlumnoCP();
+                resultado = entrega.ExisteEntregaAlumno(idEntrega, session.Usuario.Email, out idEntregaAlu);
+            }
             catch (Exception)
             {
                 return false;
             }
 
-            return true;
+            return resultado;
         }
 
     }
