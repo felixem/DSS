@@ -60,7 +60,7 @@
             ForeColor="Red" ValidationExpression="\D+"
                 ValidationGroup="Registro"></asp:RegularExpressionValidator>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_textbox_medium">
         Fecha Apertura 
         <div class="posicion_derecha">
             <asp:DropDownList ID="ddlAno" runat="server" AutoPostBack="True" CssClass="posicion_derecha"
@@ -75,22 +75,22 @@
     </div>
             </p>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_textbox_medium">
         Fecha Cierre 
         <div class="posicion_derecha">
-            <asp:DropDownList ID="ddlAnoC" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlAnoC" runat="server" CssClass="posicion_derecha" AutoPostBack="True" 
                 OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlMesC" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlMesC" runat="server" CssClass="posicion_derecha" AutoPostBack="True" 
                 OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="ddlDiaC" runat="server" CssClass="posicion_derecha" AutoPostBack="True">
             </asp:DropDownList>
         </div>
         </div>
             </p>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_textbox_medium">
         <div class="posicion_izquierda">Puntuación </div>
         <div class="posicion_derecha"><asp:TextBox ID="TextBox_Punt" runat="server"></asp:TextBox></div>
     </div>

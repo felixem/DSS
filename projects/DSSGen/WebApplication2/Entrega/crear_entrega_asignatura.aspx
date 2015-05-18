@@ -35,7 +35,7 @@
             ForeColor="Red" ValidationExpression="\D+"
                 ValidationGroup="Registro"></asp:RegularExpressionValidator>
         
-           <div class="row_modificar_alumno">
+           <div class="row_margin_left">
         Fecha Apertura 
         <div class="posicion_derecha">
             <asp:DropDownList ID="ddlAno" runat="server" AutoPostBack="True" CssClass="posicion_derecha"
@@ -50,22 +50,22 @@
     </div>
             </p>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_margin_left">
         Fecha Cierre 
         <div class="posicion_derecha">
-            <asp:DropDownList ID="ddlAnoC" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlAnoC" runat="server" CssClass="posicion_derecha" AutoPostBack="True" 
                 OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlMesC" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlMesC" runat="server" CssClass="posicion_derecha" AutoPostBack="True" 
                 OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="ddlDiaC" runat="server" CssClass="posicion_derecha" AutoPostBack="True">
             </asp:DropDownList>
         </div>
         </div>
             </p>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_margin_left">
         <div class="posicion_izquierda">Puntuación </div>
         <div class="posicion_derecha"><asp:TextBox ID="TextBox_PuntControl" runat="server"></asp:TextBox></div>
         </div>
@@ -88,12 +88,14 @@
         <div class="posicion_derecha"><asp:DropDownList ID="DropDownList_SistemaEvaluacion" runat="server">
         </asp:DropDownList></div>
     </div>
-        <asp:Button ID="Button_RegEntrega" runat="server" OnClick="Button_RegEntrega_Click" Text="Crear"
+    <div class="row_margin_left">
+        <asp:Button ID="Button_RegEntrega" runat="server" CssClass="posicion_izquierda" OnClick="Button_RegEntrega_Click" Text="Crear"
                 ValidationGroup="Registro" />
-        <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver"
+        <asp:Button ID="Button_Cancelar" runat="server" CssClass="posicion_central" OnClick="Button_Cancelar_Click" Text="Volver"
                  />
-        <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos"
+        <asp:Button ID="Button_LimpCampos" runat="server" CssClass="posicion_derecha" OnClick="Button_Clean_Click" Text="Limpiar Campos"
                  />
+                 </div>
     
     </div>
     </div>

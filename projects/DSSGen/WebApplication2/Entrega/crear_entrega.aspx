@@ -36,7 +36,7 @@
                 Display="Dynamic" ErrorMessage="Introduce descripcion válida" 
             ForeColor="Red" ValidationExpression="\D+"
                 ValidationGroup="Registro"></asp:RegularExpressionValidator>
-    <div class="row_modificar_alumno">
+    <div class="row_textbox_medium">
         Fecha Apertura 
         <div class="posicion_derecha">
             <asp:DropDownList ID="ddlAno" runat="server" AutoPostBack="True" CssClass="posicion_derecha"
@@ -51,22 +51,22 @@
     </div>
             </p>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_textbox_medium">
         Fecha Cierre 
         <div class="posicion_derecha">
-            <asp:DropDownList ID="ddlAnoC" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlAnoC" runat="server" CssClass="posicion_derecha" AutoPostBack="True" 
                 OnSelectedIndexChanged="ddlAnoC_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlMesC" runat="server" AutoPostBack="True" 
+            <asp:DropDownList ID="ddlMesC" runat="server" CssClass="posicion_derecha" AutoPostBack="True" 
                 OnSelectedIndexChanged="ddlMesC_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlDiaC" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="ddlDiaC" runat="server" CssClass="posicion_derecha" AutoPostBack="True">
             </asp:DropDownList>
         </div>
         </div>
             </p>
     <p class="style2">
-    <div class="row_modificar_alumno">
+    <div class="row_textbox_medium">
         <div class="posicion_izquierda">Puntuación </div>
         <asp:TextBox ID="TextBox_PuntControl" runat="server" CssClass="posicion_derecha"></asp:TextBox>
     </div>
@@ -103,13 +103,14 @@
         </asp:DropDownList>
     </div>
     
-
+    <div class="row_textbox_medium">
         <asp:Button ID="Button_RegEntrega" runat="server" OnClick="Button_RegEntrega_Click" Text="Crear" CssClass="posicion_izquierda"
                 ValidationGroup="Registro" />
         <asp:Button ID="Button_Cancelar" runat="server" OnClick="Button_Cancelar_Click" Text="Volver" CssClass="posicion_central"
                  />
         <asp:Button ID="Button_LimpCampos" runat="server" OnClick="Button_Clean_Click" Text="Limpiar Campos" CssClass="posicion_derecha"
                  />
+                 </div>
     </div>
     </div>
 </asp:Content>

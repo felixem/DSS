@@ -26,7 +26,7 @@ namespace BindingComponents.Moodle.Commands
             //Vincular con el dropdownlist
             foreach (ProfesorEN x in lista)
             {
-                drop.Items.Add(new ListItem(x.Nombre.ToString(), x.Email.ToString()));
+                drop.Items.Add(new ListItem(x.Nombre + " " + x.Apellidos, x.Email.ToString()));
             }
         }
     }
