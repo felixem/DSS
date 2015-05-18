@@ -49,7 +49,6 @@
             </asp:DropDownList>
         </div>
     </div>
-            </p>
     <p class="style2">
     <div class="row_textbox_medium">
         Fecha Cierre 

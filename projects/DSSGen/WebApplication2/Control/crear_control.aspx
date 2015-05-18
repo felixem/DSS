@@ -48,7 +48,7 @@
             <asp:DropDownList ID="ddlMes" runat="server" AutoPostBack="True" CssClass="posicion_derecha"
                 OnSelectedIndexChanged="ddlMes_SelectedIndexChanged">
             </asp:DropDownList>
-            <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True"CssClass="posicion_derecha" >
+            <asp:DropDownList ID="ddlDia" runat="server" AutoPostBack="True" CssClass="posicion_derecha" >
             </asp:DropDownList>
         </div>
     </div>
